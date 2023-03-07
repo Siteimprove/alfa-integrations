@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "files": ["src/cypress.ts", "src/index.ts"],
+  "references": [{ "path": "../alfa-assert" }]
+}

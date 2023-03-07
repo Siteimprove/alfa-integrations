@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "files": [
+    "src/asserter.ts",
+    "src/assertion.ts",
+    "src/handler.ts",
+    "src/index.ts",
+    "test/fixture/rule.ts",
+    "test/asserter.spec.ts"
+  ]
+}
