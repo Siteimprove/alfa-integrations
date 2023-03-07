@@ -1,0 +1,11 @@
+node_modules
+
+**/*.log
+**/*.tsbuildinfo
+
+**/*.js
+**/*.d.ts
+**/*.map
+
+!**/scripts/**/*.js
+!**/types/**/*.d.ts
