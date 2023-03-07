@@ -2,5 +2,9 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "files": ["src/cypress.ts", "src/index.ts"],
-  "references": [{ "path": "../alfa-assert" }]
+  "references": [
+    { "path": "../alfa-assert" },
+    { "path": "../alfa-formatter" },
+    { "path": "../alfa-formatter-earl" }
+  ]
 }
