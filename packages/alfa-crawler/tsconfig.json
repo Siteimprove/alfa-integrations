@@ -1,0 +1,6 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "files": ["src/crawler.ts", "src/index.ts", "test/crawler.spec.ts"],
+  "references": [{ "path": "../alfa-frontier" }, { "path": "../alfa-scraper" }]
+}

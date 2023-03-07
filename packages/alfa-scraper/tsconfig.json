@@ -1,0 +1,14 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "files": [
+    "src/archive.ts",
+    "src/awaiter.ts",
+    "src/credentials.ts",
+    "src/index.ts",
+    "src/scraper.ts",
+    "src/screenshot.ts",
+    "test/scraper.spec.ts"
+  ],
+  "references": [{ "path": "../alfa-puppeteer" }]
+}
