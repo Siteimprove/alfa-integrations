@@ -9,6 +9,15 @@ export default {
       ],
     },
     {
+      name: "Formatters",
+      children: [
+        "@siteimprove/alfa-formatter",
+        "@siteimprove/alfa-formatter-earl",
+        "@siteimprove/alfa-formatter-json",
+        "@siteimprove/alfa-formatter-sarif",
+      ],
+    },
+    {
       name: "Integrations with frameworks",
       children: [
         {
