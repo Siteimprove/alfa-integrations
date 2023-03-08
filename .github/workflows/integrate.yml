@@ -24,7 +24,13 @@ jobs:
       - uses: actions/setup-node@v3
         with:
           node-version: ${{ matrix.node }}
-          cache: yarn
+          cache:
+            yarn
+      # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+      - run: >
+          yarn config set
+          npmScopes.siteimprove.npmAuthToken
+          ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --immutable
       - run: yarn dedupe --check
       - run: yarn build --quiet

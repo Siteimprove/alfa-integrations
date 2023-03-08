@@ -24,6 +24,11 @@ jobs:
         with:
           node-version: 16
           cache: yarn
+      # https://docs.github.com/en/actions/security-guides/automatic-token-authentication
+      - run: >
+          yarn config set
+          npmScopes.siteimprove.npmAuthToken
+          ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --immutable
       - run: yarn build --quiet
       - uses: github/codeql-action/init@v2.2.5
