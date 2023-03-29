@@ -1,22 +1,29 @@
 /// <reference types="node" />
 
-import { Rule, Oracle } from "@siteimprove/alfa-act";
+import { Rule, Oracle, Question } from "@siteimprove/alfa-act";
 import { Hashable } from "@siteimprove/alfa-hash";
 import { Result, Err } from "@siteimprove/alfa-result";
 
 /**
  * @public
  */
-export type Interviewer<I, T extends Hashable, Q = never, S = T> = (
-  input: I,
-  rules: Iterable<Rule<I, T, Q, S>>
-) => Oracle<I, T, Q, S>;
+export type Interviewer<
+  I,
+  T extends Hashable,
+  Q extends Question.Metadata = {},
+  S = T
+> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;
 
 /**
  * @public
  */
 export namespace Interviewer {
-  export async function load<I, T extends Hashable, Q = never, S = T>(
+  export async function load<
+    I,
+    T extends Hashable,
+    Q extends Question.Metadata = {},
+    S = T
+  >(
     name: string,
     defaultScope: string = "@siteimprove"
   ): Promise<Result<Interviewer<I, T, Q, S>, string>> {

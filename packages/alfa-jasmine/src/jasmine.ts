@@ -1,6 +1,6 @@
 /// <reference types="jasmine" />
 
-import { Rule } from "@siteimprove/alfa-act";
+import { Question, Rule } from "@siteimprove/alfa-act";
 import { Asserter, Handler } from "@siteimprove/alfa-assert";
 import { Hashable } from "@siteimprove/alfa-hash";
 import { Mapper } from "@siteimprove/alfa-mapper";
@@ -19,7 +19,13 @@ declare global {
  * @public
  */
 export namespace Jasmine {
-  export function createPlugin<I, J, T extends Hashable, Q = never, S = T>(
+  export function createPlugin<
+    I,
+    J,
+    T extends Hashable,
+    Q extends Question.Metadata = {},
+    S = T
+  >(
     transform: Mapper<I, Promise<J>>,
     rules: Iterable<Rule<J, T, Q, S>>,
     handlers: Iterable<Handler<J, T, Q, S>> = [],

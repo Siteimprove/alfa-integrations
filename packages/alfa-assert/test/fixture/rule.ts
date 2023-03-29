@@ -2,7 +2,9 @@ import { Diagnostic, Question, Rule } from "@siteimprove/alfa-act";
 import { Hashable } from "@siteimprove/alfa-hash";
 import { Result, Err } from "@siteimprove/alfa-result";
 
-export const Pass = <T extends Hashable, Q = never>(uri: string) =>
+export const Pass = <T extends Hashable, Q extends Question.Metadata = {}>(
+  uri: string
+) =>
   Rule.Atomic.of<T, T, Q>({
     uri,
 
@@ -21,7 +23,9 @@ export const Pass = <T extends Hashable, Q = never>(uri: string) =>
     },
   });
 
-export const Fail = <T extends Hashable, Q = never>(uri: string) =>
+export const Fail = <T extends Hashable, Q extends Question.Metadata = {}>(
+  uri: string
+) =>
   Rule.Atomic.of<T, T, Q>({
     uri,
 

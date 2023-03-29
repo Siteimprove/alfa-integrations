@@ -1,6 +1,6 @@
 /// <reference types="chai" />
 
-import { Rule } from "@siteimprove/alfa-act";
+import { Question, Rule } from "@siteimprove/alfa-act";
 import { Asserter, Assertion, Handler } from "@siteimprove/alfa-assert";
 import { Future } from "@siteimprove/alfa-future";
 import { Hashable } from "@siteimprove/alfa-hash";
@@ -11,7 +11,12 @@ import * as assert from "@siteimprove/alfa-assert";
 declare global {
   namespace Chai {
     interface Assertion {
-      accessible<I, T extends Hashable, Q = never, S = T>(
+      accessible<
+        I,
+        T extends Hashable,
+        Q extends Question.Metadata = {},
+        S = T
+      >(
         options?: assert.Assertion.Options<I, T, Q, S>
       ): Promise<void>;
     }
@@ -22,7 +27,13 @@ declare global {
  * @public
  */
 export namespace Chai {
-  export function createPlugin<I, J, T extends Hashable, Q = never, S = T>(
+  export function createPlugin<
+    I,
+    J,
+    T extends Hashable,
+    Q extends Question.Metadata = {},
+    S = T
+  >(
     transform: Mapper<I, Future.Maybe<J>>,
     rules: Iterable<Rule<J, T, Q, S>>,
     handlers: Iterable<Handler<J, T, Q, S>> = [],

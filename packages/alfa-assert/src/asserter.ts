@@ -1,4 +1,4 @@
-import { Rule } from "@siteimprove/alfa-act";
+import { Question, Rule } from "@siteimprove/alfa-act";
 import { Hashable } from "@siteimprove/alfa-hash";
 
 import { Assertion } from "./assertion";
@@ -7,8 +7,8 @@ import { Handler } from "./handler";
 /**
  * @public
  */
-export class Asserter<I, T extends Hashable, Q, S> {
-  public static of<I, T extends Hashable, Q, S>(
+export class Asserter<I, T extends Hashable, Q extends Question.Metadata, S> {
+  public static of<I, T extends Hashable, Q extends Question.Metadata, S>(
     rules: Iterable<Rule<I, T, Q, S>>,
     handlers: Iterable<Handler<I, T, Q, S>> = [],
     options: Asserter.Options<I, T, Q, S> = {}
@@ -44,6 +44,10 @@ export class Asserter<I, T extends Hashable, Q, S> {
  * @public
  */
 export namespace Asserter {
-  export interface Options<I, T extends Hashable, Q, S>
-    extends Assertion.Options<I, T, Q, S> {}
+  export interface Options<
+    I,
+    T extends Hashable,
+    Q extends Question.Metadata,
+    S
+  > extends Assertion.Options<I, T, Q, S> {}
 }

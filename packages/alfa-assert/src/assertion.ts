@@ -1,4 +1,4 @@
-import { Audit, Oracle, Outcome, Rule } from "@siteimprove/alfa-act";
+import { Audit, Oracle, Outcome, Question, Rule } from "@siteimprove/alfa-act";
 import { Future } from "@siteimprove/alfa-future";
 import { Hashable } from "@siteimprove/alfa-hash";
 import { None } from "@siteimprove/alfa-option";
@@ -14,8 +14,8 @@ const { or } = Predicate;
 /**
  * @public
  */
-export class Assertion<I, T extends Hashable, Q, S> {
-  public static of<I, T extends Hashable, Q, S>(
+export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
+  public static of<I, T extends Hashable, Q extends Question.Metadata, S>(
     input: I,
     rules: Iterable<Rule<I, T, Q, S>>,
     handlers: Iterable<Handler<I, T, Q, S>> = [],
@@ -133,7 +133,12 @@ export class Assertion<I, T extends Hashable, Q, S> {
  * @public
  */
 export namespace Assertion {
-  export interface Options<I, T extends Hashable, Q, S> {
+  export interface Options<
+    I,
+    T extends Hashable,
+    Q extends Question.Metadata,
+    S
+  > {
     /**
      * Predicate for filtering outcomes that should count towards an assertion
      * failure.; only failed outcomes matching this filter will be reported.
