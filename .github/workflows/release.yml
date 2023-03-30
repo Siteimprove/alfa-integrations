@@ -15,10 +15,15 @@ jobs:
           cache: yarn
           registry-url: 'https://npm.pkg.github.com'
           scope: '@siteimprove'
-      - name: Configure token for Alfa packages
+      - name: Configure token for Alfa packages (read)
         run: >
           yarn config set
           npmScopes.siteimprove.npmAuthToken
+          ${{ github.token }}
+      - name: Configure token for Alfa packages (publish)
+        run: >
+          yarn config set
+          'npmRegistries["https://npm.pkg.github.com"].npmAuthToken'
           ${{ github.token }}
       - run: yarn install --immutable
       - run: yarn build
