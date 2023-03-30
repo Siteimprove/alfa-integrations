@@ -19,7 +19,7 @@ Items that are related, such as breaking changes, new features, or changes to ex
 
 </details>
 
-## [0.62.0](../../compare/v0.61.0...v0.62.0) (2023-03-30)
+## [0.62.1](../../compare/v0.61.0...v0.62.1) (2023-03-30)
 
 No functional change, first release handled from the `alfa-integrations` repository.
 
