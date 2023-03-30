@@ -1,11 +1,16 @@
-import { Rule, Outcome } from "@siteimprove/alfa-act";
+import { Rule, Outcome, Question } from "@siteimprove/alfa-act";
 import { Future } from "@siteimprove/alfa-future";
 import { Hashable } from "@siteimprove/alfa-hash";
 
 /**
  * @public
  */
-export interface Handler<I, T extends Hashable, Q, S> {
+export interface Handler<
+  I,
+  T extends Hashable,
+  Q extends Question.Metadata,
+  S
+> {
   (
     input: I,
     rules: Iterable<Rule<I, T, Q, S>>,

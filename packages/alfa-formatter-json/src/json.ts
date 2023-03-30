@@ -1,3 +1,4 @@
+import { Question } from "@siteimprove/alfa-act";
 import { Formatter } from "@siteimprove/alfa-formatter";
 import { Hashable } from "@siteimprove/alfa-hash";
 import { Serializable } from "@siteimprove/alfa-json";
@@ -7,7 +8,12 @@ const { stringify } = JSON;
 /**
  * @public
  */
-export default function <I, T extends Hashable, Q, S>(): Formatter<I, T, Q, S> {
+export default function <
+  I,
+  T extends Hashable,
+  Q extends Question.Metadata,
+  S
+>(): Formatter<I, T, Q, S> {
   return function JSON(input, rules, outcomes) {
     return stringify(
       {

@@ -1,3 +1,4 @@
+import { Question } from "@siteimprove/alfa-act";
 import { Serializable, EARL } from "@siteimprove/alfa-earl";
 import { Formatter } from "@siteimprove/alfa-formatter";
 import { Future } from "@siteimprove/alfa-future";
@@ -12,7 +13,12 @@ const { stringify } = JSON;
 /**
  * @public
  */
-export default function <I, T extends Hashable, Q, S>(): Formatter<I, T, Q, S> {
+export default function <
+  I,
+  T extends Hashable,
+  Q extends Question.Metadata,
+  S
+>(): Formatter<I, T, Q, S> {
   return function EARL(input, rules, outcomes) {
     const subject = Serializable.toEARL(input);
 
