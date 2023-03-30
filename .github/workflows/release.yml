@@ -20,7 +20,7 @@ jobs:
           yarn config set
           npmScopes.siteimprove.npmAuthToken
           ${{ github.token }}
-      - run: yarn install --immutable --immutable-cache --check-cache
+      - run: yarn install --immutable
       - run: yarn build
       - run: yarn test
 
