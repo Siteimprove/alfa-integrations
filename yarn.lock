@@ -1235,7 +1235,7 @@ __metadata:
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-cli@workspace:^0.62.0, @siteimprove/alfa-cli@workspace:packages/alfa-cli":
+"@siteimprove/alfa-cli@workspace:^0.62.3, @siteimprove/alfa-cli@workspace:packages/alfa-cli":
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-cli@workspace:packages/alfa-cli"
   dependencies:
@@ -1669,7 +1669,7 @@ __metadata:
   dependencies:
     "@microsoft/api-documenter": ^7.19.9
     "@microsoft/api-extractor": ^7.29.5
-    "@siteimprove/alfa-cli": "workspace:^0.62.0"
+    "@siteimprove/alfa-cli": "workspace:^0.62.3"
     "@types/async": ^3.2.5
     "@types/jsonld": ^1.5.6
     "@types/node": ^14.14.31
