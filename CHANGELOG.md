@@ -1,3 +1,8 @@
+# [v0.62.4](../../compare/v0.62.3...v0.62.4) (2023-04-04)
+
+Packages changed:
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md)
+
 # [0.62.3](../../compare/v0.61.0...v0.62.3) (2023-03-30)
 
 No functional change, first release handled from the `alfa-integrations` repository.
