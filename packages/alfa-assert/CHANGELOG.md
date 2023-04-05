@@ -1,5 +1,13 @@
 # @siteimprove/alfa-assert
 
+## 0.62.5
+
+### Patch Changes
+
+- Test release ([`5a78c64`](https://github.com/Siteimprove/alfa-integrations/commit/5a78c64fb319946d82040fc4ca8858e409589e7d))
+
+  No functional changes, testing the release workflow.
+
 ## 0.62.4
 
 ### Patch Changes

@@ -1,3 +1,8 @@
+# [v0.62.5](../../compare/v0.62.4...v0.62.5) (2023-04-05)
+
+Packages changed:
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md)
+
 # [v0.62.4](../../compare/v0.62.3...v0.62.4) (2023-04-04)
 
 Packages changed:
