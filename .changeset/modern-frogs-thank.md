@@ -5,4 +5,4 @@
 
 Update Puppeteer
 
-Update Puppeteer to 19.8.0 which allow to correctly scrape the `rotate` propety.
+Update Puppeteer to 19.8.0 which allow to correctly scrape the `rotate` property.
