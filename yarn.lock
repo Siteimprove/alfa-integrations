@@ -2281,7 +2281,7 @@ __metadata:
     "@siteimprove/alfa-dom": ^0.62.0
     "@siteimprove/alfa-http": ^0.62.0
     "@siteimprove/alfa-web": ^0.62.0
-    puppeteer: ^13.1.2
+    puppeteer: =14.1.2
   languageName: unknown
   linkType: soft
 
@@ -2435,7 +2435,7 @@ __metadata:
     "@siteimprove/alfa-time": ^0.62.0
     "@siteimprove/alfa-url": ^0.62.0
     "@siteimprove/alfa-web": ^0.62.0
-    puppeteer: ^13.1.2
+    puppeteer: =14.1.2
   languageName: unknown
   linkType: soft
 
@@ -4953,6 +4953,13 @@ __metadata:
   version: 0.0.981744
   resolution: "devtools-protocol@npm:0.0.981744"
   checksum: 609901bff551f5fbe98e272bdda7269de527e28fab138de371ffd7e9a06fa68ca2eec2e961bd1cd6fd98223ccee562c55b7ce3235d4e37cc8d85d6681bc45593
+  languageName: node
+  linkType: hard
+
+"devtools-protocol@npm:0.0.982423":
+  version: 0.0.982423
+  resolution: "devtools-protocol@npm:0.0.982423"
+  checksum: c144574b9c2092f38a1a9153e5d723f0bf4ad4f4363d9d2ea5bdd3d7e0e1416d1a71a77256120ba0e0dd524bc101845d42aa0b723aaedc0b6b4023137da76cf3
   languageName: node
   linkType: hard
 
@@ -9120,13 +9127,13 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^13.1.2":
-  version: 13.7.0
-  resolution: "puppeteer@npm:13.7.0"
+"puppeteer@npm:=14.1.2":
+  version: 14.1.2
+  resolution: "puppeteer@npm:14.1.2"
   dependencies:
     cross-fetch: 3.1.5
     debug: 4.3.4
-    devtools-protocol: 0.0.981744
+    devtools-protocol: 0.0.982423
     extract-zip: 2.0.1
     https-proxy-agent: 5.0.1
     pkg-dir: 4.2.0
@@ -9135,8 +9142,8 @@ fsevents@^2.3.2:
     rimraf: 3.0.2
     tar-fs: 2.1.1
     unbzip2-stream: 1.4.3
-    ws: 8.5.0
-  checksum: 4062b3ac3330e70d58095c1e0c5a46cada39a3fc5608e0e0e204448a400aef4d785a3b21d9e7733b2b2dc8cf686a476abf016f05d2e9108b3753dd41d62b9d1c
+    ws: 8.6.0
+  checksum: db74fb7bf042d0a19956442288e09a1b6d67d37cea019a5232ff5bdc2b26358552188b7c1492036cb2a3da807f5ae8b892b15479c3a1a9e3741c6f0737244916
   languageName: node
   linkType: hard
 
@@ -11012,6 +11019,21 @@ typescript@~4.8.4:
     utf-8-validate:
       optional: true
   checksum: 76f2f90e40344bf18fd544194e7067812fb1372b2a37865678d8f12afe4b478ff2ebc0c7c0aff82cd5e6b66fc43d889eec0f1865c2365d8f7a66d92da7744a77
+  languageName: node
+  linkType: hard
+
+"ws@npm:8.6.0":
+  version: 8.6.0
+  resolution: "ws@npm:8.6.0"
+  peerDependencies:
+    bufferutil: ^4.0.1
+    utf-8-validate: ^5.0.2
+  peerDependenciesMeta:
+    bufferutil:
+      optional: true
+    utf-8-validate:
+      optional: true
+  checksum: e2fca82059f1e087d0c78e2f37135e1b8332bc804fce46f83c2db1cb8571685abf9d2c99b964bab3752536ad90b99b46fb8d1428899aed3e560684ab4641bffd
   languageName: node
   linkType: hard
 
