@@ -24,7 +24,7 @@ export namespace Puppeteer {
     const nodeJSON = await value.evaluate(dom.Native.fromNode);
 
     const deviceJSON = await value
-      .evaluateHandle<JSHandle<globalThis.Window>>(() => window)
+      .evaluateHandle(() => window)
       .then((handle) => handle.evaluate(device.Native.fromWindow));
 
     return Page.of(
