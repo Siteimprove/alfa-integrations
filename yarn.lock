@@ -2281,7 +2281,7 @@ __metadata:
     "@siteimprove/alfa-dom": ^0.62.0
     "@siteimprove/alfa-http": ^0.62.0
     "@siteimprove/alfa-web": ^0.62.0
-    puppeteer: =19.6.0
+    puppeteer: =19.6.3
   languageName: unknown
   linkType: soft
 
@@ -2435,7 +2435,7 @@ __metadata:
     "@siteimprove/alfa-time": ^0.62.0
     "@siteimprove/alfa-url": ^0.62.0
     "@siteimprove/alfa-web": ^0.62.0
-    puppeteer: =19.6.0
+    puppeteer: =19.6.3
   languageName: unknown
   linkType: soft
 
@@ -9156,9 +9156,9 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:19.6.0":
-  version: 19.6.0
-  resolution: "puppeteer-core@npm:19.6.0"
+"puppeteer-core@npm:19.6.3":
+  version: 19.6.3
+  resolution: "puppeteer-core@npm:19.6.3"
   dependencies:
     cross-fetch: 3.1.5
     debug: 4.3.4
@@ -9170,7 +9170,7 @@ fsevents@^2.3.2:
     tar-fs: 2.1.1
     unbzip2-stream: 1.4.3
     ws: 8.11.0
-  checksum: 82927bc285c9e48e1036ffe1c345c85c9edbd49498577b21990a80c53d1b8b9415317841f63d0e56ee8babefc41325d0b6f4d7167785401924749752eae9bdda
+  checksum: afad54c829b9ad476a2a84c753760f1543b1afe68eda11ad77adb9cc87912b4d1899a71d137afedc44a75a1566b28e53ee9be73ca894a77901c62df05ad18c96
   languageName: node
   linkType: hard
 
@@ -9194,16 +9194,16 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:=19.6.0":
-  version: 19.6.0
-  resolution: "puppeteer@npm:19.6.0"
+"puppeteer@npm:=19.6.3":
+  version: 19.6.3
+  resolution: "puppeteer@npm:19.6.3"
   dependencies:
     cosmiconfig: 8.0.0
     https-proxy-agent: 5.0.1
     progress: 2.0.3
     proxy-from-env: 1.1.0
-    puppeteer-core: 19.6.0
-  checksum: 8f776dbde26f9bfffc466a75584f0a7b4d7578283f19fb90ac0bc66374e0df0c12f1acd4879530f30fce67c3b5f4f4254c58d1e5679af460266203d4737957e7
+    puppeteer-core: 19.6.3
+  checksum: 5d4ffcfcb297d5dffac73c5860316b5d4ad868b84bb82e9467c93b36e6a0a16efc3252269cd4feab53a1d661ee2dde40c6d764b2ffd60cef177fdba07f195648
   languageName: node
   linkType: hard
 
