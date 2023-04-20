@@ -1,5 +1,7 @@
 # @siteimprove/alfa-assert
 
+## 0.62.6
+
 ## 0.62.5
 
 ### Patch Changes

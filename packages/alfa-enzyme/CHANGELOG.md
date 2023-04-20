@@ -1,5 +1,12 @@
 # @siteimprove/alfa-enzyme
 
+## 0.62.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @siteimprove/alfa-react@0.62.6
+
 ## 0.62.5
 
 ### Patch Changes

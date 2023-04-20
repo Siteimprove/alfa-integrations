@@ -1,5 +1,12 @@
 # @siteimprove/alfa-jasmine
 
+## 0.62.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @siteimprove/alfa-assert@0.62.6
+
 ## 0.62.5
 
 ### Patch Changes

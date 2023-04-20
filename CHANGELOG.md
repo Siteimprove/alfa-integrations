@@ -1,3 +1,9 @@
+# [v0.62.6](../../compare/v0.62.5...v0.62.6) (2023-04-20)
+
+Packages changed:
+- [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md)
+- [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md)
+
 # [v0.62.5](../../compare/v0.62.4...v0.62.5) (2023-04-05)
 
 Packages changed:

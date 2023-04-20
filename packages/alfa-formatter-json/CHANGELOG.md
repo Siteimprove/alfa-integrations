@@ -1,5 +1,12 @@
 # @siteimprove/alfa-formatter-json
 
+## 0.62.6
+
+### Patch Changes
+
+- Updated dependencies []:
+  - @siteimprove/alfa-formatter@0.62.6
+
 ## 0.62.5
 
 ### Patch Changes
