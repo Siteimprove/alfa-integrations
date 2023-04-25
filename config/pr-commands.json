@@ -1,0 +1,17 @@
+{
+  "dedupe": {
+    "command": "CI=false yarn dedupe",
+    "description": "Deduplicate packages",
+    "commitMsg": "Dedupe packages"
+  },
+  "depgraph":{
+    "command": "yarn dependency-graph",
+    "description": "Update dependency graph",
+    "commitMsg": "Update dependency graph"
+  },
+  "extract": {
+    "command": "CI=false yarn extract --quiet",
+    "description": "Extract packages API",
+    "commitMsg": "Extract API"
+  }
+}

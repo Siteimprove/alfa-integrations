@@ -1,47 +1,17 @@
-name: Release
+name: Create a new release
+
 on:
-  push:
-    tags:
-      - "v*"
+  # WARNING! This workflow will push back to main and trigger other workflows.
+  # WARNING! Only use manual trigger to avoid creating infinite workflow loops.
+  workflow_dispatch:
+
 jobs:
-  publish:
-    name: Publish
-    runs-on: ubuntu-latest
-    steps:
-      - uses: actions/checkout@v3
-      - uses: actions/setup-node@v3
-        with:
-          node-version: 16
-          cache: yarn
-          registry-url: 'https://npm.pkg.github.com'
-          scope: '@siteimprove'
-      - name: Configure token for Alfa packages (read)
-        run: >
-          yarn config set
-          npmScopes.siteimprove.npmAuthToken
-          ${{ github.token }}
-      - name: Configure token for Alfa packages (publish)
-        run: >
-          yarn config set
-          'npmRegistries["https://npm.pkg.github.com"].npmAuthToken'
-          ${{ github.token }}
-      - run: yarn install --immutable
-      - run: yarn build
-      - run: yarn test
-
-      - name: Make npm release
-        run: >
-          yarn workspaces foreach
-          --no-private
-          --topological-dev
-          npm publish --tolerate-republish
-
-      - name: Make Github release
-        run: >
-          gh release create ${{ github.ref_name }}
-          --prerelease
-          --verify-tag
-          --title ${{ github.ref_name }}
-          --notes "[Changelog for this release](CHANGELOG.md)"
-        env:
-          GH_TOKEN: ${{ github.token }}
+  release:
+    name: Release
+    uses: siteimprove/alfa/.github/workflows/alfa-release.yml@main
+    with:
+      # See https://api.github.com/users/siteimprove-builduser
+      user-name: siteimprove-builduser
+      user-email: 8577410+siteimprove-builduser@users.noreply.github.com
+    secrets:
+      token: ${{ secrets.A11Y_PUBLIC_GITHUB_TOKEN }}

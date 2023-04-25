@@ -183,7 +183,7 @@ export class Scraper {
           // In event of navigation away from the origin, such as redirects, the
           // response context will be destroyed. If we attempt to grab the
           // request after this, things will go haywire.
-          const request = response.then((response) => response.request());
+          const request = response.then((response) => response?.request());
 
           // When the response has settled, fit the viewport to the contents of
           // the page if requested to do so. This is done by requesting the
@@ -223,10 +223,20 @@ export class Scraper {
             await captureArchive(client, archive);
           }
 
+          const req = await request;
+          const res = await response;
+
+          if (req === undefined) {
+            return Err.of("No request found in response");
+          }
+          if (res === null) {
+            return Err.of("No response received");
+          }
+
           return Result.of(
             Page.of(
-              parseRequest(await request),
-              await parseResponse(await response),
+              parseRequest(req),
+              await parseResponse(res),
               document,
               device
             )
