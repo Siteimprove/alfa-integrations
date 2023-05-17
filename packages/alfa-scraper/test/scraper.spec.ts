@@ -14,7 +14,7 @@ test("#scrape() scrapes a page with a hash fragment", async (t) =>
 
     t.equal(result.isOk(), true);
 
-    const { response } = result.get();
+    const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
   }));
@@ -26,7 +26,7 @@ test("#scrape() scrapes a page with an immediate meta refresh", async (t) =>
 
     t.equal(result.isOk(), true);
 
-    const { response } = result.get();
+    const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), "https://example.com/");
   }));
@@ -38,7 +38,7 @@ test("#scrape() scrapes a page with a delayed meta refresh", async (t) =>
 
     t.equal(result.isOk(), true);
 
-    const { response } = result.get();
+    const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
   }));
@@ -53,7 +53,7 @@ test("#scrape() scrapes a page with an immediate location change", async (t) =>
 
     t.equal(result.isOk(), true);
 
-    const { response } = result.get();
+    const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), "https://example.com/");
   }));
@@ -65,7 +65,7 @@ test("#scrape() scrapes a page with a delayed location change", async (t) =>
 
     t.equal(result.isOk(), true);
 
-    const { response } = result.get();
+    const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
   }));

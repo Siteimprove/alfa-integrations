@@ -68,7 +68,7 @@ export namespace Cypress {
           // https://github.com/cypress-io/cypress/issues/4742
           .get();
 
-        const message = result.isOk() ? result.get() : result.getErr();
+        const message = result.isOk() ? result.get() : result.getErrUnsafe();
 
         this.assert(
           result.isOk(),

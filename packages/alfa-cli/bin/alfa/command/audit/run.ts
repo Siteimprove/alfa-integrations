@@ -26,8 +26,8 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 }) => {
   const formatter = await Formatter.load<any, any, any, any>(flags.format);
 
-  if (formatter.isErr()) {
-    return formatter;
+  if (!formatter.isOk()) {
+    return formatter as Err<string>;
   }
 
   const interviewer = Option.from(
@@ -55,8 +55,8 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
       },
     });
 
-    if (result.isErr()) {
-      return result;
+    if (!result.isOk()) {
+      return result as Err<string>;
     }
 
     json = result.get();
@@ -65,10 +65,11 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   const page = Page.from(JSON.parse(json));
 
   const oracle = interviewer
-    .map((interviewer) => interviewer.get()(page, rules))
+    // The early .some ensured it is an Ok.
+    .map((interviewer) => interviewer.getUnsafe()(page, rules))
     .getOr(undefined);
 
-  const audit = Audit.of(page, rules, oracle);
+  const audit = Audit.of(page.getUnsafe(), rules, oracle);
 
   for (const _ of flags.cpuProfile) {
     await Profiler.CPU.start();

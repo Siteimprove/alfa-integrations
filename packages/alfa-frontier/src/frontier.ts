@@ -359,7 +359,7 @@ namespace Item {
 }
 
 function toURL(url: string | URL): URL {
-  url = typeof url === "string" ? URL.parse(url).get() : url;
+  url = typeof url === "string" ? URL.parse(url).getUnsafe() : url;
   return url.withoutFragment();
 }
 

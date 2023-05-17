@@ -50,7 +50,8 @@ application
       output = result.get();
     } else {
       stream = process.stderr;
-      output = result.getErr();
+      // This is the else branch of a .isOk()
+      output = result.getErrUnsafe();
     }
 
     output = output.trimRight();

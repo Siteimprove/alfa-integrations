@@ -152,7 +152,10 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   const scraper = await Scraper.of();
 
   const result = await scraper.scrape(
-    URL.parse(target, url.pathToFileURL(process.cwd() + path.sep).href).get(),
+    URL.parse(
+      target,
+      url.pathToFileURL(process.cwd() + path.sep).href
+    ).getUnsafe(),
     {
       timeout: Timeout.of(flags.timeout),
       awaiter,
@@ -168,8 +171,8 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 
   await scraper.close();
 
-  if (result.isErr()) {
-    return result;
+  if (!result.isOk()) {
+    return result as Err<string>;
   }
 
   const output = JSON.stringify(result.get());
