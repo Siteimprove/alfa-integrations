@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-cypress",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.62.7",
+  "version": "0.62.8",
   "license": "MIT",
   "description": "Integrations and utilities for the Cypress testing framework",
   "repository": {
@@ -19,11 +19,11 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-act": "^0.63.1",
-    "@siteimprove/alfa-assert": "workspace:^0.62.7",
+    "@siteimprove/alfa-assert": "workspace:^0.62.8",
     "@siteimprove/alfa-device": "^0.63.1",
     "@siteimprove/alfa-dom": "^0.63.1",
-    "@siteimprove/alfa-formatter": "workspace:^0.62.7",
-    "@siteimprove/alfa-formatter-earl": "workspace:^0.62.7",
+    "@siteimprove/alfa-formatter": "workspace:^0.62.8",
+    "@siteimprove/alfa-formatter-earl": "workspace:^0.62.8",
     "@siteimprove/alfa-hash": "^0.63.1",
     "@siteimprove/alfa-http": "^0.63.1",
     "@siteimprove/alfa-mapper": "^0.63.1",
