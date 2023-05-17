@@ -1,3 +1,31 @@
+# [v0.62.7](../../compare/v0.62.6...v0.62.7) (2023-05-17)
+
+Packages changed:
+- [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md)
+- [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md)
+- [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md)
+- [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md)
+- [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md)
+- [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md)
+- [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md)
+- [@siteimprove/alfa-enzyme](packages/alfa-enzyme/CHANGELOG.md)
+- [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md)
+- [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md)
+- [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md)
+- [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md)
+- [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md)
+- [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md)
+- [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md)
+- [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md)
+- [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md)
+- [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md)
+- [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md)
+- [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md)
+- [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md)
+- [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
+- [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
+
 # [v0.62.6](../../compare/v0.62.5...v0.62.6) (2023-04-20)
 
 Packages changed:
