@@ -101,7 +101,7 @@ function* urls(page: Page): Iterable<URL> {
     if (isElement(node) && node.name === "a") {
       yield* node
         .attribute("href")
-        .map((href) => URL.parse(href.value, page.response.url).get());
+        .map((href) => URL.parse(href.value, page.response.url).getUnsafe());
     }
   }
 }

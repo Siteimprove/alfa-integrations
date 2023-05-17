@@ -129,8 +129,8 @@ export class Command<
 
       const flags = this._parseFlags(argv);
 
-      if (flags.isErr()) {
-        return flags;
+      if (!flags.isOk()) {
+        return flags as Err<string>;
       }
 
       [argv, input.flags] = flags.get();
@@ -160,8 +160,8 @@ export class Command<
 
       const args = this._parseArguments(argv);
 
-      if (args.isErr()) {
-        return args;
+      if (!args.isOk()) {
+        return args as Err<string>;
       }
 
       [argv, input.args] = args.get();
@@ -217,7 +217,7 @@ export class Command<
       if (value.isOk()) {
         [argv, sets[name]] = value.get();
       } else {
-        return Err.of(`${argument}: ${value.getErr()}`);
+        return Err.of(`${argument}: ${value.getErrUnsafe()}`);
       }
     }
 
@@ -233,7 +233,7 @@ export class Command<
           return Err.of(`--${flag.name}: ${result.getErr()}`);
         }
 
-        const [, { value }] = result.get();
+        const [, { value }] = result.getUnsafe();
 
         values[name] = value;
       }
@@ -253,7 +253,7 @@ export class Command<
       if (result.isOk()) {
         [argv, values[name]] = result.get();
       } else {
-        return Err.of(`${argument.name}: ${result.getErr()}`);
+        return Err.of(`${argument.name}: ${result.getErrUnsafe()}`);
       }
     }
 

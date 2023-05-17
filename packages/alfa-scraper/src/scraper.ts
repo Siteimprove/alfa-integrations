@@ -76,8 +76,8 @@ export class Scraper {
     if (typeof url === "string") {
       const result = URL.parse(url);
 
-      if (result.isErr()) {
-        return result;
+      if (!result.isOk()) {
+        return result as Err<string>;
       }
 
       url = result.get();
@@ -292,7 +292,7 @@ export namespace Scraper {
 function parseRequest(request: puppeteer.HTTPRequest): Request {
   return Request.of(
     request.method(),
-    URL.parse(request.url()).get(),
+    URL.parse(request.url()).getUnsafe(),
     Headers.of(
       entries(request.headers()).map(([name, value]) => Header.of(name, value))
     )
@@ -303,7 +303,7 @@ async function parseResponse(
   response: puppeteer.HTTPResponse
 ): Promise<Response> {
   return Response.of(
-    URL.parse(response.url()).get(),
+    URL.parse(response.url()).getUnsafe(),
     response.status(),
     Headers.of(
       entries(response.headers()).map(([name, value]) => Header.of(name, value))

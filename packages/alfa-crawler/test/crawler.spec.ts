@@ -17,7 +17,7 @@ test("#crawl() crawls a frontier", async (t) =>
     for await (const result of crawler.crawl(frontier)) {
       t.equal(result.isOk(), true);
 
-      pages.push(result.get().response.url.toString());
+      pages.push(result.getUnsafe().response.url.toString());
     }
 
     t.deepEqual(pages, [

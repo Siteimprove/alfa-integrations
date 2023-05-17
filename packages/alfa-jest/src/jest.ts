@@ -38,7 +38,7 @@ export namespace Jest {
 
         const result = await asserter.expect(input).to.be.accessible();
 
-        const message = result.isOk() ? result.get() : result.getErr();
+        const message = result.isOk() ? result.get() : result.getErrUnsafe();
 
         return {
           pass: result.isOk(),

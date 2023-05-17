@@ -51,7 +51,7 @@ export namespace Chai {
             .expect(input, options)
             .to.be.accessible();
 
-          const message = result.isOk() ? result.get() : result.getErr();
+          const message = result.isOk() ? result.get() : result.getErrUnsafe();
 
           this.assert(
             result.isOk(),
