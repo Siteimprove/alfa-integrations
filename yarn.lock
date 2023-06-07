@@ -2012,7 +2012,7 @@ __metadata:
     axios: ^0.27.2
     execa: ^5.1.1
     minimist: ^1.2.6
-    package-dependency-graph: ^1.14.3
+    package-dependency-graph: ^1.14.4
     prettier: ^2.7.1
     typescript: ^4.8.2
   languageName: unknown
@@ -4064,14 +4064,14 @@ __metadata:
   linkType: hard
 
 "canvas@npm:2":
-  version: 2.11.0
-  resolution: "canvas@npm:2.11.0"
+  version: 2.11.2
+  resolution: "canvas@npm:2.11.2"
   dependencies:
     "@mapbox/node-pre-gyp": ^1.0.0
     nan: ^2.17.0
     node-gyp: latest
     simple-get: ^3.0.3
-  checksum: a69a6e0c90014a1b02e52c4c38a627d1a01ffe9539047bec84105cb3554907a947cf39b4a333be43fc1583dd142b641bb5480a4e23f59c6098618c33bf78f67f
+  checksum: 61e554aef80022841dc836964534082ec21435928498032562089dfb7736215f039c7d99ee546b0cf10780232d9bf310950f8b4d489dc394e0fb6f6adfc97994
   languageName: node
   linkType: hard
 
@@ -6052,7 +6052,20 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"glob@npm:7, glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
+"glob@npm:7 || 8, glob@npm:^8.0.1, glob@npm:^8.0.3":
+  version: 8.1.0
+  resolution: "glob@npm:8.1.0"
+  dependencies:
+    fs.realpath: ^1.0.0
+    inflight: ^1.0.4
+    inherits: 2
+    minimatch: ^5.0.1
+    once: ^1.3.0
+  checksum: 92fbea3221a7d12075f26f0227abac435de868dd0736a17170663783296d0dd8d3d532a5672b4488a439bf5d7fb85cdd07c11185d6cd39184f0385cbdfb86a47
+  languageName: node
+  linkType: hard
+
+"glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.1.6":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
   dependencies:
@@ -6063,19 +6076,6 @@ fsevents@^2.3.2:
     once: ^1.3.0
     path-is-absolute: ^1.0.0
   checksum: 29452e97b38fa704dabb1d1045350fb2467cf0277e155aa9ff7077e90ad81d1ea9d53d3ee63bd37c05b09a065e90f16aec4a65f5b8de401d1dac40bc5605d133
-  languageName: node
-  linkType: hard
-
-"glob@npm:^8.0.1, glob@npm:^8.0.3":
-  version: 8.1.0
-  resolution: "glob@npm:8.1.0"
-  dependencies:
-    fs.realpath: ^1.0.0
-    inflight: ^1.0.4
-    inherits: 2
-    minimatch: ^5.0.1
-    once: ^1.3.0
-  checksum: 92fbea3221a7d12075f26f0227abac435de868dd0736a17170663783296d0dd8d3d532a5672b4488a439bf5d7fb85cdd07c11185d6cd39184f0385cbdfb86a47
   languageName: node
   linkType: hard
 
@@ -8832,41 +8832,41 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"package-dependency-collect@npm:^1.14.2":
-  version: 1.14.2
-  resolution: "package-dependency-collect@npm:1.14.2"
+"package-dependency-collect@npm:^1.14.4":
+  version: 1.14.4
+  resolution: "package-dependency-collect@npm:1.14.4"
   dependencies:
-    glob: 7
+    glob: 7 || 8
     tslib: 1 || 2
-  checksum: 98e4902fada7b5cbf35b398c973f8ef118000945b768ad9f93aac8fbfbff2853209e066f2f095d683ac7af7e8a872e024410b446df15e2da22775b7acf660b14
+  checksum: 26392eb6dcebdb04b5ae14142ba0c2a1a35238eb522be019cf3cf94de78bb997b55fddbd815275fb8421f32f446419f3b369d5bf7d37d74b06568f351bdbd756
   languageName: node
   linkType: hard
 
-"package-dependency-graph-core@npm:^1.14.3":
-  version: 1.14.3
-  resolution: "package-dependency-graph-core@npm:1.14.3"
+"package-dependency-graph-core@npm:^1.14.4":
+  version: 1.14.4
+  resolution: "package-dependency-graph-core@npm:1.14.4"
   dependencies:
     dagre-cluster-fix: 0.9.3
-    package-dependency-collect: ^1.14.2
+    package-dependency-collect: ^1.14.4
     tslib: 1 || 2
-  checksum: f7951614164e6c50c707ee99f519d0df24c9789015686d3a3610137b18541b7373866ad3b14dae0815e2d080a92faabb14a6e5f00ede66f558eaeeeec7802f98
+  checksum: c6d17e43fed352a151d9370fe33e429bd7a699da86db6db487c5af91aeda20fc5bf98d05339fa5977b15d13eec08545d7c10c38708f17d584cf28720cce9c285
   languageName: node
   linkType: hard
 
-"package-dependency-graph@npm:^1.14.3":
-  version: 1.14.3
-  resolution: "package-dependency-graph@npm:1.14.3"
+"package-dependency-graph@npm:^1.14.4":
+  version: 1.14.4
+  resolution: "package-dependency-graph@npm:1.14.4"
   dependencies:
     canvas: 2
     dagre-canvas: ^1.14.1
     dagre-svg: ^1.14.1
     graphviz-cli: 1
     minimist: 1
-    package-dependency-graph-core: ^1.14.3
+    package-dependency-graph-core: ^1.14.4
     ts-node: "*"
   bin:
     package-dependency-graph: bin/package-dependency-graph
-  checksum: 80f0bba262b76ff5d336052e44915f44c0c8ec82e4bdd091070fe49aa8f358b5aae9b39dfa1b6f8b16a1225c1ad9637e6d3ca725fb02d0427f09177958aa8c3c
+  checksum: f904ab4361a5786532f55d1f8b7677b804684e560c8de7a0071481eced0cff3348baa9a63f525ef55fa09bad5a1affaa8da65ce393ddfe2ffba76e65027fbd13
   languageName: node
   linkType: hard
 
