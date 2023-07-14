@@ -26,6 +26,6 @@
 "@siteimprove/alfa-formatter-sarif": patch
 ---
 
-\*_Added:_ Updated Alfa to v0.65.0
+**Added:** Updated Alfa to v0.65.0
 
 Functions that are building `Element` directly now add an empty box to them.
