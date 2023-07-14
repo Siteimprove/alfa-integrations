@@ -62,6 +62,7 @@ function toElement(element: dom.Element): Element.JSON {
     children,
     shadow: null,
     content: null,
+    box: null,
   };
 }
 

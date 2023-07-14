@@ -76,6 +76,7 @@ function toElement(element: TestElement): Element.JSON {
     children: children?.map(toNode) ?? [],
     shadow: null,
     content: null,
+    box: null,
   };
 }
 

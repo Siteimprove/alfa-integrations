@@ -3,8 +3,9 @@ import * as device from "@siteimprove/alfa-device/native";
 import { test } from "@siteimprove/alfa-test";
 
 import { Device } from "@siteimprove/alfa-device";
-import { h } from "@siteimprove/alfa-dom";
+import { h, Namespace } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
+import { Rectangle } from "@siteimprove/alfa-rectangle";
 import { Page } from "@siteimprove/alfa-web";
 
 import V from "vue";
@@ -30,14 +31,23 @@ window.matchMedia =
     };
   };
 
-test(`.toPage() creates an Alfa Page`, (t) => {
+test(`.toPage() creates an Alfa Page (vue)`, (t) => {
   const button = mount(Button);
 
   const actual = Vue.toPage(button);
   const expected = Page.of(
     Request.empty(),
     Response.empty(),
-    h.document([h.element("button", { class: "btn" })]),
+    h.document([
+      h.element(
+        "button",
+        { class: "btn" },
+        [],
+        [],
+        Namespace.HTML,
+        Rectangle.of(0, 0, 0, 0)
+      ),
+    ]),
     Device.from(device.Native.fromWindow(window))
   );
 
