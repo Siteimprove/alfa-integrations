@@ -1,5 +1,13 @@
 # @siteimprove/alfa-cli
 
+## 0.62.10
+
+### Patch Changes
+
+- **Added:** Updated Alfa to v0.65.0 ([#19](https://github.com/Siteimprove/alfa-integrations/pull/19))
+
+  Functions that are building `Element` directly now add an empty box to them.
+
 ## 0.62.9
 
 ### Patch Changes
