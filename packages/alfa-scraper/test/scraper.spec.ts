@@ -1,9 +1,12 @@
 import * as url from "url";
 
+import { Node, Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
 import { Awaiter } from "../src";
 
 import { Scraper } from "../src/scraper";
+
+const { getElementDescendants } = Query;
 
 const fixture = `${url.pathToFileURL(__dirname).href}/fixture`;
 
@@ -68,4 +71,27 @@ test("#scrape() scrapes a page with a delayed location change", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
+  }));
+
+test("#scrape() scrapes layout", async (t) =>
+  await Scraper.with(async (scraper) => {
+    const url = `${fixture}/layout.html`;
+    const result = await scraper.scrape(url);
+
+    const box = getElementDescendants(
+      result.getUnsafe().document,
+      Node.fullTree
+    )
+      .find((node) => node.id.some((id) => id === "blackbox"))
+      .getUnsafe()
+      .box.getUnsafe()
+      .toJSON();
+
+    t.deepEqual(box, {
+      type: "rectangle",
+      x: 466,
+      y: 117,
+      width: 271,
+      height: 288,
+    });
   }));
