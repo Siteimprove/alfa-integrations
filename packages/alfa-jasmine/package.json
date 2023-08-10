@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-jasmine",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.62.10",
+  "version": "0.62.11",
   "license": "MIT",
   "description": "Assertion integrations for the Jasmine testing framework",
   "repository": {
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-act": "^0.66.0",
-    "@siteimprove/alfa-assert": "workspace:^0.62.10",
+    "@siteimprove/alfa-assert": "workspace:^0.62.11",
     "@siteimprove/alfa-hash": "^0.66.0",
     "@siteimprove/alfa-mapper": "^0.66.0",
     "@types/jasmine": "^3.3.12",
