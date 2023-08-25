@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-vue",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.62.10",
+  "version": "0.62.11",
   "license": "MIT",
   "description": "Integrations and utilities for the Vue.js component framework",
   "repository": {
@@ -18,18 +18,18 @@
     "src/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-cheerio": "workspace:^0.62.10",
-    "@siteimprove/alfa-device": "^0.65.0",
-    "@siteimprove/alfa-dom": "^0.65.0",
-    "@siteimprove/alfa-http": "^0.65.0",
-    "@siteimprove/alfa-web": "^0.65.0",
+    "@siteimprove/alfa-cheerio": "workspace:^0.62.11",
+    "@siteimprove/alfa-device": "^0.66.0",
+    "@siteimprove/alfa-dom": "^0.66.0",
+    "@siteimprove/alfa-http": "^0.66.0",
+    "@siteimprove/alfa-web": "^0.66.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
-    "@siteimprove/alfa-rectangle": "^0.65.0",
-    "@siteimprove/alfa-test": "^0.65.0",
+    "@siteimprove/alfa-rectangle": "^0.66.0",
+    "@siteimprove/alfa-test": "^0.66.0",
     "jsdom": "^20.0.0",
     "jsdom-global": "^3.0.2"
   },
