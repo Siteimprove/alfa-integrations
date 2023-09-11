@@ -1,29 +1,29 @@
 ---
-"@siteimprove/alfa-formatter-earl": patch
-"@siteimprove/alfa-formatter-json": patch
-"@siteimprove/alfa-interviewer": patch
-"@siteimprove/alfa-playwright": patch
-"@siteimprove/alfa-unexpected": patch
-"@siteimprove/alfa-formatter": patch
-"@siteimprove/alfa-puppeteer": patch
-"@siteimprove/alfa-webdriver": patch
-"@siteimprove/alfa-frontier": patch
-"@siteimprove/alfa-angular": patch
-"@siteimprove/alfa-cheerio": patch
-"@siteimprove/alfa-command": patch
-"@siteimprove/alfa-crawler": patch
-"@siteimprove/alfa-cypress": patch
-"@siteimprove/alfa-jasmine": patch
-"@siteimprove/alfa-scraper": patch
-"@siteimprove/alfa-assert": patch
-"@siteimprove/alfa-enzyme": patch
-"@siteimprove/alfa-jquery": patch
-"@siteimprove/alfa-react": patch
-"@siteimprove/alfa-chai": patch
-"@siteimprove/alfa-jest": patch
-"@siteimprove/alfa-cli": patch
-"@siteimprove/alfa-vue": patch
-"@siteimprove/alfa-formatter-sarif": patch
+"@siteimprove/alfa-formatter-earl": minor
+"@siteimprove/alfa-formatter-json": minor
+"@siteimprove/alfa-interviewer": minor
+"@siteimprove/alfa-playwright": minor
+"@siteimprove/alfa-unexpected": minor
+"@siteimprove/alfa-formatter": minor
+"@siteimprove/alfa-puppeteer": minor
+"@siteimprove/alfa-webdriver": minor
+"@siteimprove/alfa-frontier": minor
+"@siteimprove/alfa-angular": minor
+"@siteimprove/alfa-cheerio": minor
+"@siteimprove/alfa-command": minor
+"@siteimprove/alfa-crawler": minor
+"@siteimprove/alfa-cypress": minor
+"@siteimprove/alfa-jasmine": minor
+"@siteimprove/alfa-scraper": minor
+"@siteimprove/alfa-assert": minor
+"@siteimprove/alfa-enzyme": minor
+"@siteimprove/alfa-jquery": minor
+"@siteimprove/alfa-react": minor
+"@siteimprove/alfa-chai": minor
+"@siteimprove/alfa-jest": minor
+"@siteimprove/alfa-cli": minor
+"@siteimprove/alfa-vue": minor
+"@siteimprove/alfa-formatter-sarif": minor
 ---
 
 **Changed:** Update release flow to newer version
