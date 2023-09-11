@@ -1,0 +1,34 @@
+{
+  "has-api-extractor-config": true,
+  "validate-changesets": true,
+  "validate-package-json": {
+    "organisation": "@siteimprove",
+    "homepage": "https://alfa.siteimprove.com",
+    "repo": "https://github.com/siteimprove/alfa-integrations.git",
+    "bugs": "https://github.com/siteimprove/alfa/issues",
+    "noExternalDeps": true,
+    "allowedExternalDeps": {
+      "@siteimprove/alfa-angular": ["@angular/core", "rxjs", "zone.js"],
+      "@siteimprove/alfa-chai": ["chai"],
+      "@siteimprove/alfa-cheerio": ["cheerio", "domhandler"],
+      "@siteimprove/alfa-cypress": ["cypress"],
+      "@siteimprove/alfa-enzyme": ["enzyme"],
+      "@siteimprove/alfa-formatter-earl": ["jsonld"],
+      "@siteimprove/alfa-jasmine": ["jasmine"],
+      "@siteimprove/alfa-jest": ["jest"],
+      "@siteimprove/alfa-jquery": ["jquery"],
+      "@siteimprove/alfa-playwright": ["playwright"],
+      "@siteimprove/alfa-puppeteer": ["puppeteer"],
+      "@siteimprove/alfa-react": ["react", "react-test-renderer"],
+      "@siteimprove/alfa-scraper": ["puppeteer"],
+      "@siteimprove/alfa-unexpected": ["unexpected"],
+      "@siteimprove/alfa-vue": [
+        "@vue/test-utils",
+        "vue",
+        "vue-template-compiler"
+      ],
+      "@siteimprove/alfa-webdriver": ["webdriverio"]
+    }
+  },
+  "validate-workspace-tsconfig": true
+}

@@ -1,4 +1,6 @@
-# [v0.62.11](../../compare/v0.62.10...v0.62.11) (2023-08-10)
+# Alfa integrations changelog
+
+## [v0.62.11](../../compare/v0.62.10...v0.62.11) (2023-08-10)
 
 Packages changed:
 - [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
@@ -27,7 +29,7 @@ Packages changed:
 - [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
 - [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
 
-# [v0.62.10](../../compare/v0.62.9...v0.62.10) (2023-07-14)
+## [v0.62.10](../../compare/v0.62.9...v0.62.10) (2023-07-14)
 
 Packages changed:
 - [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
@@ -56,7 +58,7 @@ Packages changed:
 - [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
 - [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
 
-# [v0.62.9](../../compare/v0.62.8...v0.62.9) (2023-06-22)
+## [v0.62.9](../../compare/v0.62.8...v0.62.9) (2023-06-22)
 
 Packages changed:
 - [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
@@ -85,7 +87,7 @@ Packages changed:
 - [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
 - [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
 
-# [v0.62.8](../../compare/v0.62.7...v0.62.8) (2023-05-17)
+## [v0.62.8](../../compare/v0.62.7...v0.62.8) (2023-05-17)
 
 Packages changed:
 - [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
@@ -113,7 +115,7 @@ Packages changed:
 - [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
 - [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
 
-# [v0.62.7](../../compare/v0.62.6...v0.62.7) (2023-05-17)
+## [v0.62.7](../../compare/v0.62.6...v0.62.7) (2023-05-17)
 
 Packages changed:
 - [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md)
@@ -141,26 +143,26 @@ Packages changed:
 - [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md)
 - [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md)
 
-# [v0.62.6](../../compare/v0.62.5...v0.62.6) (2023-04-20)
+## [v0.62.6](../../compare/v0.62.5...v0.62.6) (2023-04-20)
 
 Packages changed:
 - [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md)
 - [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md)
 
-# [v0.62.5](../../compare/v0.62.4...v0.62.5) (2023-04-05)
+## [v0.62.5](../../compare/v0.62.4...v0.62.5) (2023-04-05)
 
 Packages changed:
 - [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md)
 
-# [v0.62.4](../../compare/v0.62.3...v0.62.4) (2023-04-04)
+## [v0.62.4](../../compare/v0.62.3...v0.62.4) (2023-04-04)
 
 Packages changed:
 - [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md)
 
-# [0.62.3](../../compare/v0.61.0...v0.62.3) (2023-03-30)
+## [0.62.3](../../compare/v0.61.0...v0.62.3) (2023-03-30)
 
 No functional change, first release handled from the `alfa-integrations` repository.
 
-# 0.61.0 (2023-03-06)
+## 0.61.0 (2023-03-06)
 
 Changes up to version 0.61.0 were tracked in the [main Alfa Changelog](https://github.com/Siteimprove/alfa/blob/main/CHANGELOG.md)
