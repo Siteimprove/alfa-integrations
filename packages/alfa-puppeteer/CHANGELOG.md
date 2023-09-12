@@ -1,5 +1,15 @@
 # @siteimprove/alfa-puppeteer
 
+## 0.63.0
+
+### Minor Changes
+
+- **Changed:** Update release flow to newer version ([#24](https://github.com/Siteimprove/alfa-integrations/pull/24))
+
+### Patch Changes
+
+- **Changed:** Update Alfa to version 0.67.0 ([#24](https://github.com/Siteimprove/alfa-integrations/pull/24))
+
 ## 0.62.11
 
 ### Patch Changes
