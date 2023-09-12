@@ -1,5 +1,11 @@
 # @siteimprove/alfa-react
 
+## 0.63.1
+
+### Patch Changes
+
+- **Fixed:** Set up correct permissions in the release workflow ([`c47b1c9`](https://github.com/Siteimprove/alfa-integrations/commit/c47b1c9b3eb79ded5c872f3e31d0b33c9140c039))
+
 ## 0.63.0
 
 ### Minor Changes
