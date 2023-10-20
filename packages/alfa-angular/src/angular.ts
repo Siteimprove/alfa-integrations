@@ -21,11 +21,12 @@ export namespace Angular {
 
     const deviceJSON = device.Native.fromWindow(window);
 
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),
-      Document.of([Node.from(nodeJSON)]),
-      Device.from(deviceJSON)
+      Document.of([Node.from(nodeJSON, pageDevice)]),
+      pageDevice
     );
   }
 }

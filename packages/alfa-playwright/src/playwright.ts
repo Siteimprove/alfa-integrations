@@ -17,8 +17,8 @@ import { JSHandle } from "playwright";
 export namespace Playwright {
   export type Type = JSHandle;
 
-  export async function toNode(value: Type): Promise<Node> {
-    return Node.from(await value.evaluate(dom.Native.fromNode));
+  export async function toNode(value: Type, device?: Device): Promise<Node> {
+    return Node.from(await value.evaluate(dom.Native.fromNode), device);
   }
 
   export async function toPage(value: Type): Promise<Page> {
@@ -28,13 +28,14 @@ export namespace Playwright {
       .evaluateHandle(() => window)
       .then((handle) => handle.evaluate(device.Native.fromWindow));
 
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),
       nodeJSON.type === "document"
-        ? Document.from(nodeJSON as Document.JSON)
-        : Document.of([Node.from(nodeJSON)]),
-      Device.from(deviceJSON)
+        ? Document.from(nodeJSON as Document.JSON, pageDevice)
+        : Document.of([Node.from(nodeJSON, pageDevice)]),
+      pageDevice
     );
   }
 }

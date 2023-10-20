@@ -97,13 +97,14 @@ export namespace Cypress {
 
     const deviceJSON = device.Native.fromWindow(window);
 
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),
       nodeJSON.type === "document"
-        ? Document.from(nodeJSON as Document.JSON)
-        : Document.of([Node.from(nodeJSON)]),
-      Device.from(deviceJSON)
+        ? Document.from(nodeJSON as Document.JSON, pageDevice)
+        : Document.of([Node.from(nodeJSON, pageDevice)]),
+      pageDevice
     );
   }
 
