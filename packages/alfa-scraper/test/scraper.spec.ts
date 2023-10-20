@@ -81,15 +81,13 @@ test("#scrape() scrapes a page with a delayed location change", async (t) =>
 test("#scrape() scrapes layout", async (t) =>
   await Scraper.with(async (scraper) => {
     const url = getTestPageFileUrl("layout.html");
-    const result = await scraper.scrape(url);
+    const page = (await scraper.scrape(url)).getUnsafe();
 
-    const box = getElementDescendants(
-      result.getUnsafe().document,
-      Node.fullTree
-    )
+    const box = getElementDescendants(page.document, Node.fullTree)
       .find((node) => node.id.some((id) => id === "blackbox"))
       .getUnsafe()
-      .box.getUnsafe()
+      .getBoundingBox(page.device)
+      .getUnsafe()
       .toJSON();
 
     t.deepEqual(box, {
