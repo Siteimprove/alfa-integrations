@@ -213,7 +213,7 @@ export class Scraper {
             return Err.of(error);
           }
 
-          const document = await parseDocument(page);
+          const alfaPage = await parsePage(page);
 
           if (screenshot !== null) {
             await captureScreenshot(page, screenshot);
@@ -237,8 +237,8 @@ export class Scraper {
             Page.of(
               parseRequest(req),
               await parseResponse(res),
-              document,
-              device
+              alfaPage.document,
+              alfaPage.device
             )
           );
         } catch (err) {
@@ -312,12 +312,8 @@ async function parseResponse(
   );
 }
 
-async function parseDocument(page: puppeteer.Page): Promise<Document> {
-  const { document } = await Puppeteer.toPage(
-    await page.evaluateHandle(() => window.document)
-  );
-
-  return document;
+async function parsePage(page: puppeteer.Page): Promise<Page> {
+  return Puppeteer.toPage(await page.evaluateHandle(() => window.document));
 }
 
 async function captureScreenshot(
