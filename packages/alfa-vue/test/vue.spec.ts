@@ -35,6 +35,7 @@ test(`.toPage() creates an Alfa Page (vue)`, (t) => {
   const button = mount(Button);
 
   const actual = Vue.toPage(button);
+  let pageDevice = Device.from(device.Native.fromWindow(window));
   const expected = Page.of(
     Request.empty(),
     Response.empty(),
@@ -45,10 +46,11 @@ test(`.toPage() creates an Alfa Page (vue)`, (t) => {
         [],
         [],
         Namespace.HTML,
-        Rectangle.of(0, 0, 0, 0)
+        Rectangle.of(0, 0, 0, 0),
+        pageDevice
       ),
     ]),
-    Device.from(device.Native.fromWindow(window))
+    pageDevice
   );
 
   t.deepEqual(actual.toJSON(), expected.toJSON());
