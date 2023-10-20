@@ -1,5 +1,17 @@
 # @siteimprove/alfa-playwright
 
+## 0.64.0
+
+### Minor Changes
+
+- **Added:** `Playwright.toNode` and `Puppeteer.toNode` now accept an option `Device` parameter. ([#26](https://github.com/Siteimprove/alfa-integrations/pull/26))
+
+  Without it, no layout information will be recorded.
+
+### Patch Changes
+
+- **Changed:** Update to Alfa v0.68.0 ([#26](https://github.com/Siteimprove/alfa-integrations/pull/26))
+
 ## 0.63.1
 
 ### Patch Changes
