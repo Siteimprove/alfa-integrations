@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.64.2](../../compare/v0.64.1...v0.64.2) (2023-12-05)
+
+### Fixed
+
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0642): Fake release to test flow.
+
 ## [0.64.1](../../compare/v0.64.0...v0.64.1) (2023-12-05)
 
 ### Changed

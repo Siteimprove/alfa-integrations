@@ -1,5 +1,11 @@
 # @siteimprove/alfa-assert
 
+## 0.64.2
+
+### Patch Changes
+
+- **Fixed:** Fake release to test flow. ([`9c366a6`](https://github.com/Siteimprove/alfa-integrations/commit/9c366a6cc7084b08a2f7dbb8154ed7af9131f8c7))
+
 ## 0.64.1
 
 ### Patch Changes
