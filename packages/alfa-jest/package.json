@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-jest",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.64.0",
+  "version": "0.64.1",
   "license": "MIT",
   "description": "Assertion integrations for the Jest testing framework",
   "repository": {
@@ -19,7 +19,7 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-act": "^0.69.0",
-    "@siteimprove/alfa-assert": "workspace:^0.64.0",
+    "@siteimprove/alfa-assert": "workspace:^0.64.1",
     "@siteimprove/alfa-future": "^0.69.0",
     "@siteimprove/alfa-hash": "^0.69.0",
     "@siteimprove/alfa-mapper": "^0.69.0",
