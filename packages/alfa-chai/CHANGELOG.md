@@ -1,5 +1,11 @@
 # @siteimprove/alfa-chai
 
+## 0.64.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#29](https://github.com/Siteimprove/alfa-integrations/pull/29))
+
 ## 0.64.2
 
 ## 0.64.1
