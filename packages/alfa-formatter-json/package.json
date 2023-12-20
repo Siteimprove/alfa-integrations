@@ -19,8 +19,12 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-formatter": "workspace:^0.64.3",
-    "@siteimprove/alfa-hash": "^0.70.0",
-    "@siteimprove/alfa-json": "^0.70.0"
+    "@siteimprove/alfa-hash": "^0.71.1",
+    "@siteimprove/alfa-json": "^0.71.1"
+  },
+  "peerDependencies": {
+    "@siteimprove/alfa-hash": "^0.71.1",
+    "@siteimprove/alfa-json": "^0.71.1"
   },
   "publishConfig": {
     "access": "public",
