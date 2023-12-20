@@ -25,6 +25,12 @@
     "@types/jquery": "^3.3.29",
     "jquery": "^3.6.0"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-device": "^0.71.1",
+    "@siteimprove/alfa-dom": "^0.71.1",
+    "@siteimprove/alfa-http": "^0.71.1",
+    "@siteimprove/alfa-web": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

@@ -24,6 +24,11 @@
     "@siteimprove/alfa-hash": "^0.71.1",
     "jsonld": "^6.0.0"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-earl": "^0.71.1",
+    "@siteimprove/alfa-future": "^0.71.1",
+    "@siteimprove/alfa-hash": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

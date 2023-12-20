@@ -32,6 +32,17 @@
   "devDependencies": {
     "@siteimprove/alfa-test": "^0.71.1"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-functor": "^0.71.1",
+    "@siteimprove/alfa-json": "^0.71.1",
+    "@siteimprove/alfa-mapper": "^0.71.1",
+    "@siteimprove/alfa-option": "^0.71.1",
+    "@siteimprove/alfa-parser": "^0.71.1",
+    "@siteimprove/alfa-predicate": "^0.71.1",
+    "@siteimprove/alfa-refinement": "^0.71.1",
+    "@siteimprove/alfa-result": "^0.71.1",
+    "@siteimprove/alfa-thunk": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

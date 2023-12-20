@@ -1392,6 +1392,11 @@ __metadata:
     "@siteimprove/alfa-web": ^0.71.1
     rxjs: ^7.3.0
     zone.js: ^0.11.4
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1478,6 +1483,15 @@ __metadata:
     "@siteimprove/alfa-result": ^0.71.1
     "@siteimprove/alfa-sequence": ^0.71.1
     "@siteimprove/alfa-test": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-performance": ^0.71.1
+    "@siteimprove/alfa-predicate": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
+    "@siteimprove/alfa-sequence": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1568,6 +1582,11 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.71.1
     "@types/chai": ^4.1.7
     chai: ^4.3.10
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1581,6 +1600,11 @@ __metadata:
     "@siteimprove/alfa-web": ^0.71.1
     cheerio: ^1.0.0-rc.10
     domhandler: ^4.2.2
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1599,6 +1623,17 @@ __metadata:
     "@siteimprove/alfa-result": ^0.71.1
     "@siteimprove/alfa-rules": ^0.71.1
     "@siteimprove/alfa-scraper": "workspace:^0.64.3"
+    "@siteimprove/alfa-time": ^0.71.1
+    "@siteimprove/alfa-url": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-iterable": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
+    "@siteimprove/alfa-rules": ^0.71.1
     "@siteimprove/alfa-time": ^0.71.1
     "@siteimprove/alfa-url": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
@@ -1653,6 +1688,16 @@ __metadata:
     "@siteimprove/alfa-result": ^0.71.1
     "@siteimprove/alfa-test": ^0.71.1
     "@siteimprove/alfa-thunk": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-functor": ^0.71.1
+    "@siteimprove/alfa-json": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-parser": ^0.71.1
+    "@siteimprove/alfa-predicate": ^0.71.1
+    "@siteimprove/alfa-refinement": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
+    "@siteimprove/alfa-thunk": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1694,6 +1739,12 @@ __metadata:
     "@siteimprove/alfa-result": ^0.71.1
     "@siteimprove/alfa-scraper": "workspace:^0.64.3"
     "@siteimprove/alfa-test": ^0.71.1
+    "@siteimprove/alfa-url": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
     "@siteimprove/alfa-url": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
@@ -1739,6 +1790,14 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
     cypress: ^13.3.1
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1848,6 +1907,8 @@ __metadata:
     "@siteimprove/alfa-web": ^0.71.1
     "@types/enzyme": ^3.10.8
     enzyme: ^3.11.0
+  peerDependencies:
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1912,6 +1973,10 @@ __metadata:
     "@siteimprove/alfa-future": ^0.71.1
     "@siteimprove/alfa-hash": ^0.71.1
     jsonld: ^6.0.0
+  peerDependencies:
+    "@siteimprove/alfa-earl": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1920,6 +1985,9 @@ __metadata:
   resolution: "@siteimprove/alfa-formatter-json@workspace:packages/alfa-formatter-json"
   dependencies:
     "@siteimprove/alfa-formatter": "workspace:^0.64.3"
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-json": ^0.71.1
+  peerDependencies:
     "@siteimprove/alfa-hash": ^0.71.1
     "@siteimprove/alfa-json": ^0.71.1
   languageName: unknown
@@ -1941,6 +2009,11 @@ __metadata:
     "@siteimprove/alfa-future": ^0.71.1
     "@siteimprove/alfa-hash": ^0.71.1
     "@siteimprove/alfa-result": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -1953,6 +2026,12 @@ __metadata:
     "@siteimprove/alfa-option": ^0.71.1
     "@siteimprove/alfa-predicate": ^0.71.1
     "@siteimprove/alfa-test": ^0.71.1
+    "@siteimprove/alfa-url": ^0.71.1
+  peerDependencies:
+    "@siteimprove/alfa-equatable": ^0.71.1
+    "@siteimprove/alfa-json": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-predicate": ^0.71.1
     "@siteimprove/alfa-url": ^0.71.1
   languageName: unknown
   linkType: soft
@@ -2092,35 +2171,6 @@ __metadata:
     package-dependency-graph: ^1.14.4
     prettier: ^2.7.1
     typescript: ^4.8.2
-  peerDependencies:
-    "@siteimprove/alfa-act": ^0.71.1
-    "@siteimprove/alfa-array": ^0.71.1
-    "@siteimprove/alfa-device": ^0.71.1
-    "@siteimprove/alfa-dom": ^0.71.1
-    "@siteimprove/alfa-earl": ^0.71.1
-    "@siteimprove/alfa-equatable": ^0.71.1
-    "@siteimprove/alfa-functor": ^0.71.1
-    "@siteimprove/alfa-future": ^0.71.1
-    "@siteimprove/alfa-hash": ^0.71.1
-    "@siteimprove/alfa-http": ^0.71.1
-    "@siteimprove/alfa-iterable": ^0.71.1
-    "@siteimprove/alfa-json": ^0.71.1
-    "@siteimprove/alfa-mapper": ^0.71.1
-    "@siteimprove/alfa-option": ^0.71.1
-    "@siteimprove/alfa-parser": ^0.71.1
-    "@siteimprove/alfa-performance": ^0.71.1
-    "@siteimprove/alfa-predicate": ^0.71.1
-    "@siteimprove/alfa-promise": ^0.71.1
-    "@siteimprove/alfa-rectangle": ^0.71.1
-    "@siteimprove/alfa-refinement": ^0.71.1
-    "@siteimprove/alfa-result": ^0.71.1
-    "@siteimprove/alfa-rules": ^0.71.1
-    "@siteimprove/alfa-sequence": ^0.71.1
-    "@siteimprove/alfa-test": ^0.71.1
-    "@siteimprove/alfa-thunk": ^0.71.1
-    "@siteimprove/alfa-time": ^0.71.1
-    "@siteimprove/alfa-url": ^0.71.1
-    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2132,6 +2182,10 @@ __metadata:
     "@siteimprove/alfa-hash": ^0.71.1
     "@siteimprove/alfa-result": ^0.71.1
     "@types/node": ^14.14.31
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2163,6 +2217,10 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.71.1
     "@types/jasmine": ^3.3.12
     jasmine: ^3.9.0
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2177,6 +2235,11 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.71.1
     "@types/jest": ^26.0.10
     jest: ^29.0.1
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2190,6 +2253,11 @@ __metadata:
     "@siteimprove/alfa-web": ^0.71.1
     "@types/jquery": ^3.3.29
     jquery: ^3.6.0
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2429,6 +2497,11 @@ __metadata:
     "@siteimprove/alfa-http": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
     playwright: ^1.23.0
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2474,6 +2547,11 @@ __metadata:
     "@siteimprove/alfa-http": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
     puppeteer: ^19.9.1
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2492,6 +2570,13 @@ __metadata:
     "@types/react-test-renderer": ^17.0.0
     react: ^17.0.2
     react-test-renderer: ^17.0.2
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-refinement": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2678,6 +2763,21 @@ __metadata:
     "@siteimprove/alfa-url": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
     puppeteer: ^19.9.1
+  peerDependencies:
+    "@siteimprove/alfa-array": ^0.71.1
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-equatable": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-iterable": ^0.71.1
+    "@siteimprove/alfa-json": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
+    "@siteimprove/alfa-option": ^0.71.1
+    "@siteimprove/alfa-promise": ^0.71.1
+    "@siteimprove/alfa-result": ^0.71.1
+    "@siteimprove/alfa-time": ^0.71.1
+    "@siteimprove/alfa-url": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -2982,6 +3082,11 @@ __metadata:
     "@siteimprove/alfa-hash": ^0.71.1
     "@siteimprove/alfa-mapper": ^0.71.1
     unexpected: ^13.0.0
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.71.1
+    "@siteimprove/alfa-future": ^0.71.1
+    "@siteimprove/alfa-hash": ^0.71.1
+    "@siteimprove/alfa-mapper": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -3016,6 +3121,11 @@ __metadata:
     jsdom-global: ^3.0.2
     vue: ^2.6.14
     vue-template-compiler: ^2.6.14
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 
@@ -3059,6 +3169,11 @@ __metadata:
     "@siteimprove/alfa-http": ^0.71.1
     "@siteimprove/alfa-web": ^0.71.1
     webdriverio: ^7.20.5
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.71.1
+    "@siteimprove/alfa-dom": ^0.71.1
+    "@siteimprove/alfa-http": ^0.71.1
+    "@siteimprove/alfa-web": ^0.71.1
   languageName: unknown
   linkType: soft
 

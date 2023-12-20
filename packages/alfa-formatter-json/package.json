@@ -22,6 +22,10 @@
     "@siteimprove/alfa-hash": "^0.71.1",
     "@siteimprove/alfa-json": "^0.71.1"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-hash": "^0.71.1",
+    "@siteimprove/alfa-json": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

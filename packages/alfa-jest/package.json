@@ -26,6 +26,12 @@
     "@types/jest": "^26.0.10",
     "jest": "^29.0.1"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-act": "^0.71.1",
+    "@siteimprove/alfa-future": "^0.71.1",
+    "@siteimprove/alfa-hash": "^0.71.1",
+    "@siteimprove/alfa-mapper": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

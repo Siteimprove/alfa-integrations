@@ -38,6 +38,22 @@
   "devDependencies": {
     "@siteimprove/alfa-test": "^0.71.1"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-array": "^0.71.1",
+    "@siteimprove/alfa-device": "^0.71.1",
+    "@siteimprove/alfa-dom": "^0.71.1",
+    "@siteimprove/alfa-equatable": "^0.71.1",
+    "@siteimprove/alfa-http": "^0.71.1",
+    "@siteimprove/alfa-iterable": "^0.71.1",
+    "@siteimprove/alfa-json": "^0.71.1",
+    "@siteimprove/alfa-mapper": "^0.71.1",
+    "@siteimprove/alfa-option": "^0.71.1",
+    "@siteimprove/alfa-promise": "^0.71.1",
+    "@siteimprove/alfa-result": "^0.71.1",
+    "@siteimprove/alfa-time": "^0.71.1",
+    "@siteimprove/alfa-url": "^0.71.1",
+    "@siteimprove/alfa-web": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

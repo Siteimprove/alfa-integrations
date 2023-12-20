@@ -25,6 +25,11 @@
     "@types/jasmine": "^3.3.12",
     "jasmine": "^3.9.0"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-act": "^0.71.1",
+    "@siteimprove/alfa-hash": "^0.71.1",
+    "@siteimprove/alfa-mapper": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

@@ -29,6 +29,13 @@
   "devDependencies": {
     "@siteimprove/alfa-test": "^0.71.1"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-dom": "^0.71.1",
+    "@siteimprove/alfa-mapper": "^0.71.1",
+    "@siteimprove/alfa-result": "^0.71.1",
+    "@siteimprove/alfa-url": "^0.71.1",
+    "@siteimprove/alfa-web": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"

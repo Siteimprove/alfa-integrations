@@ -26,6 +26,12 @@
     "rxjs": "^7.3.0",
     "zone.js": "^0.11.4"
   },
+  "peerDependencies": {
+    "@siteimprove/alfa-device": "^0.71.1",
+    "@siteimprove/alfa-dom": "^0.71.1",
+    "@siteimprove/alfa-http": "^0.71.1",
+    "@siteimprove/alfa-web": "^0.71.1"
+  },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
