@@ -1,5 +1,11 @@
 # @siteimprove/alfa-unexpected
 
+## 0.64.5
+
+### Patch Changes
+
+- **Changed:** Update Alfa to v0.72.0 ([#31](https://github.com/Siteimprove/alfa-integrations/pull/31))
+
 ## 0.64.4
 
 ### Patch Changes
