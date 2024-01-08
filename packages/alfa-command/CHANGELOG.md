@@ -1,5 +1,15 @@
 # @siteimprove/alfa-command
 
+## 0.64.4
+
+### Patch Changes
+
+- **Changed:** Each package now has peer dependencies to the main Alfa packages it uses. ([#30](https://github.com/Siteimprove/alfa-integrations/pull/30))
+
+  This should ease problem with code downstream that tries to Ix, e.g., `Option` from different versions of the package and fail to build.
+
+- **Changed:** Update Alfa to version 0.71.0. ([#30](https://github.com/Siteimprove/alfa-integrations/pull/30))
+
 ## 0.64.3
 
 ### Patch Changes
