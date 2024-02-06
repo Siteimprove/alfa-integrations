@@ -1,5 +1,11 @@
 # @siteimprove/alfa-enzyme
 
+## 0.64.6
+
+### Patch Changes
+
+- **Changed:** Update to Alfa v0.73.0 ([#32](https://github.com/Siteimprove/alfa-integrations/pull/32))
+
 ## 0.64.5
 
 ### Patch Changes
