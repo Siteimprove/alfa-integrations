@@ -1,27 +1,16 @@
 {
-  "reviewers": ["team:alfa-owners"],
-  "dependencyDashboard": true,
-  "npmrc": "@siteimprove:registry=https://npm.pkg.github.com/",
-  "hostRules": [
-    {
-      "hostType": "npm",
-      "matchHost": "https://npm.pkg.github.com/",
-      "encrypted": {
-        "token": "d0YufoMlKT2DP0yOwY+fBHDTycbmSyIt2Bgk+WFlz0H5ytVIOyz3iRw+cvftIiRo3hgiwXAsF24H44EHHd/XULgwKfoZhG8XUMuWGCHriq1B+g/ve4bEbNEY9v1qB+zTXCKA8GLMVMpXyW70wyIgbB6eF1FCh19u0qwBxEgyAJRCPMy7u+LaEjl/spBV6OAurTSQT78g94x39HnKT3/9HKVOmycB9uVerTSttrm2L9KPFJHEvF8PsGx8pwKBNz+32cfMRTiKuAeqmSuB3AwO+VPoSG3/1hGfm33K+ssMS7NG1pTWeJW9LMUHAfYyVE5q+44f7/PUM42BFcdcKcztJQ=="
-      }
-    }
+  "$schema": "https://docs.renovatebot.com/renovate-schema.json",
+  "extends": [
+    "config:base",
+    "github>siteimprove/alfa//config/alfa-renovate"
   ],
   "packageRules": [
     {
-      "groupName": "Alfa",
-      "matchPackagePrefixes": ["@siteimprove/alfa"]
-    },
-    {
+      "description": "We currently ignore all other deps due to long time without update.",
       "groupName": "Ignored deps",
       "matchPackagePatterns": ["*"],
       "excludePackagePrefixes": ["@siteimprove/alfa"],
       "enabled": false
     }
-  ],
-  "extends": ["config:base"]
+  ]
 }
