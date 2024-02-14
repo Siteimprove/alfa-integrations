@@ -1,5 +1,11 @@
 # @siteimprove/alfa-interviewer
 
+## 0.64.8
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.74.0 ([#34](https://github.com/Siteimprove/alfa-integrations/pull/34))
+
 ## 0.64.7
 
 ### Patch Changes
