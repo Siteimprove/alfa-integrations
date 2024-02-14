@@ -25,4 +25,4 @@
 "@siteimprove/alfa-webdriver": patch
 ---
 
-**Changed:** Update Alfa to ^0.73.0 || ^0.74.0
+**Changed:** Update Alfa to ^0.74.0
