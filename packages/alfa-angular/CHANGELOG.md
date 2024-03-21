@@ -1,5 +1,11 @@
 # @siteimprove/alfa-angular
 
+## 0.64.10
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.76.0 ([#37](https://github.com/Siteimprove/alfa-integrations/pull/37))
+
 ## 0.64.9
 
 ### Patch Changes
