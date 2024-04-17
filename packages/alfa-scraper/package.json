@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-scraper",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.64.10",
+  "version": "0.64.11",
   "license": "MIT",
   "description": "An implementation of a simple web scraper capable of producing page objects",
   "repository": {
@@ -28,7 +28,7 @@
     "@siteimprove/alfa-mapper": "^0.78.1",
     "@siteimprove/alfa-option": "^0.78.1",
     "@siteimprove/alfa-promise": "^0.78.1",
-    "@siteimprove/alfa-puppeteer": "workspace:^0.64.10",
+    "@siteimprove/alfa-puppeteer": "workspace:^0.64.11",
     "@siteimprove/alfa-result": "^0.78.1",
     "@siteimprove/alfa-time": "^0.78.1",
     "@siteimprove/alfa-url": "^0.78.1",

@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-vue",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.64.10",
+  "version": "0.64.11",
   "license": "MIT",
   "description": "Integrations and utilities for the Vue.js component framework",
   "repository": {
@@ -18,7 +18,7 @@
     "src/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-cheerio": "workspace:^0.64.10",
+    "@siteimprove/alfa-cheerio": "workspace:^0.64.11",
     "@siteimprove/alfa-device": "^0.78.1",
     "@siteimprove/alfa-dom": "^0.78.1",
     "@siteimprove/alfa-http": "^0.78.1",
