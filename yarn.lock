@@ -1455,7 +1455,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-act@npm:^0.78.0, @siteimprove/alfa-act@npm:^0.78.1":
+"@siteimprove/alfa-act@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-act@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-act%2F0.78.1%2F40baf6026cd4e24e629d3735e164bf665a4a991a"
   dependencies:
@@ -1505,17 +1505,17 @@ __metadata:
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
     "@angular/core": ^11.0.0
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     rxjs: ^7.3.0
     zone.js: ^0.11.4
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1560,7 +1560,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-array@npm:^0.78.0, @siteimprove/alfa-array@npm:^0.78.1":
+"@siteimprove/alfa-array@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-array@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-array%2F0.78.1%2F69d53ba7bd354c749a417b7c1a2a29b2f4fd5fb4"
   dependencies:
@@ -1584,24 +1584,24 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-assert@workspace:packages/alfa-assert"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-performance": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-sequence": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-performance": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-sequence": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-performance": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-sequence": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-performance": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-sequence": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1679,18 +1679,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-chai@workspace:packages/alfa-chai"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-assert": "workspace:^0.64.10"
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
     "@types/chai": ^4.1.7
     chai: ^4.3.10
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1698,17 +1698,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-cheerio@workspace:packages/alfa-cheerio"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     cheerio: ^1.0.0-rc.10
     domhandler: ^4.2.2
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1716,31 +1716,31 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-cli@workspace:packages/alfa-cli"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-command": "workspace:^0.64.10"
-    "@siteimprove/alfa-device": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
     "@siteimprove/alfa-formatter": "workspace:^0.64.10"
-    "@siteimprove/alfa-http": ^0.78.0
+    "@siteimprove/alfa-http": ^0.78.1
     "@siteimprove/alfa-interviewer": "workspace:^0.64.10"
-    "@siteimprove/alfa-iterable": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-rules": ^0.78.0
+    "@siteimprove/alfa-iterable": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-rules": ^0.78.1
     "@siteimprove/alfa-scraper": "workspace:^0.64.10"
-    "@siteimprove/alfa-time": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-time": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-iterable": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-rules": ^0.78.0
-    "@siteimprove/alfa-time": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-iterable": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-rules": ^0.78.1
+    "@siteimprove/alfa-time": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   bin:
     alfa: bin/alfa.js
   languageName: unknown
@@ -1781,27 +1781,27 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-command@workspace:packages/alfa-command"
   dependencies:
-    "@siteimprove/alfa-functor": ^0.78.0
+    "@siteimprove/alfa-functor": ^0.78.1
     "@siteimprove/alfa-highlight": ^0.64.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-parser": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-refinement": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-thunk": ^0.78.0
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-parser": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-refinement": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-thunk": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-functor": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-parser": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-refinement": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-thunk": ^0.78.0
+    "@siteimprove/alfa-functor": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-parser": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-refinement": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-thunk": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1828,20 +1828,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-crawler@workspace:packages/alfa-crawler"
   dependencies:
-    "@siteimprove/alfa-dom": ^0.78.0
+    "@siteimprove/alfa-dom": ^0.78.1
     "@siteimprove/alfa-frontier": "workspace:^0.64.10"
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
     "@siteimprove/alfa-scraper": "workspace:^0.64.10"
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -1896,29 +1896,29 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-cypress@workspace:packages/alfa-cypress"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-assert": "workspace:^0.64.10"
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
     "@siteimprove/alfa-formatter": "workspace:^0.64.10"
     "@siteimprove/alfa-formatter-earl": "workspace:^0.64.10"
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     cypress: ^13.3.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-device@npm:^0.78.0, @siteimprove/alfa-device@npm:^0.78.1":
+"@siteimprove/alfa-device@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-device@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-device%2F0.78.1%2Fd06ca4eae365b21092e18c8735440fee6ab07fb8"
   dependencies:
@@ -1931,7 +1931,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-dom@npm:^0.78.0, @siteimprove/alfa-dom@npm:^0.78.1":
+"@siteimprove/alfa-dom@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-dom@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-dom%2F0.78.1%2F161061aacab476f37a13c97a473c8667f47edeb9"
   dependencies:
@@ -1961,7 +1961,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-earl@npm:^0.78.0, @siteimprove/alfa-earl@npm:^0.78.1":
+"@siteimprove/alfa-earl@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-earl@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-earl%2F0.78.1%2F206f28b547943433ec85e36e006fc72937f18f55"
   dependencies:
@@ -2015,15 +2015,15 @@ __metadata:
   resolution: "@siteimprove/alfa-enzyme@workspace:packages/alfa-enzyme"
   dependencies:
     "@siteimprove/alfa-react": "workspace:^0.64.10"
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-web": ^0.78.1
     "@types/enzyme": ^3.10.8
     enzyme: ^3.11.0
   peerDependencies:
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-equatable@npm:^0.78.0, @siteimprove/alfa-equatable@npm:^0.78.1":
+"@siteimprove/alfa-equatable@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-equatable@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-equatable%2F0.78.1%2F68fc23a1343184c98111fa238699f666049c8d85"
   checksum: 3c925dfdf38e7c5a77a83cfceda50d529cca9ffd60d91e37ab6c89c7a6c20d1899595df9dfa306355ec9f31636358cc5ddea23eae86009ef2fc9ab6ab3e80b8e
@@ -2063,15 +2063,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-formatter-earl@workspace:packages/alfa-formatter-earl"
   dependencies:
-    "@siteimprove/alfa-earl": ^0.78.0
+    "@siteimprove/alfa-earl": ^0.78.1
     "@siteimprove/alfa-formatter": "workspace:^0.64.10"
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
     jsonld: ^6.0.0
   peerDependencies:
-    "@siteimprove/alfa-earl": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
+    "@siteimprove/alfa-earl": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2080,11 +2080,11 @@ __metadata:
   resolution: "@siteimprove/alfa-formatter-json@workspace:packages/alfa-formatter-json"
   dependencies:
     "@siteimprove/alfa-formatter": "workspace:^0.64.10"
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2100,15 +2100,15 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-formatter@workspace:packages/alfa-formatter"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2116,22 +2116,22 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-frontier@workspace:packages/alfa-frontier"
   dependencies:
-    "@siteimprove/alfa-equatable": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
+    "@siteimprove/alfa-equatable": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
   peerDependencies:
-    "@siteimprove/alfa-equatable": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-predicate": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
+    "@siteimprove/alfa-equatable": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-predicate": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-functor@npm:^0.78.0, @siteimprove/alfa-functor@npm:^0.78.1":
+"@siteimprove/alfa-functor@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-functor@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-functor%2F0.78.1%2Fe38583e2e892d9b220a78f3766464030147cbbd8"
   dependencies:
@@ -2140,7 +2140,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-future@npm:^0.78.0, @siteimprove/alfa-future@npm:^0.78.1":
+"@siteimprove/alfa-future@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-future@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-future%2F0.78.1%2Fa79ebeaf862b5631eddd7a7e2aa72d874489dc4c"
   dependencies:
@@ -2173,7 +2173,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-hash@npm:^0.78.0, @siteimprove/alfa-hash@npm:^0.78.1":
+"@siteimprove/alfa-hash@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-hash@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-hash%2F0.78.1%2Fbd01693473fdf1168b035c7b994905a05bfea6e1"
   dependencies:
@@ -2194,7 +2194,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-http@npm:^0.78.0, @siteimprove/alfa-http@npm:^0.78.1":
+"@siteimprove/alfa-http@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-http@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-http%2F0.78.1%2F37a34076c06efb75ba5192453caf6f886501694a"
   dependencies:
@@ -2252,18 +2252,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-interviewer@workspace:packages/alfa-interviewer"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
     "@types/node": ^14.14.31
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-iterable@npm:^0.78.0, @siteimprove/alfa-iterable@npm:^0.78.1":
+"@siteimprove/alfa-iterable@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-iterable@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-iterable%2F0.78.1%2Fd739e22d27d67ee193d3eb4d086b615d8fdf8b61"
   dependencies:
@@ -2285,16 +2285,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-jasmine@workspace:packages/alfa-jasmine"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-assert": "workspace:^0.64.10"
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
     "@types/jasmine": ^3.3.12
     jasmine: ^3.9.0
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2302,18 +2302,18 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-jest@workspace:packages/alfa-jest"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-assert": "workspace:^0.64.10"
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
     "@types/jest": ^26.0.10
     jest: ^29.0.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2321,17 +2321,17 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-jquery@workspace:packages/alfa-jquery"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     "@types/jquery": ^3.3.29
     jquery: ^3.6.0
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2344,7 +2344,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-json@npm:^0.78.0, @siteimprove/alfa-json@npm:^0.78.1":
+"@siteimprove/alfa-json@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-json@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-json%2F0.78.1%2F0bcdc3c1bd02d52e5daf2bab3b23139837f126b0"
   dependencies:
@@ -2417,7 +2417,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-mapper@npm:^0.78.0, @siteimprove/alfa-mapper@npm:^0.78.1":
+"@siteimprove/alfa-mapper@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-mapper@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-mapper%2F0.78.1%2F37ba0fad4d3f0a9ee7dc6a629dc0822c87e8f72d"
   checksum: bf350b6b7754f850a941bea7c8517f7cb3f396b1e9d0576e7fd8fe07925543e6c10c14dff4b0aa2e57e7edbf3c747d9287090ed14ae9f6fb5e4adcb74da4507e
@@ -2442,7 +2442,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-option@npm:^0.78.0, @siteimprove/alfa-option@npm:^0.78.1":
+"@siteimprove/alfa-option@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-option@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-option%2F0.78.1%2Fae2af4b672c68fcc95cb666c69a7acc118d660a1"
   dependencies:
@@ -2464,7 +2464,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-parser@npm:^0.78.0, @siteimprove/alfa-parser@npm:^0.78.1":
+"@siteimprove/alfa-parser@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-parser@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-parser%2F0.78.1%2Fbc1f3b6bf4ff8e61fe2d5c3bd859d7ffc1d91c0b"
   dependencies:
@@ -2479,7 +2479,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-performance@npm:^0.78.0, @siteimprove/alfa-performance@npm:^0.78.1":
+"@siteimprove/alfa-performance@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-performance@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-performance%2F0.78.1%2F866a44a144d482ca759857059b72b953fc4a9787"
   dependencies:
@@ -2495,20 +2495,20 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-playwright@workspace:packages/alfa-playwright"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     playwright: ^1.23.0
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-predicate@npm:^0.78.0, @siteimprove/alfa-predicate@npm:^0.78.1":
+"@siteimprove/alfa-predicate@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-predicate@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-predicate%2F0.78.1%2Faf081c28ad5d67f2884a976d97abaf6414d4eea2"
   dependencies:
@@ -2519,7 +2519,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-promise@npm:^0.78.0":
+"@siteimprove/alfa-promise@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-promise@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-promise%2F0.78.1%2F9d0473d28b00b927bf0c42f61767520ab565cf8c"
   dependencies:
@@ -2534,16 +2534,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-puppeteer@workspace:packages/alfa-puppeteer"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     puppeteer: ^19.9.1
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2551,24 +2551,24 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-react@workspace:packages/alfa-react"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-refinement": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-refinement": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     "@types/react": ^17.0.0
     "@types/react-test-renderer": ^17.0.0
     react: ^17.0.2
     react-test-renderer: ^17.0.2
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-refinement": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-refinement": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2588,7 +2588,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-rectangle@npm:^0.78.0, @siteimprove/alfa-rectangle@npm:^0.78.1":
+"@siteimprove/alfa-rectangle@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-rectangle@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40siteimprove%2Falfa-rectangle%2F0.78.1%2Fff4d211a6b8f6d9da9e350628ed4ab4425408972"
   dependencies:
@@ -2606,7 +2606,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-refinement@npm:^0.78.0, @siteimprove/alfa-refinement@npm:^0.78.1":
+"@siteimprove/alfa-refinement@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-refinement@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-refinement%2F0.78.1%2F47e87d6c2dcd1b6f0ec5c5740ed7838ac6fb3469"
   dependencies:
@@ -2616,7 +2616,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-result@npm:^0.78.0, @siteimprove/alfa-result@npm:^0.78.1":
+"@siteimprove/alfa-result@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-result@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-result%2F0.78.1%2F39a76b5c7b417f7003cb7b5e7691a66755100b4a"
   dependencies:
@@ -2638,7 +2638,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-rules@npm:^0.78.0":
+"@siteimprove/alfa-rules@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-rules@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-rules%2F0.78.1%2Ffb9e6052ad5c4de8862abdee77ba680528d3b5cb"
   dependencies:
@@ -2702,38 +2702,38 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-scraper@workspace:packages/alfa-scraper"
   dependencies:
-    "@siteimprove/alfa-array": ^0.78.0
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-equatable": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-iterable": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-promise": ^0.78.0
+    "@siteimprove/alfa-array": ^0.78.1
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-equatable": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-iterable": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-promise": ^0.78.1
     "@siteimprove/alfa-puppeteer": "workspace:^0.64.10"
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-time": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-time": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     puppeteer: ^19.9.1
   peerDependencies:
-    "@siteimprove/alfa-array": ^0.78.0
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-equatable": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-iterable": ^0.78.0
-    "@siteimprove/alfa-json": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
-    "@siteimprove/alfa-option": ^0.78.0
-    "@siteimprove/alfa-promise": ^0.78.0
-    "@siteimprove/alfa-result": ^0.78.0
-    "@siteimprove/alfa-time": ^0.78.0
-    "@siteimprove/alfa-url": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-array": ^0.78.1
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-equatable": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-iterable": ^0.78.1
+    "@siteimprove/alfa-json": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
+    "@siteimprove/alfa-option": ^0.78.1
+    "@siteimprove/alfa-promise": ^0.78.1
+    "@siteimprove/alfa-result": ^0.78.1
+    "@siteimprove/alfa-time": ^0.78.1
+    "@siteimprove/alfa-url": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -2780,7 +2780,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-sequence@npm:^0.78.0, @siteimprove/alfa-sequence@npm:^0.78.1":
+"@siteimprove/alfa-sequence@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-sequence@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-sequence%2F0.78.1%2F2df8d943ec5980594f82654423937b5b02c9e050"
   dependencies:
@@ -2905,7 +2905,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-test@npm:^0.78.0":
+"@siteimprove/alfa-test@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-test@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-test%2F0.78.1%2F69088a9a3ca820e7eafdf5d658a7220492db3410"
   dependencies:
@@ -2928,7 +2928,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-thunk@npm:^0.78.0, @siteimprove/alfa-thunk@npm:^0.78.1":
+"@siteimprove/alfa-thunk@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-thunk@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-thunk%2F0.78.1%2F4f91c06cb225269f3f2c5bedb548603bd4a8eabd"
   dependencies:
@@ -2938,7 +2938,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-time@npm:^0.78.0":
+"@siteimprove/alfa-time@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-time@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-time%2F0.78.1%2F188d0476cbbbbbbfc348bdcfae10d49b7277b668"
   checksum: acf3f16e8adb82ce239eea07122e8143525982a4f178e1f1e231bb09f8b8f198c6205e3ae612698f9009e76e12fd5d0d16993538536790f8ce3bea5aaf4acede
@@ -3033,21 +3033,21 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-unexpected@workspace:packages/alfa-unexpected"
   dependencies:
-    "@siteimprove/alfa-act": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
     "@siteimprove/alfa-assert": "workspace:^0.64.10"
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
     unexpected: ^13.0.0
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.78.0
-    "@siteimprove/alfa-future": ^0.78.0
-    "@siteimprove/alfa-hash": ^0.78.0
-    "@siteimprove/alfa-mapper": ^0.78.0
+    "@siteimprove/alfa-act": ^0.78.1
+    "@siteimprove/alfa-future": ^0.78.1
+    "@siteimprove/alfa-hash": ^0.78.1
+    "@siteimprove/alfa-mapper": ^0.78.1
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-url@npm:^0.78.0, @siteimprove/alfa-url@npm:^0.78.1":
+"@siteimprove/alfa-url@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-url@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-url%2F0.78.1%2F76d46c99c0258824dcb433cfc830d923f1967ca9"
   dependencies:
@@ -3067,22 +3067,22 @@ __metadata:
   resolution: "@siteimprove/alfa-vue@workspace:packages/alfa-vue"
   dependencies:
     "@siteimprove/alfa-cheerio": "workspace:^0.64.10"
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-rectangle": ^0.78.0
-    "@siteimprove/alfa-test": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-rectangle": ^0.78.1
+    "@siteimprove/alfa-test": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     "@vue/test-utils": ^1.0.0-beta.29
     jsdom: ^22.1.0
     jsdom-global: ^3.0.2
     vue: ^2.6.14
     vue-template-compiler: ^2.6.14
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
@@ -3099,7 +3099,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-web@npm:^0.78.0, @siteimprove/alfa-web@npm:^0.78.1":
+"@siteimprove/alfa-web@npm:^0.78.1":
   version: 0.78.1
   resolution: "@siteimprove/alfa-web@npm:0.78.1::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-web%2F0.78.1%2Fa2d7f44828ac4a62cac1a014cde3e6e738fd82c5"
   dependencies:
@@ -3121,16 +3121,16 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-webdriver@workspace:packages/alfa-webdriver"
   dependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
     webdriverio: ^7.20.5
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.78.0
-    "@siteimprove/alfa-dom": ^0.78.0
-    "@siteimprove/alfa-http": ^0.78.0
-    "@siteimprove/alfa-web": ^0.78.0
+    "@siteimprove/alfa-device": ^0.78.1
+    "@siteimprove/alfa-dom": ^0.78.1
+    "@siteimprove/alfa-http": ^0.78.1
+    "@siteimprove/alfa-web": ^0.78.1
   languageName: unknown
   linkType: soft
 
