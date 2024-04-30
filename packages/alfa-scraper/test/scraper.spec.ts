@@ -1,8 +1,7 @@
-import * as path from "path";
-import * as url from "url";
-
 import { Node, Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
+import * as path from "path";
+import * as url from "url";
 import { Awaiter } from "../src";
 
 import { Scraper } from "../src/scraper";
@@ -14,6 +13,18 @@ const fixture = path.join(__dirname, "fixture");
 function getTestPageFileUrl(fileName: string): string {
   return url.pathToFileURL(path.join(fixture, fileName)).href;
 }
+
+test("#scrape() scrapes a page", async (t) =>
+  await Scraper.with(async (scraper) => {
+    const url = getTestPageFileUrl("internal-link.html");
+    const result = await scraper.scrape(url, );
+
+    t.equal(result.isOk(), true);
+
+    const { response } = result.getUnsafe();
+
+    t.equal(response.url.toString(), url);
+  }));
 
 test("#scrape() scrapes a page with a hash fragment", async (t) =>
   await Scraper.with(async (scraper) => {

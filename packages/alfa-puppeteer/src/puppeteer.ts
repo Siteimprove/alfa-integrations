@@ -17,7 +17,7 @@ export namespace Puppeteer {
   export type Type = JSHandle<globalThis.Node>;
 
   export async function toNode(value: Type, device?: Device): Promise<Node> {
-    return Node.from(await value.evaluate(dom.Native.fromNode), device  );
+    return Node.from(await value.evaluate(dom.Native.fromNode), device);
   }
 
   export async function toPage(value: Type): Promise<Page> {
