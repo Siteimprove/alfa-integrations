@@ -18,23 +18,23 @@
     "src/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-dom": "^0.78.1",
+    "@siteimprove/alfa-dom": "^0.79.1",
     "@siteimprove/alfa-frontier": "workspace:^0.64.11",
-    "@siteimprove/alfa-mapper": "^0.78.1",
-    "@siteimprove/alfa-result": "^0.78.1",
+    "@siteimprove/alfa-mapper": "^0.79.1",
+    "@siteimprove/alfa-result": "^0.79.1",
     "@siteimprove/alfa-scraper": "workspace:^0.64.11",
-    "@siteimprove/alfa-url": "^0.78.1",
-    "@siteimprove/alfa-web": "^0.78.1"
+    "@siteimprove/alfa-url": "^0.79.1",
+    "@siteimprove/alfa-web": "^0.79.1"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.78.1"
+    "@siteimprove/alfa-test": "^0.79.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-dom": "^0.78.1",
-    "@siteimprove/alfa-mapper": "^0.78.1",
-    "@siteimprove/alfa-result": "^0.78.1",
-    "@siteimprove/alfa-url": "^0.78.1",
-    "@siteimprove/alfa-web": "^0.78.1"
+    "@siteimprove/alfa-dom": "^0.79.1",
+    "@siteimprove/alfa-mapper": "^0.79.1",
+    "@siteimprove/alfa-result": "^0.79.1",
+    "@siteimprove/alfa-url": "^0.79.1",
+    "@siteimprove/alfa-web": "^0.79.1"
   },
   "publishConfig": {
     "access": "public",

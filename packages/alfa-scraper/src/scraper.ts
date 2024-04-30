@@ -3,7 +3,6 @@
 import * as fs from "fs";
 
 import { Device } from "@siteimprove/alfa-device";
-import { Document } from "@siteimprove/alfa-dom";
 import {
   Cookie,
   Header,
