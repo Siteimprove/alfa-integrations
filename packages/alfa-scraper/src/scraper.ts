@@ -244,7 +244,6 @@ export class Scraper {
           // If the timeout was exceeded while navigating to the page, bail out
           // with an error.
           if (err instanceof Error && err.name === "TimeoutError") {
-            throw err;
             return Err.of(`Timeout exceeded while navigating to the page`);
           }
 
