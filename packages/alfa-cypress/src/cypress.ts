@@ -53,8 +53,8 @@ export namespace Cypress {
     const asserter = Asserter.of(rules, handlers, options);
 
     return (chai) => {
-      chai.Assertion.addMethod("accessible", function () {
-        const input = toPage(this._obj);
+      chai.Assertion.addMethod("accessible", async function () {
+        const input = await toPage(this._obj);
 
         const result = asserter
           .expect(input)
@@ -88,12 +88,12 @@ export namespace Cypress {
 
   export type Type = globalThis.Node | globalThis.JQuery;
 
-  export function toPage(value: Type): Page {
+  export async function toPage(value: Type): Promise<Page> {
     if ("jquery" in value) {
       value = value.get(0);
     }
 
-    const nodeJSON = dom.Native.fromNode(value);
+    const nodeJSON = await dom.Native.fromNode(value);
 
     const deviceJSON = device.Native.fromWindow(window);
 

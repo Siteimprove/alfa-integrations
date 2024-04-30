@@ -19,12 +19,12 @@ import V from "vue";
 export namespace Vue {
   export type Type = Wrapper<V | null> | Cheerio.Type;
 
-  export function toPage(value: Type): Page {
+  export async function toPage(value: Type): Promise<Page> {
     if ("cheerio" in value) {
       return Cheerio.toPage(value);
     }
 
-    const nodeJSON = dom.Native.fromNode(value.element);
+    const nodeJSON = await dom.Native.fromNode(value.element);
 
     const deviceJSON = device.Native.fromWindow(window);
 

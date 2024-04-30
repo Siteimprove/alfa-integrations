@@ -15,8 +15,8 @@ import * as dom from "@siteimprove/alfa-dom/native";
 export namespace JQuery {
   export type Type = globalThis.JQuery;
 
-  export function toPage(value: Type): Page {
-    const nodeJSON = dom.Native.fromNode(value.get(0));
+  export async function toPage(value: Type): Promise<Page> {
+    const nodeJSON = await dom.Native.fromNode(value.get(0));
 
     const deviceJSON = device.Native.fromWindow(window);
 

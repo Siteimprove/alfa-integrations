@@ -16,8 +16,8 @@ import { ComponentFixture } from "@angular/core/testing";
 export namespace Angular {
   export type Type = ComponentFixture<unknown>;
 
-  export function toPage(value: Type): Page {
-    const nodeJSON = dom.Native.fromNode(value.nativeElement);
+  export async function toPage(value: Type): Promise<Page> {
+    const nodeJSON = await dom.Native.fromNode(value.nativeElement);
 
     const deviceJSON = device.Native.fromWindow(window);
 
