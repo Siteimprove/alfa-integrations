@@ -19,25 +19,25 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-cheerio": "workspace:^0.65.1",
-    "@siteimprove/alfa-device": "^0.80.0",
-    "@siteimprove/alfa-dom": "^0.80.0",
-    "@siteimprove/alfa-http": "^0.80.0",
-    "@siteimprove/alfa-web": "^0.80.0",
+    "@siteimprove/alfa-device": "^0.81.0",
+    "@siteimprove/alfa-dom": "^0.81.0",
+    "@siteimprove/alfa-http": "^0.81.0",
+    "@siteimprove/alfa-web": "^0.81.0",
     "@vue/test-utils": "^1.0.0-beta.29",
     "vue": "^2.6.14",
     "vue-template-compiler": "^2.6.14"
   },
   "devDependencies": {
-    "@siteimprove/alfa-rectangle": "^0.80.0",
-    "@siteimprove/alfa-test": "^0.80.0",
+    "@siteimprove/alfa-rectangle": "^0.81.0",
+    "@siteimprove/alfa-test": "^0.81.0",
     "jsdom": "^22.1.0",
     "jsdom-global": "^3.0.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.80.0",
-    "@siteimprove/alfa-dom": "^0.80.0",
-    "@siteimprove/alfa-http": "^0.80.0",
-    "@siteimprove/alfa-web": "^0.80.0"
+    "@siteimprove/alfa-device": "^0.81.0",
+    "@siteimprove/alfa-dom": "^0.81.0",
+    "@siteimprove/alfa-http": "^0.81.0",
+    "@siteimprove/alfa-web": "^0.81.0"
   },
   "publishConfig": {
     "access": "public",
