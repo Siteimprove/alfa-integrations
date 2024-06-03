@@ -1,5 +1,11 @@
 # @siteimprove/alfa-scraper
 
+## 0.65.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#42](https://github.com/Siteimprove/alfa-integrations/pull/42))
+
 ## 0.65.1
 
 ### Patch Changes
