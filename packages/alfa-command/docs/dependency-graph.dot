@@ -1,0 +1,149 @@
+digraph "dependency-graph-[object Object]" {
+  compound = true;
+  "dependency-graph-[object Object]" [
+    style = "invis";
+  ];
+  "src/argument.ts";
+  "src/flag.ts";
+  "src/text.ts";
+  "src/command.ts";
+  subgraph "cluster_src" {
+    color = "#000000";
+    label = "";
+    "name_src" [
+      penwidth = 5;
+      shape = "rectangle";
+      color = "#ff0000";
+      label = "src";
+    ];
+    "exit_src" [
+      style = "invis";
+    ];
+    subgraph "cluster_src" {
+      color = "#000000";
+      label = "";
+      "name_src" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#ff0000";
+        label = "src";
+      ];
+      "exit_src" [
+        style = "invis";
+      ];
+      "src/argument.ts" [
+        label = "argument.ts";
+      ];
+      "src/command.ts" [
+        label = "command.ts";
+      ];
+      "src/flag.ts" [
+        label = "flag.ts";
+      ];
+      "src/index.ts" [
+        label = "index.ts";
+        color = "#ff0000";
+        penwidth = 5;
+      ];
+      "src/text.ts" [
+        label = "text.ts";
+      ];
+      "src/argument.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/command.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/flag.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/index.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/text.ts" -> "exit_src" [
+        style = "invis";
+      ];
+    }
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+  }
+  "exit_src" -> "dependency-graph-[object Object]" [
+    style = "invis";
+  ];
+  "src/command.ts" -> "src/argument.ts" [
+    style = "invis";
+  ];
+  "src/command.ts" -> "src/argument.ts" [
+    style = "solid";
+    ltail = "cluster_src/command.ts";
+    lhead = "cluster_src/argument.ts";
+    color = "black";
+  ];
+  "src/command.ts" -> "src/flag.ts" [
+    style = "invis";
+  ];
+  "src/command.ts" -> "src/flag.ts" [
+    style = "solid";
+    ltail = "cluster_src/command.ts";
+    lhead = "cluster_src/flag.ts";
+    color = "black";
+  ];
+  "src/command.ts" -> "src/text.ts" [
+    style = "invis";
+  ];
+  "src/command.ts" -> "src/text.ts" [
+    style = "solid";
+    ltail = "cluster_src/command.ts";
+    lhead = "cluster_src/text.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/argument.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/argument.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/argument.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/command.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/command.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/command.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/flag.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/flag.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/flag.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/text.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/text.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/text.ts";
+    color = "black";
+  ];
+}
