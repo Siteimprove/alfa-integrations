@@ -864,14 +864,21 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@digitalbazaar/http-client@npm:^3.2.0":
-  version: 3.3.0
-  resolution: "@digitalbazaar/http-client@npm:3.3.0"
+"@digitalbazaar/http-client@npm:^3.4.1":
+  version: 3.4.1
+  resolution: "@digitalbazaar/http-client@npm:3.4.1"
   dependencies:
-    ky: ^0.33.2
+    ky: ^0.33.3
     ky-universal: ^0.11.0
-    undici: ^5.15.0
-  checksum: 95566bdb391ecb29f949a9553d0b3ddf1b574f63581f9028c8dd5e0ade7961a970eeeb0e4be0ef39ab577aff118a2b564fed41924c7130ef9d137807c44d1783
+    undici: ^5.21.2
+  checksum: fd8daa758eb3de0767377f0070aacd5ccf518ccacbfc97504b5d7dd524af3f2225892d320df6203bc0f5b1e86701c314d4e41684d857108f32e140f5dca9764f
+  languageName: node
+  linkType: hard
+
+"@fastify/busboy@npm:^2.0.0":
+  version: 2.1.1
+  resolution: "@fastify/busboy@npm:2.1.1"
+  checksum: 42c32ef75e906c9a4809c1e1930a5ca6d4ddc8d138e1a8c8ba5ea07f997db32210617d23b2e4a85fe376316a41a1a0439fc6ff2dedf5126d96f45a9d80754fb2
   languageName: node
   linkType: hard
 
@@ -2078,7 +2085,8 @@ __metadata:
     "@siteimprove/alfa-formatter": "workspace:^0.65.2"
     "@siteimprove/alfa-future": ^0.81.0
     "@siteimprove/alfa-hash": ^0.81.0
-    jsonld: ^6.0.0
+    "@types/jsonld": ^1.5.14
+    jsonld: ^8.3.2
   peerDependencies:
     "@siteimprove/alfa-earl": ^0.81.0
     "@siteimprove/alfa-future": ^0.81.0
@@ -2247,7 +2255,6 @@ __metadata:
     "@siteimprove/alfa-toolchain": ^0.81.0
     "@svitejs/changesets-changelog-github-compact": ^1.1.0
     "@types/async": ^3.2.5
-    "@types/jsonld": ^1.5.6
     "@types/node": ^14.14.31
     async: ^3.2.1
     axios: ^1.6.0
@@ -3416,10 +3423,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsonld@npm:^1.5.6":
-  version: 1.5.8
-  resolution: "@types/jsonld@npm:1.5.8"
-  checksum: abd710f2e243cd741d3249cbc03143f418ac6c2bd6e77adbbfb767e5fb689340da09b49da57f904422e33c302b7f06a129429e7e90660432fd0726c203f9af82
+"@types/jsonld@npm:^1.5.14":
+  version: 1.5.14
+  resolution: "@types/jsonld@npm:1.5.14"
+  checksum: c44cbb3a73f1285e37b8498e745289db0c5f8b06925deb8b5ba220985efa61b8706ce030b3012705ad3d0c4baa4ca154121c20bdf6932e74dcb027da1a88083d
   languageName: node
   linkType: hard
 
@@ -4367,15 +4374,6 @@ __metadata:
     base64-js: ^1.3.1
     ieee754: ^1.1.13
   checksum: e2cf8429e1c4c7b8cbd30834ac09bd61da46ce35f5c22a78e6c2f04497d6d25541b16881e30a019c6fd3154150650ccee27a308eff3e26229d788bbdeb08ab84
-  languageName: node
-  linkType: hard
-
-"busboy@npm:^1.6.0":
-  version: 1.6.0
-  resolution: "busboy@npm:1.6.0"
-  dependencies:
-    streamsearch: ^1.1.0
-  checksum: 32801e2c0164e12106bf236291a00795c3c4e4b709ae02132883fe8478ba2ae23743b11c5735a0aae8afe65ac4b6ca4568b91f0d9fed1fdbc32ede824a73746e
   languageName: node
   linkType: hard
 
@@ -8296,15 +8294,15 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"jsonld@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "jsonld@npm:6.0.0"
+"jsonld@npm:^8.3.2":
+  version: 8.3.2
+  resolution: "jsonld@npm:8.3.2"
   dependencies:
-    "@digitalbazaar/http-client": ^3.2.0
+    "@digitalbazaar/http-client": ^3.4.1
     canonicalize: ^1.0.1
     lru-cache: ^6.0.0
-    rdf-canonize: ^3.0.0
-  checksum: b062cecc01ed1c68ada8e3179532c4f514c49427781c41bd19f34a0d52fb758c13eb3b2ada548558630e4c5ac3b697f8dbe64499a6f214912684cbf5bf68aea8
+    rdf-canonize: ^3.4.0
+  checksum: 2bbf6464a37275103d8e56a5b303e6c6f91a30431add55b94aad2a7dd09decacb378d6e1f668d2dfa6279cfe91307347cb82ad676ed72f9e0fc6d19610cf0962
   languageName: node
   linkType: hard
 
@@ -8382,10 +8380,10 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"ky@npm:^0.33.2":
-  version: 0.33.2
-  resolution: "ky@npm:0.33.2"
-  checksum: bb5b1685b7d639dad5fc0a41a218f76c2400d2a9189bcf747f541633af13b68a7ef12bb8aa971bc1667087789ec5965cc3728e24b693897a2d0cc539d7593655
+"ky@npm:^0.33.3":
+  version: 0.33.3
+  resolution: "ky@npm:0.33.3"
+  checksum: d1869e1f33c0165355f621b6726fcc1a9de20a31f4a826ca0cfd5753d83b9cba8723402d554a00194e0ee3959e0dda0638f4b99d54a3a7de928b55ff870b0bcc
   languageName: node
   linkType: hard
 
@@ -10121,12 +10119,12 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"rdf-canonize@npm:^3.0.0":
-  version: 3.3.0
-  resolution: "rdf-canonize@npm:3.3.0"
+"rdf-canonize@npm:^3.4.0":
+  version: 3.4.0
+  resolution: "rdf-canonize@npm:3.4.0"
   dependencies:
     setimmediate: ^1.0.5
-  checksum: 4aa4ac59e6ab0bed25cf95fc7f247537507d3f2b2d0742a48dd12a8f2ebc809c0863858f15c73fb8d13f1efe332e4961f7be62fdda9a0abb75d97178410c8cd5
+  checksum: 75385e35713dcf30478aae291c1138ba8e947c2051308085b75aad7d3f6a3d97e548ac7cb7f7b86e50e14eb83ecce4d9279bc1ee785013b78bcdd1a1fbb29946
   languageName: node
   linkType: hard
 
@@ -10957,13 +10955,6 @@ resolve@~1.19.0:
   languageName: node
   linkType: hard
 
-"streamsearch@npm:^1.1.0":
-  version: 1.1.0
-  resolution: "streamsearch@npm:1.1.0"
-  checksum: 1cce16cea8405d7a233d32ca5e00a00169cc0e19fbc02aa839959985f267335d435c07f96e5e0edd0eadc6d39c98d5435fb5bbbdefc62c41834eadc5622ad942
-  languageName: node
-  linkType: hard
-
 "string-argv@npm:~0.3.1":
   version: 0.3.1
   resolution: "string-argv@npm:0.3.1"
@@ -11588,12 +11579,12 @@ typescript@~4.8.4:
   languageName: node
   linkType: hard
 
-"undici@npm:^5.15.0":
-  version: 5.20.0
-  resolution: "undici@npm:5.20.0"
+"undici@npm:^5.21.2":
+  version: 5.28.4
+  resolution: "undici@npm:5.28.4"
   dependencies:
-    busboy: ^1.6.0
-  checksum: 25412a785b2bd0b12f0bb0ec47ef00aa7a611ca0e570cb7af97cffe6a42e0d78e4b15190363a43771e9002defc3c6647c1b2d52201b3f64e2196819db4d150d3
+    "@fastify/busboy": ^2.0.0
+  checksum: a8193132d84540e4dc1895ecc8dbaa176e8a49d26084d6fbe48a292e28397cd19ec5d13bc13e604484e76f94f6e334b2bdc740d5f06a6e50c44072818d0c19f9
   languageName: node
   linkType: hard
 

@@ -22,7 +22,7 @@
     "@siteimprove/alfa-formatter": "workspace:^0.65.2",
     "@siteimprove/alfa-future": "^0.81.0",
     "@siteimprove/alfa-hash": "^0.81.0",
-    "jsonld": "^6.0.0"
+    "jsonld": "^8.3.2"
   },
   "peerDependencies": {
     "@siteimprove/alfa-earl": "^0.81.0",
@@ -32,5 +32,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@types/jsonld": "^1.5.14"
   }
 }
