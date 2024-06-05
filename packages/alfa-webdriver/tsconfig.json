@@ -1,5 +1,11 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/index.ts", "src/web-element.ts"]
+  "compilerOptions": {
+    "target": "es2020",
+    "lib": ["es2020", "DOM"],
+    "module": "commonjs",
+    "esModuleInterop": true,
+  },
+  "files": ["src/index.ts", "src/web-element.mts"]
 }
