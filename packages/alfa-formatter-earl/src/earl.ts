@@ -9,11 +9,10 @@ import * as jsonld from "jsonld";
 // This should be the alfa-rules version, but alfa-rules is not
 // imported here. Anyway, checker version should probably be included
 // in outcomes serialization rather than hacked here.
-import * as pkg from "@siteimprove/alfa-earl/package.json";
+import * as pkg from "@siteimprove/alfa-act/package.json";
+const version = pkg.version
 
 const { stringify } = JSON;
-
-const version = pkg.version
 
 /**
  * @public
