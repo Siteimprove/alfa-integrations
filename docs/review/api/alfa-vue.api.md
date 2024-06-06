@@ -14,7 +14,7 @@ import { Wrapper } from '@vue/test-utils';
 // @public (undocumented)
 namespace Vue_2 {
     // (undocumented)
-    function toPage(value: Type): Page;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
     type Type = Wrapper<V | null> | Cheerio.Type;
 }

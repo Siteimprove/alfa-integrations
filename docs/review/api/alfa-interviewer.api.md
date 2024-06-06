@@ -6,16 +6,17 @@
 
 import { Hashable } from '@siteimprove/alfa-hash';
 import { Oracle } from '@siteimprove/alfa-act';
+import { Question } from '@siteimprove/alfa-act';
 import { Result } from '@siteimprove/alfa-result';
 import { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
-export type Interviewer<I, T extends Hashable, Q = never, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;
+export type Interviewer<I, T extends Hashable, Q extends Question.Metadata = {}, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;
 
 // @public (undocumented)
 export namespace Interviewer {
     // (undocumented)
-    export function load<I, T extends Hashable, Q = never, S = T>(name: string, defaultScope?: string): Promise<Result<Interviewer<I, T, Q, S>, string>>;
+    export function load<I, T extends Hashable, Q extends Question.Metadata = {}, S = T>(name: string, defaultScope?: string): Promise<Result<Interviewer<I, T, Q, S>, string>>;
 }
 
 // (No @packageDocumentation comment for this package)

@@ -8,12 +8,13 @@ import { Asserter } from '@siteimprove/alfa-assert';
 import { Handler } from '@siteimprove/alfa-assert';
 import { Hashable } from '@siteimprove/alfa-hash';
 import { Mapper } from '@siteimprove/alfa-mapper';
+import { Question } from '@siteimprove/alfa-act';
 import { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export namespace Jasmine {
     // (undocumented)
-    export function createPlugin<I, J, T extends Hashable, Q = never, S = T>(transform: Mapper<I, Promise<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): void;
+    export function createPlugin<I, J, T extends Hashable, Q extends Question.Metadata = {}, S = T>(transform: Mapper<I, Promise<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): void;
 }
 
 // (No @packageDocumentation comment for this package)

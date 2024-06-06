@@ -14,18 +14,19 @@ import { Handler } from '@siteimprove/alfa-assert';
 import { Hashable } from '@siteimprove/alfa-hash';
 import { Mapper } from '@siteimprove/alfa-mapper';
 import { Page } from '@siteimprove/alfa-web';
+import { Question } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 namespace Cypress_2 {
     // (undocumented)
-    function createPlugin<T extends Hashable, Q = never, S = T>(rules: Iterable<act.Rule<Page, T, Q, S>>, handlers?: Iterable<Handler<Page, T, Q, S>>, options?: Asserter.Options<Page, T, Q, S>): globalThis.Chai.ChaiPlugin;
+    function createPlugin<T extends Hashable, Q extends Question.Metadata = {}, S = T>(rules: Iterable<act.Rule<Page, T, Q, S>>, handlers?: Iterable<Handler<Page, T, Q, S>>, options?: Asserter.Options<Page, T, Q, S>): globalThis.Chai.ChaiPlugin;
     // (undocumented)
     namespace Handler {
         // (undocumented)
-        function persist<I, T extends Hashable, Q, S>(output: Mapper<I, string>, format?: Formatter<I, T, Q, S>): Handler<I, T, Q, S>;
+        function persist<I, T extends Hashable, Q extends Question.Metadata, S>(output: Mapper<I, string>, format?: Formatter<I, T, Q, S>): Handler<I, T, Q, S>;
     }
     // (undocumented)
-    function toPage(value: Type): Page;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
     type Type = globalThis.Node | globalThis.JQuery;
 }
