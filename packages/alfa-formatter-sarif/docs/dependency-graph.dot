@@ -4,9 +4,6 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/sarif.ts";
-  "package.json";
-  "exit_src";
-  "name_package.json";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
@@ -18,9 +15,6 @@ digraph "dependency-graph-[object Object]" {
     ];
     "exit_src" [
       style = "invis";
-    ];
-    "package.json" [
-      label = "package.json";
     ];
     subgraph "cluster_src" {
       color = "#000000";
@@ -49,9 +43,6 @@ digraph "dependency-graph-[object Object]" {
         style = "invis";
       ];
     }
-    "package.json" -> "exit_src" [
-      style = "invis";
-    ];
     "exit_src" -> "exit_src" [
       style = "invis";
     ];
@@ -70,11 +61,5 @@ digraph "dependency-graph-[object Object]" {
     ltail = "cluster_src/index.ts";
     lhead = "cluster_src/sarif.ts";
     color = "black";
-  ];
-  "exit_src" -> "name_package.json" [
-    style = "solid";
-    ltail = "cluster_src";
-    lhead = "cluster_package.json";
-    color = "#ff0000";
   ];
 }
