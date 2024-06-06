@@ -3,7 +3,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "lib": ["DOM"],
-    "esModuleInterop": true,
+    "esModuleInterop": true
   },
   "files": ["src/index.ts", "src/web-element.ts"]
 }
