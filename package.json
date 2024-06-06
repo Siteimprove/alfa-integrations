@@ -23,6 +23,10 @@
   "workspaces": [
     "packages/*"
   ],
+  "//": [
+    "knip 5.7.0 has a regression flagging nearly everything as unused",
+    "See https://github.com/webpro-nl/knip/issues/672"
+  ],
   "devDependencies": {
     "@changesets/cli": "^2.26.1",
     "@microsoft/api-documenter": "^7.19.9",
