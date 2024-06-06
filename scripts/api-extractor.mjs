@@ -23,6 +23,15 @@ function extract(root = "packages") {
   let code = 0;
 
   for (const project of projects) {
+    // API extractor is struggling with the latest webdriverio
+    // see https://github.com/microsoft/rushstack/issues/4766
+    // API extractor config has been removed from `alfa-webdriver`
+    // which causes this read to fail, so disabling it until
+    // we have a solution for this.
+    if (project.includes("alfa-webdriver")) {
+      continue;
+    }
+
     const filePath = path.resolve(project, "config", "api-extractor.json");
 
     const config = ExtractorConfig.loadFileAndPrepare(filePath);
