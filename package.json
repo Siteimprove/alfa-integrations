@@ -17,7 +17,8 @@
     "watch": "node scripts/watch.mjs --pretty",
     "extract": "node scripts/api-extractor.mjs --pretty",
     "document": "api-documenter generate -i docs/data/api -o docs/api",
-    "dependency-graph": "package-dependency-graph --config config/package-dependency-graph.ts --exclude-node_modules --graphviz --dot docs/dependency-graph.dot --png docs/dependency-graph.png"
+    "dependency-graph": "package-dependency-graph --config config/package-dependency-graph.ts --exclude-node_modules --graphviz --dot docs/dependency-graph.dot --png docs/dependency-graph.png",
+    "knip": "knip --config config/knip.ts"
   },
   "workspaces": [
     "packages/*"
@@ -33,8 +34,8 @@
     "@types/debug": "^4.1.12",
     "@types/node": "^14.14.31",
     "async": "^3.2.1",
-    "axios": "^1.6.0",
     "execa": "^9.1.0",
+    "knip": "=5.6.1",
     "minimist": "^1.2.6",
     "package-dependency-graph": "^1.14.4",
     "prettier": "^2.7.1",
