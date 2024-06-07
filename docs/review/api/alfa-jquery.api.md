@@ -12,7 +12,7 @@ import { Page } from '@siteimprove/alfa-web';
 // @public (undocumented)
 namespace JQuery_2 {
     // (undocumented)
-    function toPage(value: Type): Page;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
     type Type = globalThis.JQuery;
 }

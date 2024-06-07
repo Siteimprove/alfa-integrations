@@ -1,0 +1,177 @@
+digraph "dependency-graph-[object Object]" {
+  compound = true;
+  "dependency-graph-[object Object]" [
+    style = "invis";
+  ];
+  "src/archive.ts";
+  "src/awaiter.ts";
+  "src/credentials.ts";
+  "src/scraper.ts";
+  "src/screenshot.ts";
+  subgraph "cluster_src" {
+    color = "#000000";
+    label = "";
+    "name_src" [
+      penwidth = 5;
+      shape = "rectangle";
+      color = "#ff0000";
+      label = "src";
+    ];
+    "exit_src" [
+      style = "invis";
+    ];
+    subgraph "cluster_src" {
+      color = "#000000";
+      label = "";
+      "name_src" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#ff0000";
+        label = "src";
+      ];
+      "exit_src" [
+        style = "invis";
+      ];
+      "src/archive.ts" [
+        label = "archive.ts";
+      ];
+      "src/awaiter.ts" [
+        label = "awaiter.ts";
+      ];
+      "src/credentials.ts" [
+        label = "credentials.ts";
+      ];
+      "src/index.ts" [
+        label = "index.ts";
+        color = "#ff0000";
+        penwidth = 5;
+      ];
+      "src/scraper.ts" [
+        label = "scraper.ts";
+      ];
+      "src/screenshot.ts" [
+        label = "screenshot.ts";
+      ];
+      "src/archive.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/awaiter.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/credentials.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/index.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/scraper.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/screenshot.ts" -> "exit_src" [
+        style = "invis";
+      ];
+    }
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+    "exit_src" -> "exit_src" [
+      style = "invis";
+    ];
+  }
+  "exit_src" -> "dependency-graph-[object Object]" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/archive.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/archive.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/archive.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/awaiter.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/awaiter.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/awaiter.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/credentials.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/credentials.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/credentials.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/scraper.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/scraper.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/scraper.ts";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/screenshot.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/screenshot.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/screenshot.ts";
+    color = "black";
+  ];
+  "src/scraper.ts" -> "src/archive.ts" [
+    style = "invis";
+  ];
+  "src/scraper.ts" -> "src/archive.ts" [
+    style = "solid";
+    ltail = "cluster_src/scraper.ts";
+    lhead = "cluster_src/archive.ts";
+    color = "black";
+  ];
+  "src/scraper.ts" -> "src/awaiter.ts" [
+    style = "invis";
+  ];
+  "src/scraper.ts" -> "src/awaiter.ts" [
+    style = "solid";
+    ltail = "cluster_src/scraper.ts";
+    lhead = "cluster_src/awaiter.ts";
+    color = "black";
+  ];
+  "src/scraper.ts" -> "src/credentials.ts" [
+    style = "invis";
+  ];
+  "src/scraper.ts" -> "src/credentials.ts" [
+    style = "solid";
+    ltail = "cluster_src/scraper.ts";
+    lhead = "cluster_src/credentials.ts";
+    color = "black";
+  ];
+  "src/scraper.ts" -> "src/screenshot.ts" [
+    style = "invis";
+  ];
+  "src/scraper.ts" -> "src/screenshot.ts" [
+    style = "solid";
+    ltail = "cluster_src/scraper.ts";
+    lhead = "cluster_src/screenshot.ts";
+    color = "black";
+  ];
+}

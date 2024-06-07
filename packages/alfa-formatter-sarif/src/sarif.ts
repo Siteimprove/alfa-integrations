@@ -3,7 +3,11 @@ import { Hashable } from "@siteimprove/alfa-hash";
 import { Serializable, Log } from "@siteimprove/alfa-sarif";
 import { Formatter } from "@siteimprove/alfa-formatter";
 
-import { version } from "../package.json";
+// This should be the alfa-rules version, but alfa-rules is not
+// imported here. Anyway, checker version should probably be included
+// in outcomes serialization rather than hacked here.
+import * as pkg from "@siteimprove/alfa-act/package.json";
+const version = pkg.version
 
 const { stringify } = JSON;
 

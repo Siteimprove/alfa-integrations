@@ -6,9 +6,10 @@
 
 import { Formatter } from '@siteimprove/alfa-formatter';
 import { Hashable } from '@siteimprove/alfa-hash';
+import { Question } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
-function <I, T extends Hashable, Q, S>(): Formatter<I, T, Q, S>;
+function <I, T extends Hashable, Q extends Question.Metadata, S>(): Formatter<I, T, Q, S>;
 export default default_2;
 
 // (No @packageDocumentation comment for this package)

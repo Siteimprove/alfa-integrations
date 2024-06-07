@@ -1,4 +1,4 @@
-/// <reference types="webdriverio/async" />
+/// <reference types="webdriverio" />
 
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";

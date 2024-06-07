@@ -12,7 +12,7 @@ import { Page } from '@siteimprove/alfa-web';
 // @public (undocumented)
 export namespace Angular {
     // (undocumented)
-    export function toPage(value: Type): Page;
+    export function toPage(value: Type): Promise<Page>;
     // (undocumented)
     export type Type = ComponentFixture<unknown>;
 }

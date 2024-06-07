@@ -6,6 +6,7 @@
 
 /// <reference lib="dom" />
 
+import { Device } from '@siteimprove/alfa-device';
 import { JSHandle } from 'playwright';
 import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
@@ -13,7 +14,7 @@ import { Page } from '@siteimprove/alfa-web';
 // @public (undocumented)
 export namespace Playwright {
     // (undocumented)
-    export function toNode(value: Type): Promise<Node_2>;
+    export function toNode(value: Type, device?: Device): Promise<Node_2>;
     // (undocumented)
     export function toPage(value: Type): Promise<Page>;
     // (undocumented)
