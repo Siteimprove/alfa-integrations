@@ -1,5 +1,17 @@
 # @siteimprove/alfa-webdriver
 
+## 0.66.0
+
+### Minor Changes
+
+- **Changed:** Update webdriverio to latest version. ([#43](https://github.com/Siteimprove/alfa-integrations/pull/43))
+
+- **Added:** Package dependency graphs are now included in the documentation. ([#43](https://github.com/Siteimprove/alfa-integrations/pull/43))
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#44](https://github.com/Siteimprove/alfa-integrations/pull/44))
+
 ## 0.65.2
 
 ### Patch Changes
