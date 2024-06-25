@@ -18,8 +18,8 @@ import { Mapper } from "@siteimprove/alfa-mapper";
 import { Page } from "@siteimprove/alfa-web";
 
 import * as act from "@siteimprove/alfa-act";
-import * as device from "@siteimprove/alfa-device/native";
-import * as dom from "@siteimprove/alfa-dom/native";
+import * as device from "@siteimprove/alfa-device/dist/native";
+import * as dom from "@siteimprove/alfa-dom/dist/native";
 import earl from "@siteimprove/alfa-formatter-earl";
 
 declare global {
