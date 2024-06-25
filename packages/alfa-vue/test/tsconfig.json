@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "compilerOptions": { "outDir": "." },
+  "compilerOptions": { "esModuleInterop": true,"outDir": "." },
   "files": ["./vue.spec.ts"],
-  "references": [{"path": "../src"}]
+  "references": [{ "path": "../src" }]
 }
