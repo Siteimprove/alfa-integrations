@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-unexpected",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.66.1",
+  "version": "0.66.2",
   "license": "MIT",
   "description": "Assertion integrations for the Unexpected testing framework",
   "repository": {
@@ -20,7 +20,7 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-act": "^0.84.0",
-    "@siteimprove/alfa-assert": "workspace:^0.66.1",
+    "@siteimprove/alfa-assert": "workspace:^0.66.2",
     "@siteimprove/alfa-future": "^0.84.0",
     "@siteimprove/alfa-hash": "^0.84.0",
     "@siteimprove/alfa-mapper": "^0.84.0",
