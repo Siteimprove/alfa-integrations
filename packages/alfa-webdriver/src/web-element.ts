@@ -5,7 +5,7 @@ import { Document, Node } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import * as dom from "@siteimprove/alfa-dom/native";
+import * as dom from "@siteimprove/alfa-dom/dist/native";
 
 /**
  * {@link https://w3c.github.io/webdriver/#dfn-web-elements}
