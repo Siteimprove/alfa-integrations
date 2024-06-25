@@ -37,7 +37,9 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   );
 
   if (interviewer.some((interviewer) => interviewer.isErr())) {
-    return interviewer.get() as Err<string>;
+    // TS can't narrow on .some() as it would incorrectly narrow the "false"
+    // branch to Err.
+    return interviewer.getUnsafe() as Err<string>;
   }
 
   let json: string;
