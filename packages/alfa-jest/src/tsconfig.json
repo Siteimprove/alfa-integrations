@@ -3,5 +3,5 @@
   "extends": "../tsconfig.json",
   "compilerOptions": { "outDir": "../dist" },
   "files": ["./index.ts", "./jest.ts"],
-  "references": [{ "path": "../alfa-assert" }]
+  "references": [{ "path": "../../alfa-assert" }]
 }

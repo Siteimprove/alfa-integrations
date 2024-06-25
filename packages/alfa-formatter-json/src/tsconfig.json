@@ -3,5 +3,5 @@
   "extends": "../tsconfig.json",
   "compilerOptions": { "outDir": "../dist" },
   "files": ["./index.ts", "./json.ts"],
-  "references": [{ "path": "../alfa-formatter" }]
+  "references": [{ "path": "../../alfa-formatter" }]
 }

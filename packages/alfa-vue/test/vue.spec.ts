@@ -11,7 +11,7 @@ import { Page } from "@siteimprove/alfa-web";
 import V from "vue";
 import { mount } from "@vue/test-utils";
 
-import { Vue } from "../src";
+import { Vue } from "../dist";
 
 export const Button = V.extend({
   template: `

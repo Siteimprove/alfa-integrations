@@ -3,8 +3,8 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "lib": ["DOM"],
-    "esModuleInterop": true
+    "esModuleInterop": true,
+    "outDir": "../dist"
   },
-  "compilerOptions": { "outDir": "../dist" },
   "files": ["./index.ts", "./web-element.ts"]
 }

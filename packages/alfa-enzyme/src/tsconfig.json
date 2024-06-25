@@ -3,5 +3,5 @@
   "extends": "../tsconfig.json",
   "compilerOptions": { "outDir": "../dist" },
   "files": ["./enzyme.ts", "./index.ts"],
-  "references": [{ "path": "../alfa-react" }]
+  "references": [{ "path": "../../alfa-react" }]
 }

@@ -4,8 +4,8 @@
   "compilerOptions": { "outDir": "../dist" },
   "files": ["./cypress.ts", "./index.ts"],
   "references": [
-    { "path": "../alfa-assert" },
-    { "path": "../alfa-formatter" },
-    { "path": "../alfa-formatter-earl" }
+    { "path": "../../alfa-assert" },
+    { "path": "../../alfa-formatter" },
+    { "path": "../../alfa-formatter-earl" }
   ]
 }

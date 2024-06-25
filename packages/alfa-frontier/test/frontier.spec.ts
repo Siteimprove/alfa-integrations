@@ -1,6 +1,6 @@
 import { test } from "@siteimprove/alfa-test";
 
-import { Frontier } from "../src/frontier";
+import { Frontier } from "../dist/frontier";
 
 test(".of() constructs a frontier given a scope", (t) => {
   const frontier = Frontier.of("https://example.com/");

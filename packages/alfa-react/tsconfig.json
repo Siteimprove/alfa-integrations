@@ -1,6 +1,5 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
-  "extends": "../tsconfig.json",
-  "compilerOptions": { "jsx": "react-jsx" },
+  "extends": "../tsconfig.json", "files": [],
   "references": [{"path": "./src"}, {"path": "./test"}]
 }

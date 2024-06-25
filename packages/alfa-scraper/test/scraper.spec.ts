@@ -2,9 +2,9 @@ import { Node, Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
 import * as path from "path";
 import * as url from "url";
-import { Awaiter } from "../src";
+import { Awaiter } from "../dist";
 
-import { Scraper } from "../src/scraper";
+import { Scraper } from "../dist/scraper";
 
 const { getElementDescendants } = Query;
 
