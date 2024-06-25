@@ -3,5 +3,5 @@
   "extends": "../tsconfig.json",
   "compilerOptions": { "outDir": "." },
   "files": ["./scraper.spec.ts"],
-  "references": [{"path": "../src"}]
+  "references": [{ "path": "../src" }]
 }
