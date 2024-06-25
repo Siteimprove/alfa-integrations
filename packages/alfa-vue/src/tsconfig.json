@@ -1,0 +1,8 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "esModuleInterop": true },
+  "compilerOptions": { "outDir": "../dist" },
+  "files": ["./index.ts", "./vue.ts", ],
+  "references": [{ "path": "../alfa-cheerio" }]
+}

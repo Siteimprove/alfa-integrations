@@ -5,5 +5,5 @@
     "lib": ["DOM"],
     "esModuleInterop": true
   },
-  "files": ["src/index.ts", "src/web-element.ts"]
+  "references": [{"path": "./src"}, {"path": "./test"}]
 }

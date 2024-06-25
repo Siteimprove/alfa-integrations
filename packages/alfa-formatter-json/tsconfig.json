@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/index.ts", "src/json.ts"],
+  "references": [{"path": "./src"}, {"path": "./test"}],
   "references": [{ "path": "../alfa-formatter" }]
 }

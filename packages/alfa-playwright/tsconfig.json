@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/index.ts", "src/playwright.ts"],
+  "references": [{"path": "./src"}, {"path": "./test"}],
   "compilerOptions": { "types": ["node"] }
 }

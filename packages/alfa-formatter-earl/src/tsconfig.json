@@ -1,0 +1,12 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "resolveJsonModule": true
+  },
+  "compilerOptions": { "outDir": "../dist" },
+  "files": ["package.json", "./index.ts", "./earl.ts"],
+  "references": [
+    { "path": "../alfa-formatter" }
+  ]
+}

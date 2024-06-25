@@ -1,6 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/enzyme.ts", "src/index.ts"],
+  "references": [{"path": "./src"}, {"path": "./test"}],
   "references": [{ "path": "../alfa-react" }]
 }

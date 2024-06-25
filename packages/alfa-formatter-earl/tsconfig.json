@@ -4,7 +4,7 @@
   "compilerOptions": {
     "resolveJsonModule": true
   },
-  "files": ["package.json", "src/index.ts", "src/earl.ts"],
+  "references": [{"path": "./src"}, {"path": "./test"}],
   "references": [
     { "path": "../alfa-formatter" }
   ]
