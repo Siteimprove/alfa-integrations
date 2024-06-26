@@ -1,0 +1,10 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "compilerOptions": {
+    "lib": ["DOM"],
+    "esModuleInterop": true,
+    "outDir": "../dist"
+  },
+  "files": ["./index.ts", "./web-element.ts"]
+}

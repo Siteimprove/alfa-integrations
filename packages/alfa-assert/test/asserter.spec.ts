@@ -3,7 +3,7 @@ import { Hashable } from "@siteimprove/alfa-hash";
 import { Option } from "@siteimprove/alfa-option";
 import { test } from "@siteimprove/alfa-test";
 
-import { Asserter } from "../src/asserter";
+import { Asserter } from "../dist/asserter";
 
 import { CantTell, Fail, Pass } from "./fixture/rule";
 

@@ -8,16 +8,16 @@ import { Equatable } from '@siteimprove/alfa-equatable';
 import * as json from '@siteimprove/alfa-json';
 import { Option } from '@siteimprove/alfa-option';
 import { Serializable } from '@siteimprove/alfa-json';
-import { URL } from '@siteimprove/alfa-url';
+import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)
 export class Frontier implements Equatable, Serializable {
-    complete(url: string | URL): boolean;
-    dequeue(): Option<URL>;
-    enqueue(url: string | URL): boolean;
+    complete(url: string | URL_2): boolean;
+    dequeue(): Option<URL_2>;
+    enqueue(url: string | URL_2): boolean;
     // (undocumented)
     equals(value: unknown): value is this;
-    error(url: string | URL): boolean;
+    error(url: string | URL_2): boolean;
     // (undocumented)
     static from(json: Frontier.JSON): Frontier;
     // (undocumented)
@@ -27,21 +27,21 @@ export class Frontier implements Equatable, Serializable {
     // (undocumented)
     hasWaiting(): boolean;
     // (undocumented)
-    isCompleted(url: string | URL): boolean;
+    isCompleted(url: string | URL_2): boolean;
     // (undocumented)
-    isInProgress(url: string | URL): boolean;
+    isInProgress(url: string | URL_2): boolean;
     // (undocumented)
-    isInScope(url: string | URL): boolean;
-    isSeen(url: string | URL): boolean;
-    isUnseen(url: string | URL): boolean;
+    isInScope(url: string | URL_2): boolean;
+    isSeen(url: string | URL_2): boolean;
+    isUnseen(url: string | URL_2): boolean;
     // (undocumented)
-    isWaiting(url: string | URL): boolean;
+    isWaiting(url: string | URL_2): boolean;
     // (undocumented)
-    static of(scope: string | URL, seed?: Iterable<string | URL>): Frontier;
-    redirect(from: string | URL, to: string | URL): boolean;
-    retry(url: string | URL): boolean;
+    static of(scope: string | URL_2, seed?: Iterable<string | URL_2>): Frontier;
+    redirect(from: string | URL_2, to: string | URL_2): boolean;
+    retry(url: string | URL_2): boolean;
     // (undocumented)
-    get scope(): URL;
+    get scope(): URL_2;
     // (undocumented)
     toJSON(): Frontier.JSON;
 }

@@ -4,7 +4,7 @@ import { test } from "@siteimprove/alfa-test";
 
 import { Frontier } from "@siteimprove/alfa-frontier";
 
-import { Crawler } from "../src/crawler";
+import { Crawler } from "../dist/crawler";
 
 const fixture = `${url.pathToFileURL(__dirname).href}/fixture`;
 

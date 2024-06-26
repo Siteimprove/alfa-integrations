@@ -43,10 +43,19 @@ function minimalStatusReporter(system, _) {
     const frame = frames[frameIndex % frames.length];
 
     const packageName = !first
-      ? diag.messageText.match(/.*(?:\/|')(.*)\/tsconfig\.json/)?.[1] ?? ""
+      ? diag.messageText
+          // Find tsconfig.json path in "Building 'path/to/alfa-integrations/packages/alfa-foo/tsconfig.json'..."
+          .split("'")[1]
+          // Find path segments
+          ?.split("/")
+          // Find package name
+          ?.find((name) => name.startsWith("alfa-") && name !== "alfa-integrations") ??
+        // If none (e.g., scratches), output directory of tsconfig.json
+        diag.messageText.match(/.*(?:\/|')(.*)\/tsconfig\.json/)?.[1] ??
+        ""
       : "";
 
-    system.write(frame + ` building ${packageName}`);
+    system.write(frame + ` building ${packageName}...`);
     system.write(system.newLine);
     frameIndex++;
     first = false;

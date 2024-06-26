@@ -5,7 +5,7 @@ import { h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import { React } from "../src";
+import { React } from "../dist";
 
 import { FunctionComponent } from "react";
 

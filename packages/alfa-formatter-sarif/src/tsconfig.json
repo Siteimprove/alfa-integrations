@@ -1,0 +1,7 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "resolveJsonModule": true, "outDir": "../dist" },
+  "files": ["./index.ts", "./sarif.ts"],
+  "references": [{ "path": "../../alfa-formatter" }]
+}

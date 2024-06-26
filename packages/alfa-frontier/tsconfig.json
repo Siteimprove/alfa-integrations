@@ -1,5 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/frontier.ts", "src/index.ts", "test/frontier.spec.ts"]
+  "files": [],
+  "references": [{ "path": "./src" }, { "path": "./test" }]
 }

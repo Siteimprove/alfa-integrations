@@ -11,11 +11,11 @@
     "directory": "packages/alfa-angular"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
-  "main": "src/index.js",
-  "types": "src/index.d.ts",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
   "files": [
-    "src/**/*.js",
-    "src/**/*.d.ts"
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
   ],
   "dependencies": {
     "@angular/core": "^11.0.0",

@@ -1,6 +1,5 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "files": ["src/chai.ts", "src/index.ts"],
-  "references": [{ "path": "../alfa-assert" }]
+  "references": [{ "path": "./src" }]
 }
