@@ -1,5 +1,7 @@
 # @siteimprove/alfa-cli
 
+## 0.67.0
+
 ## 0.66.3
 
 ### Patch Changes

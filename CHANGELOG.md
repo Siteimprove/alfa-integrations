@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.67.0](../../compare/v0.66.3...v0.67.0) (2024-06-26)
+
+### Breaking
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#0670), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#0670), [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md#0670), [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md#0670), [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#0670), [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md#0670), [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md#0670), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0670), [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md#0670), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#0670), [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md#0670), [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md#0670), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0670), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#0670), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0670), [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md#0670), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0670), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0670), [@siteimprove/alfa-enzyme](packages/alfa-enzyme/CHANGELOG.md#0670), [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md#0670), [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md#0670), [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md#0670), [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md#0670), [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md#0670): The .js files are now built in the dist folder rather than in src. ([#49](https://github.com/Siteimprove/alfa-integrations/pull/49))
+
 ## [0.66.3](../../compare/v0.66.2...v0.66.3) (2024-06-25)
 
 ### Changed

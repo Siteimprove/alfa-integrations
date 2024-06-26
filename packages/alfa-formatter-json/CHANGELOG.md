@@ -1,5 +1,15 @@
 # @siteimprove/alfa-formatter-json
 
+## 0.67.0
+
+### Minor Changes
+
+- **Breaking:** The .js files are now built in the dist folder rather than in src. ([#49](https://github.com/Siteimprove/alfa-integrations/pull/49))
+
+  ⚠️ This is the first of a series of changes on the internal structure and build process of distributed packages. It is probably better to not use this version and wait until more of these internal changes have been done to jump directly to the final result. We are internally releasing these changes for validation purpose only.
+
+  This should not impact consumers, the package.json files should be set correctly to consume these files.
+
 ## 0.66.3
 
 ### Patch Changes
