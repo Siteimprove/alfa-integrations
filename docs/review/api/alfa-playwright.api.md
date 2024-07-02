@@ -7,7 +7,7 @@
 /// <reference lib="dom" />
 
 import { Device } from '@siteimprove/alfa-device';
-import { JSHandle } from 'playwright';
+import type { JSHandle } from 'playwright';
 import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 

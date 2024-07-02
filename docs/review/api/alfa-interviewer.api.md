@@ -4,11 +4,11 @@
 
 ```ts
 
-import { Hashable } from '@siteimprove/alfa-hash';
-import { Oracle } from '@siteimprove/alfa-act';
-import { Question } from '@siteimprove/alfa-act';
+import type { Hashable } from '@siteimprove/alfa-hash';
+import type { Oracle } from '@siteimprove/alfa-act';
+import type { Question } from '@siteimprove/alfa-act';
 import { Result } from '@siteimprove/alfa-result';
-import { Rule } from '@siteimprove/alfa-act';
+import type { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export type Interviewer<I, T extends Hashable, Q extends Question.Metadata = {}, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;

@@ -7,18 +7,18 @@
 /// <reference lib="dom" />
 
 import { Cheerio } from '@siteimprove/alfa-cheerio';
+import type { ComponentPublicInstance } from 'vue';
 import { Page } from '@siteimprove/alfa-web';
-import V from 'vue';
-import { Wrapper } from '@vue/test-utils';
+import type { VueElement } from 'vue';
+import type { VueWrapper } from '@vue/test-utils';
 
 // @public (undocumented)
-namespace Vue_2 {
+export namespace Vue {
     // (undocumented)
-    function toPage(value: Type): Promise<Page>;
+    export function toPage(value: Type): Promise<Page>;
     // (undocumented)
-    type Type = Wrapper<V | null> | Cheerio.Type;
+    export type Type = VueWrapper<VueElement, ComponentPublicInstance> | Cheerio.Type;
 }
-export { Vue_2 as Vue }
 
 // (No @packageDocumentation comment for this package)
 

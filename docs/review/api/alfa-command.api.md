@@ -4,16 +4,16 @@
 
 ```ts
 
-import { Functor } from '@siteimprove/alfa-functor';
-import * as json from '@siteimprove/alfa-json';
-import { Mapper } from '@siteimprove/alfa-mapper';
+import type { Functor } from '@siteimprove/alfa-functor';
+import type * as json from '@siteimprove/alfa-json';
+import type { Mapper } from '@siteimprove/alfa-mapper';
 import { Option } from '@siteimprove/alfa-option';
-import * as parser from '@siteimprove/alfa-parser';
-import { Predicate } from '@siteimprove/alfa-predicate';
+import type * as parser from '@siteimprove/alfa-parser';
+import type { Predicate } from '@siteimprove/alfa-predicate';
 import { Refinement } from '@siteimprove/alfa-refinement';
 import { Result } from '@siteimprove/alfa-result';
 import { Serializable } from '@siteimprove/alfa-json';
-import { Thunk } from '@siteimprove/alfa-thunk';
+import type { Thunk } from '@siteimprove/alfa-thunk';
 
 // @public (undocumented)
 export class Argument<T = unknown> implements Functor<T>, Serializable<Argument.JSON> {
