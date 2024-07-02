@@ -3,8 +3,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": ".",
-    "skipLibCheck": true
+    "outDir": "."
   },
   "files": ["./vue.spec.ts"],
   "references": [{ "path": "../src" }]

@@ -1,7 +1,6 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "//": "Cheerio needs a release to fix a bug, see https://github.com/cheeriojs/cheerio/issues/3098",
-  "compilerOptions": { "outDir": "../dist", "skipLibCheck": true },
+  "compilerOptions": { "outDir": "../dist" },
   "files": ["./cheerio.ts", "./index.ts"]
 }
