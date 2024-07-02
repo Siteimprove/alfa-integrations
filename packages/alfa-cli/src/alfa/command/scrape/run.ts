@@ -1,8 +1,8 @@
 /// <reference types="node" />
 
-import * as fs from "fs";
-import * as path from "path";
-import * as url from "url";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import * as url from "node:url";
 
 import type { Command } from "@siteimprove/alfa-command";
 import { Device, Display, Scripting, Viewport } from "@siteimprove/alfa-device";
@@ -19,8 +19,8 @@ import {
 import { Timeout } from "@siteimprove/alfa-time";
 import { URL } from "@siteimprove/alfa-url";
 
-import type { Arguments } from "./arguments";
-import type { Flags } from "./flags";
+import type { Arguments } from "./arguments.js";
+import type { Flags } from "./flags.js";
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,

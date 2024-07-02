@@ -5,10 +5,5 @@
     "resolveJsonModule": true
   },
   "files": [],
-  "references": [
-    { "path": "../alfa-command" },
-    { "path": "../alfa-formatter" },
-    { "path": "../alfa-interviewer" },
-    { "path": "../alfa-scraper" }
-  ]
+  "references": [{ "path": "src" }]
 }

@@ -13,5 +13,11 @@
     "alfa/command/scrape/flags.ts",
     "alfa/command/scrape/run.ts",
     "alfa/profiler.ts"
+  ],
+  "references": [
+    { "path": "../../alfa-command" },
+    { "path": "../../alfa-formatter" },
+    { "path": "../../alfa-interviewer" },
+    { "path": "../../alfa-scraper" }
   ]
 }

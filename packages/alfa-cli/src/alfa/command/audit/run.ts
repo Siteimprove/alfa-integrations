@@ -1,6 +1,6 @@
 /// <reference types="node" />
 
-import * as fs from "fs";
+import * as fs from "node:fs";
 
 import { Audit, Outcome } from "@siteimprove/alfa-act";
 import type { Command } from "@siteimprove/alfa-command";
@@ -14,12 +14,12 @@ import { Page } from "@siteimprove/alfa-web";
 
 import rules from "@siteimprove/alfa-rules";
 
-import { Profiler } from "../../profiler";
+import { Profiler } from "../../profiler.js";
 
-import type { Arguments } from "./arguments";
-import type { Flags } from "./flags";
+import type { Arguments } from "./arguments.js";
+import type { Flags } from "./flags.js";
 
-import * as scrape from "../scrape/run";
+import * as scrape from "../scrape/run.js";
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
