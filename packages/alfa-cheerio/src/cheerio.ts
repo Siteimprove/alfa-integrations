@@ -1,19 +1,20 @@
 /// <reference types="node" />
 
 import { Device } from "@siteimprove/alfa-device";
-import {
+import type {
   Attribute,
   Element,
+  Text} from "@siteimprove/alfa-dom";
+import {
   Node,
-  Text,
   Document,
   Namespace,
 } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import * as cheerio from "cheerio";
-import dom from "domhandler";
+import type * as cheerio from "cheerio";
+import type dom from "domhandler";
 
 const { keys } = Object;
 

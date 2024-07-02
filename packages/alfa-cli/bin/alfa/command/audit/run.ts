@@ -3,12 +3,13 @@
 import * as fs from "fs";
 
 import { Audit, Outcome } from "@siteimprove/alfa-act";
-import { Command } from "@siteimprove/alfa-command";
+import type { Command } from "@siteimprove/alfa-command";
 import { Formatter } from "@siteimprove/alfa-formatter";
 import { Interviewer } from "@siteimprove/alfa-interviewer";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import { Option, None } from "@siteimprove/alfa-option";
-import { Result, Err } from "@siteimprove/alfa-result";
+import type { Err } from "@siteimprove/alfa-result";
+import { Result } from "@siteimprove/alfa-result";
 import { Page } from "@siteimprove/alfa-web";
 
 import rules from "@siteimprove/alfa-rules";

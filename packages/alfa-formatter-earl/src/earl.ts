@@ -1,8 +1,9 @@
-import { Question } from "@siteimprove/alfa-act";
-import { Serializable, EARL } from "@siteimprove/alfa-earl";
-import { Formatter } from "@siteimprove/alfa-formatter";
+import type { Question } from "@siteimprove/alfa-act";
+import type { EARL } from "@siteimprove/alfa-earl";
+import { Serializable } from "@siteimprove/alfa-earl";
+import type { Formatter } from "@siteimprove/alfa-formatter";
 import { Future } from "@siteimprove/alfa-future";
-import { Hashable } from "@siteimprove/alfa-hash";
+import type { Hashable } from "@siteimprove/alfa-hash";
 
 import * as jsonld from "jsonld";
 
@@ -26,7 +27,7 @@ export default function <
   return function EARL(input, rules, outcomes) {
     const subject = Serializable.toEARL(input);
 
-    let earl = {
+    const earl = {
       "@context": ACTContext,
       "@graph": [
         assertor,

@@ -7,7 +7,7 @@ import { Page } from "@siteimprove/alfa-web";
 
 import { React } from "../dist/index.js";
 
-import { FunctionComponent, PropsWithChildren } from "react";
+import type { FunctionComponent, PropsWithChildren } from "react";
 
 const Button: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <button className="btn">{children}</button>

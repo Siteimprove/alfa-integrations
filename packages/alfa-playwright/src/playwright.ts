@@ -9,7 +9,7 @@ import * as dom from "@siteimprove/alfa-dom/native";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import { JSHandle } from "playwright";
+import type { JSHandle } from "playwright";
 
 /**
  * @public
@@ -35,7 +35,7 @@ export namespace Playwright {
       .evaluateHandle(() => window)
       .then((handle) => handle.evaluate(device.Native.fromWindow));
 
-    let pageDevice = Device.from(deviceJSON);
+    const pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),

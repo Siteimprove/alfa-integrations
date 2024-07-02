@@ -10,8 +10,8 @@ import { Page } from "@siteimprove/alfa-web";
 import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
 
-import { VueWrapper } from "@vue/test-utils";
-import { ComponentPublicInstance, VueElement } from "vue";
+import type { VueWrapper } from "@vue/test-utils";
+import type { ComponentPublicInstance, VueElement } from "vue";
 
 /**
  * @public
@@ -30,7 +30,7 @@ export namespace Vue {
 
     const deviceJSON = device.Native.fromWindow(window);
 
-    let pageDevice = Device.from(deviceJSON);
+    const pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),
