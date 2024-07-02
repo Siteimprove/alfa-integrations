@@ -1,8 +1,8 @@
 import { Command } from "@siteimprove/alfa-command";
 import { Option } from "@siteimprove/alfa-option";
 
-import { Arguments } from "./scrape/arguments";
-import { Flags } from "./scrape/flags";
+import { Arguments } from "./scrape/arguments.js";
+import { Flags } from "./scrape/flags.js";
 
 /**
  * @internal
@@ -16,7 +16,7 @@ export default (parent: Command) =>
     Arguments,
     Option.of(parent),
     () => async (...args) => {
-      const { run } = await import("./scrape/run");
+      const { run } = await import("./scrape/run.js");
       return run(...args);
     }
   );

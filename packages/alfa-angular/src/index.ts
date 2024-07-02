@@ -5,4 +5,4 @@
  * @packageDocumentation
  */
 
-export * from "./angular";
+export * from "./angular.js";

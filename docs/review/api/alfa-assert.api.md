@@ -5,14 +5,14 @@
 ```ts
 
 import { Future } from '@siteimprove/alfa-future';
-import { Hashable } from '@siteimprove/alfa-hash';
-import { Oracle } from '@siteimprove/alfa-act';
+import type { Hashable } from '@siteimprove/alfa-hash';
+import type { Oracle } from '@siteimprove/alfa-act';
 import { Outcome } from '@siteimprove/alfa-act';
-import { Performance } from '@siteimprove/alfa-performance';
+import type { Performance } from '@siteimprove/alfa-performance';
 import { Predicate } from '@siteimprove/alfa-predicate';
-import { Question } from '@siteimprove/alfa-act';
+import type { Question } from '@siteimprove/alfa-act';
 import { Result } from '@siteimprove/alfa-result';
-import { Rule } from '@siteimprove/alfa-act';
+import type { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export class Asserter<I, T extends Hashable, Q extends Question.Metadata, S> {

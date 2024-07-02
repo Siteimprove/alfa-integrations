@@ -11,6 +11,10 @@
     "directory": "packages/alfa-enzyme"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -19,12 +23,12 @@
   ],
   "dependencies": {
     "@siteimprove/alfa-react": "workspace:^",
-    "@siteimprove/alfa-web": "^0.85.1",
+    "@siteimprove/alfa-web": "^0.86.1",
     "@types/enzyme": "^3.10.8",
     "enzyme": "^3.11.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-web": "^0.85.1"
+    "@siteimprove/alfa-web": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

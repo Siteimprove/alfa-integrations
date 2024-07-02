@@ -11,6 +11,10 @@
     "directory": "packages/alfa-jasmine"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,17 +22,17 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
+    "@siteimprove/alfa-act": "^0.86.1",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1",
     "@types/jasmine": "^3.3.12",
     "jasmine": "^3.9.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1"
+    "@siteimprove/alfa-act": "^0.86.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

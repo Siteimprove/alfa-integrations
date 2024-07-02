@@ -1,10 +1,12 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
+  "//":"webdriverio seems to have some inconsistencies in how it includes puppeteer devtools (?!)",
   "compilerOptions": {
     "lib": ["DOM"],
     "esModuleInterop": true,
-    "outDir": "../dist"
+    "outDir": "../dist",
+    "skipLibCheck": true
   },
   "files": ["./index.ts", "./web-element.ts"]
 }

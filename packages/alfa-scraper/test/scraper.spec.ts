@@ -1,13 +1,16 @@
 import { Node, Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
-import * as path from "path";
-import * as url from "url";
-import { Awaiter } from "../dist";
+import * as path from "node:path";
+import * as url from "node:url";
+import { Awaiter } from "../dist/index.js";
 
-import { Scraper } from "../dist/scraper";
+import { Scraper } from "../dist/scraper.js";
 
 const { getElementDescendants } = Query;
 
+// TODO: This should be replaced with import.meta.dirname once we switch to Node 22
+const __filename = url.fileURLToPath(import.meta.url);
+const __dirname = path.dirname(__filename);
 const fixture = path.join(__dirname, "fixture");
 
 function getTestPageFileUrl(fileName: string): string {

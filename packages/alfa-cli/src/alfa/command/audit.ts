@@ -1,8 +1,8 @@
 import { Command } from "@siteimprove/alfa-command";
 import { Option } from "@siteimprove/alfa-option";
 
-import { Arguments } from "./audit/arguments";
-import { Flags } from "./audit/flags";
+import { Arguments } from "./audit/arguments.js";
+import { Flags } from "./audit/flags.js";
 
 /**
  * @internal
@@ -16,7 +16,7 @@ export default (parent: Command) =>
     Arguments,
     Option.of(parent),
     () => async (...args) => {
-      const { run } = await import("./audit/run");
+      const { run } = await import("./audit/run.js");
       return run(...args);
     }
   );

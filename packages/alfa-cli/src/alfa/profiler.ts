@@ -1,4 +1,4 @@
-import * as inspector from "inspector";
+import * as inspector from "node:inspector";
 
 export namespace Profiler {
   const session = new inspector.Session();

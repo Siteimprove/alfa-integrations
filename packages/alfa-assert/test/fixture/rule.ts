@@ -1,5 +1,5 @@
 import { Diagnostic, Question, Rule } from "@siteimprove/alfa-act";
-import { Hashable } from "@siteimprove/alfa-hash";
+import type { Hashable } from "@siteimprove/alfa-hash";
 import { Result, Err } from "@siteimprove/alfa-result";
 
 export const Pass = <T extends Hashable, Q extends Question.Metadata = {}>(

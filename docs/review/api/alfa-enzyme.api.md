@@ -4,8 +4,8 @@
 
 ```ts
 
-import { CommonWrapper } from 'enzyme';
-import { Page } from '@siteimprove/alfa-web';
+import type { CommonWrapper } from 'enzyme';
+import type { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)
 export namespace Enzyme {

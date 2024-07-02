@@ -11,6 +11,10 @@
     "directory": "packages/alfa-command"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,30 +22,30 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-functor": "^0.85.1",
+    "@siteimprove/alfa-functor": "^0.86.1",
     "@siteimprove/alfa-highlight": "^0.64.0",
-    "@siteimprove/alfa-json": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1",
-    "@siteimprove/alfa-option": "^0.85.1",
-    "@siteimprove/alfa-parser": "^0.85.1",
-    "@siteimprove/alfa-predicate": "^0.85.1",
-    "@siteimprove/alfa-refinement": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1",
-    "@siteimprove/alfa-thunk": "^0.85.1"
+    "@siteimprove/alfa-json": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1",
+    "@siteimprove/alfa-option": "^0.86.1",
+    "@siteimprove/alfa-parser": "^0.86.1",
+    "@siteimprove/alfa-predicate": "^0.86.1",
+    "@siteimprove/alfa-refinement": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1",
+    "@siteimprove/alfa-thunk": "^0.86.1"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.85.1"
+    "@siteimprove/alfa-test": "^0.86.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-functor": "^0.85.1",
-    "@siteimprove/alfa-json": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1",
-    "@siteimprove/alfa-option": "^0.85.1",
-    "@siteimprove/alfa-parser": "^0.85.1",
-    "@siteimprove/alfa-predicate": "^0.85.1",
-    "@siteimprove/alfa-refinement": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1",
-    "@siteimprove/alfa-thunk": "^0.85.1"
+    "@siteimprove/alfa-functor": "^0.86.1",
+    "@siteimprove/alfa-json": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1",
+    "@siteimprove/alfa-option": "^0.86.1",
+    "@siteimprove/alfa-parser": "^0.86.1",
+    "@siteimprove/alfa-predicate": "^0.86.1",
+    "@siteimprove/alfa-refinement": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1",
+    "@siteimprove/alfa-thunk": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

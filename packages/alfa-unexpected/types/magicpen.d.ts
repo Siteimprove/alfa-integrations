@@ -57,5 +57,5 @@ declare module "magicpen" {
     }
   }
 
-  export = magicpen;
+  export default magicpen;
 }

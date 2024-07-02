@@ -5,7 +5,7 @@
 ```ts
 
 import { Page } from '@siteimprove/alfa-web';
-import { ReactElement } from 'react';
+import type { ReactElement } from 'react';
 
 // @public (undocumented)
 namespace React_2 {

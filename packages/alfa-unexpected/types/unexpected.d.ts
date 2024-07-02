@@ -1,7 +1,7 @@
 /// <reference path="./magicpen.d.ts" />
 
 declare module "unexpected" {
-  import * as magicpen from "magicpen";
+  import magicpen from "magicpen";
 
   namespace unexpected {
     interface Expect {
@@ -76,5 +76,5 @@ declare module "unexpected" {
 
   const unexpected: unexpected.Expect;
 
-  export = unexpected;
+  export default unexpected;
 }

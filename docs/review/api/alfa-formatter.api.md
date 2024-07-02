@@ -4,12 +4,12 @@
 
 ```ts
 
-import { Future } from '@siteimprove/alfa-future';
-import { Hashable } from '@siteimprove/alfa-hash';
-import { Outcome } from '@siteimprove/alfa-act';
-import { Question } from '@siteimprove/alfa-act';
+import type { Future } from '@siteimprove/alfa-future';
+import type { Hashable } from '@siteimprove/alfa-hash';
+import type { Outcome } from '@siteimprove/alfa-act';
+import type { Question } from '@siteimprove/alfa-act';
 import { Result } from '@siteimprove/alfa-result';
-import { Rule } from '@siteimprove/alfa-act';
+import type { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export type Formatter<I, T extends Hashable, Q extends Question.Metadata = {}, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>, outcomes: Iterable<Outcome<I, T, Q, S>>) => Future.Maybe<string>;

@@ -11,6 +11,10 @@
     "directory": "packages/alfa-interviewer"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,15 +22,15 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1",
-    "@types/node": "^14.14.31"
+    "@siteimprove/alfa-act": "^0.86.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1",
+    "@types/node": "^20.14.9"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1"
+    "@siteimprove/alfa-act": "^0.86.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

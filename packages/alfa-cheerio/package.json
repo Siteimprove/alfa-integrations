@@ -11,6 +11,10 @@
     "directory": "packages/alfa-cheerio"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,18 +22,18 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.85.1",
-    "@siteimprove/alfa-dom": "^0.85.1",
-    "@siteimprove/alfa-http": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1",
-    "cheerio": "^1.0.0-rc.10",
+    "@siteimprove/alfa-device": "^0.86.1",
+    "@siteimprove/alfa-dom": "^0.86.1",
+    "@siteimprove/alfa-http": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1",
+    "cheerio": "^1.0.0-rc.12",
     "domhandler": "^4.2.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.85.1",
-    "@siteimprove/alfa-dom": "^0.85.1",
-    "@siteimprove/alfa-http": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1"
+    "@siteimprove/alfa-device": "^0.86.1",
+    "@siteimprove/alfa-dom": "^0.86.1",
+    "@siteimprove/alfa-http": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

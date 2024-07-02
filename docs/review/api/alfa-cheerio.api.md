@@ -4,8 +4,8 @@
 
 ```ts
 
-import * as cheerio from 'cheerio';
-import * as dom from 'domhandler';
+import type * as cheerio from 'cheerio';
+import type dom from 'domhandler';
 import { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)

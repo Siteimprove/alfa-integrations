@@ -1,15 +1,15 @@
-import { Functor } from "@siteimprove/alfa-functor";
-import { Serializable } from "@siteimprove/alfa-json";
-import { Mapper } from "@siteimprove/alfa-mapper";
+import type { Functor } from "@siteimprove/alfa-functor";
+import type { Serializable } from "@siteimprove/alfa-json";
+import type { Mapper } from "@siteimprove/alfa-mapper";
 import { Option, None } from "@siteimprove/alfa-option";
 import { Parser } from "@siteimprove/alfa-parser";
-import { Predicate } from "@siteimprove/alfa-predicate";
+import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Result, Err } from "@siteimprove/alfa-result";
 import { Refinement } from "@siteimprove/alfa-refinement";
-import { Thunk } from "@siteimprove/alfa-thunk";
+import type { Thunk } from "@siteimprove/alfa-thunk";
 
-import * as json from "@siteimprove/alfa-json";
-import * as parser from "@siteimprove/alfa-parser";
+import type * as json from "@siteimprove/alfa-json";
+import type * as parser from "@siteimprove/alfa-parser";
 
 /**
  * @public

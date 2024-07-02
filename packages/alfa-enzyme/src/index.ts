@@ -1,1 +1,1 @@
-export * from "./enzyme";
+export * from "./enzyme.js";

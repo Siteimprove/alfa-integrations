@@ -11,6 +11,10 @@
     "directory": "packages/alfa-cli"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "bin": {
     "alfa": "bin/alfa.js"
   },
@@ -19,32 +23,32 @@
     "bin/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
+    "@siteimprove/alfa-act": "^0.86.1",
     "@siteimprove/alfa-command": "workspace:^",
-    "@siteimprove/alfa-device": "^0.85.1",
+    "@siteimprove/alfa-device": "^0.86.1",
     "@siteimprove/alfa-formatter": "workspace:^",
-    "@siteimprove/alfa-http": "^0.85.1",
+    "@siteimprove/alfa-http": "^0.86.1",
     "@siteimprove/alfa-interviewer": "workspace:^",
-    "@siteimprove/alfa-iterable": "^0.85.1",
-    "@siteimprove/alfa-option": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1",
-    "@siteimprove/alfa-rules": "^0.85.1",
+    "@siteimprove/alfa-iterable": "^0.86.1",
+    "@siteimprove/alfa-option": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1",
+    "@siteimprove/alfa-rules": "^0.86.1",
     "@siteimprove/alfa-scraper": "workspace:^",
-    "@siteimprove/alfa-time": "^0.85.1",
-    "@siteimprove/alfa-url": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1"
+    "@siteimprove/alfa-time": "^0.86.1",
+    "@siteimprove/alfa-url": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
-    "@siteimprove/alfa-device": "^0.85.1",
-    "@siteimprove/alfa-http": "^0.85.1",
-    "@siteimprove/alfa-iterable": "^0.85.1",
-    "@siteimprove/alfa-option": "^0.85.1",
-    "@siteimprove/alfa-result": "^0.85.1",
-    "@siteimprove/alfa-rules": "^0.85.1",
-    "@siteimprove/alfa-time": "^0.85.1",
-    "@siteimprove/alfa-url": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1"
+    "@siteimprove/alfa-act": "^0.86.1",
+    "@siteimprove/alfa-device": "^0.86.1",
+    "@siteimprove/alfa-http": "^0.86.1",
+    "@siteimprove/alfa-iterable": "^0.86.1",
+    "@siteimprove/alfa-option": "^0.86.1",
+    "@siteimprove/alfa-result": "^0.86.1",
+    "@siteimprove/alfa-rules": "^0.86.1",
+    "@siteimprove/alfa-time": "^0.86.1",
+    "@siteimprove/alfa-url": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

@@ -7,7 +7,7 @@
 /// <reference lib="dom" />
 
 import { Device } from '@siteimprove/alfa-device';
-import { JSHandle } from 'puppeteer';
+import type { JSHandle } from 'puppeteer';
 import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 

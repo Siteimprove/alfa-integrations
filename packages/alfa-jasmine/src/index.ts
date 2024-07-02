@@ -1,1 +1,1 @@
-export * from "./jasmine";
+export * from "./jasmine.js";

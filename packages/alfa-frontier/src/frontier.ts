@@ -1,10 +1,10 @@
-import { Equatable } from "@siteimprove/alfa-equatable";
-import { Serializable } from "@siteimprove/alfa-json";
+import type { Equatable } from "@siteimprove/alfa-equatable";
+import type { Serializable } from "@siteimprove/alfa-json";
 import { Option, None } from "@siteimprove/alfa-option";
 import { Predicate } from "@siteimprove/alfa-predicate";
 import { URL } from "@siteimprove/alfa-url";
 
-import * as json from "@siteimprove/alfa-json";
+import type * as json from "@siteimprove/alfa-json";
 
 const { equals } = Predicate;
 

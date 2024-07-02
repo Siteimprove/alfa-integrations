@@ -1,1 +1,1 @@
-export { default } from "./sarif";
+export { default } from "./sarif.js";

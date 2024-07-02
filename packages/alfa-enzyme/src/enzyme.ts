@@ -1,9 +1,9 @@
 /// <reference types="node" />
 
 import { React } from "@siteimprove/alfa-react";
-import { Page } from "@siteimprove/alfa-web";
+import type { Page } from "@siteimprove/alfa-web";
 
-import { CommonWrapper } from "enzyme";
+import type { CommonWrapper } from "enzyme";
 
 /**
  * @public

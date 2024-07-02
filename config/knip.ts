@@ -14,7 +14,7 @@ const config: KnipConfig = {
         "prettier",
       ],
     },
-    "packages/alfa-cli": { entry: ["bin/alfa.ts!"], project: ["bin/**/*.ts!"] },
+    "packages/alfa-cli": { entry: ["src/alfa.ts!"], project },
     "packages/alfa-webdriver": {
       entry,
       project,

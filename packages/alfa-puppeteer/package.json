@@ -11,6 +11,10 @@
     "directory": "packages/alfa-puppeteer"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
   "files": [
@@ -18,17 +22,17 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.85.1",
-    "@siteimprove/alfa-dom": "^0.85.1",
-    "@siteimprove/alfa-http": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1",
+    "@siteimprove/alfa-device": "^0.86.1",
+    "@siteimprove/alfa-dom": "^0.86.1",
+    "@siteimprove/alfa-http": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1",
     "puppeteer": "^19.9.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.85.1",
-    "@siteimprove/alfa-dom": "^0.85.1",
-    "@siteimprove/alfa-http": "^0.85.1",
-    "@siteimprove/alfa-web": "^0.85.1"
+    "@siteimprove/alfa-device": "^0.86.1",
+    "@siteimprove/alfa-dom": "^0.86.1",
+    "@siteimprove/alfa-http": "^0.86.1",
+    "@siteimprove/alfa-web": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",
