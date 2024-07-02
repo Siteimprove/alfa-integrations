@@ -2936,10 +2936,10 @@ __metadata:
     "@siteimprove/alfa-refinement": ^0.86.0
     "@siteimprove/alfa-test": ^0.86.0
     "@siteimprove/alfa-web": ^0.86.0
-    "@types/react": ^17.0.0
-    "@types/react-test-renderer": ^17.0.0
-    react: ^17.0.2
-    react-test-renderer: ^17.0.2
+    "@types/react": ^18.3.3
+    "@types/react-test-renderer": ^18.3.0
+    react: ^18.3.1
+    react-test-renderer: ^18.3.1
   peerDependencies:
     "@siteimprove/alfa-device": ^0.86.0
     "@siteimprove/alfa-dom": ^0.86.0
@@ -3872,22 +3872,32 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react-test-renderer@npm:^17.0.0":
-  version: 17.0.2
-  resolution: "@types/react-test-renderer@npm:17.0.2"
+"@types/react-test-renderer@npm:^18.3.0":
+  version: 18.3.0
+  resolution: "@types/react-test-renderer@npm:18.3.0"
   dependencies:
-    "@types/react": ^17
-  checksum: 0be325798b6b38cc31fbb11f2f1e1a5578cc3b23eddf1ddd1ab58ccf50966e8f779383084d8bc3a7db3108ad815af8fbae5c0f54329a88d52200e01547d85c33
+    "@types/react": "*"
+  checksum: c53683990bd194cb68e3987bda79c78eff41517f7a747e92f3e54217c2ce3addd031b8a45bf631982c909cc2caeeb905372f322758e05bb76c03754a3f24426e
   languageName: node
   linkType: hard
 
-"@types/react@npm:*, @types/react@npm:^17, @types/react@npm:^17.0.0":
+"@types/react@npm:*":
   version: 17.0.1
   resolution: "@types/react@npm:17.0.1"
   dependencies:
     "@types/prop-types": "*"
     csstype: ^3.0.2
   checksum: 592d7a33898550f2139e69c1bb21397ab6f351f406623397cd7f9a4aea20140c779dd23f2934789d40b0bd87995a86c766434ba07bdd1de9533045d0f3596b68
+  languageName: node
+  linkType: hard
+
+"@types/react@npm:^18.3.3":
+  version: 18.3.3
+  resolution: "@types/react@npm:18.3.3"
+  dependencies:
+    "@types/prop-types": "*"
+    csstype: ^3.0.2
+  checksum: c63d6a78163244e2022b01ef79b0baec4fe4da3475dc4a90bb8accefad35ef0c43560fd0312e5974f92a0f1108aa4d669ac72d73d66396aa060ea03b5d2e3873
   languageName: node
   linkType: hard
 
@@ -11463,14 +11473,21 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"react-is@npm:^17.0.1, react-is@npm:^17.0.2":
+"react-is@npm:^17.0.1":
   version: 17.0.2
   resolution: "react-is@npm:17.0.2"
   checksum: 9d6d111d8990dc98bc5402c1266a808b0459b5d54830bbea24c12d908b536df7883f268a7868cfaedde3dd9d4e0d574db456f84d2e6df9c4526f99bb4b5344d8
   languageName: node
   linkType: hard
 
-"react-shallow-renderer@npm:^16.13.1":
+"react-is@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react-is@npm:18.3.1"
+  checksum: e20fe84c86ff172fc8d898251b7cc2c43645d108bf96d0b8edf39b98f9a2cae97b40520ee7ed8ee0085ccc94736c4886294456033304151c3f94978cec03df21
+  languageName: node
+  linkType: hard
+
+"react-shallow-renderer@npm:^16.15.0":
   version: 16.15.0
   resolution: "react-shallow-renderer@npm:16.15.0"
   dependencies:
@@ -11482,27 +11499,25 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"react-test-renderer@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react-test-renderer@npm:17.0.2"
+"react-test-renderer@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react-test-renderer@npm:18.3.1"
   dependencies:
-    object-assign: ^4.1.1
-    react-is: ^17.0.2
-    react-shallow-renderer: ^16.13.1
-    scheduler: ^0.20.2
+    react-is: ^18.3.1
+    react-shallow-renderer: ^16.15.0
+    scheduler: ^0.23.2
   peerDependencies:
-    react: 17.0.2
-  checksum: e6b5c6ed2a0bde2c34f1ab9523ff9bc4c141a271daf730d6b852374e83acc0155d58ab71a318251e953ebfa65b8bebb9c5dce3eba1ccfcbef7cc4e1e8261c401
+    react: ^18.3.1
+  checksum: e8e58e738835fab3801afb63f6bfe0fcf6e68ea39619fae5bdf47feefc36b1e4acb48c9dd139c7533611466eff1dfce6ffdda4b317e06aee663dda7d91438f26
   languageName: node
   linkType: hard
 
-"react@npm:^17.0.2":
-  version: 17.0.2
-  resolution: "react@npm:17.0.2"
+"react@npm:^18.3.1":
+  version: 18.3.1
+  resolution: "react@npm:18.3.1"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: b254cc17ce3011788330f7bbf383ab653c6848902d7936a87b09d835d091e3f295f7e9dd1597c6daac5dc80f90e778c8230218ba8ad599f74adcc11e33b9d61b
+  checksum: a27bcfa8ff7c15a1e50244ad0d0c1cb2ad4375eeffefd266a64889beea6f6b64c4966c9b37d14ee32d6c9fcd5aa6ba183b6988167ab4d127d13e7cb5b386a376
   languageName: node
   linkType: hard
 
@@ -11950,13 +11965,12 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"scheduler@npm:^0.20.2":
-  version: 0.20.2
-  resolution: "scheduler@npm:0.20.2"
+"scheduler@npm:^0.23.2":
+  version: 0.23.2
+  resolution: "scheduler@npm:0.23.2"
   dependencies:
     loose-envify: ^1.1.0
-    object-assign: ^4.1.1
-  checksum: c4b35cf967c8f0d3e65753252d0f260271f81a81e427241295c5a7b783abf4ea9e905f22f815ab66676f5313be0a25f47be582254db8f9241b259213e999b8fc
+  checksum: 3e82d1f419e240ef6219d794ff29c7ee415fbdc19e038f680a10c067108e06284f1847450a210b29bbaf97b9d8a97ced5f624c31c681248ac84c80d56ad5a2c4
   languageName: node
   linkType: hard
 
