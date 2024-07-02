@@ -1,7 +1,7 @@
 /// <reference types="node" />
 
-import type { Rule, Oracle, Question } from "@siteimprove/alfa-act";
-import type { Hashable } from "@siteimprove/alfa-hash";
+import { Rule, Oracle, Question } from "@siteimprove/alfa-act";
+import { Hashable } from "@siteimprove/alfa-hash";
 import { Result, Err } from "@siteimprove/alfa-result";
 
 /**

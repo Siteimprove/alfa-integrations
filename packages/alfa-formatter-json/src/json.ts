@@ -1,6 +1,6 @@
-import type { Question } from "@siteimprove/alfa-act";
-import type { Formatter } from "@siteimprove/alfa-formatter";
-import type { Hashable } from "@siteimprove/alfa-hash";
+import { Question } from "@siteimprove/alfa-act";
+import { Formatter } from "@siteimprove/alfa-formatter";
+import { Hashable } from "@siteimprove/alfa-hash";
 import { Serializable } from "@siteimprove/alfa-json";
 
 const { stringify } = JSON;

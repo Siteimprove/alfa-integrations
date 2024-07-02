@@ -3,16 +3,15 @@
 import * as fs from "fs";
 
 import { Device } from "@siteimprove/alfa-device";
-import type {
-  Cookie} from "@siteimprove/alfa-http";
 import {
+  Cookie,
   Header,
   Headers,
   Request,
   Response,
 } from "@siteimprove/alfa-http";
 import { Iterable } from "@siteimprove/alfa-iterable";
-import type { Mapper } from "@siteimprove/alfa-mapper";
+import { Mapper } from "@siteimprove/alfa-mapper";
 import { Puppeteer } from "@siteimprove/alfa-puppeteer";
 import { Result, Err } from "@siteimprove/alfa-result";
 import { Timeout } from "@siteimprove/alfa-time";
@@ -23,8 +22,8 @@ import * as puppeteer from "puppeteer";
 
 import { Archive } from "./archive.js";
 import { Awaiter } from "./awaiter.js";
-import type { Credentials } from "./credentials.js";
-import type { Screenshot } from "./screenshot.js";
+import { Credentials } from "./credentials.js";
+import { Screenshot } from "./screenshot.js";
 
 const { entries } = Object;
 const { ceil } = Math;

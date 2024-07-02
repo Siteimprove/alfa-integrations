@@ -4,9 +4,9 @@ import { Array } from "@siteimprove/alfa-array";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import { Option, None } from "@siteimprove/alfa-option";
 import { Promise } from "@siteimprove/alfa-promise";
-import type { Timeout } from "@siteimprove/alfa-time";
+import { Timeout } from "@siteimprove/alfa-time";
 
-import type { Page } from "puppeteer";
+import { Page } from "puppeteer";
 
 /**
  * @public

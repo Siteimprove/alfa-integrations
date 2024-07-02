@@ -3,7 +3,7 @@
 /// <reference types="node" />
 
 import * as path from "path";
-import type * as tty from "tty";
+import * as tty from "tty";
 
 import { Command, Flag } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";

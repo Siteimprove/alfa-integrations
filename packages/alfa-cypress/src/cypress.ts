@@ -7,17 +7,17 @@
 // two being referenced in the same compilation unit as they'd be considered
 // incompatible.
 
-import type { Question } from "@siteimprove/alfa-act";
+import { Question } from "@siteimprove/alfa-act";
 import { Asserter, Handler } from "@siteimprove/alfa-assert";
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";
-import type { Formatter } from "@siteimprove/alfa-formatter";
-import type { Hashable } from "@siteimprove/alfa-hash";
+import { Formatter } from "@siteimprove/alfa-formatter";
+import { Hashable } from "@siteimprove/alfa-hash";
 import { Request, Response } from "@siteimprove/alfa-http";
-import type { Mapper } from "@siteimprove/alfa-mapper";
+import { Mapper } from "@siteimprove/alfa-mapper";
 import { Page } from "@siteimprove/alfa-web";
 
-import type * as act from "@siteimprove/alfa-act";
+import * as act from "@siteimprove/alfa-act";
 import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
 import earl from "@siteimprove/alfa-formatter-earl";
@@ -97,7 +97,7 @@ export namespace Cypress {
 
     const deviceJSON = device.Native.fromWindow(window);
 
-    const pageDevice = Device.from(deviceJSON);
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),

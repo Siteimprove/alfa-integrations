@@ -20,7 +20,7 @@ export namespace JQuery {
 
     const deviceJSON = device.Native.fromWindow(window);
 
-    const pageDevice = Device.from(deviceJSON);
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),

@@ -1,12 +1,12 @@
 import { Marker } from "@siteimprove/alfa-highlight";
-import type { Serializable } from "@siteimprove/alfa-json";
-import type { Mapper } from "@siteimprove/alfa-mapper";
+import { Serializable } from "@siteimprove/alfa-json";
+import { Mapper } from "@siteimprove/alfa-mapper";
 import { Option, None } from "@siteimprove/alfa-option";
 import { Result, Err } from "@siteimprove/alfa-result";
 
-import type * as json from "@siteimprove/alfa-json";
+import * as json from "@siteimprove/alfa-json";
 
-import type { Argument } from "./argument.js";
+import { Argument } from "./argument.js";
 import { Flag } from "./flag.js";
 import { Text } from "./text.js";
 

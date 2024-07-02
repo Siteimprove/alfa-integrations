@@ -1,11 +1,10 @@
 import { Element, Node } from "@siteimprove/alfa-dom";
-import type { Frontier } from "@siteimprove/alfa-frontier";
-import type { Mapper } from "@siteimprove/alfa-mapper";
-import type { Result } from "@siteimprove/alfa-result";
-import type { Screenshot } from "@siteimprove/alfa-scraper";
-import { Scraper } from "@siteimprove/alfa-scraper";
+import { Frontier } from "@siteimprove/alfa-frontier";
+import { Mapper } from "@siteimprove/alfa-mapper";
+import { Result } from "@siteimprove/alfa-result";
+import { Scraper, Screenshot } from "@siteimprove/alfa-scraper";
 import { URL } from "@siteimprove/alfa-url";
-import type { Page } from "@siteimprove/alfa-web";
+import { Page } from "@siteimprove/alfa-web";
 
 const { isElement } = Element;
 

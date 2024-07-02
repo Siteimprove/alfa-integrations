@@ -8,7 +8,7 @@ import { Page } from "@siteimprove/alfa-web";
 import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
 
-import type { JSHandle } from "puppeteer";
+import { JSHandle } from "puppeteer";
 
 /**
  * @public
@@ -27,7 +27,7 @@ export namespace Puppeteer {
       .evaluateHandle(() => window)
       .then((handle) => handle.evaluate(device.Native.fromWindow));
 
-    const pageDevice = Device.from(deviceJSON);
+    let pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),

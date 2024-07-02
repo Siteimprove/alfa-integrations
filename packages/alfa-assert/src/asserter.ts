@@ -1,8 +1,8 @@
-import type { Question, Rule } from "@siteimprove/alfa-act";
-import type { Hashable } from "@siteimprove/alfa-hash";
+import { Question, Rule } from "@siteimprove/alfa-act";
+import { Hashable } from "@siteimprove/alfa-hash";
 
 import { Assertion } from "./assertion.js";
-import type { Handler } from "./handler.js";
+import { Handler } from "./handler.js";
 
 /**
  * @public

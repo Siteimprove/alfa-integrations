@@ -1,8 +1,7 @@
-import type { Question } from "@siteimprove/alfa-act";
-import type { Hashable } from "@siteimprove/alfa-hash";
-import type { Log } from "@siteimprove/alfa-sarif";
-import { Serializable } from "@siteimprove/alfa-sarif";
-import type { Formatter } from "@siteimprove/alfa-formatter";
+import { Question } from "@siteimprove/alfa-act";
+import { Hashable } from "@siteimprove/alfa-hash";
+import { Serializable, Log } from "@siteimprove/alfa-sarif";
+import { Formatter } from "@siteimprove/alfa-formatter";
 
 // This should be the alfa-rules version, but alfa-rules is not
 // imported here. Anyway, checker version should probably be included

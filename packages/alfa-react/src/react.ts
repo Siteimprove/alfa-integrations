@@ -1,11 +1,10 @@
 import { Device } from "@siteimprove/alfa-device";
-import type {
-  Attribute,
-  Node,
-  Text} from "@siteimprove/alfa-dom";
 import {
+  Attribute,
   Document,
   Element,
+  Node,
+  Text,
   Namespace,
 } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
@@ -13,7 +12,7 @@ import { None, Option } from "@siteimprove/alfa-option";
 import { Refinement } from "@siteimprove/alfa-refinement";
 import { Page } from "@siteimprove/alfa-web";
 
-import type { ReactElement } from "react";
+import { ReactElement } from "react";
 import * as TestRenderer from "react-test-renderer";
 
 const { keys } = Object;
