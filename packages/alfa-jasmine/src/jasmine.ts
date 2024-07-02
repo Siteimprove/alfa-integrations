@@ -1,9 +1,10 @@
 /// <reference types="jasmine" />
 
-import { Question, Rule } from "@siteimprove/alfa-act";
-import { Asserter, Handler } from "@siteimprove/alfa-assert";
-import { Hashable } from "@siteimprove/alfa-hash";
-import { Mapper } from "@siteimprove/alfa-mapper";
+import type { Question, Rule } from "@siteimprove/alfa-act";
+import type { Handler } from "@siteimprove/alfa-assert";
+import { Asserter } from "@siteimprove/alfa-assert";
+import type { Hashable } from "@siteimprove/alfa-hash";
+import type { Mapper } from "@siteimprove/alfa-mapper";
 
 import { addAsyncMatcher } from "./jasmine/add-async-matcher.js";
 

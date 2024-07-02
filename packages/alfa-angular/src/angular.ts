@@ -8,7 +8,7 @@ import { Page } from "@siteimprove/alfa-web";
 import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
 
-import { ComponentFixture } from "@angular/core/testing";
+import type { ComponentFixture } from "@angular/core/testing";
 
 /**
  * @public
@@ -21,7 +21,7 @@ export namespace Angular {
 
     const deviceJSON = device.Native.fromWindow(window);
 
-    let pageDevice = Device.from(deviceJSON);
+    const pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),

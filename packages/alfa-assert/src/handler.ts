@@ -1,6 +1,6 @@
-import { Rule, Outcome, Question } from "@siteimprove/alfa-act";
-import { Future } from "@siteimprove/alfa-future";
-import { Hashable } from "@siteimprove/alfa-hash";
+import type { Rule, Outcome, Question } from "@siteimprove/alfa-act";
+import type { Future } from "@siteimprove/alfa-future";
+import type { Hashable } from "@siteimprove/alfa-hash";
 
 /**
  * @public

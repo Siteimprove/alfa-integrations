@@ -1,13 +1,14 @@
-import { Audit, Oracle, Outcome, Question, Rule } from "@siteimprove/alfa-act";
+import type { Oracle, Question, Rule } from "@siteimprove/alfa-act";
+import { Audit, Outcome } from "@siteimprove/alfa-act";
 import { Future } from "@siteimprove/alfa-future";
-import { Hashable } from "@siteimprove/alfa-hash";
+import type { Hashable } from "@siteimprove/alfa-hash";
 import { None } from "@siteimprove/alfa-option";
-import { Performance } from "@siteimprove/alfa-performance";
+import type { Performance } from "@siteimprove/alfa-performance";
 import { Predicate } from "@siteimprove/alfa-predicate";
 import { Result, Err } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 
-import { Handler } from "./handler.js";
+import type { Handler } from "./handler.js";
 
 const { or } = Predicate;
 
