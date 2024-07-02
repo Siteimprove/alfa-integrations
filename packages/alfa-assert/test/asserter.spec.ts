@@ -3,9 +3,9 @@ import { Hashable } from "@siteimprove/alfa-hash";
 import { Option } from "@siteimprove/alfa-option";
 import { test } from "@siteimprove/alfa-test";
 
-import { Asserter } from "../dist/asserter";
+import { Asserter } from "../dist/asserter.js";
 
-import { CantTell, Fail, Pass } from "./fixture/rule";
+import { CantTell, Fail, Pass } from "./fixture/rule.js";
 
 const foo = { value: "foo", hash: () => {} };
 

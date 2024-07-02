@@ -1,7 +1,7 @@
 /// <reference path="../types/unexpected.d.ts" />
 
 import { Hashable } from "@siteimprove/alfa-hash";
-import * as unexpected from "unexpected";
+import unexpected from "unexpected";
 
 import { Question, Rule } from "@siteimprove/alfa-act";
 import { Asserter, Handler } from "@siteimprove/alfa-assert";

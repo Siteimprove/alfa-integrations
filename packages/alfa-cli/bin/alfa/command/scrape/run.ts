@@ -19,8 +19,8 @@ import {
 import { Timeout } from "@siteimprove/alfa-time";
 import { URL } from "@siteimprove/alfa-url";
 
-import type { Arguments } from "./arguments";
-import type { Flags } from "./flags";
+import type { Arguments } from "./arguments.js";
+import type { Flags } from "./flags.js";
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,

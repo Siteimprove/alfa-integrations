@@ -1,1 +1,1 @@
-export * from "./frontier";
+export * from "./frontier.js";

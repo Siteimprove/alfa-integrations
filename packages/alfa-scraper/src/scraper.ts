@@ -20,10 +20,10 @@ import { Page } from "@siteimprove/alfa-web";
 
 import * as puppeteer from "puppeteer";
 
-import { Archive } from "./archive";
-import { Awaiter } from "./awaiter";
-import { Credentials } from "./credentials";
-import { Screenshot } from "./screenshot";
+import { Archive } from "./archive.js";
+import { Awaiter } from "./awaiter.js";
+import { Credentials } from "./credentials.js";
+import { Screenshot } from "./screenshot.js";
 
 const { entries } = Object;
 const { ceil } = Math;

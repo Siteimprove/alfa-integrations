@@ -7,8 +7,8 @@ import { Document, Node } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import * as device from "@siteimprove/alfa-device/dist/native";
-import * as dom from "@siteimprove/alfa-dom/dist/native";
+import * as device from "@siteimprove/alfa-device/native";
+import * as dom from "@siteimprove/alfa-dom/native";
 
 import { Wrapper } from "@vue/test-utils";
 import V from "vue";

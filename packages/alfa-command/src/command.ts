@@ -6,9 +6,9 @@ import { Result, Err } from "@siteimprove/alfa-result";
 
 import * as json from "@siteimprove/alfa-json";
 
-import { Argument } from "./argument";
-import { Flag } from "./flag";
-import { Text } from "./text";
+import { Argument } from "./argument.js";
+import { Flag } from "./flag.js";
+import { Text } from "./text.js";
 
 const { values, entries } = Object;
 

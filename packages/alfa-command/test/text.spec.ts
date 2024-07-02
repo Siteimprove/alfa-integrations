@@ -1,6 +1,6 @@
 import { test } from "@siteimprove/alfa-test";
 
-import { Text } from "../dist/text";
+import { Text } from "../dist/text.js";
 
 test(".indent() indents all lines of text", (t) => {
   const text = `hello world\nhow are you?`;

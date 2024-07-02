@@ -7,7 +7,7 @@ import { Predicate } from "@siteimprove/alfa-predicate";
 import { Result, Err } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 
-import { Handler } from "./handler";
+import { Handler } from "./handler.js";
 
 const { or } = Predicate;
 

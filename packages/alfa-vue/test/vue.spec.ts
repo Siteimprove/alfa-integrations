@@ -1,5 +1,5 @@
 import "jsdom-global/register";
-import * as device from "@siteimprove/alfa-device/dist/native";
+import * as device from "@siteimprove/alfa-device/native";
 import { test } from "@siteimprove/alfa-test";
 
 import { Device } from "@siteimprove/alfa-device";

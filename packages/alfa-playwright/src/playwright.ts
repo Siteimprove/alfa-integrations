@@ -3,9 +3,9 @@
 
 import { Device } from "@siteimprove/alfa-device";
 
-import * as device from "@siteimprove/alfa-device/dist/native";
+import * as device from "@siteimprove/alfa-device/native";
 import { Document, Node } from "@siteimprove/alfa-dom";
-import * as dom from "@siteimprove/alfa-dom/dist/native";
+import * as dom from "@siteimprove/alfa-dom/native";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 

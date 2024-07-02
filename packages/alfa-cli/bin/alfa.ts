@@ -9,10 +9,10 @@ import { Command, Flag } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";
 import { Err } from "@siteimprove/alfa-result";
 
-import * as pkg from "../package.json";
+import pkg from "../package.json";
 
-import audit from "./alfa/command/audit";
-import scrape from "./alfa/command/scrape";
+import audit from "./alfa/command/audit.js";
+import scrape from "./alfa/command/scrape.js";
 
 const {
   argv: [, bin],
