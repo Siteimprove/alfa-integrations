@@ -8,12 +8,12 @@ import { Request, Response } from "@siteimprove/alfa-http";
 import { Rectangle } from "@siteimprove/alfa-rectangle";
 import { Page } from "@siteimprove/alfa-web";
 
-import V from "vue";
+import { defineCustomElement } from "vue";
 import { mount } from "@vue/test-utils";
 
-import { Vue } from "../dist";
+import { Vue } from "../dist/index.js";
 
-export const Button = V.extend({
+export const Button = defineCustomElement({
   template: `
     <button class="btn"></button>
   `,

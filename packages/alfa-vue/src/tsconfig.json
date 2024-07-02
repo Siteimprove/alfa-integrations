@@ -1,7 +1,12 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "compilerOptions": { "esModuleInterop": true, "outDir": "../dist" },
+  "//": "Cheerio needs a release to fix a bug, see https://github.com/cheeriojs/cheerio/issues/3098",
+  "compilerOptions": {
+    "esModuleInterop": true,
+    "outDir": "../dist",
+    "skipLibCheck": true
+  },
   "files": ["./index.ts", "./vue.ts"],
   "references": [{ "path": "../../alfa-cheerio" }]
 }
