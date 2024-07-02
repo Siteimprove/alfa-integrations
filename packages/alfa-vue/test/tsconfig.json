@@ -4,7 +4,7 @@
   "compilerOptions": {
     "esModuleInterop": true,
     "outDir": ".",
-    "skipLibCheck": true,
+    "skipLibCheck": true
   },
   "files": ["./vue.spec.ts"],
   "references": [{ "path": "../src" }]
