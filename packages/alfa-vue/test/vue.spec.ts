@@ -1,4 +1,4 @@
-import "jsdom-global/register";
+import "jsdom-global/register.js";
 import * as device from "@siteimprove/alfa-device/native";
 import { test } from "@siteimprove/alfa-test";
 
