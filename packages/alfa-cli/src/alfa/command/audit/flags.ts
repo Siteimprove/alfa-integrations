@@ -1,6 +1,6 @@
 import { Flag } from "@siteimprove/alfa-command";
 
-import * as scrape from "../scrape/flags.js";
+import * as scrape from "../scrape/flags";
 
 export const Flags = {
   ...scrape.Flags,

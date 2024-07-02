@@ -11,8 +11,8 @@ import { Err } from "@siteimprove/alfa-result";
 
 import pkg from "../package.json";
 
-import audit from "./alfa/command/audit.js";
-import scrape from "./alfa/command/scrape.js";
+import audit from "./alfa/command/audit";
+import scrape from "./alfa/command/scrape";
 
 const {
   argv: [, bin],

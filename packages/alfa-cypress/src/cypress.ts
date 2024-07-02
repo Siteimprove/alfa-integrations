@@ -8,7 +8,7 @@
 // incompatible.
 
 import type { Question } from "@siteimprove/alfa-act";
-import { Asserter, Handler } from "@siteimprove/alfa-assert";
+import { Asserter, type Handler } from "@siteimprove/alfa-assert";
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";
 import type { Formatter } from "@siteimprove/alfa-formatter";

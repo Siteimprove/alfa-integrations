@@ -1,0 +1,17 @@
+{
+  "$schema": "http://json.schemastore.org/tsconfig",
+  "extends": "../tsconfig.json",
+  "compilerOptions": { "outDir": "../bin" },
+  "files": [
+    "alfa.ts",
+    "alfa/command/audit.ts",
+    "alfa/command/audit/arguments.ts",
+    "alfa/command/audit/flags.ts",
+    "alfa/command/audit/run.ts",
+    "alfa/command/scrape.ts",
+    "alfa/command/scrape/arguments.ts",
+    "alfa/command/scrape/flags.ts",
+    "alfa/command/scrape/run.ts",
+    "alfa/profiler.ts"
+  ]
+}
