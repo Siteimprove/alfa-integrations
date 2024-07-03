@@ -1,5 +1,15 @@
 # @siteimprove/alfa-jest
 
+## 0.68.0
+
+### Minor Changes
+
+- - **Breaking:** TS resolution has been changed to `Node16`, target to `es2022`. ([#50](https://github.com/Siteimprove/alfa-integrations/pull/50))
+
+- - **Breaking:** Alfa is now distributed as ESM rather than CJS modules; projects using it must be ESM or use dynamic `import()`. ([#50](https://github.com/Siteimprove/alfa-integrations/pull/50))
+
+    ⚠️ This is the last of a series of changes on the internal structure and build process of distributed packages that was started with v0.67.0.
+
 ## 0.67.0
 
 ### Minor Changes
