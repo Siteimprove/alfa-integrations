@@ -11,6 +11,10 @@
     "directory": "packages/alfa-unexpected"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
   "main": "src/index.js",
   "types": "src/index.d.ts",
   "files": [
@@ -19,18 +23,18 @@
     "types/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
+    "@siteimprove/alfa-act": "^0.86.1",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-future": "^0.85.1",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1",
+    "@siteimprove/alfa-future": "^0.86.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1",
     "unexpected": "^13.0.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.85.1",
-    "@siteimprove/alfa-future": "^0.85.1",
-    "@siteimprove/alfa-hash": "^0.85.1",
-    "@siteimprove/alfa-mapper": "^0.85.1"
+    "@siteimprove/alfa-act": "^0.86.1",
+    "@siteimprove/alfa-future": "^0.86.1",
+    "@siteimprove/alfa-hash": "^0.86.1",
+    "@siteimprove/alfa-mapper": "^0.86.1"
   },
   "publishConfig": {
     "access": "public",

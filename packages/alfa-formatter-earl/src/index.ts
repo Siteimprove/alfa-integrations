@@ -1,1 +1,1 @@
-export { default } from "./earl";
+export { default } from "./earl.js";

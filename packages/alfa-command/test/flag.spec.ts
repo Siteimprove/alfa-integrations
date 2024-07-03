@@ -1,6 +1,6 @@
 import { test } from "@siteimprove/alfa-test";
 
-import { Flag } from "../dist/flag";
+import { Flag } from "../dist/flag.js";
 
 test(".default() constructs a flag with a default value", (t) => {
   const flag = Flag.string("foo", "").default("hello");

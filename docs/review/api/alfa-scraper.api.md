@@ -6,20 +6,20 @@
 
 /// <reference lib="dom" />
 
-import { Cookie } from '@siteimprove/alfa-http';
+import type { Cookie } from '@siteimprove/alfa-http';
 import { Device } from '@siteimprove/alfa-device';
-import { Equatable } from '@siteimprove/alfa-equatable';
+import type { Equatable } from '@siteimprove/alfa-equatable';
 import { Header } from '@siteimprove/alfa-http';
 import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
-import * as json from '@siteimprove/alfa-json';
-import { Mapper } from '@siteimprove/alfa-mapper';
+import type * as json from '@siteimprove/alfa-json';
+import type { Mapper } from '@siteimprove/alfa-mapper';
 import { Option as Option_2 } from '@siteimprove/alfa-option';
-import { Page } from 'puppeteer';
+import type { Page } from 'puppeteer';
 import { Page as Page_2 } from '@siteimprove/alfa-web';
 import { Promise as Promise_2 } from '@siteimprove/alfa-promise';
 import * as puppeteer from 'puppeteer';
 import { Result } from '@siteimprove/alfa-result';
-import { Serializable } from '@siteimprove/alfa-json';
+import type { Serializable } from '@siteimprove/alfa-json';
 import { Timeout } from '@siteimprove/alfa-time';
 import { URL as URL_2 } from '@siteimprove/alfa-url';
 

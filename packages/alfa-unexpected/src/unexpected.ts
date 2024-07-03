@@ -1,12 +1,13 @@
 /// <reference path="../types/unexpected.d.ts" />
 
-import { Hashable } from "@siteimprove/alfa-hash";
-import * as unexpected from "unexpected";
+import type { Hashable } from "@siteimprove/alfa-hash";
+import type unexpected from "unexpected";
 
-import { Question, Rule } from "@siteimprove/alfa-act";
-import { Asserter, Handler } from "@siteimprove/alfa-assert";
-import { Future } from "@siteimprove/alfa-future";
-import { Mapper } from "@siteimprove/alfa-mapper";
+import type { Question, Rule } from "@siteimprove/alfa-act";
+import type { Handler } from "@siteimprove/alfa-assert";
+import { Asserter } from "@siteimprove/alfa-assert";
+import type { Future } from "@siteimprove/alfa-future";
+import type { Mapper } from "@siteimprove/alfa-mapper";
 
 declare module "unexpected" {
   interface Expect {

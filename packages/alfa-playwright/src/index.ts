@@ -1,1 +1,1 @@
-export * from "./playwright";
+export * from "./playwright.js";

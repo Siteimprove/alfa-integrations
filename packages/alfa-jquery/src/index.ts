@@ -1,1 +1,1 @@
-export * from "./jquery";
+export * from "./jquery.js";

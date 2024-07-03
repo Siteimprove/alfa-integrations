@@ -5,12 +5,12 @@
 ```ts
 
 import { Asserter } from '@siteimprove/alfa-assert';
-import { Future } from '@siteimprove/alfa-future';
-import { Handler } from '@siteimprove/alfa-assert';
-import { Hashable } from '@siteimprove/alfa-hash';
-import { Mapper } from '@siteimprove/alfa-mapper';
-import { Question } from '@siteimprove/alfa-act';
-import { Rule } from '@siteimprove/alfa-act';
+import type { Future } from '@siteimprove/alfa-future';
+import type { Handler } from '@siteimprove/alfa-assert';
+import type { Hashable } from '@siteimprove/alfa-hash';
+import type { Mapper } from '@siteimprove/alfa-mapper';
+import type { Question } from '@siteimprove/alfa-act';
+import type { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export namespace Jest {

@@ -1,15 +1,16 @@
-import { Question } from "@siteimprove/alfa-act";
-import { Serializable, EARL } from "@siteimprove/alfa-earl";
-import { Formatter } from "@siteimprove/alfa-formatter";
+import type { Question } from "@siteimprove/alfa-act";
+import type { EARL } from "@siteimprove/alfa-earl";
+import { Serializable } from "@siteimprove/alfa-earl";
+import type { Formatter } from "@siteimprove/alfa-formatter";
 import { Future } from "@siteimprove/alfa-future";
-import { Hashable } from "@siteimprove/alfa-hash";
+import type { Hashable } from "@siteimprove/alfa-hash";
 
 import * as jsonld from "jsonld";
 
 // This should be the alfa-rules version, but alfa-rules is not
 // imported here. Anyway, checker version should probably be included
 // in outcomes serialization rather than hacked here.
-import * as pkg from "@siteimprove/alfa-act/package.json";
+import pkg from "@siteimprove/alfa-act/package.json";
 const version = pkg.version
 
 const { stringify } = JSON;
@@ -26,7 +27,7 @@ export default function <
   return function EARL(input, rules, outcomes) {
     const subject = Serializable.toEARL(input);
 
-    let earl = {
+    const earl = {
       "@context": ACTContext,
       "@graph": [
         assertor,

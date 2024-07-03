@@ -1,1 +1,1 @@
-export * from "./chai";
+export * from "./chai.js";

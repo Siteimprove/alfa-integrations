@@ -4,12 +4,12 @@
 
 ```ts
 
-import { Frontier } from '@siteimprove/alfa-frontier';
-import { Mapper } from '@siteimprove/alfa-mapper';
-import { Page } from '@siteimprove/alfa-web';
-import { Result } from '@siteimprove/alfa-result';
+import type { Frontier } from '@siteimprove/alfa-frontier';
+import type { Mapper } from '@siteimprove/alfa-mapper';
+import type { Page } from '@siteimprove/alfa-web';
+import type { Result } from '@siteimprove/alfa-result';
 import { Scraper } from '@siteimprove/alfa-scraper';
-import { Screenshot } from '@siteimprove/alfa-scraper';
+import type { Screenshot } from '@siteimprove/alfa-scraper';
 import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)

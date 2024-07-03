@@ -4,9 +4,9 @@
 
 ```ts
 
-import { Formatter } from '@siteimprove/alfa-formatter';
-import { Hashable } from '@siteimprove/alfa-hash';
-import { Question } from '@siteimprove/alfa-act';
+import type { Formatter } from '@siteimprove/alfa-formatter';
+import type { Hashable } from '@siteimprove/alfa-hash';
+import type { Question } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 function <I, T extends Hashable, Q extends Question.Metadata, S>(): Formatter<I, T, Q, S>;

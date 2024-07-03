@@ -1,1 +1,1 @@
-export * from "./cheerio";
+export * from "./cheerio.js";
