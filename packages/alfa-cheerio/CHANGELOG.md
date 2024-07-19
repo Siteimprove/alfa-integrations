@@ -1,5 +1,11 @@
 # @siteimprove/alfa-cheerio
 
+## 0.68.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#52](https://github.com/Siteimprove/alfa-integrations/pull/52))
+
 ## 0.68.0
 
 ### Minor Changes
