@@ -1,0 +1,28 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "name": "@siteimprove/alfa-test-utils",
+  "homepage": "https://alfa.siteimprove.com",
+  "version": "0.68.1",
+  "license": "MIT",
+  "description": "Utilities to run Alfa tests and upload results to Siteimprove Intelligence Platform",
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/siteimprove/alfa-integrations.git",
+    "directory": "packages/alfa-test-utils"
+  },
+  "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  }
+}
