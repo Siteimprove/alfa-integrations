@@ -7,7 +7,7 @@
   "description": "An outcome formatter that outputs EARL",
   "repository": {
     "type": "git",
-    "url": "https://github.com/siteimprove/alfa-integrations.git",
+    "url": "git+https://github.com/siteimprove/alfa-integrations.git",
     "directory": "packages/alfa-formatter-earl"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
@@ -22,17 +22,17 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.86.2",
-    "@siteimprove/alfa-earl": "^0.86.2",
+    "@siteimprove/alfa-act": "^0.87.0",
+    "@siteimprove/alfa-earl": "^0.87.0",
     "@siteimprove/alfa-formatter": "workspace:^",
-    "@siteimprove/alfa-future": "^0.86.2",
-    "@siteimprove/alfa-hash": "^0.86.2",
+    "@siteimprove/alfa-future": "^0.87.0",
+    "@siteimprove/alfa-hash": "^0.87.0",
     "jsonld": "^8.3.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-earl": "^0.86.2",
-    "@siteimprove/alfa-future": "^0.86.2",
-    "@siteimprove/alfa-hash": "^0.86.2"
+    "@siteimprove/alfa-earl": "^0.87.0",
+    "@siteimprove/alfa-future": "^0.87.0",
+    "@siteimprove/alfa-hash": "^0.87.0"
   },
   "publishConfig": {
     "access": "public",

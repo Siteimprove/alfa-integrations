@@ -7,7 +7,7 @@
   "description": "Integrations and utilities for the Angular application framework",
   "repository": {
     "type": "git",
-    "url": "https://github.com/siteimprove/alfa-integrations.git",
+    "url": "git+https://github.com/siteimprove/alfa-integrations.git",
     "directory": "packages/alfa-angular"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
@@ -23,18 +23,18 @@
   ],
   "dependencies": {
     "@angular/core": "^11.0.0",
-    "@siteimprove/alfa-device": "^0.86.2",
-    "@siteimprove/alfa-dom": "^0.86.2",
-    "@siteimprove/alfa-http": "^0.86.2",
-    "@siteimprove/alfa-web": "^0.86.2",
+    "@siteimprove/alfa-device": "^0.87.0",
+    "@siteimprove/alfa-dom": "^0.87.0",
+    "@siteimprove/alfa-http": "^0.87.0",
+    "@siteimprove/alfa-web": "^0.87.0",
     "rxjs": "^7.3.0",
     "zone.js": "^0.11.4"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.86.2",
-    "@siteimprove/alfa-dom": "^0.86.2",
-    "@siteimprove/alfa-http": "^0.86.2",
-    "@siteimprove/alfa-web": "^0.86.2"
+    "@siteimprove/alfa-device": "^0.87.0",
+    "@siteimprove/alfa-dom": "^0.87.0",
+    "@siteimprove/alfa-http": "^0.87.0",
+    "@siteimprove/alfa-web": "^0.87.0"
   },
   "publishConfig": {
     "access": "public",

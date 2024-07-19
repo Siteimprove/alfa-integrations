@@ -7,7 +7,7 @@
   "description": "Functionality for translating Cheerio elements into page objects",
   "repository": {
     "type": "git",
-    "url": "https://github.com/siteimprove/alfa-integrations.git",
+    "url": "git+https://github.com/siteimprove/alfa-integrations.git",
     "directory": "packages/alfa-cheerio"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
@@ -22,18 +22,18 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.86.2",
-    "@siteimprove/alfa-dom": "^0.86.2",
-    "@siteimprove/alfa-http": "^0.86.2",
-    "@siteimprove/alfa-web": "^0.86.2",
+    "@siteimprove/alfa-device": "^0.87.0",
+    "@siteimprove/alfa-dom": "^0.87.0",
+    "@siteimprove/alfa-http": "^0.87.0",
+    "@siteimprove/alfa-web": "^0.87.0",
     "cheerio": "^1.0.0-rc.12",
     "domhandler": "^4.2.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.86.2",
-    "@siteimprove/alfa-dom": "^0.86.2",
-    "@siteimprove/alfa-http": "^0.86.2",
-    "@siteimprove/alfa-web": "^0.86.2"
+    "@siteimprove/alfa-device": "^0.87.0",
+    "@siteimprove/alfa-dom": "^0.87.0",
+    "@siteimprove/alfa-http": "^0.87.0",
+    "@siteimprove/alfa-web": "^0.87.0"
   },
   "publishConfig": {
     "access": "public",

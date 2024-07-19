@@ -7,7 +7,7 @@
   "description": "An implementation of a simple crawl frontier that can be persisted to disk",
   "repository": {
     "type": "git",
-    "url": "https://github.com/siteimprove/alfa-integrations.git",
+    "url": "git+https://github.com/siteimprove/alfa-integrations.git",
     "directory": "packages/alfa-frontier"
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
@@ -22,21 +22,21 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-equatable": "^0.86.2",
-    "@siteimprove/alfa-json": "^0.86.2",
-    "@siteimprove/alfa-option": "^0.86.2",
-    "@siteimprove/alfa-predicate": "^0.86.2",
-    "@siteimprove/alfa-url": "^0.86.2"
+    "@siteimprove/alfa-equatable": "^0.87.0",
+    "@siteimprove/alfa-json": "^0.87.0",
+    "@siteimprove/alfa-option": "^0.87.0",
+    "@siteimprove/alfa-predicate": "^0.87.0",
+    "@siteimprove/alfa-url": "^0.87.0"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.86.2"
+    "@siteimprove/alfa-test": "^0.87.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-equatable": "^0.86.2",
-    "@siteimprove/alfa-json": "^0.86.2",
-    "@siteimprove/alfa-option": "^0.86.2",
-    "@siteimprove/alfa-predicate": "^0.86.2",
-    "@siteimprove/alfa-url": "^0.86.2"
+    "@siteimprove/alfa-equatable": "^0.87.0",
+    "@siteimprove/alfa-json": "^0.87.0",
+    "@siteimprove/alfa-option": "^0.87.0",
+    "@siteimprove/alfa-predicate": "^0.87.0",
+    "@siteimprove/alfa-url": "^0.87.0"
   },
   "publishConfig": {
     "access": "public",
