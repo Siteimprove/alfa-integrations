@@ -24,5 +24,14 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "dependencies": {
+    "@siteimprove/alfa-act": "^0.87.2",
+    "@siteimprove/alfa-dom": "^0.87.2",
+    "@siteimprove/alfa-json": "^0.87.2",
+    "@siteimprove/alfa-rules": "^0.87.2",
+    "@siteimprove/alfa-sequence": "^0.87.2",
+    "@siteimprove/alfa-web": "^0.87.2",
+    "axios": "^1.7.2"
   }
 }
