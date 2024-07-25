@@ -1,5 +1,11 @@
 # @siteimprove/alfa-command
 
+## 0.68.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#53](https://github.com/Siteimprove/alfa-integrations/pull/53))
+
 ## 0.68.1
 
 ### Patch Changes
