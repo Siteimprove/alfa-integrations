@@ -1,10 +1,10 @@
-import { Marker } from "@siteimprove/alfa-highlight";
 import type { Serializable } from "@siteimprove/alfa-json";
 import type { Mapper } from "@siteimprove/alfa-mapper";
 import { Option, None } from "@siteimprove/alfa-option";
 import { Result, Err } from "@siteimprove/alfa-result";
 
 import type * as json from "@siteimprove/alfa-json";
+import chalk from "chalk";
 
 import type { Argument } from "./argument.js";
 import { Flag } from "./flag.js";
@@ -19,7 +19,8 @@ export class Command<
   F extends Command.Flags = {},
   A extends Command.Arguments = {},
   S extends Command.Subcommands = {}
-> implements Serializable<Command.JSON> {
+> implements Serializable<Command.JSON>
+{
   public static withArguments<
     F extends Command.Flags,
     A extends Command.Arguments
@@ -92,7 +93,7 @@ export class Command<
     this._description = description;
     this._flags = flags;
     this._arguments = args;
-    this._subcommands = subcommands((this as unknown) as Command);
+    this._subcommands = subcommands(this as unknown as Command);
     this._parent = parent;
     this._run = run?.(this) ?? (async () => Result.of(this._help()));
   }
@@ -283,9 +284,9 @@ export class Command<
 
   private _helpUsage(): string {
     return `
-${Marker.bold("Usage:")}
+${chalk.bold("Usage:")}
 
-  ${Marker.bold("$")} ${this._invocation()} [flags] ${[
+  ${chalk.bold("$")} ${this._invocation()} [flags] ${[
       ...values(this._arguments),
     ]
       .map((argument) =>
@@ -299,7 +300,7 @@ ${Marker.bold("Usage:")}
 
   private _helpVersion(): string {
     return `
-${Marker.bold("Version:")}
+${chalk.bold("Version:")}
 
   ${this._version}
     `.trim();
@@ -314,7 +315,7 @@ ${Marker.bold("Version:")}
 
     return Option.of(
       `
-${Marker.bold("Arguments:")}
+${chalk.bold("Arguments:")}
 
 ${args
   .map((argument) => {
@@ -322,14 +323,14 @@ ${args
 
     let help = "  ";
 
-    help += Marker.bold(`${argument.name}`);
+    help += chalk.bold(`${argument.name}`);
 
     if (!options.optional) {
-      help += " " + Marker.dim("(required)");
+      help += " " + chalk.dim("(required)");
     }
 
     for (const value of options.default) {
-      help += " " + Marker.dim(`[default: ${value}]`);
+      help += " " + chalk.dim(`[default: ${value}]`);
     }
 
     help += "\n";
@@ -351,12 +352,12 @@ ${args
 
     return Option.of(
       `
-${Marker.bold("Commands:")}
+${chalk.bold("Commands:")}
 
 ${[...values(this._subcommands)]
   .map(
     (command) =>
-      `  ${Marker.bold(command.name)}\n${Text.indent(
+      `  ${chalk.bold(command.name)}\n${Text.indent(
         Text.wrap(command.description, 76),
         4
       )}`
@@ -375,7 +376,7 @@ ${[...values(this._subcommands)]
 
     return Option.of(
       `
-${Marker.bold("Flags:")}
+${chalk.bold("Flags:")}
 
 ${[...values(this._flags)]
   .map((flag) => {
@@ -387,23 +388,23 @@ ${[...values(this._flags)]
       help +=
         options.aliases
           .map((alias) =>
-            Marker.bold(alias.length === 1 ? `-${alias}` : `--${alias}`)
+            chalk.bold(alias.length === 1 ? `-${alias}` : `--${alias}`)
           )
           .join(", ") + ", ";
     }
 
-    help += Marker.bold(`--${options.negatable ? "[no-]" : ""}${flag.name}`);
+    help += chalk.bold(`--${options.negatable ? "[no-]" : ""}${flag.name}`);
 
     for (const type of options.type) {
-      help += ` <${Marker.underline(type)}>`;
+      help += ` <${chalk.underline(type)}>`;
     }
 
     if (!options.optional) {
-      help += " " + Marker.dim("(required)");
+      help += " " + chalk.dim("(required)");
     }
 
     for (const value of options.default) {
-      help += " " + Marker.dim(`[default: ${value}]`);
+      help += " " + chalk.dim(`[default: ${value}]`);
     }
 
     help += "\n";
