@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Jasmine](./alfa-jasmine.jasmine.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Jasmine](./alfa-jasmine.jasmine.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

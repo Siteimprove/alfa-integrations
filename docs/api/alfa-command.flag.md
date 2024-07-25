@@ -13,39 +13,194 @@ export declare namespace Flag
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Set](./alfa-command.flag.set.md) | The <code>Set&lt;T&gt;</code> class, from the concept of "flag sets", acts as a container for parsed flag values. As flags can be specified multiple times, this class allows us to encapsulate the current value of a given flag and a parser to parse another instance of the flag value and determine how to combine the two. |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Set](./alfa-command.flag.set.md)
+
+
+</td><td>
+
+The `Set<T>` class, from the concept of "flag sets", acts as a container for parsed flag values. As flags can be specified multiple times, this class allows us to encapsulate the current value of a given flag and a parser to parse another instance of the flag value and determine how to combine the two.
+
+
+</td></tr>
+</tbody></table>
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [boolean(name, description)](./alfa-command.flag.boolean.md) |  |
-|  [empty(name, description)](./alfa-command.flag.empty.md) |  |
-|  [help(description)](./alfa-command.flag.help.md) |  |
-|  [integer(name, description)](./alfa-command.flag.integer.md) |  |
-|  [number(name, description)](./alfa-command.flag.number.md) |  |
-|  [string(name, description)](./alfa-command.flag.string.md) |  |
-|  [version(description)](./alfa-command.flag.version.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[boolean(name, description)](./alfa-command.flag.boolean.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[empty(name, description)](./alfa-command.flag.empty.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[help(description)](./alfa-command.flag.help.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[integer(name, description)](./alfa-command.flag.integer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[number(name, description)](./alfa-command.flag.number.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[string(name, description)](./alfa-command.flag.string.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[version(description)](./alfa-command.flag.version.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-command.flag.json.md) |  |
-|  [Options](./alfa-command.flag.options.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-command.flag.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Options](./alfa-command.flag.options.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Variables
 
-|  Variable | Description |
-|  --- | --- |
-|  [Help](./alfa-command.flag.help.md) |  |
-|  [Version](./alfa-command.flag.version.md) |  |
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Help](./alfa-command.flag.help.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Version](./alfa-command.flag.version.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Parser](./alfa-command.flag.parser.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Parser](./alfa-command.flag.parser.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

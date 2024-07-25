@@ -13,13 +13,48 @@ export declare namespace Angular
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toPage(value)](./alfa-angular.angular.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toPage(value)](./alfa-angular.angular.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-angular.angular.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-angular.angular.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

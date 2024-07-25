@@ -12,9 +12,76 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [description](./alfa-command.flag.json.description.md) |  | string |  |
-|  [name](./alfa-command.flag.json.name.md) |  | string |  |
-|  [options](./alfa-command.flag.json.options.md) |  | { \[key: string\]: json.JSON; type: string \| null; aliases: Array&lt;string&gt;; default: json.JSON \| null; optional: boolean; repeatable: boolean; } |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[description](./alfa-command.flag.json.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./alfa-command.flag.json.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[options](./alfa-command.flag.json.options.md)
+
+
+</td><td>
+
+
+</td><td>
+
+{ \[key: string\]: json.JSON; type: string \| null; aliases: Array&lt;string&gt;; default: json.JSON \| null; optional: boolean; repeatable: boolean; }
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

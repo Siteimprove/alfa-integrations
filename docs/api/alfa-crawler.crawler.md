@@ -13,7 +13,24 @@ export declare namespace Crawler
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [crawl](./alfa-crawler.crawler.crawl.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[crawl](./alfa-crawler.crawler.crawl.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

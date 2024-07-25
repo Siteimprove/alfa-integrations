@@ -12,10 +12,37 @@ choices<U extends T>(...choices: Array<U>): Flag<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  choices | Array&lt;U&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+choices
+
+
+</td><td>
+
+Array&lt;U&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;U&gt;

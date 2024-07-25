@@ -7,15 +7,114 @@
 **Signature:**
 
 ```typescript
-interface Options<I, T extends Hashable, Q, S> 
+interface Options<I, T extends Hashable, Q extends Question.Metadata, S> 
 ```
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [filter?](./alfa-assert.assertion.options.filter.md) | <code>readonly</code> | Predicate&lt;Outcome.Failed&lt;I, T, Q, S&gt;&gt; | _(Optional)_ Predicate for filtering outcomes that should count towards an assertion failure.; only failed outcomes matching this filter will be reported. If left unset, all failed outcomes will be reported |
-|  [filterCantTell?](./alfa-assert.assertion.options.filtercanttell.md) | <code>readonly</code> | Predicate&lt;Outcome.CantTell&lt;I, T, Q, S&gt;&gt; | _(Optional)_ Predicate for filtering cantTell outcome. If left unset, no cantTell outcome will be reported. |
-|  [oracle?](./alfa-assert.assertion.options.oracle.md) | <code>readonly</code> | Oracle&lt;I, T, Q, S&gt; | _(Optional)_ Passing an oracle to the rules evaluation. |
-|  [performance?](./alfa-assert.assertion.options.performance.md) | <code>readonly</code> | Performance&lt;Rule.Event&lt;I, T, Q, S&gt;&gt; | _(Optional)_ Passing a performance listener. |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[filter?](./alfa-assert.assertion.options.filter.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Predicate&lt;Outcome.Failed&lt;I, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_ Predicate for filtering outcomes that should count towards an assertion failure.; only failed outcomes matching this filter will be reported. If left unset, all failed outcomes will be reported
+
+
+</td></tr>
+<tr><td>
+
+[filterCantTell?](./alfa-assert.assertion.options.filtercanttell.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Predicate&lt;Outcome.CantTell&lt;I, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_ Predicate for filtering cantTell outcome. If left unset, no cantTell outcome will be reported.
+
+
+</td></tr>
+<tr><td>
+
+[oracle?](./alfa-assert.assertion.options.oracle.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Oracle&lt;I, T, Q, S&gt;
+
+
+</td><td>
+
+_(Optional)_ Passing an oracle to the rules evaluation.
+
+
+</td></tr>
+<tr><td>
+
+[performance?](./alfa-assert.assertion.options.performance.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+Performance&lt;Rule.Event&lt;I, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_ Passing a performance listener.
+
+
+</td></tr>
+</tbody></table>

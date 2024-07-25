@@ -12,16 +12,125 @@ static withArguments<F extends Command.Flags, A extends Command.Arguments>(name:
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string |  |
-|  version | string |  |
-|  description | string |  |
-|  flags | F |  |
-|  args | A |  |
-|  parent | Option&lt;[Command](./alfa-command.command.md)<!-- -->&gt; | _(Optional)_ |
-|  run | (command: [Command](./alfa-command.command.md)<!-- -->&lt;F, A, {}&gt;) =&gt; [Command.Runner](./alfa-command.command.runner.md)<!-- -->&lt;F, A&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+version
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+description
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+flags
+
+
+</td><td>
+
+F
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+args
+
+
+</td><td>
+
+A
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+parent
+
+
+</td><td>
+
+Option&lt;[Command](./alfa-command.command.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+run
+
+
+</td><td>
+
+(command: [Command](./alfa-command.command.md)<!-- -->&lt;F, A, {}&gt;) =&gt; [Command.Runner](./alfa-command.command.runner.md)<!-- -->&lt;F, A&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Command](./alfa-command.command.md)<!-- -->&lt;F, A, {}&gt;

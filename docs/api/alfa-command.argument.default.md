@@ -12,11 +12,53 @@ default(value: T, label?: string): Argument<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | T |  |
-|  label | string | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+label
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;T&gt;

@@ -7,16 +7,58 @@
 **Signature:**
 
 ```typescript
-function persist<I, T extends Hashable, Q, S>(output: Mapper<I, string>, format?: Formatter<I, T, Q, S>): Handler<I, T, Q, S>;
+function persist<I, T extends Hashable, Q extends Question.Metadata, S>(output: Mapper<I, string>, format?: Formatter<I, T, Q, S>): Handler<I, T, Q, S>;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  output | Mapper&lt;I, string&gt; |  |
-|  format | Formatter&lt;I, T, Q, S&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+output
+
+
+</td><td>
+
+Mapper&lt;I, string&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+format
+
+
+</td><td>
+
+Formatter&lt;I, T, Q, S&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Handler](./alfa-assert.handler.md)<!-- -->&lt;I, T, Q, S&gt;

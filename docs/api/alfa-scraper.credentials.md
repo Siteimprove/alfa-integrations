@@ -13,7 +13,24 @@ export declare namespace Credentials
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-scraper.credentials.json.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-scraper.credentials.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

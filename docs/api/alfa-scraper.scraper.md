@@ -13,7 +13,24 @@ export declare namespace Scraper
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [scrape](./alfa-scraper.scraper.scrape.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[scrape](./alfa-scraper.scraper.scrape.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

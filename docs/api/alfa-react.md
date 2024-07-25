@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [React\_2](./alfa-react.react_2.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[React\_2](./alfa-react.react_2.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

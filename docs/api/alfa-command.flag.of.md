@@ -12,12 +12,65 @@ static of<T>(name: string, description: string, parse: Flag.Parser<T, [Predicate
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string |  |
-|  description | string |  |
-|  parse | [Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T, \[Predicate&lt;string&gt;\]&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+description
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+parse
+
+
+</td><td>
+
+[Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T, \[Predicate&lt;string&gt;\]&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;T&gt;

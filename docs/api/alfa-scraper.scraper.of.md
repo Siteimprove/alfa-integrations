@@ -12,10 +12,39 @@ static of(browser?: Promise<puppeteer.Browser>): Promise<Scraper>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  browser | Promise&lt;puppeteer.Browser&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+browser
+
+
+</td><td>
+
+Promise&lt;puppeteer.Browser&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->&gt;

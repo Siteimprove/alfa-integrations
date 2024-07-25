@@ -6,13 +6,50 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Formatter](./alfa-formatter.formatter.md) |  |
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Formatter](./alfa-formatter.formatter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Formatter](./alfa-formatter.formatter.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Formatter](./alfa-formatter.formatter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

@@ -12,7 +12,34 @@ enum Format
 
 ## Enumeration Members
 
-|  Member | Value | Description |
-|  --- | --- | --- |
-|  MHTML | <code>&quot;mhtml&quot;</code> |  |
+<table><thead><tr><th>
 
+Member
+
+
+</th><th>
+
+Value
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+MHTML
+
+
+</td><td>
+
+`"mhtml"`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

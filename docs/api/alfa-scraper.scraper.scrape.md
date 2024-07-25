@@ -12,7 +12,24 @@ namespace scrape
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Options](./alfa-scraper.scraper.scrape.options.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Options](./alfa-scraper.scraper.scrape.options.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

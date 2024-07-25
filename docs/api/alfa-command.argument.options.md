@@ -12,9 +12,76 @@ interface Options
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [default](./alfa-command.argument.options.default.md) |  | Option&lt;string&gt; |  |
-|  [optional](./alfa-command.argument.options.optional.md) |  | boolean |  |
-|  [repeatable](./alfa-command.argument.options.repeatable.md) |  | boolean |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[default](./alfa-command.argument.options.default.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Option&lt;string&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[optional](./alfa-command.argument.options.optional.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[repeatable](./alfa-command.argument.options.repeatable.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

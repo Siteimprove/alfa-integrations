@@ -6,13 +6,50 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Frontier](./alfa-frontier.frontier.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Frontier](./alfa-frontier.frontier.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Frontier](./alfa-frontier.frontier.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Frontier](./alfa-frontier.frontier.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

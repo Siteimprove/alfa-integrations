@@ -13,25 +13,126 @@ export declare namespace Command
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Arguments](./alfa-command.command.arguments.md) |  |
-|  [Flags](./alfa-command.command.flags.md) |  |
-|  [Input](./alfa-command.command.input.md) |  |
-|  [JSON](./alfa-command.command.json.md) |  |
-|  [Subcommands](./alfa-command.command.subcommands.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Arguments](./alfa-command.command.arguments.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Flags](./alfa-command.command.flags.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Input](./alfa-command.command.input.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[JSON](./alfa-command.command.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Subcommands](./alfa-command.command.subcommands.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Arguments](./alfa-command.command.arguments.md) |  |
-|  [Flags](./alfa-command.command.flags.md) |  |
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Arguments](./alfa-command.command.arguments.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Flags](./alfa-command.command.flags.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Output](./alfa-command.command.output.md) |  |
-|  [Runner](./alfa-command.command.runner.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Output](./alfa-command.command.output.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Runner](./alfa-command.command.runner.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

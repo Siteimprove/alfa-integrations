@@ -7,15 +7,58 @@
 **Signature:**
 
 ```typescript
-function toNode(value: Type): Promise<Node>;
+function toNode(value: Type, device?: Device): Promise<Node>;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | [Type](./alfa-puppeteer.puppeteer.type.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+[Type](./alfa-puppeteer.puppeteer.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+device
+
+
+</td><td>
+
+Device
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;Node&gt;

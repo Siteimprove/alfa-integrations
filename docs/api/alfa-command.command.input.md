@@ -12,8 +12,59 @@ interface Input<F extends Flags, A extends Arguments>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [args](./alfa-command.command.input.args.md) |  | [Arguments.Values](./alfa-command.command.arguments.values.md)<!-- -->&lt;A&gt; |  |
-|  [flags](./alfa-command.command.input.flags.md) |  | [Flags.Values](./alfa-command.command.flags.values.md)<!-- -->&lt;F&gt; |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[args](./alfa-command.command.input.args.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Arguments.Values](./alfa-command.command.arguments.values.md)<!-- -->&lt;A&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[flags](./alfa-command.command.input.flags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Flags.Values](./alfa-command.command.flags.values.md)<!-- -->&lt;F&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

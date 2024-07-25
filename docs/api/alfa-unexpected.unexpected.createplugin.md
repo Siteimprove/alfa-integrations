@@ -7,18 +7,88 @@
 **Signature:**
 
 ```typescript
-function createPlugin<I, J, T extends Hashable, Q = never, S = T>(transform: Mapper<I, Future.Maybe<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): unexpected.PluginDefinition;
+function createPlugin<I, J, T extends Hashable, Q extends Question.Metadata = {}, S = T>(transform: Mapper<I, Future.Maybe<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): unexpected.PluginDefinition;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  transform | Mapper&lt;I, Future.Maybe&lt;J&gt;&gt; |  |
-|  rules | Iterable&lt;Rule&lt;J, T, Q, S&gt;&gt; |  |
-|  handlers | Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;J, T, Q, S&gt;&gt; | _(Optional)_ |
-|  options | [Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;J, T, Q, S&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+transform
+
+
+</td><td>
+
+Mapper&lt;I, Future.Maybe&lt;J&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+rules
+
+
+</td><td>
+
+Iterable&lt;Rule&lt;J, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+handlers
+
+
+</td><td>
+
+Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;J, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;J, T, Q, S&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 unexpected.PluginDefinition

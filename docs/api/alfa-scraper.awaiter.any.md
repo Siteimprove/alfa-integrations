@@ -14,10 +14,37 @@ function any(awaiters: Iterable<Awaiter>): Awaiter;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  awaiters | Iterable&lt;[Awaiter](./alfa-scraper.awaiter.md)<!-- -->&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+awaiters
+
+
+</td><td>
+
+Iterable&lt;[Awaiter](./alfa-scraper.awaiter.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Awaiter](./alfa-scraper.awaiter.md)

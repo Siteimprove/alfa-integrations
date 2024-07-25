@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Enzyme](./alfa-enzyme.enzyme.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Enzyme](./alfa-enzyme.enzyme.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

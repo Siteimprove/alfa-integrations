@@ -12,11 +12,110 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [arguments](./alfa-command.command.json.arguments.md) |  | Array&lt;[Argument.JSON](./alfa-command.argument.json.md)<!-- -->&gt; |  |
-|  [description](./alfa-command.command.json.description.md) |  | string |  |
-|  [flags](./alfa-command.command.json.flags.md) |  | Array&lt;[Flag.JSON](./alfa-command.flag.json.md)<!-- -->&gt; |  |
-|  [name](./alfa-command.command.json.name.md) |  | string |  |
-|  [subcommands](./alfa-command.command.json.subcommands.md) |  | Array&lt;[Command.JSON](./alfa-command.command.json.md)<!-- -->&gt; |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[arguments](./alfa-command.command.json.arguments.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[Argument.JSON](./alfa-command.argument.json.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[description](./alfa-command.command.json.description.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[flags](./alfa-command.command.json.flags.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[Flag.JSON](./alfa-command.flag.json.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[name](./alfa-command.command.json.name.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[subcommands](./alfa-command.command.json.subcommands.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;[Command.JSON](./alfa-command.command.json.md)<!-- -->&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

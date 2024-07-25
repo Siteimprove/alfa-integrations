@@ -14,10 +14,39 @@ function animations(after?: Awaiter): Awaiter;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  after | [Awaiter](./alfa-scraper.awaiter.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+after
+
+
+</td><td>
+
+[Awaiter](./alfa-scraper.awaiter.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Awaiter](./alfa-scraper.awaiter.md)

@@ -12,11 +12,53 @@ static with<T>(mapper: Mapper<Crawler, Promise<T>>, scraper?: Promise<Scraper>):
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  mapper | Mapper&lt;[Crawler](./alfa-crawler.crawler.md)<!-- -->, Promise&lt;T&gt;&gt; |  |
-|  scraper | Promise&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+mapper
+
+
+</td><td>
+
+Mapper&lt;[Crawler](./alfa-crawler.crawler.md)<!-- -->, Promise&lt;T&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+scraper
+
+
+</td><td>
+
+Promise&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;T&gt;

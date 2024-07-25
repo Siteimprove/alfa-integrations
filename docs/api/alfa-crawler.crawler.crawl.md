@@ -12,7 +12,24 @@ namespace crawl
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Options](./alfa-crawler.crawler.crawl.options.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Options](./alfa-crawler.crawler.crawl.options.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

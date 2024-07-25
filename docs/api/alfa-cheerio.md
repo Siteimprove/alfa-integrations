@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Cheerio](./alfa-cheerio.cheerio.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Cheerio](./alfa-cheerio.cheerio.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

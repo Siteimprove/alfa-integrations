@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Vue\_2](./alfa-vue.vue_2.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Vue](./alfa-vue.vue.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

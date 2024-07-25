@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Playwright](./alfa-playwright.playwright.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Playwright](./alfa-playwright.playwright.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

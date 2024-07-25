@@ -7,17 +7,74 @@
 **Signature:**
 
 ```typescript
-function createPlugin<T extends Hashable, Q = never, S = T>(rules: Iterable<act.Rule<Page, T, Q, S>>, handlers?: Iterable<Handler<Page, T, Q, S>>, options?: Asserter.Options<Page, T, Q, S>): globalThis.Chai.ChaiPlugin;
+function createPlugin<T extends Hashable, Q extends Question.Metadata = {}, S = T>(rules: Iterable<act.Rule<Page, T, Q, S>>, handlers?: Iterable<Handler<Page, T, Q, S>>, options?: Asserter.Options<Page, T, Q, S>): globalThis.Chai.ChaiPlugin;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  rules | Iterable&lt;act.Rule&lt;Page, T, Q, S&gt;&gt; |  |
-|  handlers | Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;Page, T, Q, S&gt;&gt; | _(Optional)_ |
-|  options | [Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;Page, T, Q, S&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+rules
+
+
+</td><td>
+
+Iterable&lt;act.Rule&lt;Page, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+handlers
+
+
+</td><td>
+
+Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;Page, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;Page, T, Q, S&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 globalThis.Chai.ChaiPlugin

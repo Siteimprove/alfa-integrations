@@ -12,11 +12,53 @@ filter(predicate: Predicate<T>, ifError?: Thunk<string>): Flag<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  predicate | Predicate&lt;T&gt; |  |
-|  ifError | Thunk&lt;string&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+predicate
+
+
+</td><td>
+
+Predicate&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+ifError
+
+
+</td><td>
+
+Thunk&lt;string&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;T&gt;

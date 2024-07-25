@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Unexpected](./alfa-unexpected.unexpected.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Unexpected](./alfa-unexpected.unexpected.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

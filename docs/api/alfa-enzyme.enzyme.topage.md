@@ -12,10 +12,37 @@ function toPage(value: Type): Page;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | [Type](./alfa-enzyme.enzyme.type.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+[Type](./alfa-enzyme.enzyme.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Page

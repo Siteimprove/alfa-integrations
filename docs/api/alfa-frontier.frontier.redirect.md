@@ -14,11 +14,51 @@ redirect(from: string | URL, to: string | URL): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  from | string \| URL |  |
-|  to | string \| URL |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+from
+
+
+</td><td>
+
+string \| URL
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+to
+
+
+</td><td>
+
+string \| URL
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

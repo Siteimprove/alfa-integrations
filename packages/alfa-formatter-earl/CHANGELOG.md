@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter-earl
 
+## 0.68.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#54](https://github.com/Siteimprove/alfa-integrations/pull/54))
+
 ## 0.68.2
 
 ### Patch Changes

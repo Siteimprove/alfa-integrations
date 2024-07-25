@@ -12,11 +12,51 @@ static of<T>(value: T, parse: Flag.Parser<T>): Set<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  value | T |  |
-|  parse | [Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+value
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+parse
+
+
+</td><td>
+
+[Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Set](./alfa-command.flag.set.md)<!-- -->&lt;T&gt;

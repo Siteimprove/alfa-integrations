@@ -13,13 +13,48 @@ export declare namespace Frontier
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [isFrontier(value)](./alfa-frontier.frontier.isfrontier.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[isFrontier(value)](./alfa-frontier.frontier.isfrontier.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-frontier.frontier.json.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-frontier.frontier.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

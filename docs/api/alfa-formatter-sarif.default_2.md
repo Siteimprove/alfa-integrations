@@ -8,7 +8,7 @@
 **Signature:**
 
 ```typescript
-export default function <I, T extends Hashable, Q, S>(): Formatter<I, T, Q, S>;
+export default function <I, T extends Hashable, Q extends Question.Metadata, S>(): Formatter<I, T, Q, S>;
 ```
 **Returns:**
 

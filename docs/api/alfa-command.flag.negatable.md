@@ -12,10 +12,37 @@ negatable(mapper: Mapper<T>): Flag<T>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  mapper | Mapper&lt;T&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+mapper
+
+
+</td><td>
+
+Mapper&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;T&gt;

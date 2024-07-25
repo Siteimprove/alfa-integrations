@@ -13,20 +13,81 @@ export declare namespace Cypress
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [createPlugin(rules, handlers, options)](./alfa-cypress.cypress_2.createplugin.md) |  |
-|  [toPage(value)](./alfa-cypress.cypress_2.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createPlugin(rules, handlers, options)](./alfa-cypress.cypress_2.createplugin.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toPage(value)](./alfa-cypress.cypress_2.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Handler](./alfa-cypress.cypress_2.handler.md) |  |
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Handler](./alfa-cypress.cypress_2.handler.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-cypress.cypress_2.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-cypress.cypress_2.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
