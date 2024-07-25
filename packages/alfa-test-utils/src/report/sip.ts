@@ -64,7 +64,7 @@ export namespace SIP {
     const name = options.testName ?? "Accessibility Code Checker";
 
     const config = {
-      ...params(url, options.apiKey),
+      ...params(url, `${options.userName}:${options.apiKey}`),
       data: JSON.stringify(payload(page, outcomes, title, name)),
     };
 
@@ -125,6 +125,11 @@ export namespace SIP {
    * @public
    */
   export interface Options {
+    /**
+     * The user name to connect to the Siteimprove Intelligence Platform
+     */
+    userName: string;
+
     /**
      * The API key to connect to Siteimprove Intelligence Platform
      */
