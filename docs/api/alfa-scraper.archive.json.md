@@ -12,8 +12,59 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [format](./alfa-scraper.archive.json.format.md) |  | \`${[Format](./alfa-scraper.archive.format.md)<!-- -->}\` |  |
-|  [path](./alfa-scraper.archive.json.path.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[format](./alfa-scraper.archive.json.format.md)
+
+
+</td><td>
+
+
+</td><td>
+
+\`${[Format](./alfa-scraper.archive.format.md)<!-- -->}\`
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[path](./alfa-scraper.archive.json.path.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

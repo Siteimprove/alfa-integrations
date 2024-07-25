@@ -12,7 +12,24 @@ namespace JPEG
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-scraper.screenshot.type.jpeg.json.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-scraper.screenshot.type.jpeg.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

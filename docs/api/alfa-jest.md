@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Jest](./alfa-jest.jest.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Jest](./alfa-jest.jest.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

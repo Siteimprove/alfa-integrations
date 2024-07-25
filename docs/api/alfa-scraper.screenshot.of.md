@@ -12,11 +12,53 @@ static of(path: string, type?: Screenshot.Type): Screenshot;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  path | string |  |
-|  type | [Screenshot.Type](./alfa-scraper.screenshot.type.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+path
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+type
+
+
+</td><td>
+
+[Screenshot.Type](./alfa-scraper.screenshot.type.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Screenshot](./alfa-scraper.screenshot.md)

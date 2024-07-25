@@ -8,7 +8,25 @@ This package provides integrations and utilities for the [Angular](https://angul
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Angular](./alfa-angular.angular.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Angular](./alfa-angular.angular.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

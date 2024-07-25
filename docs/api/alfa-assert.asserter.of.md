@@ -7,17 +7,74 @@
 **Signature:**
 
 ```typescript
-static of<I, T extends Hashable, Q, S>(rules: Iterable<Rule<I, T, Q, S>>, handlers?: Iterable<Handler<I, T, Q, S>>, options?: Asserter.Options<I, T, Q, S>): Asserter<I, T, Q, S>;
+static of<I, T extends Hashable, Q extends Question.Metadata, S>(rules: Iterable<Rule<I, T, Q, S>>, handlers?: Iterable<Handler<I, T, Q, S>>, options?: Asserter.Options<I, T, Q, S>): Asserter<I, T, Q, S>;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  rules | Iterable&lt;Rule&lt;I, T, Q, S&gt;&gt; |  |
-|  handlers | Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;I, T, Q, S&gt;&gt; | _(Optional)_ |
-|  options | [Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;I, T, Q, S&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+rules
+
+
+</td><td>
+
+Iterable&lt;Rule&lt;I, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+handlers
+
+
+</td><td>
+
+Iterable&lt;[Handler](./alfa-assert.handler.md)<!-- -->&lt;I, T, Q, S&gt;&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+[Asserter.Options](./alfa-assert.asserter.options.md)<!-- -->&lt;I, T, Q, S&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Asserter](./alfa-assert.asserter.md)<!-- -->&lt;I, T, Q, S&gt;

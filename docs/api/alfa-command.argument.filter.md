@@ -12,11 +12,53 @@ filter<U extends T>(refinement: Refinement<T, U>, ifError?: Thunk<string>): Argu
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  refinement | Refinement&lt;T, U&gt; |  |
-|  ifError | Thunk&lt;string&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+refinement
+
+
+</td><td>
+
+Refinement&lt;T, U&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+ifError
+
+
+</td><td>
+
+Thunk&lt;string&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;U&gt;

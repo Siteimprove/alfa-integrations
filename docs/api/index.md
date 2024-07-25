@@ -6,30 +6,233 @@
 
 ## Packages
 
-|  Package | Description |
-|  --- | --- |
-|  [@siteimprove/alfa-angular](./alfa-angular.md) | This package provides integrations and utilities for the [Angular](https://angular.io/) application framework. |
-|  [@siteimprove/alfa-assert](./alfa-assert.md) |  |
-|  [@siteimprove/alfa-chai](./alfa-chai.md) |  |
-|  [@siteimprove/alfa-cheerio](./alfa-cheerio.md) |  |
-|  [@siteimprove/alfa-command](./alfa-command.md) |  |
-|  [@siteimprove/alfa-crawler](./alfa-crawler.md) |  |
-|  [@siteimprove/alfa-cypress](./alfa-cypress.md) |  |
-|  [@siteimprove/alfa-enzyme](./alfa-enzyme.md) |  |
-|  [@siteimprove/alfa-formatter](./alfa-formatter.md) |  |
-|  [@siteimprove/alfa-formatter-earl](./alfa-formatter-earl.md) |  |
-|  [@siteimprove/alfa-formatter-json](./alfa-formatter-json.md) |  |
-|  [@siteimprove/alfa-formatter-sarif](./alfa-formatter-sarif.md) |  |
-|  [@siteimprove/alfa-frontier](./alfa-frontier.md) |  |
-|  [@siteimprove/alfa-interviewer](./alfa-interviewer.md) |  |
-|  [@siteimprove/alfa-jasmine](./alfa-jasmine.md) |  |
-|  [@siteimprove/alfa-jest](./alfa-jest.md) |  |
-|  [@siteimprove/alfa-jquery](./alfa-jquery.md) |  |
-|  [@siteimprove/alfa-playwright](./alfa-playwright.md) |  |
-|  [@siteimprove/alfa-puppeteer](./alfa-puppeteer.md) |  |
-|  [@siteimprove/alfa-react](./alfa-react.md) |  |
-|  [@siteimprove/alfa-scraper](./alfa-scraper.md) |  |
-|  [@siteimprove/alfa-unexpected](./alfa-unexpected.md) |  |
-|  [@siteimprove/alfa-vue](./alfa-vue.md) |  |
-|  [@siteimprove/alfa-webdriver](./alfa-webdriver.md) |  |
+<table><thead><tr><th>
 
+Package
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[@siteimprove/alfa-angular](./alfa-angular.md)
+
+
+</td><td>
+
+This package provides integrations and utilities for the [Angular](https://angular.io/) application framework.
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-assert](./alfa-assert.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-chai](./alfa-chai.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-cheerio](./alfa-cheerio.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-cli](./alfa-cli.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-command](./alfa-command.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-crawler](./alfa-crawler.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-cypress](./alfa-cypress.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-enzyme](./alfa-enzyme.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-formatter](./alfa-formatter.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-formatter-earl](./alfa-formatter-earl.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-formatter-json](./alfa-formatter-json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-formatter-sarif](./alfa-formatter-sarif.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-frontier](./alfa-frontier.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-interviewer](./alfa-interviewer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-jasmine](./alfa-jasmine.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-jest](./alfa-jest.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-jquery](./alfa-jquery.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-playwright](./alfa-playwright.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-puppeteer](./alfa-puppeteer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-react](./alfa-react.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-scraper](./alfa-scraper.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-unexpected](./alfa-unexpected.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[@siteimprove/alfa-vue](./alfa-vue.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -12,8 +12,59 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [quality](./alfa-scraper.screenshot.type.jpeg.json.quality.md) |  | number |  |
-|  [type](./alfa-scraper.screenshot.type.jpeg.json.type.md) |  | "jpeg" |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[quality](./alfa-scraper.screenshot.type.jpeg.json.quality.md)
+
+
+</td><td>
+
+
+</td><td>
+
+number
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./alfa-scraper.screenshot.type.jpeg.json.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+"jpeg"
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [JQuery\_2](./alfa-jquery.jquery_2.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JQuery\_2](./alfa-jquery.jquery_2.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

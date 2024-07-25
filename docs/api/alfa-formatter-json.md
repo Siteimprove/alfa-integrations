@@ -6,7 +6,25 @@
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [default\_2()](./alfa-formatter-json.default_2.md) |  |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[default\_2()](./alfa-formatter-json.default_2.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

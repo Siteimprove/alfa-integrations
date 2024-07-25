@@ -13,23 +13,108 @@ export declare namespace Argument
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [boolean(name, description)](./alfa-command.argument.boolean.md) |  |
-|  [integer(name, description)](./alfa-command.argument.integer.md) |  |
-|  [number(name, description)](./alfa-command.argument.number.md) |  |
-|  [string(name, description)](./alfa-command.argument.string.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[boolean(name, description)](./alfa-command.argument.boolean.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[integer(name, description)](./alfa-command.argument.integer.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[number(name, description)](./alfa-command.argument.number.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[string(name, description)](./alfa-command.argument.string.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-command.argument.json.md) |  |
-|  [Options](./alfa-command.argument.options.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-command.argument.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Options](./alfa-command.argument.options.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Parser](./alfa-command.argument.parser.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Parser](./alfa-command.argument.parser.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

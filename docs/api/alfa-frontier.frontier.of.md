@@ -12,11 +12,53 @@ static of(scope: string | URL, seed?: Iterable<string | URL>): Frontier;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  scope | string \| URL |  |
-|  seed | Iterable&lt;string \| URL&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+scope
+
+
+</td><td>
+
+string \| URL
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+seed
+
+
+</td><td>
+
+Iterable&lt;string \| URL&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Frontier](./alfa-frontier.frontier.md)

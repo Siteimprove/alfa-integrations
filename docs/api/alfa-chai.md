@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Chai\_2](./alfa-chai.chai_2.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Chai\_2](./alfa-chai.chai_2.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

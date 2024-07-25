@@ -12,11 +12,53 @@ static with<T>(mapper: Mapper<Scraper, Promise<T>>, browser?: Promise<puppeteer.
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  mapper | Mapper&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->, Promise&lt;T&gt;&gt; |  |
-|  browser | Promise&lt;puppeteer.Browser&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+mapper
+
+
+</td><td>
+
+Mapper&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->, Promise&lt;T&gt;&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+browser
+
+
+</td><td>
+
+Promise&lt;puppeteer.Browser&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;T&gt;

@@ -7,16 +7,58 @@
 **Signature:**
 
 ```typescript
-function load<I, T extends Hashable, Q = never, S = T>(name: string, defaultScope?: string): Promise<Result<Interviewer<I, T, Q, S>, string>>;
+function load<I, T extends Hashable, Q extends Question.Metadata = {}, S = T>(name: string, defaultScope?: string): Promise<Result<Interviewer<I, T, Q, S>, string>>;
 ```
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string |  |
-|  defaultScope | string | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+defaultScope
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;Result&lt;[Interviewer](./alfa-interviewer.interviewer.md)<!-- -->&lt;I, T, Q, S&gt;, string&gt;&gt;

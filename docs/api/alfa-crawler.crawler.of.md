@@ -12,10 +12,39 @@ static of(scraper?: Promise<Scraper>): Promise<Crawler>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  scraper | Promise&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+scraper
+
+
+</td><td>
+
+Promise&lt;[Scraper](./alfa-scraper.scraper.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 Promise&lt;[Crawler](./alfa-crawler.crawler.md)<!-- -->&gt;

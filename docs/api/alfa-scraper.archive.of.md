@@ -12,11 +12,53 @@ static of(path: string, format?: Archive.Format): Archive;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  path | string |  |
-|  format | [Archive.Format](./alfa-scraper.archive.format.md) | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+path
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+format
+
+
+</td><td>
+
+[Archive.Format](./alfa-scraper.archive.format.md)
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Archive](./alfa-scraper.archive.md)

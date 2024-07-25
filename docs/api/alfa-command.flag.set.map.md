@@ -12,10 +12,37 @@ map<U>(mapper: Mapper<T, U>): Set<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  mapper | Mapper&lt;T, U&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+mapper
+
+
+</td><td>
+
+Mapper&lt;T, U&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Set](./alfa-command.flag.set.md)<!-- -->&lt;U&gt;

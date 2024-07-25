@@ -12,7 +12,24 @@ namespace Handler
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [persist(output, format)](./alfa-cypress.cypress_2.handler.persist.md) |  |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[persist(output, format)](./alfa-cypress.cypress_2.handler.persist.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

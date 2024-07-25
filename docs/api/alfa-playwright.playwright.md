@@ -13,14 +13,57 @@ export declare namespace Playwright
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toNode(value)](./alfa-playwright.playwright.tonode.md) |  |
-|  [toPage(value)](./alfa-playwright.playwright.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toNode(value, device)](./alfa-playwright.playwright.tonode.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toPage(value)](./alfa-playwright.playwright.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-playwright.playwright.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-playwright.playwright.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

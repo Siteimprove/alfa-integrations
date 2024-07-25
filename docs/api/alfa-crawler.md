@@ -6,13 +6,50 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Crawler](./alfa-crawler.crawler.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Crawler](./alfa-crawler.crawler.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Crawler](./alfa-crawler.crawler.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Crawler](./alfa-crawler.crawler.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

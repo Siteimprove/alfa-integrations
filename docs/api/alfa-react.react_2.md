@@ -13,13 +13,48 @@ export declare namespace React
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toPage(value)](./alfa-react.react_2.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toPage(value)](./alfa-react.react_2.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-react.react_2.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-react.react_2.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

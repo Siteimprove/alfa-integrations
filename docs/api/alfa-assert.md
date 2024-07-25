@@ -6,21 +6,95 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Asserter](./alfa-assert.asserter.md) |  |
-|  [Assertion](./alfa-assert.assertion.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Asserter](./alfa-assert.asserter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Assertion](./alfa-assert.assertion.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [Handler](./alfa-assert.handler.md) |  |
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Handler](./alfa-assert.handler.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Asserter](./alfa-assert.asserter.md) |  |
-|  [Assertion](./alfa-assert.assertion.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Asserter](./alfa-assert.asserter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Assertion](./alfa-assert.assertion.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

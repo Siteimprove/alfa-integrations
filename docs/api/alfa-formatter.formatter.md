@@ -8,5 +8,5 @@
 **Signature:**
 
 ```typescript
-export type Formatter<I, T extends Hashable, Q = never, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>, outcomes: Iterable<Outcome<I, T, Q, S>>) => Future.Maybe<string>;
+export type Formatter<I, T extends Hashable, Q extends Question.Metadata = {}, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>, outcomes: Iterable<Outcome<I, T, Q, S>>) => Future.Maybe<string>;
 ```

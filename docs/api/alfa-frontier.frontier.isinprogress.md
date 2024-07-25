@@ -12,10 +12,37 @@ isInProgress(url: string | URL): boolean;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  url | string \| URL |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+url
+
+
+</td><td>
+
+string \| URL
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 boolean

@@ -6,7 +6,25 @@
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Puppeteer](./alfa-puppeteer.puppeteer.md) |  |
+<table><thead><tr><th>
 
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Puppeteer](./alfa-puppeteer.puppeteer.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

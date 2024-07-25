@@ -8,5 +8,5 @@
 **Signature:**
 
 ```typescript
-export type Interviewer<I, T extends Hashable, Q = never, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;
+export type Interviewer<I, T extends Hashable, Q extends Question.Metadata = {}, S = T> = (input: I, rules: Iterable<Rule<I, T, Q, S>>) => Oracle<I, T, Q, S>;
 ```

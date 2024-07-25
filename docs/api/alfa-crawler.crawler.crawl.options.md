@@ -13,7 +13,44 @@ interface Options extends Omit<Scraper.scrape.Options, "screenshot">
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [screenshot?](./alfa-crawler.crawler.crawl.options.screenshot.md) |  | Mapper&lt;URL, Screenshot&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[screenshot?](./alfa-crawler.crawler.crawl.options.screenshot.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Mapper&lt;URL, Screenshot&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>

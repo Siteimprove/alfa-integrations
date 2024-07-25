@@ -13,7 +13,24 @@ export declare namespace Jasmine
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [createPlugin(transform, rules, handlers, options)](./alfa-jasmine.jasmine.createplugin.md) |  |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createPlugin(transform, rules, handlers, options)](./alfa-jasmine.jasmine.createplugin.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

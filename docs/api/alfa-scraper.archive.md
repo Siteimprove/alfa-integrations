@@ -13,13 +13,48 @@ export declare namespace Archive
 
 ## Enumerations
 
-|  Enumeration | Description |
-|  --- | --- |
-|  [Format](./alfa-scraper.archive.format.md) |  |
+<table><thead><tr><th>
+
+Enumeration
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Format](./alfa-scraper.archive.format.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Interfaces
 
-|  Interface | Description |
-|  --- | --- |
-|  [JSON](./alfa-scraper.archive.json.md) |  |
+<table><thead><tr><th>
 
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-scraper.archive.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

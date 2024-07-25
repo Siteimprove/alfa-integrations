@@ -15,15 +15,109 @@ class Set<T> implements Functor<T>
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [parse](./alfa-command.flag.set.parse.md) | <code>readonly</code> | [Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T&gt; |  |
-|  [value](./alfa-command.flag.set.value.md) | <code>readonly</code> | T |  |
+<table><thead><tr><th>
+
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[parse](./alfa-command.flag.set.parse.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+[Flag.Parser](./alfa-command.flag.parser.md)<!-- -->&lt;T&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[value](./alfa-command.flag.set.value.md)
+
+
+</td><td>
+
+`readonly`
+
+
+</td><td>
+
+T
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Methods
 
-|  Method | Modifiers | Description |
-|  --- | --- | --- |
-|  [map(mapper)](./alfa-command.flag.set.map.md) |  |  |
-|  [of(value, parse)](./alfa-command.flag.set.of.md) | <code>static</code> |  |
+<table><thead><tr><th>
 
+Method
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[map(mapper)](./alfa-command.flag.set.map.md)
+
+
+</td><td>
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[of(value, parse)](./alfa-command.flag.set.of.md)
+
+
+</td><td>
+
+`static`
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

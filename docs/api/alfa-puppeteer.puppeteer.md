@@ -13,14 +13,57 @@ export declare namespace Puppeteer
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toNode(value)](./alfa-puppeteer.puppeteer.tonode.md) |  |
-|  [toPage(value)](./alfa-puppeteer.puppeteer.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toNode(value, device)](./alfa-puppeteer.puppeteer.tonode.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[toPage(value)](./alfa-puppeteer.puppeteer.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-puppeteer.puppeteer.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-puppeteer.puppeteer.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

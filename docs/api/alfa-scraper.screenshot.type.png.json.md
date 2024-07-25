@@ -12,8 +12,59 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [background](./alfa-scraper.screenshot.type.png.json.background.md) |  | boolean |  |
-|  [type](./alfa-scraper.screenshot.type.png.json.type.md) |  | "png" |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[background](./alfa-scraper.screenshot.type.png.json.background.md)
+
+
+</td><td>
+
+
+</td><td>
+
+boolean
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./alfa-scraper.screenshot.type.png.json.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+"png"
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

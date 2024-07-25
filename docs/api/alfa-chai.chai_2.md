@@ -13,7 +13,24 @@ export declare namespace Chai
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [createPlugin(transform, rules, handlers, options)](./alfa-chai.chai_2.createplugin.md) |  |
+<table><thead><tr><th>
 
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[createPlugin(transform, rules, handlers, options)](./alfa-chai.chai_2.createplugin.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

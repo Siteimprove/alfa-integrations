@@ -13,13 +13,48 @@ export declare namespace Enzyme
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toPage(value)](./alfa-enzyme.enzyme.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toPage(value)](./alfa-enzyme.enzyme.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-enzyme.enzyme.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-enzyme.enzyme.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

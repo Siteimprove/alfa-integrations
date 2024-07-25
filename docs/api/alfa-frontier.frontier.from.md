@@ -12,10 +12,37 @@ static from(json: Frontier.JSON): Frontier;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  json | [Frontier.JSON](./alfa-frontier.frontier.json.md) |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+json
+
+
+</td><td>
+
+[Frontier.JSON](./alfa-frontier.frontier.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Frontier](./alfa-frontier.frontier.md)

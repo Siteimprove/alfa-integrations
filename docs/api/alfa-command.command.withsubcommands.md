@@ -12,16 +12,125 @@ static withSubcommands<F extends Command.Flags, S extends Command.Subcommands>(n
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  name | string |  |
-|  version | string |  |
-|  description | string |  |
-|  flags | F |  |
-|  subcommands | Mapper&lt;[Command](./alfa-command.command.md)<!-- -->, S&gt; |  |
-|  parent | Option&lt;[Command](./alfa-command.command.md)<!-- -->&gt; | _(Optional)_ |
-|  run | (command: [Command](./alfa-command.command.md)<!-- -->&lt;F, {}, S&gt;) =&gt; [Command.Runner](./alfa-command.command.runner.md)<!-- -->&lt;F, {}&gt; | _(Optional)_ |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+name
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+version
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+description
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+flags
+
+
+</td><td>
+
+F
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+subcommands
+
+
+</td><td>
+
+Mapper&lt;[Command](./alfa-command.command.md)<!-- -->, S&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+parent
+
+
+</td><td>
+
+Option&lt;[Command](./alfa-command.command.md)<!-- -->&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+run
+
+
+</td><td>
+
+(command: [Command](./alfa-command.command.md)<!-- -->&lt;F, {}, S&gt;) =&gt; [Command.Runner](./alfa-command.command.runner.md)<!-- -->&lt;F, {}&gt;
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Command](./alfa-command.command.md)<!-- -->&lt;F, {}, S&gt;

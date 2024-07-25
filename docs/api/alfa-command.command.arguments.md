@@ -12,7 +12,24 @@ namespace Arguments
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Values](./alfa-command.command.arguments.values.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Values](./alfa-command.command.arguments.values.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

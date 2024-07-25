@@ -6,26 +6,145 @@
 
 ## Classes
 
-|  Class | Description |
-|  --- | --- |
-|  [Archive](./alfa-scraper.archive.md) |  |
-|  [Credentials](./alfa-scraper.credentials.md) |  |
-|  [Scraper](./alfa-scraper.scraper.md) |  |
-|  [Screenshot](./alfa-scraper.screenshot.md) |  |
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Archive](./alfa-scraper.archive.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Credentials](./alfa-scraper.credentials.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Scraper](./alfa-scraper.scraper.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Screenshot](./alfa-scraper.screenshot.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Namespaces
 
-|  Namespace | Description |
-|  --- | --- |
-|  [Archive](./alfa-scraper.archive.md) |  |
-|  [Awaiter](./alfa-scraper.awaiter.md) |  |
-|  [Credentials](./alfa-scraper.credentials.md) |  |
-|  [Scraper](./alfa-scraper.scraper.md) |  |
-|  [Screenshot](./alfa-scraper.screenshot.md) |  |
+<table><thead><tr><th>
+
+Namespace
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Archive](./alfa-scraper.archive.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Awaiter](./alfa-scraper.awaiter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Credentials](./alfa-scraper.credentials.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Scraper](./alfa-scraper.scraper.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+<tr><td>
+
+[Screenshot](./alfa-scraper.screenshot.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Awaiter](./alfa-scraper.awaiter.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Awaiter](./alfa-scraper.awaiter.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>

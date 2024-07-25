@@ -8,5 +8,5 @@
 **Signature:**
 
 ```typescript
-export interface Handler<I, T extends Hashable, Q, S> 
+export interface Handler<I, T extends Hashable, Q extends Question.Metadata, S> 
 ```

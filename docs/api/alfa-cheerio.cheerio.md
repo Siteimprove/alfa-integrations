@@ -13,13 +13,48 @@ export declare namespace Cheerio
 
 ## Functions
 
-|  Function | Description |
-|  --- | --- |
-|  [toPage(value)](./alfa-cheerio.cheerio.topage.md) |  |
+<table><thead><tr><th>
+
+Function
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[toPage(value)](./alfa-cheerio.cheerio.topage.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 
 ## Type Aliases
 
-|  Type Alias | Description |
-|  --- | --- |
-|  [Type](./alfa-cheerio.cheerio.type.md) |  |
+<table><thead><tr><th>
 
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Type](./alfa-cheerio.cheerio.type.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

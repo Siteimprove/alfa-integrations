@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-interface Options<I, T extends Hashable, Q, S> extends Assertion.Options<I, T, Q, S> 
+interface Options<I, T extends Hashable, Q extends Question.Metadata, S> extends Assertion.Options<I, T, Q, S> 
 ```
 **Extends:** [Assertion.Options](./alfa-assert.assertion.options.md)<!-- -->&lt;I, T, Q, S&gt;
 

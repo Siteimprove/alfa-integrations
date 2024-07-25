@@ -12,10 +12,37 @@ run(input: Array<string> | Command.Input<F, A>): Command.Output;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  input | Array&lt;string&gt; \| [Command.Input](./alfa-command.command.input.md)<!-- -->&lt;F, A&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+input
+
+
+</td><td>
+
+Array&lt;string&gt; \| [Command.Input](./alfa-command.command.input.md)<!-- -->&lt;F, A&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Command.Output](./alfa-command.command.output.md)

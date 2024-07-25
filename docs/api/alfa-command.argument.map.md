@@ -12,10 +12,37 @@ map<U>(mapper: Mapper<T, U>): Argument<U>;
 
 ## Parameters
 
-|  Parameter | Type | Description |
-|  --- | --- | --- |
-|  mapper | Mapper&lt;T, U&gt; |  |
+<table><thead><tr><th>
 
+Parameter
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+mapper
+
+
+</td><td>
+
+Mapper&lt;T, U&gt;
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;U&gt;

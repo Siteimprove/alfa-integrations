@@ -12,8 +12,59 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [path](./alfa-scraper.screenshot.json.path.md) |  | string |  |
-|  [type](./alfa-scraper.screenshot.json.type.md) |  | [Type.JSON](./alfa-scraper.screenshot.type.json.md) |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[path](./alfa-scraper.screenshot.json.path.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[type](./alfa-scraper.screenshot.json.type.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Type.JSON](./alfa-scraper.screenshot.type.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>

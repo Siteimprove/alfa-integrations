@@ -12,8 +12,59 @@ interface JSON
 
 ## Properties
 
-|  Property | Modifiers | Type | Description |
-|  --- | --- | --- | --- |
-|  [items](./alfa-frontier.frontier.json.items.md) |  | Array&lt;Item.JSON&gt; |  |
-|  [scope](./alfa-frontier.frontier.json.scope.md) |  | string |  |
+<table><thead><tr><th>
 
+Property
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Type
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[items](./alfa-frontier.frontier.json.items.md)
+
+
+</td><td>
+
+
+</td><td>
+
+Array&lt;Item.JSON&gt;
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[scope](./alfa-frontier.frontier.json.scope.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+
+</td></tr>
+</tbody></table>
