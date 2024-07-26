@@ -1967,7 +1967,6 @@ __metadata:
   resolution: "@siteimprove/alfa-command@workspace:packages/alfa-command"
   dependencies:
     "@siteimprove/alfa-functor": ^0.88.0
-    "@siteimprove/alfa-highlight": ^0.64.0
     "@siteimprove/alfa-json": ^0.88.0
     "@siteimprove/alfa-mapper": ^0.88.0
     "@siteimprove/alfa-option": ^0.88.0
@@ -1977,6 +1976,7 @@ __metadata:
     "@siteimprove/alfa-result": ^0.88.0
     "@siteimprove/alfa-test": ^0.88.0
     "@siteimprove/alfa-thunk": ^0.88.0
+    chalk: ^5.3.0
   peerDependencies:
     "@siteimprove/alfa-functor": ^0.88.0
     "@siteimprove/alfa-json": ^0.88.0
@@ -2254,6 +2254,7 @@ __metadata:
     "@siteimprove/alfa-formatter": "workspace:^"
     "@siteimprove/alfa-future": ^0.88.0
     "@siteimprove/alfa-hash": ^0.88.0
+    "@siteimprove/alfa-rules": ^0.88.0
     "@types/jsonld": ^1.5.14
     jsonld: ^8.3.2
   peerDependencies:
@@ -2284,6 +2285,7 @@ __metadata:
     "@siteimprove/alfa-act": ^0.88.0
     "@siteimprove/alfa-formatter": "workspace:^"
     "@siteimprove/alfa-hash": ^0.88.0
+    "@siteimprove/alfa-rules": ^0.88.0
     "@siteimprove/alfa-sarif": ^0.88.0
   languageName: unknown
   linkType: soft
@@ -2374,15 +2376,6 @@ __metadata:
     "@siteimprove/alfa-json": ^0.88.0
     "@siteimprove/alfa-refinement": ^0.88.0
   checksum: 3d81d492ecdadb20514f947be187492b507d011d385c3469b365b63768d3e436565c54c29dfce6f622c1cb891c75b65a231242063d9e5c03165cfe782f4f471e
-  languageName: node
-  linkType: hard
-
-"@siteimprove/alfa-highlight@npm:^0.64.0":
-  version: 0.64.0
-  resolution: "@siteimprove/alfa-highlight@npm:0.64.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-highlight%2F0.64.0%2F247467d9e1acc3e0d8ba947f936ddff16e3fb609"
-  dependencies:
-    chalk: ^4.1.2
-  checksum: 55c852e09597e85ce90b60b888a133893ca9287429414eb429559d9cbd4eb91aaea3ba707a4187f7e7cb3b47423f59db155f69b8cebbc10f8db113b5a63fbdab
   languageName: node
   linkType: hard
 
@@ -3090,20 +3083,6 @@ __metadata:
   checksum: f0b2c1f17743900967e0152c470e3929b51903cba8f5f6a2dbbd2b4d5281c34df46e8877b6837c41f560305f1398190d8f51ae63c60b2a6d9f20569f16f54b8b
   languageName: node
   linkType: hard
-
-"@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils":
-  version: 0.0.0-use.local
-  resolution: "@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils"
-  dependencies:
-    "@siteimprove/alfa-act": ^0.88.0
-    "@siteimprove/alfa-dom": ^0.88.0
-    "@siteimprove/alfa-json": ^0.88.0
-    "@siteimprove/alfa-rules": ^0.88.0
-    "@siteimprove/alfa-sequence": ^0.88.0
-    "@siteimprove/alfa-web": ^0.88.0
-    axios: ^1.7.2
-  languageName: unknown
-  linkType: soft
 
 "@siteimprove/alfa-test@npm:^0.88.0":
   version: 0.88.0
@@ -4509,17 +4488,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.7.2":
-  version: 1.7.2
-  resolution: "axios@npm:1.7.2"
-  dependencies:
-    follow-redirects: ^1.15.6
-    form-data: ^4.0.0
-    proxy-from-env: ^1.1.0
-  checksum: e457e2b0ab748504621f6fa6609074ac08c824bf0881592209dfa15098ece7e88495300e02cd22ba50b3468fd712fe687e629dcb03d6a3f6a51989727405aedf
-  languageName: node
-  linkType: hard
-
 "b4a@npm:^1.6.4":
   version: 1.6.6
   resolution: "b4a@npm:1.6.6"
@@ -5253,7 +5221,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"combined-stream@npm:^1.0.6, combined-stream@npm:^1.0.8, combined-stream@npm:~1.0.6":
+"combined-stream@npm:^1.0.6, combined-stream@npm:~1.0.6":
   version: 1.0.8
   resolution: "combined-stream@npm:1.0.8"
   dependencies:
@@ -6821,16 +6789,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"follow-redirects@npm:^1.15.6":
-  version: 1.15.6
-  resolution: "follow-redirects@npm:1.15.6"
-  peerDependenciesMeta:
-    debug:
-      optional: true
-  checksum: a62c378dfc8c00f60b9c80cab158ba54e99ba0239a5dd7c81245e5a5b39d10f0c35e249c3379eae719ff0285fff88c365dd446fab19dee771f1d76252df1bbf5
-  languageName: node
-  linkType: hard
-
 "for-each@npm:^0.3.3":
   version: 0.3.3
   resolution: "for-each@npm:0.3.3"
@@ -6861,17 +6819,6 @@ __metadata:
   version: 2.1.4
   resolution: "form-data-encoder@npm:2.1.4"
   checksum: e0b3e5950fb69b3f32c273944620f9861f1933df9d3e42066e038e26dfb343d0f4465de9f27e0ead1a09d9df20bc2eed06a63c2ca2f8f00949e7202bae9e29dd
-  languageName: node
-  linkType: hard
-
-"form-data@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "form-data@npm:4.0.0"
-  dependencies:
-    asynckit: ^0.4.0
-    combined-stream: ^1.0.8
-    mime-types: ^2.1.12
-  checksum: 01135bf8675f9d5c61ff18e2e2932f719ca4de964e3be90ef4c36aacfc7b9cb2fceb5eca0b7e0190e3383fe51c5b37f4cb80b62ca06a99aaabfcfd6ac7c9328c
   languageName: node
   linkType: hard
 

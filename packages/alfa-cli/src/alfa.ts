@@ -9,7 +9,7 @@ import { Command, Flag } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";
 import { Err } from "@siteimprove/alfa-result";
 
-import pkg from "../package.json";
+import * as pkg from "./pkg.js";
 
 import audit from "./alfa/command/audit.js";
 import scrape from "./alfa/command/scrape.js";

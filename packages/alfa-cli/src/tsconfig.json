@@ -12,7 +12,8 @@
     "alfa/command/scrape/arguments.ts",
     "alfa/command/scrape/flags.ts",
     "alfa/command/scrape/run.ts",
-    "alfa/profiler.ts"
+    "alfa/profiler.ts",
+    "pkg.ts"
   ],
   "references": [
     { "path": "../../alfa-command" },

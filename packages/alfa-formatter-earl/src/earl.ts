@@ -4,14 +4,9 @@ import { Serializable } from "@siteimprove/alfa-earl";
 import type { Formatter } from "@siteimprove/alfa-formatter";
 import { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
+import { alfaVersion as version } from "@siteimprove/alfa-rules";
 
 import * as jsonld from "jsonld";
-
-// This should be the alfa-rules version, but alfa-rules is not
-// imported here. Anyway, checker version should probably be included
-// in outcomes serialization rather than hacked here.
-import pkg from "@siteimprove/alfa-act/package.json";
-const version = pkg.version
 
 const { stringify } = JSON;
 
