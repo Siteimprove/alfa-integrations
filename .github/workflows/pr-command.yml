@@ -30,9 +30,18 @@ jobs:
           # We use versions 14 and 16 in the integrate workflow
           node-version: 16
 
+      - name: Set up token for Github packages
+        run: >
+          yarn config set
+          npmScopes.siteimprove.npmAuthToken
+          ${{ secrets.GITHUB_TOKEN }}
+
       - name: "Install dependencies"
         if: env.PR_COMMAND_WILL_RUN == 'true'
         run: yarn install --immutable
+
+      - name: Clean secret
+        run: git restore .yarnrc.yml
 
       - name: "React to command"
         uses: siteimprove/pr-command/check-run/run@v2.4
