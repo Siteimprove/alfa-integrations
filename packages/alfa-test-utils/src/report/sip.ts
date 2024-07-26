@@ -128,7 +128,7 @@ export namespace SIP {
    */
   export interface Options {
     /**
-     * The user name to connect to the Siteimprove Intelligence Platform
+     * The username to connect to the Siteimprove Intelligence Platform
      */
     userName: string;
 
