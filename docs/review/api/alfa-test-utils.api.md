@@ -14,7 +14,10 @@ export namespace SIP {
     const // @internal (undocumented)
     defaultURL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     // @internal
-    export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, url: string, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
+    export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, overload: {
+        url?: string;
+        timestamp?: number;
+    }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
     // (undocumented)
     export interface Options {
         apiKey: string;
@@ -33,7 +36,7 @@ export namespace SIP {
         };
     };
     // @internal
-    export function payload(page: Page, outcomes: Iterable<alfaOutcome>, PageTitle: string, TestName: string): {
+    export function payload(page: Page, outcomes: Iterable<alfaOutcome>, PageTitle: string, TestName: string, timestamp: number): {
         RequestTimeStampMilliseconds: number;
         Version: string;
         CheckResult: string;
@@ -44,7 +47,10 @@ export namespace SIP {
     // Warning: (ae-forgotten-export) The symbol "alfaOutcome" needs to be exported by the entry point index.d.ts
     export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options): Promise<string>;
     // @internal
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, url: string): Promise<string>;
+    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, overload: {
+        url?: string;
+        timestamp?: number;
+    }): Promise<string>;
 }
 
 // (No @packageDocumentation comment for this package)
