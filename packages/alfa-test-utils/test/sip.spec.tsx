@@ -25,8 +25,7 @@ test(".payload() creates empty-ish payload", (t) => {
   const document = h.document([<span></span>]);
 
   const page = makePage(document);
-  const actual = SIP.payload(page, [], "title", "name");
-  actual.RequestTimeStampMilliseconds = 0; // overwriting the unstable one
+  const actual = SIP.payload(page, [], "title", "name", 0);
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
@@ -57,8 +56,7 @@ test(".payload serialises outcomes as string", async (t) => {
 
   const outcomes = await rule.evaluate(page);
 
-  const actual = SIP.payload(page, outcomes, "title", "name");
-  actual.RequestTimeStampMilliseconds = 0; // overwriting the unstable one
+  const actual = SIP.payload(page, outcomes, "title", "name", 0);
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
@@ -101,13 +99,13 @@ test(".axiosConfig() creates axios config", (t) => {
     page,
     [],
     { userName: "foo@foo.com", apiKey: "bar" },
-    "https://foo.com"
+    { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "Unnamed page", "Accessibility Code Checker")
+      SIP.payload(page, [], "Unnamed page", "Accessibility Code Checker", 0)
     ),
   });
 });
@@ -119,12 +117,12 @@ test(".axiosConfig() uses test name if provided", (t) => {
     page,
     [],
     { userName: "foo@foo.com", apiKey: "bar", testName: "test name" },
-    "https://foo.com"
+    { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(SIP.payload(page, [], "Unnamed page", "test name")),
+    data: JSON.stringify(SIP.payload(page, [], "Unnamed page", "test name", 0)),
   });
 });
 
@@ -135,13 +133,13 @@ test(".axiosConfig() uses explicit title if provided", (t) => {
     page,
     [],
     { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
-    "https://foo.com"
+    { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "page title", "Accessibility Code Checker")
+      SIP.payload(page, [], "page title", "Accessibility Code Checker", 0)
     ),
   });
 });
@@ -153,13 +151,13 @@ test(".axiosConfig() uses page's title if it exists", (t) => {
     page,
     [],
     { userName: "foo@foo.com", apiKey: "bar" },
-    "https://foo.com"
+    { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "Hello", "Accessibility Code Checker")
+      SIP.payload(page, [], "Hello", "Accessibility Code Checker", 0)
     ),
   });
 });
@@ -171,13 +169,13 @@ test(".axiosConfig() uses explicit title over page's title", (t) => {
     page,
     [],
     { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
-    "https://foo.com"
+    { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "page title", "Accessibility Code Checker")
+      SIP.payload(page, [], "page title", "Accessibility Code Checker", 0)
     ),
   });
 });

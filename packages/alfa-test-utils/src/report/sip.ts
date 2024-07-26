@@ -41,7 +41,9 @@ export namespace SIP {
   ): Promise<string>;
 
   /**
-   * Internal overload for tests, allowing a custom upload URL.
+   * Internal overload for tests, allowing
+   * * a custom upload URL (use stage /dev URLs); and
+   * * mocking timestamp (timestamp stability).
    *
    * @internal
    */
@@ -49,16 +51,16 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    url: string
+    overload: { url?: string; timestamp?: number }
   ): Promise<string>;
 
   export async function upload(
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    url: string = defaultURL
+    overload: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = axiosConfig(page, outcomes, options, url);
+    const config = axiosConfig(page, outcomes, options, overload);
 
     let pageReportURL: string | undefined = undefined;
 
@@ -82,10 +84,12 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    url: string,
+    overload: { url?: string; timestamp?: number },
     defaultTitle = "Unnamed page",
     defaultName = "Accessibility Code Checker"
   ): AxiosRequestConfig {
+    const { url = defaultURL, timestamp = Date.now() } = overload;
+
     const title =
       options.pageTitle ??
       Query.getElementDescendants(page.document)
@@ -98,7 +102,7 @@ export namespace SIP {
 
     return {
       ...params(url, `${options.userName}:${options.apiKey}`),
-      data: JSON.stringify(payload(page, outcomes, title, name)),
+      data: JSON.stringify(payload(page, outcomes, title, name, timestamp)),
     };
   }
 
@@ -111,10 +115,11 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     PageTitle: string,
-    TestName: string
+    TestName: string,
+    timestamp: number
   ) {
     return {
-      RequestTimeStampMilliseconds: Date.now(),
+      RequestTimeStampMilliseconds: timestamp,
       Version: alfaVersion,
       CheckResult: JSON.stringify(
         Sequence.from(outcomes).toJSON({
