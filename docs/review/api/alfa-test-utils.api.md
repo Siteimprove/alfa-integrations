@@ -11,6 +11,8 @@ import { Page } from '@siteimprove/alfa-web';
 
 // @public
 export namespace SIP {
+    const // @internal (undocumented)
+    defaultURL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     // @internal
     export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, url: string, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
     // (undocumented)

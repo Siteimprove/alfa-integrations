@@ -24,6 +24,11 @@ type alfaOutcome = Outcome<
  */
 export namespace SIP {
   /**
+   * @internal
+   */
+  export const defaultURL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+
+  /**
    * Upload the results of an accessibility check to the Siteimprove Intelligence
    * Platform (SIP) API.
    *
@@ -51,7 +56,7 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    url: string = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck"
+    url: string = defaultURL
   ): Promise<string> {
     const config = axiosConfig(page, outcomes, options, url);
 

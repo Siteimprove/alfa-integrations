@@ -3097,6 +3097,7 @@ __metadata:
     "@siteimprove/alfa-test": ^0.88.0
     "@siteimprove/alfa-web": ^0.88.0
     axios: ^1.7.2
+    axios-mock-adapter: ^1.22.0
   languageName: unknown
   linkType: soft
 
@@ -4501,6 +4502,18 @@ __metadata:
   version: 1.12.0
   resolution: "aws4@npm:1.12.0"
   checksum: 68f79708ac7c335992730bf638286a3ee0a645cf12575d557860100767c500c08b30e24726b9f03265d74116417f628af78509e1333575e9f8d52a80edfe8cbc
+  languageName: node
+  linkType: hard
+
+"axios-mock-adapter@npm:^1.22.0":
+  version: 1.22.0
+  resolution: "axios-mock-adapter@npm:1.22.0"
+  dependencies:
+    fast-deep-equal: ^3.1.3
+    is-buffer: ^2.0.5
+  peerDependencies:
+    axios: ">= 0.17.0"
+  checksum: 3c0b1473a8263958f4409525fc4c9872cc1c055b69b0a9dba84084e8827e22e7b0d0241061b512a67c763f2116dee272761dd5907f235e5337df0d18ead00294
   languageName: node
   linkType: hard
 
@@ -7796,6 +7809,13 @@ fsevents@^2.3.2:
     call-bind: ^1.0.2
     has-tostringtag: ^1.0.0
   checksum: c03b23dbaacadc18940defb12c1c0e3aaece7553ef58b162a0f6bba0c2a7e1551b59f365b91e00d2dbac0522392d576ef322628cb1d036a0fe51eb466db67222
+  languageName: node
+  linkType: hard
+
+"is-buffer@npm:^2.0.5":
+  version: 2.0.5
+  resolution: "is-buffer@npm:2.0.5"
+  checksum: 764c9ad8b523a9f5a32af29bdf772b08eb48c04d2ad0a7240916ac2688c983bf5f8504bf25b35e66240edeb9d9085461f9b5dae1f3d2861c6b06a65fe983de42
   languageName: node
   linkType: hard
 
