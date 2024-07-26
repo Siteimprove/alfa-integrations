@@ -26,7 +26,11 @@ export namespace SIP {
   /**
    * @internal
    */
-  export const defaultURL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+  export namespace Defaults {
+    export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+    export const Title = "Unnamed page";
+    export const Name = "Accessibility Code Checker";
+  }
 
   /**
    * Upload the results of an accessibility check to the Siteimprove Intelligence
@@ -42,8 +46,8 @@ export namespace SIP {
 
   /**
    * Internal overload for tests, allowing
-   * * a custom upload URL (use stage /dev URLs); and
-   * * mocking timestamp (timestamp stability).
+   * * a custom upload URL (use stage / dev URLs); and
+   * * mocking timestamp (timestamp stability in tests).
    *
    * @internal
    */
@@ -51,21 +55,20 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    overload: { url?: string; timestamp?: number }
+    override: { url?: string; timestamp?: number }
   ): Promise<string>;
 
   export async function upload(
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    overload: { url?: string; timestamp?: number } = {}
+    override: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = axiosConfig(page, outcomes, options, overload);
+    const config = axiosConfig(page, outcomes, options, override);
 
     let pageReportURL: string | undefined = undefined;
 
     try {
-      // Send the request and get the response URL
       const response: AxiosResponse = await axios.request(config);
       pageReportURL = response.data;
     } catch (error) {
@@ -84,11 +87,11 @@ export namespace SIP {
     page: Page,
     outcomes: Iterable<alfaOutcome>,
     options: Options,
-    overload: { url?: string; timestamp?: number },
-    defaultTitle = "Unnamed page",
-    defaultName = "Accessibility Code Checker"
+    override: { url?: string; timestamp?: number },
+    defaultTitle = Defaults.Title,
+    defaultName = Defaults.Name
   ): AxiosRequestConfig {
-    const { url = defaultURL, timestamp = Date.now() } = overload;
+    const { url = Defaults.URL, timestamp = Date.now() } = override;
 
     const title =
       options.pageTitle ??
@@ -164,7 +167,7 @@ export namespace SIP {
     apiKey: string;
 
     /**
-     * The title of the page. Default to the content of the first `<title>` element,
+     * The title of the page. Defaults to the content of the first `<title>` element,
      * if any
      */
     pageTitle?: string;

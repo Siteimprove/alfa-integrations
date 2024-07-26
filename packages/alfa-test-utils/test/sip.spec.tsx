@@ -92,7 +92,7 @@ test(".params() creates axios config", (t) => {
   });
 });
 
-test(".axiosConfig() creates axios config", (t) => {
+test(".axiosConfig() creates an axios config", (t) => {
   const page = makePage(h.document([<span></span>]));
 
   const actual = SIP.axiosConfig(
@@ -105,7 +105,7 @@ test(".axiosConfig() creates axios config", (t) => {
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "Unnamed page", "Accessibility Code Checker", 0)
+      SIP.payload(page, [], SIP.Defaults.Title, SIP.Defaults.Name, 0)
     ),
   });
 });
@@ -122,7 +122,9 @@ test(".axiosConfig() uses test name if provided", (t) => {
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(SIP.payload(page, [], "Unnamed page", "test name", 0)),
+    data: JSON.stringify(
+      SIP.payload(page, [], SIP.Defaults.Title, "test name", 0)
+    ),
   });
 });
 
@@ -139,7 +141,7 @@ test(".axiosConfig() uses explicit title if provided", (t) => {
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "page title", "Accessibility Code Checker", 0)
+      SIP.payload(page, [], "page title", SIP.Defaults.Name, 0)
     ),
   });
 });
@@ -156,9 +158,7 @@ test(".axiosConfig() uses page's title if it exists", (t) => {
 
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      SIP.payload(page, [], "Hello", "Accessibility Code Checker", 0)
-    ),
+    data: JSON.stringify(SIP.payload(page, [], "Hello", SIP.Defaults.Name, 0)),
   });
 });
 
@@ -175,7 +175,7 @@ test(".axiosConfig() uses explicit title over page's title", (t) => {
   t.deepEqual(actual, {
     ...SIP.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      SIP.payload(page, [], "page title", "Accessibility Code Checker", 0)
+      SIP.payload(page, [], "page title", SIP.Defaults.Name, 0)
     ),
   });
 });
@@ -186,7 +186,7 @@ test(".axiosConfig() uses explicit title over page's title", (t) => {
 const mock = new MockAdapter(axios);
 
 // Everything will be mocked after that, use mock.restore() if needed.
-mock.onPost(SIP.defaultURL).reply(200, "totally an URL");
+mock.onPost(SIP.Defaults.URL).reply(200, "totally an URL");
 
 test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const page = makePage(h.document([<span></span>]));
