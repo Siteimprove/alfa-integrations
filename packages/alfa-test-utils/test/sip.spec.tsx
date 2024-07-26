@@ -76,3 +76,105 @@ test(".payload serialises outcomes as string", async (t) => {
     TestName: "name",
   });
 });
+
+test(".params() creates axios config", (t) => {
+  const actual = SIP.params("url", "key");
+
+  t.deepEqual(actual, {
+    method: "post",
+    maxBodyLength: Infinity,
+    url: "url",
+    headers: {
+      "Content-Type": "application/json",
+      Authorization: "Basic " + Buffer.from("key").toString("base64"),
+    },
+  });
+});
+
+test(".axiosConfig() creates axios config", (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = SIP.axiosConfig(
+    page,
+    [],
+    { userName: "foo@foo.com", apiKey: "bar" },
+    "https://foo.com"
+  );
+
+  t.deepEqual(actual, {
+    ...SIP.params("https://foo.com", "foo@foo.com:bar"),
+    data: JSON.stringify(
+      SIP.payload(page, [], "Unnamed page", "Accessibility Code Checker")
+    ),
+  });
+});
+
+test(".axiosConfig() uses test name if provided", (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = SIP.axiosConfig(
+    page,
+    [],
+    { userName: "foo@foo.com", apiKey: "bar", testName: "test name" },
+    "https://foo.com"
+  );
+
+  t.deepEqual(actual, {
+    ...SIP.params("https://foo.com", "foo@foo.com:bar"),
+    data: JSON.stringify(SIP.payload(page, [], "Unnamed page", "test name")),
+  });
+});
+
+test(".axiosConfig() uses explicit title if provided", (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = SIP.axiosConfig(
+    page,
+    [],
+    { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
+    "https://foo.com"
+  );
+
+  t.deepEqual(actual, {
+    ...SIP.params("https://foo.com", "foo@foo.com:bar"),
+    data: JSON.stringify(
+      SIP.payload(page, [], "page title", "Accessibility Code Checker")
+    ),
+  });
+});
+
+test(".axiosConfig() uses page's title if it exists", (t) => {
+  const page = makePage(h.document([<title>Hello</title>, <span></span>]));
+
+  const actual = SIP.axiosConfig(
+    page,
+    [],
+    { userName: "foo@foo.com", apiKey: "bar" },
+    "https://foo.com"
+  );
+
+  t.deepEqual(actual, {
+    ...SIP.params("https://foo.com", "foo@foo.com:bar"),
+    data: JSON.stringify(
+      SIP.payload(page, [], "Hello", "Accessibility Code Checker")
+    ),
+  });
+});
+
+test(".axiosConfig() uses explicit title over page's title", (t) => {
+  const page = makePage(h.document([<title>ignored</title>, <span></span>]));
+
+  const actual = SIP.axiosConfig(
+    page,
+    [],
+    { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
+    "https://foo.com"
+  );
+
+  t.deepEqual(actual, {
+    ...SIP.params("https://foo.com", "foo@foo.com:bar"),
+    data: JSON.stringify(
+      SIP.payload(page, [], "page title", "Accessibility Code Checker")
+    ),
+  });
+});

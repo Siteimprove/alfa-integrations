@@ -5,7 +5,7 @@ import { alfaVersion, type Flattened as Rule } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { Page } from "@siteimprove/alfa-web";
 
-import type { AxiosResponse } from "axios";
+import type { AxiosResponse, AxiosRequestConfig } from "axios";
 import axios from "axios";
 
 const { Verbosity } = Serializable;
@@ -53,20 +53,7 @@ export namespace SIP {
     options: Options,
     url: string = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck"
   ): Promise<string> {
-    const title =
-      options.pageTitle ??
-      Query.getElementDescendants(page.document)
-        .filter(Element.isElement)
-        .find(Element.hasName("title"))
-        .map((title) => title.textContent())
-        .getOr("Unnamed page");
-
-    const name = options.testName ?? "Accessibility Code Checker";
-
-    const config = {
-      ...params(url, `${options.userName}:${options.apiKey}`),
-      data: JSON.stringify(payload(page, outcomes, title, name)),
-    };
+    const config = axiosConfig(page, outcomes, options, url);
 
     let pageReportURL: string | undefined = undefined;
 
@@ -79,6 +66,35 @@ export namespace SIP {
     }
 
     return pageReportURL ?? "Could not retrieve a page report URL";
+  }
+
+  /**
+   * Prepare the configuration for the axios request
+   *
+   * @internal
+   */
+  export function axiosConfig(
+    page: Page,
+    outcomes: Iterable<alfaOutcome>,
+    options: Options,
+    url: string,
+    defaultTitle = "Unnamed page",
+    defaultName = "Accessibility Code Checker"
+  ): AxiosRequestConfig {
+    const title =
+      options.pageTitle ??
+      Query.getElementDescendants(page.document)
+        .filter(Element.isElement)
+        .find(Element.hasName("title"))
+        .map((title) => title.textContent())
+        .getOr(defaultTitle);
+
+    const name = options.testName ?? defaultName;
+
+    return {
+      ...params(url, `${options.userName}:${options.apiKey}`),
+      data: JSON.stringify(payload(page, outcomes, title, name)),
+    };
   }
 
   /**
