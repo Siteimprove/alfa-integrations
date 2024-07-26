@@ -95,10 +95,12 @@ export namespace SIP {
     return {
       RequestTimeStampMilliseconds: Date.now(),
       Version: alfaVersion,
-      CheckResult: Sequence.from(outcomes).toJSON({
-        verbosity: Verbosity.Minimal,
-      }),
-      Aspects: page.toJSON({ verbosity: Verbosity.High }),
+      CheckResult: JSON.stringify(
+        Sequence.from(outcomes).toJSON({
+          verbosity: Verbosity.Minimal,
+        })
+      ),
+      Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
       PageTitle,
       TestName,
     };
