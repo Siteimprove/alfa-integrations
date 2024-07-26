@@ -11,13 +11,20 @@ import { Page } from '@siteimprove/alfa-web';
 
 // @public
 export namespace SIP {
-    const // @internal (undocumented)
-    defaultURL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     // @internal
-    export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, overload: {
+    export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {
         url?: string;
         timestamp?: number;
     }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
+    // @internal (undocumented)
+    export namespace Defaults {
+        const // (undocumented)
+        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+        const // (undocumented)
+        Title = "Unnamed page";
+        const // (undocumented)
+        Name = "Accessibility Code Checker";
+    }
     // (undocumented)
     export interface Options {
         apiKey: string;
@@ -47,7 +54,7 @@ export namespace SIP {
     // Warning: (ae-forgotten-export) The symbol "alfaOutcome" needs to be exported by the entry point index.d.ts
     export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options): Promise<string>;
     // @internal
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, overload: {
+    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {
         url?: string;
         timestamp?: number;
     }): Promise<string>;
