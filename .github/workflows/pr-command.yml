@@ -40,6 +40,9 @@ jobs:
         if: env.PR_COMMAND_WILL_RUN == 'true'
         run: yarn install --immutable
 
+      - name: Clean secret
+        run: git restore .yarnrc.yml
+
       - name: "React to command"
         uses: siteimprove/pr-command/check-run/run@v2.4
         with:
