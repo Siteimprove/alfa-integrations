@@ -112,7 +112,9 @@ export namespace Awaiter {
       const error = await after(page, timeout);
 
       if (error.isNone()) {
-        await page.waitForTimeout(duration);
+        await new globalThis.Promise(function (resolve) {
+          setTimeout(resolve, duration);
+        });
       }
 
       return error;
