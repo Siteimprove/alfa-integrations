@@ -113,7 +113,6 @@ export const Flags = {
   awaitDuration: Flag.integer(
     "await-duration",
     `The duration to wait before considering the page loaded.
-
     Note that waiting for fixed durations creates race conditions and is less
     reliable than other awaiters. This flag must be used with caution, especially
     in settings where reliability is important (production, automated tests, …)`
