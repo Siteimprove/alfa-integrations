@@ -144,7 +144,7 @@ export namespace Awaiter {
   export function xpath(expression: string): Awaiter {
     return async (page, timeout) => {
       try {
-        await page.waitForXPath(expression, {
+        await page.waitForSelector("xpath/" + expression, {
           timeout: timeout.remaining(),
         });
 
