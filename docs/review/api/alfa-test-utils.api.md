@@ -5,25 +5,44 @@
 ```ts
 
 import type { AxiosRequestConfig } from 'axios';
-import { Flattened } from '@siteimprove/alfa-rules';
+import type { Flattened } from '@siteimprove/alfa-rules';
 import { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
 
 // @public
+export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
+
+// @public
 export namespace SIP {
-    // @internal
-    export function axiosConfig(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {
-        url?: string;
-        timestamp?: number;
-    }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
     // @internal (undocumented)
     export namespace Defaults {
         const // (undocumented)
-        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
         const // (undocumented)
         Title = "Unnamed page";
         const // (undocumented)
         Name = "Accessibility Code Checker";
+    }
+    // @internal
+    export namespace Metadata {
+        export function axiosConfig(page: Page, options: Options, override: {
+            url?: string;
+            timestamp?: number;
+        }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
+        export function params(url: string, apiKey: string): AxiosRequestConfig;
+        // (undocumented)
+        export interface Payload {
+            // (undocumented)
+            PageTitle: string;
+            // (undocumented)
+            RequestTimeStampMilliseconds: number;
+            // (undocumented)
+            TestName: string;
+            // (undocumented)
+            Version: `${number}.${number}.${number}`;
+        }
+        export function payload(PageTitle: string, TestName: string, timestamp: number): Payload;
+            {};
     }
     // (undocumented)
     export interface Options {
@@ -33,25 +52,21 @@ export namespace SIP {
         userName: string;
     }
     // @internal
-    export function params(url: string, apiKey: string): {
-        method: string;
-        maxBodyLength: number;
-        url: string;
-        headers: {
-            "Content-Type": string;
-            Authorization: string;
-        };
-    };
-    // @internal
-    export function payload(page: Page, outcomes: Iterable<alfaOutcome>, PageTitle: string, TestName: string, timestamp: number): {
-        RequestTimeStampMilliseconds: number;
-        Version: string;
-        CheckResult: string;
-        Aspects: string;
-        PageTitle: string;
-        TestName: string;
-    };
-    // Warning: (ae-forgotten-export) The symbol "alfaOutcome" needs to be exported by the entry point index.d.ts
+    export namespace S3 {
+        export function axiosConfig(id: string, url: string, page: Page, outcomes: Iterable<alfaOutcome>): AxiosRequestConfig;
+        export function params(url: string): AxiosRequestConfig;
+        // (undocumented)
+        export interface Payload {
+            // (undocumented)
+            Aspects: string;
+            // (undocumented)
+            CheckResult: string;
+            // (undocumented)
+            Id: string;
+        }
+        export function payload(Id: string, page: Page, outcomes: Iterable<alfaOutcome>): Payload;
+            {};
+    }
     export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options): Promise<string>;
     // @internal
     export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {

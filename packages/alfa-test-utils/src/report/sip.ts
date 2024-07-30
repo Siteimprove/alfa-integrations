@@ -1,21 +1,15 @@
-import { Outcome } from "@siteimprove/alfa-act";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
-import { alfaVersion, type Flattened as Rule } from "@siteimprove/alfa-rules";
+import { alfaVersion } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
-const { Verbosity } = Serializable;
+import type { alfaOutcome } from "../common.js";
 
-type alfaOutcome = Outcome<
-  Rule.Input,
-  Rule.Target,
-  Rule.Question,
-  Rule.Subject
->;
+const { Verbosity } = Serializable;
 
 /**
  * Interacting with Siteimprove Intelligence Platform (SIP) API.
