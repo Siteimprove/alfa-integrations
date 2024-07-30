@@ -5,7 +5,7 @@ import { alfaVersion, type Flattened as Rule } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { Page } from "@siteimprove/alfa-web";
 
-import type { AxiosResponse, AxiosRequestConfig } from "axios";
+import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
 const { Verbosity } = Serializable;
@@ -27,7 +27,8 @@ export namespace SIP {
    * @internal
    */
   export namespace Defaults {
-    export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
+    export const URL =
+      "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
     export const Title = "Unnamed page";
     export const Name = "Accessibility Code Checker";
   }
@@ -64,92 +65,22 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = axiosConfig(page, outcomes, options, override);
-
-    let pageReportURL: string | undefined = undefined;
+    const config = Metadata.axiosConfig(page, options, override);
 
     try {
-      const response: AxiosResponse = await axios.request(config);
-      pageReportURL = response.data;
+      const axiosResponse = await axios.request(config);
+      const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
+
+      const response = await axios.request(
+        S3.axiosConfig(id, preSignedUrl, page, outcomes)
+      );
+
+      return pageReportUrl;
     } catch (error) {
       console.error(error);
     }
 
-    return pageReportURL ?? "Could not retrieve a page report URL";
-  }
-
-  /**
-   * Prepare the configuration for the axios request
-   *
-   * @internal
-   */
-  export function axiosConfig(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
-    options: Options,
-    override: { url?: string; timestamp?: number },
-    defaultTitle = Defaults.Title,
-    defaultName = Defaults.Name
-  ): AxiosRequestConfig {
-    const { url = Defaults.URL, timestamp = Date.now() } = override;
-
-    const title =
-      options.pageTitle ??
-      Query.getElementDescendants(page.document)
-        .filter(Element.isElement)
-        .find(Element.hasName("title"))
-        .map((title) => title.textContent())
-        .getOr(defaultTitle);
-
-    const name = options.testName ?? defaultName;
-
-    return {
-      ...params(url, `${options.userName}:${options.apiKey}`),
-      data: JSON.stringify(payload(page, outcomes, title, name, timestamp)),
-    };
-  }
-
-  /**
-   * Prepare payload with Alfa page and results
-   *
-   * @internal
-   */
-  export function payload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
-    PageTitle: string,
-    TestName: string,
-    timestamp: number
-  ) {
-    return {
-      RequestTimeStampMilliseconds: timestamp,
-      Version: alfaVersion,
-      CheckResult: JSON.stringify(
-        Sequence.from(outcomes).toJSON({
-          verbosity: Verbosity.Minimal,
-        })
-      ),
-      Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
-      PageTitle,
-      TestName,
-    };
-  }
-
-  /**
-   * Configure parameters of axios request
-   *
-   * @internal
-   */
-  export function params(url: string, apiKey: string) {
-    return {
-      method: "post",
-      maxBodyLength: Infinity,
-      url,
-      headers: {
-        "Content-Type": "application/json",
-        Authorization: "Basic " + Buffer.from(apiKey).toString("base64"),
-      },
-    };
+    return "Could not retrieve a page report URL";
   }
 
   /**
@@ -168,7 +99,7 @@ export namespace SIP {
 
     /**
      * The title of the page. Defaults to the content of the first `<title>` element,
-     * if any
+     * if any.
      */
     pageTitle?: string;
 
@@ -180,5 +111,144 @@ export namespace SIP {
      * Defaults to the generic "Accessibility Code Checker" if none is provided.
      */
     testName?: string;
+  }
+
+  /**
+   * Handling the metadata request to the Siteimprove API.
+   *
+   * @internal
+   */
+  export namespace Metadata {
+    interface Payload {
+      RequestTimeStampMilliseconds: number;
+      Version: `${number}.${number}.${number}`;
+      PageTitle: string;
+      TestName: string;
+    }
+
+    /**
+     * Prepare payload with metadata for creating pre-signed URL.
+     */
+    export function payload(
+      PageTitle: string,
+      TestName: string,
+      timestamp: number
+    ): Payload {
+      return {
+        RequestTimeStampMilliseconds: timestamp,
+        Version: alfaVersion,
+        PageTitle,
+        TestName,
+      };
+    }
+
+    /**
+     * Configure parameters of axios request
+     */
+    export function params(url: string, apiKey: string): AxiosRequestConfig {
+      return {
+        method: "post",
+        maxBodyLength: Infinity,
+        url,
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Basic " + Buffer.from(apiKey).toString("base64"),
+        },
+      };
+    }
+
+    /**
+     * Prepare the configuration for the axios request
+     */
+    export function axiosConfig(
+      page: Page,
+      options: Options,
+      override: { url?: string; timestamp?: number },
+      defaultTitle = Defaults.Title,
+      defaultName = Defaults.Name
+    ): AxiosRequestConfig {
+      const { url = Defaults.URL, timestamp = Date.now() } = override;
+
+      const title =
+        options.pageTitle ??
+        Query.getElementDescendants(page.document)
+          .filter(Element.isElement)
+          .find(Element.hasName("title"))
+          .map((title) => title.textContent())
+          .getOr(defaultTitle);
+
+      const name = options.testName ?? defaultName;
+
+      return {
+        ...params(url, `${options.userName}:${options.apiKey}`),
+        data: JSON.stringify(payload(title, name, timestamp)),
+      };
+    }
+  }
+
+  /**
+   * Handling the data request to the pre-signed S3 URL.
+   *
+   * @internal
+   */
+  export namespace S3 {
+    interface Payload {
+      Id: string;
+      CheckResult: string;
+      Aspects: string;
+    }
+
+    /**
+     * Prepare payload with metadata for creating pre-signed URL.
+     */
+    /**
+     * Prepare payload with Alfa page and results
+     *
+     * @internal
+     */
+    export function payload(
+      Id: string,
+      page: Page,
+      outcomes: Iterable<alfaOutcome>
+    ): Payload {
+      return {
+        Id,
+        CheckResult: JSON.stringify(
+          Sequence.from(outcomes).toJSON({
+            verbosity: Verbosity.Minimal,
+          })
+        ),
+        Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
+      };
+    }
+
+    /**
+     * Configure parameters of axios request
+     */
+    export function params(url: string): AxiosRequestConfig {
+      return {
+        method: "put",
+        maxBodyLength: Infinity,
+        url,
+        headers: { "Content-Type": "application/json" },
+      };
+    }
+
+    /**
+     * Prepare the configuration for the axios request
+     */
+    export function axiosConfig(
+      id: string,
+      url: string,
+      page: Page,
+      outcomes: Iterable<alfaOutcome>
+    ): AxiosRequestConfig {
+      return {
+        ...params(url),
+        data: new Blob([JSON.stringify(payload(id, page, outcomes))], {
+          type: "application/json",
+        }),
+      };
+    }
   }
 }
