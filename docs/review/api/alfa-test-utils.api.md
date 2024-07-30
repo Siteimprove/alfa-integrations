@@ -75,6 +75,4 @@ export namespace SIP {
     }): Promise<string>;
 }
 
-// (No @packageDocumentation comment for this package)
-
 ```
