@@ -197,21 +197,29 @@ test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
   });
 });
 
-// // Somehow, importing axios-mock-adapter breaks typing.
-// // Requiring it is fine, but not allowed in an ESM file.
-// // @ts-ignore
-// const mock = new MockAdapter(axios);
-//
-// // Everything will be mocked after that, use mock.restore() if needed.
-// mock.onPost(SIP.Defaults.URL).reply(200, "totally an URL");
-//
-// test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
-//   const page = makePage(h.document([<span></span>]));
-//
-//   const actual = await SIP.upload(page, [], {
-//     userName: "foo@foo.com",
-//     apiKey: "bar",
-//   });
-//
-//   t.deepEqual(actual, "totally an URL");
-// });
+// Somehow, importing axios-mock-adapter breaks typing.
+// Requiring it is fine, but not allowed in an ESM file.
+// @ts-ignore
+const mock = new MockAdapter(axios);
+
+// Everything will be mocked after that, use mock.restore() if needed.
+mock
+  .onPost(SIP.Defaults.URL)
+  .reply(200, {
+    pageReportUrl: "a page report URL",
+    preSignedUrl: "a S3 URL",
+    id: "hello",
+  });
+
+mock.onPut("a S3 URL").reply(200);
+
+test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(page, [], {
+    userName: "foo@foo.com",
+    apiKey: "bar",
+  });
+
+  t.deepEqual(actual, "a page report URL");
+});
