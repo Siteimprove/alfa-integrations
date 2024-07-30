@@ -1,5 +1,11 @@
 # @siteimprove/alfa-command
 
+## 0.68.4
+
+### Patch Changes
+
+- **Changed:** Invoke `chalk` directly instead of the `alfa-highlight` deprecated wrapper. ([#58](https://github.com/Siteimprove/alfa-integrations/pull/58))
+
 ## 0.68.3
 
 ### Patch Changes

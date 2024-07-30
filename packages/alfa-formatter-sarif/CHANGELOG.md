@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter-sarif
 
+## 0.68.4
+
+### Patch Changes
+
+- **Changed:** Alfa version is now read from the exported value in `alfa-rules`. ([#57](https://github.com/Siteimprove/alfa-integrations/pull/57))
+
 ## 0.68.3
 
 ### Patch Changes

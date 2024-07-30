@@ -1,5 +1,7 @@
 # @siteimprove/alfa-jquery
 
+## 0.68.4
+
 ## 0.68.3
 
 ### Patch Changes

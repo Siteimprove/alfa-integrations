@@ -1,5 +1,19 @@
 # Alfa integrations changelog
 
+## [0.68.4](../../compare/v0.68.3...v0.68.4) (2024-07-29)
+
+### Changed
+
+- [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#0684): Fix importing of package name and version. ([#57](https://github.com/Siteimprove/alfa-integrations/pull/57))
+
+- [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0684): Invoke `chalk` directly instead of the `alfa-highlight` deprecated wrapper. ([#58](https://github.com/Siteimprove/alfa-integrations/pull/58))
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#0684), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#0684): Alfa version is now read from the exported value in `alfa-rules`. ([#57](https://github.com/Siteimprove/alfa-integrations/pull/57))
+
+### Fixed
+
+- [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#0684): mark CLI as executable. ([#56](https://github.com/Siteimprove/alfa-integrations/pull/56))
+
 ## [0.68.3](../../compare/v0.68.2...v0.68.3) (2024-07-25)
 
 ### Changed

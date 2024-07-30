@@ -1,5 +1,13 @@
 # @siteimprove/alfa-cli
 
+## 0.68.4
+
+### Patch Changes
+
+- **Changed:** Fix importing of package name and version ([#57](https://github.com/Siteimprove/alfa-integrations/pull/57))
+
+- **Fixed:** mark CLI as executable. ([#56](https://github.com/Siteimprove/alfa-integrations/pull/56))
+
 ## 0.68.3
 
 ### Patch Changes
