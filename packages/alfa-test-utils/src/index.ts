@@ -5,4 +5,5 @@
  * @packageDocumentation
  */
 export * from "./common.js";
+export * from "./audit/index.js";
 export * from "./report/index.js";
