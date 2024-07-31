@@ -8,7 +8,7 @@ import { alfaVersion } from "@siteimprove/alfa-rules";
 import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
-import { SIP } from "../dist/index.js";
+import { SIP } from "../../dist";
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";

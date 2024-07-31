@@ -6,6 +6,8 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@siteimprove/alfa-dom"
   },
-  "files": ["./sip.spec.tsx"],
+  "files": [
+    "./report/sip.spec.tsx"
+  ],
   "references": [{ "path": "../src" }]
 }
