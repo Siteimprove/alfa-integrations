@@ -54,7 +54,9 @@ export namespace Rules {
     const componentFilter: Predicate<Flattened.Rule>;
     const componentRules: Sequence<Flattened.Rule>;
     export function cherryPickFilter(rulesId: Array<number>): Predicate<Flattened.Rule>;
+    export function cherryPickFilter(...rulesId: Array<number>): Predicate<Flattened.Rule>;
     export function cherryPickRules(rulesId: Array<number>): Sequence<Flattened.Rule>;
+    export function cherryPickRules(...rulesId: Array<number>): Sequence<Flattened.Rule>;
 }
 
 // @public

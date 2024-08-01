@@ -3,6 +3,7 @@ import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Refinement } from "@siteimprove/alfa-refinement";
 import rules, { Scope } from "@siteimprove/alfa-rules";
 import type { Flattened } from "@siteimprove/alfa-rules";
+import type { Sequence } from "@siteimprove/alfa-sequence";
 import { Conformance, Criterion } from "@siteimprove/alfa-wcag";
 
 const { and } = Refinement;
@@ -127,7 +128,25 @@ export namespace Rules {
   /**
    * Helper to build a list of cherry-picked rules.
    */
-  export function cherryPickRules(rulesId: Array<number>) {
-    return allRules.filter(cherryPickFilter(rulesId));
+  export function cherryPickRules(
+    rulesId: Array<number>
+  ): Sequence<Flattened.Rule>;
+
+  /**
+   * Helper to build a list of cherry-picked rules.
+   */
+  export function cherryPickRules(
+    ...rulesId: Array<number>
+  ): Sequence<Flattened.Rule>;
+
+  export function cherryPickRules(
+    first: number | Array<number>,
+    ...rulesId: Array<number>
+  ) {
+    return allRules.filter(
+      typeof first === "number"
+        ? cherryPickFilter(first, ...rulesId)
+        : cherryPickFilter(first)
+    );
   }
 }
