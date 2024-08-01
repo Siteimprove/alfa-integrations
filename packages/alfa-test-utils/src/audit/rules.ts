@@ -17,7 +17,10 @@ export namespace Rules {
   /**
    * All rules currently supported by Alfa.
    */
-  export const allRules = rules;
+  export const allRules = rules
+    // SIA-R56 only makes sense if no two landmarks should have the same role;
+    // the semi-automated SIA-R55 is more useful in general.
+    .reject((rule) => rule.uri.includes("sia-r56"));
 
   /**
    * Filter matching the AA conformance rules, i.e. rules for level A and AA

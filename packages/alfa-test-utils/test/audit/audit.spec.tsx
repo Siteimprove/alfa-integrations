@@ -62,7 +62,7 @@ const page = Page.of(
 
 const ruleFoo = makeRule(1001, foo, [Criterion.of("1.1.1")]);
 
-test(".run runs included rules", async (t) => {
+test(".run only runs included rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },

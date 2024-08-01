@@ -1,11 +1,12 @@
 import { Audit as alfaAudit } from "@siteimprove/alfa-act";
 import type { Predicate } from "@siteimprove/alfa-predicate";
-import rules from "@siteimprove/alfa-rules";
 import type { Flattened } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
 import type { alfaOutcome } from "../common.js";
+
+import { Rules } from "./rules.js";
 
 /**
  * Running Alfa tests
@@ -31,7 +32,9 @@ export namespace Audit {
     const rulesToRun =
       options.rules?.override ?? false
         ? options.rules?.custom ?? []
-        : filter(rules, options.rules).concat(options.rules?.custom ?? []);
+        : filter(Rules.allRules, options.rules).concat(
+            options.rules?.custom ?? []
+          );
 
     const outcomes = Sequence.from(
       await alfaAudit.of(page, rulesToRun).evaluate()
@@ -72,6 +75,7 @@ export namespace Audit {
   export interface Options {
     /**
      * Filter rules to run from the Alfa rules; and custom rules to add.
+     * (default: use all Alfa stable rules)
      */
     rules?: Filter<Flattened.Rule> & {
       /**

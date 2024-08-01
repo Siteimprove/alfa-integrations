@@ -49,6 +49,12 @@ export namespace Outcomes {
    * A few rules target more than a single node. Outcomes of these rules are
    * not matched by this filter. These rules are all producing cantTell outcomes
    * only, so handling them only matter if an oracle is also provided for the audit.
+   *
+   * The filter is not very optimised. On large pages with many outcomes to filter
+   * the repeated search for matching ancestor on every outcome may cause
+   * performance issues. Replacing the specific selector `foo` by a descendant
+   * selector `foo *` should trigger internal optimisation and may improve the
+   * situation in such cases.
    */
   export function insideSelectorFilter(
     selector: string,
