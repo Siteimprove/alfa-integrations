@@ -31,13 +31,20 @@ export namespace Audit {
             custom?: Iterable<Flattened.Rule>;
         };
     }
-    export function run(page: Page, options?: Options): Promise<Sequence<alfaOutcome>>;
+    export interface Result {
+        // (undocumented)
+        outcomes: Sequence<alfaOutcome>;
+    }
+    export function run(page: Page, options?: Options): Promise<Result>;
 }
 
 // @public
 export namespace Outcomes {
+    const failedFilter: Predicate<alfaOutcome>;
+    const passedFilter: Predicate<alfaOutcome>;
+    const cantTellFilter: Predicate<alfaOutcome>;
     export function insideSelectorFilter(selector: string, traversal?: Node.Traversal): Predicate<alfaOutcome>;
-    export function ruleAndIdFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
+    export function ruleAndSelectorFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
 }
 
 // @public

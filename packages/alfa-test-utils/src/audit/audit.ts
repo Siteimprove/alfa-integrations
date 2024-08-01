@@ -14,13 +14,20 @@ import type { alfaOutcome } from "../common.js";
  */
 export namespace Audit {
   /**
+   * The result of an audit.
+   */
+  export interface Result {
+    outcomes: Sequence<alfaOutcome>;
+  }
+
+  /**
    * Audit a given page. Use the filters to select the rules to run, and
    * the outcomes to keep.
    */
   export async function run(
     page: Page,
     options: Options = {}
-  ): Promise<Sequence<alfaOutcome>> {
+  ): Promise<Result> {
     const rulesToRun = filter(rules, options.rules).concat(
       options.rules?.custom ?? []
     );
@@ -29,7 +36,7 @@ export namespace Audit {
       await alfaAudit.of(page, rulesToRun).evaluate()
     );
 
-    return filter(outcomes, options.outcomes);
+    return { outcomes: filter(outcomes, options.outcomes) };
   }
 
   /**

@@ -1,5 +1,7 @@
+import { Outcome } from "@siteimprove/alfa-act";
 import { Lexer } from "@siteimprove/alfa-css";
 import { Attribute, Element, Node } from "@siteimprove/alfa-dom";
+import { Option } from "@siteimprove/alfa-option";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Refinement } from "@siteimprove/alfa-refinement";
 import { Selector } from "@siteimprove/alfa-selector";
@@ -14,6 +16,22 @@ const { and, test } = Refinement;
  * @public
  */
 export namespace Outcomes {
+  /**
+   * Filter matching failed outcomes ("Issues").
+   */
+  export const failedFilter: Predicate<alfaOutcome> = Outcome.isFailed;
+
+  /**
+   * Filter matching passed outcomes ("Resolved Issues").
+   */
+  export const passedFilter: Predicate<alfaOutcome> = Outcome.isPassed;
+
+
+  /**
+   * Filter matching cantTell outcomes ("Potential Issues").
+   */
+  export const cantTellFilter: Predicate<alfaOutcome> = Outcome.isCantTell;
+
   /**
    * Filter matching outcomes whose target has an ancestor matching a given selector.
    *
@@ -40,15 +58,21 @@ export namespace Outcomes {
       `Could not parse ${selector} as a CSS selector`
     )[1];
 
-    return (outcome) =>
-      test(
-        and(Node.isNode, (node) =>
-          node
-            .inclusiveAncestors(traversal)
-            .some(and(Element.isElement, sel.matches))
-        ),
-        outcome.target
+    return (outcome) => {
+      const target = Option.from(
+        Element.isElement(outcome.target)
+          ? outcome.target
+          : Attribute.isAttribute(outcome.target)
+          ? outcome.target.owner.getOr(undefined)
+          : undefined
       );
+
+      return target.some((element) =>
+        element
+          .inclusiveAncestors(traversal)
+          .some(and(Element.isElement, sel.matches.bind(sel)))
+      );
+    };
   }
 
   /**
@@ -59,7 +83,7 @@ export namespace Outcomes {
    * Use to specifically exclude a few occurrences that should not be reported,
    * e.g. to focus the work on more urgent problems.
    */
-  export function ruleAndIdFilter(
+  export function ruleAndSelectorFilter(
     ruleId: number,
     selector: string
   ): Predicate<alfaOutcome> {
@@ -70,8 +94,12 @@ export namespace Outcomes {
     return (outcome) =>
       outcome.rule.uri ===
         `https://alfa.siteimprove.com/rules/sia-r${ruleId}` &&
+      // Either it's an element matching the selector,
       ((Element.isElement(outcome.target) && sel.matches(outcome.target)) ||
+        // or an attribute whose owner element matches the selector.
         (Attribute.isAttribute(outcome.target) &&
-          outcome.target.parent().some(and(Element.isElement, sel.matches))));
+          outcome.target.owner.some(
+            and(Element.isElement, sel.matches.bind(sel))
+          )));
   }
 }
