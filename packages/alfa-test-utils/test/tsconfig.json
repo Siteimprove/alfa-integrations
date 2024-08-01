@@ -7,7 +7,8 @@
     "jsxImportSource": "@siteimprove/alfa-dom"
   },
   "files": [
-    "./audit/rules.spec.ts",
+    "./audit/fixtures.spec.tsx",
+    "./audit/rules.spec.tsx",
     "./fixtures.ts",
     "./report/sip.spec.tsx"
   ],

@@ -98,8 +98,26 @@ export namespace Rules {
    */
   export function cherryPickFilter(
     rulesId: Array<number>
+  ): Predicate<Flattened.Rule>;
+
+  /**
+   * Filter to manually cherry-pick rules, by their id.
+   *
+   * @remarks
+   * This can be use to specifically select, or reject, a handful of rules, for
+   * example because they make no sense in a given context.
+   */
+  export function cherryPickFilter(
+    ...rulesId: Array<number>
+  ): Predicate<Flattened.Rule>;
+
+  export function cherryPickFilter(
+    first: number | Array<number>,
+    ...rulesId: Array<number>
   ): Predicate<Flattened.Rule> {
-    const rulesURIs = rulesId.map(
+    const ids = typeof first === "number" ? [first, ...rulesId] : first;
+
+    const rulesURIs = ids.map(
       (id) => `https://alfa.siteimprove.com/rules/sia-r${id}`
     );
 
