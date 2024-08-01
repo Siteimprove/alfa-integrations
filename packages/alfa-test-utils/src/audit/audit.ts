@@ -28,9 +28,10 @@ export namespace Audit {
     page: Page,
     options: Options = {}
   ): Promise<Result> {
-    const rulesToRun = filter(rules, options.rules).concat(
-      options.rules?.custom ?? []
-    );
+    const rulesToRun =
+      options.rules?.override ?? false
+        ? options.rules?.custom ?? []
+        : filter(rules, options.rules).concat(options.rules?.custom ?? []);
 
     const outcomes = Sequence.from(
       await alfaAudit.of(page, rulesToRun).evaluate()
@@ -72,7 +73,17 @@ export namespace Audit {
     /**
      * Filter rules to run from the Alfa rules; and custom rules to add.
      */
-    rules?: Filter<Flattened.Rule> & { custom?: Iterable<Flattened.Rule> };
+    rules?: Filter<Flattened.Rule> & {
+      /**
+       * List of custom rules to add to the audit (default: none).
+       */
+      custom?: Iterable<Flattened.Rule>;
+      /**
+       * Whether the custom rules should replace existing rules or be added
+       * to them (default: false / add to list).
+       */
+      override?: boolean;
+    };
 
     /**
      * Filter outcomes to show.

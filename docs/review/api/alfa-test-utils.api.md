@@ -29,6 +29,7 @@ export namespace Audit {
         outcomes?: Filter<alfaOutcome>;
         rules?: Filter<Flattened.Rule> & {
             custom?: Iterable<Flattened.Rule>;
+            override?: boolean;
         };
     }
     export interface Result {
