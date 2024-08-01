@@ -26,7 +26,7 @@ const outcomes = [
   outcomeBar2,
 ];
 
-test("insideSelectorFilter keeps occurrences with an ancestor matching the selector", (t) => {
+test(".insideSelectorFilter keeps occurrences with an ancestor matching the selector", (t) => {
   t.deepEqual(
     outcomes.filter(Outcomes.insideSelectorFilter(".hello")),
     [
@@ -37,7 +37,7 @@ test("insideSelectorFilter keeps occurrences with an ancestor matching the selec
   );
 });
 
-test("ruleAndSelectorFilter keeps occurrences with a matching rule and target", (t) => {
+test(".ruleAndSelectorFilter keeps occurrences with a matching rule and target", (t) => {
   t.deepEqual(outcomes.filter(Outcomes.ruleAndSelectorFilter(1001, "#foo")), [
     outcomeFoo1,
     outcomeFooAttr,

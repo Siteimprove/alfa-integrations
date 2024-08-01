@@ -14,19 +14,16 @@ import {
   rule8,
   rule9,
   rule10,
-  rule11,
   rule12,
   rule13,
   rule14,
   rule15,
   rule16,
-  rule17,
   rule18,
-  rule19,
   rule20,
 } from "./fixtures.spec.js";
 
-test("aaFilter keeps the A+AA 2.0, 2.1 and 2.2 rules", (t) => {
+test(".aaFilter keeps the A+AA 2.0, 2.1 and 2.2 rules", (t) => {
   t.deepEqual(rules.filter(Rules.aaFilter), [
     rule1,
     rule2,
@@ -43,7 +40,7 @@ test("aaFilter keeps the A+AA 2.0, 2.1 and 2.2 rules", (t) => {
   ]);
 });
 
-test("wcag20Filter keeps the WCAG 2.0 rules", (t) => {
+test(".wcag20Filter keeps the WCAG 2.0 rules", (t) => {
   t.deepEqual(rules.filter(Rules.wcag20Filter), [
     rule1,
     rule2,
@@ -54,11 +51,11 @@ test("wcag20Filter keeps the WCAG 2.0 rules", (t) => {
   ]);
 });
 
-test("wcag20aaFilter keeps the WCAG 2.0 A+AA rules", (t) => {
+test(".wcag20aaFilter keeps the WCAG 2.0 A+AA rules", (t) => {
   t.deepEqual(rules.filter(Rules.wcag20aaFilter), [rule1, rule2, rule3, rule4]);
 });
 
-test("wcag21aaFilter keeps the WCAG 2.0 and 2.1 A+AA rules", (t) => {
+test(".wcag21aaFilter keeps the WCAG 2.0 and 2.1 A+AA rules", (t) => {
   t.deepEqual(rules.filter(Rules.wcag21aaFilter), [
     rule1,
     rule2,
@@ -71,7 +68,7 @@ test("wcag21aaFilter keeps the WCAG 2.0 and 2.1 A+AA rules", (t) => {
   ]);
 });
 
-test("componentFilter keeps the component rules", (t) => {
+test(".componentFilter keeps the component rules", (t) => {
   t.deepEqual(rules.filter(Rules.componentFilter), [
     rule2,
     rule4,
@@ -86,7 +83,7 @@ test("componentFilter keeps the component rules", (t) => {
   ]);
 });
 
-test("cherryPickFilter selects individual rules", (t) => {
+test(".cherryPickFilter selects individual rules", (t) => {
   t.deepEqual(
     rules.filter(Rules.cherryPickFilter([1010, 1012, 1014, 1016, 1018])),
     [rule10, rule12, rule14, rule16, rule18]
