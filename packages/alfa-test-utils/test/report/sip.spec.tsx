@@ -3,12 +3,15 @@ import { Device } from "@siteimprove/alfa-device";
 import { Document, Element, h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
+import { Record } from "@siteimprove/alfa-record";
 import { Err } from "@siteimprove/alfa-result";
 import { alfaVersion } from "@siteimprove/alfa-rules";
 import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
-import { SIP } from "../dist/index.js";
+import { SIP } from "../../dist/index.js";
+
+import { makeFailed, makeRule } from "../fixtures.js";
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
@@ -51,29 +54,18 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const document = h.document([target]);
   const page = makePage(document);
 
-  const rule = Rule.Atomic.of<Page, Element>({
-    uri: "fake rule",
-    evaluate() {
-      return {
-        applicability: () => [target],
-        expectations: (target) => ({
-          1: Err.of(Diagnostic.of("fake diagnostic")),
-        }),
-      };
-    },
-  });
-
-  const outcomes = await rule.evaluate(page);
+  const rule = makeRule(1000, target);
+  const outcomes = [makeFailed(rule, target)];
 
   const actual = S3.payload("some id", page, outcomes);
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
-    rule: { type: "atomic", uri: "fake rule", requirements: [], tags: [] },
+    rule: { type: "atomic", uri: "https://alfa.siteimprove.com/rules/sia-r1000", requirements: [], tags: [] },
     mode: Outcome.Mode.Automatic,
     target: Serializable.toJSON(target, { verbosity: Verbosity.Minimal }),
     expectations: [
-      ["1", { type: "err", error: { message: "fake diagnostic" } }],
+      ["1", { type: "err", error: { message: "fake diagnostic (https://alfa.siteimprove.com/rules/sia-r1000)" } }],
     ],
   };
 
@@ -203,13 +195,11 @@ test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
 const mock = new MockAdapter(axios);
 
 // Everything will be mocked after that, use mock.restore() if needed.
-mock
-  .onPost(SIP.Defaults.URL)
-  .reply(200, {
-    pageReportUrl: "a page report URL",
-    preSignedUrl: "a S3 URL",
-    id: "hello",
-  });
+mock.onPost(SIP.Defaults.URL).reply(200, {
+  pageReportUrl: "a page report URL",
+  preSignedUrl: "a S3 URL",
+  id: "hello",
+});
 
 mock.onPut("a S3 URL").reply(200);
 

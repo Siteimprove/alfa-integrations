@@ -6,11 +6,66 @@
 
 import type { AxiosRequestConfig } from 'axios';
 import type { Flattened } from '@siteimprove/alfa-rules';
+import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
+import type { Predicate } from '@siteimprove/alfa-predicate';
+import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
 export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
+
+// @public
+export namespace Audit {
+    export interface Filter<T> {
+        // (undocumented)
+        exclude?: Predicate<T>;
+        // (undocumented)
+        include?: Predicate<T>;
+    }
+    // @internal (undocumented)
+    export function filter<T>(sequence: Sequence<T>, filter?: Filter<T>): Sequence<T>;
+    export interface Options {
+        outcomes?: Filter<alfaOutcome>;
+        rules?: Filter<Flattened.Rule> & {
+            custom?: Iterable<Flattened.Rule>;
+            override?: boolean;
+        };
+    }
+    export interface Result {
+        // (undocumented)
+        outcomes: Sequence<alfaOutcome>;
+    }
+    export function run(page: Page, options?: Options): Promise<Result>;
+}
+
+// @public
+export namespace Outcomes {
+    const failedFilter: Predicate<alfaOutcome>;
+    const passedFilter: Predicate<alfaOutcome>;
+    const cantTellFilter: Predicate<alfaOutcome>;
+    export function insideSelectorFilter(selector: string, traversal?: Node.Traversal): Predicate<alfaOutcome>;
+    export function ruleAndSelectorFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
+}
+
+// @public
+export namespace Rules {
+    const allRules: Sequence<Flattened.Rule>;
+    const aaFilter: Predicate<Flattened.Rule>;
+    const aaRules: Sequence<Flattened.Rule>;
+    const wcag20Filter: Predicate<Flattened.Rule>;
+    const wcag20Rules: Sequence<Flattened.Rule>;
+    const wcag20aaFilter: Predicate<Flattened.Rule>;
+    const wcag20aaRules: Sequence<Flattened.Rule>;
+    const wcag21aaFilter: Predicate<Flattened.Rule>;
+    const wcag21aaRules: Sequence<Flattened.Rule>;
+    const componentFilter: Predicate<Flattened.Rule>;
+    const componentRules: Sequence<Flattened.Rule>;
+    export function cherryPickFilter(rulesId: Array<number>): Predicate<Flattened.Rule>;
+    export function cherryPickFilter(...rulesId: Array<number>): Predicate<Flattened.Rule>;
+    export function cherryPickRules(rulesId: Array<number>): Sequence<Flattened.Rule>;
+    export function cherryPickRules(...rulesId: Array<number>): Sequence<Flattened.Rule>;
+}
 
 // @public
 export namespace SIP {
