@@ -8,6 +8,7 @@ import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
 import type { alfaOutcome } from "../common.js";
+import type { Audit } from "../audit/audit.js";
 
 const { Verbosity } = Serializable;
 
@@ -34,8 +35,7 @@ export namespace SIP {
    * @public
    */
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options
   ): Promise<string>;
 
@@ -47,26 +47,24 @@ export namespace SIP {
    * @internal
    */
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options,
     override: { url?: string; timestamp?: number }
   ): Promise<string>;
 
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options,
     override: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = Metadata.axiosConfig(page, options, override);
+    const config = Metadata.axiosConfig(audit.page, options, override);
 
     try {
       const axiosResponse = await axios.request(config);
       const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
 
       const response = await axios.request(
-        S3.axiosConfig(id, preSignedUrl, page, outcomes)
+        S3.axiosConfig(id, preSignedUrl, audit)
       );
 
       return pageReportUrl;
@@ -200,19 +198,17 @@ export namespace SIP {
      *
      * @internal
      */
-    export function payload(
-      Id: string,
-      page: Page,
-      outcomes: Iterable<alfaOutcome>
-    ): Payload {
+    export function payload(Id: string, audit: Audit.Result): Payload {
       return {
         Id,
         CheckResult: JSON.stringify(
-          Sequence.from(outcomes).toJSON({
+          Sequence.from(audit.outcomes).toJSON({
             verbosity: Verbosity.Minimal,
           })
         ),
-        Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
+        Aspects: JSON.stringify(
+          audit.page.toJSON({ verbosity: Verbosity.High })
+        ),
       };
     }
 
@@ -234,12 +230,11 @@ export namespace SIP {
     export function axiosConfig(
       id: string,
       url: string,
-      page: Page,
-      outcomes: Iterable<alfaOutcome>
+      audit: Audit.Result
     ): AxiosRequestConfig {
       return {
         ...params(url),
-        data: new Blob([JSON.stringify(payload(id, page, outcomes))], {
+        data: new Blob([JSON.stringify(payload(id, audit))], {
           type: "application/json",
         }),
       };

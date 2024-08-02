@@ -18,6 +18,7 @@ export namespace Audit {
    * The result of an audit.
    */
   export interface Result {
+    page: Page;
     outcomes: Sequence<alfaOutcome>;
   }
 
@@ -40,7 +41,7 @@ export namespace Audit {
       await alfaAudit.of(page, rulesToRun).evaluate()
     );
 
-    return { outcomes: filter(outcomes, options.outcomes) };
+    return { page, outcomes: filter(outcomes, options.outcomes) };
   }
 
   /**

@@ -6,6 +6,7 @@ import { Serializable } from "@siteimprove/alfa-json";
 import { Record } from "@siteimprove/alfa-record";
 import { Err } from "@siteimprove/alfa-result";
 import { alfaVersion } from "@siteimprove/alfa-rules";
+import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -40,7 +41,7 @@ test("S3.payload() creates empty-ish payload", (t) => {
   const document = h.document([<span></span>]);
 
   const page = makePage(document);
-  const actual = S3.payload("some id", page, []);
+  const actual = S3.payload("some id", { page, outcomes: Sequence.empty() });
 
   t.deepEqual(actual, {
     Id: "some id",
@@ -55,17 +56,31 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const page = makePage(document);
 
   const rule = makeRule(1000, target);
-  const outcomes = [makeFailed(rule, target)];
+  const outcomes = Sequence.from([makeFailed(rule, target)]);
 
-  const actual = S3.payload("some id", page, outcomes);
+  const actual = S3.payload("some id", { page, outcomes });
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
-    rule: { type: "atomic", uri: "https://alfa.siteimprove.com/rules/sia-r1000", requirements: [], tags: [] },
+    rule: {
+      type: "atomic",
+      uri: "https://alfa.siteimprove.com/rules/sia-r1000",
+      requirements: [],
+      tags: [],
+    },
     mode: Outcome.Mode.Automatic,
     target: Serializable.toJSON(target, { verbosity: Verbosity.Minimal }),
     expectations: [
-      ["1", { type: "err", error: { message: "fake diagnostic (https://alfa.siteimprove.com/rules/sia-r1000)" } }],
+      [
+        "1",
+        {
+          type: "err",
+          error: {
+            message:
+              "fake diagnostic (https://alfa.siteimprove.com/rules/sia-r1000)",
+          },
+        },
+      ],
     ],
   };
 
@@ -119,13 +134,23 @@ test("Metadata.axiosConfig() creates an axios config", (t) => {
 test("S3.axiosConfig() creates an axios config", (t) => {
   const page = makePage(h.document([<span></span>]));
 
-  const actual = S3.axiosConfig("some id", "a pre-signed S3 URL", page, []);
+  const actual = S3.axiosConfig("some id", "a pre-signed S3 URL", {
+    page,
+    outcomes: Sequence.empty(),
+  });
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
-    data: new Blob([JSON.stringify(S3.payload("some id", page, []))], {
-      type: "application/json",
-    }),
+    data: new Blob(
+      [
+        JSON.stringify(
+          S3.payload("some id", { page, outcomes: Sequence.empty() })
+        ),
+      ],
+      {
+        type: "application/json",
+      }
+    ),
   });
 });
 
@@ -206,10 +231,13 @@ mock.onPut("a S3 URL").reply(200);
 test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const page = makePage(h.document([<span></span>]));
 
-  const actual = await SIP.upload(page, [], {
-    userName: "foo@foo.com",
-    apiKey: "bar",
-  });
+  const actual = await SIP.upload(
+    { page, outcomes: Sequence.empty() },
+    {
+      userName: "foo@foo.com",
+      apiKey: "bar",
+    }
+  );
 
   t.deepEqual(actual, "a page report URL");
 });
