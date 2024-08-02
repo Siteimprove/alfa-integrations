@@ -1,4 +1,4 @@
-import { Audit as alfaAudit } from "@siteimprove/alfa-act";
+import { Audit as alfaAudit, Outcome } from "@siteimprove/alfa-act";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { alfaVersion, type Flattened } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
@@ -18,9 +18,39 @@ export namespace Audit {
    * The result of an audit.
    */
   export interface Result {
+    /**
+     * The version of Alfa used to run the audit.
+     */
     alfaVersion: typeof alfaVersion;
+
+    /**
+     * The audited page (Alfa representation).
+     */
     page: Page;
+
+    /**
+     * The audit outcomes.
+     */
     outcomes: Sequence<alfaOutcome>;
+
+    /**
+     * Aggregated result per rule
+     */
+    ResultAggregates: Iterable<RuleAggregate>;
+  }
+
+  /**
+   * Aggregated results for a given rule.
+   *
+   * @privateRemarks
+   * Property names start with an uppercase letter despite usual JS conventions
+   * so that we don't need to translate them when building the payload.
+   */
+  export interface RuleAggregate {
+    RuleId: string;
+    Failed: number;
+    Passed: number;
+    CantTell: number;
   }
 
   /**
@@ -42,7 +72,42 @@ export namespace Audit {
       await alfaAudit.of(page, rulesToRun).evaluate()
     );
 
-    return { alfaVersion, page, outcomes: filter(outcomes, options.outcomes) };
+    return {
+      alfaVersion,
+      page,
+      outcomes: filter(outcomes, options.outcomes),
+      ResultAggregates: aggregates(outcomes),
+    };
+  }
+
+  /**
+   * Build aggregated results for an audit
+   *
+   * @internal
+   */
+  export function aggregates(
+    outcomes: Sequence<alfaOutcome>
+  ): Iterable<RuleAggregate> {
+    return (
+      outcomes
+        // Group by rule URI
+        .groupBy((outcome) => outcome.rule.uri)
+        // For each rule, group by outcome
+        .map((ruleOutcomes) =>
+          ruleOutcomes.groupBy((outcome) => outcome.outcome)
+        )
+        // Count the size of each group and build the aggregates
+        .map((groups, uri) => ({
+          RuleId: uri,
+          Failed: groups.get(Outcome.Value.Failed).getOrElse(Sequence.empty)
+            .size,
+          Passed: groups.get(Outcome.Value.Passed).getOrElse(Sequence.empty)
+            .size,
+          CantTell: groups.get(Outcome.Value.CantTell).getOrElse(Sequence.empty)
+            .size,
+        }))
+        .values()
+    );
   }
 
   /**

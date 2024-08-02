@@ -1,16 +1,14 @@
-import { Diagnostic, Outcome, Rule } from "@siteimprove/alfa-act";
+import { Outcome } from "@siteimprove/alfa-act";
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Element, h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
-import { Record } from "@siteimprove/alfa-record";
-import { Err } from "@siteimprove/alfa-result";
 import { alfaVersion } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
-import { SIP } from "../../dist/index.js";
+import { Audit, SIP } from "../../dist/index.js";
 
 import { makeFailed, makeRule } from "../fixtures.js";
 
@@ -27,14 +25,28 @@ function makePage(document: Document): Page {
   return Page.of(Request.empty(), Response.empty(), document, device);
 }
 
+const emptyAudit: Audit.Result = {
+  alfaVersion,
+  page: makePage(h.document([<span></span>])),
+  outcomes: Sequence.empty(),
+  ResultAggregates: [],
+};
+
+// TODO: move the title/name tests from axiosConfig to payload which is now using them.
+
 test("Metadata.payload() creates a payload", (t) => {
-  const actual = Metadata.payload(alfaVersion, "title", "name", 0);
+  const actual = Metadata.payload(
+    emptyAudit,
+    { pageTitle: "title", testName: "name" },
+    0
+  );
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
     Version: alfaVersion,
     PageTitle: "title",
     TestName: "name",
+    ResultAggregates: [],
   } as any);
 });
 
@@ -46,6 +58,7 @@ test("S3.payload() creates empty-ish payload", (t) => {
     alfaVersion,
     page,
     outcomes: Sequence.empty(),
+    ResultAggregates: [],
   });
 
   t.deepEqual(actual, {
@@ -63,7 +76,19 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const rule = makeRule(1000, target);
   const outcomes = Sequence.from([makeFailed(rule, target)]);
 
-  const actual = S3.payload("some id", { alfaVersion, page, outcomes });
+  const actual = S3.payload("some id", {
+    alfaVersion,
+    page,
+    outcomes,
+    ResultAggregates: [
+      {
+        RuleId: "https://alfa.siteimprove.com/rules/sia-r1000",
+        Failed: 1,
+        Passed: 0,
+        CantTell: 0,
+      },
+    ],
+  });
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
@@ -121,20 +146,15 @@ test("S3.params() creates axios config", (t) => {
 });
 
 test("Metadata.axiosConfig() creates an axios config", (t) => {
-  const page = makePage(h.document([<span></span>]));
-
   const actual = Metadata.axiosConfig(
-    alfaVersion,
-    page,
+    emptyAudit,
     { userName: "foo@foo.com", apiKey: "bar" },
     { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      Metadata.payload(alfaVersion, SIP.Defaults.Title, SIP.Defaults.Name, 0)
-    ),
+    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
   });
 });
 test("S3.axiosConfig() creates an axios config", (t) => {
@@ -144,6 +164,7 @@ test("S3.axiosConfig() creates an axios config", (t) => {
     alfaVersion,
     page,
     outcomes: Sequence.empty(),
+    ResultAggregates: [],
   });
 
   t.deepEqual(actual, {
@@ -155,6 +176,7 @@ test("S3.axiosConfig() creates an axios config", (t) => {
             alfaVersion,
             page,
             outcomes: Sequence.empty(),
+            ResultAggregates: [],
           })
         ),
       ],
@@ -166,65 +188,63 @@ test("S3.axiosConfig() creates an axios config", (t) => {
 });
 
 test("Metadata.axiosConfig() uses test name if provided", (t) => {
-  const page = makePage(h.document([<span></span>]));
-
   const actual = Metadata.axiosConfig(
-    alfaVersion,
-    page,
+    emptyAudit,
     { userName: "foo@foo.com", apiKey: "bar", testName: "test name" },
     { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      Metadata.payload(alfaVersion, SIP.Defaults.Title, "test name", 0)
-    ),
+    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
   });
 });
 
 test("Metadata.axiosConfig() uses explicit title if provided", (t) => {
-  const page = makePage(h.document([<span></span>]));
-
   const actual = Metadata.axiosConfig(
-    alfaVersion,
-    page,
+    emptyAudit,
     { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
     { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      Metadata.payload(alfaVersion, "page title", SIP.Defaults.Name, 0)
-    ),
+    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
   });
 });
 
 test("Metadata.axiosConfig() uses page's title if it exists", (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
-  const actual = Metadata.axiosConfig(
+  const audit: Audit.Result = {
     alfaVersion,
     page,
+    outcomes: Sequence.empty(),
+    ResultAggregates: [],
+  };
+  const actual = Metadata.axiosConfig(
+    audit,
     { userName: "foo@foo.com", apiKey: "bar" },
     { url: "https://foo.com", timestamp: 0 }
   );
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      Metadata.payload(alfaVersion, "Hello", SIP.Defaults.Name, 0)
-    ),
+    data: JSON.stringify(Metadata.payload(audit, { pageTitle: "Hello" }, 0)),
   });
 });
 
 test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
   const page = makePage(h.document([<title>ignored</title>, <span></span>]));
 
-  const actual = Metadata.axiosConfig(
+  const audit: Audit.Result = {
     alfaVersion,
     page,
+    outcomes: Sequence.empty(),
+    ResultAggregates: [],
+  };
+  const actual = Metadata.axiosConfig(
+    audit,
     { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
     { url: "https://foo.com", timestamp: 0 }
   );
@@ -232,7 +252,7 @@ test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      Metadata.payload(alfaVersion, "page title", SIP.Defaults.Name, 0)
+      Metadata.payload(audit, { pageTitle: "page title" }, 0)
     ),
   });
 });
@@ -255,7 +275,7 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const page = makePage(h.document([<span></span>]));
 
   const actual = await SIP.upload(
-    { alfaVersion, page, outcomes: Sequence.empty() },
+    { alfaVersion, page, outcomes: Sequence.empty(), ResultAggregates: [] },
     {
       userName: "foo@foo.com",
       apiKey: "bar",

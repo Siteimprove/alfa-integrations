@@ -1,7 +1,7 @@
+import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
@@ -55,12 +55,7 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = Metadata.axiosConfig(
-      audit.alfaVersion,
-      audit.page,
-      options,
-      override
-    );
+    const config = Metadata.axiosConfig(audit, options, override);
 
     try {
       const axiosResponse = await axios.request(config);
@@ -127,17 +122,10 @@ export namespace SIP {
       // since git info is somewhere else, maybe not…
       TestName: string;
 
-      // This is set in the response
-      // Id: number
-
-      // What is the difference with RequestTimeStampMilliseconds?
-      RequestTimestamp: number;
-
-      // Does user need to input that? Or do we have automagic connection to guess it?
       /**
        * ID of the site in Siteimprove Intelligence Platform.
        */
-      SiteId?: string;
+      // SiteId?: string;
 
       // Defaults to the URL, but should be overridable to avoid localhost:3000
       PageUrl?: string;
@@ -152,14 +140,7 @@ export namespace SIP {
         Message: string;
       };
 
-      ResultAggregates: Array<{
-        RuleId: string;
-        Failed: number;
-        Passed: number;
-
-        // Can we rename that "CantTell"?
-        Canttell: number;
-      }>;
+      ResultAggregates: Array<Audit.RuleAggregate>;
 
       // Is this the only performance info we want, or do we want the same breakdown
       // that dory gets? (https://github.com/Siteimprove/dory/blob/main/packages/dory-audit/src/performance.ts)
@@ -170,16 +151,28 @@ export namespace SIP {
      * Prepare payload with metadata for creating pre-signed URL.
      */
     export function payload(
-      alfaVersion: `${number}.${number}.${number}`,
-      PageTitle: string,
-      TestName: string,
-      timestamp: number
+      audit: Audit.Result,
+      options: Partial<Options>,
+      timestamp: number,
+      defaultTitle = Defaults.Title,
+      defaultName = Defaults.Name
     ): Payload {
+      const title =
+        options.pageTitle ??
+        Query.getElementDescendants(audit.page.document)
+          .filter(Element.isElement)
+          .find(Element.hasName("title"))
+          .map((title) => title.textContent())
+          .getOr(defaultTitle);
+
+      const name = options.testName ?? defaultName;
+
       return {
         RequestTimeStampMilliseconds: timestamp,
-        Version: alfaVersion,
-        PageTitle,
-        TestName,
+        Version: audit.alfaVersion,
+        PageTitle: title,
+        TestName: name,
+        ResultAggregates: Array.from(audit.ResultAggregates),
       } as unknown as Payload;
     }
 
@@ -202,28 +195,15 @@ export namespace SIP {
      * Prepare the configuration for the axios request
      */
     export function axiosConfig(
-      alfaVersion: `${number}.${number}.${number}`,
-      page: Page,
+      audit: Audit.Result,
       options: Options,
-      override: { url?: string; timestamp?: number },
-      defaultTitle = Defaults.Title,
-      defaultName = Defaults.Name
+      override: { url?: string; timestamp?: number }
     ): AxiosRequestConfig {
       const { url = Defaults.URL, timestamp = Date.now() } = override;
 
-      const title =
-        options.pageTitle ??
-        Query.getElementDescendants(page.document)
-          .filter(Element.isElement)
-          .find(Element.hasName("title"))
-          .map((title) => title.textContent())
-          .getOr(defaultTitle);
-
-      const name = options.testName ?? defaultName;
-
       return {
         ...params(url, `${options.userName}:${options.apiKey}`),
-        data: JSON.stringify(payload(alfaVersion, title, name, timestamp)),
+        data: JSON.stringify(payload(audit, options, timestamp)),
       };
     }
   }
