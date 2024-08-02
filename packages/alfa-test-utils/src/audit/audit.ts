@@ -1,6 +1,6 @@
 import { Audit as alfaAudit } from "@siteimprove/alfa-act";
 import type { Predicate } from "@siteimprove/alfa-predicate";
-import type { Flattened } from "@siteimprove/alfa-rules";
+import { alfaVersion, type Flattened } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
@@ -18,6 +18,7 @@ export namespace Audit {
    * The result of an audit.
    */
   export interface Result {
+    alfaVersion: typeof alfaVersion;
     page: Page;
     outcomes: Sequence<alfaOutcome>;
   }
@@ -41,7 +42,7 @@ export namespace Audit {
       await alfaAudit.of(page, rulesToRun).evaluate()
     );
 
-    return { page, outcomes: filter(outcomes, options.outcomes) };
+    return { alfaVersion, page, outcomes: filter(outcomes, options.outcomes) };
   }
 
   /**
