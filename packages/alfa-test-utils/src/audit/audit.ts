@@ -71,12 +71,13 @@ export namespace Audit {
     const outcomes = Sequence.from(
       await alfaAudit.of(page, rulesToRun).evaluate()
     );
+    const ResultAggregates = aggregates(outcomes);
 
     return {
       alfaVersion,
       page,
       outcomes: filter(outcomes, options.outcomes),
-      ResultAggregates: aggregates(outcomes),
+      ResultAggregates,
     };
   }
 
