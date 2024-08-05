@@ -7,7 +7,8 @@ import { getCommitInformation } from "../../dist/report/git.js";
 test("getCommitInformation reads info from git", async (t) => {
   // We pretty much cannot test the validity of the information since anything
   // but the remote URL is by definition unstable. However, that information should
-  // exist on every state we are in.
+  // exist on every state we are in. It may however be different between the ssh
+  // and https version of the URL, so just checking org + repo.
 
   const actual = await getCommitInformation();
 
@@ -15,7 +16,8 @@ test("getCommitInformation reads info from git", async (t) => {
 
   const values = actual.getUnsafe();
 
-  t.equal(values.GitOrigin, "git@github.com:Siteimprove/alfa-integrations.git");
+  t.notEqual(values.GitOrigin, undefined);
+  t(values.GitOrigin!.includes("Siteimprove/alfa-integrations"));
 
   for (const property of [
     "Branch",
