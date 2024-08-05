@@ -131,20 +131,20 @@ export namespace SIP {
       PageUrl?: string;
 
       // Use git library to read this.
-      CommitInformation?: {
-        CommitHash: string;
-        GitOrigin: string;
-        Author: string;
-        Email: string;
-        CommitTimestamp: number;
-        Message: string;
-      };
+      // CommitInformation?: {
+      //   CommitHash: string;
+      //   GitOrigin: string;
+      //   Author: string;
+      //   Email: string;
+      //   CommitTimestamp: number;
+      //   Message: string;
+      // };
 
       ResultAggregates: Array<Audit.RuleAggregate>;
 
       // Is this the only performance info we want, or do we want the same breakdown
       // that dory gets? (https://github.com/Siteimprove/dory/blob/main/packages/dory-audit/src/performance.ts)
-      CheckDuration: number;
+      // CheckDuration: number;
     }
 
     /**
@@ -173,7 +173,7 @@ export namespace SIP {
         PageTitle: title,
         TestName: name,
         ResultAggregates: Array.from(audit.ResultAggregates),
-      } as unknown as Payload;
+      };
     }
 
     /**

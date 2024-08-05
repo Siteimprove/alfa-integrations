@@ -32,8 +32,6 @@ const emptyAudit: Audit.Result = {
   ResultAggregates: [],
 };
 
-// TODO: move the title/name tests from axiosConfig to payload which is now using them.
-
 test("Metadata.payload() creates a payload", (t) => {
   const actual = Metadata.payload(
     emptyAudit,
@@ -187,33 +185,31 @@ test("S3.axiosConfig() creates an axios config", (t) => {
   });
 });
 
-test("Metadata.axiosConfig() uses test name if provided", (t) => {
-  const actual = Metadata.axiosConfig(
-    emptyAudit,
-    { userName: "foo@foo.com", apiKey: "bar", testName: "test name" },
-    { url: "https://foo.com", timestamp: 0 }
-  );
+test("Metadata.payload() uses test name if provided", (t) => {
+  const actual = Metadata.payload(emptyAudit, { testName: "test name" }, 0);
 
   t.deepEqual(actual, {
-    ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
+    RequestTimeStampMilliseconds: 0,
+    Version: alfaVersion,
+    PageTitle: SIP.Defaults.Title,
+    TestName: "test name",
+    ResultAggregates: [],
   });
 });
 
-test("Metadata.axiosConfig() uses explicit title if provided", (t) => {
-  const actual = Metadata.axiosConfig(
-    emptyAudit,
-    { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
-    { url: "https://foo.com", timestamp: 0 }
-  );
+test("Metadata.payload() uses explicit title if provided", (t) => {
+  const actual = Metadata.payload(emptyAudit, { pageTitle: "page title" }, 0);
 
   t.deepEqual(actual, {
-    ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
+    RequestTimeStampMilliseconds: 0,
+    Version: alfaVersion,
+    PageTitle: "page title",
+    TestName: SIP.Defaults.Name,
+    ResultAggregates: [],
   });
 });
 
-test("Metadata.axiosConfig() uses page's title if it exists", (t) => {
+test("Metadata.payload() uses page's title if it exists", (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
   const audit: Audit.Result = {
@@ -222,19 +218,18 @@ test("Metadata.axiosConfig() uses page's title if it exists", (t) => {
     outcomes: Sequence.empty(),
     ResultAggregates: [],
   };
-  const actual = Metadata.axiosConfig(
-    audit,
-    { userName: "foo@foo.com", apiKey: "bar" },
-    { url: "https://foo.com", timestamp: 0 }
-  );
+  const actual = Metadata.payload(audit, {}, 0);
 
   t.deepEqual(actual, {
-    ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(Metadata.payload(audit, { pageTitle: "Hello" }, 0)),
+    RequestTimeStampMilliseconds: 0,
+    Version: alfaVersion,
+    PageTitle: "Hello",
+    TestName: SIP.Defaults.Name,
+    ResultAggregates: [],
   });
 });
 
-test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
+test("Metadata.payload() uses explicit title over page's title", (t) => {
   const page = makePage(h.document([<title>ignored</title>, <span></span>]));
 
   const audit: Audit.Result = {
@@ -243,17 +238,14 @@ test("Metadata.axiosConfig() uses explicit title over page's title", (t) => {
     outcomes: Sequence.empty(),
     ResultAggregates: [],
   };
-  const actual = Metadata.axiosConfig(
-    audit,
-    { userName: "foo@foo.com", apiKey: "bar", pageTitle: "page title" },
-    { url: "https://foo.com", timestamp: 0 }
-  );
+  const actual = Metadata.payload(audit, { pageTitle: "page title" }, 0);
 
   t.deepEqual(actual, {
-    ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(
-      Metadata.payload(audit, { pageTitle: "page title" }, 0)
-    ),
+    RequestTimeStampMilliseconds: 0,
+    Version: alfaVersion,
+    PageTitle: "page title",
+    TestName: SIP.Defaults.Name,
+    ResultAggregates: [],
   });
 });
 
