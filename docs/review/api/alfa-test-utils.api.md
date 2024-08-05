@@ -4,11 +4,13 @@
 
 ```ts
 
+import { alfaVersion } from '@siteimprove/alfa-rules';
+import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
-import type { Flattened } from '@siteimprove/alfa-rules';
+import { Flattened } from '@siteimprove/alfa-rules';
 import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
-import { Page } from '@siteimprove/alfa-web';
+import type { Page } from '@siteimprove/alfa-web';
 import type { Predicate } from '@siteimprove/alfa-predicate';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
@@ -17,6 +19,8 @@ export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Q
 
 // @public
 export namespace Audit {
+    // @internal
+    export function aggregates(outcomes: Sequence<alfaOutcome>): Iterable<RuleAggregate>;
     export interface Filter<T> {
         // (undocumented)
         exclude?: Predicate<T>;
@@ -33,8 +37,20 @@ export namespace Audit {
         };
     }
     export interface Result {
-        // (undocumented)
+        alfaVersion: typeof alfaVersion;
         outcomes: Sequence<alfaOutcome>;
+        page: Page;
+        ResultAggregates: Iterable<RuleAggregate>;
+    }
+    export interface RuleAggregate {
+        // (undocumented)
+        CantTell: number;
+        // (undocumented)
+        Failed: number;
+        // (undocumented)
+        Passed: number;
+        // (undocumented)
+        RuleId: string;
     }
     export function run(page: Page, options?: Options): Promise<Result>;
 }
@@ -80,35 +96,39 @@ export namespace SIP {
     }
     // @internal
     export namespace Metadata {
-        export function axiosConfig(page: Page, options: Options, override: {
+        export function axiosConfig(audit: Audit.Result, options: Options, override: {
             url?: string;
             timestamp?: number;
-        }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
+        }): Promise<AxiosRequestConfig>;
         export function params(url: string, apiKey: string): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
+            // Warning: (ae-forgotten-export) The symbol "CommitInformation" needs to be exported by the entry point index.d.ts
+            CommitInformation?: CommitInformation;
             // (undocumented)
             PageTitle: string;
             // (undocumented)
             RequestTimeStampMilliseconds: number;
             // (undocumented)
-            TestName: string;
+            ResultAggregates: Array_2<Audit.RuleAggregate>;
             // (undocumented)
+            TestName: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(PageTitle: string, TestName: string, timestamp: number): Payload;
+        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: number, defaultTitle?: string, defaultName?: string): Promise<Payload>;
             {};
     }
     // (undocumented)
     export interface Options {
         apiKey: string;
+        includeGitInfo?: boolean;
         pageTitle?: string;
         testName?: string;
         userName: string;
     }
     // @internal
     export namespace S3 {
-        export function axiosConfig(id: string, url: string, page: Page, outcomes: Iterable<alfaOutcome>): AxiosRequestConfig;
+        export function axiosConfig(id: string, url: string, audit: Audit.Result): AxiosRequestConfig;
         export function params(url: string): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
@@ -119,12 +139,12 @@ export namespace SIP {
             // (undocumented)
             Id: string;
         }
-        export function payload(Id: string, page: Page, outcomes: Iterable<alfaOutcome>): Payload;
+        export function payload(Id: string, audit: Audit.Result): Payload;
             {};
     }
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options): Promise<string>;
+    export function upload(audit: Audit.Result, options: Options): Promise<string>;
     // @internal
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {
+    export function upload(audit: Audit.Result, options: Options, override: {
         url?: string;
         timestamp?: number;
     }): Promise<string>;
