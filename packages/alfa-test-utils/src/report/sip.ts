@@ -1,12 +1,15 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
+import { Err } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
 import type { Audit } from "../audit/audit.js";
+import { getCommitInformation } from "./git.js";
+import type { CommitInformation } from "./git.js";
 
 const { Verbosity } = Serializable;
 
@@ -55,7 +58,7 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: number } = {}
   ): Promise<string> {
-    const config = Metadata.axiosConfig(audit, options, override);
+    const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
       const axiosResponse = await axios.request(config);
@@ -94,6 +97,16 @@ export namespace SIP {
     pageTitle?: string;
 
     /**
+     * Whether to upload git commit information to the Siteimprove Intelligence Platform
+     * (default: yes).
+     *
+     * @remarks
+     * If the directory is not in a git repository, or git is not installed,
+     * this will silently fail and not send any information.
+     */
+    includeGitInfo?: boolean;
+
+    /**
      * A unique identifier for the test run, e.g. a git commit hash, branch name, …
      *
      * @remarks
@@ -128,17 +141,9 @@ export namespace SIP {
       // SiteId?: string;
 
       // Defaults to the URL, but should be overridable to avoid localhost:3000
-      PageUrl?: string;
+      // PageUrl?: string;
 
-      // Use git library to read this.
-      // CommitInformation?: {
-      //   CommitHash: string;
-      //   GitOrigin: string;
-      //   Author: string;
-      //   Email: string;
-      //   CommitTimestamp: number;
-      //   Message: string;
-      // };
+      CommitInformation?: CommitInformation;
 
       ResultAggregates: Array<Audit.RuleAggregate>;
 
@@ -150,13 +155,13 @@ export namespace SIP {
     /**
      * Prepare payload with metadata for creating pre-signed URL.
      */
-    export function payload(
+    export async function payload(
       audit: Audit.Result,
       options: Partial<Options>,
       timestamp: number,
       defaultTitle = Defaults.Title,
       defaultName = Defaults.Name
-    ): Payload {
+    ): Promise<Payload> {
       const title =
         options.pageTitle ??
         Query.getElementDescendants(audit.page.document)
@@ -166,14 +171,24 @@ export namespace SIP {
           .getOr(defaultTitle);
 
       const name = options.testName ?? defaultName;
+      const gitInfo =
+        options.includeGitInfo ?? true
+          ? await getCommitInformation()
+          : Err.of("Skip git information as per configuration options");
 
-      return {
+      const result: Payload = {
         RequestTimeStampMilliseconds: timestamp,
         Version: audit.alfaVersion,
         PageTitle: title,
         TestName: name,
         ResultAggregates: Array.from(audit.ResultAggregates),
       };
+
+      for (const git of gitInfo) {
+        result.CommitInformation = git;
+      }
+
+      return result;
     }
 
     /**
@@ -194,16 +209,16 @@ export namespace SIP {
     /**
      * Prepare the configuration for the axios request
      */
-    export function axiosConfig(
+    export async function axiosConfig(
       audit: Audit.Result,
       options: Options,
       override: { url?: string; timestamp?: number }
-    ): AxiosRequestConfig {
+    ): Promise<AxiosRequestConfig> {
       const { url = Defaults.URL, timestamp = Date.now() } = override;
 
       return {
         ...params(url, `${options.userName}:${options.apiKey}`),
-        data: JSON.stringify(payload(audit, options, timestamp)),
+        data: JSON.stringify(await payload(audit, options, timestamp)),
       };
     }
   }

@@ -32,12 +32,21 @@ const emptyAudit: Audit.Result = {
   ResultAggregates: [],
 };
 
-test("Metadata.payload() creates a payload", (t) => {
-  const actual = Metadata.payload(
+/**
+ * Commit information is highly unstable, hence we simply test that it exist
+ * and delete it before deep equality testing. We could also use getCommitInformation
+ * again in the expected value, but then we would just test that it produces the
+ * same result twice…
+ */
+
+test("Metadata.payload() creates a payload", async (t) => {
+  const actual = await Metadata.payload(
     emptyAudit,
     { pageTitle: "title", testName: "name" },
     0
   );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
@@ -45,7 +54,7 @@ test("Metadata.payload() creates a payload", (t) => {
     PageTitle: "title",
     TestName: "name",
     ResultAggregates: [],
-  } as any);
+  });
 });
 
 test("S3.payload() creates empty-ish payload", (t) => {
@@ -143,8 +152,8 @@ test("S3.params() creates axios config", (t) => {
   });
 });
 
-test("Metadata.axiosConfig() creates an axios config", (t) => {
-  const actual = Metadata.axiosConfig(
+test("Metadata.axiosConfig() creates an axios config", async (t) => {
+  const actual = await Metadata.axiosConfig(
     emptyAudit,
     { userName: "foo@foo.com", apiKey: "bar" },
     { url: "https://foo.com", timestamp: 0 }
@@ -152,7 +161,7 @@ test("Metadata.axiosConfig() creates an axios config", (t) => {
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(Metadata.payload(emptyAudit, {}, 0)),
+    data: JSON.stringify(await Metadata.payload(emptyAudit, {}, 0)),
   });
 });
 test("S3.axiosConfig() creates an axios config", (t) => {
@@ -185,8 +194,14 @@ test("S3.axiosConfig() creates an axios config", (t) => {
   });
 });
 
-test("Metadata.payload() uses test name if provided", (t) => {
-  const actual = Metadata.payload(emptyAudit, { testName: "test name" }, 0);
+test("Metadata.payload() uses test name if provided", async (t) => {
+  const actual = await Metadata.payload(
+    emptyAudit,
+    { testName: "test name" },
+    0
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
@@ -197,8 +212,14 @@ test("Metadata.payload() uses test name if provided", (t) => {
   });
 });
 
-test("Metadata.payload() uses explicit title if provided", (t) => {
-  const actual = Metadata.payload(emptyAudit, { pageTitle: "page title" }, 0);
+test("Metadata.payload() uses explicit title if provided", async (t) => {
+  const actual = await Metadata.payload(
+    emptyAudit,
+    { pageTitle: "page title" },
+    0
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
@@ -209,7 +230,7 @@ test("Metadata.payload() uses explicit title if provided", (t) => {
   });
 });
 
-test("Metadata.payload() uses page's title if it exists", (t) => {
+test("Metadata.payload() uses page's title if it exists", async (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
   const audit: Audit.Result = {
@@ -218,7 +239,9 @@ test("Metadata.payload() uses page's title if it exists", (t) => {
     outcomes: Sequence.empty(),
     ResultAggregates: [],
   };
-  const actual = Metadata.payload(audit, {}, 0);
+  const actual = await Metadata.payload(audit, {}, 0);
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
@@ -229,7 +252,7 @@ test("Metadata.payload() uses page's title if it exists", (t) => {
   });
 });
 
-test("Metadata.payload() uses explicit title over page's title", (t) => {
+test("Metadata.payload() uses explicit title over page's title", async (t) => {
   const page = makePage(h.document([<title>ignored</title>, <span></span>]));
 
   const audit: Audit.Result = {
@@ -238,12 +261,31 @@ test("Metadata.payload() uses explicit title over page's title", (t) => {
     outcomes: Sequence.empty(),
     ResultAggregates: [],
   };
-  const actual = Metadata.payload(audit, { pageTitle: "page title" }, 0);
+  const actual = await Metadata.payload(audit, { pageTitle: "page title" }, 0);
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
   t.deepEqual(actual, {
     RequestTimeStampMilliseconds: 0,
     Version: alfaVersion,
     PageTitle: "page title",
+    TestName: SIP.Defaults.Name,
+    ResultAggregates: [],
+  });
+});
+
+test("Metadata.payload() excludes commit information if requested", async (t) => {
+  const actual = await Metadata.payload(
+    emptyAudit,
+    { includeGitInfo: false },
+    0
+  );
+  t.equal(actual.CommitInformation, undefined);
+
+  t.deepEqual(actual, {
+    RequestTimeStampMilliseconds: 0,
+    Version: alfaVersion,
+    PageTitle: SIP.Defaults.Title,
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
   });
