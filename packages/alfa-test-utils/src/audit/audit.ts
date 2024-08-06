@@ -75,13 +75,7 @@ export namespace Audit {
     const rulesPerformance = Performance.recordRule(durations);
 
     const start = commonPerformance.mark("total").start;
-    const startCascade = commonPerformance.mark("cascade").start;
-    Cascade.from(page.document, page.device);
-    commonPerformance.measure("cascade", startCascade);
-
-    const startAria = commonPerformance.mark("aria-tree").start;
-    ariaNode.from(page.document, page.device);
-    commonPerformance.measure("aria-tree", startAria);
+    sharedPerformance(commonPerformance, page);
 
     const rulesToRun =
       options.rules?.override ?? false
@@ -185,5 +179,25 @@ export namespace Audit {
      * Filter outcomes to show.
      */
     outcomes?: Filter<alfaOutcome>;
+  }
+
+  /**
+   * Resolve Cascade and build the ARIA tree, while recording performance.
+   *
+   * @remarks
+   * This ensures that these costly but cached operations are "charged" separately
+   * and not unfairly on the first rule using them.
+   */
+  function sharedPerformance(
+    performance: alfaPerformance<string>,
+    page: Page
+  ): void {
+    const startCascade = performance.mark("cascade").start;
+    Cascade.from(page.document, page.device);
+    performance.measure("cascade", startCascade);
+
+    const startAria = performance.mark("aria-tree").start;
+    ariaNode.from(page.document, page.device);
+    performance.measure("aria-tree", startAria);
   }
 }

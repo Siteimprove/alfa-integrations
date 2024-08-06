@@ -136,3 +136,26 @@ test(".run excludes selected outcomes", async (t) => {
 
   t.deepEqual(actual.toJSON(), ["bar"]);
 });
+
+test(".run build performance data", async (t) => {
+  const actual = (
+    await Audit.run(page, {
+      rules: { include: Rules.cherryPickFilter(2) },
+      outcomes: { exclude: Outcomes.failedFilter },
+    })
+  ).durations;
+
+  // We cannot test real values due to instability, only checking they've been
+  // updated.
+  t.notEqual(actual.common.total, 0);
+  t.notEqual(actual.common.cascade, 0);
+  t.notEqual(actual.common["aria-tree"], 0);
+
+  t.deepEqual(Object.keys(actual.rules), [
+    "https://alfa.siteimprove.com/rules/sia-r2",
+  ]);
+  const rule = actual.rules["https://alfa.siteimprove.com/rules/sia-r2"];
+  t.notEqual(rule.total, 0);
+  t.notEqual(rule.applicability, 0);
+  t.notEqual(rule.expectation, 0);
+});
