@@ -8,12 +8,12 @@ import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
-import { Audit, SIP } from "../../dist/index.js";
-
-import { makeFailed, makeRule } from "../fixtures.js";
-
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
+
+import { type alfaOutcome, Audit, Performance, SIP } from "../../dist/index.js";
+
+import { makeFailed, makeRule } from "../fixtures.js";
 
 const { Verbosity } = Serializable;
 
@@ -26,12 +26,19 @@ function makePage(document: Document): Page {
   return Page.of(Request.empty(), Response.empty(), document, device);
 }
 
-const emptyAudit: Audit.Result = {
-  alfaVersion,
-  page: makePage(h.document([<span></span>])),
-  outcomes: Sequence.empty(),
-  ResultAggregates: [],
-};
+function makeAudit(
+  page: Page = makePage(h.document([<span></span>])),
+  outcomes: Sequence<alfaOutcome> = Sequence.empty(),
+  aggregates: Iterable<Audit.RuleAggregate> = []
+): Audit.Result {
+  return {
+    alfaVersion,
+    page,
+    outcomes,
+    resultAggregates: aggregates,
+    durations: Performance.empty(),
+  };
+}
 
 /**
  * Commit information is highly unstable, hence we simply test that it exist
@@ -42,7 +49,7 @@ const emptyAudit: Audit.Result = {
 
 test("Metadata.payload() creates a payload", async (t) => {
   const actual = await Metadata.payload(
-    emptyAudit,
+    makeAudit(),
     { pageTitle: "title", testName: "name" },
     timestamp
   );
@@ -55,6 +62,7 @@ test("Metadata.payload() creates a payload", async (t) => {
     PageTitle: "title",
     TestName: "name",
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
@@ -62,12 +70,7 @@ test("S3.payload() creates empty-ish payload", (t) => {
   const document = h.document([<span></span>]);
 
   const page = makePage(document);
-  const actual = S3.payload("some id", {
-    alfaVersion,
-    page,
-    outcomes: Sequence.empty(),
-    ResultAggregates: [],
-  });
+  const actual = S3.payload("some id", makeAudit(page));
 
   t.deepEqual(actual, {
     Id: "some id",
@@ -82,21 +85,17 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const page = makePage(document);
 
   const rule = makeRule(1000, target);
-  const outcomes = Sequence.from([makeFailed(rule, target)]);
-
-  const actual = S3.payload("some id", {
-    alfaVersion,
-    page,
-    outcomes,
-    ResultAggregates: [
+  const actual = S3.payload(
+    "some id",
+    makeAudit(page, Sequence.from([makeFailed(rule, target)]), [
       {
         RuleId: "https://alfa.siteimprove.com/rules/sia-r1000",
         Failed: 1,
         Passed: 0,
         CantTell: 0,
       },
-    ],
-  });
+    ])
+  );
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
@@ -155,49 +154,36 @@ test("S3.params() creates axios config", (t) => {
 
 test("Metadata.axiosConfig() creates an axios config", async (t) => {
   const actual = await Metadata.axiosConfig(
-    emptyAudit,
+    makeAudit(),
     { userName: "foo@foo.com", apiKey: "bar" },
     { url: "https://foo.com", timestamp }
   );
 
   t.deepEqual(actual, {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
-    data: JSON.stringify(await Metadata.payload(emptyAudit, {}, timestamp)),
+    data: JSON.stringify(await Metadata.payload(makeAudit(), {}, timestamp)),
   });
 });
 test("S3.axiosConfig() creates an axios config", (t) => {
   const page = makePage(h.document([<span></span>]));
 
-  const actual = S3.axiosConfig("some id", "a pre-signed S3 URL", {
-    alfaVersion,
-    page,
-    outcomes: Sequence.empty(),
-    ResultAggregates: [],
-  });
+  const actual = S3.axiosConfig(
+    "some id",
+    "a pre-signed S3 URL",
+    makeAudit(page)
+  );
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
-    data: new Blob(
-      [
-        JSON.stringify(
-          S3.payload("some id", {
-            alfaVersion,
-            page,
-            outcomes: Sequence.empty(),
-            ResultAggregates: [],
-          })
-        ),
-      ],
-      {
-        type: "application/json",
-      }
-    ),
+    data: new Blob([JSON.stringify(S3.payload("some id", makeAudit(page)))], {
+      type: "application/json",
+    }),
   });
 });
 
 test("Metadata.payload() uses test name if provided", async (t) => {
   const actual = await Metadata.payload(
-    emptyAudit,
+    makeAudit(),
     { testName: "test name" },
     timestamp
   );
@@ -210,12 +196,13 @@ test("Metadata.payload() uses test name if provided", async (t) => {
     PageTitle: SIP.Defaults.Title,
     TestName: "test name",
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
 test("Metadata.payload() uses explicit title if provided", async (t) => {
   const actual = await Metadata.payload(
-    emptyAudit,
+    makeAudit(),
     { pageTitle: "page title" },
     timestamp
   );
@@ -228,19 +215,14 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
     PageTitle: "page title",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
 test("Metadata.payload() uses page's title if it exists", async (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
-  const audit: Audit.Result = {
-    alfaVersion,
-    page,
-    outcomes: Sequence.empty(),
-    ResultAggregates: [],
-  };
-  const actual = await Metadata.payload(audit, {}, timestamp);
+  const actual = await Metadata.payload(makeAudit(page), {}, timestamp);
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
@@ -250,20 +232,15 @@ test("Metadata.payload() uses page's title if it exists", async (t) => {
     PageTitle: "Hello",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
 test("Metadata.payload() uses explicit title over page's title", async (t) => {
   const page = makePage(h.document([<title>ignored</title>, <span></span>]));
 
-  const audit: Audit.Result = {
-    alfaVersion,
-    page,
-    outcomes: Sequence.empty(),
-    ResultAggregates: [],
-  };
   const actual = await Metadata.payload(
-    audit,
+    makeAudit(page),
     { pageTitle: "page title" },
     timestamp
   );
@@ -276,12 +253,13 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
     PageTitle: "page title",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
 test("Metadata.payload() excludes commit information if requested", async (t) => {
   const actual = await Metadata.payload(
-    emptyAudit,
+    makeAudit(),
     { includeGitInfo: false },
     timestamp
   );
@@ -293,6 +271,7 @@ test("Metadata.payload() excludes commit information if requested", async (t) =>
     PageTitle: SIP.Defaults.Title,
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
+    CheckDurations: Performance.empty(),
   });
 });
 
@@ -313,13 +292,10 @@ mock.onPut("a S3 URL").reply(200);
 test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const page = makePage(h.document([<span></span>]));
 
-  const actual = await SIP.upload(
-    { alfaVersion, page, outcomes: Sequence.empty(), ResultAggregates: [] },
-    {
-      userName: "foo@foo.com",
-      apiKey: "bar",
-    }
-  );
+  const actual = await SIP.upload(makeAudit(page), {
+    userName: "foo@foo.com",
+    apiKey: "bar",
+  });
 
   t.deepEqual(actual, "a page report URL");
 });

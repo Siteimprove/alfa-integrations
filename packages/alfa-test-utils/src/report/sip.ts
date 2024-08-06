@@ -7,9 +7,8 @@ import { Sequence } from "@siteimprove/alfa-sequence";
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 
-import type { Audit } from "../audit/audit.js";
-import { getCommitInformation } from "./git.js";
-import type { CommitInformation } from "./git.js";
+import type { Audit, Performance } from "../audit/index.js";
+import { type CommitInformation, getCommitInformation } from "./git.js";
 
 const { Verbosity } = Serializable;
 
@@ -131,7 +130,37 @@ export namespace SIP {
        * Version of Alfa used for the checks
        */
       Version: `${number}.${number}.${number}`;
+
+      // Ignored for now.
+      // /**
+      //  * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
+      //  */
+      // SiteId?: string;
+
+      /**
+       * Information about the latest git commit
+       */
+      CommitInformation?: CommitInformation;
+
+      // Ignored for now.
+      // /**
+      //  * Back link to a URL of choice, typically a link to the Pull Request
+      //  * containing the changes, …
+      //  */
+      // BackLink?: string;
+
+      /**
+       * The title of the page checked, defaults to the first `<title>` element
+       * if any, or "Unnamed page" if none.
+       */
       PageTitle: string;
+
+      /**
+       * The URL of the page. Defaults to the URL but can be overwritten to
+       * avoid `localhost` addresses in local tests, …
+       */
+      // Defaults to the URL, but should be overridable to avoid localhost:3000
+      // PageUrl: string;
 
       // I'm not sure I understand what this should represent in the end.
       // I thought it was "Unique identifier for the test run, e.g. git hash" but
@@ -139,21 +168,11 @@ export namespace SIP {
       // string | CommitInfo => string
       TestName: string;
 
-      // Ignored for now.
-      // SiteId?: string;
-
-      // Defaults to the URL, but should be overridable to avoid localhost:3000
-      // PageUrl: string;
-
-      CommitInformation?: CommitInformation;
-
       ResultAggregates: Array<Audit.RuleAggregate>;
 
       // Is this the only performance info we want, or do we want the same breakdown
       // that dory gets? (https://github.com/Siteimprove/dory/blob/main/packages/dory-audit/src/performance.ts)
-      // CheckDuration: number;
-
-      // PR id in GitInfo
+      CheckDurations: Performance.Durations;
     }
 
     /**
@@ -188,7 +207,8 @@ export namespace SIP {
         Version: audit.alfaVersion,
         PageTitle: title,
         TestName: name,
-        ResultAggregates: Array.from(audit.ResultAggregates),
+        ResultAggregates: Array.from(audit.resultAggregates),
+        CheckDurations: audit.durations,
       };
 
       for (const git of gitInfo) {
@@ -221,7 +241,8 @@ export namespace SIP {
       options: Options,
       override: { url?: string; timestamp?: string }
     ): Promise<AxiosRequestConfig> {
-      const { url = Defaults.URL, timestamp = new Date().toISOString() } = override;
+      const { url = Defaults.URL, timestamp = new Date().toISOString() } =
+        override;
 
       return {
         ...params(url, `${options.userName}:${options.apiKey}`),

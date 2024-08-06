@@ -1,10 +1,14 @@
 import { Audit as alfaAudit, Outcome } from "@siteimprove/alfa-act";
+import { Node as ariaNode } from "@siteimprove/alfa-aria";
+import { Cascade } from "@siteimprove/alfa-cascade";
+import { Performance as alfaPerformance } from "@siteimprove/alfa-performance";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { alfaVersion, type Flattened } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
 import type { alfaOutcome } from "../common.js";
+import { Performance } from "./performance.js";
 
 import { Rules } from "./rules.js";
 
@@ -36,7 +40,12 @@ export namespace Audit {
     /**
      * Aggregated result per rule
      */
-    ResultAggregates: Iterable<RuleAggregate>;
+    resultAggregates: Iterable<RuleAggregate>;
+
+    /**
+     * Performance durations for the audit.
+     */
+    durations: Performance.Durations;
   }
 
   /**
@@ -61,6 +70,19 @@ export namespace Audit {
     page: Page,
     options: Options = {}
   ): Promise<Result> {
+    const durations: Performance.Durations = Performance.empty();
+    const commonPerformance = Performance.recordCommon(durations);
+    const rulesPerformance = Performance.recordRule(durations);
+
+    const start = commonPerformance.mark("total").start;
+    const startCascade = commonPerformance.mark("cascade").start;
+    Cascade.from(page.document, page.device);
+    commonPerformance.measure("cascade", startCascade);
+
+    const startAria = commonPerformance.mark("aria-tree").start;
+    ariaNode.from(page.document, page.device);
+    commonPerformance.measure("aria-tree", startAria);
+
     const rulesToRun =
       options.rules?.override ?? false
         ? options.rules?.custom ?? []
@@ -69,15 +91,17 @@ export namespace Audit {
           );
 
     const outcomes = Sequence.from(
-      await alfaAudit.of(page, rulesToRun).evaluate()
+      await alfaAudit.of(page, rulesToRun).evaluate(rulesPerformance)
     );
-    const ResultAggregates = aggregates(outcomes);
+    commonPerformance.measure("total", start);
+    const resultAggregates = aggregates(outcomes);
 
     return {
       alfaVersion,
       page,
       outcomes: filter(outcomes, options.outcomes),
-      ResultAggregates,
+      resultAggregates,
+      durations,
     };
   }
 
