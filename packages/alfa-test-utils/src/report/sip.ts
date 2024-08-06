@@ -91,6 +91,16 @@ export namespace SIP {
     apiKey: string;
 
     /**
+     * The URL of the page, or a function to build it from the audited page.
+     * Defaults to the URL used to scrape the page.
+     *
+     * @remarks
+     * Overwriting it typically allows to circumvent `localhost` addresses for
+     * tests that are run on local servers.
+     */
+    pageURL?: string | ((page: Page) => string);
+
+    /**
      * The title of the page, or a function to build it from the audited page.
      * Defaults to the content of the first `<title>` element, if any.
      */
@@ -157,8 +167,7 @@ export namespace SIP {
        * The URL of the page. Defaults to the URL but can be overwritten to
        * avoid `localhost` addresses in local tests, …
        */
-      // Defaults to the URL, but should be overridable to avoid localhost:3000
-      // PageUrl: string;
+      PageUrl: string;
 
       /**
        * Name of the test, e.g. "AA conformance", "Color contrast",
@@ -192,6 +201,9 @@ export namespace SIP {
       defaultTitle = Defaults.Title,
       defaultName = Defaults.Name
     ): Promise<Payload> {
+      const url = options.pageURL ?? audit.page.response.url.toString();
+      const PageUrl = typeof url === "string" ? url : url(audit.page);
+
       const title =
         options.pageTitle ??
         Query.getElementDescendants(audit.page.document)
@@ -217,6 +229,7 @@ export namespace SIP {
       const result: Payload = {
         RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
+        PageUrl,
         PageTitle,
         TestName,
         ResultAggregates: Array.from(audit.resultAggregates),

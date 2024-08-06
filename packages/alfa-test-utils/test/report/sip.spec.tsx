@@ -6,6 +6,7 @@ import { Serializable } from "@siteimprove/alfa-json";
 import { alfaVersion } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
+import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
 
 import axios from "axios";
@@ -23,7 +24,12 @@ const device = Device.standard();
 const timestamp = new Date().toISOString();
 
 function makePage(document: Document): Page {
-  return Page.of(Request.empty(), Response.empty(), document, device);
+  return Page.of(
+    Request.empty(),
+    Response.of(URL.example(), 200),
+    document,
+    device
+  );
 }
 
 function makeAudit(
@@ -59,6 +65,7 @@ test("Metadata.payload() creates a payload", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: "title",
     TestName: "name",
     ResultAggregates: [],
@@ -193,6 +200,7 @@ test("Metadata.payload() uses test name if provided", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: SIP.Defaults.Title,
     TestName: "test name",
     ResultAggregates: [],
@@ -219,6 +227,7 @@ test("Metadata.payload() builds test name from git information", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: SIP.Defaults.Title,
     TestName: "Siteimprove/alfa-integrations",
     ResultAggregates: [],
@@ -238,6 +247,7 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: "page title",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
@@ -255,6 +265,7 @@ test("Metadata.payload() uses page's title if it exists", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: "Hello",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
@@ -276,6 +287,7 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: "page title",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
@@ -288,7 +300,7 @@ test("Metadata.payload() builds page title from the page if specified", async (t
 
   const actual = await Metadata.payload(
     makeAudit(page),
-    { pageTitle: page => page.document.toString() },
+    { pageTitle: (page) => page.document.toString() },
     timestamp
   );
   t.notEqual(actual.CommitInformation, undefined);
@@ -297,12 +309,13 @@ test("Metadata.payload() builds page title from the page if specified", async (t
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: "#document\n  <span>\n    Hello\n  </span>",
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
     CheckDurations: Performance.empty(),
   });
-})
+});
 
 test("Metadata.payload() excludes commit information if requested", async (t) => {
   const actual = await Metadata.payload(
@@ -315,6 +328,7 @@ test("Metadata.payload() excludes commit information if requested", async (t) =>
   t.deepEqual(actual, {
     RequestTimestamp: timestamp,
     Version: alfaVersion,
+    PageUrl: "https://example.com/",
     PageTitle: SIP.Defaults.Title,
     TestName: SIP.Defaults.Name,
     ResultAggregates: [],
