@@ -20,7 +20,7 @@ test("getCommitInformation reads info from git", async (t) => {
   t(values.GitOrigin!.includes("Siteimprove/alfa-integrations"));
 
   for (const property of [
-    "Branch",
+    "BranchName",
     "CommitHash",
     "Author",
     "Email",

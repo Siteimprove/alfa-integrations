@@ -9,7 +9,7 @@ const git = simpleGit();
  */
 export interface CommitInformation {
   GitOrigin: string | undefined;
-  Branch: string;
+  BranchName: string;
   CommitHash: string | undefined;
   Author: string | undefined;
   Email: string | undefined;
@@ -29,7 +29,7 @@ export async function getCommitInformation(): Promise<
 
     const value: CommitInformation = {
       GitOrigin: origin?.refs?.fetch,
-      Branch: branch.current,
+      BranchName: branch.current,
       CommitHash: latest?.latest?.hash,
       Author: latest?.latest?.author_name,
       Email: latest?.latest?.author_email,
