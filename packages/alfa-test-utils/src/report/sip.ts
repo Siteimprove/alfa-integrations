@@ -106,13 +106,14 @@ export namespace SIP {
     includeGitInfo?: boolean;
 
     /**
-     * A unique identifier for the test run, e.g. a git commit hash, branch name, …
+     * A name for the test (e.g. "AA conformance", …), or a function building a
+     * test name from the git commit information (e.g. the git hash or branch name).
      *
      * @remarks
      * Unicity is not required but is recommended to help separating unrelated runs.
      * Defaults to the generic "Accessibility Code Checker" if none is provided.
      */
-    testName?: string;
+    testName?: string | ((git: CommitInformation) => string);
   }
 
   /**
@@ -196,17 +197,24 @@ export namespace SIP {
           .map((title) => title.textContent())
           .getOr(defaultTitle);
 
-      const name = options.testName ?? defaultName;
       const gitInfo =
         options.includeGitInfo ?? true
           ? await getCommitInformation()
           : Err.of("Skip git information as per configuration options");
 
+      const name = options.testName ?? defaultName;
+      const TestName =
+        // If the name is a string, using, otherwise call the function on the
+        // gitInfo, defaulting to the error if any.
+        typeof name === "string"
+          ? name
+          : gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(defaultName));
+
       const result: Payload = {
         RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
         PageTitle: title,
-        TestName: name,
+        TestName,
         ResultAggregates: Array.from(audit.resultAggregates),
         CheckDurations: audit.durations,
       };

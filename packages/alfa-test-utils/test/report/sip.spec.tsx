@@ -200,6 +200,32 @@ test("Metadata.payload() uses test name if provided", async (t) => {
   });
 });
 
+test("Metadata.payload() builds test name from git information", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit(),
+    // Only the repo name is stable
+    {
+      testName: (git) =>
+        git.GitOrigin!.replace(
+          /.*Siteimprove\/alfa-integrations.*/,
+          "Siteimprove/alfa-integrations"
+        ),
+    },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, {
+    RequestTimestamp: timestamp,
+    Version: alfaVersion,
+    PageTitle: SIP.Defaults.Title,
+    TestName: "Siteimprove/alfa-integrations",
+    ResultAggregates: [],
+    CheckDurations: Performance.empty(),
+  });
+});
+
 test("Metadata.payload() uses explicit title if provided", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),
