@@ -40,8 +40,8 @@ export async function getCommitInformation(): Promise<
   } catch (err) {
     return Err.of(
       err instanceof Error
-        ? err?.message ?? "Could not retrieve git information"
-        : String(err)
+        ? err.message
+        : "Could not retrieve git information: " + String(err)
     );
   }
 }

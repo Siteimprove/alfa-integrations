@@ -141,7 +141,6 @@ test(".run build performance data", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
-      outcomes: { exclude: Outcomes.failedFilter },
     })
   ).durations;
 

@@ -137,6 +137,7 @@ export namespace SIP {
        * The time the request is sent, formatted as an ISO 8601 string.
        */
       RequestTimestamp: string;
+
       /**
        * Version of Alfa used for the checks
        */
@@ -161,8 +162,8 @@ export namespace SIP {
       // BackLink?: string;
 
       /**
-       * The URL of the page. Defaults to the URL but can be overwritten to
-       * avoid `localhost` addresses in local tests, …
+       * The URL of the page. Defaults to the URL in the Response but can be
+       * overwritten to avoid `localhost` addresses in local tests, …
        */
       PageUrl: string;
 
@@ -175,6 +176,7 @@ export namespace SIP {
       /**
        * Name of the test, e.g. "AA conformance", "Color contrast",
        * "On branch: \<branch name\>", …
+       * Defaults to "Accessibility Code Checker".
        */
       TestName: string;
 
@@ -195,7 +197,7 @@ export namespace SIP {
      * Prepare payload with metadata for creating pre-signed URL.
      *
      * @remarks
-     * The timestamp must be formated as an ISO 8601 formatted string.
+     * The timestamp must be formated as an ISO 8601 string.
      */
     export async function payload(
       audit: Audit.Result,
@@ -216,10 +218,7 @@ export namespace SIP {
           .getOr(defaultTitle);
       const PageTitle = typeof title === "string" ? title : title(audit.page);
 
-      const gitInfo =
-        options.includeGitInfo ?? true
-          ? await getCommitInformation()
-          : Err.of("Skip git information as per configuration options");
+      const gitInfo = await getCommitInformation();
 
       const name = options.testName ?? defaultName;
       const TestName =
@@ -239,8 +238,8 @@ export namespace SIP {
         CheckDurations: audit.durations,
       };
 
-      for (const git of gitInfo) {
-        result.CommitInformation = git;
+      if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {
+        result.CommitInformation = gitInfo.get();
       }
 
       return result;

@@ -71,9 +71,9 @@ export namespace Performance {
    */
   export function recordRule(durations: Durations): alfaPerformance<RuleEvent> {
     return alfaPerformance.of<Performance.RuleEvent>().on((entry) => {
-      const ruleId = entry.data.rule.uri;
-
       if (isMeasure(entry)) {
+        const ruleId = entry.data.rule.uri;
+
         if (durations.rules[ruleId] === undefined) {
           durations.rules[ruleId] = emptyRuleDurations();
         }

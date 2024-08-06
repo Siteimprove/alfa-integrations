@@ -24,7 +24,7 @@ import { Audit, Rules, SIP } from "@siteimprove/alfa-test-utils";
 Audit.run(page, { rules: { include: Rules.aaFilter } }).then((outcomes) => {
   SIP.upload(outcomes, {
     userName: process.env.SI_USERNAME,
-    apiKey: prcoess.env.SI_API_KEY,
+    apiKey: process.env.SI_API_KEY,
     testName: "WCAG 2.2 AA conformance test",
   }).then(console.log);
 });

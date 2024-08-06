@@ -201,6 +201,9 @@ test("Metadata.payload() uses test name if provided", async (t) => {
   t.deepEqual(actual, makePayload({ TestName: "test name" }));
 });
 
+/**
+ * This test will fail if the origin is changed, e.g. on forks.
+ */
 test("Metadata.payload() builds test name from git information", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),
