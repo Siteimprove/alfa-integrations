@@ -283,6 +283,27 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
   });
 });
 
+test("Metadata.payload() builds page title from the page if specified", async (t) => {
+  const page = makePage(h.document([<span>Hello</span>]));
+
+  const actual = await Metadata.payload(
+    makeAudit(page),
+    { pageTitle: page => page.document.toString() },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, {
+    RequestTimestamp: timestamp,
+    Version: alfaVersion,
+    PageTitle: "#document\n  <span>\n    Hello\n  </span>",
+    TestName: SIP.Defaults.Name,
+    ResultAggregates: [],
+    CheckDurations: Performance.empty(),
+  });
+})
+
 test("Metadata.payload() excludes commit information if requested", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),

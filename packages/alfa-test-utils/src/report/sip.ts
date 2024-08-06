@@ -3,6 +3,7 @@ import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
 import { Err } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
+import type { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
@@ -90,10 +91,16 @@ export namespace SIP {
     apiKey: string;
 
     /**
-     * The title of the page. Defaults to the content of the first `<title>` element,
-     * if any.
+     * The title of the page, or a function to build it from the audited page.
+     * Defaults to the content of the first `<title>` element, if any.
      */
-    pageTitle?: string;
+    pageTitle?: string | ((page: Page) => string);
+
+    /**
+     * A name for the test (e.g. "AA conformance", …), or a function building a
+     * test name from the git commit information (e.g. the git hash or branch name).
+     */
+    testName?: string | ((git: CommitInformation) => string);
 
     /**
      * Whether to upload git commit information to the Siteimprove Intelligence Platform
@@ -104,16 +111,6 @@ export namespace SIP {
      * this will silently fail and not send any information.
      */
     includeGitInfo?: boolean;
-
-    /**
-     * A name for the test (e.g. "AA conformance", …), or a function building a
-     * test name from the git commit information (e.g. the git hash or branch name).
-     *
-     * @remarks
-     * Unicity is not required but is recommended to help separating unrelated runs.
-     * Defaults to the generic "Accessibility Code Checker" if none is provided.
-     */
-    testName?: string | ((git: CommitInformation) => string);
   }
 
   /**
@@ -202,6 +199,7 @@ export namespace SIP {
           .find(Element.hasName("title"))
           .map((title) => title.textContent())
           .getOr(defaultTitle);
+      const PageTitle = typeof title === "string" ? title : title(audit.page);
 
       const gitInfo =
         options.includeGitInfo ?? true
@@ -219,7 +217,7 @@ export namespace SIP {
       const result: Payload = {
         RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
-        PageTitle: title,
+        PageTitle,
         TestName,
         ResultAggregates: Array.from(audit.resultAggregates),
         CheckDurations: audit.durations,
