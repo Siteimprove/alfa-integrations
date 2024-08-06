@@ -50,13 +50,13 @@ export namespace SIP {
   export async function upload(
     audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: number }
+    override: { url?: string; timestamp?: string }
   ): Promise<string>;
 
   export async function upload(
     audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: number } = {}
+    override: { url?: string; timestamp?: string } = {}
   ): Promise<string> {
     const config = await Metadata.axiosConfig(audit, options, override);
 
@@ -123,8 +123,10 @@ export namespace SIP {
    */
   export namespace Metadata {
     interface Payload {
-      // sends as formated date string RequestTimeStamp
-      RequestTimeStampMilliseconds: number;
+      /**
+       * The time the request is sent, formatted as an ISO 8601 string.
+       */
+      RequestTimestamp: string;
       /**
        * Version of Alfa used for the checks
        */
@@ -137,10 +139,7 @@ export namespace SIP {
       // string | CommitInfo => string
       TestName: string;
 
-      /**
-       * ID of the site in Siteimprove Intelligence Platform.
-       */
-      // ignore for now.
+      // Ignored for now.
       // SiteId?: string;
 
       // Defaults to the URL, but should be overridable to avoid localhost:3000
@@ -159,11 +158,14 @@ export namespace SIP {
 
     /**
      * Prepare payload with metadata for creating pre-signed URL.
+     *
+     * @remarks
+     * The timestamp must be formated as an ISO 8601 formatted string.
      */
     export async function payload(
       audit: Audit.Result,
       options: Partial<Options>,
-      timestamp: number,
+      timestamp: string,
       defaultTitle = Defaults.Title,
       defaultName = Defaults.Name
     ): Promise<Payload> {
@@ -182,7 +184,7 @@ export namespace SIP {
           : Err.of("Skip git information as per configuration options");
 
       const result: Payload = {
-        RequestTimeStampMilliseconds: timestamp,
+        RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
         PageTitle: title,
         TestName: name,
@@ -217,9 +219,9 @@ export namespace SIP {
     export async function axiosConfig(
       audit: Audit.Result,
       options: Options,
-      override: { url?: string; timestamp?: number }
+      override: { url?: string; timestamp?: string }
     ): Promise<AxiosRequestConfig> {
-      const { url = Defaults.URL, timestamp = Date.now() } = override;
+      const { url = Defaults.URL, timestamp = new Date().toISOString() } = override;
 
       return {
         ...params(url, `${options.userName}:${options.apiKey}`),
