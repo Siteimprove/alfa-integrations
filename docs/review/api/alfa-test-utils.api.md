@@ -11,7 +11,9 @@ import { Flattened } from '@siteimprove/alfa-rules';
 import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
 import type { Page } from '@siteimprove/alfa-web';
+import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
+import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
@@ -38,9 +40,10 @@ export namespace Audit {
     }
     export interface Result {
         alfaVersion: typeof alfaVersion;
+        durations: Performance.Durations;
         outcomes: Sequence<alfaOutcome>;
         page: Page;
-        ResultAggregates: Iterable<RuleAggregate>;
+        resultAggregates: Iterable<RuleAggregate>;
     }
     export interface RuleAggregate {
         // (undocumented)
@@ -62,6 +65,44 @@ export namespace Outcomes {
     const cantTellFilter: Predicate<alfaOutcome>;
     export function insideSelectorFilter(selector: string, traversal?: Node.Traversal): Predicate<alfaOutcome>;
     export function ruleAndSelectorFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
+}
+
+// @public
+export namespace Performance {
+    const // (undocumented)
+    durationKeys: readonly ["applicability", "expectation", "total"];
+    // (undocumented)
+    export type CommonDurations = {
+        [K in CommonKeys]: number;
+    };
+    // (undocumented)
+    export type CommonKeys = (typeof commonKeys)[number];
+    // (undocumented)
+    export type DurationKey = (typeof durationKeys)[number];
+    export type Durations = {
+        common: CommonDurations;
+        rules: RulesDurations;
+    };
+    const // (undocumented)
+    commonKeys: readonly ["cascade", "aria-tree", "total"];
+    // @internal (undocumented)
+    export function empty(): Durations;
+    // @internal (undocumented)
+    export function emptyRuleDurations(): RuleDurations;
+    // @internal (undocumented)
+    export function recordCommon(durations: Durations): Performance_2<string>;
+    // @internal (undocumented)
+    export function recordRule(durations: Durations): Performance_2<RuleEvent>;
+    // (undocumented)
+    export type RuleDurations = {
+        [K in DurationKey]: number;
+    };
+    // @internal (undocumented)
+    export type RuleEvent = Rule.Event<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
+    export type RulesDurations = {
+        [key: string]: RuleDurations;
+    };
+        {};
 }
 
 // @public
@@ -98,32 +139,30 @@ export namespace SIP {
     export namespace Metadata {
         export function axiosConfig(audit: Audit.Result, options: Options, override: {
             url?: string;
-            timestamp?: number;
+            timestamp?: string;
         }): Promise<AxiosRequestConfig>;
         export function params(url: string, apiKey: string): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
-            // Warning: (ae-forgotten-export) The symbol "CommitInformation" needs to be exported by the entry point index.d.ts
+            CheckDurations: Performance.Durations;
             CommitInformation?: CommitInformation;
-            // (undocumented)
             PageTitle: string;
-            // (undocumented)
-            RequestTimeStampMilliseconds: number;
-            // (undocumented)
+            PageUrl: string;
+            RequestTimestamp: string;
             ResultAggregates: Array_2<Audit.RuleAggregate>;
-            // (undocumented)
             TestName: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: number, defaultTitle?: string, defaultName?: string): Promise<Payload>;
-            {};
+        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string, defaultTitle?: string, defaultName?: string): Promise<Payload>;
     }
     // (undocumented)
     export interface Options {
         apiKey: string;
         includeGitInfo?: boolean;
-        pageTitle?: string;
-        testName?: string;
+        pageTitle?: string | ((page: Page) => string);
+        pageURL?: string | ((page: Page) => string);
+        // Warning: (ae-forgotten-export) The symbol "CommitInformation" needs to be exported by the entry point index.d.ts
+        testName?: string | ((git: CommitInformation) => string);
         userName: string;
     }
     // @internal
@@ -146,7 +185,7 @@ export namespace SIP {
     // @internal
     export function upload(audit: Audit.Result, options: Options, override: {
         url?: string;
-        timestamp?: number;
+        timestamp?: string;
     }): Promise<string>;
 }
 
