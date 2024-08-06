@@ -163,16 +163,22 @@ export namespace SIP {
       // Defaults to the URL, but should be overridable to avoid localhost:3000
       // PageUrl: string;
 
-      // I'm not sure I understand what this should represent in the end.
-      // I thought it was "Unique identifier for the test run, e.g. git hash" but
-      // since git info is somewhere else, maybe not…
-      // string | CommitInfo => string
+      /**
+       * Name of the test, e.g. "AA conformance", "Color contrast",
+       * "On branch: \<branch name\>", …
+       */
       TestName: string;
 
+      /**
+       * Aggregated data for the results with number of Passed, Failed, and
+       * CantTell occurrences per rule.
+       */
       ResultAggregates: Array<Audit.RuleAggregate>;
 
-      // Is this the only performance info we want, or do we want the same breakdown
-      // that dory gets? (https://github.com/Siteimprove/dory/blob/main/packages/dory-audit/src/performance.ts)
+      /**
+       * Performances of the audit, with durations per rules and some common
+       * durations.
+       */
       CheckDurations: Performance.Durations;
     }
 
