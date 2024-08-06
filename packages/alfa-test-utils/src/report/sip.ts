@@ -161,16 +161,16 @@ export namespace SIP {
       // BackLink?: string;
 
       /**
-       * The title of the page checked, defaults to the first `<title>` element
-       * if any, or "Unnamed page" if none.
-       */
-      PageTitle: string;
-
-      /**
        * The URL of the page. Defaults to the URL but can be overwritten to
        * avoid `localhost` addresses in local tests, …
        */
       PageUrl: string;
+
+      /**
+       * The title of the page checked, defaults to the first `<title>` element
+       * if any, or "Unnamed page" if none.
+       */
+      PageTitle: string;
 
       /**
        * Name of the test, e.g. "AA conformance", "Color contrast",
