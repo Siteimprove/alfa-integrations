@@ -123,6 +123,7 @@ export namespace SIP {
    */
   export namespace Metadata {
     interface Payload {
+      // sends as formated date string RequestTimeStamp
       RequestTimeStampMilliseconds: number;
       /**
        * Version of Alfa used for the checks
@@ -133,15 +134,17 @@ export namespace SIP {
       // I'm not sure I understand what this should represent in the end.
       // I thought it was "Unique identifier for the test run, e.g. git hash" but
       // since git info is somewhere else, maybe not…
+      // string | CommitInfo => string
       TestName: string;
 
       /**
        * ID of the site in Siteimprove Intelligence Platform.
        */
+      // ignore for now.
       // SiteId?: string;
 
       // Defaults to the URL, but should be overridable to avoid localhost:3000
-      // PageUrl?: string;
+      // PageUrl: string;
 
       CommitInformation?: CommitInformation;
 
@@ -150,6 +153,8 @@ export namespace SIP {
       // Is this the only performance info we want, or do we want the same breakdown
       // that dory gets? (https://github.com/Siteimprove/dory/blob/main/packages/dory-audit/src/performance.ts)
       // CheckDuration: number;
+
+      // PR id in GitInfo
     }
 
     /**
