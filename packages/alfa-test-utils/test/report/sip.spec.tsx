@@ -23,13 +23,11 @@ const { Metadata, S3 } = SIP;
 const device = Device.standard();
 const timestamp = new Date().toISOString();
 
-function makePage(document: Document): Page {
-  return Page.of(
-    Request.empty(),
-    Response.of(URL.example(), 200),
-    document,
-    device
-  );
+function makePage(
+  document: Document,
+  response: Response = Response.of(URL.example(), 200)
+): Page {
+  return Page.of(Request.empty(), response, document, device);
 }
 
 function makeAudit(
@@ -276,6 +274,62 @@ test("Metadata.payload() builds page title from the page if specified", async (t
     actual,
     makePayload({ PageTitle: "#document\n  <span>\n    Hello\n  </span>" })
   );
+});
+
+test("Metadata.payload() uses explicit URL if provided", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit(),
+    { pageURL: "page URL" },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, makePayload({ PageUrl: "page URL" }));
+});
+
+test("Metadata.payload() uses page's response's URL if it exists", async (t) => {
+  const page = makePage(
+    h.document([<span></span>]),
+    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200)
+  );
+
+  const actual = await Metadata.payload(makeAudit(page), {}, timestamp);
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, makePayload({ PageUrl: "https://siteimprove.com/" }));
+});
+
+test("Metadata.payload() uses explicit URL over page's URL", async (t) => {
+  const page = makePage(
+    h.document([<span></span>]),
+    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200)
+  );
+
+  const actual = await Metadata.payload(
+    makeAudit(page),
+    { pageURL: "page URL" },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, makePayload({ PageUrl: "page URL" }));
+});
+
+test("Metadata.payload() builds page URL from the page if specified", async (t) => {
+  const page = makePage(h.document([<span>Hello</span>]));
+
+  const actual = await Metadata.payload(
+    makeAudit(page),
+    { pageURL: (page) => page.response.status.toString() },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, makePayload({ PageUrl: "200" }));
 });
 
 test("Metadata.payload() excludes commit information if requested", async (t) => {
