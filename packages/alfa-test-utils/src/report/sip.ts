@@ -129,7 +129,10 @@ export namespace SIP {
    * @internal
    */
   export namespace Metadata {
-    interface Payload {
+    /**
+     * @internal
+     */
+    export interface Payload {
       /**
        * The time the request is sent, formatted as an ISO 8601 string.
        */

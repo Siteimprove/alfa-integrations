@@ -46,6 +46,21 @@ function makeAudit(
   };
 }
 
+const emptyPayload: SIP.Metadata.Payload = {
+  RequestTimestamp: timestamp,
+  Version: alfaVersion,
+  PageUrl: "https://example.com/",
+  PageTitle: SIP.Defaults.Title,
+  TestName: SIP.Defaults.Name,
+  ResultAggregates: [],
+  CheckDurations: Performance.empty(),
+};
+function makePayload(
+  override: Partial<SIP.Metadata.Payload> = {}
+): SIP.Metadata.Payload {
+  return { ...emptyPayload, ...override };
+}
+
 /**
  * Commit information is highly unstable, hence we simply test that it exist
  * and delete it before deep equality testing. We could also use getCommitInformation
@@ -54,23 +69,11 @@ function makeAudit(
  */
 
 test("Metadata.payload() creates a payload", async (t) => {
-  const actual = await Metadata.payload(
-    makeAudit(),
-    { pageTitle: "title", testName: "name" },
-    timestamp
-  );
+  const actual = await Metadata.payload(makeAudit(), {}, timestamp);
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: "title",
-    TestName: "name",
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload());
 });
 
 test("S3.payload() creates empty-ish payload", (t) => {
@@ -197,15 +200,7 @@ test("Metadata.payload() uses test name if provided", async (t) => {
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: SIP.Defaults.Title,
-    TestName: "test name",
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload({ TestName: "test name" }));
 });
 
 test("Metadata.payload() builds test name from git information", async (t) => {
@@ -224,15 +219,10 @@ test("Metadata.payload() builds test name from git information", async (t) => {
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: SIP.Defaults.Title,
-    TestName: "Siteimprove/alfa-integrations",
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(
+    actual,
+    makePayload({ TestName: "Siteimprove/alfa-integrations" })
+  );
 });
 
 test("Metadata.payload() uses explicit title if provided", async (t) => {
@@ -244,15 +234,7 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: "page title",
-    TestName: SIP.Defaults.Name,
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload({ PageTitle: "page title" }));
 });
 
 test("Metadata.payload() uses page's title if it exists", async (t) => {
@@ -262,15 +244,7 @@ test("Metadata.payload() uses page's title if it exists", async (t) => {
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: "Hello",
-    TestName: SIP.Defaults.Name,
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload({ PageTitle: "Hello" }));
 });
 
 test("Metadata.payload() uses explicit title over page's title", async (t) => {
@@ -284,15 +258,7 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: "page title",
-    TestName: SIP.Defaults.Name,
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload({ PageTitle: "page title" }));
 });
 
 test("Metadata.payload() builds page title from the page if specified", async (t) => {
@@ -306,15 +272,10 @@ test("Metadata.payload() builds page title from the page if specified", async (t
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: "#document\n  <span>\n    Hello\n  </span>",
-    TestName: SIP.Defaults.Name,
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(
+    actual,
+    makePayload({ PageTitle: "#document\n  <span>\n    Hello\n  </span>" })
+  );
 });
 
 test("Metadata.payload() excludes commit information if requested", async (t) => {
@@ -325,15 +286,7 @@ test("Metadata.payload() excludes commit information if requested", async (t) =>
   );
   t.equal(actual.CommitInformation, undefined);
 
-  t.deepEqual(actual, {
-    RequestTimestamp: timestamp,
-    Version: alfaVersion,
-    PageUrl: "https://example.com/",
-    PageTitle: SIP.Defaults.Title,
-    TestName: SIP.Defaults.Name,
-    ResultAggregates: [],
-    CheckDurations: Performance.empty(),
-  });
+  t.deepEqual(actual, makePayload());
 });
 
 // Somehow, importing axios-mock-adapter breaks typing.
