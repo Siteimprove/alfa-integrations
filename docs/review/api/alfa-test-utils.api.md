@@ -111,19 +111,12 @@ export namespace Performance {
 export namespace Rules {
     const allRules: Sequence<Flattened.Rule>;
     const aaFilter: Predicate<Flattened.Rule>;
-    const aaRules: Sequence<Flattened.Rule>;
     const wcag20Filter: Predicate<Flattened.Rule>;
-    const wcag20Rules: Sequence<Flattened.Rule>;
     const wcag20aaFilter: Predicate<Flattened.Rule>;
-    const wcag20aaRules: Sequence<Flattened.Rule>;
     const wcag21aaFilter: Predicate<Flattened.Rule>;
-    const wcag21aaRules: Sequence<Flattened.Rule>;
     const componentFilter: Predicate<Flattened.Rule>;
-    const componentRules: Sequence<Flattened.Rule>;
     export function cherryPickFilter(rulesId: Array<number>): Predicate<Flattened.Rule>;
     export function cherryPickFilter(...rulesId: Array<number>): Predicate<Flattened.Rule>;
-    export function cherryPickRules(rulesId: Array<number>): Sequence<Flattened.Rule>;
-    export function cherryPickRules(...rulesId: Array<number>): Sequence<Flattened.Rule>;
 }
 
 // @public
