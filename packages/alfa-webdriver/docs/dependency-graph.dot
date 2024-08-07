@@ -3,6 +3,7 @@ digraph "dependency-graph-[object Object]" {
   "dependency-graph-[object Object]" [
     style = "invis";
   ];
+  "src/web-element.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
@@ -51,5 +52,14 @@ digraph "dependency-graph-[object Object]" {
   }
   "exit_src" -> "dependency-graph-[object Object]" [
     style = "invis";
+  ];
+  "src/index.ts" -> "src/web-element.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/web-element.ts" [
+    style = "solid";
+    ltail = "cluster_src/index.ts";
+    lhead = "cluster_src/web-element.ts";
+    color = "black";
   ];
 }

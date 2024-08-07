@@ -86,7 +86,7 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/asserter.ts" -> "src/handler.ts" [
-    style = "solid";
+    style = "dotted";
     ltail = "cluster_src/asserter.ts";
     lhead = "cluster_src/handler.ts";
     color = "black";
@@ -95,7 +95,7 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/assertion.ts" -> "src/handler.ts" [
-    style = "solid";
+    style = "dotted";
     ltail = "cluster_src/assertion.ts";
     lhead = "cluster_src/handler.ts";
     color = "black";
