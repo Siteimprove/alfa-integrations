@@ -1,16 +1,6 @@
 # Siteimprove Accessibility Code Checker
 
-## Overview
-
-Running the Siteimprove Accessibility Code Checker usually requires three steps:
-
-1. **Scraping** the page to audit;
-2. **Auditing** the page;
-3. **Reporting** the results.
-
-Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled example of scraping](./scraping.md).
-
-The `@siteimprove/alfa-test-utils` package provides utilities to audit the page and report on the results.
+The Siteimprove Accessibility Code Checker integrates our accessibility checker engine, Alfa, into your development process and CI/CD pipeline. Results can be uploaded into the Siteimprove Intelligence Platform for an easy-to-act report.
 
 ## Installation
 
@@ -24,10 +14,29 @@ Alfa is distributed as ESM. Thus, projects using the old CJS format for modules 
 4. Use an ESM-for-CJS loader such as the `esm` package. This solution has not been tested, but it should work.
 
 You can now install Alfa test utilities:
+
 ```shell
 $ npm install --save-dev @siteimprove/alfa-test-utils
 ```
+
 or
+
 ```shell
 $ yarn add --dev @siteimprove/alfa-test-utils
 ```
+
+## Running tests
+
+Running the Siteimprove Accessibility Code Checker usually requires three steps:
+
+1. **Scraping** the page to audit;
+2. **Auditing** the page;
+3. **Reporting** the results.
+
+Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](./scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./audit.md) and [report on the results](./report.md).
+
+## Why 'Alfa'
+
+Despite the homophony, Alfa is far from being in the `alpha` stage of development… It is the tool powering Siteimprove Intelligence Platform for Digital Accessibility, and checking millions of web pages daily.
+
+The name 'Alfa' comes from the name of the guide dog of a former colleague 🦮. Let Alfa be your guide into the world of Accessibility, like Alfa guided his owner into the real world!
