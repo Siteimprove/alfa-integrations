@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.69.0](../../compare/v0.68.4...v0.69.0) (2024-08-07)
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0690): New package for handling test utilities and interactions with the Siteimprove Intelligence Platform. ([#59](https://github.com/Siteimprove/alfa-integrations/pull/59))
+
 ## [0.68.4](../../compare/v0.68.3...v0.68.4) (2024-07-29)
 
 ### Changed

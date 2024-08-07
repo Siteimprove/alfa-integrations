@@ -1,5 +1,7 @@
 # @siteimprove/alfa-puppeteer
 
+## 0.69.0
+
 ## 0.68.4
 
 ## 0.68.3
