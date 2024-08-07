@@ -1,6 +1,7 @@
 import { Audit as alfaAudit, Outcome } from "@siteimprove/alfa-act";
 import { Node as ariaNode } from "@siteimprove/alfa-aria";
 import { Cascade } from "@siteimprove/alfa-cascade";
+import { Map } from "@siteimprove/alfa-map";
 import { Performance as alfaPerformance } from "@siteimprove/alfa-performance";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { alfaVersion, type Flattened } from "@siteimprove/alfa-rules";
@@ -33,14 +34,14 @@ export namespace Audit {
     page: Page;
 
     /**
-     * The audit outcomes.
+     * The audit outcomes, sorted by rule.
      */
-    outcomes: Sequence<alfaOutcome>;
+    outcomes: Map<string, Sequence<alfaOutcome>>;
 
     /**
      * Aggregated result per rule
      */
-    resultAggregates: Iterable<RuleAggregate>;
+    resultAggregates: ResultAggregates;
 
     /**
      * Performance durations for the audit.
@@ -55,12 +56,10 @@ export namespace Audit {
    * Property names start with an uppercase letter despite usual JS conventions
    * so that we don't need to translate them when building the payload.
    */
-  export interface RuleAggregate {
-    RuleId: string;
-    Failed: number;
-    Passed: number;
-    CantTell: number;
-  }
+  export type ResultAggregates = Map<
+    string,
+    { Failed: number; Passed: number; CantTell: number }
+  >;
 
   /**
    * Audit a given page. Use the filters to select the rules to run, and
@@ -84,49 +83,33 @@ export namespace Audit {
             options.rules?.custom ?? []
           );
 
-    const outcomes = Sequence.from(
+    const audit = Sequence.from(
       await alfaAudit.of(page, rulesToRun).evaluate(rulesPerformance)
     );
     commonPerformance.measure("total", start);
-    const resultAggregates = aggregates(outcomes);
+
+    const outcomes = filter(audit, options.outcomes).groupBy(
+      (outcome) => outcome.rule.uri
+    );
+
+    const resultAggregates = outcomes
+      // For each rule, group by outcome
+      .map((ruleOutcomes) => ruleOutcomes.groupBy((outcome) => outcome.outcome))
+      // Count the size of each group and build the aggregates
+      .map((groups, uri) => ({
+        Failed: groups.get(Outcome.Value.Failed).getOrElse(Sequence.empty).size,
+        Passed: groups.get(Outcome.Value.Passed).getOrElse(Sequence.empty).size,
+        CantTell: groups.get(Outcome.Value.CantTell).getOrElse(Sequence.empty)
+          .size,
+      }));
 
     return {
       alfaVersion,
       page,
-      outcomes: filter(outcomes, options.outcomes),
+      outcomes,
       resultAggregates,
       durations,
     };
-  }
-
-  /**
-   * Build aggregated results for an audit
-   *
-   * @internal
-   */
-  export function aggregates(
-    outcomes: Sequence<alfaOutcome>
-  ): Iterable<RuleAggregate> {
-    return (
-      outcomes
-        // Group by rule URI
-        .groupBy((outcome) => outcome.rule.uri)
-        // For each rule, group by outcome
-        .map((ruleOutcomes) =>
-          ruleOutcomes.groupBy((outcome) => outcome.outcome)
-        )
-        // Count the size of each group and build the aggregates
-        .map((groups, uri) => ({
-          RuleId: uri,
-          Failed: groups.get(Outcome.Value.Failed).getOrElse(Sequence.empty)
-            .size,
-          Passed: groups.get(Outcome.Value.Passed).getOrElse(Sequence.empty)
-            .size,
-          CantTell: groups.get(Outcome.Value.CantTell).getOrElse(Sequence.empty)
-            .size,
-        }))
-        .values()
-    );
   }
 
   /**

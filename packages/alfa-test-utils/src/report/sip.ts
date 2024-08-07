@@ -185,7 +185,12 @@ export namespace SIP {
        * Aggregated data for the results with number of Passed, Failed, and
        * CantTell occurrences per rule.
        */
-      ResultAggregates: Array<Audit.RuleAggregate>;
+      ResultAggregates: Array<{
+        RuleId: string;
+        Failed: number;
+        Passed: number;
+        CantTell: number;
+      }>;
 
       /**
        * Performances of the audit, with durations per rules and some common
@@ -235,7 +240,9 @@ export namespace SIP {
         PageUrl,
         PageTitle,
         TestName,
-        ResultAggregates: Array.from(audit.resultAggregates),
+        ResultAggregates: audit.resultAggregates
+          .toArray()
+          .map(([RuleId, data]) => ({ RuleId, ...data })),
         CheckDurations: audit.durations,
       };
 
@@ -254,7 +261,7 @@ export namespace SIP {
       apiKey: string,
       httpsAgent?: HttpsAgent
     ): AxiosRequestConfig {
-      return {
+      const config: AxiosRequestConfig = {
         method: "post",
         maxBodyLength: Infinity,
         url,
@@ -262,8 +269,13 @@ export namespace SIP {
           "Content-Type": "application/json",
           Authorization: "Basic " + Buffer.from(apiKey).toString("base64"),
         },
-        httpsAgent,
       };
+
+      if (httpsAgent !== undefined) {
+        config.httpsAgent = httpsAgent;
+      }
+
+      return config;
     }
 
     /**
@@ -312,7 +324,7 @@ export namespace SIP {
       return {
         Id,
         CheckResult: JSON.stringify(
-          Sequence.from(audit.outcomes).toJSON({
+          Sequence.from(audit.outcomes.values()).flatten().toJSON({
             verbosity: Verbosity.Minimal,
           })
         ),

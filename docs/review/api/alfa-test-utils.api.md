@@ -4,10 +4,14 @@
 
 ```ts
 
+/// <reference types="node" />
+
+import type { Agent } from 'https';
 import { alfaVersion } from '@siteimprove/alfa-rules';
 import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
 import { Flattened } from '@siteimprove/alfa-rules';
+import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
 import type { Page } from '@siteimprove/alfa-web';
@@ -21,8 +25,6 @@ export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Q
 
 // @public
 export namespace Audit {
-    // @internal
-    export function aggregates(outcomes: Sequence<alfaOutcome>): Iterable<RuleAggregate>;
     export interface Filter<T> {
         // (undocumented)
         exclude?: Predicate<T>;
@@ -41,20 +43,15 @@ export namespace Audit {
     export interface Result {
         alfaVersion: typeof alfaVersion;
         durations: Performance.Durations;
-        outcomes: Sequence<alfaOutcome>;
+        outcomes: Map_2<string, Sequence<alfaOutcome>>;
         page: Page;
-        resultAggregates: Iterable<RuleAggregate>;
+        resultAggregates: ResultAggregates;
     }
-    export interface RuleAggregate {
-        // (undocumented)
-        CantTell: number;
-        // (undocumented)
+    export type ResultAggregates = Map_2<string, {
         Failed: number;
-        // (undocumented)
         Passed: number;
-        // (undocumented)
-        RuleId: string;
-    }
+        CantTell: number;
+    }>;
     export function run(page: Page, options?: Options): Promise<Result>;
 }
 
@@ -140,8 +137,9 @@ export namespace SIP {
         export function axiosConfig(audit: Audit.Result, options: Options, override: {
             url?: string;
             timestamp?: string;
+            httpsAgent?: Agent;
         }): Promise<AxiosRequestConfig>;
-        export function params(url: string, apiKey: string): AxiosRequestConfig;
+        export function params(url: string, apiKey: string, httpsAgent?: Agent): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
             CheckDurations: Performance.Durations;
@@ -149,7 +147,12 @@ export namespace SIP {
             PageTitle: string;
             PageUrl: string;
             RequestTimestamp: string;
-            ResultAggregates: Array_2<Audit.RuleAggregate>;
+            ResultAggregates: Array_2<{
+                RuleId: string;
+                Failed: number;
+                Passed: number;
+                CantTell: number;
+            }>;
             TestName: string;
             Version: `${number}.${number}.${number}`;
         }
@@ -186,6 +189,7 @@ export namespace SIP {
     export function upload(audit: Audit.Result, options: Options, override: {
         url?: string;
         timestamp?: string;
+        httpsAgent?: Agent;
     }): Promise<string>;
 }
 

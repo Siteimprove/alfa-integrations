@@ -1,6 +1,7 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Element, h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
+import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
@@ -67,10 +68,9 @@ test(".run only runs included rules", async (t) => {
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
-    "https://alfa.siteimprove.com/rules/sia-r2",
+  t.deepEqual(Iterable.toJSON(actual), [
     "https://alfa.siteimprove.com/rules/sia-r2",
   ]);
 });
@@ -80,9 +80,14 @@ test(".run does not run excluded rules", async (t) => {
     await Audit.run(page, {
       rules: { exclude: Rules.cherryPickFilter(2) },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t(actual.none((uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2"));
+  t(
+    Iterable.none(
+      actual,
+      (uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2"
+    )
+  );
 });
 
 test(".run adds custom rules to the ruleset", async (t) => {
@@ -90,12 +95,11 @@ test(".run adds custom rules to the ruleset", async (t) => {
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2), custom: [ruleFoo] },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
-    "https://alfa.siteimprove.com/rules/sia-r2", // foo, failing
-    "https://alfa.siteimprove.com/rules/sia-r2", // bar, passing
-    "https://alfa.siteimprove.com/rules/sia-r1001", // foo
+  t.deepEqual(Iterable.toJSON(actual), [
+    "https://alfa.siteimprove.com/rules/sia-r2",
+    "https://alfa.siteimprove.com/rules/sia-r1001",
   ]);
 });
 
@@ -108,9 +112,9 @@ test(".run overrides the ruleset with custom rules", async (t) => {
         override: true,
       },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
+  t.deepEqual(Iterable.toJSON(actual), [
     "https://alfa.siteimprove.com/rules/sia-r1001", // foo
   ]);
 });
@@ -121,7 +125,10 @@ test(".run only keeps selected outcomes", async (t) => {
       rules: { include: Rules.cherryPickFilter(2) },
       outcomes: { include: Outcomes.failedFilter },
     })
-  ).outcomes.map((outcome) => (outcome.target as Element).id.getUnsafe());
+  ).outcomes
+    .get("https://alfa.siteimprove.com/rules/sia-r2")
+    .getUnsafe()
+    .map((outcome) => (outcome.target as Element).id.getUnsafe());
 
   t.deepEqual(actual.toJSON(), ["foo"]);
 });
@@ -132,7 +139,10 @@ test(".run excludes selected outcomes", async (t) => {
       rules: { include: Rules.cherryPickFilter(2) },
       outcomes: { exclude: Outcomes.failedFilter },
     })
-  ).outcomes.map((outcome) => (outcome.target as Element).id.getUnsafe());
+  ).outcomes
+    .get("https://alfa.siteimprove.com/rules/sia-r2")
+    .getUnsafe()
+    .map((outcome) => (outcome.target as Element).id.getUnsafe());
 
   t.deepEqual(actual.toJSON(), ["bar"]);
 });

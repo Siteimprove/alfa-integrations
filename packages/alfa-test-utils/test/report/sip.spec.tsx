@@ -3,6 +3,7 @@ import { Device } from "@siteimprove/alfa-device";
 import { Document, Element, h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
+import { Map } from "@siteimprove/alfa-map";
 import { alfaVersion } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
@@ -32,8 +33,8 @@ function makePage(
 
 function makeAudit(
   page: Page = makePage(h.document([<span></span>])),
-  outcomes: Sequence<alfaOutcome> = Sequence.empty(),
-  aggregates: Iterable<Audit.RuleAggregate> = []
+  outcomes: Map<string, Sequence<alfaOutcome>> = Map.empty(),
+  aggregates: Audit.ResultAggregates = Map.empty()
 ): Audit.Result {
   return {
     alfaVersion,
@@ -95,14 +96,16 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const rule = makeRule(1000, target);
   const actual = S3.payload(
     "some id",
-    makeAudit(page, Sequence.from([makeFailed(rule, target)]), [
-      {
-        RuleId: "https://alfa.siteimprove.com/rules/sia-r1000",
-        Failed: 1,
-        Passed: 0,
-        CantTell: 0,
-      },
-    ])
+    makeAudit(
+      page,
+      Map.from([[rule.uri, Sequence.from([makeFailed(rule, target)])]]),
+      Map.from([
+        [
+          "https://alfa.siteimprove.com/rules/sia-r1000",
+          { Failed: 1, Passed: 0, CantTell: 0 },
+        ],
+      ])
+    )
   );
 
   const expected: Outcome.Failed.JSON<Element> = {
