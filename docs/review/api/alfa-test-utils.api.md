@@ -17,6 +17,7 @@ import { Outcome } from '@siteimprove/alfa-act';
 import type { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
+import type { Result } from '@siteimprove/alfa-result';
 import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
@@ -48,9 +49,9 @@ export namespace Audit {
         resultAggregates: ResultAggregates;
     }
     export type ResultAggregates = Map_2<string, {
-        Failed: number;
-        Passed: number;
-        CantTell: number;
+        failed: number;
+        passed: number;
+        cantTell: number;
     }>;
     export function run(page: Page, options?: Options): Promise<Result>;
 }
@@ -68,13 +69,15 @@ export namespace Outcomes {
 export namespace Performance {
     const // (undocumented)
     durationKeys: readonly ["applicability", "expectation", "total"];
+    // Warning: (ae-incompatible-release-tags) The symbol "CommonDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    //
     // (undocumented)
     export type CommonDurations = {
         [K in CommonKeys]: number;
     };
-    // (undocumented)
+    // @internal (undocumented)
     export type CommonKeys = (typeof commonKeys)[number];
-    // (undocumented)
+    // @internal (undocumented)
     export type DurationKey = (typeof durationKeys)[number];
     export type Durations = {
         common: CommonDurations;
@@ -90,6 +93,8 @@ export namespace Performance {
     export function recordCommon(durations: Durations): Performance_2<string>;
     // @internal (undocumented)
     export function recordRule(durations: Durations): Performance_2<RuleEvent>;
+    // Warning: (ae-incompatible-release-tags) The symbol "RuleDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    //
     // (undocumented)
     export type RuleDurations = {
         [K in DurationKey]: number;
@@ -132,11 +137,15 @@ export namespace SIP {
             timestamp?: string;
             httpsAgent?: Agent;
         }): Promise<AxiosRequestConfig>;
+        // (undocumented)
+        export type CommonDurations = {
+            [K in CamelCase<Performance.CommonKeys>]: number;
+        };
         export function params(url: string, apiKey: string, httpsAgent?: Agent): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
-            CheckDurations: Performance.Durations;
             CommitInformation?: CommitInformation;
+            Durations: CommonDurations;
             PageTitle: string;
             PageUrl: string;
             RequestTimestamp: string;
@@ -145,11 +154,19 @@ export namespace SIP {
                 Failed: number;
                 Passed: number;
                 CantTell: number;
+                Durations: RuleDurations;
             }>;
             TestName: string;
             Version: `${number}.${number}.${number}`;
         }
         export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string, defaultTitle?: string, defaultName?: string): Promise<Payload>;
+        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
+        //
+        // (undocumented)
+        export type RuleDurations = {
+            [K in CamelCase<Performance.DurationKey>]: number;
+        };
+            {};
     }
     // (undocumented)
     export interface Options {
@@ -177,13 +194,13 @@ export namespace SIP {
         export function payload(Id: string, audit: Audit.Result): Payload;
             {};
     }
-    export function upload(audit: Audit.Result, options: Options): Promise<string>;
+    export function upload(audit: Audit.Result, options: Options): Promise<Result<string, string>>;
     // @internal
     export function upload(audit: Audit.Result, options: Options, override: {
         url?: string;
         timestamp?: string;
         httpsAgent?: Agent;
-    }): Promise<string>;
+    }): Promise<Result<string, string>>;
 }
 
 ```
