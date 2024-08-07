@@ -371,5 +371,5 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
     apiKey: "bar",
   });
 
-  t.deepEqual(actual, "a page report URL");
+  t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
 });

@@ -1,6 +1,8 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
+import { Err, Ok } from "@siteimprove/alfa-result";
+import type { Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
@@ -36,7 +38,7 @@ export namespace SIP {
   export async function upload(
     audit: Audit.Result,
     options: Options
-  ): Promise<string>;
+  ): Promise<Result<string, string>>;
 
   /**
    * Internal overload for tests, allowing
@@ -50,13 +52,13 @@ export namespace SIP {
     audit: Audit.Result,
     options: Options,
     override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
-  ): Promise<string>;
+  ): Promise<Result<string, string>>;
 
   export async function upload(
     audit: Audit.Result,
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
-  ): Promise<string> {
+  ): Promise<Result<string, string>> {
     const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
@@ -65,12 +67,12 @@ export namespace SIP {
 
       await axios.request(S3.axiosConfig(id, preSignedUrl, audit));
 
-      return pageReportUrl;
+      return Ok.of(pageReportUrl);
     } catch (error) {
       console.error(error);
     }
 
-    return "Could not retrieve a page report URL";
+    return Err.of("Could not retrieve a page report URL");
   }
 
   /**
