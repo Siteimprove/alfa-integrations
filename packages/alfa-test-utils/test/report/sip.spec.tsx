@@ -52,7 +52,7 @@ const emptyPayload: SIP.Metadata.Payload = {
   PageTitle: SIP.Defaults.Title,
   TestName: SIP.Defaults.Name,
   ResultAggregates: [],
-  CheckDurations: Performance.empty(),
+  Durations: Performance.empty(),
 };
 function makePayload(
   override: Partial<SIP.Metadata.Payload> = {}

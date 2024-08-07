@@ -19,9 +19,7 @@ const { Verbosity } = Serializable;
  * @public
  */
 export namespace SIP {
-  /**
-   * @internal
-   */
+  /** @internal */
   export namespace Defaults {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
@@ -65,9 +63,7 @@ export namespace SIP {
       const axiosResponse = await axios.request(config);
       const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
 
-      const response = await axios.request(
-        S3.axiosConfig(id, preSignedUrl, audit)
-      );
+      await axios.request(S3.axiosConfig(id, preSignedUrl, audit));
 
       return pageReportUrl;
     } catch (error) {
@@ -130,9 +126,7 @@ export namespace SIP {
    * @internal
    */
   export namespace Metadata {
-    /**
-     * @internal
-     */
+    /** @internal */
     export interface Payload {
       /**
        * The time the request is sent, formatted as an ISO 8601 string.
@@ -190,13 +184,14 @@ export namespace SIP {
         Failed: number;
         Passed: number;
         CantTell: number;
+        // Durations: Performance.RuleDurations
       }>;
 
       /**
        * Performances of the audit, with durations per rules and some common
        * durations.
        */
-      CheckDurations: Performance.Durations;
+      Durations: Performance.Durations; // only common, CamelCase
     }
 
     /**
@@ -243,7 +238,7 @@ export namespace SIP {
         ResultAggregates: audit.resultAggregates
           .toArray()
           .map(([RuleId, data]) => ({ RuleId, ...data })),
-        CheckDurations: audit.durations,
+        Durations: audit.durations,
       };
 
       if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {

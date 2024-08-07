@@ -13,7 +13,8 @@ const { isMeasure } = alfaPerformance.Measure;
 export namespace Performance {
   const durationKeys = ["applicability", "expectation", "total"] as const;
   type DurationKey = (typeof durationKeys)[number];
-  type RuleDurations = { [K in DurationKey]: number };
+  /** @internal */
+  export type RuleDurations = { [K in DurationKey]: number };
 
   /**
    * For each rule (key), records time taken for the applicability,
@@ -23,9 +24,7 @@ export namespace Performance {
    */
   export type RulesDurations = { [key: string]: RuleDurations };
 
-  /**
-   * @internal
-   */
+  /** @internal */
   export function emptyRuleDurations(): RuleDurations {
     return { applicability: 0, expectation: 0, total: 0 };
   }
@@ -46,9 +45,7 @@ export namespace Performance {
    */
   export type Durations = { common: CommonDurations; rules: RulesDurations };
 
-  /**
-   * @internal
-   */
+  /** @internal */
   export function empty(): Durations {
     return {
       common: { cascade: 0, "aria-tree": 0, total: 0 },
@@ -56,9 +53,7 @@ export namespace Performance {
     };
   }
 
-  /**
-   * @internal
-   */
+  /** @internal */
   export type RuleEvent = Rule.Event<
     Flattened.Input,
     Flattened.Target,
@@ -66,9 +61,7 @@ export namespace Performance {
     Flattened.Subject
   >;
 
-  /**
-   * @internal
-   */
+  /** @internal */
   export function recordRule(durations: Durations): alfaPerformance<RuleEvent> {
     return alfaPerformance.of<Performance.RuleEvent>().on((entry) => {
       if (isMeasure(entry)) {
@@ -86,9 +79,7 @@ export namespace Performance {
     });
   }
 
-  /**
-   * @internal
-   */
+  /** @internal */
   export function recordCommon(durations: Durations): alfaPerformance<string> {
     return alfaPerformance.of<string>().on((entry) => {
       if (isMeasure(entry) && Array.includes(commonKeys, entry.data)) {
