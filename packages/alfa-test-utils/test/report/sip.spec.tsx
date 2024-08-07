@@ -185,9 +185,12 @@ test("S3.axiosConfig() creates an axios config", (t) => {
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
-    data: new Blob([JSON.stringify(S3.payload("some id", makeAudit({ page })))], {
-      type: "application/json",
-    }),
+    data: new Blob(
+      [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
+      {
+        type: "application/json",
+      }
+    ),
   });
 });
 
@@ -348,17 +351,70 @@ test("Metadata.payload() excludes commit information if requested", async (t) =>
   t.deepEqual(actual, makePayload());
 });
 
-// test("Metadata.payload() includes global durations", async (t) => {
-//   const actual = await Metadata.payload(
-//     makeAudit(),
-//     { includeGitInfo: false },
-//     timestamp
-//   );
-//   t.equal(actual.CommitInformation, undefined);
-//
-//   t.deepEqual(actual, makePayload());
-// });
+test("Metadata.payload() includes global durations", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit({
+      durations: {
+        common: { cascade: 1, "aria-tree": 2, total: 3 },
+        rules: {},
+      },
+    }),
+    {},
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
 
+  t.deepEqual(
+    actual,
+    makePayload({ Durations: { Cascade: 1, AriaTree: 2, Total: 3 } })
+  );
+});
+
+test("Metadata.payload() includes rule durations in aggregates", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit({
+      resultAggregates: Map.from([
+        ["foo", { failed: 1, passed: 1, cantTell: 0 }],
+        ["bar", { failed: 2, passed: 2, cantTell: 0 }],
+      ]),
+      durations: {
+        common: { cascade: 1, "aria-tree": 1, total: 1 },
+        rules: {
+          foo: { applicability: 2, expectation: 2, total: 2 },
+          bar: { applicability: 3, expectation: 3, total: 3 },
+        },
+      },
+    }),
+    {},
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(
+    actual,
+    makePayload({
+      Durations: { Cascade: 1, AriaTree: 1, Total: 1 },
+      ResultAggregates: [
+        {
+          RuleId: "foo",
+          Failed: 1,
+          Passed: 1,
+          CantTell: 0,
+          Durations: { Applicability: 2, Expectation: 2, Total: 2 },
+        },
+        {
+          RuleId: "bar",
+          Failed: 2,
+          Passed: 2,
+          CantTell: 0,
+          Durations: { Applicability: 3, Expectation: 3, Total: 3 },
+        },
+      ],
+    })
+  );
+});
 
 // Somehow, importing axios-mock-adapter breaks typing.
 // Requiring it is fine, but not allowed in an ESM file.
