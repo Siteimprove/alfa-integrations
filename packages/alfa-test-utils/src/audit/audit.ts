@@ -58,7 +58,7 @@ export namespace Audit {
    */
   export type ResultAggregates = Map<
     string,
-    { Failed: number; Passed: number; CantTell: number }
+    { failed: number; passed: number; cantTell: number }
   >;
 
   /**
@@ -97,9 +97,9 @@ export namespace Audit {
       .map((ruleOutcomes) => ruleOutcomes.groupBy((outcome) => outcome.outcome))
       // Count the size of each group and build the aggregates
       .map((groups, uri) => ({
-        Failed: groups.get(Outcome.Value.Failed).getOrElse(Sequence.empty).size,
-        Passed: groups.get(Outcome.Value.Passed).getOrElse(Sequence.empty).size,
-        CantTell: groups.get(Outcome.Value.CantTell).getOrElse(Sequence.empty)
+        failed: groups.get(Outcome.Value.Failed).getOrElse(Sequence.empty).size,
+        passed: groups.get(Outcome.Value.Passed).getOrElse(Sequence.empty).size,
+        cantTell: groups.get(Outcome.Value.CantTell).getOrElse(Sequence.empty)
           .size,
       }));
 

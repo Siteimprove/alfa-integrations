@@ -128,6 +128,10 @@ export namespace SIP {
    * @internal
    */
   export namespace Metadata {
+    // We need to capitalize names for the API calls.
+    type RuleDurations = { [K in CamelCase<Performance.DurationKey>]: number };
+    type CommonDurations = { [K in CamelCase<Performance.CommonKeys>]: number };
+
     /** @internal */
     export interface Payload {
       /**
@@ -186,14 +190,14 @@ export namespace SIP {
         Failed: number;
         Passed: number;
         CantTell: number;
-        // Durations: Performance.RuleDurations
+        Durations: RuleDurations;
       }>;
 
       /**
        * Performances of the audit, with durations per rules and some common
        * durations.
        */
-      Durations: Performance.Durations; // only common, CamelCase
+      Durations: CommonDurations;
     }
 
     /**
@@ -239,8 +243,12 @@ export namespace SIP {
         TestName,
         ResultAggregates: audit.resultAggregates
           .toArray()
-          .map(([RuleId, data]) => ({ RuleId, ...data })),
-        Durations: audit.durations,
+          .map(([RuleId, data]) => ({
+            RuleId,
+            ...toCamelCase(data),
+            Durations: toCamelCase(audit.durations.rules[RuleId]),
+          })),
+        Durations: toCamelCase(audit.durations.common),
       };
 
       if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {
@@ -360,3 +368,26 @@ export namespace SIP {
     }
   }
 }
+
+type CamelCase<T extends string> = T extends `${infer F}-${infer R}`
+  ? `${CamelCase<F>}${CamelCase<R>}`
+  : Capitalize<T>;
+
+function toCamelCase<Keys extends string>(object: { [K in Keys]: number }): {
+  [K in CamelCase<Keys>]: number;
+} {
+  // Between the weird type, the regexs and `Object.entries`, TypeScript is
+  // just unable to do its magic.
+  // @ts-ignore
+  return Object.fromEntries(
+    Object.entries(object).map(([key, value]) => [
+      key
+        // Uppercase every letter after a dash, removing the dash.
+        .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+        // Uppercase the first letter.
+        .replace(/^([a-z])/, (_, letter) => letter.toUpperCase()),
+      value,
+    ])
+  );
+}
+

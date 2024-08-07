@@ -52,7 +52,7 @@ const emptyPayload: SIP.Metadata.Payload = {
   PageTitle: SIP.Defaults.Title,
   TestName: SIP.Defaults.Name,
   ResultAggregates: [],
-  Durations: Performance.empty(),
+  Durations: { Cascade: 0, AriaTree: 0, Total: 0 },
 };
 function makePayload(
   override: Partial<SIP.Metadata.Payload> = {}
@@ -102,7 +102,7 @@ test("S3.payload serialises outcomes as string", async (t) => {
       Map.from([
         [
           "https://alfa.siteimprove.com/rules/sia-r1000",
-          { Failed: 1, Passed: 0, CantTell: 0 },
+          { failed: 1, passed: 0, cantTell: 0 },
         ],
       ])
     )

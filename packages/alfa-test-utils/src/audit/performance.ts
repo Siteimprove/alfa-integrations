@@ -12,9 +12,9 @@ const { isMeasure } = alfaPerformance.Measure;
  */
 export namespace Performance {
   const durationKeys = ["applicability", "expectation", "total"] as const;
-  type DurationKey = (typeof durationKeys)[number];
   /** @internal */
-  export type RuleDurations = { [K in DurationKey]: number };
+  export type DurationKey = (typeof durationKeys)[number];
+  type RuleDurations = { [K in DurationKey]: number };
 
   /**
    * For each rule (key), records time taken for the applicability,
@@ -30,7 +30,8 @@ export namespace Performance {
   }
 
   const commonKeys = ["cascade", "aria-tree", "total"] as const;
-  type CommonKeys = (typeof commonKeys)[number];
+  /** @internal */
+  export type CommonKeys = (typeof commonKeys)[number];
   type CommonDurations = { [K in CommonKeys]: number };
 
   /**
