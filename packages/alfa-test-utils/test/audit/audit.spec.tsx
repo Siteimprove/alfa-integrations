@@ -17,25 +17,25 @@ const isTriple: Predicate<number> = (n) => n % 3 === 0;
 
 const numbers = Sequence.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-test(".filter keeps everything when no filter is provided", (t) => {
+test(".filter() keeps everything when no filter is provided", (t) => {
   t.deepEqual(Audit.filter(numbers, {}).toJSON(), numbers.toJSON());
 });
 
-test(".filter only includes specified items", (t) => {
+test(".filter() only includes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven }).toJSON(),
     [2, 4, 6, 8]
   );
 });
 
-test(".filter excludes specified items", (t) => {
+test(".filter() excludes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { exclude: isEven }).toJSON(),
     [1, 3, 5, 7, 9]
   );
 });
 
-test(".filter prioritizes exclusion over inclusion", (t) => {
+test(".filter() prioritizes exclusion over inclusion", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven, exclude: isTriple }).toJSON(),
     [2, 4, 8]
@@ -63,7 +63,7 @@ const page = Page.of(
 
 const ruleFoo = makeRule(1001, foo, [Criterion.of("1.1.1")]);
 
-test(".run only runs included rules", async (t) => {
+test(".run() only runs included rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
@@ -75,7 +75,7 @@ test(".run only runs included rules", async (t) => {
   ]);
 });
 
-test(".run does not run excluded rules", async (t) => {
+test(".run() does not run excluded rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { exclude: Rules.cherryPickFilter(2) },
@@ -90,7 +90,7 @@ test(".run does not run excluded rules", async (t) => {
   );
 });
 
-test(".run adds custom rules to the ruleset", async (t) => {
+test(".run() adds custom rules to the ruleset", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2), custom: [ruleFoo] },
@@ -103,7 +103,7 @@ test(".run adds custom rules to the ruleset", async (t) => {
   ]);
 });
 
-test(".run overrides the ruleset with custom rules", async (t) => {
+test(".run() overrides the ruleset with custom rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: {
@@ -119,7 +119,7 @@ test(".run overrides the ruleset with custom rules", async (t) => {
   ]);
 });
 
-test(".run only keeps selected outcomes", async (t) => {
+test(".run() only keeps selected outcomes", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
@@ -133,7 +133,7 @@ test(".run only keeps selected outcomes", async (t) => {
   t.deepEqual(actual.toJSON(), ["foo"]);
 });
 
-test(".run excludes selected outcomes", async (t) => {
+test(".run() excludes selected outcomes", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
@@ -147,7 +147,7 @@ test(".run excludes selected outcomes", async (t) => {
   t.deepEqual(actual.toJSON(), ["bar"]);
 });
 
-test(".run build performance data", async (t) => {
+test(".run() build performance data", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },

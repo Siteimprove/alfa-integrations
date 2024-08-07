@@ -31,18 +31,15 @@ function makePage(
   return Page.of(Request.empty(), response, document, device);
 }
 
-function makeAudit(
-  page: Page = makePage(h.document([<span></span>])),
-  outcomes: Map<string, Sequence<alfaOutcome>> = Map.empty(),
-  aggregates: Audit.ResultAggregates = Map.empty()
-): Audit.Result {
-  return {
-    alfaVersion,
-    page,
-    outcomes,
-    resultAggregates: aggregates,
-    durations: Performance.empty(),
-  };
+const emptyAudit: Audit.Result = {
+  alfaVersion,
+  page: makePage(h.document([<span></span>])),
+  outcomes: Map.empty(),
+  resultAggregates: Map.empty(),
+  durations: Performance.empty(),
+};
+function makeAudit(override: Partial<Audit.Result> = {}): Audit.Result {
+  return { ...emptyAudit, ...override };
 }
 
 const emptyPayload: SIP.Metadata.Payload = {
@@ -79,7 +76,7 @@ test("S3.payload() creates empty-ish payload", (t) => {
   const document = h.document([<span></span>]);
 
   const page = makePage(document);
-  const actual = S3.payload("some id", makeAudit(page));
+  const actual = S3.payload("some id", makeAudit({ page }));
 
   t.deepEqual(actual, {
     Id: "some id",
@@ -96,16 +93,18 @@ test("S3.payload serialises outcomes as string", async (t) => {
   const rule = makeRule(1000, target);
   const actual = S3.payload(
     "some id",
-    makeAudit(
+    makeAudit({
       page,
-      Map.from([[rule.uri, Sequence.from([makeFailed(rule, target)])]]),
-      Map.from([
+      outcomes: Map.from([
+        [rule.uri, Sequence.from([makeFailed(rule, target)])],
+      ]),
+      resultAggregates: Map.from([
         [
           "https://alfa.siteimprove.com/rules/sia-r1000",
           { failed: 1, passed: 0, cantTell: 0 },
         ],
-      ])
-    )
+      ]),
+    })
   );
 
   const expected: Outcome.Failed.JSON<Element> = {
@@ -181,12 +180,12 @@ test("S3.axiosConfig() creates an axios config", (t) => {
   const actual = S3.axiosConfig(
     "some id",
     "a pre-signed S3 URL",
-    makeAudit(page)
+    makeAudit({ page })
   );
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
-    data: new Blob([JSON.stringify(S3.payload("some id", makeAudit(page)))], {
+    data: new Blob([JSON.stringify(S3.payload("some id", makeAudit({ page })))], {
       type: "application/json",
     }),
   });
@@ -244,7 +243,7 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
 test("Metadata.payload() uses page's title if it exists", async (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
-  const actual = await Metadata.payload(makeAudit(page), {}, timestamp);
+  const actual = await Metadata.payload(makeAudit({ page }), {}, timestamp);
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
@@ -255,7 +254,7 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
   const page = makePage(h.document([<title>ignored</title>, <span></span>]));
 
   const actual = await Metadata.payload(
-    makeAudit(page),
+    makeAudit({ page }),
     { pageTitle: "page title" },
     timestamp
   );
@@ -269,7 +268,7 @@ test("Metadata.payload() builds page title from the page if specified", async (t
   const page = makePage(h.document([<span>Hello</span>]));
 
   const actual = await Metadata.payload(
-    makeAudit(page),
+    makeAudit({ page }),
     { pageTitle: (page) => page.document.toString() },
     timestamp
   );
@@ -300,7 +299,7 @@ test("Metadata.payload() uses page's response's URL if it exists", async (t) => 
     Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200)
   );
 
-  const actual = await Metadata.payload(makeAudit(page), {}, timestamp);
+  const actual = await Metadata.payload(makeAudit({ page }), {}, timestamp);
   t.notEqual(actual.CommitInformation, undefined);
   delete actual.CommitInformation;
 
@@ -314,7 +313,7 @@ test("Metadata.payload() uses explicit URL over page's URL", async (t) => {
   );
 
   const actual = await Metadata.payload(
-    makeAudit(page),
+    makeAudit({ page }),
     { pageURL: "page URL" },
     timestamp
   );
@@ -328,7 +327,7 @@ test("Metadata.payload() builds page URL from the page if specified", async (t) 
   const page = makePage(h.document([<span>Hello</span>]));
 
   const actual = await Metadata.payload(
-    makeAudit(page),
+    makeAudit({ page }),
     { pageURL: (page) => page.response.status.toString() },
     timestamp
   );
@@ -349,6 +348,18 @@ test("Metadata.payload() excludes commit information if requested", async (t) =>
   t.deepEqual(actual, makePayload());
 });
 
+// test("Metadata.payload() includes global durations", async (t) => {
+//   const actual = await Metadata.payload(
+//     makeAudit(),
+//     { includeGitInfo: false },
+//     timestamp
+//   );
+//   t.equal(actual.CommitInformation, undefined);
+//
+//   t.deepEqual(actual, makePayload());
+// });
+
+
 // Somehow, importing axios-mock-adapter breaks typing.
 // Requiring it is fine, but not allowed in an ESM file.
 // @ts-ignore
@@ -366,7 +377,7 @@ mock.onPut("a S3 URL").reply(200);
 test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const page = makePage(h.document([<span></span>]));
 
-  const actual = await SIP.upload(makeAudit(page), {
+  const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
     apiKey: "bar",
   });
