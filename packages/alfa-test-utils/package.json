@@ -19,7 +19,8 @@
   "types": "dist/index.d.ts",
   "files": [
     "dist/**/*.js",
-    "dist/**/*.d.ts"
+    "dist/**/*.d.ts",
+    "docs/**/*.md"
   ],
   "publishConfig": {
     "access": "public",
