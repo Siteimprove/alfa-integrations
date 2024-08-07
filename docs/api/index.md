@@ -219,6 +219,17 @@ This package provides integrations and utilities for the [Angular](https://angul
 </td></tr>
 <tr><td>
 
+[@siteimprove/alfa-test-utils](./alfa-test-utils.md)
+
+
+</td><td>
+
+A library for running Alfa tests and uploading results to the Siteimprove Intelligence Platform.
+
+
+</td></tr>
+<tr><td>
+
 [@siteimprove/alfa-unexpected](./alfa-unexpected.md)
 
 
