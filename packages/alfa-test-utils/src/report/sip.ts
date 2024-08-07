@@ -1,12 +1,12 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
-import { Err } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
+import type { Agent as HttpsAgent } from "https";
 
 import type { Audit, Performance } from "../audit/index.js";
 import { type CommitInformation, getCommitInformation } from "./git.js";
@@ -31,7 +31,7 @@ export namespace SIP {
 
   /**
    * Upload the results of an accessibility check to the Siteimprove Intelligence
-   * Platform (SIP) API.
+   * Platform (SIP) API. Returns the URL of a Page Report showing the audit results.
    *
    * @public
    */
@@ -43,20 +43,21 @@ export namespace SIP {
   /**
    * Internal overload for tests, allowing
    * * a custom upload URL (use stage / dev URLs); and
-   * * mocking timestamp (timestamp stability in tests).
+   * * mocking timestamp (timestamp stability in tests); and
+   * * a custom HTTPS agent (use self-signed certificates in local tests).
    *
    * @internal
    */
   export async function upload(
     audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: string }
+    override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
   ): Promise<string>;
 
   export async function upload(
     audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: string } = {}
+    override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
   ): Promise<string> {
     const config = await Metadata.axiosConfig(audit, options, override);
 
@@ -248,7 +249,11 @@ export namespace SIP {
     /**
      * Configure parameters of axios request
      */
-    export function params(url: string, apiKey: string): AxiosRequestConfig {
+    export function params(
+      url: string,
+      apiKey: string,
+      httpsAgent?: HttpsAgent
+    ): AxiosRequestConfig {
       return {
         method: "post",
         maxBodyLength: Infinity,
@@ -257,6 +262,7 @@ export namespace SIP {
           "Content-Type": "application/json",
           Authorization: "Basic " + Buffer.from(apiKey).toString("base64"),
         },
+        httpsAgent,
       };
     }
 
@@ -266,13 +272,17 @@ export namespace SIP {
     export async function axiosConfig(
       audit: Audit.Result,
       options: Options,
-      override: { url?: string; timestamp?: string }
+      override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
     ): Promise<AxiosRequestConfig> {
       const { url = Defaults.URL, timestamp = new Date().toISOString() } =
         override;
 
       return {
-        ...params(url, `${options.userName}:${options.apiKey}`),
+        ...params(
+          url,
+          `${options.userName}:${options.apiKey}`,
+          override.httpsAgent
+        ),
         data: JSON.stringify(await payload(audit, options, timestamp)),
       };
     }
