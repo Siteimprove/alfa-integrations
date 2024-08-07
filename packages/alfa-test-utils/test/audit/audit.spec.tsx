@@ -1,6 +1,7 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Element, h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
+import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
@@ -16,25 +17,25 @@ const isTriple: Predicate<number> = (n) => n % 3 === 0;
 
 const numbers = Sequence.from([1, 2, 3, 4, 5, 6, 7, 8, 9]);
 
-test(".filter keeps everything when no filter is provided", (t) => {
+test(".filter() keeps everything when no filter is provided", (t) => {
   t.deepEqual(Audit.filter(numbers, {}).toJSON(), numbers.toJSON());
 });
 
-test(".filter only includes specified items", (t) => {
+test(".filter() only includes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven }).toJSON(),
     [2, 4, 6, 8]
   );
 });
 
-test(".filter excludes specified items", (t) => {
+test(".filter() excludes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { exclude: isEven }).toJSON(),
     [1, 3, 5, 7, 9]
   );
 });
 
-test(".filter prioritizes exclusion over inclusion", (t) => {
+test(".filter() prioritizes exclusion over inclusion", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven, exclude: isTriple }).toJSON(),
     [2, 4, 8]
@@ -62,44 +63,47 @@ const page = Page.of(
 
 const ruleFoo = makeRule(1001, foo, [Criterion.of("1.1.1")]);
 
-test(".run only runs included rules", async (t) => {
+test(".run() only runs included rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
-    "https://alfa.siteimprove.com/rules/sia-r2",
+  t.deepEqual(Iterable.toJSON(actual), [
     "https://alfa.siteimprove.com/rules/sia-r2",
   ]);
 });
 
-test(".run does not run excluded rules", async (t) => {
+test(".run() does not run excluded rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { exclude: Rules.cherryPickFilter(2) },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t(actual.none((uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2"));
+  t(
+    Iterable.none(
+      actual,
+      (uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2"
+    )
+  );
 });
 
-test(".run adds custom rules to the ruleset", async (t) => {
+test(".run() adds custom rules to the ruleset", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2), custom: [ruleFoo] },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
-    "https://alfa.siteimprove.com/rules/sia-r2", // foo, failing
-    "https://alfa.siteimprove.com/rules/sia-r2", // bar, passing
-    "https://alfa.siteimprove.com/rules/sia-r1001", // foo
+  t.deepEqual(Iterable.toJSON(actual), [
+    "https://alfa.siteimprove.com/rules/sia-r2",
+    "https://alfa.siteimprove.com/rules/sia-r1001",
   ]);
 });
 
-test(".run overrides the ruleset with custom rules", async (t) => {
+test(".run() overrides the ruleset with custom rules", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: {
@@ -108,31 +112,59 @@ test(".run overrides the ruleset with custom rules", async (t) => {
         override: true,
       },
     })
-  ).outcomes.map((outcome) => outcome.rule.uri);
+  ).outcomes.keys();
 
-  t.deepEqual(actual.toJSON(), [
+  t.deepEqual(Iterable.toJSON(actual), [
     "https://alfa.siteimprove.com/rules/sia-r1001", // foo
   ]);
 });
 
-test(".run only keeps selected outcomes", async (t) => {
+test(".run() only keeps selected outcomes", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
       outcomes: { include: Outcomes.failedFilter },
     })
-  ).outcomes.map((outcome) => (outcome.target as Element).id.getUnsafe());
+  ).outcomes
+    .get("https://alfa.siteimprove.com/rules/sia-r2")
+    .getUnsafe()
+    .map((outcome) => (outcome.target as Element).id.getUnsafe());
 
   t.deepEqual(actual.toJSON(), ["foo"]);
 });
 
-test(".run excludes selected outcomes", async (t) => {
+test(".run() excludes selected outcomes", async (t) => {
   const actual = (
     await Audit.run(page, {
       rules: { include: Rules.cherryPickFilter(2) },
       outcomes: { exclude: Outcomes.failedFilter },
     })
-  ).outcomes.map((outcome) => (outcome.target as Element).id.getUnsafe());
+  ).outcomes
+    .get("https://alfa.siteimprove.com/rules/sia-r2")
+    .getUnsafe()
+    .map((outcome) => (outcome.target as Element).id.getUnsafe());
 
   t.deepEqual(actual.toJSON(), ["bar"]);
+});
+
+test(".run() build performance data", async (t) => {
+  const actual = (
+    await Audit.run(page, {
+      rules: { include: Rules.cherryPickFilter(2) },
+    })
+  ).durations;
+
+  // We cannot test real values due to instability, only checking they've been
+  // updated.
+  t.notEqual(actual.common.total, 0);
+  t.notEqual(actual.common.cascade, 0);
+  t.notEqual(actual.common["aria-tree"], 0);
+
+  t.deepEqual(Object.keys(actual.rules), [
+    "https://alfa.siteimprove.com/rules/sia-r2",
+  ]);
+  const rule = actual.rules["https://alfa.siteimprove.com/rules/sia-r2"];
+  t.notEqual(rule.total, 0);
+  t.notEqual(rule.applicability, 0);
+  t.notEqual(rule.expectation, 0);
 });

@@ -4,12 +4,21 @@
 
 ```ts
 
+/// <reference types="node" />
+
+import type { Agent } from 'https';
+import { alfaVersion } from '@siteimprove/alfa-rules';
+import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
-import type { Flattened } from '@siteimprove/alfa-rules';
+import { Flattened } from '@siteimprove/alfa-rules';
+import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
-import { Page } from '@siteimprove/alfa-web';
+import type { Page } from '@siteimprove/alfa-web';
+import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
+import type { Result } from '@siteimprove/alfa-result';
+import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
@@ -33,9 +42,17 @@ export namespace Audit {
         };
     }
     export interface Result {
-        // (undocumented)
-        outcomes: Sequence<alfaOutcome>;
+        alfaVersion: typeof alfaVersion;
+        durations: Performance.Durations;
+        outcomes: Map_2<string, Sequence<alfaOutcome>>;
+        page: Page;
+        resultAggregates: ResultAggregates;
     }
+    export type ResultAggregates = Map_2<string, {
+        failed: number;
+        passed: number;
+        cantTell: number;
+    }>;
     export function run(page: Page, options?: Options): Promise<Result>;
 }
 
@@ -46,6 +63,48 @@ export namespace Outcomes {
     const cantTellFilter: Predicate<alfaOutcome>;
     export function insideSelectorFilter(selector: string, traversal?: Node.Traversal): Predicate<alfaOutcome>;
     export function ruleAndSelectorFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
+}
+
+// @public
+export namespace Performance {
+    const // (undocumented)
+    durationKeys: readonly ["applicability", "expectation", "total"];
+    // Warning: (ae-incompatible-release-tags) The symbol "CommonDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    //
+    // (undocumented)
+    export type CommonDurations = {
+        [K in CommonKeys]: number;
+    };
+    // @internal (undocumented)
+    export type CommonKeys = (typeof commonKeys)[number];
+    // @internal (undocumented)
+    export type DurationKey = (typeof durationKeys)[number];
+    export type Durations = {
+        common: CommonDurations;
+        rules: RulesDurations;
+    };
+    const // (undocumented)
+    commonKeys: readonly ["cascade", "aria-tree", "total"];
+    // @internal (undocumented)
+    export function empty(): Durations;
+    // @internal (undocumented)
+    export function emptyRuleDurations(): RuleDurations;
+    // @internal (undocumented)
+    export function recordCommon(durations: Durations): Performance_2<string>;
+    // @internal (undocumented)
+    export function recordRule(durations: Durations): Performance_2<RuleEvent>;
+    // Warning: (ae-incompatible-release-tags) The symbol "RuleDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    //
+    // (undocumented)
+    export type RuleDurations = {
+        [K in DurationKey]: number;
+    };
+    // @internal (undocumented)
+    export type RuleEvent = Rule.Event<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
+    export type RulesDurations = {
+        [key: string]: RuleDurations;
+    };
+        {};
 }
 
 // @public
@@ -73,35 +132,55 @@ export namespace SIP {
     }
     // @internal
     export namespace Metadata {
-        export function axiosConfig(page: Page, options: Options, override: {
+        export function axiosConfig(audit: Audit.Result, options: Options, override: {
             url?: string;
-            timestamp?: number;
-        }, defaultTitle?: string, defaultName?: string): AxiosRequestConfig;
-        export function params(url: string, apiKey: string): AxiosRequestConfig;
+            timestamp?: string;
+            httpsAgent?: Agent;
+        }): Promise<AxiosRequestConfig>;
+        // (undocumented)
+        export type CommonDurations = {
+            [K in CamelCase<Performance.CommonKeys>]: number;
+        };
+        export function params(url: string, apiKey: string, httpsAgent?: Agent): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
-            // (undocumented)
+            CommitInformation?: CommitInformation;
+            Durations: CommonDurations;
             PageTitle: string;
-            // (undocumented)
-            RequestTimeStampMilliseconds: number;
-            // (undocumented)
+            PageUrl: string;
+            RequestTimestamp: string;
+            ResultAggregates: Array_2<{
+                RuleId: string;
+                Failed: number;
+                Passed: number;
+                CantTell: number;
+                Durations: RuleDurations;
+            }>;
             TestName: string;
-            // (undocumented)
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(PageTitle: string, TestName: string, timestamp: number): Payload;
+        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string, defaultTitle?: string, defaultName?: string): Promise<Payload>;
+        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
+        //
+        // (undocumented)
+        export type RuleDurations = {
+            [K in CamelCase<Performance.DurationKey>]: number;
+        };
             {};
     }
     // (undocumented)
     export interface Options {
         apiKey: string;
-        pageTitle?: string;
-        testName?: string;
+        includeGitInfo?: boolean;
+        pageTitle?: string | ((page: Page) => string);
+        pageURL?: string | ((page: Page) => string);
+        // Warning: (ae-forgotten-export) The symbol "CommitInformation" needs to be exported by the entry point index.d.ts
+        testName?: string | ((git: CommitInformation) => string);
         userName: string;
     }
     // @internal
     export namespace S3 {
-        export function axiosConfig(id: string, url: string, page: Page, outcomes: Iterable<alfaOutcome>): AxiosRequestConfig;
+        export function axiosConfig(id: string, url: string, audit: Audit.Result): AxiosRequestConfig;
         export function params(url: string): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
@@ -112,15 +191,16 @@ export namespace SIP {
             // (undocumented)
             Id: string;
         }
-        export function payload(Id: string, page: Page, outcomes: Iterable<alfaOutcome>): Payload;
+        export function payload(Id: string, audit: Audit.Result): Payload;
             {};
     }
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options): Promise<string>;
+    export function upload(audit: Audit.Result, options: Options): Promise<Result<string, string>>;
     // @internal
-    export function upload(page: Page, outcomes: Iterable<alfaOutcome>, options: Options, override: {
+    export function upload(audit: Audit.Result, options: Options, override: {
         url?: string;
-        timestamp?: number;
-    }): Promise<string>;
+        timestamp?: string;
+        httpsAgent?: Agent;
+    }): Promise<Result<string, string>>;
 }
 
 ```

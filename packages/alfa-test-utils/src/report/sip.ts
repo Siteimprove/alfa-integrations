@@ -1,13 +1,17 @@
+import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Serializable } from "@siteimprove/alfa-json";
-import { alfaVersion } from "@siteimprove/alfa-rules";
+import { Err, Ok } from "@siteimprove/alfa-result";
+import type { Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { Page } from "@siteimprove/alfa-web";
+import type { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
+import type { Agent as HttpsAgent } from "https";
 
-import type { alfaOutcome } from "../common.js";
+import type { Audit, Performance } from "../audit/index.js";
+import { type CommitInformation, getCommitInformation } from "./git.js";
 
 const { Verbosity } = Serializable;
 
@@ -17,9 +21,7 @@ const { Verbosity } = Serializable;
  * @public
  */
 export namespace SIP {
-  /**
-   * @internal
-   */
+  /** @internal */
   export namespace Defaults {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
@@ -29,52 +31,48 @@ export namespace SIP {
 
   /**
    * Upload the results of an accessibility check to the Siteimprove Intelligence
-   * Platform (SIP) API.
+   * Platform (SIP) API. Returns the URL of a Page Report showing the audit results.
    *
    * @public
    */
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options
-  ): Promise<string>;
+  ): Promise<Result<string, string>>;
 
   /**
    * Internal overload for tests, allowing
    * * a custom upload URL (use stage / dev URLs); and
-   * * mocking timestamp (timestamp stability in tests).
+   * * mocking timestamp (timestamp stability in tests); and
+   * * a custom HTTPS agent (use self-signed certificates in local tests).
    *
    * @internal
    */
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: number }
-  ): Promise<string>;
+    override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
+  ): Promise<Result<string, string>>;
 
   export async function upload(
-    page: Page,
-    outcomes: Iterable<alfaOutcome>,
+    audit: Audit.Result,
     options: Options,
-    override: { url?: string; timestamp?: number } = {}
-  ): Promise<string> {
-    const config = Metadata.axiosConfig(page, options, override);
+    override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
+  ): Promise<Result<string, string>> {
+    const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
       const axiosResponse = await axios.request(config);
       const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
 
-      const response = await axios.request(
-        S3.axiosConfig(id, preSignedUrl, page, outcomes)
-      );
+      await axios.request(S3.axiosConfig(id, preSignedUrl, audit));
 
-      return pageReportUrl;
+      return Ok.of(pageReportUrl);
     } catch (error) {
       console.error(error);
     }
 
-    return "Could not retrieve a page report URL";
+    return Err.of("Could not retrieve a page report URL");
   }
 
   /**
@@ -92,19 +90,36 @@ export namespace SIP {
     apiKey: string;
 
     /**
-     * The title of the page. Defaults to the content of the first `<title>` element,
-     * if any.
-     */
-    pageTitle?: string;
-
-    /**
-     * A unique identifier for the test run, e.g. a git commit hash, branch name, …
+     * The URL of the page, or a function to build it from the audited page.
+     * Defaults to the URL used to scrape the page.
      *
      * @remarks
-     * Unicity is not required but is recommended to help separating unrelated runs.
-     * Defaults to the generic "Accessibility Code Checker" if none is provided.
+     * Overwriting it typically allows to circumvent `localhost` addresses for
+     * tests that are run on local servers.
      */
-    testName?: string;
+    pageURL?: string | ((page: Page) => string);
+
+    /**
+     * The title of the page, or a function to build it from the audited page.
+     * Defaults to the content of the first `<title>` element, if any.
+     */
+    pageTitle?: string | ((page: Page) => string);
+
+    /**
+     * A name for the test (e.g. "AA conformance", …), or a function building a
+     * test name from the git commit information (e.g. the git hash or branch name).
+     */
+    testName?: string | ((git: CommitInformation) => string);
+
+    /**
+     * Whether to upload git commit information to the Siteimprove Intelligence Platform
+     * (default: yes).
+     *
+     * @remarks
+     * If the directory is not in a git repository, or git is not installed,
+     * this will silently fail and not send any information.
+     */
+    includeGitInfo?: boolean;
   }
 
   /**
@@ -113,34 +128,145 @@ export namespace SIP {
    * @internal
    */
   export namespace Metadata {
-    interface Payload {
-      RequestTimeStampMilliseconds: number;
+    // We need to capitalize names for the API calls.
+    type RuleDurations = { [K in CamelCase<Performance.DurationKey>]: number };
+    type CommonDurations = { [K in CamelCase<Performance.CommonKeys>]: number };
+
+    /** @internal */
+    export interface Payload {
+      /**
+       * The time the request is sent, formatted as an ISO 8601 string.
+       */
+      RequestTimestamp: string;
+
+      /**
+       * Version of Alfa used for the checks
+       */
       Version: `${number}.${number}.${number}`;
+
+      // Ignored for now.
+      // /**
+      //  * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
+      //  */
+      // SiteId?: string;
+
+      /**
+       * Information about the latest git commit
+       */
+      CommitInformation?: CommitInformation;
+
+      // Ignored for now.
+      // /**
+      //  * Back link to a URL of choice, typically a link to the Pull Request
+      //  * containing the changes, …
+      //  */
+      // BackLink?: string;
+
+      /**
+       * The URL of the page. Defaults to the URL in the Response but can be
+       * overwritten to avoid `localhost` addresses in local tests, …
+       */
+      PageUrl: string;
+
+      /**
+       * The title of the page checked, defaults to the first `<title>` element
+       * if any, or "Unnamed page" if none.
+       */
       PageTitle: string;
+
+      /**
+       * Name of the test, e.g. "AA conformance", "Color contrast",
+       * "On branch: \<branch name\>", …
+       * Defaults to "Accessibility Code Checker".
+       */
       TestName: string;
+
+      /**
+       * Aggregated data for the results with number of Passed, Failed, and
+       * CantTell occurrences per rule.
+       */
+      ResultAggregates: Array<{
+        RuleId: string;
+        Failed: number;
+        Passed: number;
+        CantTell: number;
+        Durations: RuleDurations;
+      }>;
+
+      /**
+       * Performances of the audit, with durations per rules and some common
+       * durations.
+       */
+      Durations: CommonDurations;
     }
 
     /**
      * Prepare payload with metadata for creating pre-signed URL.
+     *
+     * @remarks
+     * The timestamp must be formated as an ISO 8601 string.
      */
-    export function payload(
-      PageTitle: string,
-      TestName: string,
-      timestamp: number
-    ): Payload {
-      return {
-        RequestTimeStampMilliseconds: timestamp,
-        Version: alfaVersion,
+    export async function payload(
+      audit: Audit.Result,
+      options: Partial<Options>,
+      timestamp: string,
+      defaultTitle = Defaults.Title,
+      defaultName = Defaults.Name
+    ): Promise<Payload> {
+      const url = options.pageURL ?? audit.page.response.url.toString();
+      const PageUrl = typeof url === "string" ? url : url(audit.page);
+
+      const title =
+        options.pageTitle ??
+        Query.getElementDescendants(audit.page.document)
+          .filter(Element.isElement)
+          .find(Element.hasName("title"))
+          .map((title) => title.textContent())
+          .getOr(defaultTitle);
+      const PageTitle = typeof title === "string" ? title : title(audit.page);
+
+      const gitInfo = await getCommitInformation();
+
+      const name = options.testName ?? defaultName;
+      const TestName =
+        // If the name is a string, using, otherwise call the function on the
+        // gitInfo, defaulting to the error if any.
+        typeof name === "string"
+          ? name
+          : gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(defaultName));
+
+      const result: Payload = {
+        RequestTimestamp: timestamp,
+        Version: audit.alfaVersion,
+        PageUrl,
         PageTitle,
         TestName,
+        ResultAggregates: audit.resultAggregates
+          .toArray()
+          .map(([RuleId, data]) => ({
+            RuleId,
+            ...toCamelCase(data),
+            Durations: toCamelCase(audit.durations.rules[RuleId]),
+          })),
+        Durations: toCamelCase(audit.durations.common),
       };
+
+      if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {
+        result.CommitInformation = gitInfo.get();
+      }
+
+      return result;
     }
 
     /**
      * Configure parameters of axios request
      */
-    export function params(url: string, apiKey: string): AxiosRequestConfig {
-      return {
+    export function params(
+      url: string,
+      apiKey: string,
+      httpsAgent?: HttpsAgent
+    ): AxiosRequestConfig {
+      const config: AxiosRequestConfig = {
         method: "post",
         maxBodyLength: Infinity,
         url,
@@ -149,33 +275,32 @@ export namespace SIP {
           Authorization: "Basic " + Buffer.from(apiKey).toString("base64"),
         },
       };
+
+      if (httpsAgent !== undefined) {
+        config.httpsAgent = httpsAgent;
+      }
+
+      return config;
     }
 
     /**
      * Prepare the configuration for the axios request
      */
-    export function axiosConfig(
-      page: Page,
+    export async function axiosConfig(
+      audit: Audit.Result,
       options: Options,
-      override: { url?: string; timestamp?: number },
-      defaultTitle = Defaults.Title,
-      defaultName = Defaults.Name
-    ): AxiosRequestConfig {
-      const { url = Defaults.URL, timestamp = Date.now() } = override;
-
-      const title =
-        options.pageTitle ??
-        Query.getElementDescendants(page.document)
-          .filter(Element.isElement)
-          .find(Element.hasName("title"))
-          .map((title) => title.textContent())
-          .getOr(defaultTitle);
-
-      const name = options.testName ?? defaultName;
+      override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
+    ): Promise<AxiosRequestConfig> {
+      const { url = Defaults.URL, timestamp = new Date().toISOString() } =
+        override;
 
       return {
-        ...params(url, `${options.userName}:${options.apiKey}`),
-        data: JSON.stringify(payload(title, name, timestamp)),
+        ...params(
+          url,
+          `${options.userName}:${options.apiKey}`,
+          override.httpsAgent
+        ),
+        data: JSON.stringify(await payload(audit, options, timestamp)),
       };
     }
   }
@@ -200,19 +325,17 @@ export namespace SIP {
      *
      * @internal
      */
-    export function payload(
-      Id: string,
-      page: Page,
-      outcomes: Iterable<alfaOutcome>
-    ): Payload {
+    export function payload(Id: string, audit: Audit.Result): Payload {
       return {
         Id,
         CheckResult: JSON.stringify(
-          Sequence.from(outcomes).toJSON({
+          Sequence.from(audit.outcomes.values()).flatten().toJSON({
             verbosity: Verbosity.Minimal,
           })
         ),
-        Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
+        Aspects: JSON.stringify(
+          audit.page.toJSON({ verbosity: Verbosity.High })
+        ),
       };
     }
 
@@ -234,15 +357,37 @@ export namespace SIP {
     export function axiosConfig(
       id: string,
       url: string,
-      page: Page,
-      outcomes: Iterable<alfaOutcome>
+      audit: Audit.Result
     ): AxiosRequestConfig {
       return {
         ...params(url),
-        data: new Blob([JSON.stringify(payload(id, page, outcomes))], {
+        data: new Blob([JSON.stringify(payload(id, audit))], {
           type: "application/json",
         }),
       };
     }
   }
 }
+
+type CamelCase<T extends string> = T extends `${infer F}-${infer R}`
+  ? `${CamelCase<F>}${CamelCase<R>}`
+  : Capitalize<T>;
+
+function toCamelCase<Keys extends string>(object: { [K in Keys]: number }): {
+  [K in CamelCase<Keys>]: number;
+} {
+  // Between the weird type, the regexs and `Object.entries`, TypeScript is
+  // just unable to do its magic.
+  // @ts-ignore
+  return Object.fromEntries(
+    Object.entries(object).map(([key, value]) => [
+      key
+        // Uppercase every letter after a dash, removing the dash.
+        .replace(/-([a-z])/g, (_, letter) => letter.toUpperCase())
+        // Uppercase the first letter.
+        .replace(/^([a-z])/, (_, letter) => letter.toUpperCase()),
+      value,
+    ])
+  );
+}
+
