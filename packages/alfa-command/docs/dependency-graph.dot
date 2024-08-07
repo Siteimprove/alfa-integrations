@@ -87,7 +87,7 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/command.ts" -> "src/argument.ts" [
-    style = "solid";
+    style = "dotted";
     ltail = "cluster_src/command.ts";
     lhead = "cluster_src/argument.ts";
     color = "black";
