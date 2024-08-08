@@ -1,6 +1,6 @@
 # Scraping
 
-Scraping a web page is the act of turning a web page into the internal data structure that Alfa can work on. It requires rendering the page in a browser; in automated tests this is usually done using browser automation and headless browser.
+Scraping a web page is the act of turning a web page into the internal data structure that Alfa can work on. It requires rendering the page in a browser; in automated tests this is usually done using browser automation and headless browsers.
 
 The precise steps needed for scraping thus depend on the actual browser automation used. Several packages are provided for integrating with common browser automations.
 
@@ -47,7 +47,7 @@ const document = await page.evaluateHandle(() => window.document);
 const alfaPage = await Playwright.toPage(document);
 ```
 
-Most of this code is standard in test automation and likely to exist in end-to-end tests. The last line is the one doing teh actual scrape. It can be repeated as often as needed, e.g. after manipulating the page (opening modals, changing tabs, …) in order to scrape the page in different states.
+Most of this code is standard in test automation and likely to exist in end-to-end tests. The last line is the one doing the actual scrape. It can be repeated as often as needed, e.g. after manipulating the page (opening modals, changing tabs, …) in order to scrape the page in different states.
 
 ## Puppeteer
 
@@ -83,7 +83,7 @@ const document = await page.evaluateHandle(() => window.document);
 const alfaPage = await Puppeteer.toPage(document);
 ```
 
-Most of this code is standard in test automation and likely to exist in end-to-end tests. The last line is the one doing teh actual scrape. It can be repeated as often as needed, e.g. after manipulating the page (opening modals, changing tabs, …) in order to scrape the page in different states.
+Most of this code is standard in test automation and likely to exist in end-to-end tests. The last line is the one doing the actual scrape. It can be repeated as often as needed, e.g. after manipulating the page (opening modals, changing tabs, …) in order to scrape the page in different states.
 
 ## Selenium
 
@@ -97,59 +97,35 @@ import { Native } from "@siteimprove/alfa-dom/native";
 
 let driver;
 
-try {
-  // Initialize WebDriver with Chrome options
-  const options = new chrome.Options();
-  options.addArguments(
-    "--headless", // Run Chrome in headless mode (without UI)
-    "--no-sandbox", // Disable sandboxing for compatibility
-    "--disable-dev-shm-usage" // Disable shared memory usage to avoid issues in environments with limited resources
-  );
+// Initialize WebDriver
 
-  // Build WebDriver instance with the specified options
-  driver = await new Builder()
-    .forBrowser("chrome")
-    .setChromeOptions(options)
-    .build();
+/**
+ * Use normal Selenium set up here, e.g. `new Builder()`, …
+ */
 
-  // Navigate to the specified URL
+// Navigate to the page to scrape
+await driver.get("http://localhost:3000");
 
-  // TODO: Replace with your own page
-  await driver.get("http://localhost:3000");
-  await driver.manage().setTimeouts({
-    implicit: 5000, // Wait up to 5 seconds for elements to be found before throwing a NoSuchElementException
-    pageLoad: 30000, // Wait up to 30 seconds for the page to load completely before throwing an error
-    script: 60000, // Wait up to 60 seconds for asynchronous scripts to finish execution before throwing an error
-  });
+// Create a handle for the document object
+const document = await driver.executeScript("return document;");
 
-  // Retrieve and process the page's DOM
-  const document = await driver.executeScript("return document;");
+// Scrape the page
+const documentJSON = await driver.executeScript(Native.fromNode, document);
 
-  // Scrape the page
-  const documentJSON = await driver.executeScript(Native.fromNode, document);
-
-  // Create an Alfa page representation
-  const alfaPage = Page.of(
-    Request.empty(),
-    Response.empty(),
-    Document.from(documentJSON as Document.JSON),
-    Device.standard()
-  );
-} catch (error) {
-  console.error("Error during the Selenium test:", error);
-} finally {
-  // Ensure WebDriver session is properly terminated to avoid resource leaks
-  if (driver) {
-    await driver.quit();
-  }
-}
+// Create an Alfa page representation
+const alfaPage = Page.of(
+  Request.empty(),
+  Response.empty(),
+  Document.from(documentJSON as Document.JSON),
+  Device.standard()
+);
 ```
 
 Here also, the only the building of `documentJSON` and `alfaPage` are really specific to the scraping; they can be repeated to get the page in different states if needed.
 
 ## Standalone scraper
 
-The `@siteimprove/alfa-scraper` package provides a standalone package (using puppeteer internally). It might be a better fit for projects who do not already have browser automation and end-to-end tests installed.
+The `@siteimprove/alfa-scraper` package provides a standalone package (using puppeteer internally). It might be a better fit for projects who do not already have browser automation and end-to-end tests in place.
 
 Install the `@siteimprove/alfa-scraper` package:
 
@@ -163,19 +139,19 @@ or
 $ yarn add --dev @siteimprove/alfa-scraper
 ```
 
-Then, point the scraper at a live page (this may require to set up a local server for it, or use Node's `url.pathToFileURL` to point it at a local file):
+Then, point the scraper at a live page (this may require to set up a local server for it, or use Node's `url.pathToFileURL` to point at a local file):
 
 ```typescript
 import { Scraper } from "@siteimprove/alfa-scraper";
 
-await Scraper.of()
+const alfaPage = await Scraper.of()
   .scrape("http://localhost:8080")
   .then((result) => result.getUnsafe("Could not scrape page"));
 ```
 
 ## Command Line Scraper
 
-The `@siteimprove/alfa-cli` package provides a scraper usable from the command line (using puppeteer internally). The resulting scrape must be save to a local file and then loaded into a page. Thus it may not be the best option for automated tests but can be useful for quick iteration and experimentation of the process.
+The `@siteimprove/alfa-cli` package provides a scraper usable from the command line (using puppeteer internally). The resulting scrape must be saved to a local file and then loaded into a page. Thus, it may not be the best option for automated tests but can be useful for quick iteration and experimentation of the process.
 
 Install the `@siteimprove/alfa-cli` and `@siteimprove/alfa-web` packages:
 
@@ -211,7 +187,7 @@ import path from "node:path";
 import { Page } from "@siteimprove/alfa-web";
 
 const file = "page.json";
-const page = Page.from(
+const alfaPage = Page.from(
   JSON.parse(fs.readFileSync(path.join(".", file), "utf-8"))
 ).getUnsafe("Could not parse the page");
 ```
@@ -222,4 +198,4 @@ The Cypress integration is currently not working due to outdated packages.
 
 ## Generic integration
 
-The `@siteimprove/alfa-dom/native` package provides a `Native.fromNode` function that can be used to convert any document object into an Alfa document (and page). It can, notably, be used inside an actual browser (e.g. as part of a script or extension) or injected into a headless browser by whichever means the browser automation tool provides for this. See the [Selenium](#selenium) example for some detailed usage.
+The `@siteimprove/alfa-dom/native` package provides a `Native.fromNode` function that can be used to convert any document object into an Alfa document (and page). It can, notably, be used inside an actual browser (e.g. as part of a script or extension) or injected into a headless browser by whichever means the browser automation tool provides for this. See the [Selenium](#selenium) integration for some example usage.
