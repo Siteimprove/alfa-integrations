@@ -57,6 +57,12 @@ export namespace Audit {
 }
 
 // @public
+export namespace Logging {
+    export function prepare(audit: Audit.Result): Record<string, number>;
+    export function result(audit: Audit.Result, pageReportURL?: Result<string, string>): void;
+}
+
+// @public
 export namespace Outcomes {
     const failedFilter: Predicate<alfaOutcome>;
     const passedFilter: Predicate<alfaOutcome>;
