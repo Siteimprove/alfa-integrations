@@ -29,7 +29,7 @@
       "@siteimprove/alfa-puppeteer": ["puppeteer"],
       "@siteimprove/alfa-react": ["react", "react-test-renderer"],
       "@siteimprove/alfa-scraper": ["puppeteer"],
-      "@siteimprove/alfa-test-utils": ["axios", "simple-git"],
+      "@siteimprove/alfa-test-utils": ["axios", "chalk", "simple-git"],
       "@siteimprove/alfa-unexpected": ["unexpected"],
       "@siteimprove/alfa-vue": [
         "@vue/test-utils",
