@@ -4,7 +4,7 @@ The Siteimprove Accessibility Code Checker integrates our accessibility checker 
 
 ## Installation
 
-Alfa packages are distributed as npm packages in the Github registry. See [Github documentation on the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) for configuring your package manager to use the Github registry for the `@siteimprove` organisation. Or check a [quick guide on configuring the Github registry](./github-registry.md).
+Alfa packages are distributed as npm packages in the Github registry. See [Github documentation on the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) for configuring your package manager to use the Github registry for the `@siteimprove` organisation. Or check a [quick guide on configuring the Github registry](github-registry.md).
 
 Alfa is distributed as ESM. Thus, projects using the old CJS format for modules won't be able to use it directly. There are essentially four ways to handle that:
 
@@ -32,8 +32,9 @@ Running the Siteimprove Accessibility Code Checker usually requires three steps:
 1. **Scraping** the page to audit;
 2. **Auditing** the page;
 3. **Reporting** the results.
+4. (optionally) **Decide** on test outcome (fail or pass).
 
-Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](./scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./audit.md) and [report on the results](./report.md).
+Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./audit.md) and [report on the results](./report.md). There is currently no utility to [gatekeep](./gatekeeping.md) on the results and this has to be done a bit manually.
 
 ## Why 'Alfa'
 
