@@ -68,7 +68,7 @@ export namespace Rules {
    * Filter to manually cherry-pick rules, by their id.
    *
    * @remarks
-   * This can be use to specifically select, or reject, a handful of rules, for
+   * This can be used to specifically select, or reject, a handful of rules, for
    * example because they make no sense in a given context.
    */
   export function cherryPickFilter(

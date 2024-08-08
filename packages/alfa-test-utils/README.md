@@ -29,3 +29,5 @@ Audit.run(page, { rules: { include: Rules.aaFilter } }).then((outcomes) => {
   }).then(console.log);
 });
 ```
+
+See [the full documentation](https://alfa.siteimprove.com/code-checker) for detailed usage instructions.

@@ -56,6 +56,22 @@ export namespace Audit {
     export function run(page: Page, options?: Options): Promise<Result>;
 }
 
+// @public (undocumented)
+export interface CommitInformation {
+    Author: string | undefined;
+    BranchName: string;
+    CommitHash: string | undefined;
+    CommitTimestamp: string | undefined;
+    Email: string | undefined;
+    GitOrigin: string | undefined;
+    Message: string | undefined;
+}
+
+// Warning: (ae-internal-missing-underscore) The name "getCommitInformation" should be prefixed with an underscore because the declaration is marked as @internal
+//
+// @internal (undocumented)
+export function getCommitInformation(): Promise<Result<CommitInformation, string>>;
+
 // @public
 export namespace Logging {
     export function prepare(audit: Audit.Result): Record<string, number>;
@@ -180,7 +196,6 @@ export namespace SIP {
         includeGitInfo?: boolean;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
-        // Warning: (ae-forgotten-export) The symbol "CommitInformation" needs to be exported by the entry point index.d.ts
         testName?: string | ((git: CommitInformation) => string);
         userName: string;
     }
