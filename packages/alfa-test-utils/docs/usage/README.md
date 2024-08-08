@@ -1,6 +1,8 @@
 # Siteimprove Accessibility Code Checker
 
-The Siteimprove Accessibility Code Checker integrates our accessibility checker engine, Alfa, into your development process and CI/CD pipeline. Results can be uploaded into the Siteimprove Intelligence Platform for an easy-to-act report.
+The Accessibility Code Checker integrates Siteimprove’s Alfa engine into your development process and CI/CD pipeline using frameworks like Selenium, Playwright, Puppeteer, and Cypress.
+
+With the Accessibility Code Checker, you’ll receive instant accessibility assessments, AI-powered remediation suggestions, and easily shareable reports. This ensures your website is accessible and compliant from the start.
 
 ## Installation
 
@@ -34,10 +36,10 @@ Running the Siteimprove Accessibility Code Checker usually requires three steps:
 3. **Reporting** the results.
 4. (optionally) **Decide** on test outcome (fail or pass).
 
-Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./audit.md) and [report on the results](./report.md). There is currently no utility to [gatekeep](./gatekeeping.md) on the results and this has to be done a bit manually.
+Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./auditing.md) and [report on the results](./reporting.md). There is currently no utility to [gatekeep](./gatekeeping.md) on the results and this has to be done a bit manually.
 
 ## Why 'Alfa'
 
-Despite the homophony, Alfa is far from being in the `alpha` stage of development… It is the tool powering Siteimprove Intelligence Platform for Digital Accessibility, and checking millions of web pages daily.
+Despite the homophony, Alfa is far from being in the alpha stage of development. It powers the [Siteimprove Accessibility product](https://www.siteimprove.com/product/accessibility/) and [Accessibility Browser Extension](https://www.siteimprove.com/integrations/browser-extensions/, checking millions of web pages daily and helping thousands of customers.
 
-The name 'Alfa' comes from the name of the guide dog of a former colleague 🦮. Let Alfa be your guide into the world of Accessibility, like Alfa guided his owner into the real world!
+We named our accessibility engine ‘Alfa’ after a guide dog. Just as Alfa guided his owner in the real world, let “Alfa” be your guide into the world of accessibility.
