@@ -160,7 +160,7 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/scraper.ts" -> "src/credentials.ts" [
-    style = "solid";
+    style = "dotted";
     ltail = "cluster_src/scraper.ts";
     lhead = "cluster_src/credentials.ts";
     color = "black";
@@ -169,7 +169,7 @@ digraph "dependency-graph-[object Object]" {
     style = "invis";
   ];
   "src/scraper.ts" -> "src/screenshot.ts" [
-    style = "solid";
+    style = "dotted";
     ltail = "cluster_src/scraper.ts";
     lhead = "cluster_src/screenshot.ts";
     color = "black";
