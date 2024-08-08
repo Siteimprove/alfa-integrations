@@ -40,6 +40,6 @@ Scrapping is highly dependent on the browser automation used. Specific browsers 
 
 ## Why 'Alfa'
 
-Despite the homophony, Alfa is far from being in the alpha stage of development. It powers the [Siteimprove Accessibility product](https://www.siteimprove.com/product/accessibility/) and [Accessibility Browser Extension](https://www.siteimprove.com/integrations/browser-extensions/, checking millions of web pages daily and helping thousands of customers.
+Despite the homophony, Alfa is far from being in the alpha stage of development. It powers the [Siteimprove Accessibility product](https://www.siteimprove.com/product/accessibility/) and [Accessibility Browser Extension](https://www.siteimprove.com/integrations/browser-extensions/), checking millions of web pages daily and helping thousands of customers.
 
 We named our accessibility engine ‘Alfa’ after a guide dog. Just as Alfa guided his owner in the real world, let “Alfa” be your guide into the world of accessibility.
