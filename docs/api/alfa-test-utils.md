@@ -6,6 +6,31 @@
 
 A library for running Alfa tests and uploading results to the Siteimprove Intelligence Platform.
 
+## Interfaces
+
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[CommitInformation](./alfa-test-utils.commitinformation.md)
+
+
+</td><td>
+
+
+
+</td></tr>
+</tbody></table>
+
 ## Namespaces
 
 <table><thead><tr><th>
@@ -27,6 +52,17 @@ Description
 </td><td>
 
 Running Alfa tests
+
+
+</td></tr>
+<tr><td>
+
+[Logging](./alfa-test-utils.logging.md)
+
+
+</td><td>
+
+Handling pretty-printing of console output.
 
 
 </td></tr>

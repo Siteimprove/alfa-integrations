@@ -1,5 +1,13 @@
 # @siteimprove/alfa-test-utils
 
+## 0.69.1
+
+### Patch Changes
+
+- **Added:** Documentation for the `@siteimprove/alfa-test-utils` package. ([#66](https://github.com/Siteimprove/alfa-integrations/pull/66))
+
+- **Added:** Add utilities for pretty-printing console output ([#64](https://github.com/Siteimprove/alfa-integrations/pull/64))
+
 ## 0.69.0
 
 ### Minor Changes

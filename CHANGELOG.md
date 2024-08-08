@@ -1,5 +1,13 @@
 # Alfa integrations changelog
 
+## [0.69.1](../../compare/v0.69.0...v0.69.1) (2024-08-08)
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0691): Documentation for the `@siteimprove/alfa-test-utils` package. ([#66](https://github.com/Siteimprove/alfa-integrations/pull/66))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0691): Add utilities for pretty-printing console output. ([#64](https://github.com/Siteimprove/alfa-integrations/pull/64))
+
 ## [0.69.0](../../compare/v0.68.4...v0.69.0) (2024-08-07)
 
 ### Added

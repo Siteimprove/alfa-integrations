@@ -51,5 +51,5 @@ Predicate&lt;Flattened.Rule&gt;
 
 ## Remarks
 
-This can be use to specifically select, or reject, a handful of rules, for example because they make no sense in a given context.
+This can be used to specifically select, or reject, a handful of rules, for example because they make no sense in a given context.
 

@@ -1,5 +1,7 @@
 # @siteimprove/alfa-formatter-sarif
 
+## 0.69.1
+
 ## 0.69.0
 
 ## 0.68.4
