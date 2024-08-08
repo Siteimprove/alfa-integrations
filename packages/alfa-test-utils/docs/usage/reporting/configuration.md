@@ -9,8 +9,8 @@ The `SIP.upload` function accepts a test name. This will be displayed in the hea
 ```typescript
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.aaFilter },
-}).then((audit) => {
-  SIP.upload(audit, {
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME!,
     apiKey: process.env.SI_API_KEY!,
     testName: "WCAG 2.2 Level AA conformance test",
@@ -27,8 +27,8 @@ Similarly, a page title can be provided and displayed in the Page Report. If non
 ```typescript
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.comnponentFilter },
-}).then((audit) => {
-  SIP.upload(audit, {
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME!,
     apiKey: process.env.SI_API_KEY!,
     pageTitle: "Paginated table component",
@@ -41,7 +41,7 @@ const pageReportURL = Audit.run(alfaPage, {
 If you prefer not to upload basic git information about the repository (origin URL, branch name, and latest commit hash, author, message), use the `includeGitInfo: false` option:
 
 ```typescript
-SIP.upload(audit, {
+SIP.upload(alfaResult, {
   userName: process.env.SI_USER_NAME!,
   apiKey: process.env.SI_API_KEY!,
   includeGitInfo: false,

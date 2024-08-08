@@ -7,8 +7,8 @@ The [`testName` option](./configuration.md#including-a-test-name) can also be a 
 ```typescript
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.aaFilter },
-}).then((audit) => {
-  SIP.upload(audit, {
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME!,
     apiKey: process.env.SI_API_KEY!,
     testName: (gitInfo) =>
@@ -26,8 +26,8 @@ import { Element, Query } from "@siteimprove/alfa-dom";
 
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.comnponentFilter },
-}).then((audit) => {
-  SIP.upload(audit, {
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME!,
     apiKey: process.env.SI_API_KEY!,
     pageTitle: (alfaPage) =>
@@ -45,4 +45,3 @@ const pageReportURL = Audit.run(alfaPage, {
 > **Note:** Page URLs are currently not displayed in the reports. Thus this documentation is rather short.
 
 The `SIP.upload` function also accept a `pageURL` option. It can typically be used to override `localhost` URLs that are frequent in the context of testing but not necessarily meaningful in a report. Like `pageTitle`, the `pageURL` can be a hard-coded `string` or a function generating it from the Alfa page.
- 
