@@ -36,7 +36,7 @@ Running the Siteimprove Accessibility Code Checker usually requires three steps:
 3. **Reporting** the results.
 4. (optionally) **Decide** on test outcome (fail or pass).
 
-Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](scraping.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](./auditing.md) and [report on the results](./reporting.md). There is currently no utility to [gatekeep](./gatekeeping.md) on the results and this has to be done a bit manually.
+Scrapping is highly dependent on the browser automation used. Specific browsers automation integrations are provided in separate packages. See some [detailled examples of scraping](scraping/integrated.md). The `@siteimprove/alfa-test-utils` package provides utilities to [audit the page](auditing/auditing.md) and [report on the results](reporting/reporting.md). There is currently no utility to [gatekeep](./gatekeeping.md) on the results and this has to be done a bit manually.
 
 ## Why 'Alfa'
 
