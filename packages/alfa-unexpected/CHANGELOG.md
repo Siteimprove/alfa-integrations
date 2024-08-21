@@ -1,5 +1,11 @@
 # @siteimprove/alfa-unexpected
 
+## 0.70.0
+
+### Minor Changes
+
+- **Changed:** Update Alfa ([#68](https://github.com/Siteimprove/alfa-integrations/pull/68))
+
 ## 0.69.1
 
 ## 0.69.0
