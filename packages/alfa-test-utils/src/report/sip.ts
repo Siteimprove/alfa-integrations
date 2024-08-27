@@ -26,7 +26,7 @@ export namespace SIP {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
     export const Title = "";
-    export const Name = "";
+    export const Name = undefined;
   }
 
   /**
@@ -179,7 +179,7 @@ export namespace SIP {
        * "On branch: \<branch name\>", …
        * Defaults to "Accessibility Code Checker".
        */
-      TestName: string;
+      TestName?: string;
 
       /**
        * Aggregated data for the results with number of Passed, Failed, and
@@ -233,7 +233,9 @@ export namespace SIP {
         // gitInfo, defaulting to the error if any.
         typeof name === "string"
           ? name
-          : gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(defaultName));
+          : name !== undefined
+          ? gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(defaultName))
+          : gitInfo.getErrOr(defaultName);
 
       const result: Payload = {
         RequestTimestamp: timestamp,
