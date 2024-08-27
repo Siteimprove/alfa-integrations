@@ -25,8 +25,8 @@ export namespace SIP {
   export namespace Defaults {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
-    export const Title = "Unnamed page";
-    export const Name = "Accessibility Code Checker";
+    export const Title = "";
+    export const Name = "";
   }
 
   /**
