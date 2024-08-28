@@ -238,7 +238,7 @@ export namespace SIP {
           ? name
           : name !== undefined
           ? gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(Defaults.Name))
-          : gitInfo.getErrOr(Defaults.Name);
+          : Defaults.Name;
 
       const result: Payload = {
         RequestTimestamp: timestamp,
