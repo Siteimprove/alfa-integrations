@@ -148,7 +148,7 @@ export namespace SIP {
         const // (undocumented)
         URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
         const // (undocumented)
-        Title: undefined;
+        Title = "";
         const // (undocumented)
         Name: undefined;
     }
@@ -168,7 +168,7 @@ export namespace SIP {
         export interface Payload {
             CommitInformation?: CommitInformation;
             Durations: CommonDurations;
-            PageTitle?: string;
+            PageTitle: string;
             PageUrl: string;
             RequestTimestamp: string;
             ResultAggregates: Array_2<{
