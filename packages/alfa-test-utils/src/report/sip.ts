@@ -25,7 +25,7 @@ export namespace SIP {
   export namespace Defaults {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
-    export const Title = "";
+    export const Title = undefined;
     export const Name = undefined;
   }
 
@@ -172,12 +172,12 @@ export namespace SIP {
        * The title of the page checked, defaults to the first `<title>` element
        * if any, or "Unnamed page" if none.
        */
-      PageTitle: string;
+      PageTitle?: string;
 
       /**
        * Name of the test, e.g. "AA conformance", "Color contrast",
        * "On branch: \<branch name\>", …
-       * Defaults to "Accessibility Code Checker".
+       * Defaults to "Unnamed test".
        */
       TestName?: string;
 
@@ -209,9 +209,7 @@ export namespace SIP {
     export async function payload(
       audit: Audit.Result,
       options: Partial<Options>,
-      timestamp: string,
-      defaultTitle = Defaults.Title,
-      defaultName = Defaults.Name
+      timestamp: string
     ): Promise<Payload> {
       const url = options.pageURL ?? audit.page.response.url.toString();
       const PageUrl = typeof url === "string" ? url : url(audit.page);
@@ -222,20 +220,25 @@ export namespace SIP {
           .filter(Element.isElement)
           .find(Element.hasName("title"))
           .map((title) => title.textContent())
-          .getOr(defaultTitle);
-      const PageTitle = typeof title === "string" ? title : title(audit.page);
+          .getOr(Defaults.Title);
+      const PageTitle =
+        typeof title === "string"
+          ? title
+          : title !== undefined
+          ? title(audit.page)
+          : title;
 
       const gitInfo = await getCommitInformation();
 
-      const name = options.testName ?? defaultName;
+      const name = options.testName ?? Defaults.Name;
       const TestName =
         // If the name is a string, using, otherwise call the function on the
         // gitInfo, defaulting to the error if any.
         typeof name === "string"
           ? name
           : name !== undefined
-          ? gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(defaultName))
-          : gitInfo.getErrOr(defaultName);
+          ? gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(Defaults.Name))
+          : gitInfo.getErrOr(Defaults.Name);
 
       const result: Payload = {
         RequestTimestamp: timestamp,
@@ -392,4 +395,3 @@ function toCamelCase<Keys extends string>(object: { [K in Keys]: number }): {
     ])
   );
 }
-

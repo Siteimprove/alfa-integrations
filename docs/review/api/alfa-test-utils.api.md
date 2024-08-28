@@ -148,7 +148,7 @@ export namespace SIP {
         const // (undocumented)
         URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
         const // (undocumented)
-        Title = "";
+        Title: undefined;
         const // (undocumented)
         Name: undefined;
     }
@@ -168,7 +168,7 @@ export namespace SIP {
         export interface Payload {
             CommitInformation?: CommitInformation;
             Durations: CommonDurations;
-            PageTitle: string;
+            PageTitle?: string;
             PageUrl: string;
             RequestTimestamp: string;
             ResultAggregates: Array_2<{
@@ -181,7 +181,7 @@ export namespace SIP {
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string, defaultTitle?: string, defaultName?: undefined): Promise<Payload>;
+        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string): Promise<Payload>;
         // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
         //
         // (undocumented)
