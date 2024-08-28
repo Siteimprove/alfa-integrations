@@ -25,7 +25,7 @@ export namespace SIP {
   export namespace Defaults {
     export const URL =
       "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
-    export const Title = undefined;
+    export const Title = "";
     export const Name = undefined;
   }
 
@@ -172,7 +172,7 @@ export namespace SIP {
        * The title of the page checked, defaults to the first `<title>` element
        * if any, or "Unnamed page" if none.
        */
-      PageTitle?: string;
+      PageTitle: string;
 
       /**
        * Name of the test, e.g. "AA conformance", "Color contrast",
