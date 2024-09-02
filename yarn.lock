@@ -431,6 +431,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@bazel/runfiles@npm:^5.8.1":
+  version: 5.8.1
+  resolution: "@bazel/runfiles@npm:5.8.1"
+  checksum: b1067d3dec8b2d853f883fe34b663f07e44742d2688103db1da322a47013eb04f1acad0d79c7d6fc9f75fc2798b1de41ba1a03999ac6354fb1288fdd8407be4d
+  languageName: node
+  linkType: hard
+
 "@bcoe/v8-coverage@npm:^0.2.3":
   version: 0.2.3
   resolution: "@bcoe/v8-coverage@npm:0.2.3"
@@ -2970,6 +2977,24 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@siteimprove/alfa-selenium@workspace:packages/alfa-selenium":
+  version: 0.0.0-use.local
+  resolution: "@siteimprove/alfa-selenium@workspace:packages/alfa-selenium"
+  dependencies:
+    "@siteimprove/alfa-device": ^0.89.0
+    "@siteimprove/alfa-dom": ^0.89.0
+    "@siteimprove/alfa-http": ^0.89.0
+    "@siteimprove/alfa-web": ^0.89.0
+    "@types/selenium-webdriver": ^4.1.26
+    selenium-webdriver: ^4.24.0
+  peerDependencies:
+    "@siteimprove/alfa-device": ^0.89.0
+    "@siteimprove/alfa-dom": ^0.89.0
+    "@siteimprove/alfa-http": ^0.89.0
+    "@siteimprove/alfa-web": ^0.89.0
+  languageName: unknown
+  linkType: soft
+
 "@siteimprove/alfa-sequence@npm:^0.89.0":
   version: 0.89.0
   resolution: "@siteimprove/alfa-sequence@npm:0.89.0::__archiveUrl=https%3A%2F%2Fnpm.pkg.github.com%2Fdownload%2F%40Siteimprove%2Falfa-sequence%2F0.89.0%2F9e1604f49de46bcf2fa244cd5ca0cf24576d93c5"
@@ -3752,6 +3777,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/selenium-webdriver@npm:^4.1.26":
+  version: 4.1.26
+  resolution: "@types/selenium-webdriver@npm:4.1.26"
+  dependencies:
+    "@types/node": "*"
+    "@types/ws": "*"
+  checksum: a0ee71c11a67b4b21a0f31826391627b91e1e3838c15a0c5def1cacc6957f57716b11edc21aa368b3dbb38fb94005dd0b3cd13eb5d7f071d73dc600e1f81287f
+  languageName: node
+  linkType: hard
+
 "@types/semver@npm:^6.0.0":
   version: 6.2.3
   resolution: "@types/semver@npm:6.2.3"
@@ -3784,6 +3819,15 @@ __metadata:
   version: 2.0.2
   resolution: "@types/which@npm:2.0.2"
   checksum: 8626a3c2f6db676c449142e1082e33ea0c9d88b8a2bd796366b944891e6da0088b2aa83d3fa9c79e6696f7381a851fc76d43bd353eb6c4d98a7775b4ae0a96a5
+  languageName: node
+  linkType: hard
+
+"@types/ws@npm:*":
+  version: 8.5.12
+  resolution: "@types/ws@npm:8.5.12"
+  dependencies:
+    "@types/node": "*"
+  checksum: ddefb6ad1671f70ce73b38a5f47f471d4d493864fca7c51f002a86e5993d031294201c5dced6d5018fb8905ad46888d65c7f20dd54fc165910b69f42fba9a6d0
   languageName: node
   linkType: hard
 
@@ -11442,6 +11486,18 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
+"selenium-webdriver@npm:^4.24.0":
+  version: 4.24.0
+  resolution: "selenium-webdriver@npm:4.24.0"
+  dependencies:
+    "@bazel/runfiles": ^5.8.1
+    jszip: ^3.10.1
+    tmp: ^0.2.3
+    ws: ^8.18.0
+  checksum: 96f91d2332fc964a275135b210804cf4d7db90bb248dbab6c492d39aa46b07ea860daa3eba1db2f2a1231e67fa69e99ca7936164a355eb255de3637db6a4b1a9
+  languageName: node
+  linkType: hard
+
 "semver@npm:2 || 3 || 4 || 5, semver@npm:^5.4.1":
   version: 5.7.1
   resolution: "semver@npm:5.7.1"
@@ -12214,6 +12270,13 @@ fsevents@^2.3.2:
   dependencies:
     os-tmpdir: ~1.0.2
   checksum: 902d7aceb74453ea02abbf58c203f4a8fc1cead89b60b31e354f74ed5b3fb09ea817f94fb310f884a5d16987dd9fa5a735412a7c2dd088dd3d415aa819ae3a28
+  languageName: node
+  linkType: hard
+
+"tmp@npm:^0.2.3":
+  version: 0.2.3
+  resolution: "tmp@npm:0.2.3"
+  checksum: 73b5c96b6e52da7e104d9d44afb5d106bb1e16d9fa7d00dbeb9e6522e61b571fbdb165c756c62164be9a3bbe192b9b268c236d370a2a0955c7689cd2ae377b95
   languageName: node
   linkType: hard
 

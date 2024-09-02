@@ -246,4 +246,13 @@ A library for running Alfa tests and uploading results to the Siteimprove Intell
 
 
 </td></tr>
+<tr><td>
+
+[@siteimprove/alfa-selenium](./alfa-selenium.md)
+
+
+</td><td>
+
+
+</td></tr>
 </tbody></table>
