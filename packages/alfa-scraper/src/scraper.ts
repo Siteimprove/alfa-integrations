@@ -1,5 +1,3 @@
-/// <reference lib="dom" />
-
 import * as fs from "fs";
 
 import { Device } from "@siteimprove/alfa-device";

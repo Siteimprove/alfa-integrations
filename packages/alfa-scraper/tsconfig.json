@@ -2,5 +2,6 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "files": [],
+  "compilerOptions": { "lib": ["dom"] },
   "references": [{ "path": "./src" }, { "path": "./test" }]
 }
