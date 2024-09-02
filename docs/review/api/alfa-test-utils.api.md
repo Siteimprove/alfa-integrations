@@ -148,9 +148,9 @@ export namespace SIP {
         const // (undocumented)
         URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
         const // (undocumented)
-        Title = "Unnamed page";
+        Title = "";
         const // (undocumented)
-        Name = "Accessibility Code Checker";
+        Name: undefined;
     }
     // @internal
     export namespace Metadata {
@@ -178,10 +178,10 @@ export namespace SIP {
                 CantTell: number;
                 Durations: RuleDurations;
             }>;
-            TestName: string;
+            TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string, defaultTitle?: string, defaultName?: string): Promise<Payload>;
+        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string): Promise<Payload>;
         // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
         //
         // (undocumented)
