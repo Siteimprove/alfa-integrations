@@ -2,7 +2,7 @@
 
 ## Building a test name
 
-The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [git information]((https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.git.md). For example, it can be convenient to name a test after the branch it comes from:
+The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [git information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.git.md). For example, it can be convenient to name a test after the branch it comes from:
 
 ```typescript
 const pageReportURL = Audit.run(alfaPage, {
@@ -19,7 +19,7 @@ const pageReportURL = Audit.run(alfaPage, {
 
 ## Building a page title
 
-Similarly, the page title can be built from the page itself. Be aware that this looks into the Alfa representation of the page where the API is somewhat different from the normal DOM API. For example, to get the first `<h1>` heading of the page:
+Similarly, the page title can be built from the page itself. Be aware that this uses the Alfa representation of the page where the API is somewhat different from the normal DOM API. For example, to get the first `<h1>` heading of the page:
 
 ```typescript
 import { Element, Query } from "@siteimprove/alfa-dom";

@@ -26,7 +26,7 @@ Similarly, a page title can be provided and displayed in the Page Report. If non
 
 ```typescript
 const pageReportURL = Audit.run(alfaPage, {
-  rules: { include: Rules.comnponentFilter },
+  rules: { include: Rules.componentFilter },
 }).then((alfaResult) => {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME!,
@@ -38,7 +38,7 @@ const pageReportURL = Audit.run(alfaPage, {
 
 ## Skipping git information
 
-If you prefer not to upload basic git information about the repository (origin URL, branch name, and latest commit hash, author, message), use the `includeGitInfo: false` option:
+If you prefer not to upload basic git information about the repository (origin URL; branch name; latest commit hash, author, and message), use the `includeGitInfo: false` option:
 
 ```typescript
 SIP.upload(alfaResult, {

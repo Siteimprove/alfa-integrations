@@ -1,6 +1,6 @@
 # Scraping
 
-Scraping a web page is the act of turning a web page into the internal data structure that Alfa can work on. It requires rendering the page in a browser; in automated tests this is usually done using browser automation and headless browsers.
+_Scraping_ a web page is the act of turning it into the internal data structure that Alfa can work on. It requires rendering the page in a browser. In automated tests this is usually done using browser automation and headless browsers.
 
 The precise steps needed for scraping thus depend on the actual browser automation used. Several packages are provided for integrating with common browser automations.
 
@@ -58,8 +58,7 @@ $ yarn add --dev @siteimprove/alfa-puppeteer
 Then, use the `.toPage` scraper on a `JSHandle`, preferably of the full `document` object:
 
 ```typescript
-import puppeteer from "puppeteer";
-import * as playwright from "puppeteer";
+import * as puppeteer from "puppeteer";
 import { Puppeteer } from "@siteimprove/alfa-puppeteer";
 
 // Set up a Puppeteer instance
