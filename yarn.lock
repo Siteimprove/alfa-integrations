@@ -176,13 +176,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-string-parser@npm:^7.19.4":
-  version: 7.19.4
-  resolution: "@babel/helper-string-parser@npm:7.19.4"
-  checksum: b2f8a3920b30dfac81ec282ac4ad9598ea170648f8254b10f475abe6d944808fb006aab325d3eb5a8ad3bea8dfa888cfa6ef471050dae5748497c110ec060943
-  languageName: node
-  linkType: hard
-
 "@babel/helper-string-parser@npm:^7.24.8":
   version: 7.24.8
   resolution: "@babel/helper-string-parser@npm:7.24.8"
@@ -190,14 +183,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/helper-validator-identifier@npm:^7.18.6, @babel/helper-validator-identifier@npm:^7.19.1":
-  version: 7.19.1
-  resolution: "@babel/helper-validator-identifier@npm:7.19.1"
-  checksum: 0eca5e86a729162af569b46c6c41a63e18b43dbe09fda1d2a3c8924f7d617116af39cac5e4cd5d431bb760b4dca3c0970e0c444789b1db42bcf1fa41fbad0a3a
-  languageName: node
-  linkType: hard
-
-"@babel/helper-validator-identifier@npm:^7.24.7":
+"@babel/helper-validator-identifier@npm:^7.18.6, @babel/helper-validator-identifier@npm:^7.19.1, @babel/helper-validator-identifier@npm:^7.24.7":
   version: 7.24.7
   resolution: "@babel/helper-validator-identifier@npm:7.24.7"
   checksum: 6799ab117cefc0ecd35cd0b40ead320c621a298ecac88686a14cffceaac89d80cdb3c178f969861bf5fa5e4f766648f9161ea0752ecfe080d8e89e3147270257
@@ -233,16 +219,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.14.7, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.21.0, @babel/parser@npm:^7.21.2, @babel/parser@npm:^7.24.7":
-  version: 7.24.7
-  resolution: "@babel/parser@npm:7.24.7"
-  bin:
-    parser: ./bin/babel-parser.js
-  checksum: fc9d2c4c8712f89672edc55c0dc5cf640dcec715b56480f111f85c2bc1d507e251596e4110d65796690a96ac37a4b60432af90b3e97bb47e69d4ef83872dbbd6
-  languageName: node
-  linkType: hard
-
-"@babel/parser@npm:^7.24.4":
+"@babel/parser@npm:^7.1.0, @babel/parser@npm:^7.14.7, @babel/parser@npm:^7.20.7, @babel/parser@npm:^7.21.0, @babel/parser@npm:^7.21.2, @babel/parser@npm:^7.24.4, @babel/parser@npm:^7.24.7":
   version: 7.25.6
   resolution: "@babel/parser@npm:7.25.6"
   dependencies:
@@ -445,18 +422,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@babel/types@npm:^7.0.0, @babel/types@npm:^7.18.6, @babel/types@npm:^7.20.2, @babel/types@npm:^7.20.7, @babel/types@npm:^7.21.0, @babel/types@npm:^7.21.2, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3, @babel/types@npm:^7.8.3":
-  version: 7.21.2
-  resolution: "@babel/types@npm:7.21.2"
-  dependencies:
-    "@babel/helper-string-parser": ^7.19.4
-    "@babel/helper-validator-identifier": ^7.19.1
-    to-fast-properties: ^2.0.0
-  checksum: a45a52acde139e575502c6de42c994bdbe262bafcb92ae9381fb54cdf1a3672149086843fda655c7683ce9806e998fd002bbe878fa44984498d0fdc7935ce7ff
-  languageName: node
-  linkType: hard
-
-"@babel/types@npm:^7.25.6":
+"@babel/types@npm:^7.0.0, @babel/types@npm:^7.18.6, @babel/types@npm:^7.20.2, @babel/types@npm:^7.20.7, @babel/types@npm:^7.21.0, @babel/types@npm:^7.21.2, @babel/types@npm:^7.25.6, @babel/types@npm:^7.3.0, @babel/types@npm:^7.3.3":
   version: 7.25.6
   resolution: "@babel/types@npm:7.25.6"
   dependencies:
@@ -1744,10 +1710,10 @@ __metadata:
     rxjs: ^7.3.0
     zone.js: ^0.11.4
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -1826,14 +1792,14 @@ __metadata:
     "@siteimprove/alfa-sequence": ^0.90.1
     "@siteimprove/alfa-test": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-performance": ^0.89.0
-    "@siteimprove/alfa-predicate": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-sequence": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-performance": ^0.90.1
+    "@siteimprove/alfa-predicate": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-sequence": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -1919,10 +1885,10 @@ __metadata:
     "@types/chai": ^4.1.7
     chai: ^4.3.10
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -1937,10 +1903,10 @@ __metadata:
     cheerio: ^1.0.0-rc.12
     domhandler: ^4.2.2
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -1963,16 +1929,16 @@ __metadata:
     "@siteimprove/alfa-url": ^0.90.1
     "@siteimprove/alfa-web": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-iterable": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-rules": ^0.89.0
-    "@siteimprove/alfa-time": ^0.89.0
-    "@siteimprove/alfa-url": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-iterable": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-rules": ^0.90.1
+    "@siteimprove/alfa-time": ^0.90.1
+    "@siteimprove/alfa-url": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   bin:
     alfa: bin/alfa.js
   languageName: unknown
@@ -2025,15 +1991,15 @@ __metadata:
     "@siteimprove/alfa-thunk": ^0.90.1
     chalk: ^5.3.0
   peerDependencies:
-    "@siteimprove/alfa-functor": ^0.89.0
-    "@siteimprove/alfa-json": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-parser": ^0.89.0
-    "@siteimprove/alfa-predicate": ^0.89.0
-    "@siteimprove/alfa-refinement": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-thunk": ^0.89.0
+    "@siteimprove/alfa-functor": ^0.90.1
+    "@siteimprove/alfa-json": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-parser": ^0.90.1
+    "@siteimprove/alfa-predicate": ^0.90.1
+    "@siteimprove/alfa-refinement": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-thunk": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2069,11 +2035,11 @@ __metadata:
     "@siteimprove/alfa-url": ^0.90.1
     "@siteimprove/alfa-web": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-url": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-url": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2140,13 +2106,13 @@ __metadata:
     "@siteimprove/alfa-web": ^0.90.1
     cypress: ^13.3.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2252,7 +2218,7 @@ __metadata:
     "@types/enzyme": ^3.10.8
     enzyme: ^3.11.0
   peerDependencies:
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2305,9 +2271,9 @@ __metadata:
     "@types/jsonld": ^1.5.14
     jsonld: ^8.3.2
   peerDependencies:
-    "@siteimprove/alfa-earl": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
+    "@siteimprove/alfa-earl": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2320,8 +2286,8 @@ __metadata:
     "@siteimprove/alfa-hash": ^0.90.1
     "@siteimprove/alfa-json": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-json": ^0.89.0
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-json": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2346,10 +2312,10 @@ __metadata:
     "@siteimprove/alfa-hash": ^0.90.1
     "@siteimprove/alfa-result": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2364,11 +2330,11 @@ __metadata:
     "@siteimprove/alfa-test": ^0.90.1
     "@siteimprove/alfa-url": ^0.90.1
   peerDependencies:
-    "@siteimprove/alfa-equatable": ^0.89.0
-    "@siteimprove/alfa-json": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-predicate": ^0.89.0
-    "@siteimprove/alfa-url": ^0.89.0
+    "@siteimprove/alfa-equatable": ^0.90.1
+    "@siteimprove/alfa-json": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-predicate": ^0.90.1
+    "@siteimprove/alfa-url": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2486,9 +2452,9 @@ __metadata:
     "@siteimprove/alfa-result": ^0.90.1
     "@types/node": ^20.14.9
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2521,9 +2487,9 @@ __metadata:
     "@types/jasmine": ^3.3.12
     jasmine: ^3.9.0
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2539,10 +2505,10 @@ __metadata:
     "@types/jest": ^26.0.10
     jest: ^29.0.1
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2557,10 +2523,10 @@ __metadata:
     "@types/jquery": ^3.3.29
     jquery: ^3.6.0
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2728,10 +2694,10 @@ __metadata:
     "@siteimprove/alfa-web": ^0.90.1
     playwright: ^1.23.0
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2767,10 +2733,10 @@ __metadata:
     "@siteimprove/alfa-web": ^0.90.1
     puppeteer: ^22.14.0
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2790,12 +2756,12 @@ __metadata:
     react: ^18.3.1
     react-test-renderer: ^18.3.1
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-refinement": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-refinement": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -2945,20 +2911,20 @@ __metadata:
     "@siteimprove/alfa-web": ^0.90.1
     puppeteer: ^22.14.0
   peerDependencies:
-    "@siteimprove/alfa-array": ^0.89.0
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-equatable": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-iterable": ^0.89.0
-    "@siteimprove/alfa-json": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-promise": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-time": ^0.89.0
-    "@siteimprove/alfa-url": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-array": ^0.90.1
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-equatable": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-iterable": ^0.90.1
+    "@siteimprove/alfa-json": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-promise": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-time": ^0.90.1
+    "@siteimprove/alfa-url": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -3164,30 +3130,30 @@ __metadata:
     chalk: ^5.3.0
     simple-git: ^3.25.0
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-aria": ^0.89.0
-    "@siteimprove/alfa-array": ^0.89.0
-    "@siteimprove/alfa-cascade": ^0.89.0
-    "@siteimprove/alfa-css": ^0.89.0
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-iterable": ^0.89.0
-    "@siteimprove/alfa-json": ^0.89.0
-    "@siteimprove/alfa-map": ^0.89.0
-    "@siteimprove/alfa-option": ^0.89.0
-    "@siteimprove/alfa-performance": ^0.89.0
-    "@siteimprove/alfa-predicate": ^0.89.0
-    "@siteimprove/alfa-record": ^0.89.0
-    "@siteimprove/alfa-refinement": ^0.89.0
-    "@siteimprove/alfa-result": ^0.89.0
-    "@siteimprove/alfa-rules": ^0.89.0
-    "@siteimprove/alfa-selector": ^0.89.0
-    "@siteimprove/alfa-sequence": ^0.89.0
-    "@siteimprove/alfa-test": ^0.89.0
-    "@siteimprove/alfa-url": ^0.89.0
-    "@siteimprove/alfa-wcag": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-aria": ^0.90.1
+    "@siteimprove/alfa-array": ^0.90.1
+    "@siteimprove/alfa-cascade": ^0.90.1
+    "@siteimprove/alfa-css": ^0.90.1
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-iterable": ^0.90.1
+    "@siteimprove/alfa-json": ^0.90.1
+    "@siteimprove/alfa-map": ^0.90.1
+    "@siteimprove/alfa-option": ^0.90.1
+    "@siteimprove/alfa-performance": ^0.90.1
+    "@siteimprove/alfa-predicate": ^0.90.1
+    "@siteimprove/alfa-record": ^0.90.1
+    "@siteimprove/alfa-refinement": ^0.90.1
+    "@siteimprove/alfa-result": ^0.90.1
+    "@siteimprove/alfa-rules": ^0.90.1
+    "@siteimprove/alfa-selector": ^0.90.1
+    "@siteimprove/alfa-sequence": ^0.90.1
+    "@siteimprove/alfa-test": ^0.90.1
+    "@siteimprove/alfa-url": ^0.90.1
+    "@siteimprove/alfa-wcag": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -3332,10 +3298,10 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.90.1
     unexpected: ^13.0.0
   peerDependencies:
-    "@siteimprove/alfa-act": ^0.89.0
-    "@siteimprove/alfa-future": ^0.89.0
-    "@siteimprove/alfa-hash": ^0.89.0
-    "@siteimprove/alfa-mapper": ^0.89.0
+    "@siteimprove/alfa-act": ^0.90.1
+    "@siteimprove/alfa-future": ^0.90.1
+    "@siteimprove/alfa-hash": ^0.90.1
+    "@siteimprove/alfa-mapper": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -3366,10 +3332,10 @@ __metadata:
     "@vue/test-utils": ^2.4.6
     vue: ^3.4.31
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -3415,10 +3381,10 @@ __metadata:
     "@types/debug": ^4.1.12
     webdriverio: ^8.38.2
   peerDependencies:
-    "@siteimprove/alfa-device": ^0.89.0
-    "@siteimprove/alfa-dom": ^0.89.0
-    "@siteimprove/alfa-http": ^0.89.0
-    "@siteimprove/alfa-web": ^0.89.0
+    "@siteimprove/alfa-device": ^0.90.1
+    "@siteimprove/alfa-dom": ^0.90.1
+    "@siteimprove/alfa-http": ^0.90.1
+    "@siteimprove/alfa-web": ^0.90.1
   languageName: unknown
   linkType: soft
 
@@ -10668,18 +10634,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"postcss@npm:^8.4.38":
-  version: 8.4.39
-  resolution: "postcss@npm:8.4.39"
-  dependencies:
-    nanoid: ^3.3.7
-    picocolors: ^1.0.1
-    source-map-js: ^1.2.0
-  checksum: 14b130c90f165961772bdaf99c67f907f3d16494adf0868e57ef68baa67e0d1f6762db9d41ab0f4d09bab6fb7888588dba3596afd1a235fd5c2d43fba7006ac6
-  languageName: node
-  linkType: hard
-
-"postcss@npm:^8.4.40":
+"postcss@npm:^8.4.38, postcss@npm:^8.4.40":
   version: 8.4.44
   resolution: "postcss@npm:8.4.44"
   dependencies:
@@ -12604,17 +12559,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.4":
-  version: 5.4.5
-  resolution: "typescript@npm:5.4.5"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 53c879c6fa1e3bcb194b274d4501ba1985894b2c2692fa079db03c5a5a7140587a1e04e1ba03184605d35f439b40192d9e138eb3279ca8eee313c081c8bcd9b0
-  languageName: node
-  linkType: hard
-
-"typescript@npm:^5.4.5, typescript@npm:^5.5.4":
+"typescript@npm:^5.4.4, typescript@npm:^5.4.5, typescript@npm:^5.5.4":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
   bin:
@@ -12634,17 +12579,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.4.4#~builtin<compat/typescript>":
-  version: 5.4.5
-  resolution: "typescript@patch:typescript@npm%3A5.4.5#~builtin<compat/typescript>::version=5.4.5&hash=85af82"
-  bin:
-    tsc: bin/tsc
-    tsserver: bin/tsserver
-  checksum: 2373c693f3b328f3b2387c3efafe6d257b057a142f9a79291854b14ff4d5367d3d730810aee981726b677ae0fd8329b23309da3b6aaab8263dbdccf1da07a3ba
-  languageName: node
-  linkType: hard
-
-"typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>, typescript@patch:typescript@^5.5.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.4.4#~builtin<compat/typescript>, typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>, typescript@patch:typescript@^5.5.4#~builtin<compat/typescript>":
   version: 5.5.4
   resolution: "typescript@patch:typescript@npm%3A5.5.4#~builtin<compat/typescript>::version=5.5.4&hash=85af82"
   bin:
