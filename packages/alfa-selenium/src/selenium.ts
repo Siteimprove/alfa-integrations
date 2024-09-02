@@ -14,10 +14,12 @@ import { WebDriver } from "selenium-webdriver";
  * @public
  */
 export namespace Selenium {
-  
   export async function toPage(driver: WebDriver): Promise<Page> {
     const document = await driver.executeScript("return document;");
-    const documentJSON = await driver.executeScript(dom.Native.fromNode, document);
+    const documentJSON = await driver.executeScript(
+      dom.Native.fromNode,
+      document
+    );
 
     //TODO: Fix with selenium device
     const deviceJSON = await driver.executeScript(() => {
