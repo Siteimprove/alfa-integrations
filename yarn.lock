@@ -1514,11 +1514,11 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@puppeteer/browsers@npm:2.3.1":
-  version: 2.3.1
-  resolution: "@puppeteer/browsers@npm:2.3.1"
+"@puppeteer/browsers@npm:2.3.0":
+  version: 2.3.0
+  resolution: "@puppeteer/browsers@npm:2.3.0"
   dependencies:
-    debug: ^4.3.6
+    debug: ^4.3.5
     extract-zip: ^2.0.1
     progress: ^2.0.3
     proxy-agent: ^6.4.0
@@ -1528,7 +1528,7 @@ __metadata:
     yargs: ^17.7.2
   bin:
     browsers: lib/cjs/main-cli.js
-  checksum: 06381d9566f4f5fcb15244afdc7ca5b96c4187a2738d22d2aa0b18e14e3dacf25665768e511390f461d875314c2af0dec51f71aeca5b78c84801485a15c8c3c3
+  checksum: dbfae1f0a3cb5ee07711eb0247d5f61039989094858989cede3f86bfef59224c72df17a1b898266e5ba7c6a7032ab647c59ad3df8f76771ef65d8974a3f93f19
   languageName: node
   linkType: hard
 
@@ -2731,7 +2731,7 @@ __metadata:
     "@siteimprove/alfa-dom": ^0.90.1
     "@siteimprove/alfa-http": ^0.90.1
     "@siteimprove/alfa-web": ^0.90.1
-    puppeteer: ^23.2.1
+    puppeteer: ^22.14.0
   peerDependencies:
     "@siteimprove/alfa-device": ^0.90.1
     "@siteimprove/alfa-dom": ^0.90.1
@@ -2909,7 +2909,7 @@ __metadata:
     "@siteimprove/alfa-time": ^0.90.1
     "@siteimprove/alfa-url": ^0.90.1
     "@siteimprove/alfa-web": ^0.90.1
-    puppeteer: ^23.2.1
+    puppeteer: ^22.14.0
   peerDependencies:
     "@siteimprove/alfa-array": ^0.90.1
     "@siteimprove/alfa-device": ^0.90.1
@@ -5208,16 +5208,16 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chromium-bidi@npm:0.6.4":
-  version: 0.6.4
-  resolution: "chromium-bidi@npm:0.6.4"
+"chromium-bidi@npm:0.6.3":
+  version: 0.6.3
+  resolution: "chromium-bidi@npm:0.6.3"
   dependencies:
     mitt: 3.0.1
     urlpattern-polyfill: 10.0.0
     zod: 3.23.8
   peerDependencies:
     devtools-protocol: "*"
-  checksum: 7ccbdfce86dd7ac9af4184d8c225d936b6c7929140b4ba201c5193cfe46562d149374d9350f1bdc35c6c31d070adfb811fc8b64f30137c827cca564646297433
+  checksum: 4c96419e8f9cf77340948f89cb388e18fb7621993853448f53b7f532a405c6f594e341ae3d9d5f3e73f27bde142cd6b4a0b5984fe88a7758393f76f6f7974705
   languageName: node
   linkType: hard
 
@@ -6154,10 +6154,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"devtools-protocol@npm:0.0.1330662":
-  version: 0.0.1330662
-  resolution: "devtools-protocol@npm:0.0.1330662"
-  checksum: de34cf3330f5b81b9fab346eea4dbab37ea6fbc6f9eb5a38deba115adfc30f292b861b8b674f16b8d27d5e3d13d2c82a0950b6ba8f46ff78fe1dbc6f83162389
+"devtools-protocol@npm:0.0.1312386":
+  version: 0.0.1312386
+  resolution: "devtools-protocol@npm:0.0.1312386"
+  checksum: c6f68bce3257a6f4c832d2063fddf23b76d45f5cdaace83786c24802e12eeead3613abb54e3422e6fa95cab431fdff65ba7caf3665f7f22676df06a206b49e45
   languageName: node
   linkType: hard
 
@@ -10905,17 +10905,16 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:23.2.1":
-  version: 23.2.1
-  resolution: "puppeteer-core@npm:23.2.1"
+"puppeteer-core@npm:22.15.0":
+  version: 22.15.0
+  resolution: "puppeteer-core@npm:22.15.0"
   dependencies:
-    "@puppeteer/browsers": 2.3.1
-    chromium-bidi: 0.6.4
+    "@puppeteer/browsers": 2.3.0
+    chromium-bidi: 0.6.3
     debug: ^4.3.6
-    devtools-protocol: 0.0.1330662
-    typed-query-selector: ^2.12.0
+    devtools-protocol: 0.0.1312386
     ws: ^8.18.0
-  checksum: 3e79598883a052da4ff2d4dae33b1fcb7b457986d675f11a02cc59aa65baa2314bfd5cfd7650e028fdd91ea510f9111c4473d28ae9c7b4c9d9dbd7d9e0a4ae4b
+  checksum: 68dbc590275d3d2a231bddf6e53c1e352724d159563abe6b6dc8bcff895476e6dc05bdd1bd2ac969c2970ba8aca2adb48128abd50940e701195bc0e655671696
   languageName: node
   linkType: hard
 
@@ -10938,19 +10937,17 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^23.2.1":
-  version: 23.2.1
-  resolution: "puppeteer@npm:23.2.1"
+"puppeteer@npm:^22.14.0":
+  version: 22.15.0
+  resolution: "puppeteer@npm:22.15.0"
   dependencies:
-    "@puppeteer/browsers": 2.3.1
-    chromium-bidi: 0.6.4
+    "@puppeteer/browsers": 2.3.0
     cosmiconfig: ^9.0.0
-    devtools-protocol: 0.0.1330662
-    puppeteer-core: 23.2.1
-    typed-query-selector: ^2.12.0
+    devtools-protocol: 0.0.1312386
+    puppeteer-core: 22.15.0
   bin:
-    puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: 8a95bdf555d2eb1a54c03d2564a5a584cafb907b9964937d23c67a184c05ae5f6f02801bd6ddcc90c4e0a1a9239cf4c57d5092f73ebba080f17f1fdb8e1ad0ff
+    puppeteer: lib/esm/puppeteer/node/cli.js
+  checksum: 64e9ff78fdd3d848a4404ec1abfd58df987c6fd216b78bc6144a616622c00375bae8cd06f6df8a313b6f2039c95526f4f3de47e907859a65c0b508261ce488f8
   languageName: node
   linkType: hard
 
@@ -12558,13 +12555,6 @@ fsevents@^2.3.2:
     for-each: ^0.3.3
     is-typed-array: ^1.1.9
   checksum: 2228febc93c7feff142b8c96a58d4a0d7623ecde6c7a24b2b98eb3170e99f7c7eff8c114f9b283085cd59dcd2bd43aadf20e25bba4b034a53c5bb292f71f8956
-  languageName: node
-  linkType: hard
-
-"typed-query-selector@npm:^2.12.0":
-  version: 2.12.0
-  resolution: "typed-query-selector@npm:2.12.0"
-  checksum: c4652f2eec16112d69e0da30c2effab3f03d1710f9559da1e1209bbfc9a20990d5de4ba97890c11f9d17d85c8ae3310953a86c198166599d4c36abc63664f169
   languageName: node
   linkType: hard
 
