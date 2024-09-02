@@ -47,6 +47,7 @@ export default {
           children: [
             "@siteimprove/alfa-playwright",
             "@siteimprove/alfa-puppeteer",
+            "@siteimprove/alfa-selenium",
             "@siteimprove/alfa-webdriver",
           ],
         },
