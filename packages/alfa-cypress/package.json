@@ -22,26 +22,26 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.89.0",
+    "@siteimprove/alfa-act": "^0.90.1",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-device": "^0.89.0",
-    "@siteimprove/alfa-dom": "^0.89.0",
+    "@siteimprove/alfa-device": "^0.90.1",
+    "@siteimprove/alfa-dom": "^0.90.1",
     "@siteimprove/alfa-formatter": "workspace:^",
     "@siteimprove/alfa-formatter-earl": "workspace:^",
-    "@siteimprove/alfa-hash": "^0.89.0",
-    "@siteimprove/alfa-http": "^0.89.0",
-    "@siteimprove/alfa-mapper": "^0.89.0",
-    "@siteimprove/alfa-web": "^0.89.0",
+    "@siteimprove/alfa-hash": "^0.90.1",
+    "@siteimprove/alfa-http": "^0.90.1",
+    "@siteimprove/alfa-mapper": "^0.90.1",
+    "@siteimprove/alfa-web": "^0.90.1",
     "cypress": "^13.3.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.89.0",
-    "@siteimprove/alfa-device": "^0.89.0",
-    "@siteimprove/alfa-dom": "^0.89.0",
-    "@siteimprove/alfa-hash": "^0.89.0",
-    "@siteimprove/alfa-http": "^0.89.0",
-    "@siteimprove/alfa-mapper": "^0.89.0",
-    "@siteimprove/alfa-web": "^0.89.0"
+    "@siteimprove/alfa-act": "^0.90.1",
+    "@siteimprove/alfa-device": "^0.90.1",
+    "@siteimprove/alfa-dom": "^0.90.1",
+    "@siteimprove/alfa-hash": "^0.90.1",
+    "@siteimprove/alfa-http": "^0.90.1",
+    "@siteimprove/alfa-mapper": "^0.90.1",
+    "@siteimprove/alfa-web": "^0.90.1"
   },
   "publishConfig": {
     "access": "public",

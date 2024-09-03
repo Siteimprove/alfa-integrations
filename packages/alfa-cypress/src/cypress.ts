@@ -1,5 +1,5 @@
-/// <reference lib="dom" />
-/// <reference types="cypress" />
+/// <reference lib="dom" preserve="true" />
+/// <reference types="cypress" preserve="true" />
 
 // While it may be tempting to pull in @siteimprove/alfa-chai for this module as
 // Cypress uses Chai for all its assertion methods, it's a trap! Cypress bundles
