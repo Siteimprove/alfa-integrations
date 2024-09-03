@@ -27,15 +27,15 @@ test(".toPage() scrapes a page", async (t) => {
     .setChromeOptions(options)
     .build();
 
+  // Navigate to the page to scrape
+  await driver.get(url.pathToFileURL(path.join(fixture, "page.html")).href);
+
   // The link between driver.manage().window().getSize() and the actual viewport
   // is… uncertain… And setSize() gives weird results… We grab the dimensions
   // to stabilize tests. This is not ideal and it would be better to know
   // what's expected instead of just expecting the actual value…
   const width = await driver.executeScript("return window.document.documentElement.clientWidth") as number;
   const height = await driver.executeScript("return window.document.documentElement.clientHeight") as number;
-
-  // Navigate to the page to scrape
-  await driver.get(url.pathToFileURL(path.join(fixture, "page.html")).href);
 
   const page = await Selenium.toPage(driver);
 
