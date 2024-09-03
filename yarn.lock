@@ -2433,13 +2433,14 @@ __metadata:
     "@siteimprove/alfa-cli": "workspace:^"
     "@siteimprove/alfa-toolchain": ^0.90.1
     "@types/async": ^3.2.5
-    "@types/node": ^22.5.2
+    "@types/node": ^20.14.9
     async: ^3.2.1
     execa: ^9.1.0
     knip: ^5.23.3
     minimist: ^1.2.6
     package-dependency-graph: ^1.14.4
     prettier: ^2.7.1
+    typescript: ^5.5.2
   languageName: unknown
   linkType: soft
 
@@ -2450,7 +2451,6 @@ __metadata:
     "@siteimprove/alfa-act": ^0.90.1
     "@siteimprove/alfa-hash": ^0.90.1
     "@siteimprove/alfa-result": ^0.90.1
-    "@types/node": ^22.5.2
   peerDependencies:
     "@siteimprove/alfa-act": ^0.90.1
     "@siteimprove/alfa-hash": ^0.90.1
@@ -3684,7 +3684,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^22.5.2":
+"@types/node@npm:*":
   version: 22.5.2
   resolution: "@types/node@npm:22.5.2"
   dependencies:
@@ -3707,12 +3707,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:^20.1.0, @types/node@npm:^20.5.9":
-  version: 20.14.9
-  resolution: "@types/node@npm:20.14.9"
+"@types/node@npm:^20.1.0, @types/node@npm:^20.14.9, @types/node@npm:^20.5.9":
+  version: 20.16.3
+  resolution: "@types/node@npm:20.16.3"
   dependencies:
-    undici-types: ~5.26.4
-  checksum: 5e9eda1ac8c6cc6bcd1063903ae195eaede9aad1bdad00408a919409cfbcdd2d6535aa3d50346f0d385528f9e03dafc7d1b3bad25aedb1dcd79a6ad39d06c35d
+    undici-types: ~6.19.2
+  checksum: 14c1be053fe8b5993614ef4f493f359b1035cca1c821c66df88d361ca4045c7fb278ef692d8c7dc82331d1e9f8c21b5afc0b863c3e10b12754b6be41e16f6f6e
   languageName: node
   linkType: hard
 
@@ -12568,7 +12568,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"typescript@npm:^5.4.4, typescript@npm:^5.4.5, typescript@npm:^5.5.4":
+"typescript@npm:^5.4.4, typescript@npm:^5.4.5, typescript@npm:^5.5.2, typescript@npm:^5.5.4":
   version: 5.5.4
   resolution: "typescript@npm:5.5.4"
   bin:
@@ -12588,7 +12588,7 @@ fsevents@^2.3.2:
   languageName: node
   linkType: hard
 
-"typescript@patch:typescript@^5.4.4#~builtin<compat/typescript>, typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>, typescript@patch:typescript@^5.5.4#~builtin<compat/typescript>":
+"typescript@patch:typescript@^5.4.4#~builtin<compat/typescript>, typescript@patch:typescript@^5.4.5#~builtin<compat/typescript>, typescript@patch:typescript@^5.5.2#~builtin<compat/typescript>, typescript@patch:typescript@^5.5.4#~builtin<compat/typescript>":
   version: 5.5.4
   resolution: "typescript@patch:typescript@npm%3A5.5.4#~builtin<compat/typescript>::version=5.5.4&hash=85af82"
   bin:
@@ -12624,13 +12624,6 @@ fsevents@^2.3.2:
     buffer: ^5.2.1
     through: ^2.3.8
   checksum: 0e67c4a91f4fa0fc7b4045f8b914d3498c2fc2e8c39c359977708ec85ac6d6029840e97f508675fdbdf21fcb8d276ca502043406f3682b70f075e69aae626d1d
-  languageName: node
-  linkType: hard
-
-"undici-types@npm:~5.26.4":
-  version: 5.26.5
-  resolution: "undici-types@npm:5.26.5"
-  checksum: 3192ef6f3fd5df652f2dc1cd782b49d6ff14dc98e5dced492aa8a8c65425227da5da6aafe22523c67f035a272c599bb89cfe803c1db6311e44bed3042fc25487
   languageName: node
   linkType: hard
 

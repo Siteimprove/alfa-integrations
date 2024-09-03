@@ -1,4 +1,4 @@
-/// <reference path="../types/unexpected.d.ts" />
+/// <reference types="../types/unexpected.d.ts" preserve="true" />
 
 import type { Hashable } from "@siteimprove/alfa-hash";
 import type unexpected from "unexpected";

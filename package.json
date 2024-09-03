@@ -38,13 +38,14 @@
     "@siteimprove/alfa-cli": "workspace:^",
     "@siteimprove/alfa-toolchain": "^0.90.1",
     "@types/async": "^3.2.5",
-    "@types/node": "^22.5.2",
+    "@types/node": "^20.14.9",
     "async": "^3.2.1",
     "execa": "^9.1.0",
     "knip": "^5.23.3",
     "minimist": "^1.2.6",
     "package-dependency-graph": "^1.14.4",
-    "prettier": "^2.7.1"
+    "prettier": "^2.7.1",
+    "typescript": "^5.5.2"
   },
   "packageManager": "yarn@3.5.0"
 }
