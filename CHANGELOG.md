@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.70.1](../../compare/v0.70.0...v0.70.1) (2024-09-03)
+
+### Changed
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#0701), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#0701), [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md#0701), [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md#0701), [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#0701), [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0701), [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md#0701), [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md#0701), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0701), [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md#0701), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#0701), [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md#0701), [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md#0701), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0701), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#0701), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0701), [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md#0701), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0701), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0701), [@siteimprove/alfa-enzyme](packages/alfa-enzyme/CHANGELOG.md#0701), [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md#0701), [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md#0701), [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md#0701), [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md#0701), [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#0701), [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md#0701): Update Alfa. ([#75](https://github.com/Siteimprove/alfa-integrations/pull/75))
+
 ## [0.70.0](../../compare/v0.69.1...v0.70.0) (2024-08-21)
 
 ### Changed

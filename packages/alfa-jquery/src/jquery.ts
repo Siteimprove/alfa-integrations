@@ -1,5 +1,5 @@
-/// <reference lib="dom" />
-/// <reference types="jquery" />
+/// <reference lib="dom" preserve="true" />
+/// <reference types="jquery" preserve="true" />
 
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";

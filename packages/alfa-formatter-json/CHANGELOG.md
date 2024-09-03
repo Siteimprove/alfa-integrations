@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter-json
 
+## 0.70.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#75](https://github.com/Siteimprove/alfa-integrations/pull/75))
+
 ## 0.70.0
 
 ### Minor Changes

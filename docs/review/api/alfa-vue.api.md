@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference lib="dom" />
-
 import { Cheerio } from '@siteimprove/alfa-cheerio';
 import type { ComponentPublicInstance } from 'vue';
 import { Page } from '@siteimprove/alfa-web';

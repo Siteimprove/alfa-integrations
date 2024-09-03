@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference types="node" />
-
 import type { Agent } from 'https';
 import { alfaVersion } from '@siteimprove/alfa-rules';
 import { Array as Array_2 } from '@siteimprove/alfa-array';

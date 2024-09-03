@@ -2,13 +2,13 @@
 
 See [how to audit a page](../auditing/basic.md) for getting the audit results in the first place.
 
-This page shows basic usage of the scraping, see [common configuration](./configuration.md) for frequent set up such as selecting the rules to run or the issues to show; and [advanced configuration](./advanced.md) for more complex setups.
+This page shows basic usage of the reporting, see [common configuration](./configuration.md) for frequent set up such as customizing test name; and [advanced configuration](./advanced.md) for more complex setups.
 
 ## Uploading results to the Siteimprove Intelligence Platform
 
 Users of the Siteimprove Intelligence Platform can upload audit results and view them in the Page Report. You first need to [create an API key](https://my2.siteimprove.com/Integrations/Api/ManageApiKeys) in the Siteimprove Intelligence Platform.
 
-Then, simply use the `SIP.upload` function on the audit result, providing the Siteimprove Intelligence Platform credentials. Here, the credentials are passed as environment variables. Depending on setup it might be more convenient to use CI/Cd secrets, … It is not advised to hard-code the credentials in the code as these should be treated as any password.
+Then, simply use the `SIP.upload` function on the audit result, providing the Siteimprove Intelligence Platform credentials. Here, the credentials are passed as environment variables. Depending on setup it might be more convenient to use CI/CD secrets, … It is not advised to hard-code the credentials in the code as these should be treated as any password.
 
 ```typescript
 import { SIP } from "@siteimprove/alfa-test-utils";

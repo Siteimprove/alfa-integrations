@@ -76,7 +76,7 @@ const alfaResult = await Audit.run(alfaPage, {
 
 ## Excluding specific outcome
 
-In some case, there is a know error for a given rule on a given element, and it can be needed to ignore it temporarily because the fix as not the highest priority. In settings where [the tests fail if there are errors](../gatekeeping/manual.md), or simply to de-clutter the view, it is easier to simply discard such an outcome:
+In some case, there is a know error for a given rule on a given element, and it can be needed to ignore it temporarily because the fix does not have the highest priority. In settings where [the tests fail if there are errors](../gatekeeping/manual.md), or simply to de-clutter the view, it is easier to simply discard such an outcome:
 
 ```typescript
 import { Audit, Outcomes } from "@siteimprove/alfa-test-utils";
@@ -86,4 +86,4 @@ const alfaResult = await Audit.run(alfaPage, {
 });
 ```
 
-This excludes the AAA color contrast rule on the element matching the given selector.
+This excludes the AAA color contrast rule (SIA-R66) on the element matching the given selector.
