@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference lib="dom" />
-
 import type { Cookie } from '@siteimprove/alfa-http';
 import { Device } from '@siteimprove/alfa-device';
 import type { Equatable } from '@siteimprove/alfa-equatable';
