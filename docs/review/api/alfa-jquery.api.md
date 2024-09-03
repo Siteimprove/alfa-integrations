@@ -4,15 +4,19 @@
 
 ```ts
 
+/// <reference types="jquery" />
+/// <reference lib="dom" />
+
 import { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)
-export namespace JQuery {
+namespace JQuery_2 {
     // (undocumented)
-    export function toPage(value: Type): Promise<Page>;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
-    export type Type = globalThis.JQuery;
+    type Type = globalThis.JQuery;
 }
+export { JQuery_2 as JQuery }
 
 // (No @packageDocumentation comment for this package)
 

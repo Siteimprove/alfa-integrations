@@ -4,15 +4,17 @@
 
 ```ts
 
+/// <reference lib="dom" />
+
 import { Device } from '@siteimprove/alfa-device';
 import type { JSHandle } from 'puppeteer';
-import { Node } from '@siteimprove/alfa-dom';
+import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)
 export namespace Puppeteer {
     // (undocumented)
-    export function toNode(value: Type, device?: Device): Promise<Node>;
+    export function toNode(value: Type, device?: Device): Promise<Node_2>;
     // (undocumented)
     export function toPage(value: Type): Promise<Page>;
     // (undocumented)

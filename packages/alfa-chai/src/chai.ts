@@ -1,4 +1,4 @@
-/// <reference types="chai" />
+/// <reference types="chai" preserve="true" />
 
 import type { Question, Rule } from "@siteimprove/alfa-act";
 import type { Assertion, Handler } from "@siteimprove/alfa-assert";

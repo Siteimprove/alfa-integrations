@@ -4,6 +4,9 @@
 
 ```ts
 
+/// <reference types="cypress" />
+/// <reference lib="dom" />
+
 import type * as act from '@siteimprove/alfa-act';
 import { Asserter } from '@siteimprove/alfa-assert';
 import type { Formatter } from '@siteimprove/alfa-formatter';
