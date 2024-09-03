@@ -4,8 +4,6 @@
 
 ```ts
 
-/// <reference lib="dom" />
-
 import { Page } from '@siteimprove/alfa-web';
 import { WebDriver } from 'selenium-webdriver';
 
