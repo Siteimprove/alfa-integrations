@@ -1,14 +1,10 @@
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
-import type { Page } from "@siteimprove/alfa-web";
-
 import * as path from "node:path";
 import * as url from "node:url";
 
-import { Browser, Builder, WebDriver } from "selenium-webdriver";
-import chrome from "selenium-webdriver/chrome.js";
-
-import { Selenium } from "../dist/selenium.js";
+import { chromium } from "playwright";
+import { Playwright } from "../dist/playwright.js";
 
 // TODO: This should be replaced with import.meta.dirname once we switch to Node 22
 const __filename = url.fileURLToPath(import.meta.url);
@@ -16,44 +12,39 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-let driver: WebDriver | undefined;
-
-const options = new chrome.Options();
-options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
-
 test(".toPage() scrapes a page", async (t) => {
-  driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(options)
-    .build();
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
 
   // Navigate to the page to scrape
-  await driver.get(url.pathToFileURL(path.join(fixture, "page.html")).href);
+  await page.goto(url.pathToFileURL(path.join(fixture, "page.html")).href);
 
-  // The link between driver.manage().window().getSize() and the actual viewport
-  // is… uncertain… And setSize() gives weird results… We grab the dimensions
-  // to stabilize tests. This is not ideal and it would be better to know
-  // what's expected instead of just expecting the actual value…
-  const width = (await driver.executeScript(
-    "return window.document.documentElement.clientWidth"
-  )) as number;
-  const height = (await driver.executeScript(
-    "return window.document.documentElement.clientHeight"
-  )) as number;
+  // Retrieve the viewport dimensions
+  const { width, height } = await page.evaluate(() => ({
+    width: window.document.documentElement.clientWidth,
+    height: window.document.documentElement.clientHeight,
+  }));
 
-  const page = await Selenium.toPage(driver);
+  const document = await page.evaluateHandle(() => window.document);
 
-  await driver.close();
+  const alfaPage = await Playwright.toPage(document);
+
+  await browser.close();
 
   // Test the presence of layout information
-  for (const element of Query.getElementDescendants(page.document)) {
-    t(element.getBoundingBox(page.device).isSome());
+  for (const element of Query.getElementDescendants(alfaPage.document)) {
+    t(element.getBoundingBox(alfaPage.device).isSome());
   }
 
-  const actual: Page.JSON = {
-    ...page.toJSON(),
+  const actual = {
+    ...alfaPage.toJSON(),
     // This effectively removes the layout information which may be unstable.
-    document: page.document.toJSON(),
+    document: alfaPage.document.toJSON(),
   };
 
   t.deepEqual(actual, {
