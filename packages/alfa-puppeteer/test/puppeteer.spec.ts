@@ -29,6 +29,15 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
     height: window.document.documentElement.clientHeight,
   }));
 
+  // We've seen instability in tests for `prefers-reduced-motion`, maybe due to
+  // a Windows/Ubuntu difference. We stabilise the test by reading the
+  // actual value beforehand.
+  const reducedMotion = (await page.evaluate(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  ))
+    ? "reduce"
+    : "no-preference";
+
   const document = await page.evaluateHandle(() => window.document);
 
   const alfaPage = await Puppeteer.toPage(document);
@@ -114,7 +123,7 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
       scripting: { enabled: true },
       preferences: [
         { name: "prefers-reduced-transparency", value: "no-preference" },
-        { name: "prefers-reduced-motion", value: "no-preference" },
+        { name: "prefers-reduced-motion", value: reducedMotion },
         { name: "prefers-color-scheme", value: "light" },
         { name: "prefers-contrast", value: "no-preference" },
         { name: "forced-colors", value: "none" },
