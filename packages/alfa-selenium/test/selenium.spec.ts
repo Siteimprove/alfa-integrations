@@ -1,3 +1,6 @@
+/// <reference lib="dom" />
+
+
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
 import type { Page } from "@siteimprove/alfa-web";
@@ -40,6 +43,15 @@ test(".toPage() scrapes a page", async (t) => {
   const height = (await driver.executeScript(
     "return window.document.documentElement.clientHeight"
   )) as number;
+
+  // We've seen instability in tests for `prefers-reduced-motion`, maybe due to
+  // a Windows/Ubuntu difference. Again, we stabilise the test by reading the
+  // actual value beforehand.
+  const reducedMotion = ((await driver.executeScript(
+    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
+  )) as boolean)
+    ? "reduce"
+    : "no-preference";
 
   const page = await Selenium.toPage(driver);
 
@@ -124,7 +136,7 @@ test(".toPage() scrapes a page", async (t) => {
       scripting: { enabled: true },
       preferences: [
         { name: "prefers-reduced-transparency", value: "no-preference" },
-        { name: "prefers-reduced-motion", value: "no-preference" },
+        { name: "prefers-reduced-motion", value: reducedMotion },
         { name: "prefers-color-scheme", value: "light" },
         { name: "prefers-contrast", value: "no-preference" },
         { name: "forced-colors", value: "none" },
