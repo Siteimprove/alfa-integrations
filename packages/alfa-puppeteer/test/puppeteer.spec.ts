@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-test(".toPage() scrapes a page", async (t) => {
+test("Puppeteer.toPage() scrapes a page", async (t) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-dev-shm-usage"],

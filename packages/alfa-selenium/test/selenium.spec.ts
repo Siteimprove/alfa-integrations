@@ -24,7 +24,7 @@ let driver: WebDriver | undefined;
 const options = new chrome.Options();
 options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
 
-test(".toPage() scrapes a page", async (t) => {
+test("Selenium.toPage() scrapes a page", async (t) => {
   driver = await new Builder()
     .forBrowser(Browser.CHROME)
     .setChromeOptions(options)

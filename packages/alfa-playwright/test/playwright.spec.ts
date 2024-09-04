@@ -12,7 +12,7 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-test(".toPage() scrapes a page", async (t) => {
+test("Playwright.toPage() scrapes a page", async (t) => {
   const browser = await chromium.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-dev-shm-usage"],
@@ -114,7 +114,6 @@ test(".toPage() scrapes a page", async (t) => {
       display: { resolution: 1, scan: "progressive" },
       scripting: { enabled: true },
       preferences: [
-        { name: "prefers-reduced-transparency", value: "no-preference" },
         { name: "prefers-reduced-motion", value: "no-preference" },
         { name: "prefers-color-scheme", value: "light" },
         { name: "prefers-contrast", value: "no-preference" },
