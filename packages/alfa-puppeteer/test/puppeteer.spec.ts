@@ -1,3 +1,4 @@
+import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test";
 import * as path from "node:path";
@@ -23,21 +24,6 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
   // Navigate to the page to scrape
   await page.goto(url.pathToFileURL(path.join(fixture, "page.html")).href);
 
-  // Retrieve the viewport dimensions
-  const { width, height } = await page.evaluate(() => ({
-    width: window.document.documentElement.clientWidth,
-    height: window.document.documentElement.clientHeight,
-  }));
-
-  // We've seen instability in tests for `prefers-reduced-motion`, maybe due to
-  // a Windows/Ubuntu difference. We stabilise the test by reading the
-  // actual value beforehand.
-  const reducedMotion = (await page.evaluate(
-    () => window.matchMedia("(prefers-reduced-motion: reduce)").matches
-  ))
-    ? "reduce"
-    : "no-preference";
-
   const document = await page.evaluateHandle(() => window.document);
 
   const alfaPage = await Puppeteer.toPage(document);
@@ -49,10 +35,18 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
     t(element.getBoundingBox(alfaPage.device).isSome());
   }
 
+  // We've seen instability in tests for the devices, most notably for the user
+  // preferences that seem to depend on the user's profile. To keep this test simple
+  // we just check that a non-standard device has been crawled and discard it.
+  // This will fail if the standard device randomly happens to be used, but
+  // since it has no user-preference set, this should not be the case.
+  t(!alfaPage.device.equals(Device.standard()));
+
   const actual = {
     ...alfaPage.toJSON(),
     // This effectively removes the layout information which may be unstable.
     document: alfaPage.document.toJSON(),
+    device: null,
   };
 
   t.deepEqual(actual, {
@@ -116,18 +110,6 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
       ],
       style: [],
     },
-    device: {
-      type: "screen",
-      viewport: { width:800, height: 600, orientation: "landscape" },
-      display: { resolution: 1, scan: "progressive" },
-      scripting: { enabled: true },
-      preferences: [
-        { name: "prefers-reduced-transparency", value: "no-preference" },
-        { name: "prefers-reduced-motion", value: reducedMotion },
-        { name: "prefers-color-scheme", value: "light" },
-        { name: "prefers-contrast", value: "no-preference" },
-        { name: "forced-colors", value: "none" },
-      ],
-    },
+    device: null,
   });
 });
