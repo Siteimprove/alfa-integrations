@@ -110,7 +110,7 @@ test("Playwright.toPage() scrapes a page", async (t) => {
     },
     device: {
       type: "screen",
-      viewport: { width, height, orientation: "landscape" },
+      viewport: { width:1280, height: 720, orientation: "landscape" },
       display: { resolution: 1, scan: "progressive" },
       scripting: { enabled: true },
       preferences: [
