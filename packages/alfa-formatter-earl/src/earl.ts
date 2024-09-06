@@ -46,13 +46,14 @@ export default function <
       ],
     } as jsonld.JsonLdDocument;
 
-    return Future.from(jsonld.compact(earl, ACTContext)).map((compact) =>
+    return Future.from(jsonld.default.compact(earl, ACTContext)).map((compact) =>
       stringify(compact, null, 2)
     );
   };
 }
 
-const assertor: EARL = {
+/** @internal */
+export const assertor: EARL = {
   "@context": {
     earl: "http://www.w3.org/ns/earl#",
     doap: "http://usefulinc.com/ns/doap#",
@@ -84,10 +85,12 @@ const assertor: EARL = {
 /**
  * The JSON-LD context used by ACT rules CG
  * {@link https://act-rules.github.io/earl-context.json}
+ *
+ * @internal
  */
 // We want a local copy of the context to avoid network connexion when
 // compacting JSON-LD documents.
-const ACTContext = {
+export const ACTContext = {
   "@vocab": "http://www.w3.org/ns/earl#",
   earl: "http://www.w3.org/ns/earl#",
   WCAG: "https://www.w3.org/TR/WCAG/#",
