@@ -6,7 +6,7 @@ import { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
 import { alfaVersion as version } from "@siteimprove/alfa-rules";
 
-import * as jsonld from "jsonld";
+import jsonld from "jsonld";
 
 const { stringify } = JSON;
 
@@ -46,7 +46,7 @@ export default function <
       ],
     } as jsonld.JsonLdDocument;
 
-    return Future.from(jsonld.default.compact(earl, ACTContext)).map((compact) =>
+    return Future.from(jsonld.compact(earl, ACTContext)).map((compact) =>
       stringify(compact, null, 2)
     );
   };
