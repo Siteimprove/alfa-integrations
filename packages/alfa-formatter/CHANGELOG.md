@@ -1,5 +1,7 @@
 # @siteimprove/alfa-formatter
 
+## 0.71.0
+
 ## 0.70.1
 
 ### Patch Changes
