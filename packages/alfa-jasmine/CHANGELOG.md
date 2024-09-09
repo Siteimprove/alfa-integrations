@@ -1,5 +1,7 @@
 # @siteimprove/alfa-jasmine
 
+## 0.71.1
+
 ## 0.71.0
 
 ## 0.70.1

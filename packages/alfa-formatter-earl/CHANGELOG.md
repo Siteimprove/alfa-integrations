@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter-earl
 
+## 0.71.1
+
+### Patch Changes
+
+- **Fixed:** The EARL formatter is now calling `jsonld` correctly and functioning again. ([#77](https://github.com/Siteimprove/alfa-integrations/pull/77))
+
 ## 0.71.0
 
 ## 0.70.1
