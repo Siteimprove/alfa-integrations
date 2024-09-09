@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.71.0](../../compare/v0.70.1...v0.71.0) (2024-09-09)
+
+### Added
+
+- [@siteimprove/alfa-selenium](packages/alfa-selenium/CHANGELOG.md#0710): A new integration for scraping pages with Selenium is now available. ([#74](https://github.com/Siteimprove/alfa-integrations/pull/74))
+
 ## [0.70.1](../../compare/v0.70.0...v0.70.1) (2024-09-03)
 
 ### Changed

@@ -219,6 +219,15 @@ This package provides integrations and utilities for the [Angular](https://angul
 </td></tr>
 <tr><td>
 
+[@siteimprove/alfa-selenium](./alfa-selenium.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [@siteimprove/alfa-test-utils](./alfa-test-utils.md)
 
 
