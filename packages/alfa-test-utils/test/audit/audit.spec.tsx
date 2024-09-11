@@ -203,7 +203,7 @@ test(".run() includes occurrences in `<iframe>` if asked for", async (t) => {
   );
 
   const actual = await Audit.run(page, {
-    outcomes: { keepIframe: true },
+    outcomes: { includeIFrames: true },
   });
 
   t.equal(

@@ -91,7 +91,7 @@ export namespace Audit {
 
     const outcomes = filter(audit, options.outcomes)
       .reject(
-        options?.outcomes?.keepIframe ?? false
+        options?.outcomes?.includeIFrames ?? false
           ? none
           : Outcomes.insideSelectorFilter("iframe")
       )
@@ -171,7 +171,7 @@ export namespace Audit {
        * Whether to keep occurrences inside `<iframe>`
        * (default: false / discard them).
        */
-      keepIframe?: boolean;
+      includeIFrames?: boolean;
     };
   }
 
