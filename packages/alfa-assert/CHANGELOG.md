@@ -1,5 +1,11 @@
 # @siteimprove/alfa-assert
 
+## 0.72.2
+
+### Patch Changes
+
+- **Changed:** Fixed repository URL in manifest files. ([`46f2500`](https://github.com/Siteimprove/alfa-integrations/commit/46f25007832c3c8bf6996d2f3967dbb9aced28d6))
+
 ## 0.72.1
 
 ### Patch Changes

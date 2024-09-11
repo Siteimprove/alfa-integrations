@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.72.2](../../compare/v0.72.1...v0.72.2) (2024-09-11)
+
+### Changed
+
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0722): Fixed repository URL in manifest files.
+
 ## [0.72.1](../../compare/v0.72.0...v0.72.1) (2024-09-11)
 
 ### Changed

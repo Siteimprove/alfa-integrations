@@ -1,5 +1,7 @@
 # @siteimprove/alfa-interviewer
 
+## 0.72.2
+
 ## 0.72.1
 
 ## 0.72.0
