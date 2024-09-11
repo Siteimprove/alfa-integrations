@@ -81,7 +81,7 @@ Most of this code is standard in test automation and likely to exist in end-to-e
 Install the `@siteimprove/alfa-selenium` package:
 
 ```shell
-$ npm install --save-dev @siteimprove/alfa-playwright
+$ npm install --save-dev @siteimprove/alfa-selenium
 ```
 
 or
