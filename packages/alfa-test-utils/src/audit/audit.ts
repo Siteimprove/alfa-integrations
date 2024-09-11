@@ -9,6 +9,7 @@ import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
 import type { alfaOutcome } from "../common.js";
+import { Outcomes } from "./outcomes.js";
 import { Performance } from "./performance.js";
 
 import { Rules } from "./rules.js";
@@ -88,9 +89,13 @@ export namespace Audit {
     );
     commonPerformance.measure("total", start);
 
-    const outcomes = filter(audit, options.outcomes).groupBy(
-      (outcome) => outcome.rule.uri
-    );
+    const outcomes = filter(audit, options.outcomes)
+      .reject(
+        options?.outcomes?.keepIframe ?? false
+          ? none
+          : Outcomes.insideSelectorFilter("iframe")
+      )
+      .groupBy((outcome) => outcome.rule.uri);
 
     const resultAggregates = outcomes
       // For each rule, group by outcome
@@ -161,7 +166,13 @@ export namespace Audit {
     /**
      * Filter outcomes to show.
      */
-    outcomes?: Filter<alfaOutcome>;
+    outcomes?: Filter<alfaOutcome> & {
+      /**
+       * Whether to keep occurrences inside `<iframe>`
+       * (default: false / discard them).
+       */
+      keepIframe?: boolean;
+    };
   }
 
   /**
