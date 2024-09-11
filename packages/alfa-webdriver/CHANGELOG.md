@@ -1,5 +1,11 @@
 # @siteimprove/alfa-webdriver
 
+## 0.72.0
+
+### Minor Changes
+
+- **Changed:** Dummy minor version to experiment with publish flow, use the previous or next minor version instead. ([`4daf29d`](https://github.com/Siteimprove/alfa-integrations/commit/4daf29d55745310b6ac845f963b306a4f0e57b08))
+
 ## 0.71.2
 
 ### Patch Changes
