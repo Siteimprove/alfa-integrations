@@ -1,5 +1,11 @@
 # @siteimprove/alfa-enzyme
 
+## 0.73.0
+
+### Minor Changes
+
+- **Changed:** Reverting publication process. Use this version. ([`0d018f8`](https://github.com/Siteimprove/alfa-integrations/commit/0d018f84d1fe0f714f397de88c4bd3e6434cba57))
+
 ## 0.72.2
 
 ## 0.72.1
