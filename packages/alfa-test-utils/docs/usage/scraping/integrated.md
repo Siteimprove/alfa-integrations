@@ -87,7 +87,7 @@ $ npm install --save-dev @siteimprove/alfa-selenium
 or
 
 ```shell
-$ yarn add --dev @siteimprove/alfa-playwright
+$ yarn add --dev @siteimprove/alfa-selenium
 ```
 
 ```typescript
