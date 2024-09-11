@@ -1,5 +1,7 @@
 # @siteimprove/alfa-jasmine
 
+## 0.72.1
+
 ## 0.72.0
 
 ### Minor Changes

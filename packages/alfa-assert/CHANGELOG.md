@@ -1,5 +1,11 @@
 # @siteimprove/alfa-assert
 
+## 0.72.1
+
+### Patch Changes
+
+- **Changed:** Trying to activate npmjs release flow. ([#79](https://github.com/Siteimprove/alfa-integrations/pull/79))
+
 ## 0.72.0
 
 ### Minor Changes

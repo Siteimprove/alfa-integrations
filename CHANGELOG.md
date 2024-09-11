@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.72.1](../../compare/v0.72.0...v0.72.1) (2024-09-11)
+
+### Changed
+
+- [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0721): Trying to activate npmjs release flow. ([#79](https://github.com/Siteimprove/alfa-integrations/pull/79))
+
 ## [0.72.0](../../compare/v0.71.2...v0.72.0) (2024-09-11)
 
 ### Changed
