@@ -3,14 +3,33 @@
   "extends": ["config:base", "github>siteimprove/alfa//config/alfa-renovate"],
   "packageRules": [
     {
-      "description": "We currently ignore all other deps due to long time without update.",
+      "description": [
+        "We currently ignore most other deps due to long time without update.",
+        "list of all ignored direct external deps:",
+        "@siteimprove/alfa-angular: [@angular/core, rxjs, zone.js]",
+        "@siteimprove/alfa-chai: [chai]",
+        "@siteimprove/alfa-cheerio: [cheerio, domhandler]",
+        "@siteimprove/alfa-cypress: [cypress]",
+        "@siteimprove/alfa-enzyme: [enzyme]",
+        "@siteimprove/alfa-jasmine: [jasmine]",
+        "@siteimprove/alfa-jest: [jest]",
+        "@siteimprove/alfa-jquery: [jquery]",
+        "@siteimprove/alfa-playwright: [playwright]",
+        "@siteimprove/alfa-react: [react, react-test-renderer]",
+        "@siteimprove/alfa-selenium: [selenium-webdriver]",
+        "@siteimprove/alfa-unexpected: [unexpected]",
+        "@siteimprove/alfa-vue: [@vue/test-utils, vue, vue-template-compiler]",
+        "@siteimprove/alfa-webdriver: [webdriverio]"
+      ],
       "groupName": "Ignored deps",
       "matchPackagePatterns": ["*"],
       "excludePackagePrefixes": [
         "@siteimprove/alfa",
+        "axios",
         "chalk",
         "jsonld",
-        "puppeteer"
+        "puppeteer",
+        "simple-git"
       ],
       "enabled": false
     }
