@@ -2227,9 +2227,11 @@ __metadata:
     "@types/jsonld": "npm:^1.5.14"
     jsonld: "npm:^8.3.2"
   peerDependencies:
+    "@siteimprove/alfa-act": ^0.92.0
     "@siteimprove/alfa-earl": ^0.92.0
     "@siteimprove/alfa-future": ^0.92.0
     "@siteimprove/alfa-hash": ^0.92.0
+    "@siteimprove/alfa-rules": ^0.92.0
   languageName: unknown
   linkType: soft
 
@@ -2242,6 +2244,7 @@ __metadata:
     "@siteimprove/alfa-hash": "npm:^0.92.0"
     "@siteimprove/alfa-json": "npm:^0.92.0"
   peerDependencies:
+    "@siteimprove/alfa-act": ^0.92.0
     "@siteimprove/alfa-hash": ^0.92.0
     "@siteimprove/alfa-json": ^0.92.0
   languageName: unknown
@@ -2256,6 +2259,11 @@ __metadata:
     "@siteimprove/alfa-hash": "npm:^0.92.0"
     "@siteimprove/alfa-rules": "npm:^0.92.0"
     "@siteimprove/alfa-sarif": "npm:^0.92.0"
+  peerDependencies:
+    "@siteimprove/alfa-act": ^0.92.0
+    "@siteimprove/alfa-hash": ^0.92.0
+    "@siteimprove/alfa-rules": ^0.92.0
+    "@siteimprove/alfa-sarif": ^0.92.0
   languageName: unknown
   linkType: soft
 
@@ -2649,7 +2657,7 @@ __metadata:
     "@siteimprove/alfa-http": "npm:^0.92.0"
     "@siteimprove/alfa-test": "npm:^0.92.0"
     "@siteimprove/alfa-web": "npm:^0.92.0"
-    playwright: "npm:^1.23.0"
+    playwright: "npm:^1.47.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.92.0
     "@siteimprove/alfa-dom": ^0.92.0
@@ -7048,7 +7056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@npm:^2.3.2":
+"fsevents@npm:2.3.2, fsevents@npm:^2.3.2":
   version: 2.3.2
   resolution: "fsevents@npm:2.3.2"
   dependencies:
@@ -7058,7 +7066,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"fsevents@patch:fsevents@npm%3A^2.3.2#optional!builtin<compat/fsevents>":
+"fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>, fsevents@patch:fsevents@npm%3A^2.3.2#optional!builtin<compat/fsevents>":
   version: 2.3.2
   resolution: "fsevents@patch:fsevents@npm%3A2.3.2#optional!builtin<compat/fsevents>::version=2.3.2&hash=df0bf1"
   dependencies:
@@ -10475,23 +10483,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.31.2":
-  version: 1.31.2
-  resolution: "playwright-core@npm:1.31.2"
+"playwright-core@npm:1.47.0":
+  version: 1.47.0
+  resolution: "playwright-core@npm:1.47.0"
   bin:
-    playwright: cli.js
-  checksum: 10/dc5c0b80f6bc02ae197123da315ba713494607653c8f9c8e675c727cf6b6e5dd0c21ccae4e29ec1244b147cf913b194a0733ba97384685620e155edb664b9d3b
+    playwright-core: cli.js
+  checksum: 10/181ddf5c29275fc0cfdda223c22cbfc7a74433e1e3aded96c9fb994f7fe98232c035e789986a62201d0c384b2966f1165f212f4f88eec6885ad56c04526c922c
   languageName: node
   linkType: hard
 
-"playwright@npm:^1.23.0":
-  version: 1.31.2
-  resolution: "playwright@npm:1.31.2"
+"playwright@npm:^1.47.0":
+  version: 1.47.0
+  resolution: "playwright@npm:1.47.0"
   dependencies:
-    playwright-core: "npm:1.31.2"
+    fsevents: "npm:2.3.2"
+    playwright-core: "npm:1.47.0"
+  dependenciesMeta:
+    fsevents:
+      optional: true
   bin:
     playwright: cli.js
-  checksum: 10/3ca8060bf768c9ddeb012cc8979e0adb5a2ff44d5aa337ae9f6c13d7ccd26b29b90a12485c23137f71cdc74b0ebac4b67865c4d4029baf539def19b276ef9b59
+  checksum: 10/6051889d33c879847e471633453adeb741ca0542f236b3fabbb64e7ec3f17f1655f879099140e0b01a978d94caa8205b3c9437622e9953d56f5447e4ae85885d
   languageName: node
   linkType: hard
 

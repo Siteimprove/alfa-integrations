@@ -14,7 +14,6 @@
         "@siteimprove/alfa-jasmine: [jasmine]",
         "@siteimprove/alfa-jest: [jest]",
         "@siteimprove/alfa-jquery: [jquery]",
-        "@siteimprove/alfa-playwright: [playwright]",
         "@siteimprove/alfa-react: [react, react-test-renderer]",
         "@siteimprove/alfa-selenium: [selenium-webdriver]",
         "@siteimprove/alfa-unexpected: [unexpected]",
@@ -28,6 +27,7 @@
         "axios",
         "chalk",
         "jsonld",
+        "playwright",
         "puppeteer",
         "simple-git"
       ],
