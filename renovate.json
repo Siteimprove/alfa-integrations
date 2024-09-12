@@ -1,15 +1,17 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
-  "extends": [
-    "config:base",
-    "github>siteimprove/alfa//config/alfa-renovate"
-  ],
+  "extends": ["config:base", "github>siteimprove/alfa//config/alfa-renovate"],
   "packageRules": [
     {
       "description": "We currently ignore all other deps due to long time without update.",
       "groupName": "Ignored deps",
       "matchPackagePatterns": ["*"],
-      "excludePackagePrefixes": ["@siteimprove/alfa"],
+      "excludePackagePrefixes": [
+        "@siteimprove/alfa",
+        "chalk",
+        "jsonld",
+        "puppeteer"
+      ],
       "enabled": false
     }
   ]
