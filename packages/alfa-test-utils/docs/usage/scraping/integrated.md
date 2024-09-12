@@ -78,29 +78,23 @@ Most of this code is standard in test automation and likely to exist in end-to-e
 
 ## Selenium
 
-The Selenium integration is not fully built, so it requires a bit more manual steps to scrape the page.
-
-Install the needed packages:
+Install the `@siteimprove/alfa-selenium` package:
 
 ```shell
-$ npm install --save-dev @siteimprove/alfa-device @siteimprove/alfa-dom @siteimprove/alfa-http @siteimprove/alfa-web
+$ npm install --save-dev @siteimprove/alfa-selenium
 ```
 
 or
 
 ```shell
-$ yarn add --dev @siteimprove/alfa-device @siteimprove/alfa-dom @siteimprove/alfa-http @siteimprove/alfa-web
+$ yarn add --dev @siteimprove/alfa-selenium
 ```
 
 ```typescript
 import { Builder } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome";
 
-import { Device } from "@siteimprove/alfa-device";
-import { Document } from "@siteimprove/alfa-dom";
-import { Native } from "@siteimprove/alfa-dom/native";
-import { Request, Response } from "@siteimprove/alfa-http";
-import { Page } from "@siteimprove/alfa-web";
+import { Selenium } from "@siteimprove/alfa-selenium";
 
 let driver;
 
@@ -113,22 +107,9 @@ let driver;
 // Navigate to the page to scrape
 await driver.get("http://localhost:3000");
 
-// Create a handle for the document object
-const document = await driver.executeScript("return document;");
-
-// Scrape the page
-const documentJSON = await driver.executeScript(Native.fromNode, document);
-
-// Create an Alfa page representation
-const alfaPage = Page.of(
-  Request.empty(),
-  Response.empty(),
-  Document.from(documentJSON as Document.JSON),
-  Device.standard()
-);
+// Get the driver and turn it onto a page representation that the Code Checker can work with
+const alfaPage = await Selenium.toPage(driver);
 ```
-
-Here also, only the building of `documentJSON` and `alfaPage` are really specific to the scraping; they can be repeated to get the page in different states if needed.
 
 ## Cypress
 
