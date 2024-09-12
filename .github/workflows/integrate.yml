@@ -32,6 +32,9 @@ jobs:
           npmScopes.siteimprove.npmAuthToken
           ${{ secrets.GITHUB_TOKEN }}
       - run: yarn install --immutable
+      - name: Install Playwright browsers
+        # https://playwright.dev/docs/ci-intro
+        run: yarn workspace @siteimprove/alfa-playwright playwright install
       - run: yarn dedupe --check
       - run: yarn build --quiet
       - run: yarn test
