@@ -73,4 +73,4 @@ const alfaPage = Page.from(
 
 ## Generic integration
 
-The `@siteimprove/alfa-dom/native` package provides a `Native.fromNode` function that can be used to convert any document object into an Alfa document (and page). It can, notably, be used inside an actual browser (e.g. as part of a script or extension) or injected into a headless browser by whichever means the browser automation tool provides for this. See the [Selenium](./integrated.md#selenium) integration for some example usage.
+The `@siteimprove/alfa-dom/native` package provides a `Native.fromNode` function that can be used to convert any document object into an Alfa document (and page). It can, notably, be used inside an actual browser (e.g. as part of a script or extension) or injected into a headless browser by whichever means the browser automation tool provides for this.
