@@ -1,5 +1,7 @@
 # @siteimprove/alfa-formatter-json
 
+## 0.73.1
+
 ## 0.73.0
 
 ### Minor Changes

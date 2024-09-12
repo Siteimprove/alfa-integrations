@@ -1,5 +1,7 @@
 # @siteimprove/alfa-formatter-earl
 
+## 0.73.1
+
 ## 0.73.0
 
 ### Minor Changes

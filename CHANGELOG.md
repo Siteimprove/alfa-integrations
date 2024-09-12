@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.73.1](../../compare/v0.73.0...v0.73.1) (2024-09-12)
+
+### Changed
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0731): Content inside `<iframe>` is not checked anymore by default. ([#81](https://github.com/Siteimprove/alfa-integrations/pull/81))
+
 ## [0.73.0](../../compare/v0.72.2...v0.73.0) (2024-09-11)
 
 ### Changed
