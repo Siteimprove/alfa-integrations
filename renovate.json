@@ -24,12 +24,14 @@
       "matchPackagePatterns": ["*"],
       "excludePackagePrefixes": [
         "@siteimprove/alfa",
+        "@types/selenium-webdriver",
         "axios",
         "chalk",
         "jsonld",
         "playwright",
         "puppeteer",
-        "simple-git"
+        "simple-git",
+        "selenium-webdriver"
       ],
       "enabled": false
     }
