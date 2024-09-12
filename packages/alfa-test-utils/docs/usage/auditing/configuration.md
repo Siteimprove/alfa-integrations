@@ -87,3 +87,15 @@ const alfaResult = await Audit.run(alfaPage, {
 ```
 
 This excludes the AAA color contrast rule (SIA-R66) on the element matching the given selector.
+
+## Including `iframe` content
+
+By default, content inside `<iframe>` elements is discarded as this is often third party content, or separate pages that can be checked individually. If you want to include it in the test, add the `{ outcomes: { includeIFrames: true } }` option as the second argument of `Audit.run`. Note that this content will nonetheless not be included in the Page Report if uploaded to the Siteimprove Intelligence Platform.
+
+```typescript
+import { Audit } from "@siteimprove/alfa-test-utils";
+
+const alfaResult = await Audit.run(alfaPage, {
+  outcomes: { includeIFrames: true },
+});
+```

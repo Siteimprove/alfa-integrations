@@ -168,3 +168,55 @@ test(".run() build performance data", async (t) => {
   t.notEqual(rule.applicability, 0);
   t.notEqual(rule.expectation, 0);
 });
+
+test(".run() excludes occurrences in `<iframe>` by default", async (t) => {
+  const page = Page.of(
+    Request.empty(),
+    Response.empty(),
+    h.document([
+      <iframe>
+        {h.document([<img src="foo.jpg" />, <img src="bar.jpg" alt="bar" />])}
+      </iframe>,
+    ]),
+    Device.standard()
+  );
+
+  const actual = await Audit.run(page);
+
+  t(
+    actual.resultAggregates
+      .get("https://alfa.siteimprove.com/rules/sia-r2")
+      .isNone()
+  );
+});
+
+test(".run() includes occurrences in `<iframe>` if asked for", async (t) => {
+  const page = Page.of(
+    Request.empty(),
+    Response.empty(),
+    h.document([
+      <iframe>
+        {h.document([<img src="foo.jpg" />, <img src="bar.jpg" alt="bar" />])}
+      </iframe>,
+    ]),
+    Device.standard()
+  );
+
+  const actual = await Audit.run(page, {
+    outcomes: { includeIFrames: true },
+  });
+
+  t.equal(
+    actual.resultAggregates
+      .get("https://alfa.siteimprove.com/rules/sia-r2")
+      .getUnsafe().failed,
+    1
+  );
+
+  t.equal(
+    actual.resultAggregates
+      .get("https://alfa.siteimprove.com/rules/sia-r2")
+      .getUnsafe().passed,
+    1
+  );
+});

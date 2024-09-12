@@ -33,7 +33,9 @@ export namespace Audit {
     // @internal (undocumented)
     export function filter<T>(sequence: Sequence<T>, filter?: Filter<T>): Sequence<T>;
     export interface Options {
-        outcomes?: Filter<alfaOutcome>;
+        outcomes?: Filter<alfaOutcome> & {
+            includeIFrames?: boolean;
+        };
         rules?: Filter<Flattened.Rule> & {
             custom?: Iterable<Flattened.Rule>;
             override?: boolean;
