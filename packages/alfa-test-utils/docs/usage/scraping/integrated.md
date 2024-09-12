@@ -78,16 +78,16 @@ Most of this code is standard in test automation and likely to exist in end-to-e
 
 ## Selenium
 
-Install the `@siteimprove/alfa-playwright` package:
+Install the `@siteimprove/alfa-selenium` package:
 
 ```shell
-$ npm install --save-dev @siteimprove/alfa-playwright
+$ npm install --save-dev @siteimprove/alfa-selenium
 ```
 
 or
 
 ```shell
-$ yarn add --dev @siteimprove/alfa-playwright
+$ yarn add --dev @siteimprove/alfa-selenium
 ```
 
 ```typescript
