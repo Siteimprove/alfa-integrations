@@ -23,6 +23,15 @@ function test(root = "packages") {
     system.readDirectory(root, [".spec.ts", ".spec.tsx"], ["node_modules"]),
     os.cpus().length,
     (fileName, done) => {
+
+      if (fileName.includes("cypress.spec.ts")) {
+        // Cypress is a special kid including its own test framework, so we
+        // cannot easily rely on alfa-test and skip it here. It needs to be
+        // tested separately
+        system.write("Skipping Cypress test, use `yarn test:cypress` instead");
+        return
+      }
+
       if (!first) {
         // Move cursor up one line and 13 to the left and erase
         system.write("\x1B[1A\x1B[13D\x1B[K");

@@ -38,6 +38,7 @@ jobs:
       - run: yarn dedupe --check
       - run: yarn build --quiet
       - run: yarn test
+      - run: yarn test:cypress
       - run: yarn validate-structure
       - run: yarn extract --quiet
       - run: yarn knip
