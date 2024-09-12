@@ -45,7 +45,7 @@ Description
 
 </td><td>
 
-[Filter](./alfa-test-utils.audit.filter.md)<!-- -->&lt;[alfaOutcome](./alfa-test-utils.alfaoutcome.md)<!-- -->&gt;
+[Filter](./alfa-test-utils.audit.filter.md)<!-- -->&lt;[alfaOutcome](./alfa-test-utils.alfaoutcome.md)<!-- -->&gt; &amp; { includeIFrames?: boolean; }
 
 
 </td><td>

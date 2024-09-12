@@ -9,5 +9,7 @@ Filter outcomes to show.
 **Signature:**
 
 ```typescript
-outcomes?: Filter<alfaOutcome>;
+outcomes?: Filter<alfaOutcome> & {
+            includeIFrames?: boolean;
+        };
 ```
