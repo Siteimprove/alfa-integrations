@@ -95,7 +95,16 @@ export namespace Cypress {
 
     const nodeJSON = await dom.Native.fromNode(value);
 
-    const deviceJSON = device.Native.fromWindow(window);
+    // This escapes shadow DOM, but not iframes!
+    const root = value.getRootNode({ composed: true });
+    // If the root is a document, we can get its window for building the
+    // device. Otherwise, we hope that the global window object is decent.
+    const view =
+      (root.nodeType === root.DOCUMENT_NODE
+        ? (root as globalThis.Document).defaultView
+        : undefined) ?? window;
+
+    const deviceJSON = device.Native.fromWindow(view);
 
     const pageDevice = Device.from(deviceJSON);
     return Page.of(
