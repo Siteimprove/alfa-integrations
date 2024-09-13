@@ -21,6 +21,9 @@
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "test": "cypress run"
+  },
   "dependencies": {
     "@siteimprove/alfa-act": "^0.92.0",
     "@siteimprove/alfa-assert": "workspace:^",
@@ -32,7 +35,7 @@
     "@siteimprove/alfa-http": "^0.92.0",
     "@siteimprove/alfa-mapper": "^0.92.0",
     "@siteimprove/alfa-web": "^0.92.0",
-    "cypress": "^13.3.1"
+    "cypress": "^13.14.2"
   },
   "peerDependencies": {
     "@siteimprove/alfa-act": "^0.92.0",
@@ -41,7 +44,8 @@
     "@siteimprove/alfa-hash": "^0.92.0",
     "@siteimprove/alfa-http": "^0.92.0",
     "@siteimprove/alfa-mapper": "^0.92.0",
-    "@siteimprove/alfa-web": "^0.92.0"
+    "@siteimprove/alfa-web": "^0.92.0",
+    "cypress": "^13.14.2"
   },
   "publishConfig": {
     "access": "public",
