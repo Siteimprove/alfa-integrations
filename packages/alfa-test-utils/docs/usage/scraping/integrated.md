@@ -113,4 +113,4 @@ const alfaPage = await Selenium.toPage(driver);
 
 ## Cypress
 
-The Cypress integration is currently not working due to outdated packages. It is scheduled to be updated for September 2024.
+The Cypress integration is currently not working due to outdated packages. It is scheduled to be updated for Q4 2024.
