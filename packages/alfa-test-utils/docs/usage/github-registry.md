@@ -42,15 +42,15 @@ npmScopes:
     Siteimprove:
     npmRegistryServer: "https://npm.pkg.github.com"
 ``` 
-in the repository's `.yarnrc` file (and commit it).
+in the repository's `.yarnrc.yml` file (and commit it).
 
 ### Authenticating with the Github registry
 
-Each developer needs to [create a Github PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read: packages` permissions (enable SSO for it if your organisation uses SSO), and add it to their **personal** `.yarnrc` file:
+Each developer needs to [create a Github PAT](https://docs.github.com/en/authentication/keeping-your-account-and-data-secure/managing-your-personal-access-tokens#creating-a-personal-access-token-classic) with `read: packages` permissions (enable SSO for it if your organisation uses SSO), and add it to their **personal** `.yarnrc.yml` file:
 ```shell
 $ yarn config set npmScopes.siteimprove.npmAuthToken <your_token_here>
 ```
-If this doesn't work, edit the `.yarnrc` file in your home directory (`C:\Users\username`, `~`, `$HOME`, … depending on the OS), and add:
+If this doesn't work, edit the `.yarnrc.yml` file in your home directory (`C:\Users\username`, `~`, `$HOME`, … depending on the OS), and add:
 ```
 npmRegistries: 
   "https://npm.pkg.github.com": 
