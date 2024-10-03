@@ -1,5 +1,11 @@
 # @siteimprove/alfa-webdriver
 
+## 0.73.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa and yarn ([#87](https://github.com/Siteimprove/alfa-integrations/pull/87))
+
 ## 0.73.1
 
 ## 0.73.0
