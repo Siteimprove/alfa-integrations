@@ -1,5 +1,11 @@
 # @siteimprove/alfa-jest
 
+## 0.73.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#94](https://github.com/Siteimprove/alfa-integrations/pull/94))
+
 ## 0.73.2
 
 ### Patch Changes
