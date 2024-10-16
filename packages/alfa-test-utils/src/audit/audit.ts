@@ -88,9 +88,9 @@ export class Audit implements json.Serializable<Audit.JSON> {
   public toJSON(): Audit.JSON {
     return {
       alfaVersion: this._alfaVersion,
-      page: this._page.toJSON({ verbosity: json.Verbosity.High }),
+      page: this._page.toJSON({ verbosity: json.Serializable.Verbosity.High }),
       outcomes: Sequence.from(this._outcomes.values()).flatten().toJSON({
-        verbosity: json.Verbosity.Minimal,
+        verbosity: json.Serializable.Verbosity.Minimal,
       }),
       resultAggregates: this._resultAggregates.toJSON(),
       durations: this._durations,
@@ -109,7 +109,14 @@ export namespace Audit {
     alfaVersion: typeof alfaVersion;
     page: Page.JSON;
     outcomes: Sequence.JSON<alfaOutcome>;
-    resultAggregates: json.ToJSON<ResultAggregates>;
+    resultAggregates: Array<
+      [string, { failed: number; passed: number; cantTell: number }]
+    >;
+    durations: Performance.Durations;
+  }
+
+  export function isAudit(value: unknown): value is Audit {
+    return value instanceof Audit;
   }
 
   /**
@@ -128,10 +135,7 @@ export namespace Audit {
    * Audit a given page. Use the filters to select the rules to run, and
    * the outcomes to keep.
    */
-  export async function run(
-    page: Page,
-    options: Options = {}
-  ): Promise<Result> {
+  export async function run(page: Page, options: Options = {}): Promise<Audit> {
     const durations: Performance.Durations = Performance.empty();
     const commonPerformance = Performance.recordCommon(durations);
     const rulesPerformance = Performance.recordRule(durations);
@@ -170,13 +174,7 @@ export namespace Audit {
           .size,
       }));
 
-    return {
-      alfaVersion,
-      page,
-      outcomes,
-      resultAggregates,
-      durations,
-    };
+    return Audit.of(page, outcomes, resultAggregates, durations);
   }
 
   /**
