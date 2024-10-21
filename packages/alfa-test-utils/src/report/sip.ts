@@ -57,6 +57,14 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
   ): Promise<Result<string, string>> {
+    if (options.userName === undefined) {
+      return Err.of("Missing user name for Siteimprove Intelligence Platform");
+    }
+
+    if (options.apiKey === undefined) {
+      return Err.of("Missing API key for Siteimprove Intelligence Platform");
+    }
+
     const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
@@ -80,12 +88,12 @@ export namespace SIP {
     /**
      * The username to connect to the Siteimprove Intelligence Platform
      */
-    userName: string;
+    userName?: string;
 
     /**
      * The API key to connect to Siteimprove Intelligence Platform
      */
-    apiKey: string;
+    apiKey?: string;
 
     /**
      * The URL of the page, or a function to build it from the audited page.
@@ -306,7 +314,10 @@ export namespace SIP {
       return {
         ...params(
           url,
-          `${options.userName}:${options.apiKey}`,
+          // If one of them is missing, the parent upload call should already
+          // have filtered it out. It is easier to not assume so. In any case,
+          // the upload itself should ultimately fail on a 403.
+          `${options?.userName}:${options?.apiKey}`,
           override.httpsAgent
         ),
         data: JSON.stringify(await payload(audit, options, timestamp)),
