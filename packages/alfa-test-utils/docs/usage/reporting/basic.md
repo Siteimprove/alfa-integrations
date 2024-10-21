@@ -2,7 +2,7 @@
 
 See [how to audit a page](../auditing/basic.md) for getting the audit results in the first place.
 
-This page shows basic usage of the reporting, see [common configuration](./configuration.md) for frequent set up such as customizing test name; and [advanced configuration](./advanced.md) for more complex setups.
+This page shows basic usage of the reporting utilities, see [common configuration](./configuration.md) for frequent set up such as customizing test name; and [advanced configuration](./advanced.md) for more complex setups.
 
 ## Uploading results to the Siteimprove Intelligence Platform
 
@@ -31,8 +31,64 @@ Use the `Logging.result` function to pretty print results. If a Page Report URL 
 import { Logging } from "@siteimprove/alfa-test-utils";
 
 // Log results, with links to individual issues in the Page Report.
-Logging.result(alfaResult, pageReportURL);
+Logging.from(alfaResult, pageReportURL).print();
 
 // Simply log an overview of the results and number of issues per rule.
-Logging.result(alfaResult);
+Logging.from(alfaResult).print();
+```
+
+## Cypress
+
+When using Cypress, reporting must occur in the NodeJS word, not in the Cypress world (otherwise, it has no access to console logging, …)
+
+This means that the audit must first be serialised, then sent to the NodeJS world through a `cy.task` call.
+
+```typescript
+// cypress.config.ts file
+
+export default defineConfig({
+  // other config options
+  e2e: {
+    setupNodeEvents(on, config) {
+      // implement node event listeners here
+      on("task", {
+        async upload({
+          audit,
+          options,
+        }: {
+          audit: Audit.JSON;
+          url?: string;
+          options: SIP.Options;
+        }): Promise<Result<string, string>> {
+          return SIP.upload(audit, options);
+        },
+        logging({
+          audit,
+          options,
+        }: {
+          audit: Audit.JSON;
+          options: Logging.Options;
+        }): null {
+          Logging.from(audit, options).print();
+          return null;
+        },
+      });
+    },
+  },
+});
+```
+
+And from Cypress:
+
+```typescript
+// test-file.spec.ts
+
+cy.document()
+  .then(Cypress.toPage)
+  .then((page) => {
+    const audit = Audit.run(page, auditOptions);
+    
+    cy.task("upload", { audit, uploadOptions });
+    cy.task("logging", { audit, loggingOptions });
+  });
 ```

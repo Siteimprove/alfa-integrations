@@ -17,6 +17,13 @@
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
+  "exports": {
+    ".": "./dist/index.js",
+    "./audit": "./dist/audit/index.js",
+    "./audit.js": "./dist/audit/index.js",
+    "./report": "./dist/report/index.js",
+    "./report.js": "./dist/report/index.js"
+  },
   "files": [
     "dist/**/*.js",
     "dist/**/*.d.ts",
@@ -33,6 +40,7 @@
     "@siteimprove/alfa-cascade": "^0.93.2",
     "@siteimprove/alfa-css": "^0.93.2",
     "@siteimprove/alfa-dom": "^0.93.2",
+    "@siteimprove/alfa-equatable": "^0.93.2",
     "@siteimprove/alfa-iterable": "^0.93.2",
     "@siteimprove/alfa-json": "^0.93.2",
     "@siteimprove/alfa-map": "^0.93.2",
@@ -42,6 +50,7 @@
     "@siteimprove/alfa-rules": "^0.93.2",
     "@siteimprove/alfa-selector": "^0.93.2",
     "@siteimprove/alfa-sequence": "^0.93.2",
+    "@siteimprove/alfa-thunk": "^0.93.2",
     "@siteimprove/alfa-wcag": "^0.93.2",
     "@siteimprove/alfa-web": "^0.93.2",
     "axios": "^1.7.4",

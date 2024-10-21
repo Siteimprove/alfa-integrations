@@ -8,6 +8,8 @@ This page describes how to scrape with browser automation tools. If you do not h
 
 ## Playwright
 
+See [a full example of using Playwright with the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker/playwright) in the `Siteimprove/alfa-examples` repository.
+
 Install the `@siteimprove/alfa-playwright` package:
 
 ```shell
@@ -42,6 +44,8 @@ const alfaPage = await Playwright.toPage(document);
 Most of this code is standard in test automation and likely to exist in end-to-end tests. The last line is the one doing the actual scrape. It can be repeated as often as needed, e.g. after manipulating the page (opening modals, changing tabs, …) in order to scrape the page in different states.
 
 ## Puppeteer
+
+See [a full example of using Puppeteer with the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker/puppeteer) in the `Siteimprove/alfa-examples` repository.
 
 Install the `@siteimprove/alfa-puppeteer` package:
 
@@ -78,6 +82,8 @@ Most of this code is standard in test automation and likely to exist in end-to-e
 
 ## Selenium
 
+See [a full example of using Selenium with the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker/selenium) in the `Siteimprove/alfa-examples` repository.
+
 Install the `@siteimprove/alfa-selenium` package:
 
 ```shell
@@ -113,4 +119,32 @@ const alfaPage = await Selenium.toPage(driver);
 
 ## Cypress
 
-The Cypress integration is currently not working due to outdated packages. It is scheduled to be updated for Q4 2024.
+Cypress works a bit differently than the rest because it integrates its own test framework in a separate Javascript world. This requires a bit of extra work to setup Cypress tasks for reporting on the results.
+
+See [a full example of using Cypress with the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker/cypress) in the `Siteimprove/alfa-examples` repository.
+
+The basic for scraping is similar to the other solutions, but the resulting Alfa page will live in the Cypress world, so the audit has to be run there, serialised, and then reported back to the NodeJS world.
+
+Install the `@siteimprove/alfa-cypress` package:
+
+```shell
+$ npm install --save-dev @siteimprove/alfa-cypress
+```
+
+or
+
+```shell
+$ yarn add --dev @siteimprove/alfa-cypress
+```
+
+Then, use the `.toPage` scraper on the full `document` object:
+
+```typescript
+/// <reference types="cypress" />
+
+import { Cypress } from "@siteimprove/alfa-cypress";
+
+cy.visit("test/fixture/page.html");
+
+cy.document().then(Cypress.toPage);
+```

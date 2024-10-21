@@ -11,8 +11,9 @@
     "./audit/fixtures.spec.tsx",
     "./audit/outcomes.spec.tsx",
     "./audit/rules.spec.tsx",
-    "./fixtures.ts",
+    "./fixtures.tsx",
     "./report/git.spec.ts",
+    "./report/logging.spec.tsx",
     "./report/sip.spec.tsx"
   ],
   "references": [{ "path": "../src" }]

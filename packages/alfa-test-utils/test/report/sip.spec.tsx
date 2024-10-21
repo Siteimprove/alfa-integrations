@@ -1,61 +1,29 @@
 import { Outcome } from "@siteimprove/alfa-act";
-import { Device } from "@siteimprove/alfa-device";
-import { Document, Element, h } from "@siteimprove/alfa-dom";
-import { Request, Response } from "@siteimprove/alfa-http";
+import { Element, h } from "@siteimprove/alfa-dom";
+import { Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
 import { Map } from "@siteimprove/alfa-map";
-import { alfaVersion } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test";
 import { URL } from "@siteimprove/alfa-url";
-import { Page } from "@siteimprove/alfa-web";
 
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-import { type alfaOutcome, Audit, Performance, SIP } from "../../dist/index.js";
+import { SIP } from "../../dist/index.js";
 
-import { makeFailed, makeRule } from "../fixtures.js";
+import {
+  makeAudit,
+  makeFailed,
+  makePage,
+  makePayload,
+  makeRule,
+  timestamp,
+} from "../fixtures.js";
 
 const { Verbosity } = Serializable;
 
 const { Metadata, S3 } = SIP;
-
-const device = Device.standard();
-const timestamp = new Date().toISOString();
-
-function makePage(
-  document: Document,
-  response: Response = Response.of(URL.example(), 200)
-): Page {
-  return Page.of(Request.empty(), response, document, device);
-}
-
-const emptyAudit: Audit.Result = {
-  alfaVersion,
-  page: makePage(h.document([<span></span>])),
-  outcomes: Map.empty(),
-  resultAggregates: Map.empty(),
-  durations: Performance.empty(),
-};
-function makeAudit(override: Partial<Audit.Result> = {}): Audit.Result {
-  return { ...emptyAudit, ...override };
-}
-
-const emptyPayload: SIP.Metadata.Payload = {
-  RequestTimestamp: timestamp,
-  Version: alfaVersion,
-  PageUrl: "https://example.com/",
-  PageTitle: SIP.Defaults.Title,
-  TestName: SIP.Defaults.Name,
-  ResultAggregates: [],
-  Durations: { Cascade: 0, AriaTree: 0, Total: 0 },
-};
-function makePayload(
-  override: Partial<SIP.Metadata.Payload> = {}
-): SIP.Metadata.Payload {
-  return { ...emptyPayload, ...override };
-}
 
 /**
  * Commit information is highly unstable, hence we simply test that it exist
@@ -439,4 +407,24 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   });
 
   t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
+});
+
+test(".upload returns an error on missing user name", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(makeAudit({ page }), {
+    apiKey: "bar",
+  });
+
+  t(actual.isErr());
+});
+
+test(".upload returns an error on missing API key", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(makeAudit({ page }), {
+    userName: "foo@foo.com",
+  });
+
+  t(actual.isErr());
 });

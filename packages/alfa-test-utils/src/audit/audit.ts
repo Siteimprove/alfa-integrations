@@ -8,6 +8,8 @@ import { alfaVersion, type Flattened } from "@siteimprove/alfa-rules";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Page } from "@siteimprove/alfa-web";
 
+import * as json from "@siteimprove/alfa-json";
+
 import type { alfaOutcome } from "../common.js";
 import { Outcomes } from "./outcomes.js";
 import { Performance } from "./performance.js";
@@ -15,39 +17,106 @@ import { Performance } from "./performance.js";
 import { Rules } from "./rules.js";
 
 /**
- * Running Alfa tests
+ * An Alfa Audit
+ *
+ * @public
+ */
+export class Audit implements json.Serializable<Audit.JSON> {
+  public static of(
+    page: Page,
+    outcomes: Map<string, Sequence<alfaOutcome>>,
+    resultAggregates: Audit.ResultAggregates,
+    durations: Performance.Durations
+  ): Audit {
+    return new Audit(page, outcomes, resultAggregates, durations);
+  }
+
+  private readonly _alfaVersion: typeof alfaVersion;
+  private readonly _page: Page;
+  private readonly _outcomes: Map<string, Sequence<alfaOutcome>>;
+  private readonly _resultAggregates: Audit.ResultAggregates;
+  private readonly _durations: Performance.Durations;
+
+  private constructor(
+    page: Page,
+    outcomes: Map<string, Sequence<alfaOutcome>>,
+    resultAggregates: Audit.ResultAggregates,
+    durations: Performance.Durations
+  ) {
+    this._alfaVersion = alfaVersion;
+    this._page = page;
+    this._outcomes = outcomes;
+    this._resultAggregates = resultAggregates;
+    this._durations = durations;
+  }
+
+  /**
+   * The version of Alfa used to run the audit.
+   */
+  public get alfaVersion(): typeof alfaVersion {
+    return this._alfaVersion;
+  }
+
+  /**
+   * The audited page (Alfa representation).
+   */
+  public get page(): Page {
+    return this._page;
+  }
+
+  /**
+   * The audit outcomes, sorted by rule.
+   */
+  public get outcomes(): Map<string, Sequence<alfaOutcome>> {
+    return this._outcomes;
+  }
+
+  /**
+   * Aggregated result per rule
+   */
+  public get resultAggregates(): Audit.ResultAggregates {
+    return this._resultAggregates;
+  }
+
+  /**
+   * Performance durations for the audit.
+   */
+  public get durations(): Performance.Durations {
+    return this._durations;
+  }
+
+  public toJSON(): Audit.JSON {
+    return {
+      alfaVersion: this._alfaVersion,
+      page: this._page.toJSON({ verbosity: json.Serializable.Verbosity.High }),
+      outcomes: Sequence.from(this._outcomes.values()).flatten().toJSON({
+        verbosity: json.Serializable.Verbosity.Minimal,
+      }),
+      resultAggregates: this._resultAggregates.toJSON(),
+      durations: this._durations,
+    };
+  }
+}
+
+/**
+ * An Alfa Audit
  *
  * @public
  */
 export namespace Audit {
-  /**
-   * The result of an audit.
-   */
-  export interface Result {
-    /**
-     * The version of Alfa used to run the audit.
-     */
+  export interface JSON {
+    [key: string]: json.JSON;
     alfaVersion: typeof alfaVersion;
-
-    /**
-     * The audited page (Alfa representation).
-     */
-    page: Page;
-
-    /**
-     * The audit outcomes, sorted by rule.
-     */
-    outcomes: Map<string, Sequence<alfaOutcome>>;
-
-    /**
-     * Aggregated result per rule
-     */
-    resultAggregates: ResultAggregates;
-
-    /**
-     * Performance durations for the audit.
-     */
+    page: Page.JSON;
+    outcomes: Sequence.JSON<alfaOutcome>;
+    resultAggregates: Array<
+      [string, { failed: number; passed: number; cantTell: number }]
+    >;
     durations: Performance.Durations;
+  }
+
+  export function isAudit(value: unknown): value is Audit {
+    return value instanceof Audit;
   }
 
   /**
@@ -66,10 +135,7 @@ export namespace Audit {
    * Audit a given page. Use the filters to select the rules to run, and
    * the outcomes to keep.
    */
-  export async function run(
-    page: Page,
-    options: Options = {}
-  ): Promise<Result> {
+  export async function run(page: Page, options: Options = {}): Promise<Audit> {
     const durations: Performance.Durations = Performance.empty();
     const commonPerformance = Performance.recordCommon(durations);
     const rulesPerformance = Performance.recordRule(durations);
@@ -108,13 +174,7 @@ export namespace Audit {
           .size,
       }));
 
-    return {
-      alfaVersion,
-      page,
-      outcomes,
-      resultAggregates,
-      durations,
-    };
+    return Audit.of(page, outcomes, resultAggregates, durations);
   }
 
   /**

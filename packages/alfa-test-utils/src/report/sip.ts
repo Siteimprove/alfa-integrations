@@ -1,19 +1,17 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
-import { Serializable } from "@siteimprove/alfa-json";
+import { Map } from "@siteimprove/alfa-map";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import type { Result } from "@siteimprove/alfa-result";
-import { Sequence } from "@siteimprove/alfa-sequence";
-import type { Page } from "@siteimprove/alfa-web";
+import type { Thunk } from "@siteimprove/alfa-thunk";
+import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
 import axios from "axios";
 import type { Agent as HttpsAgent } from "https";
 
-import type { Audit, Performance } from "../audit/index.js";
+import { Audit, type Performance } from "../audit/index.js";
 import { type CommitInformation, getCommitInformation } from "./git.js";
-
-const { Verbosity } = Serializable;
 
 /**
  * Interacting with Siteimprove Intelligence Platform (SIP) API.
@@ -36,7 +34,7 @@ export namespace SIP {
    * @public
    */
   export async function upload(
-    audit: Audit.Result,
+    audit: Audit | Audit.JSON,
     options: Options
   ): Promise<Result<string, string>>;
 
@@ -49,16 +47,24 @@ export namespace SIP {
    * @internal
    */
   export async function upload(
-    audit: Audit.Result,
+    audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
   ): Promise<Result<string, string>>;
 
   export async function upload(
-    audit: Audit.Result,
+    audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
   ): Promise<Result<string, string>> {
+    if (options.userName === undefined) {
+      return Err.of("Missing user name for Siteimprove Intelligence Platform");
+    }
+
+    if (options.apiKey === undefined) {
+      return Err.of("Missing API key for Siteimprove Intelligence Platform");
+    }
+
     const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
@@ -82,12 +88,12 @@ export namespace SIP {
     /**
      * The username to connect to the Siteimprove Intelligence Platform
      */
-    userName: string;
+    userName?: string;
 
     /**
      * The API key to connect to Siteimprove Intelligence Platform
      */
-    apiKey: string;
+    apiKey?: string;
 
     /**
      * The URL of the page, or a function to build it from the audited page.
@@ -207,16 +213,21 @@ export namespace SIP {
      * The timestamp must be formated as an ISO 8601 string.
      */
     export async function payload(
-      audit: Audit.Result,
+      audit: Audit | Audit.JSON,
       options: Partial<Options>,
       timestamp: string
     ): Promise<Payload> {
-      const url = options.pageURL ?? audit.page.response.url.toString();
-      const PageUrl = typeof url === "string" ? url : url(audit.page);
+      const page: Thunk<Page> = () =>
+        Page.isPage(audit.page)
+          ? audit.page
+          : Page.from(audit.page).getUnsafe("Could not deserialize the page");
+
+      const url = options.pageURL ?? page().response.url.toString();
+      const PageUrl = typeof url === "string" ? url : url(page());
 
       const title =
         options.pageTitle ??
-        Query.getElementDescendants(audit.page.document)
+        Query.getElementDescendants(page().document)
           .filter(Element.isElement)
           .find(Element.hasName("title"))
           .map((title) => title.textContent())
@@ -225,7 +236,7 @@ export namespace SIP {
         typeof title === "string"
           ? title
           : title !== undefined
-          ? title(audit.page)
+          ? title(page())
           : title;
 
       const gitInfo = await getCommitInformation();
@@ -246,13 +257,14 @@ export namespace SIP {
         PageUrl,
         PageTitle,
         TestName,
-        ResultAggregates: audit.resultAggregates
-          .toArray()
-          .map(([RuleId, data]) => ({
-            RuleId,
-            ...toCamelCase(data),
-            Durations: toCamelCase(audit.durations.rules[RuleId]),
-          })),
+        ResultAggregates: (Map.isMap(audit.resultAggregates)
+          ? audit.resultAggregates.toJSON()
+          : audit.resultAggregates
+        ).map(([RuleId, data]) => ({
+          RuleId,
+          ...toCamelCase(data),
+          Durations: toCamelCase(audit.durations.rules[RuleId]),
+        })),
         Durations: toCamelCase(audit.durations.common),
       };
 
@@ -292,7 +304,7 @@ export namespace SIP {
      * Prepare the configuration for the axios request
      */
     export async function axiosConfig(
-      audit: Audit.Result,
+      audit: Audit | Audit.JSON,
       options: Options,
       override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
     ): Promise<AxiosRequestConfig> {
@@ -302,7 +314,10 @@ export namespace SIP {
       return {
         ...params(
           url,
-          `${options.userName}:${options.apiKey}`,
+          // If one of them is missing, the parent upload call should already
+          // have filtered it out. It is easier to not assume so. In any case,
+          // the upload itself should ultimately fail on a 403.
+          `${options?.userName}:${options?.apiKey}`,
           override.httpsAgent
         ),
         data: JSON.stringify(await payload(audit, options, timestamp)),
@@ -330,17 +345,13 @@ export namespace SIP {
      *
      * @internal
      */
-    export function payload(Id: string, audit: Audit.Result): Payload {
+    export function payload(Id: string, audit: Audit | Audit.JSON): Payload {
+      const serialisedAudit = Audit.isAudit(audit) ? audit.toJSON() : audit;
+
       return {
         Id,
-        CheckResult: JSON.stringify(
-          Sequence.from(audit.outcomes.values()).flatten().toJSON({
-            verbosity: Verbosity.Minimal,
-          })
-        ),
-        Aspects: JSON.stringify(
-          audit.page.toJSON({ verbosity: Verbosity.High })
-        ),
+        CheckResult: JSON.stringify(serialisedAudit.outcomes),
+        Aspects: JSON.stringify(serialisedAudit.page),
       };
     }
 
@@ -362,7 +373,7 @@ export namespace SIP {
     export function axiosConfig(
       id: string,
       url: string,
-      audit: Audit.Result
+      audit: Audit | Audit.JSON
     ): AxiosRequestConfig {
       return {
         ...params(url),
