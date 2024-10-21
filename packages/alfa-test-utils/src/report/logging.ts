@@ -5,6 +5,8 @@ import { Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 
 import * as json from "@siteimprove/alfa-json";
+import type { Thunk } from "@siteimprove/alfa-thunk";
+import { Page } from "@siteimprove/alfa-web";
 
 import chalk from "chalk";
 
@@ -12,6 +14,9 @@ import { Audit } from "../audit/index.js";
 import { Outcome } from "@siteimprove/alfa-act";
 import { getRuleTitle } from "./get-rule-title.js";
 
+/**
+ * @public
+ */
 export class LogGroup implements Equatable, json.Serializable<LogGroup.JSON> {
   public static of(title: string, logs?: Iterable<LogGroup>): LogGroup {
     return new LogGroup(title, Sequence.from(logs ?? []));
@@ -59,11 +64,19 @@ export class LogGroup implements Equatable, json.Serializable<LogGroup.JSON> {
   }
 }
 
+/**
+ * @public
+ */
 export namespace LogGroup {
   export interface JSON {
     [name: string]: json.JSON;
     title: string;
     logs: Sequence.JSON<JSON>;
+  }
+
+  /** @internal */
+  export namespace Defaults {
+    export const Title = "Untitled";
   }
 
   export function isLogGroup(value: unknown): value is LogGroup {
@@ -73,7 +86,7 @@ export namespace LogGroup {
   /**
    * @internal
    */
-  export function occurrenceURL(baseUrl: string, ruleId: string): string {
+  export function issueUrl(baseUrl: string, ruleId: string): string {
     return `${baseUrl}&conf=a+aa+aaa+aria+si&issue=cantTell+failed&wcag=twopointtwo#/${ruleId}/failed/`;
   }
 
@@ -82,11 +95,11 @@ export namespace LogGroup {
    */
   export function fromAggregate(
     aggregate: Array<[string, { failed: number }]>,
-    pageReportUrl?: Result<string, string>,
-    pageTitle?: string
+    pageTitle?: string,
+    pageReportUrl?: Result<string, string>
   ): LogGroup {
     return LogGroup.of("Siteimprove found accessibility issues:", [
-      LogGroup.of(chalk.bold(`Page - ${pageTitle ?? "Untitled"}`)),
+      LogGroup.of(chalk.bold(`Page - ${pageTitle ?? Defaults.Title}`)),
       // "This page contains X issues: URL" (if URL)
       // "This page contains X issues." (otherwise)
       LogGroup.of(
@@ -102,7 +115,7 @@ export namespace LogGroup {
             // "Learn how to fix this issue: URL" (optional, if URL)
             pageReportUrl?.map((url) =>
               LogGroup.of(
-                `Learn how to fix this issue: ${occurrenceURL(url, ruleId)}`
+                `Learn how to fix this issue: ${issueUrl(url, ruleId)}`
               )
             )
           )
@@ -113,8 +126,27 @@ export namespace LogGroup {
 
   export function fromAudit(
     audit: Audit,
-    pageReportUrl?: Result<string, string>
+    pageReportUrl?: Result<string, string>,
+    options?: Options
   ): LogGroup {
+    const page: Thunk<Page> = () =>
+      Page.isPage(audit.page)
+        ? audit.page
+        : Page.from(audit.page).getUnsafe("Could not deserialize the page");
+    const title =
+      options?.pageTitle ??
+      Query.getElementDescendants(page().document)
+        .filter(Element.isElement)
+        .find(Element.hasName("title"))
+        .map((title) => title.textContent())
+        .getOr(Defaults.Title);
+    const pageTitle =
+      typeof title === "string"
+        ? title
+        : title !== undefined
+        ? title(page())
+        : title;
+
     const filteredAggregates = Array.sortWith(
       audit.resultAggregates
         .filter((outcomes) => outcomes.failed > 0)
@@ -125,7 +157,18 @@ export namespace LogGroup {
       aggregate,
     ]);
 
-    return fromAggregate(filteredAggregates, pageReportUrl);
+    return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
+  }
+
+  /**
+   * @public
+   */
+  export interface Options {
+    /**
+     * The title of the page, or a function to build it from the audited page.
+     * Defaults to the content of the first `<title>` element, if any.
+     */
+    pageTitle?: string | ((page: Page) => string);
   }
 }
 
