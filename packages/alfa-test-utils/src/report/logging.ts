@@ -91,13 +91,19 @@ export namespace Logging {
     return `${baseUrl}&conf=a+aa+aaa+aria+si&issue=cantTell+failed&wcag=twopointtwo#/${ruleId}/failed/`;
   }
 
+  function fromIssue(baseUrl: string, ruleId: string): Logging {
+    return Logging.of(
+      `Learn how to fix this issue: ${issueUrl(baseUrl, ruleId)}`
+    );
+  }
+
   /**
    * @internal
    */
   export function fromAggregate(
     aggregate: Array<[string, { failed: number }]>,
     pageTitle?: string,
-    pageReportUrl?: Result<string, string>
+    pageReportUrl?: Result<string, string> | string
   ): Logging {
     return Logging.of("Siteimprove found accessibility issues:", [
       Logging.of(chalk.bold(`Page - ${pageTitle ?? Defaults.Title}`)),
@@ -114,11 +120,9 @@ export namespace Logging {
               failed > 1 ? "s" : ""
             })`,
             // "Learn how to fix this issue: URL" (optional, if URL)
-            pageReportUrl?.map((url) =>
-              Logging.of(
-                `Learn how to fix this issue: ${issueUrl(url, ruleId)}`
-              )
-            )
+            typeof pageReportUrl === "string"
+              ? [fromIssue(pageReportUrl, ruleId)]
+              : pageReportUrl?.map((url) => fromIssue(url, ruleId))
           )
         )
       ),
@@ -127,7 +131,7 @@ export namespace Logging {
 
   export function fromAudit(
     audit: Audit | Audit.JSON,
-    pageReportUrl?: Result<string, string>,
+    pageReportUrl?: Result<string, string> | string,
     options?: Options
   ): Logging {
     const page: Thunk<Page> = () =>

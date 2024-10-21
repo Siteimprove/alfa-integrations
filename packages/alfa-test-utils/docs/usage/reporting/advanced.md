@@ -40,6 +40,9 @@ const pageReportURL = Audit.run(alfaPage, {
 });
 ```
 
+### Cypress
+ When using Cypress, a function like this one cannot be passed around between the Cypress world and NodeJS because it is not serialisable (it includes some dependencies). This function could, however, live fully within the `cypress.config.ts` file, in which case it must be shared by all test cases (or a more flexible Cypress task must be written).
+
 ## Providing a page URL
 
 > **Note:** Page URLs are currently not displayed in the reports. Thus this documentation is rather short.

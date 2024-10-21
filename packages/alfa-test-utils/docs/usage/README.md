@@ -4,9 +4,9 @@ The Accessibility Code Checker integrates Siteimprove’s Alfa engine into your 
 
 With the Accessibility Code Checker, you’ll receive instant accessibility assessments, AI-powered remediation suggestions, and easily shareable reports. This ensures your website is accessible and compliant from the start.
 
-## Installation
+See [full examples of using the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker) in the `Siteimprove/alfa-examples` repository.
 
-Alfa packages are distributed as npm packages in the Github registry. See [Github documentation on the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) for configuring your package manager to use the Github registry for the `@siteimprove` organisation. Or check a [quick guide on configuring the Github registry](github-registry.md).
+## Installation
 
 Alfa is distributed as ESM. Thus, projects using the old CJS format for modules won't be able to use it directly. There are essentially four ways to handle that:
 
