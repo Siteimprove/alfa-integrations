@@ -8,19 +8,34 @@ import type { Agent } from 'https';
 import { alfaVersion } from '@siteimprove/alfa-rules';
 import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
+import { Equatable } from '@siteimprove/alfa-equatable';
 import { Flattened } from '@siteimprove/alfa-rules';
+import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
 import { Outcome } from '@siteimprove/alfa-act';
-import type { Page } from '@siteimprove/alfa-web';
+import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
-import type { Result } from '@siteimprove/alfa-result';
+import { Result } from '@siteimprove/alfa-result';
 import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
 export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
+
+// @public
+export class Audit implements json.Serializable<Audit.JSON> {
+    get alfaVersion(): typeof alfaVersion;
+    get durations(): Performance.Durations;
+    // (undocumented)
+    static of(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance.Durations): Audit;
+    get outcomes(): Map_2<string, Sequence<alfaOutcome>>;
+    get page(): Page;
+    get resultAggregates(): Audit.ResultAggregates;
+    // (undocumented)
+    toJSON(): Audit.JSON;
+}
 
 // @public
 export namespace Audit {
@@ -32,6 +47,30 @@ export namespace Audit {
     }
     // @internal (undocumented)
     export function filter<T>(sequence: Sequence<T>, filter?: Filter<T>): Sequence<T>;
+    // (undocumented)
+    export function isAudit(value: unknown): value is Audit;
+    // (undocumented)
+    export interface JSON {
+        // (undocumented)
+        [key: string]: json.JSON;
+        // (undocumented)
+        alfaVersion: typeof alfaVersion;
+        // (undocumented)
+        durations: Performance.Durations;
+        // (undocumented)
+        outcomes: Sequence.JSON<alfaOutcome>;
+        // (undocumented)
+        page: Page.JSON;
+        // (undocumented)
+        resultAggregates: Array<[
+        string,
+            {
+            failed: number;
+            passed: number;
+            cantTell: number;
+        }
+        ]>;
+    }
     export interface Options {
         outcomes?: Filter<alfaOutcome> & {
             includeIFrames?: boolean;
@@ -41,19 +80,12 @@ export namespace Audit {
             override?: boolean;
         };
     }
-    export interface Result {
-        alfaVersion: typeof alfaVersion;
-        durations: Performance.Durations;
-        outcomes: Map_2<string, Sequence<alfaOutcome>>;
-        page: Page;
-        resultAggregates: ResultAggregates;
-    }
     export type ResultAggregates = Map_2<string, {
         failed: number;
         passed: number;
         cantTell: number;
     }>;
-    export function run(page: Page, options?: Options): Promise<Result>;
+    export function run(page: Page, options?: Options): Promise<Audit>;
 }
 
 // @public (undocumented)
@@ -73,9 +105,53 @@ export interface CommitInformation {
 export function getCommitInformation(): Promise<Result<CommitInformation, string>>;
 
 // @public
+export class Logging implements Equatable, json.Serializable<Logging.JSON> {
+    // (undocumented)
+    equals(value: Logging): boolean;
+    // (undocumented)
+    equals(value: unknown): value is this;
+    // (undocumented)
+    get logs(): Iterable<Logging>;
+    // (undocumented)
+    static of(title: string, logs?: Iterable<Logging>): Logging;
+    // (undocumented)
+    print(): void;
+    // (undocumented)
+    get title(): string;
+    // (undocumented)
+    toJSON(): Logging.JSON;
+}
+
+// @public (undocumented)
 export namespace Logging {
-    export function prepare(audit: Audit.Result): Record<string, number>;
-    export function result(audit: Audit.Result, pageReportURL?: Result<string, string>): void;
+    // @internal (undocumented)
+    export namespace Defaults {
+        const // (undocumented)
+        Title = "Untitled";
+    }
+    // @internal (undocumented)
+    export function fromAggregate(aggregate: Array_2<[string, {
+        failed: number;
+    }]>, pageTitle?: string, pageReportUrl?: Result<string, string> | string): Logging;
+    // (undocumented)
+    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, string> | string, options?: Options): Logging;
+    // (undocumented)
+    export function isLogging(value: unknown): value is Logging;
+    // @internal (undocumented)
+    export function issueUrl(baseUrl: string, ruleId: string): string;
+    // (undocumented)
+    export interface JSON {
+        // (undocumented)
+        [name: string]: json.JSON;
+        // (undocumented)
+        logs: Sequence.JSON<JSON>;
+        // (undocumented)
+        title: string;
+    }
+    // (undocumented)
+    export interface Options {
+        pageTitle?: string | ((page: Page) => string);
+    }
 }
 
 // @public
@@ -154,7 +230,7 @@ export namespace SIP {
     }
     // @internal
     export namespace Metadata {
-        export function axiosConfig(audit: Audit.Result, options: Options, override: {
+        export function axiosConfig(audit: Audit | Audit.JSON, options: Options, override: {
             url?: string;
             timestamp?: string;
             httpsAgent?: Agent;
@@ -181,7 +257,7 @@ export namespace SIP {
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit.Result, options: Partial<Options>, timestamp: string): Promise<Payload>;
+        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Promise<Payload>;
         // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
         //
         // (undocumented)
@@ -192,16 +268,16 @@ export namespace SIP {
     }
     // (undocumented)
     export interface Options {
-        apiKey: string;
+        apiKey?: string;
         includeGitInfo?: boolean;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
         testName?: string | ((git: CommitInformation) => string);
-        userName: string;
+        userName?: string;
     }
     // @internal
     export namespace S3 {
-        export function axiosConfig(id: string, url: string, audit: Audit.Result): AxiosRequestConfig;
+        export function axiosConfig(id: string, url: string, audit: Audit | Audit.JSON): AxiosRequestConfig;
         export function params(url: string): AxiosRequestConfig;
         // (undocumented)
         export interface Payload {
@@ -212,12 +288,12 @@ export namespace SIP {
             // (undocumented)
             Id: string;
         }
-        export function payload(Id: string, audit: Audit.Result): Payload;
+        export function payload(Id: string, audit: Audit | Audit.JSON): Payload;
             {};
     }
-    export function upload(audit: Audit.Result, options: Options): Promise<Result<string, string>>;
+    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, string>>;
     // @internal
-    export function upload(audit: Audit.Result, options: Options, override: {
+    export function upload(audit: Audit | Audit.JSON, options: Options, override: {
         url?: string;
         timestamp?: string;
         httpsAgent?: Agent;
