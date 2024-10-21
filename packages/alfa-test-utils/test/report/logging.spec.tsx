@@ -7,7 +7,7 @@ import { test } from "@siteimprove/alfa-test";
 import chalk from "chalk";
 import { getRuleTitle } from "../../dist/report/get-rule-title.js";
 
-import { LogGroup } from "../../dist/report/logging.js";
+import { Logging } from "../../dist/report/logging.js";
 
 import {
   makeAudit,
@@ -48,18 +48,20 @@ const filteredAggregates: Array<[string, { failed: number }]> = [
 ];
 
 // Uncomment to see what to expect.
-// LogGroup.fromAudit(audit, Ok.of("http://example.com")).print();
-// console.log("----------------------");
-// LogGroup.fromAudit(audit).print();
-// LogGroup.fromAudit(audit, Err.of("foo")).print();
+// console.log("---------------------- (correct URL)");
+// Logging.fromAudit(audit, Ok.of("http://example.com")).print();
+// console.log("---------------------- (no URL)");
+// Logging.fromAudit(audit).print();
+// console.log("---------------------- (errored URL)");
+// Logging.fromAudit(audit, Err.of("foo")).print();
 
-test(".fromAggregate() creates a LogGroup without page report URL", (t) => {
-  const actual = LogGroup.fromAggregate(filteredAggregates);
+test(".fromAggregate() creates a Logging without page report URL", (t) => {
+  const actual = Logging.fromAggregate(filteredAggregates);
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: "This page contains 2 issues.",
         logs: [
@@ -71,8 +73,8 @@ test(".fromAggregate() creates a LogGroup without page report URL", (t) => {
   });
 });
 
-test(".fromAggregate() creates a LogGroup from errored page report URL", (t) => {
-  const actual = LogGroup.fromAggregate(
+test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
+  const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
     Err.of("foo")
@@ -81,7 +83,7 @@ test(".fromAggregate() creates a LogGroup from errored page report URL", (t) => 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: "This page contains 2 issues.",
         logs: [
@@ -93,9 +95,9 @@ test(".fromAggregate() creates a LogGroup from errored page report URL", (t) => 
   });
 });
 
-test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => {
+test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
   const url = "http://example.com";
-  const actual = LogGroup.fromAggregate(
+  const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
     Ok.of(url)
@@ -104,7 +106,7 @@ test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: `This page contains 2 issues: ${url}`,
         logs: [
@@ -112,7 +114,7 @@ test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => 
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
@@ -124,7 +126,7 @@ test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => 
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
@@ -139,7 +141,7 @@ test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => 
 });
 
 test(".fromAggregate() overrides page title", (t) => {
-  const actual = LogGroup.fromAggregate(filteredAggregates, "foo");
+  const actual = Logging.fromAggregate(filteredAggregates, "foo");
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -156,13 +158,13 @@ test(".fromAggregate() overrides page title", (t) => {
   });
 });
 
-test(".fromAudit() creates a LogGroup without page report URL", (t) => {
-  const actual = LogGroup.fromAudit(audit);
+test(".fromAudit() creates a Logging without page report URL", (t) => {
+  const actual = Logging.fromAudit(audit);
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: "This page contains 2 issues.",
         logs: [
@@ -174,13 +176,13 @@ test(".fromAudit() creates a LogGroup without page report URL", (t) => {
   });
 });
 
-test(".fromAudit() creates a LogGroup from errored page report URL", (t) => {
-  const actual = LogGroup.fromAudit(audit, Err.of("foo"));
+test(".fromAudit() creates a Logging from errored page report URL", (t) => {
+  const actual = Logging.fromAudit(audit, Err.of("foo"));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: "This page contains 2 issues.",
         logs: [
@@ -192,14 +194,14 @@ test(".fromAudit() creates a LogGroup from errored page report URL", (t) => {
   });
 });
 
-test(".fromAudit() creates a LogGroup from correct page report URL", (t) => {
+test(".fromAudit() creates a Logging from correct page report URL", (t) => {
   const url = "http://example.com";
-  const actual = LogGroup.fromAudit(audit, Ok.of(url));
+  const actual = Logging.fromAudit(audit, Ok.of(url));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: `This page contains 2 issues: ${url}`,
         logs: [
@@ -207,7 +209,7 @@ test(".fromAudit() creates a LogGroup from correct page report URL", (t) => {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
@@ -219,7 +221,7 @@ test(".fromAudit() creates a LogGroup from correct page report URL", (t) => {
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
@@ -234,7 +236,7 @@ test(".fromAudit() creates a LogGroup from correct page report URL", (t) => {
 });
 
 test(".fromAudit() overrides title with a string", (t) => {
-  const actual = LogGroup.fromAudit(audit, Err.of("foo"), { pageTitle: "foo" });
+  const actual = Logging.fromAudit(audit, Err.of("foo"), { pageTitle: "foo" });
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -252,7 +254,7 @@ test(".fromAudit() overrides title with a string", (t) => {
 });
 
 test(".fromAudit() overrides title with a function", (t) => {
-  const actual = LogGroup.fromAudit(audit, Err.of("foo"), {
+  const actual = Logging.fromAudit(audit, Err.of("foo"), {
     pageTitle: (page) =>
       page.document.descendants().find(Text.isText).getUnsafe().data,
   });
@@ -294,7 +296,7 @@ test(".fromAudit() Uses the page title as default", (t) => {
     ]),
   });
 
-  const actual = LogGroup.fromAudit(audit, Err.of("foo"));
+  const actual = Logging.fromAudit(audit, Err.of("foo"));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -311,14 +313,14 @@ test(".fromAudit() Uses the page title as default", (t) => {
   });
 });
 
-test(".fromAudit() creates a LogGroup from a serialised audit", (t) => {
+test(".fromAudit() creates a Logging from a serialised audit", (t) => {
   const url = "http://example.com";
-  const actual = LogGroup.fromAudit(audit.toJSON(), Ok.of(url));
+  const actual = Logging.fromAudit(audit.toJSON(), Ok.of(url));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
     logs: [
-      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
         title: `This page contains 2 issues: ${url}`,
         logs: [
@@ -326,7 +328,7 @@ test(".fromAudit() creates a LogGroup from a serialised audit", (t) => {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
@@ -338,7 +340,7 @@ test(".fromAudit() creates a LogGroup from a serialised audit", (t) => {
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
             logs: [
               {
-                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
