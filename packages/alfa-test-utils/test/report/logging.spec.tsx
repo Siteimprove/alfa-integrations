@@ -129,3 +129,80 @@ test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => 
     ],
   });
 });
+
+test(".fromAudit() creates a LogGroup without page report URL", (t) => {
+  const actual = LogGroup.fromAudit(audit);
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    logs: [
+      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      {
+        title: "This page contains 2 issues.",
+        logs: [
+          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
+          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+        ],
+      },
+    ],
+  });
+});
+
+test(".fromAudit() creates a LogGroup from errored page report URL", (t) => {
+  const actual = LogGroup.fromAudit(audit, Err.of("foo"));
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    logs: [
+      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      {
+        title: "This page contains 2 issues.",
+        logs: [
+          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
+          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+        ],
+      },
+    ],
+  });
+});
+
+test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => {
+  const url = "http://example.com";
+  const actual = LogGroup.fromAudit(audit, Ok.of(url));
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    logs: [
+      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      {
+        title: `This page contains 2 issues: ${url}`,
+        logs: [
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            logs: [
+              {
+                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                  url,
+                  "sia-r1"
+                )}`,
+                logs: [],
+              },
+            ],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            logs: [
+              {
+                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                  url,
+                  "sia-r2"
+                )}`,
+                logs: [],
+              },
+            ],
+          },
+        ],
+      },
+    ],
+  });
+});
