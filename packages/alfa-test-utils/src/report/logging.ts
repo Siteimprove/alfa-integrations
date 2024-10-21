@@ -125,7 +125,7 @@ export namespace LogGroup {
   }
 
   export function fromAudit(
-    audit: Audit,
+    audit: Audit | Audit.JSON,
     pageReportUrl?: Result<string, string>,
     options?: Options
   ): LogGroup {
@@ -148,15 +148,15 @@ export namespace LogGroup {
         : title;
 
     const filteredAggregates = Array.sortWith(
-      audit.resultAggregates
-        .filter((outcomes) => outcomes.failed > 0)
-        .toArray(),
+      (Audit.isAudit(audit)
+        ? audit.resultAggregates.toArray()
+        : audit.resultAggregates
+      ).filter(([_, { failed }]) => failed > 0),
       ([uria], [urib]) => uria.localeCompare(urib)
     ).map(([url, aggregate]): [string, { failed: number }] => [
       url.split("/").pop() ?? "",
       aggregate,
     ]);
-
     return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
   }
 

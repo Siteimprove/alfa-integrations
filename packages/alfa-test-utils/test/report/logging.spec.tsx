@@ -192,7 +192,7 @@ test(".fromAudit() creates a LogGroup from errored page report URL", (t) => {
   });
 });
 
-test(".fromAggregate() creates a LogGroup from correct page report URL", (t) => {
+test(".fromAudit() creates a LogGroup from correct page report URL", (t) => {
   const url = "http://example.com";
   const actual = LogGroup.fromAudit(audit, Ok.of(url));
 
@@ -294,7 +294,7 @@ test(".fromAudit() Uses the page title as default", (t) => {
     ]),
   });
 
-  const actual = LogGroup.fromAudit(audit, Err.of("foo"), );
+  const actual = LogGroup.fromAudit(audit, Err.of("foo"));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -305,6 +305,47 @@ test(".fromAudit() Uses the page title as default", (t) => {
         logs: [
           { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
           { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+        ],
+      },
+    ],
+  });
+});
+
+test(".fromAudit() creates a LogGroup from a serialised audit", (t) => {
+  const url = "http://example.com";
+  const actual = LogGroup.fromAudit(audit.toJSON(), Ok.of(url));
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    logs: [
+      { title: chalk.bold(`Page - ${LogGroup.Defaults.Title}`), logs: [] },
+      {
+        title: `This page contains 2 issues: ${url}`,
+        logs: [
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            logs: [
+              {
+                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                  url,
+                  "sia-r1"
+                )}`,
+                logs: [],
+              },
+            ],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            logs: [
+              {
+                title: `Learn how to fix this issue: ${LogGroup.issueUrl(
+                  url,
+                  "sia-r2"
+                )}`,
+                logs: [],
+              },
+            ],
+          },
         ],
       },
     ],
