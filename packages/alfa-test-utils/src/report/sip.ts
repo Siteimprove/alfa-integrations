@@ -1,9 +1,9 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
-import { Serializable } from "@siteimprove/alfa-json";
 import { Map } from "@siteimprove/alfa-map";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import type { Result } from "@siteimprove/alfa-result";
+import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
@@ -12,8 +12,6 @@ import type { Agent as HttpsAgent } from "https";
 
 import { Audit, type Performance } from "../audit/index.js";
 import { type CommitInformation, getCommitInformation } from "./git.js";
-
-const { Verbosity } = Serializable;
 
 /**
  * Interacting with Siteimprove Intelligence Platform (SIP) API.
@@ -211,20 +209,17 @@ export namespace SIP {
       options: Partial<Options>,
       timestamp: string
     ): Promise<Payload> {
-      // If we get a JSON page, we only rebuilt it upon need, and cache the value.
-      let page: Page | undefined = undefined;
-      const thePage = () =>
-        page ??
-        (page = Page.isPage(audit.page)
+      const page: Thunk<Page> = () =>
+        Page.isPage(audit.page)
           ? audit.page
-          : Page.from(audit.page).getUnsafe("Could not deserialize the page"));
+          : Page.from(audit.page).getUnsafe("Could not deserialize the page");
 
-      const url = options.pageURL ?? thePage().response.url.toString();
-      const PageUrl = typeof url === "string" ? url : url(thePage());
+      const url = options.pageURL ?? page().response.url.toString();
+      const PageUrl = typeof url === "string" ? url : url(page());
 
       const title =
         options.pageTitle ??
-        Query.getElementDescendants(thePage().document)
+        Query.getElementDescendants(page().document)
           .filter(Element.isElement)
           .find(Element.hasName("title"))
           .map((title) => title.textContent())
@@ -233,7 +228,7 @@ export namespace SIP {
         typeof title === "string"
           ? title
           : title !== undefined
-          ? title(thePage())
+          ? title(page())
           : title;
 
       const gitInfo = await getCommitInformation();

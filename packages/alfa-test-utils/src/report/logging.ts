@@ -1,11 +1,133 @@
+import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
-import type { Result } from "@siteimprove/alfa-result";
+import { Equatable } from "@siteimprove/alfa-equatable";
+import { Result } from "@siteimprove/alfa-result";
+import { Sequence } from "@siteimprove/alfa-sequence";
+
+import * as json from "@siteimprove/alfa-json";
 
 import chalk from "chalk";
 
 import { Audit } from "../audit/index.js";
 import { Outcome } from "@siteimprove/alfa-act";
 import { getRuleTitle } from "./get-rule-title.js";
+
+export class LogGroup implements Equatable, json.Serializable<LogGroup.JSON> {
+  public static of(title: string, logs?: Iterable<LogGroup>): LogGroup {
+    return new LogGroup(title, Sequence.from(logs ?? []));
+  }
+
+  private readonly _title: string;
+  private readonly _logs: Sequence<LogGroup>;
+
+  private constructor(title: string, logs: Sequence<LogGroup>) {
+    this._title = title;
+    this._logs = logs;
+  }
+
+  public get title(): string {
+    return this._title;
+  }
+
+  public get logs(): Iterable<LogGroup> {
+    return this._logs;
+  }
+
+  public print(): void {
+    console.group(this._title);
+    this._logs.forEach((log) => log.print());
+    console.groupEnd();
+  }
+
+  public equals(value: LogGroup): boolean;
+
+  public equals(value: unknown): value is this;
+
+  public equals(value: unknown): boolean {
+    return (
+      value instanceof LogGroup &&
+      value._title === this._title &&
+      value._logs.equals(this._logs)
+    );
+  }
+
+  public toJSON(): LogGroup.JSON {
+    return {
+      title: this._title,
+      logs: this._logs.toJSON(),
+    };
+  }
+}
+
+export namespace LogGroup {
+  export interface JSON {
+    [name: string]: json.JSON;
+    title: string;
+    logs: Sequence.JSON<JSON>;
+  }
+
+  export function isLogGroup(value: unknown): value is LogGroup {
+    return value instanceof LogGroup;
+  }
+
+  /**
+   * @internal
+   */
+  export function occurrenceURL(baseUrl: string, ruleId: string): string {
+    return `${baseUrl}&conf=a+aa+aaa+aria+si&issue=cantTell+failed&wcag=twopointtwo#/${ruleId}/failed/`;
+  }
+
+  /**
+   * @internal
+   */
+  export function fromAggregate(
+    aggregate: Array<[string, { failed: number }]>,
+    pageReportUrl?: Result<string, string>,
+    pageTitle?: string
+  ): LogGroup {
+    return LogGroup.of("Siteimprove found accessibility issues:", [
+      LogGroup.of(chalk.bold(`Page - ${pageTitle ?? "Untitled"}`)),
+      // "This page contains X issues: URL" (if URL)
+      // "This page contains X issues." (otherwise)
+      LogGroup.of(
+        `This page contains ${aggregate.length} issues${
+          Result.isOk(pageReportUrl) ? ": " + pageReportUrl.getUnsafe() : "."
+        }`,
+        aggregate.map(([ruleId, { failed }], index) =>
+          // n. Issue Title (X occurrences)
+          LogGroup.of(
+            `${index + 1}. ${getRuleTitle(ruleId)} (${failed} occurrence${
+              failed > 1 ? "s" : ""
+            })`,
+            // "Learn how to fix this issue: URL" (optional, if URL)
+            pageReportUrl?.map((url) =>
+              LogGroup.of(
+                `Learn how to fix this issue: ${occurrenceURL(url, ruleId)}`
+              )
+            )
+          )
+        )
+      ),
+    ]);
+  }
+
+  export function fromAudit(
+    audit: Audit,
+    pageReportUrl?: Result<string, string>
+  ): LogGroup {
+    const filteredAggregates = Array.sortWith(
+      audit.resultAggregates
+        .filter((outcomes) => outcomes.failed > 0)
+        .toArray(),
+      ([uria], [urib]) => uria.localeCompare(urib)
+    ).map(([url, aggregate]): [string, { failed: number }] => [
+      url.split("/").pop() ?? "",
+      aggregate,
+    ]);
+
+    return fromAggregate(filteredAggregates, pageReportUrl);
+  }
+}
 
 /**
  * Handling pretty-printing of console output.
@@ -16,7 +138,15 @@ export namespace Logging {
   /**
    * Prepare logging information
    */
-  export function prepare(audit: Audit.Result): Record<string, number> {
+  export function prepare(audit: Audit | Audit.JSON): Record<string, number> {
+    return Audit.isAudit(audit) ? prepareAudit(audit) : prepareJSON(audit);
+  }
+
+  function prepareJSON(audit: Audit.JSON): Record<string, number> {
+    return {};
+  }
+
+  function prepareAudit(audit: Audit): Record<string, number> {
     const failedOutcomes = audit.outcomes.filter((results) =>
       results.some(Outcome.isFailed)
     );
@@ -41,7 +171,7 @@ export namespace Logging {
    * Print results of an audit.
    */
   export function result(
-    audit: Audit.Result,
+    audit: Audit,
     pageReportURL?: Result<string, string>
   ): void {
     // TODO: Pass as a function argument
