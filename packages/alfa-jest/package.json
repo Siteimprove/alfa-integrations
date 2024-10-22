@@ -22,19 +22,19 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.93.6",
+    "@siteimprove/alfa-act": "^0.93.7",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-future": "^0.93.6",
-    "@siteimprove/alfa-hash": "^0.93.6",
-    "@siteimprove/alfa-mapper": "^0.93.6",
+    "@siteimprove/alfa-future": "^0.93.7",
+    "@siteimprove/alfa-hash": "^0.93.7",
+    "@siteimprove/alfa-mapper": "^0.93.7",
     "@types/jest": "^26.0.10",
     "jest": "^29.0.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.93.6",
-    "@siteimprove/alfa-future": "^0.93.6",
-    "@siteimprove/alfa-hash": "^0.93.6",
-    "@siteimprove/alfa-mapper": "^0.93.6"
+    "@siteimprove/alfa-act": "^0.93.7",
+    "@siteimprove/alfa-future": "^0.93.7",
+    "@siteimprove/alfa-hash": "^0.93.7",
+    "@siteimprove/alfa-mapper": "^0.93.7"
   },
   "publishConfig": {
     "access": "public",

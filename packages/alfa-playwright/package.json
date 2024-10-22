@@ -22,17 +22,17 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.93.6",
-    "@siteimprove/alfa-dom": "^0.93.6",
-    "@siteimprove/alfa-http": "^0.93.6",
-    "@siteimprove/alfa-web": "^0.93.6",
+    "@siteimprove/alfa-device": "^0.93.7",
+    "@siteimprove/alfa-dom": "^0.93.7",
+    "@siteimprove/alfa-http": "^0.93.7",
+    "@siteimprove/alfa-web": "^0.93.7",
     "playwright": "^1.47.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.93.6",
-    "@siteimprove/alfa-dom": "^0.93.6",
-    "@siteimprove/alfa-http": "^0.93.6",
-    "@siteimprove/alfa-web": "^0.93.6",
+    "@siteimprove/alfa-device": "^0.93.7",
+    "@siteimprove/alfa-dom": "^0.93.7",
+    "@siteimprove/alfa-http": "^0.93.7",
+    "@siteimprove/alfa-web": "^0.93.7",
     "playwright": "^1.47.0"
   },
   "publishConfig": {
@@ -40,6 +40,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.93.6"
+    "@siteimprove/alfa-test": "^0.93.7"
   }
 }

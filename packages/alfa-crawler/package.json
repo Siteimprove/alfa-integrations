@@ -22,23 +22,23 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-dom": "^0.93.6",
+    "@siteimprove/alfa-dom": "^0.93.7",
     "@siteimprove/alfa-frontier": "workspace:^",
-    "@siteimprove/alfa-mapper": "^0.93.6",
-    "@siteimprove/alfa-result": "^0.93.6",
+    "@siteimprove/alfa-mapper": "^0.93.7",
+    "@siteimprove/alfa-result": "^0.93.7",
     "@siteimprove/alfa-scraper": "workspace:^",
-    "@siteimprove/alfa-url": "^0.93.6",
-    "@siteimprove/alfa-web": "^0.93.6"
+    "@siteimprove/alfa-url": "^0.93.7",
+    "@siteimprove/alfa-web": "^0.93.7"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.93.6"
+    "@siteimprove/alfa-test": "^0.93.7"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-dom": "^0.93.6",
-    "@siteimprove/alfa-mapper": "^0.93.6",
-    "@siteimprove/alfa-result": "^0.93.6",
-    "@siteimprove/alfa-url": "^0.93.6",
-    "@siteimprove/alfa-web": "^0.93.6"
+    "@siteimprove/alfa-dom": "^0.93.7",
+    "@siteimprove/alfa-mapper": "^0.93.7",
+    "@siteimprove/alfa-result": "^0.93.7",
+    "@siteimprove/alfa-url": "^0.93.7",
+    "@siteimprove/alfa-web": "^0.93.7"
   },
   "publishConfig": {
     "access": "public",
