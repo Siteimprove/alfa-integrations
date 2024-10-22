@@ -22,18 +22,18 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.93.2",
-    "@siteimprove/alfa-dom": "^0.93.2",
-    "@siteimprove/alfa-http": "^0.93.2",
-    "@siteimprove/alfa-web": "^0.93.2",
+    "@siteimprove/alfa-device": "^0.93.6",
+    "@siteimprove/alfa-dom": "^0.93.6",
+    "@siteimprove/alfa-http": "^0.93.6",
+    "@siteimprove/alfa-web": "^0.93.6",
     "@types/jquery": "^3.3.29",
     "jquery": "^3.6.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.93.2",
-    "@siteimprove/alfa-dom": "^0.93.2",
-    "@siteimprove/alfa-http": "^0.93.2",
-    "@siteimprove/alfa-web": "^0.93.2"
+    "@siteimprove/alfa-device": "^0.93.6",
+    "@siteimprove/alfa-dom": "^0.93.6",
+    "@siteimprove/alfa-http": "^0.93.6",
+    "@siteimprove/alfa-web": "^0.93.6"
   },
   "publishConfig": {
     "access": "public",
