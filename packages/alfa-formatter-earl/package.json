@@ -22,27 +22,27 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.93.7",
-    "@siteimprove/alfa-earl": "^0.93.7",
+    "@siteimprove/alfa-act": "^0.93.8",
+    "@siteimprove/alfa-earl": "^0.93.8",
     "@siteimprove/alfa-formatter": "workspace:^",
-    "@siteimprove/alfa-future": "^0.93.7",
-    "@siteimprove/alfa-hash": "^0.93.7",
-    "@siteimprove/alfa-rules": "^0.93.7",
+    "@siteimprove/alfa-future": "^0.93.8",
+    "@siteimprove/alfa-hash": "^0.93.8",
+    "@siteimprove/alfa-rules": "^0.93.8",
     "jsonld": "^8.3.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.93.7",
-    "@siteimprove/alfa-earl": "^0.93.7",
-    "@siteimprove/alfa-future": "^0.93.7",
-    "@siteimprove/alfa-hash": "^0.93.7",
-    "@siteimprove/alfa-rules": "^0.93.7"
+    "@siteimprove/alfa-act": "^0.93.8",
+    "@siteimprove/alfa-earl": "^0.93.8",
+    "@siteimprove/alfa-future": "^0.93.8",
+    "@siteimprove/alfa-hash": "^0.93.8",
+    "@siteimprove/alfa-rules": "^0.93.8"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.93.7",
+    "@siteimprove/alfa-test": "^0.93.8",
     "@types/jsonld": "^1.5.14"
   }
 }
