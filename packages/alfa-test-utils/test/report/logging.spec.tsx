@@ -108,7 +108,7 @@ test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
     logs: [
       { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
-        title: `This page contains 2 issues: ${url}`,
+        title: `This page contains 2 issues: ${chalk.underline(url)}`,
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
@@ -203,7 +203,7 @@ test(".fromAudit() creates a Logging from correct page report URL", (t) => {
     logs: [
       { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
-        title: `This page contains 2 issues: ${url}`,
+        title: `This page contains 2 issues: ${chalk.underline(url)}`,
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
@@ -322,7 +322,7 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
     logs: [
       { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
       {
-        title: `This page contains 2 issues: ${url}`,
+        title: `This page contains 2 issues: ${chalk.underline(url)}`,
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,

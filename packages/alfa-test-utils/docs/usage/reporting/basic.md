@@ -46,30 +46,23 @@ This means that the audit must first be serialised, then sent to the NodeJS worl
 ```typescript
 // cypress.config.ts file
 
+import type { Audit } from "@siteimprove/alfa-test-utils/audit";
+import { Logging, SIP } from "@siteimprove/alfa-test-utils/report";
+
 export default defineConfig({
   // other config options
   e2e: {
     setupNodeEvents(on, config) {
       // implement node event listeners here
       on("task", {
-        async upload({
-          audit,
-          options,
-        }: {
-          audit: Audit.JSON;
-          url?: string;
-          options: SIP.Options;
-        }): Promise<Result<string, string>> {
-          return SIP.upload(audit, options);
-        },
-        logging({
-          audit,
-          options,
-        }: {
-          audit: Audit.JSON;
-          options: Logging.Options;
-        }): null {
-          Logging.from(audit, options).print();
+        async report(audit: Audit.JSON): Promise<null> {
+          const pageReportUrl = await SIP.upload(audit, {
+            userName: process.env.SI_USER_EMAIL,
+            apiKey: process.env.SI_API_KEY,
+          });
+
+          Logging.fromAudit(audit, pageReportUrl).print();
+
           return null;
         },
       });
@@ -84,11 +77,7 @@ And from Cypress:
 // test-file.spec.ts
 
 cy.document()
-  .then(Cypress.toPage)
-  .then((page) => {
-    const audit = Audit.run(page, auditOptions);
-    
-    cy.task("upload", { audit, uploadOptions });
-    cy.task("logging", { audit, loggingOptions });
-  });
+  .then(AlfaCypress.toPage)
+  .then(Audit.run)
+  .then(async (alfaResult) => cy.task("report", alfaResult.toJSON()));
 ```
