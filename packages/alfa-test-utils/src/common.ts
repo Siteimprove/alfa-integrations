@@ -1,4 +1,4 @@
-import { Outcome } from "@siteimprove/alfa-act";
+import type { Outcome } from "@siteimprove/alfa-act";
 import type { Flattened as Rule } from "@siteimprove/alfa-rules";
 
 /**

@@ -146,5 +146,8 @@ import { Cypress } from "@siteimprove/alfa-cypress";
 
 cy.visit("test/fixture/page.html");
 
+// An awaiter might be needed to ensure the page is fully loaded 
+// cy.get(selector).should("exist"); 
+
 cy.document().then(Cypress.toPage);
 ```
