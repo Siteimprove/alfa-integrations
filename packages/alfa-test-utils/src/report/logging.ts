@@ -88,7 +88,9 @@ export namespace Logging {
    * @internal
    */
   export function issueUrl(baseUrl: string, ruleId: string): string {
-    return `${baseUrl}&conf=a+aa+aaa+aria+si&issue=cantTell+failed&wcag=twopointtwo#/${ruleId}/failed/`;
+    return chalk.underline(
+      `${baseUrl}&conf=a+aa+aaa+aria+si&issue=cantTell+failed&wcag=twopointtwo#/${ruleId}/failed/`
+    );
   }
 
   function fromIssue(baseUrl: string, ruleId: string): Logging {
@@ -111,7 +113,9 @@ export namespace Logging {
       // "This page contains X issues." (otherwise)
       Logging.of(
         `This page contains ${aggregate.length} issues${
-          Result.isOk(pageReportUrl) ? ": " + pageReportUrl.getUnsafe() : "."
+          Result.isOk(pageReportUrl)
+            ? ": " + chalk.underline(pageReportUrl.getUnsafe())
+            : "."
         }`,
         aggregate.map(([ruleId, { failed }], index) =>
           // n. Issue Title (X occurrences)
