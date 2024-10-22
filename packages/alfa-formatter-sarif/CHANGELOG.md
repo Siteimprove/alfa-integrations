@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter-sarif
 
+## 0.74.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#99](https://github.com/Siteimprove/alfa-integrations/pull/99))
+
 ## 0.74.0
 
 ### Patch Changes
