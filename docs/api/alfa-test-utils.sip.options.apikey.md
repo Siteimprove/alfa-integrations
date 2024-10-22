@@ -9,5 +9,5 @@ The API key to connect to Siteimprove Intelligence Platform
 **Signature:**
 
 ```typescript
-apiKey: string;
+apiKey?: string;
 ```

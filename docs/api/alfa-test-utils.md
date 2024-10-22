@@ -6,6 +6,43 @@
 
 A library for running Alfa tests and uploading results to the Siteimprove Intelligence Platform.
 
+## Classes
+
+<table><thead><tr><th>
+
+Class
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Audit](./alfa-test-utils.audit.md)
+
+
+</td><td>
+
+An Alfa Audit
+
+
+</td></tr>
+<tr><td>
+
+[Logging](./alfa-test-utils.logging.md)
+
+
+</td><td>
+
+Handling pretty-printing of console output.
+
+
+</td></tr>
+</tbody></table>
+
 ## Interfaces
 
 <table><thead><tr><th>
@@ -51,7 +88,7 @@ Description
 
 </td><td>
 
-Running Alfa tests
+An Alfa Audit
 
 
 </td></tr>
@@ -62,7 +99,6 @@ Running Alfa tests
 
 </td><td>
 
-Handling pretty-printing of console output.
 
 
 </td></tr>

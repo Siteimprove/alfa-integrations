@@ -9,7 +9,7 @@ Audit a given page. Use the filters to select the rules to run, and the outcomes
 **Signature:**
 
 ```typescript
-function run(page: Page, options?: Options): Promise<Result>;
+function run(page: Page, options?: Options): Promise<Audit>;
 ```
 
 ## Parameters
@@ -63,5 +63,5 @@ _(Optional)_
 </tbody></table>
 **Returns:**
 
-Promise&lt;[Result](./alfa-test-utils.audit.result.md)<!-- -->&gt;
+Promise&lt;[Audit](./alfa-test-utils.audit.md)<!-- -->&gt;
 

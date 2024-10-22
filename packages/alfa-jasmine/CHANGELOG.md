@@ -1,5 +1,11 @@
 # @siteimprove/alfa-jasmine
 
+## 0.74.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#98](https://github.com/Siteimprove/alfa-integrations/pull/98))
+
 ## 0.73.4
 
 ### Patch Changes

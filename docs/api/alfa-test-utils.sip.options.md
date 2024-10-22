@@ -36,7 +36,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[apiKey](./alfa-test-utils.sip.options.apikey.md)
+[apiKey?](./alfa-test-utils.sip.options.apikey.md)
 
 
 </td><td>
@@ -49,7 +49,7 @@ string
 
 </td><td>
 
-The API key to connect to Siteimprove Intelligence Platform
+_(Optional)_ The API key to connect to Siteimprove Intelligence Platform
 
 
 </td></tr>
@@ -131,7 +131,7 @@ _(Optional)_ A name for the test (e.g. "AA conformance", …), or a function bui
 </td></tr>
 <tr><td>
 
-[userName](./alfa-test-utils.sip.options.username.md)
+[userName?](./alfa-test-utils.sip.options.username.md)
 
 
 </td><td>
@@ -144,7 +144,7 @@ string
 
 </td><td>
 
-The username to connect to the Siteimprove Intelligence Platform
+_(Optional)_ The username to connect to the Siteimprove Intelligence Platform
 
 
 </td></tr>

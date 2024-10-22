@@ -1,5 +1,27 @@
 # Alfa integrations changelog
 
+## [0.74.0](../../compare/v0.73.4...v0.74.0) (2024-10-22)
+
+### Breaking
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): `Logging.prepare` and `Logging.result` have been replaced by `Logging.fromAudit` and `Logging#print`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): The `Audit.Result` type has been renamed to `Audit`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): `SIP.upload` can now be called without an user email or API key, in which case it will return an `Err`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): An `Audit#toJSON` serialisation is now available. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): `Logging.fromAudit` also accepts an `Audit.JSON` input. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740): The audit and report functionalities can now be imported separately. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+### Changed
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#0740), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#0740), [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md#0740), [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md#0740), [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#0740), [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0740), [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md#0740), [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md#0740), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0740), [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md#0740), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#0740), [@siteimprove/alfa-selenium](packages/alfa-selenium/CHANGELOG.md#0740), [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md#0740), [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md#0740), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0740), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#0740), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0740), [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md#0740), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0740), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0740), [@siteimprove/alfa-enzyme](packages/alfa-enzyme/CHANGELOG.md#0740), [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md#0740), [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md#0740), [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md#0740), [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md#0740), [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#0740), [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md#0740): Update Alfa. ([#98](https://github.com/Siteimprove/alfa-integrations/pull/98))
+
 ## [0.73.4](../../compare/v0.73.3...v0.73.4) (2024-10-11)
 
 ### Changed

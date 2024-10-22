@@ -9,5 +9,5 @@ The username to connect to the Siteimprove Intelligence Platform
 **Signature:**
 
 ```typescript
-userName: string;
+userName?: string;
 ```

@@ -4,7 +4,7 @@
 
 ## Audit namespace
 
-Running Alfa tests
+An Alfa Audit
 
 **Signature:**
 
@@ -26,6 +26,15 @@ Description
 
 </th></tr></thead>
 <tbody><tr><td>
+
+[isAudit(value)](./alfa-test-utils.audit.isaudit.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
 
 [run(page, options)](./alfa-test-utils.audit.run.md)
 
@@ -64,23 +73,21 @@ Filter for including and excluding some items. If an item is both included and e
 </td></tr>
 <tr><td>
 
+[JSON](./alfa-test-utils.audit.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [Options](./alfa-test-utils.audit.options.md)
 
 
 </td><td>
 
 Options for running Alfa audits.
-
-
-</td></tr>
-<tr><td>
-
-[Result](./alfa-test-utils.audit.result.md)
-
-
-</td><td>
-
-The result of an audit.
 
 
 </td></tr>

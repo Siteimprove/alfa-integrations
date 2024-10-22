@@ -4,7 +4,6 @@
 
 ## Logging namespace
 
-Handling pretty-printing of console output.
 
 **Signature:**
 
@@ -27,23 +26,53 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[prepare(audit)](./alfa-test-utils.logging.prepare.md)
+[fromAudit(audit, pageReportUrl, options)](./alfa-test-utils.logging.fromaudit.md)
 
 
 </td><td>
-
-Prepare logging information
 
 
 </td></tr>
 <tr><td>
 
-[result(audit, pageReportURL)](./alfa-test-utils.logging.result.md)
+[isLogging(value)](./alfa-test-utils.logging.islogging.md)
 
 
 </td><td>
 
-Print results of an audit.
+
+</td></tr>
+</tbody></table>
+
+## Interfaces
+
+<table><thead><tr><th>
+
+Interface
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[JSON](./alfa-test-utils.logging.json.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
+[Options](./alfa-test-utils.logging.options.md)
+
+
+</td><td>
+
 
 
 </td></tr>

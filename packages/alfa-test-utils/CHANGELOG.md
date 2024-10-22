@@ -1,5 +1,33 @@
 # @siteimprove/alfa-test-utils
 
+## 0.74.0
+
+### Minor Changes
+
+- **Added:** `SIP.upload` can now be called without an user email or API key, in which case it will return an `Err`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+  That can nonetheless be passed to `Logging.fromAudit` which will then simply discard it. This makes it simpler to write tests without checking proactively the presence of the credentials and, e.g., run them both in environments where they are available and environments where they don't exist.
+
+- **Breaking:** `Logging.prepare` and `Logging.result` have been replaced by `Logging.fromAudit` and `Logging#print`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+  Migration: replace the `Logging.result(Logging.prepare(audit), pageReportUrl)` calls with `Logging.fromAudit(audit, pageReportUrl).print()`.
+
+- **Breaking:** The `Audit.Result` type has been renamed to `Audit`. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+  Migration: simply use `Audit` type wherever the `Audit.Result` type was used.
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#98](https://github.com/Siteimprove/alfa-integrations/pull/98))
+
+- **Added:** An `Audit#toJSON` serialisation is now available. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- **Added:** `Logging.fromAudit` also accepts an `Audit.JSON` input. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+- **Added:** The audit and report functionalities can now be imported separately. ([#96](https://github.com/Siteimprove/alfa-integrations/pull/96))
+
+  This resolves a problem where logging functionalities, highly depending on node, would crash bundlers and injections into other Javascript worlds when trying to import the full `@siteimprove/alfa-test-utils` package.
+
 ## 0.73.4
 
 ### Patch Changes
