@@ -13,7 +13,7 @@ import { Flattened } from '@siteimprove/alfa-rules';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
-import { Outcome } from '@siteimprove/alfa-act';
+import type { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
