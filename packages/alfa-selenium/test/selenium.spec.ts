@@ -18,10 +18,10 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-let driver: WebDriver | undefined;
+  let driver: WebDriver | undefined;
 
-const options = new chrome.Options();
-options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+  const options = new chrome.Options();
+  options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
 
 test("Selenium.toPage() scrapes a page", async (t) => {
   driver = await new Builder()
