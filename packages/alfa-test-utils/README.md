@@ -4,8 +4,6 @@ Utilities for running Alfa locally and uploading results to the Siteimprove Inte
 
 ## Installation
 
-Alfa is distributed as npm packages in the Github registry. See [Github documentation on the npm registry](https://docs.github.com/en/packages/working-with-a-github-packages-registry/working-with-the-npm-registry#installing-a-package) for configuring your package manager to use the Github registry for the `@siteimprove` organisation.
-
 ```bash
 $ npm install --save-dev @siteimprove/alfa-test-utils
 ```
