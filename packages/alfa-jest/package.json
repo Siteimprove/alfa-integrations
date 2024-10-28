@@ -21,6 +21,14 @@
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
   "dependencies": {
     "@siteimprove/alfa-act": "^0.93.8",
     "@siteimprove/alfa-assert": "workspace:^",
@@ -39,5 +47,8 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@siteimprove/alfa-dom": "^0.93.8"
   }
 }
