@@ -2383,10 +2383,14 @@ __metadata:
   dependencies:
     "@siteimprove/alfa-act": "npm:^0.93.8"
     "@siteimprove/alfa-assert": "workspace:^"
+    "@siteimprove/alfa-device": "npm:^0.93.8"
     "@siteimprove/alfa-dom": "npm:^0.93.8"
     "@siteimprove/alfa-future": "npm:^0.93.8"
     "@siteimprove/alfa-hash": "npm:^0.93.8"
+    "@siteimprove/alfa-http": "npm:^0.93.8"
     "@siteimprove/alfa-mapper": "npm:^0.93.8"
+    "@siteimprove/alfa-rules": "npm:^0.93.8"
+    "@siteimprove/alfa-web": "npm:^0.93.8"
     "@types/jest": "npm:^29.5.14"
     jest: "npm:^29.7.0"
   peerDependencies:

@@ -2,8 +2,7 @@
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
   "compilerOptions": {
-    "outDir": "../dist",
-
+    "outDir": "../dist"
   },
   "files": ["./index.ts", "./jest.ts"],
   "references": [{ "path": "../../alfa-assert" }]
