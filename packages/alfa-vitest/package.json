@@ -1,0 +1,52 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "name": "@siteimprove/alfa-vitest",
+  "homepage": "https://alfa.siteimprove.com",
+  "version": "0.74.2",
+  "license": "MIT",
+  "description": "Assertion integrations for the Vitest testing framework",
+  "repository": {
+    "type": "git",
+    "url": "github:Siteimprove/alfa-integrations",
+    "directory": "packages/alfa-vitest"
+  },
+  "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "type": "module",
+  "main": "dist/index.js",
+  "types": "dist/index.d.ts",
+  "files": [
+    "dist/**/*.js",
+    "dist/**/*.d.ts"
+  ],
+  "scripts": {
+    "test": "vitest"
+  },
+  "dependencies": {
+    "@siteimprove/alfa-act": "^0.93.8",
+    "@siteimprove/alfa-assert": "workspace:^",
+    "@siteimprove/alfa-future": "^0.93.8",
+    "@siteimprove/alfa-hash": "^0.93.8",
+    "@siteimprove/alfa-mapper": "^0.93.8",
+    "vitest": "^2.1.4"
+  },
+  "peerDependencies": {
+    "@siteimprove/alfa-act": "^0.93.8",
+    "@siteimprove/alfa-future": "^0.93.8",
+    "@siteimprove/alfa-hash": "^0.93.8",
+    "@siteimprove/alfa-mapper": "^0.93.8"
+  },
+  "publishConfig": {
+    "access": "public",
+    "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@siteimprove/alfa-device": "^0.93.8",
+    "@siteimprove/alfa-dom": "^0.93.8",
+    "@siteimprove/alfa-http": "^0.93.8",
+    "@siteimprove/alfa-rules": "^0.93.8",
+    "@siteimprove/alfa-web": "^0.93.8"
+  }
+}
