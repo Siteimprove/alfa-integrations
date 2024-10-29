@@ -35,6 +35,7 @@ const { ceil } = Math;
 export class Scraper {
   public static async of(
     browser: Promise<puppeteer.Browser> = puppeteer.launch({
+      headless: true,
       args: [
         "--no-sandbox",
 
