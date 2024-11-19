@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.74.3](../../compare/v0.74.2...v0.74.3) (2024-11-19)
+
+### Changed
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#0743), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#0743), [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md#0743), [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md#0743), [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#0743), [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0743), [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md#0743), [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md#0743), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0743), [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md#0743), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#0743), [@siteimprove/alfa-selenium](packages/alfa-selenium/CHANGELOG.md#0743), [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md#0743), [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md#0743), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0743), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#0743), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0743), [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md#0743), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0743), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0743), [@siteimprove/alfa-enzyme](packages/alfa-enzyme/CHANGELOG.md#0743), [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md#0743), [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md#0743), [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md#0743), [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md#0743), [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#0743), [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md#0743): Update Alfa. ([#104](https://github.com/Siteimprove/alfa-integrations/pull/104))
+
 ## [0.74.2](../../compare/v0.74.1...v0.74.2) (2024-10-22)
 
 ### Changed

@@ -1,5 +1,11 @@
 # @siteimprove/alfa-cli
 
+## 0.74.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#104](https://github.com/Siteimprove/alfa-integrations/pull/104))
+
 ## 0.74.2
 
 ### Patch Changes
