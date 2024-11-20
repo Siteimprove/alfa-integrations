@@ -96,6 +96,11 @@ export namespace SIP {
     apiKey?: string;
 
     /**
+     * The site ID in the Siteimprove Intelligence Platform.
+     */
+    siteID?: string;
+
+    /**
      * The URL of the page, or a function to build it from the audited page.
      * Defaults to the URL used to scrape the page.
      *
@@ -150,11 +155,10 @@ export namespace SIP {
        */
       Version: `${number}.${number}.${number}`;
 
-      // Ignored for now.
-      // /**
-      //  * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
-      //  */
-      // SiteId?: string;
+      /**
+       * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
+       */
+      SiteId?: string;
 
       /**
        * Information about the latest git commit
@@ -254,6 +258,7 @@ export namespace SIP {
       const result: Payload = {
         RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
+        SiteId: options.siteID,
         PageUrl,
         PageTitle,
         TestName,

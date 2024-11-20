@@ -162,6 +162,18 @@ test("S3.axiosConfig() creates an axios config", (t) => {
   });
 });
 
+test("Metadata.payload() uses site ID if provided", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit(),
+    { siteID: "12345" },
+    timestamp
+  );
+  t.notEqual(actual.CommitInformation, undefined);
+  delete actual.CommitInformation;
+
+  t.deepEqual(actual, makePayload({ SiteId: "12345" }));
+});
+
 test("Metadata.payload() uses test name if provided", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),
