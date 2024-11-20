@@ -254,6 +254,7 @@ export namespace SIP {
                 CantTell: number;
                 Durations: RuleDurations;
             }>;
+            SiteId?: string;
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
@@ -272,6 +273,7 @@ export namespace SIP {
         includeGitInfo?: boolean;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
+        siteID?: string;
         testName?: string | ((git: CommitInformation) => string);
         userName?: string;
     }
