@@ -258,7 +258,6 @@ export namespace SIP {
       const result: Payload = {
         RequestTimestamp: timestamp,
         Version: audit.alfaVersion,
-        SiteId: options.siteID,
         PageUrl,
         PageTitle,
         TestName,
@@ -275,6 +274,10 @@ export namespace SIP {
 
       if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {
         result.CommitInformation = gitInfo.get();
+      }
+
+      if (options.siteID !== undefined) {
+        result.SiteId = options.siteID;
       }
 
       return result;
