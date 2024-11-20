@@ -36,6 +36,22 @@ const pageReportURL = Audit.run(alfaPage, {
 });
 ```
 
+## Including the site ID
+
+If you are testing a page that belongs to a specific site in the Siteimprove Intelligence Platform, you can provide the site ID. This will help produce better metadata and aggregates.
+
+```typescript
+const pageReportURL = Audit.run(alfaPage, {
+  rules: { include: Rules.aaFilter },
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
+    userName: process.env.SI_USER_NAME!,
+    apiKey: process.env.SI_API_KEY!,
+    siteId: "123456",
+  });
+});
+```
+
 ## Skipping git information
 
 If you prefer not to upload basic git information about the repository (origin URL; branch name; latest commit hash, author, and message), use the `includeGitInfo: false` option:
@@ -47,5 +63,3 @@ SIP.upload(alfaResult, {
   includeGitInfo: false,
 });
 ```
-
-
