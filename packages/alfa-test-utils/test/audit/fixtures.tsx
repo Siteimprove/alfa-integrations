@@ -1,4 +1,4 @@
-import { Scope } from "@siteimprove/alfa-rules";
+import { ARIA, BestPractice, Scope } from "@siteimprove/alfa-rules";
 import { Criterion } from "@siteimprove/alfa-wcag";
 
 import { makeRule } from "../fixtures.js";
@@ -133,6 +133,20 @@ export const rule18 = makeRule(
 export const rule19 = makeRule(1019, <span></span>, [], [Scope.Page]);
 export const rule20 = makeRule(1020, <span></span>, [], [Scope.Component]);
 
+// ARIA and Best Practices
+export const rule21 = makeRule(
+  1021,
+  <span></span>,
+  [ARIA.of("some URL")],
+  [Scope.Page]
+);
+export const rule22 = makeRule(
+  1022,
+  <span></span>,
+  [BestPractice.of("some other URL")],
+  [Scope.Page]
+);
+
 export const rules = [
   rule1,
   rule2,
@@ -154,4 +168,6 @@ export const rules = [
   rule18,
   rule19,
   rule20,
+  rule21,
+  rule22,
 ];
