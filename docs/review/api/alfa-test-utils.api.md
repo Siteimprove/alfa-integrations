@@ -212,6 +212,8 @@ export namespace Rules {
     const wcag20Filter: Predicate<Flattened.Rule>;
     const wcag20aaFilter: Predicate<Flattened.Rule>;
     const wcag21aaFilter: Predicate<Flattened.Rule>;
+    const ARIAFilter: Predicate<Flattened.Rule>;
+    const bestPracticesFilter: Predicate<Flattened.Rule>;
     const componentFilter: Predicate<Flattened.Rule>;
     export function cherryPickFilter(rulesId: Array<number>): Predicate<Flattened.Rule>;
     export function cherryPickFilter(...rulesId: Array<number>): Predicate<Flattened.Rule>;
