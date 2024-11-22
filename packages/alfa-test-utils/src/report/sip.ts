@@ -1,6 +1,7 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
+import { Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import type { Result } from "@siteimprove/alfa-result";
 import type { Thunk } from "@siteimprove/alfa-thunk";
@@ -11,7 +12,7 @@ import axios from "axios";
 import type { Agent as HttpsAgent } from "https";
 
 import { Audit, type Performance } from "../audit/index.js";
-import { type CommitInformation, getCommitInformation } from "./git.js";
+import type { CommitInformation } from "./commit-information.js";
 
 /**
  * Interacting with Siteimprove Intelligence Platform (SIP) API.
@@ -118,19 +119,20 @@ export namespace SIP {
 
     /**
      * A name for the test (e.g. "AA conformance", …), or a function building a
-     * test name from the git commit information (e.g. the git hash or branch name).
+     * test name from the commit information (e.g. the commit hash, or the branch name).
      */
-    testName?: string | ((git: CommitInformation) => string);
+    testName?: string | ((commit: CommitInformation) => string);
 
     /**
-     * Whether to upload git commit information to the Siteimprove Intelligence Platform
-     * (default: yes).
-     *
-     * @remarks
-     * If the directory is not in a git repository, or git is not installed,
-     * this will silently fail and not send any information.
+     * Information about the latest commit of a Version Control System.
      */
-    includeGitInfo?: boolean;
+    commitInformation?: CommitInformation;
+
+    /**
+     * Whether to upload the commit information to the Siteimprove Intelligence Platform
+     * (default: yes).
+     */
+    includeCommitInfo?: boolean;
   }
 
   /**
@@ -243,7 +245,7 @@ export namespace SIP {
           ? title(page())
           : title;
 
-      const gitInfo = await getCommitInformation();
+      const commitInfo = Option.from(options.commitInformation);
 
       const name = options.testName ?? Defaults.Name;
       const TestName =
@@ -252,7 +254,7 @@ export namespace SIP {
         typeof name === "string"
           ? name
           : name !== undefined
-          ? gitInfo.map(name).getOrElse(() => gitInfo.getErrOr(Defaults.Name))
+          ? commitInfo.map(name).getOr(Defaults.Name)
           : Defaults.Name;
 
       const result: Payload = {
@@ -272,8 +274,8 @@ export namespace SIP {
         Durations: toCamelCase(audit.durations.common),
       };
 
-      if ((options.includeGitInfo ?? true) && gitInfo.isOk()) {
-        result.CommitInformation = gitInfo.get();
+      if ((options.includeCommitInfo ?? true) && commitInfo.isSome()) {
+        result.CommitInformation = commitInfo.get();
       }
 
       if (options.siteID !== undefined) {

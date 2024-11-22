@@ -16,8 +16,8 @@ test("getCommitInformation reads info from git", async (t) => {
 
   const values = actual.getUnsafe();
 
-  t.notEqual(values.GitOrigin, undefined);
-  t(values.GitOrigin!.includes("Siteimprove/alfa-integrations"));
+  t.notEqual(values.Origin, undefined);
+  t(values.Origin!.includes("Siteimprove/alfa-integrations"));
 
   for (const property of [
     "BranchName",
