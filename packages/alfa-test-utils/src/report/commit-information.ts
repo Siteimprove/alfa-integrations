@@ -12,7 +12,7 @@ export interface CommitInformation {
    * The origin's URL. This may vary depending on whether the repository was cloned
    * using `http` or `ssh` protocol.
    */
-  Origin: string | undefined;
+  Origin?: string;
   /**
    * The name of the current branch.
    */
@@ -20,22 +20,22 @@ export interface CommitInformation {
   /**
    * The hash of the latest commit.
    */
-  CommitHash: string | undefined;
+  CommitHash?: string;
   /**
    * The name of the author of the latest commit.
    */
-  Author: string | undefined;
+  Author?: string;
   /**
    * The email of the author of the latest commit.
    */
-  Email: string | undefined;
+  Email?: string;
   /**
    * The timestamp of the latest commit.
    */
-  CommitTimestamp: string | undefined;
+  CommitTimestamp?: string;
   /**
    * The message of the latest commit.
    */
-  Message: string | undefined;
+  Message?: string;
 }
 

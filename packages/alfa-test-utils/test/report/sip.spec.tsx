@@ -25,17 +25,8 @@ const { Verbosity } = Serializable;
 
 const { Metadata, S3 } = SIP;
 
-/**
- * Commit information is highly unstable, hence we simply test that it exist
- * and delete it before deep equality testing. We could also use getCommitInformation
- * again in the expected value, but then we would just test that it produces the
- * same result twice…
- */
-
 test("Metadata.payload() creates a payload", async (t) => {
   const actual = await Metadata.payload(makeAudit(), {}, timestamp);
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload());
 });
@@ -168,8 +159,6 @@ test("Metadata.payload() uses site ID if provided", async (t) => {
     { siteID: "12345" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ SiteId: "12345" }));
 });
@@ -180,36 +169,43 @@ test("Metadata.payload() uses test name if provided", async (t) => {
     { testName: "test name" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ TestName: "test name" }));
 });
 
-/**
- * This test will fail if the origin is changed, e.g. on forks.
- */
-// test("Metadata.payload() builds test name from git information", async (t) => {
-//   const actual = await Metadata.payload(
-//     makeAudit(),
-//     // Only the repo name is stable
-//     {
-//       testName: (git) =>
-//         git.Origin!.replace(
-//           /.*Siteimprove\/alfa-integrations.*/,
-//           "Siteimprove/alfa-integrations"
-//         ),
-//     },
-//     timestamp
-//   );
-//   // t.notEqual(actual.CommitInformation, undefined);
-//   // delete actual.CommitInformation;
-//
-//   t.deepEqual(
-//     actual,
-//     makePayload({ TestName: "Siteimprove/alfa-integrations" })
-//   );
-// });
+test("Metadata.payload() includes commit information if provided", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit(),
+    { commitInformation: { BranchName: "hello", Origin: "somewhere" } },
+    timestamp
+  );
+
+  t.deepEqual(
+    actual,
+    makePayload({
+      CommitInformation: { BranchName: "hello", Origin: "somewhere" },
+    })
+  );
+});
+
+test("Metadata.payload() builds test name from commit information", async (t) => {
+  const actual = await Metadata.payload(
+    makeAudit(),
+    {
+      commitInformation: { BranchName: "hello", Origin: "somewhere" },
+      testName: (commit) => `On branch ${commit.BranchName}`,
+    },
+    timestamp
+  );
+
+  t.deepEqual(
+    actual,
+    makePayload({
+      CommitInformation: { BranchName: "hello", Origin: "somewhere" },
+      TestName: "On branch hello",
+    })
+  );
+});
 
 test("Metadata.payload() uses explicit title if provided", async (t) => {
   const actual = await Metadata.payload(
@@ -217,8 +213,6 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
     { pageTitle: "page title" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageTitle: "page title" }));
 });
@@ -227,8 +221,6 @@ test("Metadata.payload() uses page's title if it exists", async (t) => {
   const page = makePage(h.document([<title>Hello</title>, <span></span>]));
 
   const actual = await Metadata.payload(makeAudit({ page }), {}, timestamp);
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageTitle: "Hello" }));
 });
@@ -241,8 +233,6 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
     { pageTitle: "page title" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageTitle: "page title" }));
 });
@@ -255,8 +245,6 @@ test("Metadata.payload() builds page title from the page if specified", async (t
     { pageTitle: (page) => page.document.toString() },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(
     actual,
@@ -270,8 +258,6 @@ test("Metadata.payload() uses explicit URL if provided", async (t) => {
     { pageURL: "page URL" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageUrl: "page URL" }));
 });
@@ -283,8 +269,6 @@ test("Metadata.payload() uses page's response's URL if it exists", async (t) => 
   );
 
   const actual = await Metadata.payload(makeAudit({ page }), {}, timestamp);
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageUrl: "https://siteimprove.com/" }));
 });
@@ -300,8 +284,6 @@ test("Metadata.payload() uses explicit URL over page's URL", async (t) => {
     { pageURL: "page URL" },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageUrl: "page URL" }));
 });
@@ -314,22 +296,9 @@ test("Metadata.payload() builds page URL from the page if specified", async (t) 
     { pageURL: (page) => page.response.status.toString() },
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(actual, makePayload({ PageUrl: "200" }));
 });
-
-// test("Metadata.payload() excludes commit information if requested", async (t) => {
-//   const actual = await Metadata.payload(
-//     makeAudit(),
-//     { includeGitInfo: false },
-//     timestamp
-//   );
-//   t.equal(actual.CommitInformation, undefined);
-//
-//   t.deepEqual(actual, makePayload());
-// });
 
 test("Metadata.payload() includes global durations", async (t) => {
   const actual = await Metadata.payload(
@@ -342,8 +311,6 @@ test("Metadata.payload() includes global durations", async (t) => {
     {},
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(
     actual,
@@ -369,8 +336,6 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
     {},
     timestamp
   );
-  // t.notEqual(actual.CommitInformation, undefined);
-  // delete actual.CommitInformation;
 
   t.deepEqual(
     actual,
