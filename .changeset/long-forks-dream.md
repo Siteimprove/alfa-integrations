@@ -26,11 +26,11 @@ In order to migrate from previous versions:
     ````typescript
     import { getCommitInformation } from "@siteimprove/alfa-test-utits/git.js";
 
-    const commitInformation = await getCommitInformation();
+    const gitInformation = await getCommitInformation();
 
     SIP.upload({
       ... // other options
-       commitInformation,
+       commitInformation: gitInformation,
        testName: (commitInfo) => ... // same function as previously
     })
     ```
@@ -38,11 +38,11 @@ In order to migrate from previous versions:
     ````typescript
     import { getCommitInformation } from "@siteimprove/alfa-test-utits/git.js";
 
-    const commitInformation = await getCommitInformation();
+    const gitInformation = await getCommitInformation();
 
     SIP.upload({
       ... // other options
-       commitInformation,
+       commitInformation: gitInformation,
     })
     ```
    
