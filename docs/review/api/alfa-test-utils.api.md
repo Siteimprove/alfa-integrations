@@ -90,13 +90,13 @@ export namespace Audit {
 
 // @public
 export interface CommitInformation {
-    Author: string | undefined;
+    Author?: string;
     BranchName: string;
-    CommitHash: string | undefined;
-    CommitTimestamp: string | undefined;
-    Email: string | undefined;
-    Message: string | undefined;
-    Origin: string | undefined;
+    CommitHash?: string;
+    CommitTimestamp?: string;
+    Email?: string;
+    Message?: string;
+    Origin?: string;
 }
 
 // @public
