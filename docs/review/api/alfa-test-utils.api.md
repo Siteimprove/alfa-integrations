@@ -268,7 +268,6 @@ export namespace SIP {
     export interface Options {
         apiKey?: string;
         commitInformation?: CommitInformation;
-        includeCommitInfo?: boolean;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
         siteID?: string;
