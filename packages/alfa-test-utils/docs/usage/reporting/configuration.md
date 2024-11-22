@@ -73,7 +73,7 @@ const pageReportURL = Audit.run(alfaPage, {
 
 See [the `CommitInforation` API](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.commitinformation.md) for all the allowed properties, only `BranchName` is mandatory.
 
-If running from a `git` repository (in a NodeJS environement), this commit information can be extracted automatically:
+If running from a `git` repository (in a NodeJS environment), this commit information can be extracted automatically:
 
 ```typescript
 import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";

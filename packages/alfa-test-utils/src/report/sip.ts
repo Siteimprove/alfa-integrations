@@ -127,12 +127,6 @@ export namespace SIP {
      * Information about the latest commit of a Version Control System.
      */
     commitInformation?: CommitInformation;
-
-    /**
-     * Whether to upload the commit information to the Siteimprove Intelligence Platform
-     * (default: yes).
-     */
-    includeCommitInfo?: boolean;
   }
 
   /**
@@ -274,9 +268,7 @@ export namespace SIP {
         Durations: toCamelCase(audit.durations.common),
       };
 
-      if ((options.includeCommitInfo ?? true) && commitInfo.isSome()) {
-        result.CommitInformation = commitInfo.get();
-      }
+      commitInfo.forEach((info) => (result.CommitInformation = info));
 
       if (options.siteID !== undefined) {
         result.SiteId = options.siteID;
