@@ -7,7 +7,7 @@
 Previously, `SIP.upload` was automatically collecting some information about the latest `git` commit and sending it to the Siteimprove Intelligence Platform, unless opted out via the `includeGitInfo: false` option. This presented two main drawbacks:
 
 1. (minor) This was heavily reliant on the directory being part of a `git` repository. For codebases that use a different version control system, not only this was useless, but no alternative was provided.
-2. (major) This was heavily reliant ont he Accessbility Code Checker running from a NodeJS environment, where access to the underlying filesystem and `git` was doable. Not only this prevented the Accessibility Code Checker to run seamlessly from other environments such as browser extensions or Cypress; but the mere fact of trying to bundle `SIP.upload` for such environments (e.g. with Webpack) was causing the build to fail.
+2. (major) This was heavily reliant on the Accessibility Code Checker running from a NodeJS environment, where access to the underlying filesystem and `git` was doable. Not only this prevented the Accessibility Code Checker to run seamlessly from other environments such as browser extensions or Cypress; but the mere fact of trying to bundle `SIP.upload` for such environments (e.g. with Webpack) was causing the build to fail.
 
 As a consequence, this release reverts a bit the approach on that information. The commit information is still valuable and can be used to name or group tests in an organised way (e.g., to follow the number of issues in a feature branch), but it now has to be provided by the caller. A `git` helper is still provided since it is by far the most used version control system.
 
