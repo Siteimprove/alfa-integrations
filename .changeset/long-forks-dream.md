@@ -24,7 +24,7 @@ In order to migrate from previous versions:
 2.  If you were using a `testName` function; you need to provide the commit information to the call. For this, use:
 
     ````typescript
-    import { getCommitInformation } from "@siteimprove/alfa-test-utits/git.js";
+    import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
 
     const gitInformation = await getCommitInformation();
 
@@ -36,7 +36,7 @@ In order to migrate from previous versions:
     ```
 3. If you were not previously relying on the commit information but wish to keep uploading it, use:
     ````typescript
-    import { getCommitInformation } from "@siteimprove/alfa-test-utits/git.js";
+    import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
 
     const gitInformation = await getCommitInformation();
 
