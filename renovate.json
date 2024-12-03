@@ -6,7 +6,7 @@
     {
       "hostType": "npm",
       "matchHost": "https://npm.pkg.github.com/",
-      "token": "{{ secrets.BUILDUSER_GITHUB_READ }}"
+      "token": "{{ secrets.RENOVATE_TOKEN }}"
     }
   ],
   "packageRules": [
