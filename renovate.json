@@ -8,7 +8,7 @@
       "matchHost": "https://npm.pkg.github.com/",
       "token": "{{ secrets.BUILDUSER_GITHUB_READ }}"
     }
-  ]
+  ],
   "packageRules": [
     {
       "description": [
