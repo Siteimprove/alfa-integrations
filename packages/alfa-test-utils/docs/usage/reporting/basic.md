@@ -21,7 +21,7 @@ const pageReportURL = await SIP.upload(alfaResult, {
 
 This returns a URL to a Siteimprove Intelligence Platform page report showing the audit results, embedded within a [`Result` object](https://github.com/Siteimprove/alfa/blob/main/docs/api/alfa-result.md) to handle errors, use `console.log(pageReportURL.getOrElse(() => pageReportURL.getErrUnsafe()));` to show its value.
 
-> **Note:** By default, when ran from a `git` repository, this will upload some [basic git information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.commitinformation.md) if you prefer not to do so, add the `includeGitInfo: false` option to the second argument of `SIP.upload`.
+> **Note:** Siteimprove recommends that you include some basic information about the latest commit together with the upload, at least the branch name. This opens possibilities of grouping and reporting based on it, e.g. to follow the number of issues in a given branch. See [common configuration](./configuration.md#including-commit-information) for more information.
 
 ## Pretty printing results in the console
 

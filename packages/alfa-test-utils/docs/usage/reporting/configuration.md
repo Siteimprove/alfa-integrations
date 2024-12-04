@@ -52,14 +52,41 @@ const pageReportURL = Audit.run(alfaPage, {
 });
 ```
 
-## Skipping git information
+## Including commit information
 
-If you prefer not to upload basic git information about the repository (origin URL; branch name; latest commit hash, author, and message), use the `includeGitInfo: false` option:
+Siteimprove recommends that you include some basic information about the latest commit together with the upload, at least the branch name. This opens possibilities of grouping and reporting based on it, e.g. to follow the number of issues in a given branch.
 
 ```typescript
-SIP.upload(alfaResult, {
-  userName: process.env.SI_USER_NAME!,
-  apiKey: process.env.SI_API_KEY!,
-  includeGitInfo: false,
+const pageReportURL = Audit.run(alfaPage, {
+  rules: { include: Rules.aaFilter },
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
+    userName: process.env.SI_USER_NAME!,
+    apiKey: process.env.SI_API_KEY!,
+    commitInformation: {
+      BranchName: "main",
+      CommitHash: "a1b2c3d4",
+    },
+  });
+});
+```
+
+See [the `CommitInforation` API](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.commitinformation.md) for all the allowed properties, only `BranchName` is mandatory.
+
+If running from a `git` repository (in a NodeJS environment), this commit information can be extracted automatically:
+
+```typescript
+import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
+
+const gitInformation = await getCommitInformation();
+
+const pageReportURL = Audit.run(alfaPage, {
+  rules: { include: Rules.aaFilter },
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
+    userName: process.env.SI_USER_NAME!,
+    apiKey: process.env.SI_API_KEY!,
+    commitInformation: gitInformation,
+  });
 });
 ```

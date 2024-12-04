@@ -88,21 +88,16 @@ export namespace Audit {
     export function run(page: Page, options?: Options): Promise<Audit>;
 }
 
-// @public (undocumented)
+// @public
 export interface CommitInformation {
-    Author: string | undefined;
+    Author?: string;
     BranchName: string;
-    CommitHash: string | undefined;
-    CommitTimestamp: string | undefined;
-    Email: string | undefined;
-    GitOrigin: string | undefined;
-    Message: string | undefined;
+    CommitHash?: string;
+    CommitTimestamp?: string;
+    Email?: string;
+    Message?: string;
+    Origin?: string;
 }
-
-// Warning: (ae-internal-missing-underscore) The name "getCommitInformation" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export function getCommitInformation(): Promise<Result<CommitInformation, string>>;
 
 // @public
 export class Logging implements Equatable, json.Serializable<Logging.JSON> {
@@ -272,11 +267,11 @@ export namespace SIP {
     // (undocumented)
     export interface Options {
         apiKey?: string;
-        includeGitInfo?: boolean;
+        commitInformation?: CommitInformation;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
         siteID?: string;
-        testName?: string | ((git: CommitInformation) => string);
+        testName?: string | ((commit: CommitInformation) => string);
         userName?: string;
     }
     // @internal

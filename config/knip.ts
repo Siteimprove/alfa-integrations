@@ -15,6 +15,7 @@ const config: KnipConfig = {
       ],
     },
     "packages/alfa-cli": { entry: ["src/alfa.ts!"], project },
+    "packages/alfa-test-utils": { entry: [...entry, "src/report/git.ts!"], project },
     "packages/alfa-webdriver": {
       entry,
       project,
