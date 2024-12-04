@@ -2,7 +2,7 @@ import { h, Text } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 
 import chalk from "chalk";
 import { getRuleTitle } from "../../dist/report/get-rule-title.js";

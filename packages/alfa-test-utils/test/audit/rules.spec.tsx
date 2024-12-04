@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 
 import { Rules } from "../../dist/audit/rules.js";
 

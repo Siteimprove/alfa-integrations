@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import { getCommitInformation } from "../../dist/report/git.js";
 
 /**
