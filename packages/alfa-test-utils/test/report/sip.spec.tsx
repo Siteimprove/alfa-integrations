@@ -4,7 +4,7 @@ import { Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
 import { Map } from "@siteimprove/alfa-map";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import { URL } from "@siteimprove/alfa-url";
 
 import axios from "axios";
