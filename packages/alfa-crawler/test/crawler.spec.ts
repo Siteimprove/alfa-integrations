@@ -1,7 +1,7 @@
 import * as path from "node:path";
 import * as url from "node:url";
 
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 
 import { Frontier } from "@siteimprove/alfa-frontier";
 

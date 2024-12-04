@@ -1,6 +1,6 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import * as path from "node:path";
 import * as url from "node:url";
 
