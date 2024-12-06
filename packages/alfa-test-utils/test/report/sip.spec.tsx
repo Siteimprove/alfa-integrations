@@ -381,6 +381,7 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
     apiKey: "bar",
+    siteID: "12345",
   });
 
   t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
@@ -391,6 +392,7 @@ test(".upload returns an error on missing user name", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     apiKey: "bar",
+    siteID: "12345",
   });
 
   t(actual.isErr());
@@ -401,6 +403,18 @@ test(".upload returns an error on missing API key", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
+    siteID: "12345"
+  });
+
+  t(actual.isErr());
+});
+
+test(".upload returns an error on missing site ID", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(makeAudit({ page }), {
+    userName: "foo@foo.com",
+    apiKey: "bar",
   });
 
   t(actual.isErr());
