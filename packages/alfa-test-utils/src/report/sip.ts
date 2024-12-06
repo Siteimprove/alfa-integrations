@@ -1,7 +1,7 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
-import { Option } from "@siteimprove/alfa-option";
+import { None, Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import type { Result } from "@siteimprove/alfa-result";
 import type { Thunk } from "@siteimprove/alfa-thunk";
@@ -58,12 +58,24 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
   ): Promise<Result<string, string>> {
+    const missing: Array<string> = [];
+
     if (options.userName === undefined) {
-      return Err.of("Missing user name for Siteimprove Intelligence Platform");
+      missing.push("User name");
     }
 
     if (options.apiKey === undefined) {
-      return Err.of("Missing API key for Siteimprove Intelligence Platform");
+      missing.push("API key");
+    }
+
+    if (options.siteID === undefined) {
+      missing.push("Site ID");
+    }
+
+    if (missing.length > 0) {
+      return Err.of(
+        `The following mandatory options are missing: ${missing.join(", ")}`
+      );
     }
 
     const config = await Metadata.axiosConfig(audit, options, override);
@@ -217,10 +229,20 @@ export namespace SIP {
       options: Partial<Options>,
       timestamp: string
     ): Promise<Payload> {
+      let thePage: Option<Page> = None;
+
       const page: Thunk<Page> = () =>
-        Page.isPage(audit.page)
-          ? audit.page
-          : Page.from(audit.page).getUnsafe("Could not deserialize the page");
+        thePage.getOrElse(() => {
+          thePage = Option.of(
+            Page.isPage(audit.page)
+              ? audit.page
+              : Page.from(audit.page).getUnsafe(
+                  "Could not deserialize the page"
+                )
+          );
+
+          return thePage.getUnsafe("Could not retrieve the page");
+        });
 
       const url = options.pageURL ?? page().response.url.toString();
       const PageUrl = typeof url === "string" ? url : url(page());

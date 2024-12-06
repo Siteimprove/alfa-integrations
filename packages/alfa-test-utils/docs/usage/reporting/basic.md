@@ -14,14 +14,23 @@ Then, simply use the `SIP.upload` function on the audit result, providing the Si
 import { SIP } from "@siteimprove/alfa-test-utils";
 
 const pageReportURL = await SIP.upload(alfaResult, {
-  userName: process.env.SI_USER_NAME!, // email address of the user.
-  apiKey: process.env.SI_API_KEY!, // API key generated in the platform.
+  userName: process.env.SI_USER_NAME, // email address of the user.
+  apiKey: process.env.SI_API_KEY, // API key generated in the platform.
+  siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
 });
 ```
 
 This returns a URL to a Siteimprove Intelligence Platform page report showing the audit results, embedded within a [`Result` object](https://github.com/Siteimprove/alfa/blob/main/docs/api/alfa-result.md) to handle errors, use `console.log(pageReportURL.getOrElse(() => pageReportURL.getErrUnsafe()));` to show its value.
 
-> **Note:** Siteimprove recommends that you include some basic information about the latest commit together with the upload, at least the branch name. This opens possibilities of grouping and reporting based on it, e.g. to follow the number of issues in a given branch. See [common configuration](./configuration.md#including-commit-information) for more information.
+### Recommended usage
+
+See [common configuration](./configuration.md#including-commit-information) for more information on these options.
+
+* The `userName`, `apiKey`, and `siteID` parameters are mandatory. If they are missing, the upload will fail and return an error message.
+* Credentials (`userName` and `apiKey`) should be treated as any other credentials. Do not write them in plain text, especially if using a versioning system. Prefer using environment variables or CI/CD secrets.
+* We strongly recommend adding a minimal `commitInformation: { BranchName: "branch-name" }`.
+* The Accessibility Code Checker tries to grab reasonable defaults for `pageTitle` and `pageURL`, but this is not always doable. In case of doubt, provide them explicitly.
+* The `testName` is only displayed in the Page Report.
 
 ## Pretty printing results in the console
 
@@ -57,8 +66,9 @@ export default defineConfig({
       on("task", {
         async report(audit: Audit.JSON): Promise<null> {
           const pageReportUrl = await SIP.upload(audit, {
-            userName: process.env.SI_USER_EMAIL,
-            apiKey: process.env.SI_API_KEY,
+            userName: process.env.SI_USER_NAME, // email address of the user.
+            apiKey: process.env.SI_API_KEY, // API key generated in the platform.
+            siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
           });
 
           Logging.fromAudit(audit, pageReportUrl).print();
