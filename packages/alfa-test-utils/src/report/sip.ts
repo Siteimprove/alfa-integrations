@@ -58,12 +58,22 @@ export namespace SIP {
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
   ): Promise<Result<string, string>> {
+    const missing: Array<string> = [];
+
     if (options.userName === undefined) {
-      return Err.of("Missing user name for Siteimprove Intelligence Platform");
+      missing.push("User name")
     }
 
     if (options.apiKey === undefined) {
-      return Err.of("Missing API key for Siteimprove Intelligence Platform");
+      missing.push("API key")
+    }
+
+    if (options.siteID === undefined) {
+      missing.push("Site ID")
+    }
+
+    if (missing.length > 0) {
+      return Err.of(`The following mandatory options are missing: ${missing.join(", ")}`);
     }
 
     const config = await Metadata.axiosConfig(audit, options, override);
