@@ -9,5 +9,5 @@ The timestamp of the latest commit.
 **Signature:**
 
 ```typescript
-CommitTimestamp: string | undefined;
+CommitTimestamp?: string;
 ```

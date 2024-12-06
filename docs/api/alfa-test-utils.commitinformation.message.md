@@ -9,5 +9,5 @@ The message of the latest commit.
 **Signature:**
 
 ```typescript
-Message: string | undefined;
+Message?: string;
 ```

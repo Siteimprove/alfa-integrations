@@ -9,5 +9,5 @@ The email of the author of the latest commit.
 **Signature:**
 
 ```typescript
-Email: string | undefined;
+Email?: string;
 ```

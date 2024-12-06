@@ -1,5 +1,13 @@
 # @siteimprove/alfa-webdriver
 
+## 0.75.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#111](https://github.com/Siteimprove/alfa-integrations/pull/111))
+
+- **Changed:** Update Alfa to ^0.96.0 ([#113](https://github.com/Siteimprove/alfa-integrations/pull/113))
+
 ## 0.74.3
 
 ### Patch Changes

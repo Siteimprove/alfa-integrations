@@ -4,10 +4,10 @@
 
 ## SIP.Options.testName property
 
-A name for the test (e.g. "AA conformance", …), or a function building a test name from the git commit information (e.g. the git hash or branch name).
+A name for the test (e.g. "AA conformance", …), or a function building a test name from the commit information (e.g. the commit hash, or the branch name).
 
 **Signature:**
 
 ```typescript
-testName?: string | ((git: CommitInformation) => string);
+testName?: string | ((commit: CommitInformation) => string);
 ```

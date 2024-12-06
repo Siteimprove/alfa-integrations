@@ -63,6 +63,7 @@ Description
 
 </td><td>
 
+Global structure of a version control metadata.
 
 
 </td></tr>

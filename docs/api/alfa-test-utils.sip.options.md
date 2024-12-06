@@ -55,7 +55,7 @@ _(Optional)_ The API key to connect to Siteimprove Intelligence Platform
 </td></tr>
 <tr><td>
 
-[includeGitInfo?](./alfa-test-utils.sip.options.includegitinfo.md)
+[commitInformation?](./alfa-test-utils.sip.options.commitinformation.md)
 
 
 </td><td>
@@ -63,12 +63,12 @@ _(Optional)_ The API key to connect to Siteimprove Intelligence Platform
 
 </td><td>
 
-boolean
+[CommitInformation](./alfa-test-utils.commitinformation.md)
 
 
 </td><td>
 
-_(Optional)_ Whether to upload git commit information to the Siteimprove Intelligence Platform (default: yes).
+_(Optional)_ Information about the latest commit of a Version Control System.
 
 
 </td></tr>
@@ -112,6 +112,25 @@ _(Optional)_ The URL of the page, or a function to build it from the audited pag
 </td></tr>
 <tr><td>
 
+[siteID?](./alfa-test-utils.sip.options.siteid.md)
+
+
+</td><td>
+
+
+</td><td>
+
+string
+
+
+</td><td>
+
+_(Optional)_ The site ID in the Siteimprove Intelligence Platform.
+
+
+</td></tr>
+<tr><td>
+
 [testName?](./alfa-test-utils.sip.options.testname.md)
 
 
@@ -120,12 +139,12 @@ _(Optional)_ The URL of the page, or a function to build it from the audited pag
 
 </td><td>
 
-string \| ((git: [CommitInformation](./alfa-test-utils.commitinformation.md)<!-- -->) =&gt; string)
+string \| ((commit: [CommitInformation](./alfa-test-utils.commitinformation.md)<!-- -->) =&gt; string)
 
 
 </td><td>
 
-_(Optional)_ A name for the test (e.g. "AA conformance", …), or a function building a test name from the git commit information (e.g. the git hash or branch name).
+_(Optional)_ A name for the test (e.g. "AA conformance", …), or a function building a test name from the commit information (e.g. the commit hash, or the branch name).
 
 
 </td></tr>

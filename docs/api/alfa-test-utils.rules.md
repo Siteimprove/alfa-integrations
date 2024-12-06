@@ -86,6 +86,28 @@ All rules currently supported by Alfa.
 </td></tr>
 <tr><td>
 
+[ARIAFilter](./alfa-test-utils.rules.ariafilter.md)
+
+
+</td><td>
+
+Filter matching the rules that check for ARIA conformance
+
+
+</td></tr>
+<tr><td>
+
+[bestPracticesFilter](./alfa-test-utils.rules.bestpracticesfilter.md)
+
+
+</td><td>
+
+Filter matching Best Practice rules.
+
+
+</td></tr>
+<tr><td>
+
 [componentFilter](./alfa-test-utils.rules.componentfilter.md)
 
 
