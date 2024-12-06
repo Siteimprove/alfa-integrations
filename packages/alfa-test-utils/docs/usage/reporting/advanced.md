@@ -32,7 +32,8 @@ const pageReportURL = Audit.run(alfaPage, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
     siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
-    pageTitle: (alfaPage) =>
+    pageTitle: // Gets the text content of the first `<h1>` element. 
+      (alfaPage) =>
       Query.getElementDescendants(alfaPage.document)
         .filter(Element.isElement)
         .find(Element.hasName("h1"))
