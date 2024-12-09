@@ -275,8 +275,8 @@ export namespace SIP {
 
       const name = options.testName ?? Defaults.Name;
       const TestName =
-        // If the name is a string, using it, otherwise call the function on the
-        // commit info, defaulting to the error if any.
+        // If the name is a string, use it, otherwise call the function on the
+        // commit info, defaulting to the default name.
         typeof name === "string"
           ? name
           : name !== undefined
