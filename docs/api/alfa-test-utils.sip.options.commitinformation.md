@@ -9,5 +9,5 @@ Information about the latest commit of a Version Control System.
 **Signature:**
 
 ```typescript
-commitInformation?: CommitInformation;
+commitInformation?: CommitInformation | Option<CommitInformation> | Result<CommitInformation, unknown>;
 ```

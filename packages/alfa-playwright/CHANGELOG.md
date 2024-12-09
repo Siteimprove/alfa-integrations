@@ -1,5 +1,7 @@
 # @siteimprove/alfa-playwright
 
+## 0.76.0
+
 ## 0.75.0
 
 ### Patch Changes

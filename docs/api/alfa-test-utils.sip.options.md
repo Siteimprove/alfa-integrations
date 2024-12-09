@@ -63,7 +63,7 @@ _(Optional)_ The API key to connect to Siteimprove Intelligence Platform
 
 </td><td>
 
-[CommitInformation](./alfa-test-utils.commitinformation.md)
+[CommitInformation](./alfa-test-utils.commitinformation.md) \| Option&lt;[CommitInformation](./alfa-test-utils.commitinformation.md)<!-- -->&gt; \| Result&lt;[CommitInformation](./alfa-test-utils.commitinformation.md)<!-- -->, unknown&gt;
 
 
 </td><td>

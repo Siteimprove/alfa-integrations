@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.76.0](../../compare/v0.75.0...v0.76.0) (2024-12-09)
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0760): `SIP.upload` now also accepts the commit information as an `Option` or `Result`. ([#114](https://github.com/Siteimprove/alfa-integrations/pull/114))
+
 ## [0.75.0](../../compare/v0.74.3...v0.75.0) (2024-12-06)
 
 ### Breaking

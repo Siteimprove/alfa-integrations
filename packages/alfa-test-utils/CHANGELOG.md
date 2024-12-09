@@ -1,5 +1,13 @@
 # @siteimprove/alfa-test-utils
 
+## 0.76.0
+
+### Minor Changes
+
+- **Added:** `SIP.upload` now also accepts the commit information as an `Option` or `Result`. ([#114](https://github.com/Siteimprove/alfa-integrations/pull/114))
+
+  This makes it easier to integrate with the `getCommitInformation` which provides it as a `Result`.
+
 ## 0.75.0
 
 ### Minor Changes
