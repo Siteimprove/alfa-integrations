@@ -13,6 +13,7 @@ import { Flattened } from '@siteimprove/alfa-rules';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
+import { Option } from '@siteimprove/alfa-option';
 import type { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
@@ -267,7 +268,7 @@ export namespace SIP {
     // (undocumented)
     export interface Options {
         apiKey?: string;
-        commitInformation?: CommitInformation;
+        commitInformation?: CommitInformation | Option<CommitInformation> | Result<CommitInformation, unknown>;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
         siteID?: string;

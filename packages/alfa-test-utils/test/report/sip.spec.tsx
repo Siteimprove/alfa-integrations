@@ -3,6 +3,8 @@ import { Element, h } from "@siteimprove/alfa-dom";
 import { Response } from "@siteimprove/alfa-http";
 import { Serializable } from "@siteimprove/alfa-json";
 import { Map } from "@siteimprove/alfa-map";
+import { None, Option } from "@siteimprove/alfa-option";
+import { Err, Ok } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import { test } from "@siteimprove/alfa-test-deprecated";
 import { URL } from "@siteimprove/alfa-url";
@@ -174,18 +176,34 @@ test("Metadata.payload() uses test name if provided", async (t) => {
 });
 
 test("Metadata.payload() includes commit information if provided", async (t) => {
-  const actual = await Metadata.payload(
-    makeAudit(),
-    { commitInformation: { BranchName: "hello", Origin: "somewhere" } },
-    timestamp
-  );
+  for (const commitInformation of [
+    { BranchName: "hello", Origin: "somewhere" },
+    Option.of({ BranchName: "hello", Origin: "somewhere" }),
+    Ok.of({ BranchName: "hello", Origin: "somewhere" }),
+  ]) {
+    const actual = await Metadata.payload(
+      makeAudit(),
+      { commitInformation },
+      timestamp
+    );
 
-  t.deepEqual(
-    actual,
-    makePayload({
-      CommitInformation: { BranchName: "hello", Origin: "somewhere" },
-    })
-  );
+    t.deepEqual(
+      actual,
+      makePayload({
+        CommitInformation: { BranchName: "hello", Origin: "somewhere" },
+      })
+    );
+  }
+
+  for (const commitInformation of [undefined, None, Err.of("invalid")]) {
+    const actual = await Metadata.payload(
+      makeAudit(),
+      { commitInformation },
+      timestamp
+    );
+
+    t.deepEqual(actual, makePayload());
+  }
 });
 
 test("Metadata.payload() builds test name from commit information", async (t) => {
@@ -403,7 +421,7 @@ test(".upload returns an error on missing API key", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
-    siteID: "12345"
+    siteID: "12345",
   });
 
   t(actual.isErr());
