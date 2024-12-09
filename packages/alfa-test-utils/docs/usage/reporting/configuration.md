@@ -35,7 +35,7 @@ If running from a `git` repository (in a NodeJS environment), this commit inform
 ```typescript
 import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
 
-const gitInformation = await getCommitInformation();
+const gitInformation = await getCommitInformation().getOr(undefined);
 
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.aaFilter },

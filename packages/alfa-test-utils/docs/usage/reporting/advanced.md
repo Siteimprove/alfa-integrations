@@ -2,9 +2,13 @@
 
 ## Building a test name
 
-The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [git information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.git.md). For example, it can be convenient to name a test after the branch it comes from:
+The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [commit information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.commitinformation.md). For example, it can be convenient to name a test after the branch it comes from:
 
 ```typescript
+import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
+
+const gitInformation = await getCommitInformation().getOr(undefined);
+
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.aaFilter },
 }).then((alfaResult) => {
@@ -12,8 +16,8 @@ const pageReportURL = Audit.run(alfaPage, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
     siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
-    testName: (gitInfo) =>
-      `WCAG 2.2 Level AA conformance test on ${gitInfo.branch}`,
+    testName: (commit) =>
+      `WCAG 2.2 Level AA conformance test on ${commit.BranchName}`,
   });
 });
 ```
