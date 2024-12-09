@@ -3,7 +3,8 @@ import { Element, Query } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
 import { None, Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
-import type { Result } from "@siteimprove/alfa-result";
+import { Result } from "@siteimprove/alfa-result";
+import { Selective } from "@siteimprove/alfa-selective";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -74,7 +75,9 @@ export namespace SIP {
 
     if (missing.length > 0) {
       return Err.of(
-        `The following mandatory options are missing: ${missing.join(", ")}`
+        `The following mandatory option${
+          missing.length === 1 ? " is" : "s are"
+        } missing: ${missing.join(", ")}`
       );
     }
 
@@ -138,7 +141,10 @@ export namespace SIP {
     /**
      * Information about the latest commit of a Version Control System.
      */
-    commitInformation?: CommitInformation;
+    commitInformation?:
+      | CommitInformation
+      | Option<CommitInformation>
+      | Result<CommitInformation, unknown>;
   }
 
   /**
@@ -261,12 +267,16 @@ export namespace SIP {
           ? title(page())
           : title;
 
-      const commitInfo = Option.from(options.commitInformation);
+      const commitInfo = Selective.of(options.commitInformation)
+        .if(Option.isOption<CommitInformation>, (info) => info)
+        .if(Result.isResult<CommitInformation, unknown>, (info) => info.ok())
+        .else(Option.from)
+        .get();
 
       const name = options.testName ?? Defaults.Name;
       const TestName =
-        // If the name is a string, using, otherwise call the function on the
-        // gitInfo, defaulting to the error if any.
+        // If the name is a string, using it, otherwise call the function on the
+        // commit info, defaulting to the error if any.
         typeof name === "string"
           ? name
           : name !== undefined
