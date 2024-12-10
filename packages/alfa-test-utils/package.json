@@ -43,7 +43,8 @@
   ],
   "scripts": {
     "alfa-postversion": "./get-version.sh > src/version.ts && yarn self-extract && git add src/version.ts ../../docs/review/api/alfa-test-utils.api.md",
-    "self-extract": "CI=false yarn run --top-level extract packages/alfa-test-utils"
+    "self-extract": "CI=false yarn run --top-level extract packages/alfa-test-utils",
+    "packages/alfa-test-utils": "echo workaround https://github.com/webpro-nl/knip/issues/739"
   },
   "dependencies": {
     "@siteimprove/alfa-act": "^0.96.0",
