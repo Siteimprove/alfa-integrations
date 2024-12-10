@@ -24,7 +24,9 @@
     "./git": "./dist/report/git.js",
     "./git.js": "./dist/report/git.js",
     "./report": "./dist/report/index.js",
-    "./report.js": "./dist/report/index.js"
+    "./report.js": "./dist/report/index.js",
+    "./version": "./dist/version.js",
+    "./version.js": "./dist/version.js"
   },
   "files": [
     "dist/**/*.js",
