@@ -24,7 +24,9 @@
     "./git": "./dist/report/git.js",
     "./git.js": "./dist/report/git.js",
     "./report": "./dist/report/index.js",
-    "./report.js": "./dist/report/index.js"
+    "./report.js": "./dist/report/index.js",
+    "./version": "./dist/version.js",
+    "./version.js": "./dist/version.js"
   },
   "files": [
     "dist/**/*.js",
@@ -34,6 +36,17 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "//": [
+    "For scripts:",
+    "We need to update the version number after creating a new one.",
+    "We also need to update the documentation, which includes the version number; updating the documentation from a CI tool requires CI=false to allow changes.",
+    "Finally we need to stage the changed files that will be commited later in the release process."
+  ],
+  "scripts": {
+    "alfa-postversion": "./get-version.sh > src/version.ts && yarn self-extract && git add src/version.ts ../../docs/review/api/alfa-test-utils.api.md",
+    "self-extract": "CI=false yarn run --top-level extract packages/alfa-test-utils",
+    "packages/alfa-test-utils": "echo workaround https://github.com/webpro-nl/knip/issues/739"
   },
   "dependencies": {
     "@siteimprove/alfa-act": "^0.96.0",
