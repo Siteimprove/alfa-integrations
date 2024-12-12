@@ -53,7 +53,12 @@ test("Playwright.toPage() scrapes a page", async (t) => {
 
   t.deepEqual(actual, {
     request: { method: "GET", url: pageUrl, headers: [], body: "" },
-    response: { url: pageUrl, status: 200, headers: [], body: "" },
+    response: {
+      url: pageUrl,
+      status: 200,
+      headers: [{ name: "Content-Type", value: "text/html" }],
+      body: "",
+    },
     document: {
       type: "document",
       children: [

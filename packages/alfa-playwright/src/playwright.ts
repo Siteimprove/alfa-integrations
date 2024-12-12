@@ -6,7 +6,7 @@ import { Device } from "@siteimprove/alfa-device";
 import * as device from "@siteimprove/alfa-device/native";
 import { Document, Node } from "@siteimprove/alfa-dom";
 import * as dom from "@siteimprove/alfa-dom/native";
-import { Request, Response } from "@siteimprove/alfa-http";
+import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -45,6 +45,7 @@ export namespace Playwright {
      * Known caveats:
      * * We assume that the request was a GET and the response a 200 OK. This is
      *   probably not too wrong in most cases, but can easily be completely off.
+     * * We assume that the response was HTML. This is probably mostly correct.
      * * We always return an empty Headers list; this is most likely wrong since
      *   at least a Content-Type header should be present on the response.
      */
@@ -54,7 +55,11 @@ export namespace Playwright {
       await value.evaluate(() => window.location.href)
     ).getUnsafe();
     const request = Request.of("GET", url);
-    const response = Response.of(url, 200);
+    const response = Response.of(
+      url,
+      200,
+      Headers.of([Header.of("Content-Type", "text/html")]),
+    );
 
     const pageDevice = Device.from(deviceJSON);
     return Page.of(
