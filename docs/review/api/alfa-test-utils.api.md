@@ -89,6 +89,9 @@ export namespace Audit {
     export function run(page: Page, options?: Options): Promise<Audit>;
 }
 
+// @public (undocumented)
+export const codeCheckerVersion = "0.76.0";
+
 // @public
 export interface CommitInformation {
     Author?: string;
@@ -299,5 +302,7 @@ export namespace SIP {
         httpsAgent?: Agent;
     }): Promise<Result<string, string>>;
 }
+
+// (No @packageDocumentation comment for this package)
 
 ```
