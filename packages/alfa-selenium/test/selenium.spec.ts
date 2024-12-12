@@ -18,10 +18,10 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-  let driver: WebDriver | undefined;
+let driver: WebDriver | undefined;
 
-  const options = new chrome.Options();
-  options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+const options = new chrome.Options();
+options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
 
 test("Selenium.toPage() scrapes a page", async (t) => {
   driver = await new Builder()
@@ -30,7 +30,8 @@ test("Selenium.toPage() scrapes a page", async (t) => {
     .build();
 
   // Navigate to the page to scrape
-  await driver.get(url.pathToFileURL(path.join(fixture, "page.html")).href);
+  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
+  await driver.get(pageUrl);
 
   const page = await Selenium.toPage(driver);
 
@@ -56,8 +57,13 @@ test("Selenium.toPage() scrapes a page", async (t) => {
   };
 
   t.deepEqual(actual, {
-    request: { method: "GET", url: "about:blank", headers: [], body: "" },
-    response: { url: "about:blank", status: 200, headers: [], body: "" },
+    request: { method: "GET", url: pageUrl, headers: [], body: "" },
+    response: {
+      url: pageUrl,
+      status: 200,
+      headers: [{ name: "Content-Type", value: "text/html" }],
+      body: "",
+    },
     document: {
       type: "document",
       children: [
