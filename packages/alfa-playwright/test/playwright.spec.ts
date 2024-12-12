@@ -23,7 +23,8 @@ test("Playwright.toPage() scrapes a page", async (t) => {
   const page = await context.newPage();
 
   // Navigate to the page to scrape
-  await page.goto(url.pathToFileURL(path.join(fixture, "page.html")).href);
+  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
+  await page.goto(pageUrl);
 
   const document = await page.evaluateHandle(() => window.document);
 
@@ -51,8 +52,13 @@ test("Playwright.toPage() scrapes a page", async (t) => {
   };
 
   t.deepEqual(actual, {
-    request: { method: "GET", url: "about:blank", headers: [], body: "" },
-    response: { url: "about:blank", status: 200, headers: [], body: "" },
+    request: { method: "GET", url: pageUrl, headers: [], body: "" },
+    response: {
+      url: pageUrl,
+      status: 200,
+      headers: [{ name: "Content-Type", value: "text/html" }],
+      body: "",
+    },
     document: {
       type: "document",
       children: [
