@@ -1,5 +1,18 @@
 # @siteimprove/alfa-selenium
 
+## 0.76.1
+
+### Patch Changes
+
+- **Added:** The page URL is now correctly filled when grabbing the page. ([#116](https://github.com/Siteimprove/alfa-integrations/pull/116))
+
+  A full `Request` and `Response` are build, with sensible values:
+
+  - The request is assumed to be a GET.
+  - The response is assumed to be a 200 OK with HTMl content.
+
+  These values are not always correct, but should be in most cases. It is not really possible to build better values because the actual request and response may be long lost by the time one decides to call `.toPage`.
+
 ## 0.76.0
 
 ## 0.75.0

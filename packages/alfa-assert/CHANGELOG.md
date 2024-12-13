@@ -1,5 +1,7 @@
 # @siteimprove/alfa-assert
 
+## 0.76.1
+
 ## 0.76.0
 
 ## 0.75.0

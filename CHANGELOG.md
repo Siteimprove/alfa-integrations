@@ -1,5 +1,13 @@
 # Alfa integrations changelog
 
+## [0.76.1](../../compare/v0.76.0...v0.76.1) (2024-12-13)
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0761): The current version number is now exported. ([#115](https://github.com/Siteimprove/alfa-integrations/pull/115))
+
+- [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#0761), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0761), [@siteimprove/alfa-selenium](packages/alfa-selenium/CHANGELOG.md#0761), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0761): The page URL is now correctly filled when grabbing the page. ([#116](https://github.com/Siteimprove/alfa-integrations/pull/116))
+
 ## [0.76.0](../../compare/v0.75.0...v0.76.0) (2024-12-09)
 
 ### Added

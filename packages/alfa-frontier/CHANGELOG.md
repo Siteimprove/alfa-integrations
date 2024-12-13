@@ -1,5 +1,7 @@
 # @siteimprove/alfa-frontier
 
+## 0.76.1
+
 ## 0.76.0
 
 ## 0.75.0

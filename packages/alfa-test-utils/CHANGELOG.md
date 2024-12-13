@@ -1,5 +1,11 @@
 # @siteimprove/alfa-test-utils
 
+## 0.76.1
+
+### Patch Changes
+
+- **Added:** The current version number is now exported. ([#115](https://github.com/Siteimprove/alfa-integrations/pull/115))
+
 ## 0.76.0
 
 ### Minor Changes
