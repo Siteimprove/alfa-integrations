@@ -63,7 +63,7 @@ export class Scraper {
 
   private readonly _browser: puppeteer.Browser;
 
-  private constructor(browser: puppeteer.Browser) {
+  protected constructor(browser: puppeteer.Browser) {
     this._browser = browser;
   }
 

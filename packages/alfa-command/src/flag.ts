@@ -42,7 +42,7 @@ export class Flag<T = unknown> implements Functor<T>, Serializable<Flag.JSON> {
   private readonly _options: Flag.Options;
   private readonly _parse: Flag.Parser<T, [Predicate<string>]>;
 
-  private constructor(
+  protected constructor(
     name: string,
     description: string,
     options: Flag.Options,
@@ -393,7 +393,7 @@ export namespace Flag {
     private readonly _value: T;
     private readonly _parse: Flag.Parser<T>;
 
-    private constructor(value: T, parse: Flag.Parser<T>) {
+    protected constructor(value: T, parse: Flag.Parser<T>) {
       this._value = value;
       this._parse = parse;
     }

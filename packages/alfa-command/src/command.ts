@@ -78,7 +78,7 @@ export class Command<
   private readonly _parent: Option<Command>;
   private readonly _run: Command.Runner<F, A>;
 
-  private constructor(
+  protected constructor(
     name: string,
     version: string,
     description: string,

@@ -17,7 +17,7 @@ export class Archive implements Equatable, Serializable {
   private readonly _path: string;
   private readonly _format: Archive.Format;
 
-  private constructor(path: string, format: Archive.Format) {
+  protected constructor(path: string, format: Archive.Format) {
     this._path = path;
     this._format = format;
   }

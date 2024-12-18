@@ -35,7 +35,7 @@ export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
   private readonly _handlers: Array<Handler<I, T, Q, S>>;
   private readonly _options: Assertion.Options<I, T, Q, S>;
 
-  private constructor(
+  protected constructor(
     input: I,
     rules: Array<Rule<I, T, Q, S>>,
     handlers: Array<Handler<I, T, Q, S>>,
