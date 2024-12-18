@@ -14,7 +14,7 @@ export class Credentials implements Equatable, Serializable {
   private readonly _username: string;
   private readonly _password: string;
 
-  private constructor(username: string, password: string) {
+  protected constructor(username: string, password: string) {
     this._username = username;
     this._password = password;
   }

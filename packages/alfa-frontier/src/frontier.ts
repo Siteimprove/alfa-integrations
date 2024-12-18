@@ -29,7 +29,7 @@ export class Frontier implements Equatable, Serializable {
   private readonly _scope: URL;
   private readonly _items: Array<Item>;
 
-  private constructor(scope: URL, items: Array<Item>) {
+  protected constructor(scope: URL, items: Array<Item>) {
     this._scope = scope;
     this._items = items;
   }
@@ -243,7 +243,7 @@ class Item implements Equatable, Serializable {
   private readonly _aliases: Array<URL>;
   private _state: State;
 
-  private constructor(url: URL, aliases: Array<URL>, state: State) {
+  protected constructor(url: URL, aliases: Array<URL>, state: State) {
     this._url = url;
     this._aliases = aliases;
     this._state = state;

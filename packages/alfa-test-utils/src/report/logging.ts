@@ -26,7 +26,7 @@ export class Logging implements Equatable, json.Serializable<Logging.JSON> {
   private readonly _title: string;
   private readonly _logs: Sequence<Logging>;
 
-  private constructor(title: string, logs: Sequence<Logging>) {
+  protected constructor(title: string, logs: Sequence<Logging>) {
     this._title = title;
     this._logs = logs;
   }

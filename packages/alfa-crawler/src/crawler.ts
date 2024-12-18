@@ -34,7 +34,7 @@ export class Crawler {
 
   private readonly _scraper: Scraper;
 
-  private constructor(scraper: Scraper) {
+  protected constructor(scraper: Scraper) {
     this._scraper = scraper;
   }
 

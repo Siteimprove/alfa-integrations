@@ -40,7 +40,7 @@ export class Argument<T = unknown>
   private readonly _options: Argument.Options;
   private readonly _parse: Argument.Parser<T>;
 
-  private constructor(
+  protected constructor(
     name: string,
     description: string,
     options: Argument.Options,

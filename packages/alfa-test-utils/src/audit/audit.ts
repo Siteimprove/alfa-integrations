@@ -37,7 +37,7 @@ export class Audit implements json.Serializable<Audit.JSON> {
   private readonly _resultAggregates: Audit.ResultAggregates;
   private readonly _durations: Performance.Durations;
 
-  private constructor(
+  protected constructor(
     page: Page,
     outcomes: Map<string, Sequence<alfaOutcome>>,
     resultAggregates: Audit.ResultAggregates,

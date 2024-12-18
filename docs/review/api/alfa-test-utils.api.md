@@ -27,6 +27,7 @@ export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Q
 
 // @public
 export class Audit implements json.Serializable<Audit.JSON> {
+    protected constructor(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance.Durations);
     get alfaVersion(): typeof alfaVersion;
     get durations(): Performance.Durations;
     // (undocumented)
@@ -105,6 +106,7 @@ export interface CommitInformation {
 
 // @public
 export class Logging implements Equatable, json.Serializable<Logging.JSON> {
+    protected constructor(title: string, logs: Sequence<Logging>);
     // (undocumented)
     equals(value: Logging): boolean;
     // (undocumented)

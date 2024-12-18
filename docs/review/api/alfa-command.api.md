@@ -17,6 +17,7 @@ import type { Thunk } from '@siteimprove/alfa-thunk';
 
 // @public (undocumented)
 export class Argument<T = unknown> implements Functor<T>, Serializable<Argument.JSON> {
+    protected constructor(name: string, description: string, options: Argument.Options, parse: Argument.Parser<T>);
     // (undocumented)
     choices<U extends T>(...choices: Array<U>): Argument<U>;
     // (undocumented)
@@ -86,6 +87,7 @@ export namespace Argument {
 
 // @public (undocumented)
 export class Command<F extends Command.Flags = {}, A extends Command.Arguments = {}, S extends Command.Subcommands = {}> implements Serializable<Command.JSON> {
+    protected constructor(name: string, version: string, description: string, flags: F, args: A, subcommands: Mapper<Command, S>, parent: Option<Command>, run?: (command: Command<F, A, S>) => Command.Runner<F, A>);
     // (undocumented)
     get arguments(): A;
     // (undocumented)
@@ -169,6 +171,7 @@ export namespace Command {
 
 // @public (undocumented)
 export class Flag<T = unknown> implements Functor<T>, Serializable<Flag.JSON> {
+    protected constructor(name: string, description: string, options: Flag.Options, parse: Flag.Parser<T, [Predicate<string>]>);
     // (undocumented)
     alias(alias: string): Flag<T>;
     // (undocumented)
@@ -253,6 +256,7 @@ export namespace Flag {
     // (undocumented)
     export type Parser<T, A extends Array<unknown> = []> = parser.Parser<Array<string>, Set<T>, string, A>;
     export class Set<T> implements Functor<T> {
+        protected constructor(value: T, parse: Flag.Parser<T>);
         // (undocumented)
         map<U>(mapper: Mapper<T, U>): Set<U>;
         // (undocumented)
