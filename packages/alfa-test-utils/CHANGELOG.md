@@ -1,5 +1,11 @@
 # @siteimprove/alfa-test-utils
 
+## 0.76.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.97.0 ([#118](https://github.com/Siteimprove/alfa-integrations/pull/118))
+
 ## 0.76.1
 
 ### Patch Changes
