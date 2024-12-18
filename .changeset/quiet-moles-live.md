@@ -7,4 +7,4 @@
 "@siteimprove/alfa-assert": patch
 ---
 
-**hanged:** Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended.
+**Changed:** Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended.
