@@ -16,6 +16,7 @@ import type { Rule } from '@siteimprove/alfa-act';
 
 // @public (undocumented)
 export class Asserter<I, T extends Hashable, Q extends Question.Metadata, S> {
+    protected constructor(rules: Array<Rule<I, T, Q, S>>, handlers: Array<Handler<I, T, Q, S>>, options: Asserter.Options<I, T, Q, S>);
     // (undocumented)
     readonly expect: (input: I, options?: Assertion.Options<I, T, Q, S>) => Assertion<I, T, Q, S>;
     // (undocumented)
@@ -31,6 +32,7 @@ export namespace Asserter {
 
 // @public (undocumented)
 export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
+    protected constructor(input: I, rules: Array<Rule<I, T, Q, S>>, handlers: Array<Handler<I, T, Q, S>>, options: Assertion.Options<I, T, Q, S>);
     // (undocumented)
     accessible(): Future<Result<string>>;
     // (undocumented)

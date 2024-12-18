@@ -25,6 +25,7 @@ import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)
 export class Archive implements Equatable, Serializable {
+    protected constructor(path: string, format: Archive.Format);
     // (undocumented)
     equals(value: Archive): boolean;
     // (undocumented)
@@ -75,6 +76,7 @@ export namespace Awaiter {
 
 // @public (undocumented)
 export class Credentials implements Equatable, Serializable {
+    protected constructor(username: string, password: string);
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
@@ -104,6 +106,7 @@ export namespace Credentials {
 
 // @public (undocumented)
 export class Scraper {
+    protected constructor(browser: puppeteer.Browser);
     close(): Promise<void>;
     // (undocumented)
     static of(browser?: Promise<puppeteer.Browser>): Promise<Scraper>;
@@ -142,6 +145,7 @@ export namespace Scraper {
 
 // @public (undocumented)
 export class Screenshot implements Equatable, Serializable {
+    protected constructor(path: string, type: Screenshot.Type);
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
@@ -171,6 +175,7 @@ export namespace Screenshot {
     export namespace Type {
         // (undocumented)
         export class JPEG implements Equatable, Serializable {
+            protected constructor(quality: number);
             // (undocumented)
             equals(value: unknown): value is this;
             // (undocumented)
@@ -198,6 +203,7 @@ export namespace Screenshot {
         export type JSON = PNG.JSON | JPEG.JSON;
         // (undocumented)
         export class PNG implements Equatable, Serializable {
+            protected constructor(background: boolean);
             // (undocumented)
             get background(): boolean;
             // (undocumented)
