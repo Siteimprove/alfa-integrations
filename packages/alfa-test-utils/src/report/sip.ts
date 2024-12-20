@@ -116,7 +116,7 @@ export namespace SIP {
       if (status === 401) {
         // 401 are handled by the generic server, and we don't get custom error message
         return Err.of(
-          "Unauthorized request: the request was made with invalid credentials\n  Verify your username and API key"
+          "Unauthorized request: the request was made with invalid credentials, verify your username and API key"
         );
       }
 

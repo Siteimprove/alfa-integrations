@@ -1,10 +1,11 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Equatable } from "@siteimprove/alfa-equatable";
-import { Result } from "@siteimprove/alfa-result";
-import { Sequence } from "@siteimprove/alfa-sequence";
+import { Iterable } from "@siteimprove/alfa-iterable";
 
 import * as json from "@siteimprove/alfa-json";
+import { Err, Result } from "@siteimprove/alfa-result";
+import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -18,17 +19,39 @@ import { getRuleTitle } from "./get-rule-title.js";
  *
  * @public
  */
-export class Logging implements Equatable, json.Serializable<Logging.JSON> {
-  public static of(title: string, logs?: Iterable<Logging>): Logging {
-    return new Logging(title, Sequence.from(logs ?? []));
+export class Logging<S extends Logging.Severity = Logging.Severity>
+  implements Equatable, json.Serializable<Logging.JSON>
+{
+  public static of(title: string, logs?: Iterable<Logging>): Logging<"log">;
+
+  public static of<S extends Logging.Severity = "log">(
+    title: string,
+    severity: S,
+    logs?: Iterable<Logging>
+  ): Logging<S>;
+
+  public static of<S extends Logging.Severity = "log">(
+    title: string,
+    severityOrLogs?: S | Iterable<Logging>,
+    logs?: Iterable<Logging>
+  ): Logging<S | "log"> {
+    const innerLogs: Iterable<Logging> =
+      typeof severityOrLogs === "string" ? logs ?? [] : severityOrLogs ?? [];
+
+    const severity =
+      typeof severityOrLogs === "string" ? severityOrLogs : "log";
+
+    return new Logging(title, Sequence.from(innerLogs), severity);
   }
 
   private readonly _title: string;
   private readonly _logs: Sequence<Logging>;
+  private readonly _severity: S;
 
-  protected constructor(title: string, logs: Sequence<Logging>) {
+  protected constructor(title: string, logs: Sequence<Logging>, severity: S) {
     this._title = title;
     this._logs = logs;
+    this._severity = severity;
   }
 
   public get title(): string {
@@ -40,9 +63,13 @@ export class Logging implements Equatable, json.Serializable<Logging.JSON> {
   }
 
   public print(): void {
-    console.group(this._title);
-    this._logs.forEach((log) => log.print());
-    console.groupEnd();
+    if (this._logs.isEmpty()) {
+      console[this._severity](this._title);
+    } else {
+      console.group(this._title);
+      this._logs.forEach((log) => log.print());
+      console.groupEnd();
+    }
   }
 
   public equals(value: Logging): boolean;
@@ -74,6 +101,11 @@ export namespace Logging {
     title: string;
     logs: Sequence.JSON<JSON>;
   }
+
+  /**
+   * {@link https://console.spec.whatwg.org/#loglevel-severity}
+   */
+  export type Severity = "info" | "log" | "warn" | "error";
 
   /** @internal */
   export namespace Defaults {
@@ -108,7 +140,19 @@ export namespace Logging {
     pageReportUrl?: Result<string, string> | string
   ): Logging {
     return Logging.of("Siteimprove found accessibility issues:", [
+      // Show the page title
       Logging.of(chalk.bold(`Page - ${pageTitle ?? Defaults.Title}`)),
+
+      // Show any error during upload: missing or invalid credentials, etc.
+      ...(Err.isErr<string>(pageReportUrl)
+        ? [
+            Logging.of(
+              "The following error was encountered while uploading results to the Siteimprove Intelligence Platform:",
+              [Logging.of(pageReportUrl.getErr(), "error")]
+            ),
+          ]
+        : []),
+
       // "This page contains X issues: URL" (if URL)
       // "This page contains X issues." (otherwise)
       Logging.of(
