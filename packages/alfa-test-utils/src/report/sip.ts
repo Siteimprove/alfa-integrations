@@ -8,8 +8,8 @@ import { Selective } from "@siteimprove/alfa-selective";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
-import type { AxiosRequestConfig } from "axios";
-import axios from "axios";
+import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import axios, { AxiosError } from "axios";
 import type { Agent as HttpsAgent } from "https";
 
 import { Audit, type Performance } from "../audit/index.js";
@@ -84,17 +84,62 @@ export namespace SIP {
     const config = await Metadata.axiosConfig(audit, options, override);
 
     try {
-      const axiosResponse = await axios.request(config);
+      // The request fail on 4XX and 5XX responses, plus anything that can possibly
+      // go wrong with axios.
+      // We could accept all and handle the errors directly, but since we would
+      // still need a try…catch for the "anything that can possibly go wrong" part,
+      // the benefit would be minimal.
+      const axiosResponse = await axios.request({
+        ...config,
+        // We do not want to throw on 3XX redirections.
+        validateStatus: (status) => status < 400,
+      });
+
       const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
 
-      await axios.request(S3.axiosConfig(id, preSignedUrl, audit));
+      await axios.request({
+        ...S3.axiosConfig(id, preSignedUrl, audit),
+        // We do not want to throw on 3XX redirections.
+        validateStatus: (status) => status < 400,
+      });
 
       return Ok.of(pageReportUrl);
     } catch (error) {
-      console.error(error);
+      return inspectAxiosError(error);
+    }
+  }
+
+  function inspectAxiosError(error: unknown): Result<string, string> {
+    if (error instanceof AxiosError && error.response !== undefined) {
+      const { status } = error.response;
+
+      if (status === 401) {
+        // 401 are handled by the generic server, and we don't get custom error message
+        return Err.of(
+          "Unauthorized request: the request was made with invalid credentials\n  Verify your username and API key"
+        );
+      }
+
+      if (status >= 400 && status < 500) {
+        // This is a client error, we can get our custom error message
+        return Err.of(`Bad request: ${error.response.data.details.issue}`);
+      }
+
+      if (status >= 500) {
+        // This is a server error, we probably don't have a custom message,
+        // but hopefully axios did the work for us.
+        return Err.of(`Server error: ${error.message}`);
+      }
     }
 
-    return Err.of("Could not retrieve a page report URL");
+    if (error instanceof AxiosError && error.message !== undefined) {
+      // This is another axios error, we hope they provide meaningful messages.
+      return Err.of(`${error.message}`);
+    }
+
+    // This is something else. It should really not happen since only axios
+    // should have thrown something.
+    return Err.of(`Unexpected error: ${error}`);
   }
 
   /**
