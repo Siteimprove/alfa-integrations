@@ -147,8 +147,8 @@ export namespace Logging {
       ...(Err.isErr<string>(pageReportUrl)
         ? [
             Logging.of(
-              "The following error was encountered while uploading results to the Siteimprove Intelligence Platform:",
-              [Logging.of(pageReportUrl.getErr(), "error")]
+              "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:",
+              [Logging.of(pageReportUrl.getErr(), "warn")]
             ),
           ]
         : []),
