@@ -24,7 +24,7 @@ export namespace SIP {
   /** @internal */
   export namespace Defaults {
     export const URL =
-      "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
+      "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     export const Title = "";
     export const Name = undefined;
   }
@@ -114,7 +114,7 @@ export namespace SIP {
     /**
      * The site ID in the Siteimprove Intelligence Platform.
      */
-    siteID?: string;
+    siteID?: number;
 
     /**
      * The URL of the page, or a function to build it from the audited page.
