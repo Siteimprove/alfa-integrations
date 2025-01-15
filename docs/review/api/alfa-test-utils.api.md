@@ -19,7 +19,6 @@ import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
 import { Result } from '@siteimprove/alfa-result';
-import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
@@ -167,42 +166,17 @@ export namespace Outcomes {
 // @public
 export namespace Performance {
     const // (undocumented)
-    durationKeys: readonly ["applicability", "expectation", "total"];
-    // Warning: (ae-incompatible-release-tags) The symbol "CommonDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
-    //
-    // (undocumented)
-    export type CommonDurations = {
+    commonKeys: readonly ["cascade", "aria-tree", "total"];
+    // @internal (undocumented)
+    export type CommonKeys = (typeof commonKeys)[number];
+    // Warning: (ae-incompatible-release-tags) The symbol "Durations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    export type Durations = {
         [K in CommonKeys]: number;
     };
     // @internal (undocumented)
-    export type CommonKeys = (typeof commonKeys)[number];
-    // @internal (undocumented)
-    export type DurationKey = (typeof durationKeys)[number];
-    export type Durations = {
-        common: CommonDurations;
-        rules: RulesDurations;
-    };
-    const // (undocumented)
-    commonKeys: readonly ["cascade", "aria-tree", "total"];
-    // @internal (undocumented)
     export function empty(): Durations;
     // @internal (undocumented)
-    export function emptyRuleDurations(): RuleDurations;
-    // @internal (undocumented)
     export function recordCommon(durations: Durations): Performance_2<string>;
-    // @internal (undocumented)
-    export function recordRule(durations: Durations): Performance_2<RuleEvent>;
-    // Warning: (ae-incompatible-release-tags) The symbol "RuleDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
-    //
-    // (undocumented)
-    export type RuleDurations = {
-        [K in DurationKey]: number;
-    };
-    // @internal (undocumented)
-    export type RuleEvent = Rule.Event<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
-    export type RulesDurations = {
-        [key: string]: RuleDurations;
-    };
         {};
 }
 
@@ -238,6 +212,8 @@ export namespace SIP {
             timestamp?: string;
             httpsAgent?: Agent;
         }): Promise<AxiosRequestConfig>;
+        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
+        //
         // (undocumented)
         export type CommonDurations = {
             [K in CamelCase<Performance.CommonKeys>]: number;
@@ -255,19 +231,12 @@ export namespace SIP {
                 Failed: number;
                 Passed: number;
                 CantTell: number;
-                Durations: RuleDurations;
             }>;
             SiteId?: number;
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
         export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Promise<Payload>;
-        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
-        //
-        // (undocumented)
-        export type RuleDurations = {
-            [K in CamelCase<Performance.DurationKey>]: number;
-        };
             {};
     }
     // (undocumented)
