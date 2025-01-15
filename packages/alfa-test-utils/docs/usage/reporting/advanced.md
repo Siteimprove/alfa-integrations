@@ -15,7 +15,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     testName: (commit) =>
       `WCAG 2.2 Level AA conformance test on ${commit.BranchName}`,
   });
@@ -35,7 +35,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     pageTitle: // Gets the text content of the first `<h1>` element. 
       (alfaPage) =>
       Query.getElementDescendants(alfaPage.document)
@@ -62,7 +62,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     pageURL: (alfaPage) =>
       alfaPage.response.url.toString().replace("localhost:8080", "example.com"),
   });

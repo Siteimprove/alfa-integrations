@@ -19,7 +19,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     commitInformation: {
       BranchName: "main",
       CommitHash: "a1b2c3d4",
@@ -43,7 +43,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     commitInformation: gitInformation,
   });
 });
@@ -60,7 +60,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     pageTitle: "Paginated table component",
   });
 });
@@ -79,7 +79,7 @@ const pageReportURL = Audit.run(alfaPage).then((alfaResult) => {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     pageURL: "http://example.com/contact/about-us.html",
   });
 });
@@ -96,7 +96,7 @@ const pageReportURL = Audit.run(alfaPage, {
   SIP.upload(alfaResult, {
     userName: process.env.SI_USER_NAME, // email address of the user.
     apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-    siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
     testName: "WCAG 2.2 Level AA conformance test",
   });
 });

@@ -16,7 +16,7 @@ import { SIP } from "@siteimprove/alfa-test-utils";
 const pageReportURL = await SIP.upload(alfaResult, {
   userName: process.env.SI_USER_NAME, // email address of the user.
   apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-  siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+  siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
 });
 ```
 
@@ -68,7 +68,7 @@ export default defineConfig({
           const pageReportUrl = await SIP.upload(audit, {
             userName: process.env.SI_USER_NAME, // email address of the user.
             apiKey: process.env.SI_API_KEY, // API key generated in the platform.
-            siteID: "123456", // Site ID from the Siteimprove Intelligence Platform.
+            siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
           });
 
           Logging.fromAudit(audit, pageReportUrl).print();

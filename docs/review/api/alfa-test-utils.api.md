@@ -225,7 +225,7 @@ export namespace SIP {
     // @internal (undocumented)
     export namespace Defaults {
         const // (undocumented)
-        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
+        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
         const // (undocumented)
         Title = "";
         const // (undocumented)
@@ -257,7 +257,7 @@ export namespace SIP {
                 CantTell: number;
                 Durations: RuleDurations;
             }>;
-            SiteId?: string;
+            SiteId?: number;
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
@@ -276,7 +276,7 @@ export namespace SIP {
         commitInformation?: CommitInformation | Option<CommitInformation> | Result<CommitInformation, unknown>;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
-        siteID?: string;
+        siteID?: number;
         testName?: string | ((commit: CommitInformation) => string);
         userName?: string;
     }
