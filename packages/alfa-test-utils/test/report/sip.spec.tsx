@@ -158,11 +158,11 @@ test("S3.axiosConfig() creates an axios config", (t) => {
 test("Metadata.payload() uses site ID if provided", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),
-    { siteID: "12345" },
+    { siteID: 12345 },
     timestamp
   );
 
-  t.deepEqual(actual, makePayload({ SiteId: "12345" }));
+  t.deepEqual(actual, makePayload({ SiteId: 12345 }));
 });
 
 test("Metadata.payload() uses test name if provided", async (t) => {
@@ -321,10 +321,7 @@ test("Metadata.payload() builds page URL from the page if specified", async (t) 
 test("Metadata.payload() includes global durations", async (t) => {
   const actual = await Metadata.payload(
     makeAudit({
-      durations: {
-        common: { cascade: 1, "aria-tree": 2, total: 3 },
-        rules: {},
-      },
+      durations: { cascade: 1, "aria-tree": 2, total: 3 },
     }),
     {},
     timestamp
@@ -343,13 +340,7 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
         ["foo", { failed: 1, passed: 1, cantTell: 0 }],
         ["bar", { failed: 2, passed: 2, cantTell: 0 }],
       ]),
-      durations: {
-        common: { cascade: 1, "aria-tree": 1, total: 1 },
-        rules: {
-          foo: { applicability: 2, expectation: 2, total: 2 },
-          bar: { applicability: 3, expectation: 3, total: 3 },
-        },
-      },
+      durations: { cascade: 1, "aria-tree": 1, total: 1 },
     }),
     {},
     timestamp
@@ -365,14 +356,12 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
           Failed: 1,
           Passed: 1,
           CantTell: 0,
-          Durations: { Applicability: 2, Expectation: 2, Total: 2 },
         },
         {
           RuleId: "bar",
           Failed: 2,
           Passed: 2,
           CantTell: 0,
-          Durations: { Applicability: 3, Expectation: 3, Total: 3 },
         },
       ],
     })
@@ -399,7 +388,7 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
     apiKey: "bar",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
@@ -410,7 +399,7 @@ test(".upload returns an error on missing user name", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     apiKey: "bar",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t(actual.isErr());
@@ -421,7 +410,7 @@ test(".upload returns an error on missing API key", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t(actual.isErr());
