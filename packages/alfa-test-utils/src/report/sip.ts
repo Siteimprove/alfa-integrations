@@ -172,7 +172,7 @@ export namespace SIP {
       /**
        * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
        */
-      SiteId?: string;
+      SiteId?: number;
 
       /**
        * Information about the latest git commit

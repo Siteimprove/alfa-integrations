@@ -158,11 +158,11 @@ test("S3.axiosConfig() creates an axios config", (t) => {
 test("Metadata.payload() uses site ID if provided", async (t) => {
   const actual = await Metadata.payload(
     makeAudit(),
-    { siteID: "12345" },
+    { siteID: 12345 },
     timestamp
   );
 
-  t.deepEqual(actual, makePayload({ SiteId: "12345" }));
+  t.deepEqual(actual, makePayload({ SiteId: 12345 }));
 });
 
 test("Metadata.payload() uses test name if provided", async (t) => {
@@ -399,7 +399,7 @@ test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
     apiKey: "bar",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
@@ -410,7 +410,7 @@ test(".upload returns an error on missing user name", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     apiKey: "bar",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t(actual.isErr());
@@ -421,7 +421,7 @@ test(".upload returns an error on missing API key", async (t) => {
 
   const actual = await SIP.upload(makeAudit({ page }), {
     userName: "foo@foo.com",
-    siteID: "12345",
+    siteID: 12345,
   });
 
   t(actual.isErr());
