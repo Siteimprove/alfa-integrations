@@ -8,7 +8,7 @@ import { Selective } from "@siteimprove/alfa-selective";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
-import type { AxiosRequestConfig, AxiosResponse } from "axios";
+import type { AxiosRequestConfig } from "axios";
 import axios, { AxiosError } from "axios";
 import type { Agent as HttpsAgent } from "https";
 
