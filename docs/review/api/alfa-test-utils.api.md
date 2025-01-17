@@ -10,6 +10,7 @@ import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
 import { Equatable } from '@siteimprove/alfa-equatable';
 import { Flattened } from '@siteimprove/alfa-rules';
+import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
@@ -104,16 +105,18 @@ export interface CommitInformation {
 }
 
 // @public
-export class Logging implements Equatable, json.Serializable<Logging.JSON> {
-    protected constructor(title: string, logs: Sequence<Logging>);
+export class Logging<S extends Logging.Severity = Logging.Severity> implements Equatable, json.Serializable<Logging.JSON> {
+    protected constructor(title: string, logs: Sequence<Logging>, severity: S);
     // (undocumented)
     equals(value: Logging): boolean;
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
-    get logs(): Iterable<Logging>;
+    get logs(): Iterable_2<Logging>;
     // (undocumented)
-    static of(title: string, logs?: Iterable<Logging>): Logging;
+    static of(title: string, logs?: Iterable_2<Logging>): Logging<"log">;
+    // (undocumented)
+    static of<S extends Logging.Severity = "log">(title: string, severity: S, logs?: Iterable_2<Logging>): Logging<S>;
     // (undocumented)
     print(): void;
     // (undocumented)
@@ -139,6 +142,8 @@ export namespace Logging {
     export function isLogging(value: unknown): value is Logging;
     // @internal (undocumented)
     export function issueUrl(baseUrl: string, ruleId: string): string;
+    const // @internal (undocumented)
+    errorTitle = "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:";
     // (undocumented)
     export interface JSON {
         // (undocumented)
@@ -152,6 +157,8 @@ export namespace Logging {
     export interface Options {
         pageTitle?: string | ((page: Page) => string);
     }
+    // (undocumented)
+    export type Severity = "info" | "log" | "warn" | "error";
 }
 
 // @public
@@ -204,6 +211,10 @@ export namespace SIP {
         Title = "";
         const // (undocumented)
         Name: undefined;
+        // (undocumented)
+        export function missingOptions(missing: Array_2<string>): string;
+        const // (undocumented)
+        badCredentials = "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
     }
     // @internal
     export namespace Metadata {
