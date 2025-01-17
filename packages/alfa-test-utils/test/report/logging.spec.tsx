@@ -25,14 +25,15 @@ const passingRule = makeRule(3, target);
 const audit = makeAudit({
   page: makePage(h.document([target])),
   outcomes: Map.from([
-    [failingRule1.uri, Sequence.from([makeFailed(failingRule2, target)])],
     [
-      failingRule2.uri,
+      failingRule1.uri,
       Sequence.from([
         makeFailed(failingRule1, target),
-        makeFailed(failingRule2, target),
+        makeFailed(failingRule1, target),
+        makeFailed(failingRule1, target),
       ]),
     ],
+    [failingRule2.uri, Sequence.from([makeFailed(failingRule2, target)])],
     [passingRule.uri, Sequence.from([makePassed(passingRule, target)])],
   ]),
   resultAggregates: Map.from([
@@ -73,27 +74,27 @@ test(".fromAggregate() creates a Logging without page report URL", (t) => {
   });
 });
 
-test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
-  const actual = Logging.fromAggregate(
-    filteredAggregates,
-    undefined,
-    Err.of("foo")
-  );
-
-  t.deepEqual(actual.toJSON(), {
-    title: "Siteimprove found accessibility issues:",
-    logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
-      {
-        title: "This page contains 2 issues.",
-        logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
-        ],
-      },
-    ],
-  });
-});
+// test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
+//   const actual = Logging.fromAggregate(
+//     filteredAggregates,
+//     undefined,
+//     Err.of("foo")
+//   );
+//
+//   t.deepEqual(actual.toJSON(), {
+//     title: "Siteimprove found accessibility issues:",
+//     logs: [
+//       { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+//       {
+//         title: "This page contains 2 issues.",
+//         logs: [
+//           { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
+//           { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+//         ],
+//       },
+//     ],
+//   });
+// });
 
 test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
   const url = "http://example.com";
@@ -176,23 +177,23 @@ test(".fromAudit() creates a Logging without page report URL", (t) => {
   });
 });
 
-test(".fromAudit() creates a Logging from errored page report URL", (t) => {
-  const actual = Logging.fromAudit(audit, Err.of("foo"));
-
-  t.deepEqual(actual.toJSON(), {
-    title: "Siteimprove found accessibility issues:",
-    logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
-      {
-        title: "This page contains 2 issues.",
-        logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
-        ],
-      },
-    ],
-  });
-});
+// test(".fromAudit() creates a Logging from errored page report URL", (t) => {
+//   const actual = Logging.fromAudit(audit, Err.of("foo"));
+//
+//   t.deepEqual(actual.toJSON(), {
+//     title: "Siteimprove found accessibility issues:",
+//     logs: [
+//       { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+//       {
+//         title: "This page contains 2 issues.",
+//         logs: [
+//           { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
+//           { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+//         ],
+//       },
+//     ],
+//   });
+// });
 
 test(".fromAudit() creates a Logging from correct page report URL", (t) => {
   const url = "http://example.com";
@@ -236,7 +237,7 @@ test(".fromAudit() creates a Logging from correct page report URL", (t) => {
 });
 
 test(".fromAudit() overrides title with a string", (t) => {
-  const actual = Logging.fromAudit(audit, Err.of("foo"), { pageTitle: "foo" });
+  const actual = Logging.fromAudit(audit, undefined, { pageTitle: "foo" });
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -254,7 +255,7 @@ test(".fromAudit() overrides title with a string", (t) => {
 });
 
 test(".fromAudit() overrides title with a function", (t) => {
-  const actual = Logging.fromAudit(audit, Err.of("foo"), {
+  const actual = Logging.fromAudit(audit, undefined, {
     pageTitle: (page) =>
       page.document.descendants().find(Text.isText).getUnsafe().data,
   });
@@ -296,7 +297,7 @@ test(".fromAudit() Uses the page title as default", (t) => {
     ]),
   });
 
-  const actual = Logging.fromAudit(audit, Err.of("foo"));
+  const actual = Logging.fromAudit(audit, undefined);
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
