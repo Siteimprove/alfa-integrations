@@ -368,32 +368,6 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
   );
 });
 
-// Somehow, importing axios-mock-adapter breaks typing.
-// Requiring it is fine, but not allowed in an ESM file.
-// @ts-ignore
-const mock = new MockAdapter(axios);
-
-// Everything will be mocked after that, use mock.restore() if needed.
-mock.onPost(SIP.Defaults.URL).reply(200, {
-  pageReportUrl: "a page report URL",
-  preSignedUrl: "a S3 URL",
-  id: "hello",
-});
-
-mock.onPut("a S3 URL").reply(200);
-
-test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
-  const page = makePage(h.document([<span></span>]));
-
-  const actual = await SIP.upload(makeAudit({ page }), {
-    userName: "foo@foo.com",
-    apiKey: "bar",
-    siteID: 12345,
-  });
-
-  t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
-});
-
 test(".upload returns an error on missing user name", async (t) => {
   const page = makePage(h.document([<span></span>]));
 
@@ -446,5 +420,105 @@ test(".upload lists all missing options", async (t) => {
   t.deepEqual(actual.toJSON(), {
     type: "err",
     error: SIP.Defaults.missingOptions(["User name", "Site ID"]),
+  });
+});
+
+// Somehow, importing axios-mock-adapter breaks typing.
+// Requiring it is fine, but not allowed in an ESM file.
+// @ts-ignore
+const mock = new MockAdapter(axios);
+
+// Everything will be mocked after that, use mock.restore() if needed.
+
+mock.onPost(SIP.Defaults.URL).reply(200, {
+  pageReportUrl: "a page report URL",
+  preSignedUrl: "a S3 URL",
+  id: "hello",
+});
+
+mock.onPut("a S3 URL").reply(200);
+
+// Mock for a 401, 4XX, 5XX errors, we need to override the upload URL to trigger them
+mock.onPost("https://401.com").reply(401);
+// These are set in the upload endpoint
+const siteIssueStatus = 400;
+const siteIdIssue =
+  "SiteId provided is invalid or doesn't belong to the account";
+mock.onPost("https://4XX.com").reply(siteIssueStatus, {
+  details: [
+    {
+      field: "SiteId",
+      issue: siteIdIssue,
+    },
+  ],
+});
+mock.onPost("https://5XX.com").reply(503, { message: "foo" });
+
+test(".upload connects to Siteimprove Intelligence Platform", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(makeAudit({ page }), {
+    userName: "foo@foo.com",
+    apiKey: "bar",
+    siteID: 12345,
+  });
+
+  t.deepEqual(actual.toJSON(), { type: "ok", value: "a page report URL" });
+});
+
+test(".upload returns standard error message in case of 401 Unauthorized", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(
+    makeAudit({ page }),
+    {
+      userName: "foo@foo.com",
+      apiKey: "bar",
+      siteID: 12345,
+    },
+    { url: "https://401.com" }
+  );
+
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: SIP.Defaults.badCredentials,
+  });
+});
+
+test(".upload returns custom error message in case of 4XX", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(
+    makeAudit({ page }),
+    {
+      userName: "foo@foo.com",
+      apiKey: "bar",
+      siteID: 12345,
+    },
+    { url: "https://4XX.com" }
+  );
+
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: `Bad request (${siteIssueStatus}): ${siteIdIssue}`,
+  });
+});
+
+test(".upload returns Axios error message in case of 5XX", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(
+    makeAudit({ page }),
+    {
+      userName: "foo@foo.com",
+      apiKey: "bar",
+      siteID: 12345,
+    },
+    { url: "https://5XX.com" }
+  );
+
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: "Server error (503): Request failed with status code 503",
   });
 });

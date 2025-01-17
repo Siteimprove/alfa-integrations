@@ -26,11 +26,15 @@ export namespace SIP {
     export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     export const Title = "";
     export const Name = undefined;
+
     export function missingOptions(missing: Array<string>): string {
       return `The following mandatory option${
         missing.length === 1 ? " is" : "s are"
       } missing: ${missing.join(", ")}`;
     }
+
+    export const badCredentials =
+      "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
   }
 
   /**
@@ -109,26 +113,26 @@ export namespace SIP {
     }
   }
 
-  function inspectAxiosError(error: unknown): Result<string, string> {
-    if (error instanceof AxiosError && error.response !== undefined) {
+  function inspectAxiosError(error: any): Result<string, string> {
+    if ((error.response ?? undefined) !== undefined) {
       const { status } = error.response;
 
       if (status === 401) {
         // 401 are handled by the generic server, and we don't get custom error message
-        return Err.of(
-          "Unauthorized request: the request was made with invalid credentials, verify your username and API key"
-        );
+        return Err.of(Defaults.badCredentials);
       }
 
       if (status >= 400 && status < 500) {
         // This is a client error, we can get our custom error message
-        return Err.of(`Bad request: ${error.response.data.details.issue}`);
+        return Err.of(
+          `Bad request (${status}): ${error.response.data.details[0].issue}`
+        );
       }
 
       if (status >= 500) {
         // This is a server error, we probably don't have a custom message,
         // but hopefully axios did the work for us.
-        return Err.of(`Server error: ${error.message}`);
+        return Err.of(`Server error (${status}): ${error.message}`);
       }
     }
 
