@@ -85,7 +85,11 @@ export namespace SIP {
       return Err.of(Defaults.missingOptions(missing));
     }
 
-    const config = await Metadata.axiosConfig(audit, options, override);
+    const config = Metadata.axiosConfig(audit, options, override);
+
+    if (config.isErr()) {
+      return config;
+    }
 
     try {
       // The request fail on 4XX and 5XX responses, plus anything that can possibly
@@ -94,7 +98,8 @@ export namespace SIP {
       // still need a try…catch for the "anything that can possibly go wrong" part,
       // the benefit would be minimal.
       const axiosResponse = await axios.request({
-        ...config,
+        // The get is guarded by the test before the try.
+        ...config.getUnsafe(),
         // We do not want to throw on 3XX redirections.
         validateStatus: (status) => status < 400,
       });
@@ -277,82 +282,80 @@ export namespace SIP {
      * @remarks
      * The timestamp must be formated as an ISO 8601 string.
      */
-    export async function payload(
+    export function payload(
       audit: Audit | Audit.JSON,
       options: Partial<Options>,
       timestamp: string
-    ): Promise<Payload> {
-      let thePage: Option<Page> = None;
+    ): Result<Payload, string> {
+      // Even though we may not need to deserialize the page, error handling
+      // get messy if done upon need.
+      return (
+        // Retrieve or deserialize the page
+        // We may waste a bit of time deserializing a page we won't need (if URL
+        // and title are provided), but this streamlines error handling.
+        (
+          Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)
+        ).map((page) => {
+          const url = options.pageURL ?? page.response.url.toString();
+          const PageUrl = typeof url === "string" ? url : url(page);
 
-      const page: Thunk<Page> = () =>
-        thePage.getOrElse(() => {
-          thePage = Option.of(
-            Page.isPage(audit.page)
-              ? audit.page
-              : Page.from(audit.page).getUnsafe(
-                  "Could not deserialize the page"
-                )
-          );
+          const title =
+            options.pageTitle ??
+            Query.getElementDescendants(page.document)
+              .filter(Element.isElement)
+              .find(Element.hasName("title"))
+              .map((title) => title.textContent())
+              .getOr(Defaults.Title);
+          const PageTitle =
+            typeof title === "string"
+              ? title
+              : title !== undefined
+              ? title(page)
+              : title;
 
-          return thePage.getUnsafe("Could not retrieve the page");
-        });
+          const commitInfo = Selective.of(options.commitInformation)
+            .if(Option.isOption<CommitInformation>, (info) => info)
+            .if(Result.isResult<CommitInformation, unknown>, (info) =>
+              info.ok()
+            )
+            .else(Option.from)
+            .get();
 
-      const url = options.pageURL ?? page().response.url.toString();
-      const PageUrl = typeof url === "string" ? url : url(page());
+          const name = options.testName ?? Defaults.Name;
+          const TestName =
+            // If the name is a string, use it, otherwise call the function on the
+            // commit info, defaulting to the default name.
+            typeof name === "string"
+              ? name
+              : name !== undefined
+              ? commitInfo.map(name).getOr(Defaults.Name)
+              : Defaults.Name;
 
-      const title =
-        options.pageTitle ??
-        Query.getElementDescendants(page().document)
-          .filter(Element.isElement)
-          .find(Element.hasName("title"))
-          .map((title) => title.textContent())
-          .getOr(Defaults.Title);
-      const PageTitle =
-        typeof title === "string"
-          ? title
-          : title !== undefined
-          ? title(page())
-          : title;
+          const result: Payload = {
+            RequestTimestamp: timestamp,
+            Version: audit.alfaVersion,
+            PageUrl,
+            PageTitle,
+            TestName,
+            ResultAggregates: (Map.isMap(audit.resultAggregates)
+              ? audit.resultAggregates.toJSON()
+              : audit.resultAggregates
+            ).map(([RuleId, data]) => ({
+              RuleId,
+              ...toCamelCase(data),
+            })),
+            Durations: toCamelCase(audit.durations),
+          };
 
-      const commitInfo = Selective.of(options.commitInformation)
-        .if(Option.isOption<CommitInformation>, (info) => info)
-        .if(Result.isResult<CommitInformation, unknown>, (info) => info.ok())
-        .else(Option.from)
-        .get();
+          commitInfo.forEach((info) => (result.CommitInformation = info));
 
-      const name = options.testName ?? Defaults.Name;
-      const TestName =
-        // If the name is a string, use it, otherwise call the function on the
-        // commit info, defaulting to the default name.
-        typeof name === "string"
-          ? name
-          : name !== undefined
-          ? commitInfo.map(name).getOr(Defaults.Name)
-          : Defaults.Name;
+          if (options.siteID !== undefined) {
+            result.SiteId = options.siteID;
+          }
 
-      const result: Payload = {
-        RequestTimestamp: timestamp,
-        Version: audit.alfaVersion,
-        PageUrl,
-        PageTitle,
-        TestName,
-        ResultAggregates: (Map.isMap(audit.resultAggregates)
-          ? audit.resultAggregates.toJSON()
-          : audit.resultAggregates
-        ).map(([RuleId, data]) => ({
-          RuleId,
-          ...toCamelCase(data),
-        })),
-        Durations: toCamelCase(audit.durations),
-      };
-
-      commitInfo.forEach((info) => (result.CommitInformation = info));
-
-      if (options.siteID !== undefined) {
-        result.SiteId = options.siteID;
-      }
-
-      return result;
+          return result;
+        })
+      );
     }
 
     /**
@@ -383,15 +386,15 @@ export namespace SIP {
     /**
      * Prepare the configuration for the axios request
      */
-    export async function axiosConfig(
+    export function axiosConfig(
       audit: Audit | Audit.JSON,
       options: Options,
       override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
-    ): Promise<AxiosRequestConfig> {
+    ): Result<AxiosRequestConfig, string> {
       const { url = Defaults.URL, timestamp = new Date().toISOString() } =
         override;
 
-      return {
+      return payload(audit, options, timestamp).map((payload) => ({
         ...params(
           url,
           // If one of them is missing, the parent upload call should already
@@ -400,8 +403,8 @@ export namespace SIP {
           `${options?.userName}:${options?.apiKey}`,
           override.httpsAgent
         ),
-        data: JSON.stringify(await payload(audit, options, timestamp)),
-      };
+        data: JSON.stringify(payload),
+      }));
     }
   }
 

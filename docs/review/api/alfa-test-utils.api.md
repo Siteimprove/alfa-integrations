@@ -222,7 +222,7 @@ export namespace SIP {
             url?: string;
             timestamp?: string;
             httpsAgent?: Agent;
-        }): Promise<AxiosRequestConfig>;
+        }): Result<AxiosRequestConfig, string>;
         // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
         //
         // (undocumented)
@@ -247,7 +247,7 @@ export namespace SIP {
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Promise<Payload>;
+        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Result<Payload, string>;
             {};
     }
     // (undocumented)
