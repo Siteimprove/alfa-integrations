@@ -26,6 +26,11 @@ export namespace SIP {
     export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     export const Title = "";
     export const Name = undefined;
+    export function missingOptions(missing: Array<string>): string {
+      return `The following mandatory option${
+        missing.length === 1 ? " is" : "s are"
+      } missing: ${missing.join(", ")}`;
+    }
   }
 
   /**
@@ -73,11 +78,7 @@ export namespace SIP {
     }
 
     if (missing.length > 0) {
-      return Err.of(
-        `The following mandatory option${
-          missing.length === 1 ? " is" : "s are"
-        } missing: ${missing.join(", ")}`
-      );
+      return Err.of(Defaults.missingOptions(missing));
     }
 
     const config = await Metadata.axiosConfig(audit, options, override);

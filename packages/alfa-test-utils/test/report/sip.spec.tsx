@@ -402,7 +402,10 @@ test(".upload returns an error on missing user name", async (t) => {
     siteID: 12345,
   });
 
-  t(actual.isErr());
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: SIP.Defaults.missingOptions(["User name"]),
+  });
 });
 
 test(".upload returns an error on missing API key", async (t) => {
@@ -413,7 +416,10 @@ test(".upload returns an error on missing API key", async (t) => {
     siteID: 12345,
   });
 
-  t(actual.isErr());
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: SIP.Defaults.missingOptions(["API key"]),
+  });
 });
 
 test(".upload returns an error on missing site ID", async (t) => {
@@ -424,5 +430,21 @@ test(".upload returns an error on missing site ID", async (t) => {
     apiKey: "bar",
   });
 
-  t(actual.isErr());
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: SIP.Defaults.missingOptions(["Site ID"]),
+  });
+});
+
+test(".upload lists all missing options", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(makeAudit({ page }), {
+    apiKey: "bar",
+  });
+
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: SIP.Defaults.missingOptions(["User name", "Site ID"]),
+  });
 });

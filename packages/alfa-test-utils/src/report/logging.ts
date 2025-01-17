@@ -134,6 +134,12 @@ export namespace Logging {
   /**
    * @internal
    */
+  export const errorTitle =
+    "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:";
+
+  /**
+   * @internal
+   */
   export function fromAggregate(
     aggregate: Array<[string, { failed: number }]>,
     pageTitle?: string,
@@ -145,12 +151,7 @@ export namespace Logging {
 
       // Show any error during upload: missing or invalid credentials, etc.
       ...(Err.isErr<string>(pageReportUrl)
-        ? [
-            Logging.of(
-              "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:",
-              [Logging.of(pageReportUrl.getErr(), "warn")]
-            ),
-          ]
+        ? [Logging.of(errorTitle, [Logging.of(pageReportUrl.getErr(), "warn")])]
         : []),
 
       // "This page contains X issues: URL" (if URL)
