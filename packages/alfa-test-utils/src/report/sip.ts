@@ -23,8 +23,7 @@ import type { CommitInformation } from "./commit-information.js";
 export namespace SIP {
   /** @internal */
   export namespace Defaults {
-    export const URL =
-      "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
+    export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     export const Title = "";
     export const Name = undefined;
   }
@@ -159,7 +158,7 @@ export namespace SIP {
     /**
      * The site ID in the Siteimprove Intelligence Platform.
      */
-    siteID?: string;
+    siteID?: number;
 
     /**
      * The URL of the page, or a function to build it from the audited page.
@@ -199,7 +198,6 @@ export namespace SIP {
    */
   export namespace Metadata {
     // We need to capitalize names for the API calls.
-    type RuleDurations = { [K in CamelCase<Performance.DurationKey>]: number };
     type CommonDurations = { [K in CamelCase<Performance.CommonKeys>]: number };
 
     /** @internal */
@@ -217,7 +215,7 @@ export namespace SIP {
       /**
        * The site ID to which the page belongs in the Siteimprove Intelligence Platform.
        */
-      SiteId?: string;
+      SiteId?: number;
 
       /**
        * Information about the latest git commit
@@ -259,7 +257,6 @@ export namespace SIP {
         Failed: number;
         Passed: number;
         CantTell: number;
-        Durations: RuleDurations;
       }>;
 
       /**
@@ -340,9 +337,8 @@ export namespace SIP {
         ).map(([RuleId, data]) => ({
           RuleId,
           ...toCamelCase(data),
-          Durations: toCamelCase(audit.durations.rules[RuleId]),
         })),
-        Durations: toCamelCase(audit.durations.common),
+        Durations: toCamelCase(audit.durations),
       };
 
       commitInfo.forEach((info) => (result.CommitInformation = info));
