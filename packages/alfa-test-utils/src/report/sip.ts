@@ -1,11 +1,10 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
-import { None, Option } from "@siteimprove/alfa-option";
+import { Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import { Result } from "@siteimprove/alfa-result";
 import { Selective } from "@siteimprove/alfa-selective";
-import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
@@ -46,7 +45,7 @@ export namespace SIP {
   export async function upload(
     audit: Audit | Audit.JSON,
     options: Options
-  ): Promise<Result<string, string>>;
+  ): Promise<Result<string, Array<string>>>;
 
   /**
    * Internal overload for tests, allowing
@@ -60,13 +59,13 @@ export namespace SIP {
     audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
-  ): Promise<Result<string, string>>;
+  ): Promise<Result<string, Array<string>>>;
 
   export async function upload(
     audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
-  ): Promise<Result<string, string>> {
+  ): Promise<Result<string, Array<string>>> {
     const missing: Array<string> = [];
 
     if (options.userName === undefined) {
@@ -82,13 +81,13 @@ export namespace SIP {
     }
 
     if (missing.length > 0) {
-      return Err.of(Defaults.missingOptions(missing));
+      return Err.of([Defaults.missingOptions(missing)]);
     }
 
     const config = Metadata.axiosConfig(audit, options, override);
 
     if (config.isErr()) {
-      return config;
+      return config.mapErr((error) => [error]);
     }
 
     try {
@@ -118,37 +117,43 @@ export namespace SIP {
     }
   }
 
-  function inspectAxiosError(error: any): Result<string, string> {
+  function inspectAxiosError(error: any): Err<Array<string>> {
     if ((error.response ?? undefined) !== undefined) {
       const { status } = error.response;
 
       if (status === 401) {
         // 401 are handled by the generic server, and we don't get custom error message
-        return Err.of(Defaults.badCredentials);
+        return Err.of([Defaults.badCredentials]);
       }
 
       if (status >= 400 && status < 500) {
         // This is a client error, we can get our custom error message
         return Err.of(
-          `Bad request (${status}): ${error.response.data.details[0].issue}`
+          Array.filter(
+            Array.map(
+              error.response?.data?.details ?? [],
+              (detail: { issue?: string }) => detail?.issue
+            ),
+            (issue) => issue !== undefined
+          )
         );
       }
 
       if (status >= 500) {
         // This is a server error, we probably don't have a custom message,
         // but hopefully axios did the work for us.
-        return Err.of(`Server error (${status}): ${error.message}`);
+        return Err.of([`Server error (${status}): ${error.message}`]);
       }
     }
 
     if (error instanceof AxiosError && error.message !== undefined) {
       // This is another axios error, we hope they provide meaningful messages.
-      return Err.of(`${error.message}`);
+      return Err.of([`${error.message}`]);
     }
 
     // This is something else. It should really not happen since only axios
     // should have thrown something.
-    return Err.of(`Unexpected error: ${error}`);
+    return Err.of([`Unexpected error: ${error}`]);
   }
 
   /**

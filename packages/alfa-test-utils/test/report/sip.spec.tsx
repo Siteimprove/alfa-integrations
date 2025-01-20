@@ -458,7 +458,7 @@ test(".upload returns an error on missing user name", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: SIP.Defaults.missingOptions(["User name"]),
+    error: [SIP.Defaults.missingOptions(["User name"])],
   });
 });
 
@@ -472,7 +472,7 @@ test(".upload returns an error on missing API key", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: SIP.Defaults.missingOptions(["API key"]),
+    error: [SIP.Defaults.missingOptions(["API key"])],
   });
 });
 
@@ -486,7 +486,7 @@ test(".upload returns an error on missing site ID", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: SIP.Defaults.missingOptions(["Site ID"]),
+    error: [SIP.Defaults.missingOptions(["Site ID"])],
   });
 });
 
@@ -499,7 +499,7 @@ test(".upload lists all missing options", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: SIP.Defaults.missingOptions(["User name", "Site ID"]),
+    error: [SIP.Defaults.missingOptions(["User name", "Site ID"])],
   });
 });
 
@@ -561,7 +561,7 @@ test(".upload returns standard error message in case of 401 Unauthorized", async
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: SIP.Defaults.badCredentials,
+    error: [SIP.Defaults.badCredentials],
   });
 });
 
@@ -580,7 +580,7 @@ test(".upload returns custom error message in case of 4XX", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: `Bad request (${siteIssueStatus}): ${siteIdIssue}`,
+    error: [siteIdIssue],
   });
 });
 
@@ -599,6 +599,6 @@ test(".upload returns Axios error message in case of 5XX", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: "Server error (503): Request failed with status code 503",
+    error: ["Server error (503): Request failed with status code 503"],
   });
 });

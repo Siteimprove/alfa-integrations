@@ -94,7 +94,7 @@ test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
   const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
-    Err.of("foo")
+    Err.of(["foo"])
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -107,7 +107,7 @@ test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
         logs: [],
       },
       {
-        title: Logging.errorTitle,
+        title: Logging.errorTitle(1),
         severity: "log",
         logs: [{ title: "foo", severity: "warn", logs: [] }],
       },
@@ -247,7 +247,7 @@ test(".fromAudit() creates a Logging without page report URL", (t) => {
 });
 
 test(".fromAudit() creates a Logging from errored page report URL", (t) => {
-  const actual = Logging.fromAudit(audit, Err.of("foo"));
+  const actual = Logging.fromAudit(audit, Err.of(["foo"]));
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
@@ -259,7 +259,7 @@ test(".fromAudit() creates a Logging from errored page report URL", (t) => {
         logs: [],
       },
       {
-        title: Logging.errorTitle,
+        title: Logging.errorTitle(1),
         severity: "log",
         logs: [{ title: "foo", severity: "warn", logs: [] }],
       },

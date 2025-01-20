@@ -133,17 +133,17 @@ export namespace Logging {
         Title = "Untitled";
     }
     // @internal (undocumented)
+    export function errorTitle(n: number): string;
+    // @internal (undocumented)
     export function fromAggregate(aggregate: Array_2<[string, {
         failed: number;
-    }]>, pageTitle?: string, pageReportUrl?: Result<string, string> | string): Logging;
+    }]>, pageTitle?: string, pageReportUrl?: Result<string, Array_2<string>> | string): Logging;
     // (undocumented)
-    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, string> | string, options?: Options): Logging;
+    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, Array_2<string>> | string, options?: Options): Logging;
     // (undocumented)
     export function isLogging(value: unknown): value is Logging;
     // @internal (undocumented)
     export function issueUrl(baseUrl: string, ruleId: string): string;
-    const // @internal (undocumented)
-    errorTitle = "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:";
     // (undocumented)
     export interface JSON {
         // (undocumented)
@@ -278,13 +278,13 @@ export namespace SIP {
         export function payload(Id: string, audit: Audit | Audit.JSON): Payload;
             {};
     }
-    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, string>>;
+    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, Array_2<string>>>;
     // @internal
     export function upload(audit: Audit | Audit.JSON, options: Options, override: {
         url?: string;
         timestamp?: string;
         httpsAgent?: Agent;
-    }): Promise<Result<string, string>>;
+    }): Promise<Result<string, Array_2<string>>>;
 }
 
 // (No @packageDocumentation comment for this package)

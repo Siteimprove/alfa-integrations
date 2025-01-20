@@ -6,7 +6,6 @@ import { Iterable } from "@siteimprove/alfa-iterable";
 import * as json from "@siteimprove/alfa-json";
 import { Err, Ok, Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
 import chalk from "chalk";
@@ -136,8 +135,13 @@ export namespace Logging {
   /**
    * @internal
    */
-  export const errorTitle =
-    "The following problem was encountered while uploading results to the Siteimprove Intelligence Platform:";
+  export function errorTitle(n: number): string {
+    return (
+      "The following problem" +
+      (n === 1 ? " was " : "s were ") +
+      "encountered while uploading results to the Siteimprove Intelligence Platform:"
+    );
+  }
 
   /**
    * @internal
@@ -145,15 +149,20 @@ export namespace Logging {
   export function fromAggregate(
     aggregate: Array<[string, { failed: number }]>,
     pageTitle?: string,
-    pageReportUrl?: Result<string, string> | string
+    pageReportUrl?: Result<string, Array<string>> | string
   ): Logging {
     return Logging.of("Siteimprove found accessibility issues:", [
       // Show the page title
       Logging.of(chalk.bold(`Page - ${pageTitle ?? Defaults.Title}`)),
 
       // Show any error during upload: missing or invalid credentials, etc.
-      ...(Err.isErr<string>(pageReportUrl)
-        ? [Logging.of(errorTitle, [Logging.of(pageReportUrl.getErr(), "warn")])]
+      ...(Err.isErr<Array<string>>(pageReportUrl)
+        ? [
+            Logging.of(
+              errorTitle(pageReportUrl.getErr().length),
+              pageReportUrl.getErr().map((error) => Logging.of(error, "warn"))
+            ),
+          ]
         : []),
 
       // "This page contains X issues: URL" (if URL)
@@ -182,7 +191,7 @@ export namespace Logging {
 
   export function fromAudit(
     audit: Audit | Audit.JSON,
-    pageReportUrl?: Result<string, string> | string,
+    pageReportUrl?: Result<string, Array<string>> | string,
     options?: Options
   ): Logging {
     // Retrieve or deserialize the page
