@@ -7,6 +7,7 @@ import { test } from "@siteimprove/alfa-test-deprecated";
 import chalk from "chalk";
 import { getRuleTitle } from "../../dist/report/get-rule-title.js";
 
+import type { Audit } from "../../dist/audit/audit.js";
 import { Logging } from "../../dist/report/logging.js";
 
 import {
@@ -15,6 +16,7 @@ import {
   makePage,
   makePassed,
   makeRule,
+  timestamp,
 } from "../fixtures.js";
 
 const target = <span>Hello World</span>;
@@ -355,4 +357,19 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
       },
     ],
   });
+});
+
+test(".fromAudit() returns an error on invalid page", async (t) => {
+  const goodAudit = makeAudit().toJSON();
+  const badAudit: Audit.JSON = {
+    ...goodAudit,
+    page: {
+      ...goodAudit.page,
+      request: { ...goodAudit.page.request, url: "not an url" },
+    },
+  };
+
+  const actual = Logging.fromAudit(badAudit);
+
+  t.deepEqual(actual.toJSON(), { title: "Could not deserialize the page: Invalid URL", logs: [] });
 });

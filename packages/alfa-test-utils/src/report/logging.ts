@@ -4,7 +4,7 @@ import { Equatable } from "@siteimprove/alfa-equatable";
 import { Iterable } from "@siteimprove/alfa-iterable";
 
 import * as json from "@siteimprove/alfa-json";
-import { Err, Result } from "@siteimprove/alfa-result";
+import { Err, Ok, Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
@@ -159,7 +159,7 @@ export namespace Logging {
       Logging.of(
         `This page contains ${aggregate.length} issues${
           Result.isOk(pageReportUrl)
-            ? ": " + chalk.underline(pageReportUrl.getUnsafe())
+            ? ": " + chalk.underline(pageReportUrl.get())
             : "."
         }`,
         aggregate.map(([ruleId, { failed }], index) =>
@@ -183,35 +183,47 @@ export namespace Logging {
     pageReportUrl?: Result<string, string> | string,
     options?: Options
   ): Logging {
-    const page: Thunk<Page> = () =>
-      Page.isPage(audit.page)
-        ? audit.page
-        : Page.from(audit.page).getUnsafe("Could not deserialize the page");
-    const title =
-      options?.pageTitle ??
-      Query.getElementDescendants(page().document)
-        .filter(Element.isElement)
-        .find(Element.hasName("title"))
-        .map((title) => title.textContent())
-        .getOr(Defaults.Title);
-    const pageTitle =
-      typeof title === "string"
-        ? title
-        : title !== undefined
-        ? title(page())
-        : title;
+    const logs = (
+      Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)
+    ).map(
+      // Retrieve or deserialize the page
+      // We may waste a bit of time deserializing a page we won't need (if URL
+      // and title are provided), but this streamlines error handling.
+      (page) => {
+        const title =
+          options?.pageTitle ??
+          Query.getElementDescendants(page.document)
+            .filter(Element.isElement)
+            .find(Element.hasName("title"))
+            .map((title) => title.textContent())
+            .getOr(Defaults.Title);
+        const pageTitle =
+          typeof title === "string"
+            ? title
+            : title !== undefined
+            ? title(page)
+            : title;
 
-    const filteredAggregates = Array.sortWith(
-      (Audit.isAudit(audit)
-        ? audit.resultAggregates.toArray()
-        : audit.resultAggregates
-      ).filter(([_, { failed }]) => failed > 0),
-      ([uria], [urib]) => uria.localeCompare(urib)
-    ).map(([url, aggregate]): [string, { failed: number }] => [
-      url.split("/").pop() ?? "",
-      aggregate,
-    ]);
-    return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
+        const filteredAggregates = Array.sortWith(
+          (Audit.isAudit(audit)
+            ? audit.resultAggregates.toArray()
+            : audit.resultAggregates
+          ).filter(([_, { failed }]) => failed > 0),
+          ([uria], [urib]) => uria.localeCompare(urib)
+        ).map(([url, aggregate]): [string, { failed: number }] => [
+          url.split("/").pop() ?? "",
+          aggregate,
+        ]);
+        return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
+      }
+    );
+
+    return logs.getOrElse(() =>
+      Logging.of(
+        `Could not deserialize the page: ${logs.getErrUnsafe()}`,
+        "error"
+      )
+    );
   }
 
   /**
