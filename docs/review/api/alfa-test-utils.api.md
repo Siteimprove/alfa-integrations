@@ -151,6 +151,8 @@ export namespace Logging {
         // (undocumented)
         logs: Sequence.JSON<JSON>;
         // (undocumented)
+        severity: Severity;
+        // (undocumented)
         title: string;
     }
     // (undocumented)
