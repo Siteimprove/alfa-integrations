@@ -63,13 +63,27 @@ test(".fromAggregate() creates a Logging without page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -85,14 +99,32 @@ test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
-      { title: Logging.errorTitle, logs: [{ title: "foo", logs: [] }] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
+      {
+        title: Logging.errorTitle,
+        severity: "log",
+        logs: [{ title: "foo", severity: "warn", logs: [] }],
+      },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -109,31 +141,41 @@ test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
       {
         title: `This page contains 2 issues: ${chalk.underline(url)}`,
+        severity: "log",
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
           },
           {
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
@@ -149,13 +191,23 @@ test(".fromAggregate() overrides page title", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - foo`), logs: [] },
+      { title: chalk.bold(`Page - foo`), severity: "log", logs: [] },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -167,13 +219,27 @@ test(".fromAudit() creates a Logging without page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -185,14 +251,32 @@ test(".fromAudit() creates a Logging from errored page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
-      { title: Logging.errorTitle, logs: [{ title: "foo", logs: [] }] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
+      {
+        title: Logging.errorTitle,
+        severity: "log",
+        logs: [{ title: "foo", severity: "warn", logs: [] }],
+      },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -205,31 +289,41 @@ test(".fromAudit() creates a Logging from correct page report URL", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
       {
         title: `This page contains 2 issues: ${chalk.underline(url)}`,
+        severity: "log",
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
           },
           {
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
@@ -245,13 +339,23 @@ test(".fromAudit() overrides title with a string", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - foo`), logs: [] },
+      { title: chalk.bold(`Page - foo`), severity: "log", logs: [] },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -266,13 +370,23 @@ test(".fromAudit() overrides title with a function", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - Hello World`), logs: [] },
+      { title: chalk.bold(`Page - Hello World`), severity: "log", logs: [] },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -305,13 +419,23 @@ test(".fromAudit() Uses the page title as default", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - Hello`), logs: [] },
+      { title: chalk.bold(`Page - Hello`), severity: "log", logs: [] },
       {
         title: "This page contains 2 issues.",
+        severity: "log",
         logs: [
-          { title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`, logs: [] },
-          { title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`, logs: [] },
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
         ],
       },
     ],
@@ -324,31 +448,41 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
 
   t.deepEqual(actual.toJSON(), {
     title: "Siteimprove found accessibility issues:",
+    severity: "log",
     logs: [
-      { title: chalk.bold(`Page - ${Logging.Defaults.Title}`), logs: [] },
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
       {
         title: `This page contains 2 issues: ${chalk.underline(url)}`,
+        severity: "log",
         logs: [
           {
             title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r1"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
           },
           {
             title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
             logs: [
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
                   "sia-r2"
                 )}`,
+                severity: "log",
                 logs: [],
               },
             ],
@@ -371,5 +505,9 @@ test(".fromAudit() returns an error on invalid page", async (t) => {
 
   const actual = Logging.fromAudit(badAudit);
 
-  t.deepEqual(actual.toJSON(), { title: "Could not deserialize the page: Invalid URL", logs: [] });
+  t.deepEqual(actual.toJSON(), {
+    title: "Could not deserialize the page: Invalid URL",
+    severity: "error",
+    logs: [],
+  });
 });

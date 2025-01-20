@@ -87,6 +87,7 @@ export class Logging<S extends Logging.Severity = Logging.Severity>
   public toJSON(): Logging.JSON {
     return {
       title: this._title,
+      severity: this._severity,
       logs: this._logs.toJSON(),
     };
   }
@@ -99,6 +100,7 @@ export namespace Logging {
   export interface JSON {
     [name: string]: json.JSON;
     title: string;
+    severity: Severity;
     logs: Sequence.JSON<JSON>;
   }
 
@@ -183,12 +185,11 @@ export namespace Logging {
     pageReportUrl?: Result<string, string> | string,
     options?: Options
   ): Logging {
-    const logs = (
-      Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)
-    ).map(
-      // Retrieve or deserialize the page
-      // We may waste a bit of time deserializing a page we won't need (if URL
-      // and title are provided), but this streamlines error handling.
+    const logs = // Retrieve or deserialize the page
+    // We may waste a bit of time deserializing a page we won't need (if URL
+    // and title are provided), but this streamlines error handling.
+
+    (Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)).map(
       (page) => {
         const title =
           options?.pageTitle ??
