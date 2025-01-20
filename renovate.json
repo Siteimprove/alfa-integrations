@@ -1,14 +1,6 @@
 {
   "$schema": "https://docs.renovatebot.com/renovate-schema.json",
   "extends": ["config:base", "github>siteimprove/alfa//config/alfa-renovate"],
-  "npmrc": "@siteimprove:registry=https://npm.pkg.github.com/",
-  "hostRules": [
-    {
-      "hostType": "npm",
-      "matchHost": "https://npm.pkg.github.com/",
-      "token": "{{ secrets.RENOVATE_TOKEN }}"
-    }
-  ],
   "packageRules": [
     {
       "description": [
