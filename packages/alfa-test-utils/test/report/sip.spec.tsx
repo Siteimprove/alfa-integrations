@@ -520,16 +520,14 @@ mock.onPut("a S3 URL").reply(200);
 
 // Mock for a 401, 4XX, 5XX errors, we need to override the upload URL to trigger them
 mock.onPost("https://401.com").reply(401);
-// These are set in the upload endpoint
-const siteIssueStatus = 400;
-const siteIdIssue =
-  "SiteId provided is invalid or doesn't belong to the account";
-mock.onPost("https://4XX.com").reply(siteIssueStatus, {
+mock.onPost("https://4XX.com").reply(400, {
+  details: [{ field: "ignored", issue: "foo" }],
+});
+mock.onPost("https://4XXbis.com").reply(400, {
   details: [
-    {
-      field: "SiteId",
-      issue: siteIdIssue,
-    },
+    { field: "ignored", issue: "foo" },
+    { field: "ignored", issue: "bar" },
+    { field: "ignored", issue: "baz" },
   ],
 });
 mock.onPost("https://5XX.com").reply(503, { message: "foo" });
@@ -580,7 +578,26 @@ test(".upload returns custom error message in case of 4XX", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: [siteIdIssue],
+    error: ["foo"],
+  });
+});
+
+test(".upload returns all error messages in case of 4XX", async (t) => {
+  const page = makePage(h.document([<span></span>]));
+
+  const actual = await SIP.upload(
+    makeAudit({ page }),
+    {
+      userName: "foo@foo.com",
+      apiKey: "bar",
+      siteID: 12345,
+    },
+    { url: "https://4XXbis.com" }
+  );
+
+  t.deepEqual(actual.toJSON(), {
+    type: "err",
+    error: ["foo", "bar", "baz"],
   });
 });
 

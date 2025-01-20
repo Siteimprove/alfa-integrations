@@ -56,7 +56,9 @@ const filteredAggregates: Array<[string, { failed: number }]> = [
 // console.log("---------------------- (no URL)");
 // Logging.fromAudit(audit).print();
 // console.log("---------------------- (errored URL)");
-// Logging.fromAudit(audit, Err.of("foo")).print();
+// Logging.fromAudit(audit, Err.of(["foo"])).print();
+// console.log("---------------------- (multi-errored URL)");
+// Logging.fromAudit(audit, Err.of(["foo", "bar", "baz"])).print();
 
 test(".fromAggregate() creates a Logging without page report URL", (t) => {
   const actual = Logging.fromAggregate(filteredAggregates);
@@ -110,6 +112,51 @@ test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
         title: Logging.errorTitle(1),
         severity: "log",
         logs: [{ title: "foo", severity: "warn", logs: [] }],
+      },
+      {
+        title: "This page contains 2 issues.",
+        severity: "log",
+        logs: [
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
+        ],
+      },
+    ],
+  });
+});
+
+test(".fromAggregate() shows all errors from errored page report URL", (t) => {
+  const actual = Logging.fromAggregate(
+    filteredAggregates,
+    undefined,
+    Err.of(["foo", "bar", "baz"])
+  );
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    severity: "log",
+    logs: [
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
+      {
+        title: Logging.errorTitle(3),
+        severity: "log",
+        logs: [
+          { title: "foo", severity: "warn", logs: [] },
+          { title: "bar", severity: "warn", logs: [] },
+          { title: "baz", severity: "warn", logs: [] },
+        ],
       },
       {
         title: "This page contains 2 issues.",
@@ -262,6 +309,47 @@ test(".fromAudit() creates a Logging from errored page report URL", (t) => {
         title: Logging.errorTitle(1),
         severity: "log",
         logs: [{ title: "foo", severity: "warn", logs: [] }],
+      },
+      {
+        title: "This page contains 2 issues.",
+        severity: "log",
+        logs: [
+          {
+            title: `1. ${getRuleTitle("sia-r1")} (3 occurrences)`,
+            severity: "log",
+            logs: [],
+          },
+          {
+            title: `2. ${getRuleTitle("sia-r2")} (1 occurrence)`,
+            severity: "log",
+            logs: [],
+          },
+        ],
+      },
+    ],
+  });
+});
+
+test(".fromAudit() shows all errors from errored page report URL", (t) => {
+  const actual = Logging.fromAudit(audit, Err.of(["foo", "bar", "baz"]));
+
+  t.deepEqual(actual.toJSON(), {
+    title: "Siteimprove found accessibility issues:",
+    severity: "log",
+    logs: [
+      {
+        title: chalk.bold(`Page - ${Logging.Defaults.Title}`),
+        severity: "log",
+        logs: [],
+      },
+      {
+        title: Logging.errorTitle(3),
+        severity: "log",
+        logs: [
+          { title: "foo", severity: "warn", logs: [] },
+          { title: "bar", severity: "warn", logs: [] },
+          { title: "baz", severity: "warn", logs: [] },
+        ],
       },
       {
         title: "This page contains 2 issues.",
