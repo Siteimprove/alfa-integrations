@@ -185,39 +185,38 @@ export namespace Logging {
     pageReportUrl?: Result<string, string> | string,
     options?: Options
   ): Logging {
-    const logs = // Retrieve or deserialize the page
+    // Retrieve or deserialize the page
     // We may waste a bit of time deserializing a page we won't need (if URL
     // and title are provided), but this streamlines error handling.
+    const logs = (
+      Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)
+    ).map((page) => {
+      const title =
+        options?.pageTitle ??
+        Query.getElementDescendants(page.document)
+          .filter(Element.isElement)
+          .find(Element.hasName("title"))
+          .map((title) => title.textContent())
+          .getOr(Defaults.Title);
+      const pageTitle =
+        typeof title === "string"
+          ? title
+          : title !== undefined
+          ? title(page)
+          : title;
 
-    (Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)).map(
-      (page) => {
-        const title =
-          options?.pageTitle ??
-          Query.getElementDescendants(page.document)
-            .filter(Element.isElement)
-            .find(Element.hasName("title"))
-            .map((title) => title.textContent())
-            .getOr(Defaults.Title);
-        const pageTitle =
-          typeof title === "string"
-            ? title
-            : title !== undefined
-            ? title(page)
-            : title;
-
-        const filteredAggregates = Array.sortWith(
-          (Audit.isAudit(audit)
-            ? audit.resultAggregates.toArray()
-            : audit.resultAggregates
-          ).filter(([_, { failed }]) => failed > 0),
-          ([uria], [urib]) => uria.localeCompare(urib)
-        ).map(([url, aggregate]): [string, { failed: number }] => [
-          url.split("/").pop() ?? "",
-          aggregate,
-        ]);
-        return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
-      }
-    );
+      const filteredAggregates = Array.sortWith(
+        (Audit.isAudit(audit)
+          ? audit.resultAggregates.toArray()
+          : audit.resultAggregates
+        ).filter(([_, { failed }]) => failed > 0),
+        ([uria], [urib]) => uria.localeCompare(urib)
+      ).map(([url, aggregate]): [string, { failed: number }] => [
+        url.split("/").pop() ?? "",
+        aggregate,
+      ]);
+      return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
+    });
 
     return logs.getOrElse(() =>
       Logging.of(
