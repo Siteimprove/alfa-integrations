@@ -1,15 +1,14 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Element, Query } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
-import { None, Option } from "@siteimprove/alfa-option";
+import { Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import { Result } from "@siteimprove/alfa-result";
 import { Selective } from "@siteimprove/alfa-selective";
-import type { Thunk } from "@siteimprove/alfa-thunk";
 import { Page } from "@siteimprove/alfa-web";
 
 import type { AxiosRequestConfig } from "axios";
-import axios from "axios";
+import axios, { AxiosError } from "axios";
 import type { Agent as HttpsAgent } from "https";
 
 import { Audit, type Performance } from "../audit/index.js";
@@ -26,6 +25,15 @@ export namespace SIP {
     export const URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
     export const Title = "";
     export const Name = undefined;
+
+    export function missingOptions(missing: Array<string>): string {
+      return `The following mandatory option${
+        missing.length === 1 ? " is" : "s are"
+      } missing: ${missing.join(", ")}`;
+    }
+
+    export const badCredentials =
+      "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
   }
 
   /**
@@ -37,7 +45,7 @@ export namespace SIP {
   export async function upload(
     audit: Audit | Audit.JSON,
     options: Options
-  ): Promise<Result<string, string>>;
+  ): Promise<Result<string, Array<string>>>;
 
   /**
    * Internal overload for tests, allowing
@@ -51,13 +59,13 @@ export namespace SIP {
     audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
-  ): Promise<Result<string, string>>;
+  ): Promise<Result<string, Array<string>>>;
 
   export async function upload(
     audit: Audit | Audit.JSON,
     options: Options,
     override: { url?: string; timestamp?: string; HttpsAgent?: HttpsAgent } = {}
-  ): Promise<Result<string, string>> {
+  ): Promise<Result<string, Array<string>>> {
     const missing: Array<string> = [];
 
     if (options.userName === undefined) {
@@ -73,27 +81,79 @@ export namespace SIP {
     }
 
     if (missing.length > 0) {
-      return Err.of(
-        `The following mandatory option${
-          missing.length === 1 ? " is" : "s are"
-        } missing: ${missing.join(", ")}`
-      );
+      return Err.of([Defaults.missingOptions(missing)]);
     }
 
-    const config = await Metadata.axiosConfig(audit, options, override);
+    const config = Metadata.axiosConfig(audit, options, override);
+
+    if (config.isErr()) {
+      return config.mapErr((error) => [error]);
+    }
 
     try {
-      const axiosResponse = await axios.request(config);
+      // The request fail on 4XX and 5XX responses, plus anything that can possibly
+      // go wrong with axios.
+      // We could accept all and handle the errors directly, but since we would
+      // still need a try…catch for the "anything that can possibly go wrong" part,
+      // the benefit would be minimal.
+      const axiosResponse = await axios.request({
+        // The get is guarded by the test before the try.
+        ...config.getUnsafe(),
+        // We do not want to throw on 3XX redirections.
+        validateStatus: (status) => status < 400,
+      });
+
       const { pageReportUrl, preSignedUrl, id } = axiosResponse.data;
 
-      await axios.request(S3.axiosConfig(id, preSignedUrl, audit));
+      await axios.request({
+        ...S3.axiosConfig(id, preSignedUrl, audit),
+        // We do not want to throw on 3XX redirections.
+        validateStatus: (status) => status < 400,
+      });
 
       return Ok.of(pageReportUrl);
     } catch (error) {
-      console.error(error);
+      return inspectAxiosError(error);
+    }
+  }
+
+  function inspectAxiosError(error: any): Err<Array<string>> {
+    if ((error.response ?? undefined) !== undefined) {
+      const { status } = error.response;
+
+      if (status === 401) {
+        // 401 are handled by the generic server, and we don't get custom error message
+        return Err.of([Defaults.badCredentials]);
+      }
+
+      if (status >= 400 && status < 500) {
+        // This is a client error, we can get our custom error message
+        return Err.of(
+          Array.filter(
+            Array.map(
+              error.response?.data?.details ?? [],
+              (detail: { issue?: string }) => detail?.issue
+            ),
+            (issue) => issue !== undefined
+          )
+        );
+      }
+
+      if (status >= 500) {
+        // This is a server error, we probably don't have a custom message,
+        // but hopefully axios did the work for us.
+        return Err.of([`Server error (${status}): ${error.message}`]);
+      }
     }
 
-    return Err.of("Could not retrieve a page report URL");
+    if (error instanceof AxiosError && error.message !== undefined) {
+      // This is another axios error, we hope they provide meaningful messages.
+      return Err.of([`${error.message}`]);
+    }
+
+    // This is something else. It should really not happen since only axios
+    // should have thrown something.
+    return Err.of([`Unexpected error: ${error}`]);
   }
 
   /**
@@ -227,82 +287,80 @@ export namespace SIP {
      * @remarks
      * The timestamp must be formated as an ISO 8601 string.
      */
-    export async function payload(
+    export function payload(
       audit: Audit | Audit.JSON,
       options: Partial<Options>,
       timestamp: string
-    ): Promise<Payload> {
-      let thePage: Option<Page> = None;
+    ): Result<Payload, string> {
+      // Even though we may not need to deserialize the page, error handling
+      // get messy if done upon need.
+      return (
+        // Retrieve or deserialize the page
+        // We may waste a bit of time deserializing a page we won't need (if URL
+        // and title are provided), but this streamlines error handling.
+        (
+          Page.isPage(audit.page) ? Ok.of(audit.page) : Page.from(audit.page)
+        ).map((page) => {
+          const url = options.pageURL ?? page.response.url.toString();
+          const PageUrl = typeof url === "string" ? url : url(page);
 
-      const page: Thunk<Page> = () =>
-        thePage.getOrElse(() => {
-          thePage = Option.of(
-            Page.isPage(audit.page)
-              ? audit.page
-              : Page.from(audit.page).getUnsafe(
-                  "Could not deserialize the page"
-                )
-          );
+          const title =
+            options.pageTitle ??
+            Query.getElementDescendants(page.document)
+              .filter(Element.isElement)
+              .find(Element.hasName("title"))
+              .map((title) => title.textContent())
+              .getOr(Defaults.Title);
+          const PageTitle =
+            typeof title === "string"
+              ? title
+              : title !== undefined
+              ? title(page)
+              : title;
 
-          return thePage.getUnsafe("Could not retrieve the page");
-        });
+          const commitInfo = Selective.of(options.commitInformation)
+            .if(Option.isOption<CommitInformation>, (info) => info)
+            .if(Result.isResult<CommitInformation, unknown>, (info) =>
+              info.ok()
+            )
+            .else(Option.from)
+            .get();
 
-      const url = options.pageURL ?? page().response.url.toString();
-      const PageUrl = typeof url === "string" ? url : url(page());
+          const name = options.testName ?? Defaults.Name;
+          const TestName =
+            // If the name is a string, use it, otherwise call the function on the
+            // commit info, defaulting to the default name.
+            typeof name === "string"
+              ? name
+              : name !== undefined
+              ? commitInfo.map(name).getOr(Defaults.Name)
+              : Defaults.Name;
 
-      const title =
-        options.pageTitle ??
-        Query.getElementDescendants(page().document)
-          .filter(Element.isElement)
-          .find(Element.hasName("title"))
-          .map((title) => title.textContent())
-          .getOr(Defaults.Title);
-      const PageTitle =
-        typeof title === "string"
-          ? title
-          : title !== undefined
-          ? title(page())
-          : title;
+          const result: Payload = {
+            RequestTimestamp: timestamp,
+            Version: audit.alfaVersion,
+            PageUrl,
+            PageTitle,
+            TestName,
+            ResultAggregates: (Map.isMap(audit.resultAggregates)
+              ? audit.resultAggregates.toJSON()
+              : audit.resultAggregates
+            ).map(([RuleId, data]) => ({
+              RuleId,
+              ...toCamelCase(data),
+            })),
+            Durations: toCamelCase(audit.durations),
+          };
 
-      const commitInfo = Selective.of(options.commitInformation)
-        .if(Option.isOption<CommitInformation>, (info) => info)
-        .if(Result.isResult<CommitInformation, unknown>, (info) => info.ok())
-        .else(Option.from)
-        .get();
+          commitInfo.forEach((info) => (result.CommitInformation = info));
 
-      const name = options.testName ?? Defaults.Name;
-      const TestName =
-        // If the name is a string, use it, otherwise call the function on the
-        // commit info, defaulting to the default name.
-        typeof name === "string"
-          ? name
-          : name !== undefined
-          ? commitInfo.map(name).getOr(Defaults.Name)
-          : Defaults.Name;
+          if (options.siteID !== undefined) {
+            result.SiteId = options.siteID;
+          }
 
-      const result: Payload = {
-        RequestTimestamp: timestamp,
-        Version: audit.alfaVersion,
-        PageUrl,
-        PageTitle,
-        TestName,
-        ResultAggregates: (Map.isMap(audit.resultAggregates)
-          ? audit.resultAggregates.toJSON()
-          : audit.resultAggregates
-        ).map(([RuleId, data]) => ({
-          RuleId,
-          ...toCamelCase(data),
-        })),
-        Durations: toCamelCase(audit.durations),
-      };
-
-      commitInfo.forEach((info) => (result.CommitInformation = info));
-
-      if (options.siteID !== undefined) {
-        result.SiteId = options.siteID;
-      }
-
-      return result;
+          return result;
+        })
+      );
     }
 
     /**
@@ -333,15 +391,15 @@ export namespace SIP {
     /**
      * Prepare the configuration for the axios request
      */
-    export async function axiosConfig(
+    export function axiosConfig(
       audit: Audit | Audit.JSON,
       options: Options,
       override: { url?: string; timestamp?: string; httpsAgent?: HttpsAgent }
-    ): Promise<AxiosRequestConfig> {
+    ): Result<AxiosRequestConfig, string> {
       const { url = Defaults.URL, timestamp = new Date().toISOString() } =
         override;
 
-      return {
+      return payload(audit, options, timestamp).map((payload) => ({
         ...params(
           url,
           // If one of them is missing, the parent upload call should already
@@ -350,8 +408,8 @@ export namespace SIP {
           `${options?.userName}:${options?.apiKey}`,
           override.httpsAgent
         ),
-        data: JSON.stringify(await payload(audit, options, timestamp)),
-      };
+        data: JSON.stringify(payload),
+      }));
     }
   }
 

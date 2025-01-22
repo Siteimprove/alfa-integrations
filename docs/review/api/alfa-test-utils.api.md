@@ -10,6 +10,7 @@ import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
 import { Equatable } from '@siteimprove/alfa-equatable';
 import { Flattened } from '@siteimprove/alfa-rules';
+import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
@@ -104,16 +105,18 @@ export interface CommitInformation {
 }
 
 // @public
-export class Logging implements Equatable, json.Serializable<Logging.JSON> {
-    protected constructor(title: string, logs: Sequence<Logging>);
+export class Logging<S extends Logging.Severity = Logging.Severity> implements Equatable, json.Serializable<Logging.JSON> {
+    protected constructor(title: string, logs: Sequence<Logging>, severity: S);
     // (undocumented)
     equals(value: Logging): boolean;
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
-    get logs(): Iterable<Logging>;
+    get logs(): Iterable_2<Logging>;
     // (undocumented)
-    static of(title: string, logs?: Iterable<Logging>): Logging;
+    static of(title: string, logs?: Iterable_2<Logging>): Logging<"log">;
+    // (undocumented)
+    static of<S extends Logging.Severity = "log">(title: string, severity: S, logs?: Iterable_2<Logging>): Logging<S>;
     // (undocumented)
     print(): void;
     // (undocumented)
@@ -130,11 +133,13 @@ export namespace Logging {
         Title = "Untitled";
     }
     // @internal (undocumented)
+    export function errorTitle(n: number): string;
+    // @internal (undocumented)
     export function fromAggregate(aggregate: Array_2<[string, {
         failed: number;
-    }]>, pageTitle?: string, pageReportUrl?: Result<string, string> | string): Logging;
+    }]>, pageTitle?: string, pageReportUrl?: Result<string, Array_2<string>> | string): Logging;
     // (undocumented)
-    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, string> | string, options?: Options): Logging;
+    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, Array_2<string>> | string, options?: Options): Logging;
     // (undocumented)
     export function isLogging(value: unknown): value is Logging;
     // @internal (undocumented)
@@ -146,12 +151,16 @@ export namespace Logging {
         // (undocumented)
         logs: Sequence.JSON<JSON>;
         // (undocumented)
+        severity: Severity;
+        // (undocumented)
         title: string;
     }
     // (undocumented)
     export interface Options {
         pageTitle?: string | ((page: Page) => string);
     }
+    // (undocumented)
+    export type Severity = "info" | "log" | "warn" | "error";
 }
 
 // @public
@@ -204,6 +213,10 @@ export namespace SIP {
         Title = "";
         const // (undocumented)
         Name: undefined;
+        // (undocumented)
+        export function missingOptions(missing: Array_2<string>): string;
+        const // (undocumented)
+        badCredentials = "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
     }
     // @internal
     export namespace Metadata {
@@ -211,7 +224,7 @@ export namespace SIP {
             url?: string;
             timestamp?: string;
             httpsAgent?: Agent;
-        }): Promise<AxiosRequestConfig>;
+        }): Result<AxiosRequestConfig, string>;
         // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
         //
         // (undocumented)
@@ -236,7 +249,7 @@ export namespace SIP {
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Promise<Payload>;
+        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Result<Payload, string>;
             {};
     }
     // (undocumented)
@@ -265,13 +278,13 @@ export namespace SIP {
         export function payload(Id: string, audit: Audit | Audit.JSON): Payload;
             {};
     }
-    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, string>>;
+    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, Array_2<string>>>;
     // @internal
     export function upload(audit: Audit | Audit.JSON, options: Options, override: {
         url?: string;
         timestamp?: string;
         httpsAgent?: Agent;
-    }): Promise<Result<string, string>>;
+    }): Promise<Result<string, Array_2<string>>>;
 }
 
 // (No @packageDocumentation comment for this package)
