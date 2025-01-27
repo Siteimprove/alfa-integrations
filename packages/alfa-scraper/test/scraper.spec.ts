@@ -31,8 +31,8 @@ test("#scrape() scrapes a page", async (t) =>
 
 test("#scrape() scrapes a page with a hash fragment", async (t) =>
   await Scraper.with(async (scraper) => {
-    const url = getTestPageFileUrl("internal-link.html");
-    const result = await scraper.scrape(url + "#foo");
+    const url = getTestPageFileUrl("internal-link.html") + "#foo";
+    const result = await scraper.scrape(url);
 
     t.equal(result.isOk(), true);
 
