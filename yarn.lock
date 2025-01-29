@@ -2042,7 +2042,7 @@ __metadata:
     "@siteimprove/alfa-rules": "npm:^0.97.0"
     "@siteimprove/alfa-test-deprecated": "npm:^0.97.0"
     "@types/jsonld": "npm:^1.5.14"
-    jsonld: "npm:^8.3.2"
+    jsonld: "npm:^8.3.3"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.97.0
     "@siteimprove/alfa-earl": ^0.97.0
@@ -8586,15 +8586,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsonld@npm:^8.3.2":
-  version: 8.3.2
-  resolution: "jsonld@npm:8.3.2"
+"jsonld@npm:^8.3.3":
+  version: 8.3.3
+  resolution: "jsonld@npm:8.3.3"
   dependencies:
     "@digitalbazaar/http-client": "npm:^3.4.1"
     canonicalize: "npm:^1.0.1"
     lru-cache: "npm:^6.0.0"
     rdf-canonize: "npm:^3.4.0"
-  checksum: 10/274fc85d5812b98282ee0a18061655a6a6f43619a2a373f9fca88a6f5a4e12063a8d4262bfe866db8a778f87c9522f70b372e109f82133062639ce12b1b3954d
+  checksum: 10/452d9736dbe1c46883be559def9826a8b7c8972e6bc53a053100438dbd7ddf51bfbfc93a3fbef35b4db19a84e6d496df63df6493bd9f6f379a9607a35f65aa8f
   languageName: node
   linkType: hard
 
