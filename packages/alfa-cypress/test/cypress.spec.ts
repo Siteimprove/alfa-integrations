@@ -4,7 +4,7 @@ import { Query } from "@siteimprove/alfa-dom";
 import { Cypress } from "../dist/index.js";
 import { Device } from "@siteimprove/alfa-device";
 
-it("should scrape a document", () => {
+it("should scrape a document", async () => {
   cy.visit("test/fixture/page.html");
 
   // Cypress visits the page in its own server with random-ish port, so we do
