@@ -22,18 +22,18 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.97.0",
-    "@siteimprove/alfa-dom": "^0.97.0",
-    "@siteimprove/alfa-http": "^0.97.0",
-    "@siteimprove/alfa-web": "^0.97.0",
+    "@siteimprove/alfa-device": "^0.98.0",
+    "@siteimprove/alfa-dom": "^0.98.0",
+    "@siteimprove/alfa-http": "^0.98.0",
+    "@siteimprove/alfa-web": "^0.98.0",
     "selenium-webdriver": "^4.24.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.97.0",
-    "@siteimprove/alfa-dom": "^0.97.0",
-    "@siteimprove/alfa-http": "^0.97.0",
-    "@siteimprove/alfa-url": "^0.97.0",
-    "@siteimprove/alfa-web": "^0.97.0",
+    "@siteimprove/alfa-device": "^0.98.0",
+    "@siteimprove/alfa-dom": "^0.98.0",
+    "@siteimprove/alfa-http": "^0.98.0",
+    "@siteimprove/alfa-url": "^0.98.0",
+    "@siteimprove/alfa-web": "^0.98.0",
     "selenium-webdriver": "^4.24.0"
   },
   "publishConfig": {
@@ -41,7 +41,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test-deprecated": "^0.97.0",
+    "@siteimprove/alfa-test-deprecated": "^0.98.0",
     "@types/selenium-webdriver": "^4.1.26"
   }
 }
