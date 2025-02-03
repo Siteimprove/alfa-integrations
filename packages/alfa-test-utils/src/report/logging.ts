@@ -227,11 +227,8 @@ export namespace Logging {
       return fromAggregate(filteredAggregates, pageTitle, pageReportUrl);
     });
 
-    return logs.getOrElse(() =>
-      Logging.of(
-        `Could not deserialize the page: ${logs.getErrUnsafe()}`,
-        "error"
-      )
+    return logs.getOrElse((error) =>
+      Logging.of(`Could not deserialize the page: ${error}`, "error")
     );
   }
 
