@@ -120,7 +120,7 @@ _(Optional)_ The URL of the page, or a function to build it from the audited pag
 
 </td><td>
 
-string
+number
 
 
 </td><td>

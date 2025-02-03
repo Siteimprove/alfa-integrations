@@ -77,3 +77,29 @@ Description
 
 </td></tr>
 </tbody></table>
+
+## Type Aliases
+
+<table><thead><tr><th>
+
+Type Alias
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[Severity](./alfa-test-utils.logging.severity.md)
+
+
+</td><td>
+
+[https://console.spec.whatwg.org/\#loglevel-severity](https://console.spec.whatwg.org/#loglevel-severity)
+
+
+</td></tr>
+</tbody></table>

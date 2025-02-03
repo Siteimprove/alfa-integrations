@@ -1,5 +1,11 @@
 # @siteimprove/alfa-frontier
 
+## 0.77.0
+
+### Patch Changes
+
+- **Changed:** Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended. ([#119](https://github.com/Siteimprove/alfa-integrations/pull/119))
+
 ## 0.76.2
 
 ### Patch Changes

@@ -34,15 +34,6 @@ Description
 
 
 </td></tr>
-<tr><td>
-
-[durationKeys](./alfa-test-utils.performance.durationkeys.md)
-
-
-</td><td>
-
-
-</td></tr>
 </tbody></table>
 
 ## Type Aliases
@@ -60,41 +51,12 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[CommonDurations](./alfa-test-utils.performance.commondurations.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
 [Durations](./alfa-test-utils.performance.durations.md)
 
 
 </td><td>
 
-Records the duration of resolving the CSS cascade, building the accessibility tree, and running each rule.
-
-
-</td></tr>
-<tr><td>
-
-[RuleDurations](./alfa-test-utils.performance.ruledurations.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
-[RulesDurations](./alfa-test-utils.performance.rulesdurations.md)
-
-
-</td><td>
-
-For each rule (key), records time taken for the applicability, the expectations, and total time.
+Records the duration of resolving the CSS cascade, building the accessibility tree, and running the full audit.
 
 
 </td></tr>

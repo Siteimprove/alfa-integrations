@@ -1,5 +1,11 @@
 # @siteimprove/alfa-cypress
 
+## 0.77.0
+
+### Patch Changes
+
+- **Changed:** Update Cypress to v14. ([#124](https://github.com/Siteimprove/alfa-integrations/pull/124))
+
 ## 0.76.2
 
 ### Patch Changes

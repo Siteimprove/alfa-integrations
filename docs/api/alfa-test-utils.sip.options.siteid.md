@@ -9,5 +9,5 @@ The site ID in the Siteimprove Intelligence Platform.
 **Signature:**
 
 ```typescript
-siteID?: string;
+siteID?: number;
 ```

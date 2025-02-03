@@ -4,19 +4,12 @@
 
 ## Performance.Durations type
 
-Records the duration of resolving the CSS cascade, building the accessibility tree, and running each rule.
+Records the duration of resolving the CSS cascade, building the accessibility tree, and running the full audit.
 
 **Signature:**
 
 ```typescript
 export type Durations = {
-        common: CommonDurations;
-        rules: RulesDurations;
+        [K in CommonKeys]: number;
     };
 ```
-**References:** [RulesDurations](./alfa-test-utils.performance.rulesdurations.md)
-
-## Remarks
-
-The cascade and accessibility tree are cached, so we store their performance separately to avoid unfairly "charging" the first rule to use and build them.
-

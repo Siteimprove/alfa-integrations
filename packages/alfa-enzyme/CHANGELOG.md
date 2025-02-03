@@ -1,5 +1,7 @@
 # @siteimprove/alfa-enzyme
 
+## 0.77.0
+
 ## 0.76.2
 
 ### Patch Changes

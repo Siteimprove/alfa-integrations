@@ -52,6 +52,23 @@ Sequence.JSON&lt;[JSON](./alfa-test-utils.logging.json.md)<!-- -->&gt;
 </td></tr>
 <tr><td>
 
+[severity](./alfa-test-utils.logging.json.severity.md)
+
+
+</td><td>
+
+
+</td><td>
+
+[Severity](./alfa-test-utils.logging.severity.md)
+
+
+</td><td>
+
+
+</td></tr>
+<tr><td>
+
 [title](./alfa-test-utils.logging.json.title.md)
 
 

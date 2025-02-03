@@ -9,7 +9,7 @@ Upload the results of an accessibility check to the Siteimprove Intelligence Pla
 **Signature:**
 
 ```typescript
-function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, string>>;
+function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, Array<string>>>;
 ```
 
 ## Parameters
@@ -61,5 +61,5 @@ options
 </tbody></table>
 **Returns:**
 
-Promise&lt;Result&lt;string, string&gt;&gt;
+Promise&lt;Result&lt;string, Array&lt;string&gt;&gt;&gt;
 

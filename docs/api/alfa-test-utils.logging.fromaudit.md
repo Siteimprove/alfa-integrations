@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, string> | string, options?: Options): Logging;
+function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, Array<string>> | string, options?: Options): Logging;
 ```
 
 ## Parameters
@@ -49,7 +49,7 @@ pageReportUrl
 
 </td><td>
 
-Result&lt;string, string&gt; \| string
+Result&lt;string, Array&lt;string&gt;&gt; \| string
 
 
 </td><td>

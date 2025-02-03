@@ -1,5 +1,13 @@
 # @siteimprove/alfa-scraper
 
+## 0.77.0
+
+### Patch Changes
+
+- **Changed:** Update Puppeteer vo v24. ([#124](https://github.com/Siteimprove/alfa-integrations/pull/124))
+
+- **Changed:** Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended. ([#119](https://github.com/Siteimprove/alfa-integrations/pull/119))
+
 ## 0.76.2
 
 ### Patch Changes

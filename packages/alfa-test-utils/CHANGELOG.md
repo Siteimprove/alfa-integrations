@@ -1,5 +1,27 @@
 # @siteimprove/alfa-test-utils
 
+## 0.77.0
+
+### Minor Changes
+
+- **Breaking:** The `siteID` parameter for uploading to the Siteimprove Intelligence Platform now needs to be a `number`, not a `string`. ([#122](https://github.com/Siteimprove/alfa-integrations/pull/122))
+
+- **Breaking:** Individual rules durations are not recorded anymore during audits. ([#122](https://github.com/Siteimprove/alfa-integrations/pull/122))
+
+  This means that `Audit#durations` directly contains the common keys.
+
+- **Breaking:** `SUP.upload` now returns a `Result<string, Array<string>>`; `Logging.from*` now accept a `Result<string, Array<string>>`. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+  This allows for more than one error to be reported at once.
+
+- **Added:** `Logging` now includes error messages about problems that happens during deserialization or upload of results. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+- **Added:** `Logging` now accepts a severity (default to `"log"`) and `Logging#print` respects it. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+### Patch Changes
+
+- **Changed:** Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended. ([#119](https://github.com/Siteimprove/alfa-integrations/pull/119))
+
 ## 0.76.2
 
 ### Patch Changes

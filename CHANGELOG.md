@@ -1,5 +1,29 @@
 # Alfa integrations changelog
 
+## [0.77.0](../../compare/v0.76.2...v0.77.0) (2025-02-03)
+
+### Breaking
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770): The `siteID` parameter for uploading to the Siteimprove Intelligence Platform now needs to be a `number`, not a `string`. ([#122](https://github.com/Siteimprove/alfa-integrations/pull/122))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770): Individual rules durations are not recorded anymore during audits. ([#122](https://github.com/Siteimprove/alfa-integrations/pull/122))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770): `SUP.upload` now returns a `Result<string, Array<string>>`; `Logging.from*` now accept a `Result<string, Array<string>>`. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+### Added
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770): `Logging` now includes error messages about problems that happens during deserialization or upload of results. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770): `Logging` now accepts a severity (default to `"log"`) and `Logging#print` respects it. ([#120](https://github.com/Siteimprove/alfa-integrations/pull/120))
+
+### Changed
+
+- [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#0770), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0770): Update Puppeteer vo v24. ([#124](https://github.com/Siteimprove/alfa-integrations/pull/124))
+
+- [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#0770): Update Cypress to v14. ([#124](https://github.com/Siteimprove/alfa-integrations/pull/124))
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0770), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#0770), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#0770), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#0770), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#0770), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#0770): Classes that do not implement the Singleton pattern now have `protected` constructor and can be extended. ([#119](https://github.com/Siteimprove/alfa-integrations/pull/119))
+
 ## [0.76.2](../../compare/v0.76.1...v0.76.2) (2024-12-18)
 
 ### Changed
