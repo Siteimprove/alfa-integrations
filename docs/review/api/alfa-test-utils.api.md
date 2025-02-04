@@ -216,7 +216,7 @@ export namespace SIP {
         // (undocumented)
         export function missingOptions(missing: Array_2<string>): string;
         const // (undocumented)
-        badCredentials = "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
+        badCredentials = "Error: Invalid credentials. Verify the username and API key, then try again.";
     }
     // @internal
     export namespace Metadata {
