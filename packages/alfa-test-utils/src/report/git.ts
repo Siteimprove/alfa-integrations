@@ -31,7 +31,9 @@ export async function getCommitInformation(): Promise<
     return Err.of(
       err instanceof Error
         ? err.message
-        : "Could not retrieve git information: " + String(err)
+        : `Error, could not retrieve git information: ${String(
+            err
+          )}. Check your Git configuration and try again. If the issue persists, contact support.`
     );
   }
 }

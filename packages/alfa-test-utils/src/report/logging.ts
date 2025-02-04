@@ -228,7 +228,10 @@ export namespace Logging {
     });
 
     return logs.getOrElse((error) =>
-      Logging.of(`Could not deserialize the page: ${error}`, "error")
+      Logging.of(
+        `Error, could not process the page: ${error}. Check the file format and try again. If the issue persists, contact support.`,
+        "error"
+      )
     );
   }
 
