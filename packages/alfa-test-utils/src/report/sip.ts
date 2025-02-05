@@ -27,13 +27,21 @@ export namespace SIP {
     export const Name = undefined;
 
     export function missingOptions(missing: Array<string>): string {
-      return `The following mandatory option${
-        missing.length === 1 ? " is" : "s are"
-      } missing: ${missing.join(", ")}`;
+      return `Error: Missing required option${
+        missing.length === 1 ? "" : "s"
+      }: ${
+        missing.length === 1
+          ? missing[0]
+          : missing.length === 2
+          ? missing.join(" and ")
+          : missing.slice(0, -1).join(", ") +
+            ", and " +
+            missing[missing.length - 1]
+      }. Provide ${missing.length === 1 ? "it" : "them"} and try again.`;
     }
 
     export const badCredentials =
-      "Unauthorized request: the request was made with invalid credentials, verify your username and API key";
+      "Error: Invalid credentials. Verify the username and API key, then try again.";
   }
 
   /**
@@ -142,18 +150,24 @@ export namespace SIP {
       if (status >= 500) {
         // This is a server error, we probably don't have a custom message,
         // but hopefully axios did the work for us.
-        return Err.of([`Server error (${status}): ${error.message}`]);
+        return Err.of([
+          `Server error (${status}): ${error.message}. Try again later or contact support if the issue persists.`,
+        ]);
       }
     }
 
     if (error instanceof AxiosError && error.message !== undefined) {
       // This is another axios error, we hope they provide meaningful messages.
-      return Err.of([`${error.message}`]);
+      return Err.of([
+        `Network error: ${error.message}. Check your request parameters and try again. If the issue persists, contact support.`,
+      ]);
     }
 
     // This is something else. It should really not happen since only axios
     // should have thrown something.
-    return Err.of([`Unexpected error: ${error}`]);
+    return Err.of([
+      `Unexpected error: ${error}. Try uploading again. If the problem continues, verify the file and contact support.`,
+    ]);
   }
 
   /**

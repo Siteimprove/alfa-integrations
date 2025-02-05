@@ -594,7 +594,7 @@ test(".fromAudit() returns an error on invalid page", async (t) => {
   const actual = Logging.fromAudit(badAudit);
 
   t.deepEqual(actual.toJSON(), {
-    title: "Could not deserialize the page: Invalid URL",
+    title: "Error, could not process the page: Invalid URL. Check the file format and try again. If the issue persists, contact support.",
     severity: "error",
     logs: [],
   });

@@ -616,6 +616,6 @@ test(".upload returns Axios error message in case of 5XX", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: ["Server error (503): Request failed with status code 503"],
+    error: ["Server error (503): Request failed with status code 503. Try again later or contact support if the issue persists."],
   });
 });
