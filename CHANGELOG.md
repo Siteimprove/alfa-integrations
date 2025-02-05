@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.77.1](../../compare/v0.77.0...v0.77.1) (2025-02-05)
+
+### Changed
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0771): Improve error messages. ([#128](https://github.com/Siteimprove/alfa-integrations/pull/128))
+
 ## [0.77.0](../../compare/v0.76.2...v0.77.0) (2025-02-03)
 
 ### Breaking

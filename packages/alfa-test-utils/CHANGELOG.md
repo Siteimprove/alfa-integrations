@@ -1,5 +1,11 @@
 # @siteimprove/alfa-test-utils
 
+## 0.77.1
+
+### Patch Changes
+
+- **Changed:** Improve error messages. ([#128](https://github.com/Siteimprove/alfa-integrations/pull/128))
+
 ## 0.77.0
 
 ### Minor Changes
