@@ -477,11 +477,23 @@ export namespace SIP {
       url: string,
       audit: Audit | Audit.JSON
     ): AxiosRequestConfig {
+      const value = payload(id, audit);
       return {
         ...params(url),
-        data: new Blob([JSON.stringify(payload(id, audit))], {
-          type: "application/json",
-        }),
+        data: new Blob(
+          [
+            // Calling JSON.stringify directly on the payload causes
+            // RangeError: Invalid string length
+            // on large payloads. Doing it piecewise (and manually) avoids the
+            // problem, or at least push it back to even larger payload where
+            // the individual pieces will also be too large. If we encounter
+            // this again, we may have to switch to a JSON streaming solution.
+            `{"Id":"${value.Id}","CheckResult":"${value.CheckResult}","Aspects":"${value.Aspects}"}`,
+          ],
+          {
+            type: "application/json",
+          }
+        ),
       };
     }
   }
