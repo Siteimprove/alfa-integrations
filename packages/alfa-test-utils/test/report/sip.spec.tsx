@@ -197,10 +197,13 @@ test("S3.axiosConfig() creates an axios config", (t) => {
     makeAudit({ page })
   );
 
+  const payload = S3.payload("some id", makeAudit({ page }));
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
-      [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
+      [
+        `{"Id":"${payload.Id}","CheckResult":"${payload.CheckResult}","Aspects":"${payload.Aspects}"}`,
+      ],
       {
         type: "application/json",
       }
@@ -217,10 +220,13 @@ test("S3.axiosConfig() accepts serialized audits", (t) => {
     makeAudit({ page }).toJSON()
   );
 
+  const payload = S3.payload("some id", makeAudit({ page }));
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
-      [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
+      [
+        `{"Id":"${payload.Id}","CheckResult":"${payload.CheckResult}","Aspects":"${payload.Aspects}"}`,
+      ],
       {
         type: "application/json",
       }
@@ -616,6 +622,8 @@ test(".upload returns Axios error message in case of 5XX", async (t) => {
 
   t.deepEqual(actual.toJSON(), {
     type: "err",
-    error: ["Server error (503): Request failed with status code 503. Try again later or contact support if the issue persists."],
+    error: [
+      "Server error (503): Request failed with status code 503. Try again later or contact support if the issue persists.",
+    ],
   });
 });
