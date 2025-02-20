@@ -1,5 +1,11 @@
 # @siteimprove/alfa-test-utils
 
+## 0.77.2
+
+### Patch Changes
+
+- **Fixed:** Increase the maximum size of pages that can be uploaded. ([#129](https://github.com/Siteimprove/alfa-integrations/pull/129))
+
 ## 0.77.1
 
 ### Patch Changes

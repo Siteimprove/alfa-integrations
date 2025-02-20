@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.77.2](../../compare/v0.77.1...v0.77.2) (2025-02-20)
+
+### Fixed
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0772): Increase the maximum size of pages that can be uploaded. ([#129](https://github.com/Siteimprove/alfa-integrations/pull/129))
+
 ## [0.77.1](../../compare/v0.77.0...v0.77.1) (2025-02-05)
 
 ### Changed

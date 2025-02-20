@@ -1,5 +1,7 @@
 # @siteimprove/alfa-enzyme
 
+## 0.77.2
+
 ## 0.77.1
 
 ## 0.77.0
