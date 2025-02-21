@@ -188,6 +188,19 @@ test("Metadata.axiosConfig() deserializes audits", async (t) => {
   });
 });
 
+test("Custom payload serialization works as JSON.stringify", (t) => {
+  const page = makePage(h.document([<span></span>]));
+  const payload = S3.payload("some id", makeAudit({ page }));
+  const expected = JSON.stringify(payload);
+  const actual = `{"Id":${JSON.stringify(
+    payload.Id
+  )},"CheckResult":${JSON.stringify(
+    payload.CheckResult
+  )},"Aspects":${JSON.stringify(payload.Aspects)}}`;
+
+  t.deepEqual(actual, expected);
+});
+
 test("S3.axiosConfig() creates an axios config", (t) => {
   const page = makePage(h.document([<span></span>]));
 
@@ -197,16 +210,11 @@ test("S3.axiosConfig() creates an axios config", (t) => {
     makeAudit({ page })
   );
 
-  const payload = S3.payload("some id", makeAudit({ page }));
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
-      [
-        `{"Id":"${payload.Id}","CheckResult":"${payload.CheckResult}","Aspects":"${payload.Aspects}"}`,
-      ],
-      {
-        type: "application/json",
-      }
+      [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
+      { type: "application/json" }
     ),
   });
 });
@@ -220,16 +228,11 @@ test("S3.axiosConfig() accepts serialized audits", (t) => {
     makeAudit({ page }).toJSON()
   );
 
-  const payload = S3.payload("some id", makeAudit({ page }));
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
-      [
-        `{"Id":"${payload.Id}","CheckResult":"${payload.CheckResult}","Aspects":"${payload.Aspects}"}`,
-      ],
-      {
-        type: "application/json",
-      }
+      [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
+      { type: "application/json" }
     ),
   });
 });
