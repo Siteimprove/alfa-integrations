@@ -488,7 +488,12 @@ export namespace SIP {
             // problem, or at least push it back to even larger payload where
             // the individual pieces will also be too large. If we encounter
             // this again, we may have to switch to a JSON streaming solution.
-            `{"Id":"${value.Id}","CheckResult":"${value.CheckResult}","Aspects":"${value.Aspects}"}`,
+            //
+            // We need to loop through JSON.stringify a second time to properly
+            // escape strings.
+            `{"Id":${JSON.stringify(value.Id)},"CheckResult":${JSON.stringify(
+              value.CheckResult
+            )},"Aspects":${JSON.stringify(value.Aspects)}}`,
           ],
           {
             type: "application/json",
