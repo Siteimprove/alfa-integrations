@@ -1,5 +1,11 @@
 # @siteimprove/alfa-test-utils
 
+## 0.77.3
+
+### Patch Changes
+
+- **Fixed:** Fixed string escape characters in audit serialization. ([#131](https://github.com/Siteimprove/alfa-integrations/pull/131))
+
 ## 0.77.2
 
 ### Patch Changes

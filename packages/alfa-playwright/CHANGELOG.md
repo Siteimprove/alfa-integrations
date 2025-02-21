@@ -1,5 +1,7 @@
 # @siteimprove/alfa-playwright
 
+## 0.77.3
+
 ## 0.77.2
 
 ## 0.77.1
