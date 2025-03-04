@@ -16,8 +16,10 @@ import { type Audit, SIP } from "../../dist/index.js";
 
 import {
   makeAudit,
+  makeCantTell,
   makeFailed,
   makePage,
+  makePassed,
   makePayload,
   makeRule,
   timestamp,
@@ -82,8 +84,7 @@ test("S3.payload() accepts serialized audits", (t) => {
 
 test("S3.payload serialises outcomes as string", async (t) => {
   const target = <span>Hello</span>;
-  const document = h.document([target]);
-  const page = makePage(document);
+  const page = makePage(h.document([target]));
 
   const rule = makeRule(1000, target);
   const actual = S3.payload(
@@ -131,6 +132,40 @@ test("S3.payload serialises outcomes as string", async (t) => {
     CheckResult: JSON.stringify([expected]),
     Aspects: JSON.stringify(page.toJSON({ verbosity: Verbosity.High })),
   });
+});
+
+test("S3.payload filters out cantTell outcomes", async (t) => {
+  const target = <span>Hello</span>;
+  const page = makePage(h.document([target]));
+
+  const rule = makeRule(1000, target);
+  const passed = makePassed(rule, target);
+  const failed = makeFailed(rule, target);
+  const cantTell = makeCantTell(rule, target);
+
+  const actual = makeAudit({
+    page,
+    outcomes: Map.from([[rule.uri, Sequence.from([cantTell, passed, failed])]]),
+    resultAggregates: Map.from([
+      [
+        "https://alfa.siteimprove.com/rules/sia-r1000",
+        { failed: 1, passed: 1, cantTell: 1 },
+      ],
+    ]),
+  });
+
+  const expected = makeAudit({
+    page,
+    outcomes: Map.from([[rule.uri, Sequence.from([passed, failed])]]),
+    resultAggregates: Map.from([
+      [
+        "https://alfa.siteimprove.com/rules/sia-r1000",
+        { failed: 1, passed: 1, cantTell: 1 },
+      ],
+    ]),
+  });
+
+  t.deepEqual(S3.payload("some id", actual), S3.payload("some id", expected));
 });
 
 test("Metadata.params() creates axios config", (t) => {

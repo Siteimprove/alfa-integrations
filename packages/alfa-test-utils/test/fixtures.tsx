@@ -93,6 +93,21 @@ export function makePassed<T extends Attribute | Element>(
 /**
  * @internal
  */
+export function makeCantTell<T extends Attribute | Element>(
+  rule: Rule<Page, T>,
+  target: T
+): alfaOutcome {
+  return Outcome.CantTell.of(
+    rule,
+    target,
+    Diagnostic.of("Some question"),
+    Outcome.Mode.Automatic
+  );
+}
+
+/**
+ * @internal
+ */
 export function makePage(
   document: Document,
   response: Response = Response.of(URL.example(), 200)

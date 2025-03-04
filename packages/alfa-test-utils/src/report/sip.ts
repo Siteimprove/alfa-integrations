@@ -452,7 +452,11 @@ export namespace SIP {
 
       return {
         Id,
-        CheckResult: JSON.stringify(serialisedAudit.outcomes),
+        CheckResult: JSON.stringify(
+          serialisedAudit.outcomes.filter(
+            (outcome) => outcome.outcome !== "cantTell"
+          )
+        ),
         Aspects: JSON.stringify(serialisedAudit.page),
       };
     }
