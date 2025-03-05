@@ -1,5 +1,19 @@
 # @siteimprove/alfa-test-utils
 
+## 0.78.0
+
+### Minor Changes
+
+- **Changed:** `CantTell` occurrences (Potential Issues) are no longer uploaded to the Siteimprove Platform. ([#133](https://github.com/Siteimprove/alfa-integrations/pull/133))
+
+  This significantly reduces the payload size on larger pages. The Potential Issues review flow is not implemented for these page reports, so the benefits of uploading these is null.
+
+  The `CantTell` results are still generated locally and may be acted upon by custom reporters, or to write oracles for the audit.
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#134](https://github.com/Siteimprove/alfa-integrations/pull/134))
+
 ## 0.77.3
 
 ### Patch Changes
