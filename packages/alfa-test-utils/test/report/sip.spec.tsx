@@ -82,7 +82,7 @@ test("S3.payload() accepts serialized audits", (t) => {
   });
 });
 
-test("S3.payload serialises outcomes as string", async (t) => {
+test("S3.payload serialises outcomes as string with minimal rule serialization", async (t) => {
   const target = <span>Hello</span>;
   const page = makePage(h.document([target]));
 
@@ -105,12 +105,7 @@ test("S3.payload serialises outcomes as string", async (t) => {
 
   const expected: Outcome.Failed.JSON<Element> = {
     outcome: Outcome.Value.Failed,
-    rule: {
-      type: "atomic",
-      uri: "https://alfa.siteimprove.com/rules/sia-r1000",
-      requirements: [],
-      tags: [],
-    },
+    rule: { uri: "https://alfa.siteimprove.com/rules/sia-r1000" },
     mode: Outcome.Mode.Automatic,
     target: Serializable.toJSON(target, { verbosity: Verbosity.Minimal }),
     expectations: [
