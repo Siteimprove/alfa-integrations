@@ -82,7 +82,7 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
               children: [
                 {
                   type: "element",
-                  children: [{ type: "text", data: "Hello" }],
+                  children: [{ type: "text", data: "Hello", box: null }],
                   namespace: "http://www.w3.org/1999/xhtml",
                   prefix: null,
                   name: "div",
@@ -92,7 +92,7 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
                   content: null,
                   box: null,
                 },
-                { type: "text", data: "\n" },
+                { type: "text", data: "\n", box: null },
               ],
               namespace: "http://www.w3.org/1999/xhtml",
               prefix: null,
