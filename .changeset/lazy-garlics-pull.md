@@ -28,4 +28,4 @@
 "@siteimprove/alfa-vue": patch
 ---
 
-**Changed:** Update Alfa to ^0.100.0.
+**Changed:** Update Alfa to ^0.100.1.
