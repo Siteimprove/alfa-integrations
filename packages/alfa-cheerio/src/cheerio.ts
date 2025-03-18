@@ -1,15 +1,8 @@
 /// <reference types="node" />
 
 import { Device } from "@siteimprove/alfa-device";
-import type {
-  Attribute,
-  Element,
-  Text} from "@siteimprove/alfa-dom";
-import {
-  Node,
-  Document,
-  Namespace,
-} from "@siteimprove/alfa-dom";
+import type { Attribute, Element, Text } from "@siteimprove/alfa-dom";
+import { Document, Namespace, Node } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -81,5 +74,6 @@ function toText(text: dom.Text): Text.JSON {
   return {
     type: "text",
     data: text.nodeValue,
+    box: null,
   };
 }
