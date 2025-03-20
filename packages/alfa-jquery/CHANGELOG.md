@@ -1,5 +1,11 @@
 # @siteimprove/alfa-jquery
 
+## 0.78.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.101.0. ([#143](https://github.com/Siteimprove/alfa-integrations/pull/143))
+
 ## 0.78.1
 
 ### Patch Changes
