@@ -179,7 +179,7 @@ test("Playwright.toPage() doesn't change crossorigin attribute when no option is
   }
 });
 
-test("Playwright.toPage() enforce anonymous crossorigin on links without one, when asked to", async (t) => {
+test("Playwright.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
   const browser = await chromium.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-dev-shm-usage"],

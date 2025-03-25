@@ -176,7 +176,7 @@ test("Puppeteer.toPage() doesn't change crossorigin attribute when no option is 
   }
 });
 
-test("Puppeteer.toPage() enforce anonymous crossorigin on links without one, when asked to", async (t) => {
+test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
   const browser = await puppeteer.launch({
     headless: true,
     args: ["--no-sandbox", "--disable-dev-shm-usage"],
