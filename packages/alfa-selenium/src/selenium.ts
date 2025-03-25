@@ -15,11 +15,20 @@ import { WebDriver } from "selenium-webdriver";
  * @public
  */
 export namespace Selenium {
-  export async function toPage(driver: WebDriver): Promise<Page> {
+  export async function toPage(
+    driver: WebDriver,
+    options?: dom.Native.Options
+  ): Promise<Page> {
     const deviceJSON = await driver.executeScript(device.Native.fromWindow);
     const alfaDevice = Device.from(deviceJSON as Device.JSON);
 
-    const documentJSON = await driver.executeScript(dom.Native.fromNode);
+    const document = await driver.executeScript(() => window.document);
+
+    const documentJSON = await driver.executeScript(
+      dom.Native.fromNode,
+      document,
+      options
+    );
 
     /*
      * We cannot really grab the request and response as they may have been

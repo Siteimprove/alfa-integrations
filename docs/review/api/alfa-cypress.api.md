@@ -9,6 +9,7 @@
 
 import type * as act from '@siteimprove/alfa-act';
 import { Asserter } from '@siteimprove/alfa-assert';
+import * as dom from '@siteimprove/alfa-dom/native';
 import type { Formatter } from '@siteimprove/alfa-formatter';
 import { Handler } from '@siteimprove/alfa-assert';
 import type { Hashable } from '@siteimprove/alfa-hash';
@@ -26,7 +27,7 @@ namespace Cypress_2 {
         function persist<I, T extends Hashable, Q extends Question.Metadata, S>(output: Mapper<I, string>, format?: Formatter<I, T, Q, S>): Handler<I, T, Q, S>;
     }
     // (undocumented)
-    function toPage(value: Type): Promise<Page>;
+    function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
     // (undocumented)
     type Type = globalThis.Node | globalThis.JQuery;
 }

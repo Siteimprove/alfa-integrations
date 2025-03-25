@@ -9,6 +9,8 @@ import * as dom from "@siteimprove/alfa-dom/native";
 import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
+import fs from "node:fs";
+import path from "node:path";
 
 import type { JSHandle } from "playwright";
 
@@ -18,18 +20,33 @@ import type { JSHandle } from "playwright";
 export namespace Playwright {
   export type Type = JSHandle;
 
-  export async function toNode(value: Type, device?: Device): Promise<Node> {
+  export async function toNode(
+    value: Type,
+    device?: Device,
+    options?: dom.Native.Options
+  ): Promise<Node> {
     return Node.from(
       await value.evaluate(
-        dom.Native.fromNode as (node: globalThis.Node) => Promise<Node.JSON>
+        dom.Native.fromNode as (
+          node: globalThis.Node,
+          options?: dom.Native.Options
+        ) => Promise<Node.JSON>,
+        options
       ),
       device
     );
   }
 
-  export async function toPage(value: Type): Promise<Page> {
+  export async function toPage(
+    value: Type,
+    options?: dom.Native.Options
+  ): Promise<Page> {
     const nodeJSON = await value.evaluate(
-      dom.Native.fromNode as (node: globalThis.Node) => Promise<Node.JSON>
+      dom.Native.fromNode as (
+        node: globalThis.Node,
+        options?: dom.Native.Options
+      ) => Promise<Node.JSON>,
+      options
     );
 
     const deviceJSON = await value
@@ -58,7 +75,7 @@ export namespace Playwright {
     const response = Response.of(
       url,
       200,
-      Headers.of([Header.of("Content-Type", "text/html")]),
+      Headers.of([Header.of("Content-Type", "text/html")])
     );
 
     const pageDevice = Device.from(deviceJSON);
