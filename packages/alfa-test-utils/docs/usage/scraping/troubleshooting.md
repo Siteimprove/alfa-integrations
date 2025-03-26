@@ -1,6 +1,6 @@
 # Troubleshooting CORS issues with styling
 
-## When does it occurs?
+## When does this occur?
 
 Web pages often rely on external data, either embedded content (`<iframe>`), or external resources (images, fonts, style sheets, …) In many cases, the external data is hosted on the same server, for example a page a `https://www.example.com/index.html` includes a style sheet at `https://www.example.com/style.css`, in which case loading them is usually not a problem. In other cases, however, the external data is hosted on a different server, for example a page at `https://www.example.com/index.html` includes a style sheet at `https://shared.example.net/style.css`.
 
