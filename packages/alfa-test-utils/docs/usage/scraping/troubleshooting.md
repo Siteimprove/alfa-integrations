@@ -2,7 +2,7 @@
 
 ## When does this occur?
 
-Web pages often rely on external data, either embedded content (`<iframe>`), or external resources (images, fonts, style sheets, …) In many cases, the external data is hosted on the same server, for example a page a `https://www.example.com/index.html` includes a style sheet at `https://www.example.com/style.css`, in which case loading them is usually not a problem. In other cases, however, the external data is hosted on a different server, for example a page at `https://www.example.com/index.html` includes a style sheet at `https://shared.example.net/style.css`.
+Web pages often rely on external data, either embedded content (`<iframe>`), or external resources (images, fonts, style sheets, …) In many cases, the external data is hosted on the same server, for example a page at `https://www.example.com/index.html` includes a style sheet at `https://www.example.com/style.css`, in which case loading them is usually not a problem. In other cases, however, the external data is hosted on a different server, for example a page at `https://www.example.com/index.html` includes a style sheet at `https://shared.example.net/style.css`.
 
 Accessing data from an external server is called Cross Origin Resource Sharing, or CORS. In order to be done securely, both servers must trust each other, otherwise one risks to load an untrusted resource, or to provide a secure resource to an untrusted client. This is usually handled through a CORS policy. See [MDN article on CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for more information.
 
