@@ -1,4 +1,4 @@
-/// <reference lib="dom" />
+/// <reference lib="dom" preserve="true" />
 /// <reference types="node" />
 
 import * as device from "@siteimprove/alfa-device/native";
