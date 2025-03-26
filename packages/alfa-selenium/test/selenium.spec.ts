@@ -6,9 +6,8 @@ import { test } from "@siteimprove/alfa-test-deprecated";
 
 import * as path from "node:path";
 import * as url from "node:url";
-import { chromium } from "playwright";
 
-import { Browser, Builder, WebDriver } from "selenium-webdriver";
+import { Browser, Builder } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome.js";
 
 import { Selenium } from "../dist/selenium.js";

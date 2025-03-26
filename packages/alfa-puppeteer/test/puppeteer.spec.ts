@@ -3,7 +3,6 @@ import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test-deprecated";
 import * as path from "node:path";
 import * as url from "node:url";
-import { chromium } from "playwright";
 
 import puppeteer from "puppeteer";
 import { Puppeteer } from "../dist/puppeteer.js";

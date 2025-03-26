@@ -1,4 +1,4 @@
-/// <reference lib="dom" preserve="true" />
+/// <reference lib="dom" />
 
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
