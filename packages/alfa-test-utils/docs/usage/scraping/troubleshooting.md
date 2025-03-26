@@ -6,13 +6,13 @@ Web pages often rely on external data, either embedded content (`<iframe>`), or 
 
 Accessing data from an external server is called Cross Origin Resource Sharing, or CORS. In order to be done securely, both servers must trust each other, otherwise one risks to load an untrusted resource, or to provide a secure resource to an untrusted client. This is usually handled through a CORS policy. See [MDN article on CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for more information.
 
-When CORS policies mismatch, the resources are not loaded. In the case of the Code Checker, this often results in style sheets that are not loaded and therefore the audit generates incorrect results due to missing styling. Note that the page is likely to work perfectly even if the Code Checker cannot access the style, because they are not considered to be the same origin and therefore do not trigger the same CORS policies.
+When CORS policies mismatch, the resources are not loaded. In the case of the Accessibility Code Checker, this often results in style sheets that are not loaded and therefore the audit generates incorrect results due to missing styling. Note that the page is likely to work perfectly even if the Accessibility Code Checker cannot access the style, because they are not considered to be the same origin and therefore do not trigger the same CORS policies.
 
 CORS problems with style have been noticed in two cases: with `<link>` elements and with `@import` rules, both of them can load an external style sheet. If the page has one of these which references a separate server, then chances are that CORS issues can cause the style to not be scraped by the Accessibility Code Checker.
 
 ## Solving the problem for `<link>` elements
 
-`<link>` elements accept a `crossorigin` attribute, that can mostly be used to enforce an anonymous (unsecure) CORS policy when requesting the resource. This makes browsers be more careful in what they put in the request, but also more lenient in whom they accept to talk to. In many cases, we have witness anonymous CORS enforcement allowing the Accessibility Code Checker to scrape the style.
+`<link>` elements accept a `crossorigin` attribute, that can mostly be used to enforce an anonymous CORS policy when requesting the resource. This makes browsers be more careful in what they put in the request, but also more lenient in whom they accept to talk to. In many cases, we have witness anonymous CORS enforcement allowing the Accessibility Code Checker to scrape the style.
 
 While the scraped page can be updated, this is likely needless work. Instead, pass the `{ enforceAnonymousCrossOrigin: true }` option to the `toPage` function. For example, instead of
 
@@ -34,7 +34,7 @@ Note that this will only work if the server hosting the resource (`https://share
 
 ## Solving the problem for `@import` rules
 
-`@import` rules that are included, for example, as part of a `<style>` elements have no way to enforce CORS policies. In many cases, the browsers will simply refuse to show their content.
+`@import` rules that are included, for example, as part of a `<style>` element have no way to enforce CORS policies. In many cases, the browsers will simply refuse to show their content.
 
 It _may_ be possible to improve the situation by changing the CORS policy on either server, but we haven't witnessed it; and changing CORS policies may open a security risk.
 
