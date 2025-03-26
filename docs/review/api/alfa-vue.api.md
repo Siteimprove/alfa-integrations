@@ -6,6 +6,7 @@
 
 import { Cheerio } from '@siteimprove/alfa-cheerio';
 import type { ComponentPublicInstance } from 'vue';
+import * as dom from '@siteimprove/alfa-dom/native';
 import { Page } from '@siteimprove/alfa-web';
 import type { VueElement } from 'vue';
 import type { VueWrapper } from '@vue/test-utils';
@@ -13,7 +14,7 @@ import type { VueWrapper } from '@vue/test-utils';
 // @public (undocumented)
 export namespace Vue {
     // (undocumented)
-    export function toPage(value: Type): Promise<Page>;
+    export function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
     // (undocumented)
     export type Type = VueWrapper<VueElement, ComponentPublicInstance> | Cheerio.Type;
 }
