@@ -134,3 +134,75 @@ it("should scrape a document", async () => {
       })
   );
 });
+
+it("should not change crossorigin, when not asked to", async () => {
+  cy.visit("test/fixture/links.html");
+
+  cy.document()
+    .then(Cypress.toPage)
+    .then((alfaPage) => {
+      const idMap = Query.getElementIdMap(alfaPage.document);
+
+      const empty = idMap.get("empty").getUnsafe();
+      expect(empty.attribute("crossorigin").isNone());
+
+      for (const id of ["anonymous", "use-credentials"]) {
+        const link = idMap.get(id).getUnsafe();
+        expect(
+          link
+            .attribute("crossorigin")
+            .some((crossorigin) => crossorigin.value === id)
+        );
+      }
+    });
+
+  cy.document().then((document) => {
+    expect(
+      (document.getElementById("empty") as HTMLLinkElement).crossOrigin
+    ).to.equal(null);
+
+    for (const id of ["anonymous", "use-credentials"]) {
+      expect(
+        (document.getElementById("id") as HTMLLinkElement).crossOrigin
+      ).to.equal(id);
+    }
+  });
+});
+
+it("should not add anonymous crossorigin to <link> without one, when asked to", async () => {
+  cy.visit("test/fixture/links.html");
+
+  cy.document()
+    .then((document) => Cypress.toPage(document, { withCrossOrigin: true }))
+    .then((alfaPage) => {
+      const idMap = Query.getElementIdMap(alfaPage.document);
+
+      const empty = idMap.get("empty").getUnsafe();
+      expect(
+        empty
+          .attribute("crossorigin")
+          .some((crossorigin) => crossorigin.value === "anonymous")
+      );
+
+      for (const id of ["anonymous", "use-credentials"]) {
+        const link = idMap.get(id).getUnsafe();
+        expect(
+          link
+            .attribute("crossorigin")
+            .some((crossorigin) => crossorigin.value === id)
+        );
+      }
+    });
+
+  cy.document().then((document) => {
+    expect(
+      (document.getElementById("empty") as HTMLLinkElement).crossOrigin
+    ).to.equal("anonymous");
+
+    for (const id of ["anonymous", "use-credentials"]) {
+      expect(
+        (document.getElementById("id") as HTMLLinkElement).crossOrigin
+      ).to.equal(id);
+    }
+  });
+});
