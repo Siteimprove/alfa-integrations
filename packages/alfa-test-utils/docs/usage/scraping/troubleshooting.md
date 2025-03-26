@@ -4,9 +4,9 @@
 
 Web pages often rely on external data, either embedded content (`<iframe>`), or external resources (images, fonts, style sheets, …) In many cases, the external data is hosted on the same server, for example a page a `https://www.example.com/index.html` includes a style sheet at `https://www.example.com/style.css`, in which case loading them is usually not a problem. In other cases, however, the external data is hosted on a different server, for example a page at `https://www.example.com/index.html` includes a style sheet at `https://shared.example.net/style.css`.
 
-Accessing data from an external server is called Cross Origin Resource Sharing, or CORS. In order to be done securely, both servers must trust each other, otherwise tone risk to load an untrusted resource, or to provide a secure resource to an untrusted client. This is usually handled through a CORS policy. See [MDN article on CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for more information.
+Accessing data from an external server is called Cross Origin Resource Sharing, or CORS. In order to be done securely, both servers must trust each other, otherwise one risks to load an untrusted resource, or to provide a secure resource to an untrusted client. This is usually handled through a CORS policy. See [MDN article on CORS](https://developer.mozilla.org/en-US/docs/Web/HTTP/Guides/CORS) for more information.
 
-When CORS policy mismatch, the resources are not loaded. In the case of the Code Checker, this often result in style sheets that are not loaded and therefore the audit generates incorrect results due to missing styling. Note that the page is likely to work perfectly even if the Code Checker cannot access the style, because they are not considered to be the same origin and therefore do not trigger the same CORS policies.
+When CORS policies mismatch, the resources are not loaded. In the case of the Code Checker, this often results in style sheets that are not loaded and therefore the audit generates incorrect results due to missing styling. Note that the page is likely to work perfectly even if the Code Checker cannot access the style, because they are not considered to be the same origin and therefore do not trigger the same CORS policies.
 
 CORS problems with style have been noticed in two cases: with `<link>` elements and with `@import` rules, both of them can load an external style sheet. If the page has one of these which references a separate server, then chances are that CORS issues can cause the style to not be scraped by the Accessibility Code Checker.
 
@@ -50,4 +50,4 @@ const browser = await playwright.chromium.launch({
 
 See the documentation of the relevant browser and browser automation to find the corresponding option in each specific case.
 
-Be careful with downgraded browser instances. They will not perform normal security check. Only use them to scrape pages you control and trust, and close the instance asap. Do not point a downgraded instance to a random page.
+Be careful with downgraded browser instances. They will not perform normal security check. Only use them to scrape pages you control and trust, and close the instance immediately. Do not point a downgraded instance to a random page.
