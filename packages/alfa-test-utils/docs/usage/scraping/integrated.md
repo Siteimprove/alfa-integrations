@@ -6,6 +6,10 @@ The precise steps needed for scraping thus depend on the actual browser automati
 
 This page describes how to scrape with browser automation tools. If you do not have one already set up in your project, see [advanced scraping](./advanced.md) for other solutions.
 
+## Troubleshooting
+
+In some cases, the Accessibility Code Checker does not manage to fully scrape the styling of a page. This usually happens due to CORS settings on the servers. See [Troubleshooting CORS issues with styling](./troubleshooting.md) for solutions to this problem.
+
 ## Playwright
 
 See [a full example of using Playwright with the Siteimprove Accessibility Code Checker](https://github.com/Siteimprove/alfa-examples/tree/main/accessibility-code-checker/playwright) in the `Siteimprove/alfa-examples` repository.
