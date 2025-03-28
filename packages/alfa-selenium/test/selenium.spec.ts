@@ -7,7 +7,7 @@ import { test } from "@siteimprove/alfa-test-deprecated";
 import * as path from "node:path";
 import * as url from "node:url";
 
-import { Browser, Builder, WebDriver } from "selenium-webdriver";
+import { Browser, Builder } from "selenium-webdriver";
 import chrome from "selenium-webdriver/chrome.js";
 
 import { Selenium } from "../dist/selenium.js";
@@ -18,13 +18,11 @@ const __dirname = path.dirname(__filename);
 
 const fixture = path.join(__dirname, "fixture");
 
-let driver: WebDriver | undefined;
-
 const options = new chrome.Options();
 options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
 
 test("Selenium.toPage() scrapes a page", async (t) => {
-  driver = await new Builder()
+  const driver = await new Builder()
     .forBrowser(Browser.CHROME)
     .setChromeOptions(options)
     .build();
@@ -33,13 +31,13 @@ test("Selenium.toPage() scrapes a page", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
   await driver.get(pageUrl);
 
-  const page = await Selenium.toPage(driver);
+  const alfaPage = await Selenium.toPage(driver);
 
   await driver.close();
 
   // Test the presence of layout information
-  for (const element of Query.getElementDescendants(page.document)) {
-    t(element.getBoundingBox(page.device).isSome());
+  for (const element of Query.getElementDescendants(alfaPage.document)) {
+    t(element.getBoundingBox(alfaPage.device).isSome());
   }
 
   // We've seen instability in tests for the devices, most notably for the user
@@ -47,12 +45,12 @@ test("Selenium.toPage() scrapes a page", async (t) => {
   // we just check that a non-standard device has been crawled and discard it.
   // This will fail if the standard device randomly happens to be used, but
   // since it has no user-preference set, this should not be the case.
-  t(!page.device.equals(Device.standard()));
+  t(!alfaPage.device.equals(Device.standard()));
 
   const actual = {
-    ...page.toJSON(),
+    ...alfaPage.toJSON(),
     // This effectively removes the layout information which may be unstable.
-    document: page.document.toJSON(),
+    document: alfaPage.document.toJSON(),
     device: null,
   };
 
@@ -124,4 +122,100 @@ test("Selenium.toPage() scrapes a page", async (t) => {
     },
     device: null,
   });
+});
+
+test("Selenium.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+  const driver = await new Builder()
+    .forBrowser(Browser.CHROME)
+    .setChromeOptions(options)
+    .build();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await driver.get(pageUrl);
+
+  const alfaPage = await Selenium.toPage(driver);
+
+  // We check that the scraping did not change the page
+
+  const emptyAttr = await driver.executeScript(
+    "return window.document.getElementById('empty').crossOrigin"
+  );
+  t.equal(emptyAttr, null);
+
+  const anonymousAttr = await driver.executeScript(
+    "return window.document.getElementById('anonymous').crossOrigin"
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await driver.executeScript(
+    "return window.document.getElementById('use-credentials').crossOrigin"
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await driver.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(empty.attribute("crossorigin").isNone());
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
+});
+
+test("Selenium.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+  const driver = await new Builder()
+    .forBrowser(Browser.CHROME)
+    .setChromeOptions(options)
+    .build();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await driver.get(pageUrl);
+
+  const alfaPage = await Selenium.toPage(driver, { enforceAnonymousCrossOrigin: true });
+
+  // We check that the scraping **did** change the page
+
+  const emptyAttr = await driver.executeScript(
+    "return window.document.getElementById('empty').crossOrigin"
+  );
+  t.equal(emptyAttr, "anonymous");
+
+  const anonymousAttr = await driver.executeScript(
+    "return window.document.getElementById('anonymous').crossOrigin"
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await driver.executeScript(
+    "return window.document.getElementById('use-credentials').crossOrigin"
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await driver.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(
+    empty
+      .attribute("crossorigin")
+      .some((crossorigin) => crossorigin.value === "anonymous")
+  );
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
 });

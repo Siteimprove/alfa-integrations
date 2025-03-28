@@ -21,12 +21,15 @@ export namespace Vue {
     | VueWrapper<VueElement, ComponentPublicInstance>
     | Cheerio.Type;
 
-  export async function toPage(value: Type): Promise<Page> {
+  export async function toPage(
+    value: Type,
+    options?: dom.Native.Options
+  ): Promise<Page> {
     if ("cheerio" in value) {
       return Cheerio.toPage(value);
     }
 
-    const nodeJSON = await dom.Native.fromNode(value.element);
+    const nodeJSON = await dom.Native.fromNode(value.element, options);
 
     const deviceJSON = device.Native.fromWindow(window);
 

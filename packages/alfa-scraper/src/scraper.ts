@@ -3,14 +3,9 @@
 import * as fs from "fs";
 
 import { Device } from "@siteimprove/alfa-device";
-import type {
-  Cookie} from "@siteimprove/alfa-http";
-import {
-  Header,
-  Headers,
-  Request,
-  Response,
-} from "@siteimprove/alfa-http";
+import type { Native } from "@siteimprove/alfa-dom/native";
+import type { Cookie } from "@siteimprove/alfa-http";
+import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Mapper } from "@siteimprove/alfa-mapper";
 import { Puppeteer } from "@siteimprove/alfa-puppeteer";
@@ -72,7 +67,7 @@ export class Scraper {
    */
   public async scrape(
     url: string | URL,
-    options: Scraper.scrape.Options = {}
+    options: Scraper.scrape.Options & Native.Options = {}
   ): Promise<Result<Page, string>> {
     if (typeof url === "string") {
       const result = URL.parse(url);
@@ -214,7 +209,7 @@ export class Scraper {
             return Err.of(error);
           }
 
-          const alfaPage = await parsePage(page);
+          const alfaPage = await parsePage(page, options);
 
           if (screenshot !== null) {
             await captureScreenshot(page, screenshot);
@@ -313,8 +308,14 @@ async function parseResponse(
   );
 }
 
-async function parsePage(page: puppeteer.Page): Promise<Page> {
-  return Puppeteer.toPage(await page.evaluateHandle(() => window.document));
+async function parsePage(
+  page: puppeteer.Page,
+  options?: Native.Options
+): Promise<Page> {
+  return Puppeteer.toPage(
+    await page.evaluateHandle(() => window.document),
+    options
+  );
 }
 
 async function captureScreenshot(

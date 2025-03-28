@@ -1,3 +1,5 @@
+/// <reference lib="dom" />
+
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test-deprecated";
@@ -119,4 +121,120 @@ test("Playwright.toPage() scrapes a page", async (t) => {
     },
     device: null,
   });
+});
+
+test("Playwright.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Playwright.toPage(document);
+
+  // We check that the scraping did not change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, null);
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(empty.attribute("crossorigin").isNone());
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
+});
+
+test("Playwright.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Playwright.toPage(document, { enforceAnonymousCrossOrigin: true });
+
+  // We check that the scraping **did** change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, "anonymous");
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(
+    empty
+      .attribute("crossorigin")
+      .some((crossorigin) => crossorigin.value === "anonymous")
+  );
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
 });

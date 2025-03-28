@@ -89,12 +89,12 @@ export namespace Cypress {
 
   export type Type = globalThis.Node | globalThis.JQuery;
 
-  export async function toPage(value: Type): Promise<Page> {
+  export async function toPage(value: Type, options?: dom.Native.Options): Promise<Page> {
     if ("jquery" in value) {
       value = value.get(0);
     }
 
-    const nodeJSON = await dom.Native.fromNode(value);
+    const nodeJSON = await dom.Native.fromNode(value, options);
 
     // This escapes shadow DOM, but not iframes!
     const root = value.getRootNode({ composed: true });

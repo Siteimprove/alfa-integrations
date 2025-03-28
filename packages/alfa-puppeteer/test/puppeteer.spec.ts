@@ -119,3 +119,117 @@ test("Puppeteer.toPage() scrapes a page", async (t) => {
     device: null,
   });
 });
+
+test("Puppeteer.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const page = await browser.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Puppeteer.toPage(document);
+
+  // We check that the scraping did not change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, null);
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(empty.attribute("crossorigin").isNone());
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
+});
+
+test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+  const browser = await puppeteer.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const page = await browser.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Puppeteer.toPage(document, { enforceAnonymousCrossOrigin: true });
+
+  // We check that the scraping **did** change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, "anonymous");
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(
+    empty
+      .attribute("crossorigin")
+      .some((crossorigin) => crossorigin.value === "anonymous")
+  );
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
+});

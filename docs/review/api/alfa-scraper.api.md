@@ -13,6 +13,7 @@ import { Header } from '@siteimprove/alfa-http';
 import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import type * as json from '@siteimprove/alfa-json';
 import type { Mapper } from '@siteimprove/alfa-mapper';
+import type { Native } from '@siteimprove/alfa-dom/native';
 import { Option as Option_2 } from '@siteimprove/alfa-option';
 import type { Page } from 'puppeteer';
 import { Page as Page_2 } from '@siteimprove/alfa-web';
@@ -110,7 +111,7 @@ export class Scraper {
     close(): Promise<void>;
     // (undocumented)
     static of(browser?: Promise<puppeteer.Browser>): Promise<Scraper>;
-    scrape(url: string | URL_2, options?: Scraper.scrape.Options): Promise<Result<Page_2, string>>;
+    scrape(url: string | URL_2, options?: Scraper.scrape.Options & Native.Options): Promise<Result<Page_2, string>>;
     // (undocumented)
     static with<T>(mapper: Mapper<Scraper, Promise<T>>, browser?: Promise<puppeteer.Browser>): Promise<T>;
 }

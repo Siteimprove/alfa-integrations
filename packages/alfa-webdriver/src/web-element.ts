@@ -25,11 +25,13 @@ export interface WebElement {
 export namespace WebElement {
   export async function toPage(
     webElement: WebElement,
-    browser: WebdriverIO.Browser
+    browser: WebdriverIO.Browser,
+    options?: dom.Native.Options
   ): Promise<Page> {
     const nodeJSON = await browser.execute(
       dom.Native.fromNode,
-      webElement as any
+      webElement as any,
+      options
     );
 
     return Page.of(

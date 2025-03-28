@@ -4,13 +4,16 @@
 
 ```ts
 
+/// <reference lib="dom" />
+
+import * as dom from '@siteimprove/alfa-dom/native';
 import { Page } from '@siteimprove/alfa-web';
 import { WebDriver } from 'selenium-webdriver';
 
 // @public (undocumented)
 export namespace Selenium {
     // (undocumented)
-    export function toPage(driver: WebDriver): Promise<Page>;
+    export function toPage(driver: WebDriver, options?: dom.Native.Options): Promise<Page>;
 }
 
 // (No @packageDocumentation comment for this package)

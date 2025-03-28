@@ -7,12 +7,13 @@
 /// <reference lib="dom" />
 
 import type { ComponentFixture } from '@angular/core/testing';
+import * as dom from '@siteimprove/alfa-dom/native';
 import { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)
 export namespace Angular {
     // (undocumented)
-    export function toPage(value: Type): Promise<Page>;
+    export function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
     // (undocumented)
     export type Type = ComponentFixture<unknown>;
 }

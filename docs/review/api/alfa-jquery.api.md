@@ -7,12 +7,13 @@
 /// <reference types="jquery" />
 /// <reference lib="dom" />
 
+import * as dom from '@siteimprove/alfa-dom/native';
 import { Page } from '@siteimprove/alfa-web';
 
 // @public (undocumented)
 namespace JQuery_2 {
     // (undocumented)
-    function toPage(value: Type): Promise<Page>;
+    function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
     // (undocumented)
     type Type = globalThis.JQuery;
 }
