@@ -166,7 +166,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
       headers,
       cookies,
       fit: flags.fit,
-      withCrossOrigin: flags.enforceAnonymousCrossOrigin
+      enforceAnonymousCrossOrigin: flags.enforceAnonymousCrossOrigin
     }
   );
 

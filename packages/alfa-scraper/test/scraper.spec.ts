@@ -138,7 +138,7 @@ test("#scrape() enforce anonymous crossorigin on `<link>` missing one, when aske
   await Scraper.with(async (scraper) => {
     const url = getTestPageFileUrl("links.html");
     const page = (
-      await scraper.scrape(url, { withCrossOrigin: true })
+      await scraper.scrape(url, { enforceAnonymousCrossOrigin: true })
     ).getUnsafe();
 
     const idMap = Query.getElementIdMap(page.document);

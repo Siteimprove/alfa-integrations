@@ -180,7 +180,7 @@ test("Selenium.toPage() enforces anonymous crossorigin on links without one, whe
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
   await driver.get(pageUrl);
 
-  const alfaPage = await Selenium.toPage(driver, { withCrossOrigin: true });
+  const alfaPage = await Selenium.toPage(driver, { enforceAnonymousCrossOrigin: true });
 
   // We check that the scraping **did** change the page
 

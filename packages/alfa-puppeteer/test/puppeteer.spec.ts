@@ -189,7 +189,7 @@ test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, wh
 
   const document = await page.evaluateHandle(() => window.document);
 
-  const alfaPage = await Puppeteer.toPage(document, { withCrossOrigin: true });
+  const alfaPage = await Puppeteer.toPage(document, { enforceAnonymousCrossOrigin: true });
 
   // We check that the scraping **did** change the page
 

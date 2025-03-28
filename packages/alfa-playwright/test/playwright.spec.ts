@@ -194,7 +194,7 @@ test("Playwright.toPage() enforces anonymous crossorigin on links without one, w
 
   const document = await page.evaluateHandle(() => window.document);
 
-  const alfaPage = await Playwright.toPage(document, { withCrossOrigin: true });
+  const alfaPage = await Playwright.toPage(document, { enforceAnonymousCrossOrigin: true });
 
   // We check that the scraping **did** change the page
 

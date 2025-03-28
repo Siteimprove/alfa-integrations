@@ -173,7 +173,7 @@ it("should not add anonymous crossorigin to <link> without one, when asked to", 
   cy.visit("test/fixture/links.html");
 
   cy.document()
-    .then((document) => Cypress.toPage(document, { withCrossOrigin: true }))
+    .then((document) => Cypress.toPage(document, { enforceAnonymousCrossOrigin: true }))
     .then((alfaPage) => {
       const idMap = Query.getElementIdMap(alfaPage.document);
 
