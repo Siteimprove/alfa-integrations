@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toPage(driver)](./alfa-selenium.selenium.topage.md)
+[toPage(driver, options)](./alfa-selenium.selenium.topage.md)
 
 
 </td><td>

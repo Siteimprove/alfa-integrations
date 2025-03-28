@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toPage(value)](./alfa-jquery.jquery_2.topage.md)
+[toPage(value, options)](./alfa-jquery.jquery_2.topage.md)
 
 
 </td><td>

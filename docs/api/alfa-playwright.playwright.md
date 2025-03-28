@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toNode(value, device)](./alfa-playwright.playwright.tonode.md)
+[toNode(value, device, options)](./alfa-playwright.playwright.tonode.md)
 
 
 </td><td>
@@ -35,7 +35,7 @@ Description
 </td></tr>
 <tr><td>
 
-[toPage(value)](./alfa-playwright.playwright.topage.md)
+[toPage(value, options)](./alfa-playwright.playwright.topage.md)
 
 
 </td><td>

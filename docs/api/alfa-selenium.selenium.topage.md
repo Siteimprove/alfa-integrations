@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-function toPage(driver: WebDriver): Promise<Page>;
+function toPage(driver: WebDriver, options?: dom.Native.Options): Promise<Page>;
 ```
 
 ## Parameters
@@ -39,6 +39,22 @@ WebDriver
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+dom.Native.Options
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

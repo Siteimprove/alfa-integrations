@@ -1,5 +1,15 @@
 # @siteimprove/alfa-jquery
 
+## 0.79.0
+
+### Minor Changes
+
+- **Added:** `.toPage`, `.toNode`, or `#scrape` now accept a `dom.Native.Options` parameter; currently to enforce anonymous cross-origin on `<link>` elements before scraping the page. CLI now accepts a `--enforce-anonymous-cross-origin` flag to enforce this behavior. ([#144](https://github.com/Siteimprove/alfa-integrations/pull/144))
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.102.0. ([#146](https://github.com/Siteimprove/alfa-integrations/pull/146))
+
 ## 0.78.2
 
 ### Patch Changes

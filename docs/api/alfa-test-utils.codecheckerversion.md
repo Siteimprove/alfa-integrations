@@ -8,5 +8,5 @@
 **Signature:**
 
 ```typescript
-codeCheckerVersion = "0.78.2"
+codeCheckerVersion = "0.79.0"
 ```

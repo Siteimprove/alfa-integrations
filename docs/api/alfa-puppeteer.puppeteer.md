@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toNode(value, device)](./alfa-puppeteer.puppeteer.tonode.md)
+[toNode(value, device, options)](./alfa-puppeteer.puppeteer.tonode.md)
 
 
 </td><td>
@@ -35,7 +35,7 @@ Description
 </td></tr>
 <tr><td>
 
-[toPage(value)](./alfa-puppeteer.puppeteer.topage.md)
+[toPage(value, options)](./alfa-puppeteer.puppeteer.topage.md)
 
 
 </td><td>
