@@ -68,7 +68,8 @@ export namespace Puppeteer {
       request,
       response,
       nodeJSON.type === "document"
-        ? Document.from(nodeJSON as Document.JSON, pageDevice)
+        // The type is ensured by the previous test.
+        ? Document.from(nodeJSON as unknown as Document.JSON, pageDevice)
         : Document.of([Node.from(nodeJSON, pageDevice)]),
       pageDevice
     );
