@@ -1,5 +1,11 @@
 # @siteimprove/alfa-assert
 
+## 0.79.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.103.0. ([#148](https://github.com/Siteimprove/alfa-integrations/pull/148))
+
 ## 0.79.0
 
 ### Patch Changes
