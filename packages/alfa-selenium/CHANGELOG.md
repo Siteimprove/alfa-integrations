@@ -1,5 +1,11 @@
 # @siteimprove/alfa-selenium
 
+## 0.79.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.103.2. ([#151](https://github.com/Siteimprove/alfa-integrations/pull/151))
+
 ## 0.79.2
 
 ### Patch Changes
