@@ -1,5 +1,11 @@
 # @siteimprove/alfa-crawler
 
+## 0.80.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#168](https://github.com/Siteimprove/alfa-integrations/pull/168))
+
 ## 0.80.1
 
 ### Patch Changes
