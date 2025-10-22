@@ -22,15 +22,15 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.104.1",
+    "@siteimprove/alfa-act": "^0.106.1",
     "@siteimprove/alfa-formatter": "workspace:^",
-    "@siteimprove/alfa-hash": "^0.104.1",
-    "@siteimprove/alfa-json": "^0.104.1"
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.104.1",
-    "@siteimprove/alfa-hash": "^0.104.1",
-    "@siteimprove/alfa-json": "^0.104.1"
+    "@siteimprove/alfa-act": "^0.106.1",
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1"
   },
   "publishConfig": {
     "access": "public",
