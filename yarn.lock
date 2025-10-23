@@ -2262,7 +2262,7 @@ __metadata:
     knip: "npm:^5.29.2"
     minimist: "npm:^1.2.6"
     package-dependency-graph: "npm:^1.14.4"
-    prettier: "npm:^2.7.1"
+    prettier: "npm:^3.6.2"
     typescript: "npm:^5.5.2"
   languageName: unknown
   linkType: soft
@@ -10285,6 +10285,15 @@ __metadata:
   bin:
     prettier: bin-prettier.js
   checksum: 10/57aedf9eea2ea3a4091c7867c8192d268614c395826c323c1fee7841b3ebab6b299c034b5a083f908d8a995ba7fc5c633ecc4b90c8fd56615c0c054a73d8c6b3
+  languageName: node
+  linkType: hard
+
+"prettier@npm:^3.6.2":
+  version: 3.6.2
+  resolution: "prettier@npm:3.6.2"
+  bin:
+    prettier: bin/prettier.cjs
+  checksum: 10/1213691706bcef1371d16ef72773c8111106c3533b660b1cc8ec158bd109cdf1462804125f87f981f23c4a3dba053b6efafda30ab0114cc5b4a725606bb9ff26
   languageName: node
   linkType: hard
 
