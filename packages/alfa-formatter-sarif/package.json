@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-formatter-sarif",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.80.1",
+  "version": "0.80.2",
   "license": "MIT",
   "description": "An outcome formatter that outputs SARIF",
   "repository": {
@@ -22,17 +22,17 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.104.1",
+    "@siteimprove/alfa-act": "^0.106.1",
     "@siteimprove/alfa-formatter": "workspace:^",
-    "@siteimprove/alfa-hash": "^0.104.1",
-    "@siteimprove/alfa-rules": "^0.104.1",
-    "@siteimprove/alfa-sarif": "^0.104.1"
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-rules": "^0.106.1",
+    "@siteimprove/alfa-sarif": "^0.106.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.104.1",
-    "@siteimprove/alfa-hash": "^0.104.1",
-    "@siteimprove/alfa-rules": "^0.104.1",
-    "@siteimprove/alfa-sarif": "^0.104.1"
+    "@siteimprove/alfa-act": "^0.106.1",
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-rules": "^0.106.1",
+    "@siteimprove/alfa-sarif": "^0.106.1"
   },
   "publishConfig": {
     "access": "public",

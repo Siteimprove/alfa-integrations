@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-command",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.80.1",
+  "version": "0.80.2",
   "license": "MIT",
   "description": "Functionality for building robust command line interfaces",
   "repository": {
@@ -22,30 +22,30 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-functor": "^0.104.1",
-    "@siteimprove/alfa-json": "^0.104.1",
-    "@siteimprove/alfa-mapper": "^0.104.1",
-    "@siteimprove/alfa-option": "^0.104.1",
-    "@siteimprove/alfa-parser": "^0.104.1",
-    "@siteimprove/alfa-predicate": "^0.104.1",
-    "@siteimprove/alfa-refinement": "^0.104.1",
-    "@siteimprove/alfa-result": "^0.104.1",
-    "@siteimprove/alfa-thunk": "^0.104.1",
+    "@siteimprove/alfa-functor": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1",
+    "@siteimprove/alfa-mapper": "^0.106.1",
+    "@siteimprove/alfa-option": "^0.106.1",
+    "@siteimprove/alfa-parser": "^0.106.1",
+    "@siteimprove/alfa-predicate": "^0.106.1",
+    "@siteimprove/alfa-refinement": "^0.106.1",
+    "@siteimprove/alfa-result": "^0.106.1",
+    "@siteimprove/alfa-thunk": "^0.106.1",
     "chalk": "^5.3.0"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test-deprecated": "^0.104.1"
+    "@siteimprove/alfa-test-deprecated": "^0.106.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-functor": "^0.104.1",
-    "@siteimprove/alfa-json": "^0.104.1",
-    "@siteimprove/alfa-mapper": "^0.104.1",
-    "@siteimprove/alfa-option": "^0.104.1",
-    "@siteimprove/alfa-parser": "^0.104.1",
-    "@siteimprove/alfa-predicate": "^0.104.1",
-    "@siteimprove/alfa-refinement": "^0.104.1",
-    "@siteimprove/alfa-result": "^0.104.1",
-    "@siteimprove/alfa-thunk": "^0.104.1"
+    "@siteimprove/alfa-functor": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1",
+    "@siteimprove/alfa-mapper": "^0.106.1",
+    "@siteimprove/alfa-option": "^0.106.1",
+    "@siteimprove/alfa-parser": "^0.106.1",
+    "@siteimprove/alfa-predicate": "^0.106.1",
+    "@siteimprove/alfa-refinement": "^0.106.1",
+    "@siteimprove/alfa-result": "^0.106.1",
+    "@siteimprove/alfa-thunk": "^0.106.1"
   },
   "publishConfig": {
     "access": "public",
