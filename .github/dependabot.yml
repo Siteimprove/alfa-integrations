@@ -11,6 +11,22 @@ updates:
       - "npm"
       - "dependencies"
 
+    ignore:
+      # Packages that has no tests should not update their dependencies
+      # as we have witnessed breaking change in the dependency creating
+      # hard-to-fix problems downstream.
+      - dependency-name: "@angular/core" # @siteimprove/alfa-angular
+      - dependency-name: "rxjs" # @siteimprove/alfa-angular
+      - dependency-name: "zone.js" # @siteimprove/alfa-angular
+      - dependency-name: "chai" # @siteimprove/alfa-chai
+      - dependency-name: "cheerio" # @siteimprove/alfa-cheerio
+      - dependency-name: "domhandler" # @siteimprove/alfa-cheerio
+      - dependency-name: "enzyme" # @siteimprove/alfa-enzyme
+      - dependency-name: "jasmine" # @siteimprove/alfa-jasmine
+      - dependency-name: "jquery" # @siteimprove/alfa-jquery
+      - dependency-name: "unexpected" # @siteimprove/alfa-unexpected
+      - dependency-name: "webdriverio" # @siteimprove/alfa-webdriver
+
     groups:
       production-patch: # Patch updates to production packages. Low risk.
         # This group could be auto-merge, this need a separate action. Maybe acting on a label that would be set here?
