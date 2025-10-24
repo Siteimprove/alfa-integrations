@@ -1,5 +1,5 @@
 import { Node, Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import * as path from "node:path";
 import * as url from "node:url";
 import { Awaiter } from "../dist/index.js";
@@ -20,7 +20,7 @@ function getTestPageFileUrl(fileName: string): string {
 test("#scrape() scrapes a page", async (t) =>
   await Scraper.with(async (scraper) => {
     const url = getTestPageFileUrl("internal-link.html");
-    const result = await scraper.scrape(url, );
+    const result = await scraper.scrape(url);
 
     t.equal(result.isOk(), true);
 
@@ -31,8 +31,8 @@ test("#scrape() scrapes a page", async (t) =>
 
 test("#scrape() scrapes a page with a hash fragment", async (t) =>
   await Scraper.with(async (scraper) => {
-    const url = getTestPageFileUrl("internal-link.html");
-    const result = await scraper.scrape(url + "#foo");
+    const url = getTestPageFileUrl("internal-link.html") + "#foo";
+    const result = await scraper.scrape(url);
 
     t.equal(result.isOk(), true);
 
@@ -112,3 +112,51 @@ test("#scrape() scrapes layout", async (t) =>
       height: 288,
     });
   }));
+
+test("#scrape() leaves crossorigin untouched by default", async (t) => {
+  await Scraper.with(async (scraper) => {
+    const url = getTestPageFileUrl("links.html");
+    const page = (await scraper.scrape(url)).getUnsafe();
+
+    const idMap = Query.getElementIdMap(page.document);
+
+    const empty = idMap.get("empty").getUnsafe();
+    t(empty.attribute("crossorigin").isNone());
+
+    for (const id of ["anonymous", "use-credentials"]) {
+      const link = idMap.get(id).getUnsafe();
+      t(
+        link
+          .attribute("crossorigin")
+          .some((crossorigin) => crossorigin.value === id)
+      );
+    }
+  });
+});
+
+test("#scrape() enforce anonymous crossorigin on `<link>` missing one, when asked to", async (t) => {
+  await Scraper.with(async (scraper) => {
+    const url = getTestPageFileUrl("links.html");
+    const page = (
+      await scraper.scrape(url, { enforceAnonymousCrossOrigin: true })
+    ).getUnsafe();
+
+    const idMap = Query.getElementIdMap(page.document);
+
+    const empty = idMap.get("empty").getUnsafe();
+    t(
+      empty
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === "anonymous")
+    );
+
+    for (const id of ["anonymous", "use-credentials"]) {
+      const link = idMap.get(id).getUnsafe();
+      t(
+        link
+          .attribute("crossorigin")
+          .some((crossorigin) => crossorigin.value === id)
+      );
+    }
+  });
+});

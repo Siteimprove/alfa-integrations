@@ -10,15 +10,16 @@ import { Array as Array_2 } from '@siteimprove/alfa-array';
 import type { AxiosRequestConfig } from 'axios';
 import { Equatable } from '@siteimprove/alfa-equatable';
 import { Flattened } from '@siteimprove/alfa-rules';
+import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
 import { Node } from '@siteimprove/alfa-dom';
+import { Option } from '@siteimprove/alfa-option';
 import type { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
 import { Result } from '@siteimprove/alfa-result';
-import type { Rule } from '@siteimprove/alfa-act';
 import { Sequence } from '@siteimprove/alfa-sequence';
 
 // @public
@@ -26,6 +27,7 @@ export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Q
 
 // @public
 export class Audit implements json.Serializable<Audit.JSON> {
+    protected constructor(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance.Durations);
     get alfaVersion(): typeof alfaVersion;
     get durations(): Performance.Durations;
     // (undocumented)
@@ -89,31 +91,32 @@ export namespace Audit {
 }
 
 // @public (undocumented)
-export interface CommitInformation {
-    Author: string | undefined;
-    BranchName: string;
-    CommitHash: string | undefined;
-    CommitTimestamp: string | undefined;
-    Email: string | undefined;
-    GitOrigin: string | undefined;
-    Message: string | undefined;
-}
-
-// Warning: (ae-internal-missing-underscore) The name "getCommitInformation" should be prefixed with an underscore because the declaration is marked as @internal
-//
-// @internal (undocumented)
-export function getCommitInformation(): Promise<Result<CommitInformation, string>>;
+export const codeCheckerVersion = "0.80.2";
 
 // @public
-export class Logging implements Equatable, json.Serializable<Logging.JSON> {
+export interface CommitInformation {
+    Author?: string;
+    BranchName: string;
+    CommitHash?: string;
+    CommitTimestamp?: string;
+    Email?: string;
+    Message?: string;
+    Origin?: string;
+}
+
+// @public
+export class Logging<S extends Logging.Severity = Logging.Severity> implements Equatable, json.Serializable<Logging.JSON> {
+    protected constructor(title: string, logs: Sequence<Logging>, severity: S);
     // (undocumented)
     equals(value: Logging): boolean;
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
-    get logs(): Iterable<Logging>;
+    get logs(): Iterable_2<Logging>;
     // (undocumented)
-    static of(title: string, logs?: Iterable<Logging>): Logging;
+    static of(title: string, logs?: Iterable_2<Logging>): Logging<"log">;
+    // (undocumented)
+    static of<S extends Logging.Severity = "log">(title: string, severity: S, logs?: Iterable_2<Logging>): Logging<S>;
     // (undocumented)
     print(): void;
     // (undocumented)
@@ -130,11 +133,13 @@ export namespace Logging {
         Title = "Untitled";
     }
     // @internal (undocumented)
+    export function errorTitle(n: number): string;
+    // @internal (undocumented)
     export function fromAggregate(aggregate: Array_2<[string, {
         failed: number;
-    }]>, pageTitle?: string, pageReportUrl?: Result<string, string> | string): Logging;
+    }]>, pageTitle?: string, pageReportUrl?: Result<string, Array_2<string>> | string): Logging;
     // (undocumented)
-    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, string> | string, options?: Options): Logging;
+    export function fromAudit(audit: Audit | Audit.JSON, pageReportUrl?: Result<string, Array_2<string>> | string, options?: Options): Logging;
     // (undocumented)
     export function isLogging(value: unknown): value is Logging;
     // @internal (undocumented)
@@ -146,12 +151,16 @@ export namespace Logging {
         // (undocumented)
         logs: Sequence.JSON<JSON>;
         // (undocumented)
+        severity: Severity;
+        // (undocumented)
         title: string;
     }
     // (undocumented)
     export interface Options {
         pageTitle?: string | ((page: Page) => string);
     }
+    // (undocumented)
+    export type Severity = "info" | "log" | "warn" | "error";
 }
 
 // @public
@@ -166,42 +175,17 @@ export namespace Outcomes {
 // @public
 export namespace Performance {
     const // (undocumented)
-    durationKeys: readonly ["applicability", "expectation", "total"];
-    // Warning: (ae-incompatible-release-tags) The symbol "CommonDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
-    //
-    // (undocumented)
-    export type CommonDurations = {
+    commonKeys: readonly ["cascade", "aria-tree", "total"];
+    // @internal (undocumented)
+    export type CommonKeys = (typeof commonKeys)[number];
+    // Warning: (ae-incompatible-release-tags) The symbol "Durations" is marked as @public, but its signature references "Performance" which is marked as @internal
+    export type Durations = {
         [K in CommonKeys]: number;
     };
     // @internal (undocumented)
-    export type CommonKeys = (typeof commonKeys)[number];
-    // @internal (undocumented)
-    export type DurationKey = (typeof durationKeys)[number];
-    export type Durations = {
-        common: CommonDurations;
-        rules: RulesDurations;
-    };
-    const // (undocumented)
-    commonKeys: readonly ["cascade", "aria-tree", "total"];
-    // @internal (undocumented)
     export function empty(): Durations;
     // @internal (undocumented)
-    export function emptyRuleDurations(): RuleDurations;
-    // @internal (undocumented)
     export function recordCommon(durations: Durations): Performance_2<string>;
-    // @internal (undocumented)
-    export function recordRule(durations: Durations): Performance_2<RuleEvent>;
-    // Warning: (ae-incompatible-release-tags) The symbol "RuleDurations" is marked as @public, but its signature references "Performance" which is marked as @internal
-    //
-    // (undocumented)
-    export type RuleDurations = {
-        [K in DurationKey]: number;
-    };
-    // @internal (undocumented)
-    export type RuleEvent = Rule.Event<Flattened.Input, Flattened.Target, Flattened.Question, Flattened.Subject>;
-    export type RulesDurations = {
-        [key: string]: RuleDurations;
-    };
         {};
 }
 
@@ -212,6 +196,8 @@ export namespace Rules {
     const wcag20Filter: Predicate<Flattened.Rule>;
     const wcag20aaFilter: Predicate<Flattened.Rule>;
     const wcag21aaFilter: Predicate<Flattened.Rule>;
+    const ARIAFilter: Predicate<Flattened.Rule>;
+    const bestPracticesFilter: Predicate<Flattened.Rule>;
     const componentFilter: Predicate<Flattened.Rule>;
     export function cherryPickFilter(rulesId: Array<number>): Predicate<Flattened.Rule>;
     export function cherryPickFilter(...rulesId: Array<number>): Predicate<Flattened.Rule>;
@@ -222,11 +208,15 @@ export namespace SIP {
     // @internal (undocumented)
     export namespace Defaults {
         const // (undocumented)
-        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck/CreateReport";
+        URL = "https://api.siteimprove.com/v2/a11y/AlfaDevCheck";
         const // (undocumented)
         Title = "";
         const // (undocumented)
         Name: undefined;
+        // (undocumented)
+        export function missingOptions(missing: Array_2<string>): string;
+        const // (undocumented)
+        badCredentials = "Error: Invalid credentials. Verify the username and API key, then try again.";
     }
     // @internal
     export namespace Metadata {
@@ -234,7 +224,9 @@ export namespace SIP {
             url?: string;
             timestamp?: string;
             httpsAgent?: Agent;
-        }): Promise<AxiosRequestConfig>;
+        }): Result<AxiosRequestConfig, string>;
+        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
+        //
         // (undocumented)
         export type CommonDurations = {
             [K in CamelCase<Performance.CommonKeys>]: number;
@@ -252,27 +244,22 @@ export namespace SIP {
                 Failed: number;
                 Passed: number;
                 CantTell: number;
-                Durations: RuleDurations;
             }>;
+            SiteId?: number;
             TestName?: string;
             Version: `${number}.${number}.${number}`;
         }
-        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Promise<Payload>;
-        // Warning: (ae-forgotten-export) The symbol "CamelCase" needs to be exported by the entry point index.d.ts
-        //
-        // (undocumented)
-        export type RuleDurations = {
-            [K in CamelCase<Performance.DurationKey>]: number;
-        };
+        export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Result<Payload, string>;
             {};
     }
     // (undocumented)
     export interface Options {
         apiKey?: string;
-        includeGitInfo?: boolean;
+        commitInformation?: CommitInformation | Option<CommitInformation> | Result<CommitInformation, unknown>;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
-        testName?: string | ((git: CommitInformation) => string);
+        siteID?: number;
+        testName?: string | ((commit: CommitInformation) => string);
         userName?: string;
     }
     // @internal
@@ -291,13 +278,15 @@ export namespace SIP {
         export function payload(Id: string, audit: Audit | Audit.JSON): Payload;
             {};
     }
-    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, string>>;
+    export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, Array_2<string>>>;
     // @internal
     export function upload(audit: Audit | Audit.JSON, options: Options, override: {
         url?: string;
         timestamp?: string;
         httpsAgent?: Agent;
-    }): Promise<Result<string, string>>;
+    }): Promise<Result<string, Array_2<string>>>;
 }
+
+// (No @packageDocumentation comment for this package)
 
 ```

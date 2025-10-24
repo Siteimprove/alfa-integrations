@@ -4,8 +4,6 @@
 
 ## alfa-test-utils package
 
-A library for running Alfa tests and uploading results to the Siteimprove Intelligence Platform.
-
 ## Classes
 
 <table><thead><tr><th>
@@ -63,6 +61,7 @@ Description
 
 </td><td>
 
+Global structure of a version control metadata.
 
 
 </td></tr>
@@ -143,6 +142,31 @@ Collection of rules filter, and pre-filtered sets of rules.
 </td><td>
 
 Interacting with Siteimprove Intelligence Platform (SIP) API.
+
+
+</td></tr>
+</tbody></table>
+
+## Variables
+
+<table><thead><tr><th>
+
+Variable
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[codeCheckerVersion](./alfa-test-utils.codecheckerversion.md)
+
+
+</td><td>
+
 
 
 </td></tr>

@@ -4,7 +4,7 @@ import { Request, Response } from "@siteimprove/alfa-http";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import { Criterion } from "@siteimprove/alfa-wcag";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -156,17 +156,9 @@ test(".run() build performance data", async (t) => {
 
   // We cannot test real values due to instability, only checking they've been
   // updated.
-  t.notEqual(actual.common.total, 0);
-  t.notEqual(actual.common.cascade, 0);
-  t.notEqual(actual.common["aria-tree"], 0);
-
-  t.deepEqual(Object.keys(actual.rules), [
-    "https://alfa.siteimprove.com/rules/sia-r2",
-  ]);
-  const rule = actual.rules["https://alfa.siteimprove.com/rules/sia-r2"];
-  t.notEqual(rule.total, 0);
-  t.notEqual(rule.applicability, 0);
-  t.notEqual(rule.expectation, 0);
+  t.notEqual(actual.total, 0);
+  t.notEqual(actual.cascade, 0);
+  t.notEqual(actual["aria-tree"], 0);
 });
 
 test(".run() excludes occurrences in `<iframe>` by default", async (t) => {

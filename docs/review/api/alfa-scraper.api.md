@@ -13,6 +13,7 @@ import { Header } from '@siteimprove/alfa-http';
 import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import type * as json from '@siteimprove/alfa-json';
 import type { Mapper } from '@siteimprove/alfa-mapper';
+import type { Native } from '@siteimprove/alfa-dom/native';
 import { Option as Option_2 } from '@siteimprove/alfa-option';
 import type { Page } from 'puppeteer';
 import { Page as Page_2 } from '@siteimprove/alfa-web';
@@ -25,6 +26,7 @@ import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)
 export class Archive implements Equatable, Serializable {
+    protected constructor(path: string, format: Archive.Format);
     // (undocumented)
     equals(value: Archive): boolean;
     // (undocumented)
@@ -75,6 +77,7 @@ export namespace Awaiter {
 
 // @public (undocumented)
 export class Credentials implements Equatable, Serializable {
+    protected constructor(username: string, password: string);
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
@@ -104,10 +107,11 @@ export namespace Credentials {
 
 // @public (undocumented)
 export class Scraper {
+    protected constructor(browser: puppeteer.Browser);
     close(): Promise<void>;
     // (undocumented)
     static of(browser?: Promise<puppeteer.Browser>): Promise<Scraper>;
-    scrape(url: string | URL_2, options?: Scraper.scrape.Options): Promise<Result<Page_2, string>>;
+    scrape(url: string | URL_2, options?: Scraper.scrape.Options & Native.Options): Promise<Result<Page_2, string>>;
     // (undocumented)
     static with<T>(mapper: Mapper<Scraper, Promise<T>>, browser?: Promise<puppeteer.Browser>): Promise<T>;
 }
@@ -142,6 +146,7 @@ export namespace Scraper {
 
 // @public (undocumented)
 export class Screenshot implements Equatable, Serializable {
+    protected constructor(path: string, type: Screenshot.Type);
     // (undocumented)
     equals(value: unknown): value is this;
     // (undocumented)
@@ -171,6 +176,7 @@ export namespace Screenshot {
     export namespace Type {
         // (undocumented)
         export class JPEG implements Equatable, Serializable {
+            protected constructor(quality: number);
             // (undocumented)
             equals(value: unknown): value is this;
             // (undocumented)
@@ -198,6 +204,7 @@ export namespace Screenshot {
         export type JSON = PNG.JSON | JPEG.JSON;
         // (undocumented)
         export class PNG implements Equatable, Serializable {
+            protected constructor(background: boolean);
             // (undocumented)
             get background(): boolean;
             // (undocumented)

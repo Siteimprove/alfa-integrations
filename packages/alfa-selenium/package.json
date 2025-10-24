@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-selenium",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.74.2",
+  "version": "0.80.2",
   "license": "MIT",
   "description": "Integrations and utilities for the Selenium browser automation library",
   "repository": {
@@ -22,17 +22,18 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-device": "^0.93.8",
-    "@siteimprove/alfa-dom": "^0.93.8",
-    "@siteimprove/alfa-http": "^0.93.8",
-    "@siteimprove/alfa-web": "^0.93.8",
+    "@siteimprove/alfa-device": "^0.106.1",
+    "@siteimprove/alfa-dom": "^0.106.1",
+    "@siteimprove/alfa-http": "^0.106.1",
+    "@siteimprove/alfa-web": "^0.106.1",
     "selenium-webdriver": "^4.24.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.93.8",
-    "@siteimprove/alfa-dom": "^0.93.8",
-    "@siteimprove/alfa-http": "^0.93.8",
-    "@siteimprove/alfa-web": "^0.93.8",
+    "@siteimprove/alfa-device": "^0.106.1",
+    "@siteimprove/alfa-dom": "^0.106.1",
+    "@siteimprove/alfa-http": "^0.106.1",
+    "@siteimprove/alfa-url": "^0.106.1",
+    "@siteimprove/alfa-web": "^0.106.1",
     "selenium-webdriver": "^4.24.0"
   },
   "publishConfig": {
@@ -40,7 +41,7 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.93.8",
+    "@siteimprove/alfa-test-deprecated": "^0.106.1",
     "@types/selenium-webdriver": "^4.1.26"
   }
 }

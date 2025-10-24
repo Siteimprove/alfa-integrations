@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toPage(value)](./alfa-vue.vue.topage.md)
+[toPage(value, options)](./alfa-vue.vue.topage.md)
 
 
 </td><td>

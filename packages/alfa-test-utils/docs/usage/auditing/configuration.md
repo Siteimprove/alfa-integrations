@@ -14,7 +14,7 @@ const alfaResult = await Audit.run(alfaPage, {
 });
 ```
 
-This selects all the rules that are either level A or AA for WCAG 2.2. If an older version of WCAG is required use instead the `Rules.wcag20aaFilter` or `Rules.wcag21aaFilter` filters.
+This selects all the rules that are either level A or AA for WCAG 2.2. If an older version of WCAG is required use instead the `Rules.wcag20aaFilter` or `Rules.wcag21aaFilter` filters. For rules related to ARIA, use `Rules.ARIAFilter`; for Best Practices, use `Rules.bestPracticesFilter`.
 
 ## Selecting by scope
 

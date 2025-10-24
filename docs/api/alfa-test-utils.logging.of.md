@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-static of(title: string, logs?: Iterable<Logging>): Logging;
+static of(title: string, logs?: Iterable<Logging>): Logging<"log">;
 ```
 
 ## Parameters
@@ -61,5 +61,5 @@ _(Optional)_
 </tbody></table>
 **Returns:**
 
-[Logging](./alfa-test-utils.logging.md)
+[Logging](./alfa-test-utils.logging.md)<!-- -->&lt;"log"&gt;
 

@@ -1,13 +1,6 @@
 import { Device } from "@siteimprove/alfa-device";
-import type {
-  Attribute,
-  Node,
-  Text} from "@siteimprove/alfa-dom";
-import {
-  Document,
-  Element,
-  Namespace,
-} from "@siteimprove/alfa-dom";
+import type { Attribute, Node, Text } from "@siteimprove/alfa-dom";
+import { Document, Element, Namespace } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { None, Option } from "@siteimprove/alfa-option";
 import { Refinement } from "@siteimprove/alfa-refinement";
@@ -141,6 +134,7 @@ function toText(data: string): Text.JSON {
   return {
     type: "text",
     data,
+    box: null,
   };
 }
 

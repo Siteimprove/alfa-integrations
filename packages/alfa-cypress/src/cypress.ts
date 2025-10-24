@@ -13,8 +13,9 @@ import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";
 import type { Formatter } from "@siteimprove/alfa-formatter";
 import type { Hashable } from "@siteimprove/alfa-hash";
-import { Request, Response } from "@siteimprove/alfa-http";
+import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import type { Mapper } from "@siteimprove/alfa-mapper";
+import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
 
 import type * as act from "@siteimprove/alfa-act";
@@ -88,12 +89,12 @@ export namespace Cypress {
 
   export type Type = globalThis.Node | globalThis.JQuery;
 
-  export async function toPage(value: Type): Promise<Page> {
+  export async function toPage(value: Type, options?: dom.Native.Options): Promise<Page> {
     if ("jquery" in value) {
       value = value.get(0);
     }
 
-    const nodeJSON = await dom.Native.fromNode(value);
+    const nodeJSON = await dom.Native.fromNode(value, options);
 
     // This escapes shadow DOM, but not iframes!
     const root = value.getRootNode({ composed: true });
@@ -105,13 +106,37 @@ export namespace Cypress {
         : undefined) ?? window;
 
     const deviceJSON = device.Native.fromWindow(view);
-
     const pageDevice = Device.from(deviceJSON);
+
+    /*
+     * We cannot really grab the request and response as they may have been
+     * long-lost when .toPage is called. We can at least grab the current URL
+     * and fill the rest with reasonable defaults values. Given that we do not
+     * really use these in the audit, this is mostly OK.
+     *
+     * Known caveats:
+     * * We assume that the request was a GET and the response a 200 OK. This is
+     *   probably not too wrong in most cases, but can easily be completely off.
+     * * We assume that the response was HTML. This is probably mostly correct.
+     * * We always return an empty Headers list; this is most likely wrong since
+     *   at least a Content-Type header should be present on the response.
+     */
+    // WARNING: This will throw an exception in the unlikely case that
+    // window.location.href is not a valid URL (which should never happen)
+    const url = URL.parse(view.location.href).getUnsafe();
+    const request = Request.of("GET", url);
+    const response = Response.of(
+      url,
+      200,
+      Headers.of([Header.of("Content-Type", "text/html")])
+    );
+
     return Page.of(
-      Request.empty(),
-      Response.empty(),
+      request,
+      response,
       nodeJSON.type === "document"
-        ? Document.from(nodeJSON as Document.JSON, pageDevice)
+        // The type is ensured by the previous test.
+        ? Document.from(nodeJSON as unknown as Document.JSON, pageDevice)
         : Document.of([Node.from(nodeJSON, pageDevice)]),
       pageDevice
     );

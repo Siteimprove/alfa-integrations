@@ -37,7 +37,7 @@ export class Audit implements json.Serializable<Audit.JSON> {
   private readonly _resultAggregates: Audit.ResultAggregates;
   private readonly _durations: Performance.Durations;
 
-  private constructor(
+  protected constructor(
     page: Page,
     outcomes: Map<string, Sequence<alfaOutcome>>,
     resultAggregates: Audit.ResultAggregates,
@@ -138,7 +138,6 @@ export namespace Audit {
   export async function run(page: Page, options: Options = {}): Promise<Audit> {
     const durations: Performance.Durations = Performance.empty();
     const commonPerformance = Performance.recordCommon(durations);
-    const rulesPerformance = Performance.recordRule(durations);
 
     const start = commonPerformance.mark("total").start;
     sharedPerformance(commonPerformance, page);
@@ -151,7 +150,7 @@ export namespace Audit {
           );
 
     const audit = Sequence.from(
-      await alfaAudit.of(page, rulesToRun).evaluate(rulesPerformance)
+      await alfaAudit.of(page, rulesToRun).evaluate()
     );
     commonPerformance.measure("total", start);
 

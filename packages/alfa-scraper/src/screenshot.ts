@@ -17,7 +17,7 @@ export class Screenshot implements Equatable, Serializable {
   private readonly _path: string;
   private readonly _type: Screenshot.Type;
 
-  private constructor(path: string, type: Screenshot.Type) {
+  protected constructor(path: string, type: Screenshot.Type) {
     this._path = path;
     this._type = type;
   }
@@ -68,7 +68,7 @@ export namespace Screenshot {
 
       private readonly _background: boolean;
 
-      private constructor(background: boolean) {
+      protected constructor(background: boolean) {
         this._background = background;
       }
 
@@ -107,7 +107,7 @@ export namespace Screenshot {
 
       private readonly _quality: number;
 
-      private constructor(quality: number) {
+      protected constructor(quality: number) {
         this._quality = quality;
       }
 

@@ -2,17 +2,22 @@
 
 ## Building a test name
 
-The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [git information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.git.md). For example, it can be convenient to name a test after the branch it comes from:
+The [`testName` option](./configuration.md#including-a-test-name) can also be a function producing a `string` from basic [commit information](https://github.com/Siteimprove/alfa-integrations/blob/main/docs/api/alfa-test-utils.commitinformation.md). For example, it can be convenient to name a test after the branch it comes from:
 
 ```typescript
+import { getCommitInformation } from "@siteimprove/alfa-test-utils/git.js";
+
+const gitInformation = await getCommitInformation().getOr(undefined);
+
 const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.aaFilter },
 }).then((alfaResult) => {
   SIP.upload(alfaResult, {
-    userName: process.env.SI_USER_NAME!,
-    apiKey: process.env.SI_API_KEY!,
-    testName: (gitInfo) =>
-      `WCAG 2.2 Level AA conformance test on ${gitInfo.branch}`,
+    userName: process.env.SI_USER_NAME, // email address of the user.
+    apiKey: process.env.SI_API_KEY, // API key generated in the platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
+    testName: (commit) =>
+      `WCAG 2.2 Level AA conformance test on ${commit.BranchName}`,
   });
 });
 ```
@@ -28,9 +33,11 @@ const pageReportURL = Audit.run(alfaPage, {
   rules: { include: Rules.comnponentFilter },
 }).then((alfaResult) => {
   SIP.upload(alfaResult, {
-    userName: process.env.SI_USER_NAME!,
-    apiKey: process.env.SI_API_KEY!,
-    pageTitle: (alfaPage) =>
+    userName: process.env.SI_USER_NAME, // email address of the user.
+    apiKey: process.env.SI_API_KEY, // API key generated in the platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
+    pageTitle: // Gets the text content of the first `<h1>` element. 
+      (alfaPage) =>
       Query.getElementDescendants(alfaPage.document)
         .filter(Element.isElement)
         .find(Element.hasName("h1"))
@@ -41,10 +48,23 @@ const pageReportURL = Audit.run(alfaPage, {
 ```
 
 ### Cypress
- When using Cypress, a function like this one cannot be passed around between the Cypress world and NodeJS because it is not serialisable (it includes some dependencies). This function could, however, live fully within the `cypress.config.ts` file, in which case it must be shared by all test cases (or a more flexible Cypress task must be written).
 
-## Providing a page URL
+When using Cypress, a function like this one cannot be passed around between the Cypress world and NodeJS because it is not serialisable (it includes some dependencies). This function could, however, live fully within the `cypress.config.ts` file, in which case it must be shared by all test cases (or a more flexible Cypress task must be written).
 
-> **Note:** Page URLs are currently not displayed in the reports. Thus this documentation is rather short.
+## Building a page URL
 
-The `SIP.upload` function also accept a `pageURL` option. It can typically be used to override `localhost` URLs that are frequent in the context of testing but not necessarily meaningful in a report. Like `pageTitle`, the `pageURL` can be a hard-coded `string` or a function generating it from the Alfa page.
+The page URL can also be built from the (Alfa representation of the) page:
+
+```typescript
+const pageReportURL = Audit.run(alfaPage, {
+  rules: { include: Rules.comnponentFilter },
+}).then((alfaResult) => {
+  SIP.upload(alfaResult, {
+    userName: process.env.SI_USER_NAME, // email address of the user.
+    apiKey: process.env.SI_API_KEY, // API key generated in the platform.
+    siteID: 123456, // Site ID from the Siteimprove Intelligence Platform.
+    pageURL: (alfaPage) =>
+      alfaPage.response.url.toString().replace("localhost:8080", "example.com"),
+  });
+});
+```

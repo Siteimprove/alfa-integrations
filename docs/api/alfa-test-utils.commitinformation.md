@@ -4,12 +4,17 @@
 
 ## CommitInformation interface
 
+Global structure of a version control metadata.
 
 **Signature:**
 
 ```typescript
 export interface CommitInformation 
 ```
+
+## Remarks
+
+This is mostly modelled after git, but should work fine with other VCS like svn or cvs. Notably, only the branch name is mandatory.
 
 ## Properties
 
@@ -36,7 +41,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[Author](./alfa-test-utils.commitinformation.author.md)
+[Author?](./alfa-test-utils.commitinformation.author.md)
 
 
 </td><td>
@@ -44,12 +49,12 @@ Description
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The name of the author of the latest commit.
+_(Optional)_ The name of the author of the latest commit.
 
 
 </td></tr>
@@ -74,7 +79,7 @@ The name of the current branch.
 </td></tr>
 <tr><td>
 
-[CommitHash](./alfa-test-utils.commitinformation.commithash.md)
+[CommitHash?](./alfa-test-utils.commitinformation.commithash.md)
 
 
 </td><td>
@@ -82,18 +87,18 @@ The name of the current branch.
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The hash of the latest commit.
+_(Optional)_ The hash of the latest commit.
 
 
 </td></tr>
 <tr><td>
 
-[CommitTimestamp](./alfa-test-utils.commitinformation.committimestamp.md)
+[CommitTimestamp?](./alfa-test-utils.commitinformation.committimestamp.md)
 
 
 </td><td>
@@ -101,18 +106,18 @@ The hash of the latest commit.
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The timestamp of the latest commit.
+_(Optional)_ The timestamp of the latest commit.
 
 
 </td></tr>
 <tr><td>
 
-[Email](./alfa-test-utils.commitinformation.email.md)
+[Email?](./alfa-test-utils.commitinformation.email.md)
 
 
 </td><td>
@@ -120,18 +125,18 @@ The timestamp of the latest commit.
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The email of the author of the latest commit.
+_(Optional)_ The email of the author of the latest commit.
 
 
 </td></tr>
 <tr><td>
 
-[GitOrigin](./alfa-test-utils.commitinformation.gitorigin.md)
+[Message?](./alfa-test-utils.commitinformation.message.md)
 
 
 </td><td>
@@ -139,18 +144,18 @@ The email of the author of the latest commit.
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The origin's URL. This may vary depending on whether the repository was cloned using `http` or `ssh` protocol.
+_(Optional)_ The message of the latest commit.
 
 
 </td></tr>
 <tr><td>
 
-[Message](./alfa-test-utils.commitinformation.message.md)
+[Origin?](./alfa-test-utils.commitinformation.origin.md)
 
 
 </td><td>
@@ -158,12 +163,12 @@ The origin's URL. This may vary depending on whether the repository was cloned u
 
 </td><td>
 
-string \| undefined
+string
 
 
 </td><td>
 
-The message of the latest commit.
+_(Optional)_ The origin's URL. This may vary depending on whether the repository was cloned using `http` or `ssh` protocol.
 
 
 </td></tr>

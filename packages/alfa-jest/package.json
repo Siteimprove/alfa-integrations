@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-jest",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.74.2",
+  "version": "0.80.2",
   "license": "MIT",
   "description": "Assertion integrations for the Jest testing framework",
   "repository": {
@@ -21,23 +21,38 @@
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "test": "yarn node --experimental-vm-modules $(yarn bin jest)"
+  },
+  "jest": {
+    "moduleFileExtensions": [
+      "js"
+    ]
+  },
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.93.8",
+    "@siteimprove/alfa-act": "^0.106.1",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-future": "^0.93.8",
-    "@siteimprove/alfa-hash": "^0.93.8",
-    "@siteimprove/alfa-mapper": "^0.93.8",
-    "@types/jest": "^26.0.10",
-    "jest": "^29.0.1"
+    "@siteimprove/alfa-future": "^0.106.1",
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-mapper": "^0.106.1",
+    "@types/jest": "^30.0.0",
+    "jest": "^30.2.0"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.93.8",
-    "@siteimprove/alfa-future": "^0.93.8",
-    "@siteimprove/alfa-hash": "^0.93.8",
-    "@siteimprove/alfa-mapper": "^0.93.8"
+    "@siteimprove/alfa-act": "^0.106.1",
+    "@siteimprove/alfa-future": "^0.106.1",
+    "@siteimprove/alfa-hash": "^0.106.1",
+    "@siteimprove/alfa-mapper": "^0.106.1"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@siteimprove/alfa-device": "^0.106.1",
+    "@siteimprove/alfa-dom": "^0.106.1",
+    "@siteimprove/alfa-http": "^0.106.1",
+    "@siteimprove/alfa-rules": "^0.106.1",
+    "@siteimprove/alfa-web": "^0.106.1"
   }
 }

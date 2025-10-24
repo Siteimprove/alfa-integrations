@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-function toPage(value: Type): Promise<Page>;
+function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
 ```
 
 ## Parameters
@@ -39,6 +39,22 @@ value
 
 
 </td><td>
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+dom.Native.Options
+
+
+</td><td>
+
+_(Optional)_
 
 
 </td></tr>

@@ -186,4 +186,9 @@ export const Flags = {
   )
     .choices("mhtml")
     .default("mhtml"),
+
+  enforceAnonymousCrossOrigin: Flag.boolean(
+    "enforce-anonymous-cross-origin",
+    "Whether or not to enforce anonymous cross-origin requests on <link> elements."
+  ).default(false),
 };

@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-frontier",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.74.2",
+  "version": "0.80.2",
   "license": "MIT",
   "description": "An implementation of a simple crawl frontier that can be persisted to disk",
   "repository": {
@@ -22,21 +22,21 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-equatable": "^0.93.8",
-    "@siteimprove/alfa-json": "^0.93.8",
-    "@siteimprove/alfa-option": "^0.93.8",
-    "@siteimprove/alfa-predicate": "^0.93.8",
-    "@siteimprove/alfa-url": "^0.93.8"
+    "@siteimprove/alfa-equatable": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1",
+    "@siteimprove/alfa-option": "^0.106.1",
+    "@siteimprove/alfa-predicate": "^0.106.1",
+    "@siteimprove/alfa-url": "^0.106.1"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.93.8"
+    "@siteimprove/alfa-test-deprecated": "^0.106.1"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-equatable": "^0.93.8",
-    "@siteimprove/alfa-json": "^0.93.8",
-    "@siteimprove/alfa-option": "^0.93.8",
-    "@siteimprove/alfa-predicate": "^0.93.8",
-    "@siteimprove/alfa-url": "^0.93.8"
+    "@siteimprove/alfa-equatable": "^0.106.1",
+    "@siteimprove/alfa-json": "^0.106.1",
+    "@siteimprove/alfa-option": "^0.106.1",
+    "@siteimprove/alfa-predicate": "^0.106.1",
+    "@siteimprove/alfa-url": "^0.106.1"
   },
   "publishConfig": {
     "access": "public",

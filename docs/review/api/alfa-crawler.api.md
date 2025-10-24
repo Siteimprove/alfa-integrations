@@ -14,6 +14,7 @@ import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)
 export class Crawler {
+    protected constructor(scraper: Scraper);
     close(): Promise<void>;
     crawl(frontier: Frontier, options?: Crawler.crawl.Options): AsyncIterable<Result<Page, [URL_2, string]>>;
     // (undocumented)

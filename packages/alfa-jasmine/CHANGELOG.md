@@ -1,5 +1,103 @@
 # @siteimprove/alfa-jasmine
 
+## 0.80.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#168](https://github.com/Siteimprove/alfa-integrations/pull/168))
+
+## 0.80.1
+
+### Patch Changes
+
+- **Changed:** Alfa has been updated. ([#158](https://github.com/Siteimprove/alfa-integrations/pull/158))
+
+## 0.80.0
+
+### Minor Changes
+
+- **Changed:** Alfa has been updated. ([#156](https://github.com/Siteimprove/alfa-integrations/pull/156))
+
+## 0.79.4
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#153](https://github.com/Siteimprove/alfa-integrations/pull/153))
+
+## 0.79.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.103.2. ([#151](https://github.com/Siteimprove/alfa-integrations/pull/151))
+
+## 0.79.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.103.1. ([#150](https://github.com/Siteimprove/alfa-integrations/pull/150))
+
+## 0.79.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.103.0. ([#148](https://github.com/Siteimprove/alfa-integrations/pull/148))
+
+## 0.79.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa to 0.102.0. ([#146](https://github.com/Siteimprove/alfa-integrations/pull/146))
+
+## 0.78.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.101.0. ([#143](https://github.com/Siteimprove/alfa-integrations/pull/143))
+
+## 0.78.1
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.100.1. ([#137](https://github.com/Siteimprove/alfa-integrations/pull/137))
+
+## 0.78.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#134](https://github.com/Siteimprove/alfa-integrations/pull/134))
+
+## 0.77.3
+
+## 0.77.2
+
+## 0.77.1
+
+## 0.77.0
+
+## 0.76.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to ^0.97.0 ([#118](https://github.com/Siteimprove/alfa-integrations/pull/118))
+
+## 0.76.1
+
+## 0.76.0
+
+## 0.75.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#111](https://github.com/Siteimprove/alfa-integrations/pull/111))
+
+- **Changed:** Update Alfa to ^0.96.0 ([#113](https://github.com/Siteimprove/alfa-integrations/pull/113))
+
+## 0.74.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#104](https://github.com/Siteimprove/alfa-integrations/pull/104))
+
 ## 0.74.2
 
 ### Patch Changes

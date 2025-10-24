@@ -13,6 +13,42 @@ class Set<T> implements Functor<T>
 ```
 **Implements:** Functor&lt;T&gt;
 
+## Constructors
+
+<table><thead><tr><th>
+
+Constructor
+
+
+</th><th>
+
+Modifiers
+
+
+</th><th>
+
+Description
+
+
+</th></tr></thead>
+<tbody><tr><td>
+
+[(constructor)(value, parse)](./alfa-command.flag.set._constructor_.md)
+
+
+</td><td>
+
+`protected`
+
+
+</td><td>
+
+Constructs a new instance of the `Set` class
+
+
+</td></tr>
+</tbody></table>
+
 ## Properties
 
 <table><thead><tr><th>

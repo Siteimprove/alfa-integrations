@@ -1,7 +1,7 @@
 import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Refinement } from "@siteimprove/alfa-refinement";
-import rules, { Scope } from "@siteimprove/alfa-rules";
+import rules, { ARIA, BestPractice, Scope } from "@siteimprove/alfa-rules";
 import type { Flattened } from "@siteimprove/alfa-rules";
 import { Conformance, Criterion } from "@siteimprove/alfa-wcag";
 
@@ -52,6 +52,18 @@ export namespace Rules {
    */
   export const wcag21aaFilter: Predicate<Flattened.Rule> = (rule) =>
     rule.hasRequirement(and(Criterion.isCriterion, Conformance.isAA("2.1")));
+
+  /**
+   * Filter matching the rules that check for ARIA conformance
+   */
+  export const ARIAFilter: Predicate<Flattened.Rule> = (rule) =>
+    rule.hasRequirement(ARIA.isARIA);
+
+  /**
+   * Filter matching Best Practice rules.
+   */
+  export const bestPracticesFilter: Predicate<Flattened.Rule> = (rule) =>
+    rule.hasRequirement(BestPractice.isBestPractice);
 
   /**
    * Filter matching the "component" rules.

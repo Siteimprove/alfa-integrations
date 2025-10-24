@@ -9,5 +9,5 @@ The name of the author of the latest commit.
 **Signature:**
 
 ```typescript
-Author: string | undefined;
+Author?: string;
 ```

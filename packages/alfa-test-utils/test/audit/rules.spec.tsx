@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 
 import { Rules } from "../../dist/audit/rules.js";
 
@@ -21,7 +21,9 @@ import {
   rule16,
   rule18,
   rule20,
-} from "./fixtures.spec.js";
+  rule21,
+  rule22,
+} from "./fixtures.js";
 
 test(".aaFilter keeps the A+AA 2.0, 2.1 and 2.2 rules", (t) => {
   t.deepEqual(rules.filter(Rules.aaFilter), [
@@ -95,4 +97,12 @@ test(".cherryPickFilter selects individual rules", (t) => {
     rules.filter(Rules.cherryPickFilter(1010, 1012, 1014, 1016, 1018)),
     [rule10, rule12, rule14, rule16, rule18]
   );
+});
+
+test(".ARIAFilter selects ARIA rules", (t) => {
+  t.deepEqual(rules.filter(Rules.ARIAFilter), [rule21]);
+});
+
+test(".bestPracticesFilter selects Best Practices rules", (t) => {
+  t.deepEqual(rules.filter(Rules.bestPracticesFilter), [rule22]);
 });

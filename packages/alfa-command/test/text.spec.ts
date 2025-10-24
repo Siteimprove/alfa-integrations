@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 
 import { Text } from "../dist/text.js";
 

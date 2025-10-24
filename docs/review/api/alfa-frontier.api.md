@@ -12,6 +12,8 @@ import { URL as URL_2 } from '@siteimprove/alfa-url';
 
 // @public (undocumented)
 export class Frontier implements Equatable, Serializable {
+    // Warning: (ae-forgotten-export) The symbol "Item" needs to be exported by the entry point index.d.ts
+    protected constructor(scope: URL_2, items: Array<Item>);
     complete(url: string | URL_2): boolean;
     dequeue(): Option<URL_2>;
     enqueue(url: string | URL_2): boolean;
@@ -54,8 +56,6 @@ export namespace Frontier {
     export interface JSON {
         // (undocumented)
         [key: string]: json.JSON;
-        // Warning: (ae-forgotten-export) The symbol "Item" needs to be exported by the entry point index.d.ts
-        //
         // (undocumented)
         items: Array<Item.JSON>;
         // (undocumented)

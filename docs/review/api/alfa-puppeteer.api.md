@@ -7,6 +7,7 @@
 /// <reference lib="dom" />
 
 import { Device } from '@siteimprove/alfa-device';
+import * as dom from '@siteimprove/alfa-dom/native';
 import type { JSHandle } from 'puppeteer';
 import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
@@ -14,9 +15,9 @@ import { Page } from '@siteimprove/alfa-web';
 // @public (undocumented)
 export namespace Puppeteer {
     // (undocumented)
-    export function toNode(value: Type, device?: Device): Promise<Node_2>;
+    export function toNode(value: Type, device?: Device, options?: dom.Native.Options): Promise<Node_2>;
     // (undocumented)
-    export function toPage(value: Type): Promise<Page>;
+    export function toPage(value: Type, options?: dom.Native.Options): Promise<Page>;
     // (undocumented)
     export type Type = JSHandle<globalThis.Node>;
 }

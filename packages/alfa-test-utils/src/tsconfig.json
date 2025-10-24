@@ -5,15 +5,17 @@
   "files": [
     "./common.ts",
     "./index.ts",
+    "./version.ts",
     "audit/audit.ts",
     "audit/index.ts",
     "audit/outcomes.ts",
     "audit/performance.ts",
     "audit/rules.ts",
-    "report/logging.ts",
+    "report/commit-information.ts",
+    "report/get-rule-title.ts",
     "report/git.ts",
     "report/index.ts",
-    "report/sip.ts",
-    "report/get-rule-title.ts"
+    "report/logging.ts",
+    "report/sip.ts"
   ]
 }

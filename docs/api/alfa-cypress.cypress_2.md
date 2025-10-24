@@ -35,7 +35,7 @@ Description
 </td></tr>
 <tr><td>
 
-[toPage(value)](./alfa-cypress.cypress_2.topage.md)
+[toPage(value, options)](./alfa-cypress.cypress_2.topage.md)
 
 
 </td><td>

@@ -1,6 +1,8 @@
+/// <reference lib="dom" />
+
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test";
+import { test } from "@siteimprove/alfa-test-deprecated";
 import * as path from "node:path";
 import * as url from "node:url";
 
@@ -23,7 +25,8 @@ test("Playwright.toPage() scrapes a page", async (t) => {
   const page = await context.newPage();
 
   // Navigate to the page to scrape
-  await page.goto(url.pathToFileURL(path.join(fixture, "page.html")).href);
+  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
+  await page.goto(pageUrl);
 
   const document = await page.evaluateHandle(() => window.document);
 
@@ -51,8 +54,13 @@ test("Playwright.toPage() scrapes a page", async (t) => {
   };
 
   t.deepEqual(actual, {
-    request: { method: "GET", url: "about:blank", headers: [], body: "" },
-    response: { url: "about:blank", status: 200, headers: [], body: "" },
+    request: { method: "GET", url: pageUrl, headers: [], body: "" },
+    response: {
+      url: pageUrl,
+      status: 200,
+      headers: [{ name: "Content-Type", value: "text/html" }],
+      body: "",
+    },
     document: {
       type: "document",
       children: [
@@ -77,7 +85,7 @@ test("Playwright.toPage() scrapes a page", async (t) => {
               children: [
                 {
                   type: "element",
-                  children: [{ type: "text", data: "Hello" }],
+                  children: [{ type: "text", data: "Hello", box: null }],
                   namespace: "http://www.w3.org/1999/xhtml",
                   prefix: null,
                   name: "div",
@@ -87,7 +95,7 @@ test("Playwright.toPage() scrapes a page", async (t) => {
                   content: null,
                   box: null,
                 },
-                { type: "text", data: "\n" },
+                { type: "text", data: "\n", box: null },
               ],
               namespace: "http://www.w3.org/1999/xhtml",
               prefix: null,
@@ -113,4 +121,120 @@ test("Playwright.toPage() scrapes a page", async (t) => {
     },
     device: null,
   });
+});
+
+test("Playwright.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Playwright.toPage(document);
+
+  // We check that the scraping did not change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, null);
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(empty.attribute("crossorigin").isNone());
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
+});
+
+test("Playwright.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+  const browser = await chromium.launch({
+    headless: true,
+    args: ["--no-sandbox", "--disable-dev-shm-usage"],
+  });
+
+  const context = await browser.newContext();
+  const page = await context.newPage();
+
+  // Navigate to the page to scrape
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  await page.goto(pageUrl);
+
+  const document = await page.evaluateHandle(() => window.document);
+
+  const alfaPage = await Playwright.toPage(document, { enforceAnonymousCrossOrigin: true });
+
+  // We check that the scraping **did** change the page
+
+  const emptyAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+  );
+  t.equal(emptyAttr, "anonymous");
+
+  const anonymousAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("anonymous") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await page.evaluate(
+    () =>
+      (window.document.getElementById("use-credentials") as HTMLLinkElement)
+        .crossOrigin
+  );
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.close();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(
+    empty
+      .attribute("crossorigin")
+      .some((crossorigin) => crossorigin.value === "anonymous")
+  );
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id)
+    );
+  }
 });

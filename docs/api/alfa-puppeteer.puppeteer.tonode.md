@@ -7,7 +7,7 @@
 **Signature:**
 
 ```typescript
-function toNode(value: Type, device?: Device): Promise<Node>;
+function toNode(value: Type, device?: Device, options?: dom.Native.Options): Promise<Node>;
 ```
 
 ## Parameters
@@ -50,6 +50,22 @@ device
 </td><td>
 
 Device
+
+
+</td><td>
+
+_(Optional)_
+
+
+</td></tr>
+<tr><td>
+
+options
+
+
+</td><td>
+
+dom.Native.Options
 
 
 </td><td>

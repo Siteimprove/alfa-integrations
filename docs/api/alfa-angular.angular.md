@@ -26,7 +26,7 @@ Description
 </th></tr></thead>
 <tbody><tr><td>
 
-[toPage(value)](./alfa-angular.angular.topage.md)
+[toPage(value, options)](./alfa-angular.angular.topage.md)
 
 
 </td><td>

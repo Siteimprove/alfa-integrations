@@ -2,42 +2,9 @@ import { Err, Ok } from "@siteimprove/alfa-result";
 import type { Result } from "@siteimprove/alfa-result";
 import { simpleGit } from "simple-git";
 
-const git = simpleGit();
+import type { CommitInformation } from "./commit-information.js";
 
-/**
- * @public
- */
-export interface CommitInformation {
-  /**
-   * The origin's URL. This may vary depending on whether the repository was cloned
-   * using `http` or `ssh` protocol.
-   */
-  GitOrigin: string | undefined;
-  /**
-   * The name of the current branch.
-   */
-  BranchName: string;
-  /**
-   * The hash of the latest commit.
-   */
-  CommitHash: string | undefined;
-  /**
-   * The name of the author of the latest commit.
-   */
-  Author: string | undefined;
-  /**
-   * The email of the author of the latest commit.
-   */
-  Email: string | undefined;
-  /**
-   * The timestamp of the latest commit.
-   */
-  CommitTimestamp: string | undefined;
-  /**
-   * The message of the latest commit.
-   */
-  Message: string | undefined;
-}
+const git = simpleGit();
 
 /** @internal */
 export async function getCommitInformation(): Promise<
@@ -51,7 +18,7 @@ export async function getCommitInformation(): Promise<
     const latest = await git.log({ "--max-count": 1 });
 
     const value: CommitInformation = {
-      GitOrigin: origin?.refs?.fetch,
+      Origin: origin?.refs?.fetch,
       BranchName: branch.current,
       CommitHash: latest?.latest?.hash,
       Author: latest?.latest?.author_name,
@@ -64,7 +31,9 @@ export async function getCommitInformation(): Promise<
     return Err.of(
       err instanceof Error
         ? err.message
-        : "Could not retrieve git information: " + String(err)
+        : `Error, could not retrieve git information: ${String(
+            err
+          )}. Check your Git configuration and try again. If the issue persists, contact support.`
     );
   }
 }

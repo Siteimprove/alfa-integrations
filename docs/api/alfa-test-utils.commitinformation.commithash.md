@@ -9,5 +9,5 @@ The hash of the latest commit.
 **Signature:**
 
 ```typescript
-CommitHash: string | undefined;
+CommitHash?: string;
 ```

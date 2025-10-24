@@ -8,7 +8,7 @@
 
 // import "jsdom-global/register.js";
 // import * as device from "@siteimprove/alfa-device/native";
-// import { test } from "@siteimprove/alfa-test";
+// import { test } from "@siteimprove/alfa-test-deprecated";
 //
 // import { Device } from "@siteimprove/alfa-device";
 // import { h, Namespace } from "@siteimprove/alfa-dom";

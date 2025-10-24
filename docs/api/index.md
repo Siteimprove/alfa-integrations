@@ -233,8 +233,6 @@ This package provides integrations and utilities for the [Angular](https://angul
 
 </td><td>
 
-A library for running Alfa tests and uploading results to the Siteimprove Intelligence Platform.
-
 
 </td></tr>
 <tr><td>
