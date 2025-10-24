@@ -18,7 +18,7 @@
     "watch": "node scripts/watch.mjs --pretty",
     "extract": "node scripts/api-extractor.mjs --pretty",
     "document": "api-documenter generate -i docs/data/api -o docs/api",
-    "knip": "knip --config config/knip.ts"
+    "knip": "knip --config config/knip.ts --no-config-hints"
   },
   "engines": {
     "node": ">=20.0.0"
