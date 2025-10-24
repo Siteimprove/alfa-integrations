@@ -25,7 +25,7 @@ function test(root = "packages") {
     (fileName, done) => {
       // These tests run with their own test framework and must therefore **not**
       // be run through this script!
-      const testFrameworks = ["cypress", "jest"];
+      const testFrameworks = ["cypress", "jest", "vitest"];
 
       if (testFrameworks.some((framework) => fileName.includes(framework))) {
         // Cypress is a special kid including its own test framework, so we
