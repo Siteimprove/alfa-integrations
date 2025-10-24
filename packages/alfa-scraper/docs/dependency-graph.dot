@@ -1,8 +1,5 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-scraper" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/archive.ts";
   "src/awaiter.ts";
   "src/credentials.ts";
@@ -11,95 +8,53 @@ digraph "dependency-graph-[object Object]" {
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
-      color = "#ff0000";
-      label = "src";
+    "src/credentials.ts" [
+      label = "src/credentials.ts";
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#ff0000";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/archive.ts" [
-        label = "archive.ts";
-      ];
-      "src/awaiter.ts" [
-        label = "awaiter.ts";
-      ];
-      "src/credentials.ts" [
-        label = "credentials.ts";
-      ];
-      "src/index.ts" [
-        label = "index.ts";
-        color = "#ff0000";
-        penwidth = 5;
-      ];
-      "src/scraper.ts" [
-        label = "scraper.ts";
-      ];
-      "src/screenshot.ts" [
-        label = "screenshot.ts";
-      ];
-      "src/archive.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/awaiter.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/credentials.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/index.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/scraper.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/screenshot.ts" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/awaiter.ts" [
+      label = "src/awaiter.ts";
+    ];
+    "src/archive.ts" [
+      label = "src/archive.ts";
+    ];
+    "src/index.ts" [
+      label = "src/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "src/screenshot.ts" [
+      label = "src/screenshot.ts";
+    ];
+    "src/scraper.ts" [
+      label = "src/scraper.ts";
+    ];
+    "src/credentials.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/awaiter.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/archive.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/screenshot.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/scraper.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/index.ts" -> "src/archive.ts" [
     style = "invis";
   ];
   "src/index.ts" -> "src/archive.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/archive.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/awaiter.ts" [
@@ -107,8 +62,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/awaiter.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/awaiter.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/credentials.ts" [
@@ -116,8 +69,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/credentials.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/credentials.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/scraper.ts" [
@@ -125,8 +76,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/scraper.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/scraper.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/screenshot.ts" [
@@ -134,8 +83,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/screenshot.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/screenshot.ts";
     color = "black";
   ];
   "src/scraper.ts" -> "src/archive.ts" [
@@ -143,8 +90,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/scraper.ts" -> "src/archive.ts" [
     style = "solid";
-    ltail = "cluster_src/scraper.ts";
-    lhead = "cluster_src/archive.ts";
     color = "black";
   ];
   "src/scraper.ts" -> "src/awaiter.ts" [
@@ -152,8 +97,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/scraper.ts" -> "src/awaiter.ts" [
     style = "solid";
-    ltail = "cluster_src/scraper.ts";
-    lhead = "cluster_src/awaiter.ts";
     color = "black";
   ];
   "src/scraper.ts" -> "src/credentials.ts" [
@@ -161,8 +104,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/scraper.ts" -> "src/credentials.ts" [
     style = "dotted";
-    ltail = "cluster_src/scraper.ts";
-    lhead = "cluster_src/credentials.ts";
     color = "black";
   ];
   "src/scraper.ts" -> "src/screenshot.ts" [
@@ -170,8 +111,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/scraper.ts" -> "src/screenshot.ts" [
     style = "dotted";
-    ltail = "cluster_src/scraper.ts";
-    lhead = "cluster_src/screenshot.ts";
     color = "black";
   ];
 }

@@ -1,85 +1,46 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-assert" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/assertion.ts";
   "src/handler.ts";
   "src/asserter.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
-      color = "#ff0000";
-      label = "src";
+    "src/asserter.ts" [
+      label = "src/asserter.ts";
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#ff0000";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/asserter.ts" [
-        label = "asserter.ts";
-      ];
-      "src/assertion.ts" [
-        label = "assertion.ts";
-      ];
-      "src/handler.ts" [
-        label = "handler.ts";
-      ];
-      "src/index.ts" [
-        label = "index.ts";
-        color = "#ff0000";
-        penwidth = 5;
-      ];
-      "src/asserter.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/assertion.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/handler.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/index.ts" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/assertion.ts" [
+      label = "src/assertion.ts";
+    ];
+    "src/handler.ts" [
+      label = "src/handler.ts";
+    ];
+    "src/index.ts" [
+      label = "src/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "src/asserter.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/assertion.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/handler.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/index.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/asserter.ts" -> "src/assertion.ts" [
     style = "invis";
   ];
   "src/asserter.ts" -> "src/assertion.ts" [
     style = "solid";
-    ltail = "cluster_src/asserter.ts";
-    lhead = "cluster_src/assertion.ts";
     color = "black";
   ];
   "src/asserter.ts" -> "src/handler.ts" [
@@ -87,8 +48,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/asserter.ts" -> "src/handler.ts" [
     style = "dotted";
-    ltail = "cluster_src/asserter.ts";
-    lhead = "cluster_src/handler.ts";
     color = "black";
   ];
   "src/assertion.ts" -> "src/handler.ts" [
@@ -96,8 +55,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/assertion.ts" -> "src/handler.ts" [
     style = "dotted";
-    ltail = "cluster_src/assertion.ts";
-    lhead = "cluster_src/handler.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/asserter.ts" [
@@ -105,8 +62,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/asserter.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/asserter.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/assertion.ts" [
@@ -114,8 +69,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/assertion.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/assertion.ts";
     color = "black";
   ];
   "src/index.ts" -> "src/handler.ts" [
@@ -123,8 +76,6 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/index.ts" -> "src/handler.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/handler.ts";
     color = "black";
   ];
 }

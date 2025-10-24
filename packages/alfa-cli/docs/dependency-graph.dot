@@ -1,315 +1,156 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-cli" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
-  "src/alfa/command/audit.ts";
-  "name_src/alfa";
-  "src/alfa/command/scrape.ts";
-  "src/pkg.ts";
   "src/alfa/command/audit/arguments.ts";
-  "name_src/alfa/command/audit";
   "src/alfa/command/audit/flags.ts";
   "src/alfa/command/audit/run.ts";
+  "src/alfa/command/scrape/arguments.ts";
   "src/alfa/command/scrape/flags.ts";
-  "exit_src/alfa/command/audit";
-  "name_src/alfa/command/scrape";
   "src/alfa/command/scrape/run.ts";
   "src/alfa/profiler.ts";
-  "exit_src/alfa/command";
-  "src/alfa/command/scrape/arguments.ts";
+  "src/alfa/command/audit.ts";
+  "src/alfa/command/scrape.ts";
+  "src/pkg.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
-      color = "#00ff66";
-      label = "src";
+    "src/alfa/profiler.ts" [
+      label = "src/alfa/profiler.ts";
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#00ff66";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/alfa.ts" [
-        label = "alfa.ts";
-      ];
-      "src/pkg.ts" [
-        label = "pkg.ts";
-      ];
-      subgraph "cluster_src/alfa" {
-        color = "#000000";
-        label = "";
-        "name_src/alfa" [
-          penwidth = 5;
-          shape = "rectangle";
-          color = "#cc00ff";
-          label = "alfa";
-        ];
-        "exit_src/alfa" [
-          style = "invis";
-        ];
-        "src/alfa/profiler.ts" [
-          label = "profiler.ts";
-        ];
-        subgraph "cluster_src/alfa/command" {
-          color = "#000000";
-          label = "";
-          "name_src/alfa/command" [
-            penwidth = 5;
-            shape = "rectangle";
-            color = "#ccff00";
-            label = "command";
-          ];
-          "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "src/alfa/command/audit.ts" [
-            label = "audit.ts";
-          ];
-          "src/alfa/command/scrape.ts" [
-            label = "scrape.ts";
-          ];
-          subgraph "cluster_src/alfa/command/audit" {
-            color = "#000000";
-            label = "";
-            "name_src/alfa/command/audit" [
-              penwidth = 5;
-              shape = "rectangle";
-              color = "#ff0000";
-              label = "audit";
-            ];
-            "exit_src/alfa/command/audit" [
-              style = "invis";
-            ];
-            "src/alfa/command/audit/arguments.ts" [
-              label = "arguments.ts";
-            ];
-            "src/alfa/command/audit/flags.ts" [
-              label = "flags.ts";
-            ];
-            "src/alfa/command/audit/run.ts" [
-              label = "run.ts";
-            ];
-            "src/alfa/command/audit/arguments.ts" -> "exit_src/alfa/command/audit" [
-              style = "invis";
-            ];
-            "src/alfa/command/audit/flags.ts" -> "exit_src/alfa/command/audit" [
-              style = "invis";
-            ];
-            "src/alfa/command/audit/run.ts" -> "exit_src/alfa/command/audit" [
-              style = "invis";
-            ];
-          }
-          subgraph "cluster_src/alfa/command/scrape" {
-            color = "#000000";
-            label = "";
-            "name_src/alfa/command/scrape" [
-              penwidth = 5;
-              shape = "rectangle";
-              color = "#0066ff";
-              label = "scrape";
-            ];
-            "exit_src/alfa/command/scrape" [
-              style = "invis";
-            ];
-            "src/alfa/command/scrape/arguments.ts" [
-              label = "arguments.ts";
-            ];
-            "src/alfa/command/scrape/flags.ts" [
-              label = "flags.ts";
-            ];
-            "src/alfa/command/scrape/run.ts" [
-              label = "run.ts";
-            ];
-            "src/alfa/command/scrape/arguments.ts" -> "exit_src/alfa/command/scrape" [
-              style = "invis";
-            ];
-            "src/alfa/command/scrape/flags.ts" -> "exit_src/alfa/command/scrape" [
-              style = "invis";
-            ];
-            "src/alfa/command/scrape/run.ts" -> "exit_src/alfa/command/scrape" [
-              style = "invis";
-            ];
-          }
-          "src/alfa/command/audit.ts" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/audit" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/audit" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/audit" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "src/alfa/command/scrape.ts" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/scrape" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/scrape" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-          "exit_src/alfa/command/scrape" -> "exit_src/alfa/command" [
-            style = "invis";
-          ];
-        }
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "exit_src/alfa/command" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-        "src/alfa/profiler.ts" -> "exit_src/alfa" [
-          style = "invis";
-        ];
-      }
-      "src/alfa.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/alfa" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/pkg.ts" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/scrape/arguments.ts" [
+      label = "src/alfa/command/scrape/arguments.ts";
+    ];
+    "src/alfa/command/scrape/flags.ts" [
+      label = "src/alfa/command/scrape/flags.ts";
+    ];
+    "src/alfa/command/audit.ts" [
+      label = "src/alfa/command/audit.ts";
+    ];
+    "src/alfa/command/scrape.ts" [
+      label = "src/alfa/command/scrape.ts";
+    ];
+    "src/alfa/command/scrape/run.ts" [
+      label = "src/alfa/command/scrape/run.ts";
+    ];
+    "src/alfa/command/audit/flags.ts" [
+      label = "src/alfa/command/audit/flags.ts";
+    ];
+    "src/alfa/command/audit/run.ts" [
+      label = "src/alfa/command/audit/run.ts";
+    ];
+    "src/alfa/command/audit/arguments.ts" [
+      label = "src/alfa/command/audit/arguments.ts";
+    ];
+    "src/pkg.ts" [
+      label = "src/pkg.ts";
+    ];
+    "src/alfa.ts" [
+      label = "src/alfa.ts";
+    ];
+    "src/alfa/profiler.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/scrape/arguments.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/scrape/flags.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/audit.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/scrape.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/scrape/run.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/audit/flags.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/audit/run.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa/command/audit/arguments.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/pkg.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/alfa.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/arguments.ts" [
     style = "invis";
   ];
-  "src/alfa.ts" -> "name_src/alfa" [
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/arguments.ts" [
     style = "solid";
-    ltail = "cluster_src/alfa.ts";
-    lhead = "cluster_src/alfa";
-    color = "#00ff66";
-  ];
-  "src/alfa.ts" -> "name_src/alfa" [
-    style = "invis";
-  ];
-  "src/alfa.ts" -> "src/pkg.ts" [
-    style = "invis";
-  ];
-  "src/alfa.ts" -> "src/pkg.ts" [
-    style = "solid";
-    ltail = "cluster_src/alfa.ts";
-    lhead = "cluster_src/pkg.ts";
     color = "black";
   ];
-  "src/alfa/command/audit.ts" -> "name_src/alfa/command/audit" [
-    style = "solid";
-    ltail = "cluster_src/alfa/command/audit.ts";
-    lhead = "cluster_src/alfa/command/audit";
-    color = "#ccff00";
-  ];
-  "src/alfa/command/audit.ts" -> "name_src/alfa/command/audit" [
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/flags.ts" [
     style = "invis";
   ];
-  "src/alfa/command/audit.ts" -> "name_src/alfa/command/audit" [
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/flags.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/run.ts" [
     style = "invis";
   ];
-  "exit_src/alfa/command/audit" -> "name_src/alfa/command/scrape" [
+  "src/alfa/command/audit.ts" -> "src/alfa/command/audit/run.ts" [
     style = "solid";
-    ltail = "cluster_src/alfa/command/audit";
-    lhead = "cluster_src/alfa/command/scrape";
-    color = "#ff0000";
+    color = "black";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/arguments.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/arguments.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/run.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/scrape.ts" -> "src/alfa/command/scrape/run.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/arguments.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/arguments.ts" [
+    style = "dotted";
+    color = "black";
+  ];
+  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "dotted";
+    color = "black";
+  ];
+  "src/alfa/command/audit/flags.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "invis";
+  ];
+  "src/alfa/command/audit/flags.ts" -> "src/alfa/command/scrape/flags.ts" [
+    style = "solid";
+    color = "black";
   ];
   "src/alfa/command/audit/run.ts" -> "src/alfa/command/audit/arguments.ts" [
     style = "invis";
   ];
   "src/alfa/command/audit/run.ts" -> "src/alfa/command/audit/arguments.ts" [
     style = "dotted";
-    ltail = "cluster_src/alfa/command/audit/run.ts";
-    lhead = "cluster_src/alfa/command/audit/arguments.ts";
     color = "black";
   ];
   "src/alfa/command/audit/run.ts" -> "src/alfa/command/audit/flags.ts" [
@@ -317,50 +158,41 @@ digraph "dependency-graph-[object Object]" {
   ];
   "src/alfa/command/audit/run.ts" -> "src/alfa/command/audit/flags.ts" [
     style = "dotted";
-    ltail = "cluster_src/alfa/command/audit/run.ts";
-    lhead = "cluster_src/alfa/command/audit/flags.ts";
     color = "black";
   ];
-  "exit_src/alfa/command/audit" -> "name_src/alfa/command/scrape" [
+  "src/alfa/command/audit/run.ts" -> "src/alfa/command/scrape/run.ts" [
     style = "invis";
+  ];
+  "src/alfa/command/audit/run.ts" -> "src/alfa/command/scrape/run.ts" [
+    style = "solid";
+    color = "black";
   ];
   "src/alfa/command/audit/run.ts" -> "src/alfa/profiler.ts" [
     style = "invis";
   ];
-  "exit_src/alfa/command" -> "src/alfa/profiler.ts" [
+  "src/alfa/command/audit/run.ts" -> "src/alfa/profiler.ts" [
     style = "solid";
-    ltail = "cluster_src/alfa/command";
-    lhead = "cluster_src/alfa/profiler.ts";
-    color = "#ccff00";
-  ];
-  "src/alfa/command/scrape.ts" -> "name_src/alfa/command/scrape" [
-    style = "solid";
-    ltail = "cluster_src/alfa/command/scrape.ts";
-    lhead = "cluster_src/alfa/command/scrape";
-    color = "#ccff00";
-  ];
-  "src/alfa/command/scrape.ts" -> "name_src/alfa/command/scrape" [
-    style = "invis";
-  ];
-  "src/alfa/command/scrape.ts" -> "name_src/alfa/command/scrape" [
-    style = "invis";
-  ];
-  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/arguments.ts" [
-    style = "invis";
-  ];
-  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/arguments.ts" [
-    style = "dotted";
-    ltail = "cluster_src/alfa/command/scrape/run.ts";
-    lhead = "cluster_src/alfa/command/scrape/arguments.ts";
     color = "black";
   ];
-  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/flags.ts" [
+  "src/alfa.ts" -> "src/alfa/command/audit.ts" [
     style = "invis";
   ];
-  "src/alfa/command/scrape/run.ts" -> "src/alfa/command/scrape/flags.ts" [
-    style = "dotted";
-    ltail = "cluster_src/alfa/command/scrape/run.ts";
-    lhead = "cluster_src/alfa/command/scrape/flags.ts";
+  "src/alfa.ts" -> "src/alfa/command/audit.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa.ts" -> "src/alfa/command/scrape.ts" [
+    style = "invis";
+  ];
+  "src/alfa.ts" -> "src/alfa/command/scrape.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/alfa.ts" -> "src/pkg.ts" [
+    style = "invis";
+  ];
+  "src/alfa.ts" -> "src/pkg.ts" [
+    style = "solid";
     color = "black";
   ];
 }

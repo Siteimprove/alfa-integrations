@@ -1,65 +1,32 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-interviewer" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/interviewer.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
+    "src/index.ts" [
+      label = "src/index.ts";
       color = "#ff0000";
-      label = "src";
+      penwidth = 5;
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#ff0000";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/index.ts" [
-        label = "index.ts";
-        color = "#ff0000";
-        penwidth = 5;
-      ];
-      "src/interviewer.ts" [
-        label = "interviewer.ts";
-      ];
-      "src/index.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/interviewer.ts" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/interviewer.ts" [
+      label = "src/interviewer.ts";
+    ];
+    "src/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/interviewer.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/index.ts" -> "src/interviewer.ts" [
     style = "invis";
   ];
   "src/index.ts" -> "src/interviewer.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/interviewer.ts";
     color = "black";
   ];
 }

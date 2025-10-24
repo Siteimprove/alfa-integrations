@@ -1,6 +1,6 @@
-digraph "dependency-graph-@siteimprove/alfa-enzyme" {
+digraph "dependency-graph-@siteimprove/alfa-selenium" {
   compound = true;
-  "src/enzyme.ts";
+  "src/selenium.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
@@ -12,20 +12,20 @@ digraph "dependency-graph-@siteimprove/alfa-enzyme" {
     "exit_src" [
       style = "invis";
     ];
-    "src/enzyme.ts" [
-      label = "src/enzyme.ts";
+    "src/selenium.ts" [
+      label = "src/selenium.ts";
     ];
     "src/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "src/enzyme.ts" -> "exit_src" [
+    "src/selenium.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "src/index.ts" -> "src/enzyme.ts" [
+  "src/index.ts" -> "src/selenium.ts" [
     style = "invis";
   ];
-  "src/index.ts" -> "src/enzyme.ts" [
+  "src/index.ts" -> "src/selenium.ts" [
     style = "solid";
     color = "black";
   ];
