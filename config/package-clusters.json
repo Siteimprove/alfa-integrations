@@ -62,6 +62,10 @@
         "@siteimprove/alfa-frontier",
         "@siteimprove/alfa-scraper"
       ]
+    },
+    {
+      "name": "Accessibility Code Checker",
+      "children": ["@siteimprove/alfa-test-utils"]
     }
   ]
 }
