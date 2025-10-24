@@ -49,6 +49,10 @@ updates:
           - "patch"
         # TODO: consider adding custom commit-message.
 
+      alfa:
+        pattern: "@siteimprove/alfa-*"
+        applies-to: version-updates
+
       # Other dependencies will be in separate PRs (one for each) as we may need to look into them in more detail.
 
   - package-ecosystem: "npm" # Security updates (patch/minor), apply asap.
