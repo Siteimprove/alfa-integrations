@@ -1,7 +1,10 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "compilerOptions": { "outDir": "../dist" },
+  "compilerOptions": {
+    "lib": ["DOM"],
+    "outDir": "../dist"
+  },
   "files": ["./index.ts", "./vitest.ts"],
   "references": [{ "path": "../../alfa-assert" }]
 }

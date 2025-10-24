@@ -4,7 +4,7 @@ import { Request, Response } from "@siteimprove/alfa-http";
 import { Rules } from "@siteimprove/alfa-rules";
 import { Page } from "@siteimprove/alfa-web";
 
-import { expect } from "vitest";
+import { describe, expect, it } from "vitest";
 
 import { Vitest } from "../dist/vitest.js";
 
@@ -15,11 +15,11 @@ describe(".createPlugin adds a .toBeAccessible method", () => {
     Request.empty(),
     Response.empty(),
     h.document([<button>Hello World</button>]),
-    Device.standard()
+    Device.standard(),
   );
 
   it("should have a .toBeAccessible method", async () => {
-    await expect(page).toBeAccessible();
+    expect(page).toBeAccessible();
   });
 });
 
@@ -28,10 +28,10 @@ describe(".createPlugin adds a .not.toBeAccessible method", () => {
     Request.empty(),
     Response.empty(),
     h.document([<button></button>]),
-    Device.standard()
+    Device.standard(),
   );
 
   it("should have a .not.toBeAccessible method", async () => {
-    await expect(page).not.toBeAccessible();
+    expect(page).not.toBeAccessible();
   });
 });
