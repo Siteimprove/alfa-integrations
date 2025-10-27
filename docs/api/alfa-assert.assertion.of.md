@@ -89,6 +89,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Assertion](./alfa-assert.assertion.md)<!-- -->&lt;I, T, Q, S&gt;

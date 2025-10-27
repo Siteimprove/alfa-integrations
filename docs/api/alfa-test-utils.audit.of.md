@@ -85,6 +85,7 @@ durations
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Audit](./alfa-test-utils.audit.md)

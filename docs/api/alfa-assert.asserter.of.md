@@ -75,6 +75,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Asserter](./alfa-assert.asserter.md)<!-- -->&lt;I, T, Q, S&gt;

@@ -43,6 +43,7 @@ number
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [JPEG](./alfa-scraper.screenshot.type.jpeg.md)

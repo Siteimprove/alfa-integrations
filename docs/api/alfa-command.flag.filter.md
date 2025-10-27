@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;U&gt;

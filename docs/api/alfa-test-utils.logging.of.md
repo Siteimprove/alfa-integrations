@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Logging](./alfa-test-utils.logging.md)<!-- -->&lt;"log"&gt;

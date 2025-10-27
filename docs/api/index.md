@@ -254,3 +254,4 @@ This package provides integrations and utilities for the [Angular](https://angul
 
 </td></tr>
 </tbody></table>
+

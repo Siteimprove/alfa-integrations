@@ -61,6 +61,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Predicate&lt;[alfaOutcome](./alfa-test-utils.alfaoutcome.md)<!-- -->&gt;

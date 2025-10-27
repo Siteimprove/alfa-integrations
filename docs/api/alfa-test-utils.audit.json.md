@@ -119,3 +119,4 @@ Array&lt;\[ string, { failed: number; passed: number; cantTell: number; } \]&gt;
 
 </td></tr>
 </tbody></table>
+

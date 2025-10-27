@@ -43,6 +43,7 @@ boolean
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [PNG](./alfa-scraper.screenshot.type.png.md)

@@ -43,6 +43,7 @@ Mapper&lt;T&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;T&gt;

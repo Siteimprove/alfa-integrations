@@ -61,6 +61,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[Audit](./alfa-test-utils.audit.md)<!-- -->&gt;

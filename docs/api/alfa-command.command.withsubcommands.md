@@ -131,6 +131,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Command](./alfa-command.command.md)<!-- -->&lt;F, {}, S&gt;

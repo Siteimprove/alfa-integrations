@@ -57,6 +57,7 @@ parse
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Set](./alfa-command.flag.set.md)<!-- -->&lt;T&gt;

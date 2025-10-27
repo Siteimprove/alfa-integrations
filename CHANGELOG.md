@@ -1,5 +1,9 @@
 # Alfa integrations changelog
 
+## [](../../compare/v...v) (2025-10-27)
+
+
+
 ## [0.80.2](../../compare/v0.80.1...v0.80.2) (2025-10-22)
 
 ### Changed

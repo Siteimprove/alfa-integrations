@@ -57,6 +57,7 @@ string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Credentials](./alfa-scraper.credentials.md)
