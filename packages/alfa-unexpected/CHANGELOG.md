@@ -1,5 +1,11 @@
 # @siteimprove/alfa-unexpected
 
+## 0.80.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([`41ac293cb7aeb103600ca1895042f45de35d2c52`](https://github.com/Siteimprove/alfa-integrations/commit/41ac293cb7aeb103600ca1895042f45de35d2c52))
+
 ## 0.80.2
 
 ### Patch Changes
