@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;U&gt;

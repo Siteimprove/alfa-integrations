@@ -119,3 +119,4 @@ Array&lt;[Command.JSON](./alfa-command.command.json.md)<!-- -->&gt;
 
 </td></tr>
 </tbody></table>
+

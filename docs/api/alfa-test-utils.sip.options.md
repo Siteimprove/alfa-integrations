@@ -168,3 +168,4 @@ _(Optional)_ The username to connect to the Siteimprove Intelligence Platform
 
 </td></tr>
 </tbody></table>
+

@@ -45,6 +45,7 @@ string \| URL
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 boolean

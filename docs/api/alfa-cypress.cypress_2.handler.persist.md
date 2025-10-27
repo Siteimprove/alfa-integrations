@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Handler](./alfa-assert.handler.md)<!-- -->&lt;I, T, Q, S&gt;

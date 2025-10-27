@@ -43,6 +43,7 @@ Array&lt;string&gt; \| [Command.Input](./alfa-command.command.input.md)<!-- -->&
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Command.Output](./alfa-command.command.output.md)

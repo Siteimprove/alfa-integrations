@@ -54,3 +54,4 @@ _(Optional)_ The title of the page, or a function to build it from the audited p
 
 </td></tr>
 </tbody></table>
+

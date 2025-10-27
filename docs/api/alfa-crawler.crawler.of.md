@@ -45,6 +45,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;[Crawler](./alfa-crawler.crawler.md)<!-- -->&gt;

@@ -197,3 +197,4 @@ The type of individual outcomes produced by Alfa rules.
 
 </td></tr>
 </tbody></table>
+

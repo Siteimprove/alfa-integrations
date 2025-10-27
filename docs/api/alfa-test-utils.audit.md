@@ -118,3 +118,4 @@ Aggregated results for a given rule.
 
 </td></tr>
 </tbody></table>
+

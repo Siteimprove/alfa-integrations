@@ -43,6 +43,7 @@ Mapper&lt;T, U&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;U&gt;

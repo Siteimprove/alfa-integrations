@@ -1,5 +1,11 @@
 # @siteimprove/alfa-selenium
 
+## 0.80.3
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([`41ac293cb7aeb103600ca1895042f45de35d2c52`](https://github.com/Siteimprove/alfa-integrations/commit/41ac293cb7aeb103600ca1895042f45de35d2c52))
+
 ## 0.80.2
 
 ### Patch Changes
@@ -91,7 +97,6 @@
 - **Added:** The page URL is now correctly filled when grabbing the page. ([#116](https://github.com/Siteimprove/alfa-integrations/pull/116))
 
   A full `Request` and `Response` are build, with sensible values:
-
   - The request is assumed to be a GET.
   - The response is assumed to be a 200 OK with HTMl content.
 

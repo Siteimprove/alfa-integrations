@@ -1,65 +1,32 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-webdriver" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/web-element.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
+    "src/index.ts" [
+      label = "src/index.ts";
       color = "#ff0000";
-      label = "src";
+      penwidth = 5;
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#ff0000";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/index.ts" [
-        label = "index.ts";
-        color = "#ff0000";
-        penwidth = 5;
-      ];
-      "src/web-element.ts" [
-        label = "web-element.ts";
-      ];
-      "src/index.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/web-element.ts" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/web-element.ts" [
+      label = "src/web-element.ts";
+    ];
+    "src/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/web-element.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
   "src/index.ts" -> "src/web-element.ts" [
     style = "invis";
   ];
   "src/index.ts" -> "src/web-element.ts" [
     style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/web-element.ts";
     color = "black";
   ];
 }

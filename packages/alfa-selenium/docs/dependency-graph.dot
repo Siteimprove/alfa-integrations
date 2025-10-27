@@ -1,0 +1,32 @@
+digraph "dependency-graph-@siteimprove/alfa-selenium" {
+  compound = true;
+  "src/selenium.ts";
+  subgraph "cluster_src" {
+    color = "#000000";
+    label = "";
+    "src/index.ts" [
+      label = "src/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "exit_src" [
+      style = "invis";
+    ];
+    "src/selenium.ts" [
+      label = "src/selenium.ts";
+    ];
+    "src/index.ts" -> "exit_src" [
+      style = "invis";
+    ];
+    "src/selenium.ts" -> "exit_src" [
+      style = "invis";
+    ];
+  }
+  "src/index.ts" -> "src/selenium.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/selenium.ts" [
+    style = "solid";
+    color = "black";
+  ];
+}

@@ -43,6 +43,7 @@ Mapper&lt;T, U&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Set](./alfa-command.flag.set.md)<!-- -->&lt;U&gt;

@@ -61,3 +61,4 @@ Records the duration of resolving the CSS cascade, building the accessibility tr
 
 </td></tr>
 </tbody></table>
+

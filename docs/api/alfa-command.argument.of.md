@@ -71,6 +71,7 @@ parse
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Argument](./alfa-command.argument.md)<!-- -->&lt;T&gt;

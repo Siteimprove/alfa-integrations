@@ -59,6 +59,7 @@ options
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;Result&lt;string, Array&lt;string&gt;&gt;&gt;

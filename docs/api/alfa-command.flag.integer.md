@@ -57,6 +57,7 @@ string
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Flag](./alfa-command.flag.md)<!-- -->&lt;number&gt;

@@ -59,6 +59,7 @@ _(Optional)_
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Promise&lt;Result&lt;[Interviewer](./alfa-interviewer.interviewer.md)<!-- -->&lt;I, T, Q, S&gt;, string&gt;&gt;

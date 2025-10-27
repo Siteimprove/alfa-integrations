@@ -1,308 +1,259 @@
-digraph "dependency-graph-[object Object]" {
+digraph "dependency-graph-@siteimprove/alfa-test-utils" {
   compound = true;
-  "dependency-graph-[object Object]" [
-    style = "invis";
-  ];
-  "src/audit/performance.ts";
-  "src/audit/rules.ts";
+  "src/report/commit-information.ts";
+  "src/report/logging.ts";
+  "src/report/sip.ts";
+  "src/audit/index.ts";
+  "src/report/get-rule-title.ts";
   "src/common.ts";
-  "exit_src/audit";
   "src/audit/audit.ts";
   "src/audit/outcomes.ts";
-  "src/audit/index.ts";
-  "name_src/audit";
+  "src/audit/performance.ts";
+  "src/audit/rules.ts";
   "src/report/index.ts";
-  "name_src/report";
-  "src/report/sip.ts";
-  "exit_src/report";
-  "src/report/git.ts";
+  "src/version.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "name_src" [
-      penwidth = 5;
-      shape = "rectangle";
-      color = "#00ff00";
-      label = "src";
+    "src/audit/rules.ts" [
+      label = "src/audit/rules.ts";
     ];
     "exit_src" [
       style = "invis";
     ];
-    subgraph "cluster_src" {
-      color = "#000000";
-      label = "";
-      "name_src" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#00ff00";
-        label = "src";
-      ];
-      "exit_src" [
-        style = "invis";
-      ];
-      "src/common.ts" [
-        label = "common.ts";
-      ];
-      "src/index.ts" [
-        label = "index.ts";
-        color = "#00ff00";
-        penwidth = 5;
-      ];
-      subgraph "cluster_src/audit" {
-        color = "#000000";
-        label = "";
-        "name_src/audit" [
-          penwidth = 5;
-          shape = "rectangle";
-          color = "#0000ff";
-          label = "audit";
-        ];
-        "exit_src/audit" [
-          style = "invis";
-        ];
-        "src/audit/audit.ts" [
-          label = "audit.ts";
-        ];
-        "src/audit/index.ts" [
-          label = "index.ts";
-          color = "#0000ff";
-          penwidth = 5;
-        ];
-        "src/audit/outcomes.ts" [
-          label = "outcomes.ts";
-        ];
-        "src/audit/performance.ts" [
-          label = "performance.ts";
-        ];
-        "src/audit/rules.ts" [
-          label = "rules.ts";
-        ];
-        "src/audit/audit.ts" -> "exit_src/audit" [
-          style = "invis";
-        ];
-        "src/audit/index.ts" -> "exit_src/audit" [
-          style = "invis";
-        ];
-        "src/audit/outcomes.ts" -> "exit_src/audit" [
-          style = "invis";
-        ];
-        "src/audit/performance.ts" -> "exit_src/audit" [
-          style = "invis";
-        ];
-        "src/audit/rules.ts" -> "exit_src/audit" [
-          style = "invis";
-        ];
-      }
-      subgraph "cluster_src/report" {
-        color = "#000000";
-        label = "";
-        "name_src/report" [
-          penwidth = 5;
-          shape = "rectangle";
-          color = "#ff0000";
-          label = "report";
-        ];
-        "exit_src/report" [
-          style = "invis";
-        ];
-        "src/report/git.ts" [
-          label = "git.ts";
-        ];
-        "src/report/index.ts" [
-          label = "index.ts";
-          color = "#ff0000";
-          penwidth = 5;
-        ];
-        "src/report/sip.ts" [
-          label = "sip.ts";
-        ];
-        "src/report/git.ts" -> "exit_src/report" [
-          style = "invis";
-        ];
-        "src/report/index.ts" -> "exit_src/report" [
-          style = "invis";
-        ];
-        "src/report/sip.ts" -> "exit_src/report" [
-          style = "invis";
-        ];
-      }
-      "exit_src/audit" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/audit" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/audit" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/audit" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/audit" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/common.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "src/index.ts" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/report" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/report" -> "exit_src" [
-        style = "invis";
-      ];
-      "exit_src/report" -> "exit_src" [
-        style = "invis";
-      ];
-    }
-    "exit_src" -> "exit_src" [
+    "src/report/git.ts" [
+      label = "src/report/git.ts";
+    ];
+    "src/report/index.ts" [
+      label = "src/report/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "src/common.ts" [
+      label = "src/common.ts";
+    ];
+    "src/report/logging.ts" [
+      label = "src/report/logging.ts";
+    ];
+    "src/version.ts" [
+      label = "src/version.ts";
+    ];
+    "src/report/sip.ts" [
+      label = "src/report/sip.ts";
+    ];
+    "src/audit/outcomes.ts" [
+      label = "src/audit/outcomes.ts";
+    ];
+    "src/audit/index.ts" [
+      label = "src/audit/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "src/index.ts" [
+      label = "src/index.ts";
+      color = "#ff0000";
+      penwidth = 5;
+    ];
+    "src/audit/audit.ts" [
+      label = "src/audit/audit.ts";
+    ];
+    "src/report/get-rule-title.ts" [
+      label = "src/report/get-rule-title.ts";
+    ];
+    "src/report/commit-information.ts" [
+      label = "src/report/commit-information.ts";
+    ];
+    "src/audit/performance.ts" [
+      label = "src/audit/performance.ts";
+    ];
+    "src/audit/rules.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/report/git.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/report/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/common.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/report/logging.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/version.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/report/sip.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/audit/outcomes.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/audit/index.ts" -> "exit_src" [
       style = "invis";
     ];
-    "exit_src" -> "exit_src" [
+    "src/index.ts" -> "exit_src" [
+      style = "invis";
+    ];
+    "src/audit/audit.ts" -> "exit_src" [
+      style = "invis";
+    ];
+    "src/report/get-rule-title.ts" -> "exit_src" [
+      style = "invis";
+    ];
+    "src/report/commit-information.ts" -> "exit_src" [
+      style = "invis";
+    ];
+    "src/audit/performance.ts" -> "exit_src" [
       style = "invis";
     ];
   }
-  "exit_src" -> "dependency-graph-[object Object]" [
+  "src/report/git.ts" -> "src/report/commit-information.ts" [
     style = "invis";
   ];
-  "src/audit/audit.ts" -> "src/audit/performance.ts" [
-    style = "invis";
-  ];
-  "src/audit/audit.ts" -> "src/audit/performance.ts" [
-    style = "solid";
-    ltail = "cluster_src/audit/audit.ts";
-    lhead = "cluster_src/audit/performance.ts";
-    color = "black";
-  ];
-  "src/audit/audit.ts" -> "src/audit/rules.ts" [
-    style = "invis";
-  ];
-  "src/audit/audit.ts" -> "src/audit/rules.ts" [
-    style = "solid";
-    ltail = "cluster_src/audit/audit.ts";
-    lhead = "cluster_src/audit/rules.ts";
-    color = "black";
-  ];
-  "src/audit/audit.ts" -> "src/common.ts" [
-    style = "invis";
-  ];
-  "exit_src/audit" -> "src/common.ts" [
+  "src/report/git.ts" -> "src/report/commit-information.ts" [
     style = "dotted";
-    ltail = "cluster_src/audit";
-    lhead = "cluster_src/common.ts";
-    color = "#0000ff";
-  ];
-  "src/audit/index.ts" -> "src/audit/audit.ts" [
-    style = "invis";
-  ];
-  "src/audit/index.ts" -> "src/audit/audit.ts" [
-    style = "solid";
-    ltail = "cluster_src/audit/index.ts";
-    lhead = "cluster_src/audit/audit.ts";
     color = "black";
   ];
-  "src/audit/index.ts" -> "src/audit/outcomes.ts" [
+  "src/report/index.ts" -> "src/report/commit-information.ts" [
     style = "invis";
   ];
-  "src/audit/index.ts" -> "src/audit/outcomes.ts" [
+  "src/report/index.ts" -> "src/report/commit-information.ts" [
     style = "solid";
-    ltail = "cluster_src/audit/index.ts";
-    lhead = "cluster_src/audit/outcomes.ts";
     color = "black";
   ];
-  "src/audit/index.ts" -> "src/audit/performance.ts" [
+  "src/report/index.ts" -> "src/report/logging.ts" [
     style = "invis";
   ];
-  "src/audit/index.ts" -> "src/audit/performance.ts" [
+  "src/report/index.ts" -> "src/report/logging.ts" [
     style = "solid";
-    ltail = "cluster_src/audit/index.ts";
-    lhead = "cluster_src/audit/performance.ts";
     color = "black";
   ];
-  "src/audit/index.ts" -> "src/audit/rules.ts" [
+  "src/report/index.ts" -> "src/report/sip.ts" [
     style = "invis";
   ];
-  "src/audit/index.ts" -> "src/audit/rules.ts" [
+  "src/report/index.ts" -> "src/report/sip.ts" [
     style = "solid";
-    ltail = "cluster_src/audit/index.ts";
-    lhead = "cluster_src/audit/rules.ts";
+    color = "black";
+  ];
+  "src/report/logging.ts" -> "src/audit/index.ts" [
+    style = "invis";
+  ];
+  "src/report/logging.ts" -> "src/audit/index.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/report/logging.ts" -> "src/report/get-rule-title.ts" [
+    style = "invis";
+  ];
+  "src/report/logging.ts" -> "src/report/get-rule-title.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/report/sip.ts" -> "src/audit/index.ts" [
+    style = "invis";
+  ];
+  "src/report/sip.ts" -> "src/audit/index.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/report/sip.ts" -> "src/report/commit-information.ts" [
+    style = "invis";
+  ];
+  "src/report/sip.ts" -> "src/report/commit-information.ts" [
+    style = "dotted";
     color = "black";
   ];
   "src/audit/outcomes.ts" -> "src/common.ts" [
     style = "invis";
   ];
-  "exit_src/audit" -> "src/common.ts" [
-    style = "invis";
-  ];
-  "src/index.ts" -> "name_src/audit" [
-    style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/audit";
-    color = "#00ff00";
-  ];
-  "src/index.ts" -> "src/common.ts" [
-    style = "invis";
-  ];
-  "src/index.ts" -> "src/common.ts" [
-    style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/common.ts";
-    color = "black";
-  ];
-  "src/index.ts" -> "name_src/report" [
-    style = "solid";
-    ltail = "cluster_src/index.ts";
-    lhead = "cluster_src/report";
-    color = "#00ff00";
-  ];
-  "src/report/index.ts" -> "src/report/sip.ts" [
-    style = "invis";
-  ];
-  "src/report/index.ts" -> "src/report/sip.ts" [
-    style = "solid";
-    ltail = "cluster_src/report/index.ts";
-    lhead = "cluster_src/report/sip.ts";
-    color = "black";
-  ];
-  "exit_src/report" -> "name_src/audit" [
+  "src/audit/outcomes.ts" -> "src/common.ts" [
     style = "dotted";
-    ltail = "cluster_src/report";
-    lhead = "cluster_src/audit";
-    color = "#ff0000";
+    color = "black";
   ];
-  "src/report/sip.ts" -> "src/report/git.ts" [
+  "src/audit/index.ts" -> "src/audit/audit.ts" [
     style = "invis";
   ];
-  "src/report/sip.ts" -> "src/report/git.ts" [
+  "src/audit/index.ts" -> "src/audit/audit.ts" [
     style = "solid";
-    ltail = "cluster_src/report/sip.ts";
-    lhead = "cluster_src/report/git.ts";
+    color = "black";
+  ];
+  "src/audit/index.ts" -> "src/audit/outcomes.ts" [
+    style = "invis";
+  ];
+  "src/audit/index.ts" -> "src/audit/outcomes.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/index.ts" -> "src/audit/performance.ts" [
+    style = "invis";
+  ];
+  "src/audit/index.ts" -> "src/audit/performance.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/index.ts" -> "src/audit/rules.ts" [
+    style = "invis";
+  ];
+  "src/audit/index.ts" -> "src/audit/rules.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/audit/index.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/audit/index.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/common.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/common.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/report/index.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/report/index.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/index.ts" -> "src/version.ts" [
+    style = "invis";
+  ];
+  "src/index.ts" -> "src/version.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/audit.ts" -> "src/audit/outcomes.ts" [
+    style = "invis";
+  ];
+  "src/audit/audit.ts" -> "src/audit/outcomes.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/audit.ts" -> "src/audit/performance.ts" [
+    style = "invis";
+  ];
+  "src/audit/audit.ts" -> "src/audit/performance.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/audit.ts" -> "src/audit/rules.ts" [
+    style = "invis";
+  ];
+  "src/audit/audit.ts" -> "src/audit/rules.ts" [
+    style = "solid";
+    color = "black";
+  ];
+  "src/audit/audit.ts" -> "src/common.ts" [
+    style = "invis";
+  ];
+  "src/audit/audit.ts" -> "src/common.ts" [
+    style = "dotted";
     color = "black";
   ];
 }

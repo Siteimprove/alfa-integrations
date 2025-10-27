@@ -43,6 +43,7 @@ json
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 [Frontier](./alfa-frontier.frontier.md)

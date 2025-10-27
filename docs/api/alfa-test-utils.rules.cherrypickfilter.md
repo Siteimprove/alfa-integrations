@@ -45,6 +45,7 @@ Array&lt;number&gt;
 
 </td></tr>
 </tbody></table>
+
 **Returns:**
 
 Predicate&lt;Flattened.Rule&gt;
