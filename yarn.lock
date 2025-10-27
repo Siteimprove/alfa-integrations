@@ -2277,7 +2277,7 @@ __metadata:
   dependencies:
     "@siteimprove/alfa-react": "workspace:^"
     "@siteimprove/alfa-web": "npm:^0.107.0"
-    "@types/enzyme": "npm:^3.10.8"
+    "@types/enzyme": "npm:^3.10.19"
     enzyme: "npm:^3.11.0"
   peerDependencies:
     "@siteimprove/alfa-web": ^0.107.0
@@ -3724,12 +3724,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/cheerio@npm:*":
-  version: 0.22.31
-  resolution: "@types/cheerio@npm:0.22.31"
+"@types/cheerio@npm:<1":
+  version: 0.22.35
+  resolution: "@types/cheerio@npm:0.22.35"
   dependencies:
     "@types/node": "npm:*"
-  checksum: 10/e5af81ef3a87d57f90959af8bc1a321fb9e6c32481659303ce73b3eccce4720a5ce56470ab505ab3404a8fce04b3e40967ffbe581a2bc672964687fc82e1b13b
+  checksum: 10/7d834512df4682733ce2ff1010682251d2d597d4c2f035b5ae43125a18b8a14c37d805d7c7ebcf57be360259c989465c5fd7b9dc21159b6719760d3d7fbd927f
   languageName: node
   linkType: hard
 
@@ -3742,13 +3742,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/enzyme@npm:^3.10.8":
-  version: 3.10.12
-  resolution: "@types/enzyme@npm:3.10.12"
+"@types/enzyme@npm:^3.10.19":
+  version: 3.10.19
+  resolution: "@types/enzyme@npm:3.10.19"
   dependencies:
-    "@types/cheerio": "npm:*"
-    "@types/react": "npm:*"
-  checksum: 10/59e0246a12edc72065db18b5f4cdac58581b98b73b098369bacbdeafa27b6c193478187b382fec3023565e121189998bd54c9904580d0c546ad00919de5c50ed
+    "@types/cheerio": "npm:<1"
+    "@types/react": "npm:^16"
+  checksum: 10/b7e143f2cae0c926f981c27fe89ff3fcd97803bc3947f43045a086548c79eed6cd3cab59903703297da561741f1769f8b9f4b432a5ec19a8f2928689de85102f
   languageName: node
   linkType: hard
 
@@ -3875,10 +3875,28 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/react@npm:^16":
+  version: 16.14.67
+  resolution: "@types/react@npm:16.14.67"
+  dependencies:
+    "@types/prop-types": "npm:*"
+    "@types/scheduler": "npm:^0.16"
+    csstype: "npm:^3.0.2"
+  checksum: 10/34e20dbe7e65b968123c3f742e38e9c9f7607847551f8a06e80b19acfa02fedb215d63ba3fb3f691ad5988e2fb7802f542815f392311a837abc071b85e13b2d5
+  languageName: node
+  linkType: hard
+
 "@types/sarif@npm:^2.1.4":
   version: 2.1.4
   resolution: "@types/sarif@npm:2.1.4"
   checksum: 10/d2d65197db7a1fe49785ccc0a4f436b09b28b3faac53d6ece712dd5c96310ca40600a4177def9883d44315a654785cc328c2068f954be421b773dfb9d9fa9472
+  languageName: node
+  linkType: hard
+
+"@types/scheduler@npm:^0.16":
+  version: 0.16.8
+  resolution: "@types/scheduler@npm:0.16.8"
+  checksum: 10/6c091b096daa490093bf30dd7947cd28e5b2cd612ec93448432b33f724b162587fed9309a0acc104d97b69b1d49a0f3fc755a62282054d62975d53d7fd13472d
   languageName: node
   linkType: hard
 
