@@ -9,11 +9,7 @@ import * as url from "node:url";
 import { chromium } from "playwright";
 import { Playwright } from "../dist/playwright.js";
 
-// TODO: This should be replaced with import.meta.dirname once we switch to Node 22
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const fixture = path.join(__dirname, "fixture");
+const fixture = path.join(import.meta.dirname, "fixture");
 
 test("Playwright.toPage() scrapes a page", async (t) => {
   const browser = await chromium.launch({
@@ -144,21 +140,21 @@ test("Playwright.toPage() doesn't change crossorigin attribute when no option is
 
   const emptyAttr = await page.evaluate(
     () =>
-      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin,
   );
   t.equal(emptyAttr, null);
 
   const anonymousAttr = await page.evaluate(
     () =>
       (window.document.getElementById("anonymous") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await page.evaluate(
     () =>
       (window.document.getElementById("use-credentials") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -174,7 +170,7 @@ test("Playwright.toPage() doesn't change crossorigin attribute when no option is
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });
@@ -194,27 +190,29 @@ test("Playwright.toPage() enforces anonymous crossorigin on links without one, w
 
   const document = await page.evaluateHandle(() => window.document);
 
-  const alfaPage = await Playwright.toPage(document, { enforceAnonymousCrossOrigin: true });
+  const alfaPage = await Playwright.toPage(document, {
+    enforceAnonymousCrossOrigin: true,
+  });
 
   // We check that the scraping **did** change the page
 
   const emptyAttr = await page.evaluate(
     () =>
-      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin,
   );
   t.equal(emptyAttr, "anonymous");
 
   const anonymousAttr = await page.evaluate(
     () =>
       (window.document.getElementById("anonymous") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await page.evaluate(
     () =>
       (window.document.getElementById("use-credentials") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -226,7 +224,7 @@ test("Playwright.toPage() enforces anonymous crossorigin on links without one, w
   t(
     empty
       .attribute("crossorigin")
-      .some((crossorigin) => crossorigin.value === "anonymous")
+      .some((crossorigin) => crossorigin.value === "anonymous"),
   );
 
   for (const id of ["anonymous", "use-credentials"]) {
@@ -234,7 +232,7 @@ test("Playwright.toPage() enforces anonymous crossorigin on links without one, w
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });

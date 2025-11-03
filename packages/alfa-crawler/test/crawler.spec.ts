@@ -1,16 +1,12 @@
-import * as path from "node:path";
-import * as url from "node:url";
+import { Frontier } from "@siteimprove/alfa-frontier";
 
 import { test } from "@siteimprove/alfa-test-deprecated";
 
-import { Frontier } from "@siteimprove/alfa-frontier";
+import * as url from "node:url";
 
 import { Crawler } from "../dist/crawler.js";
 
-// TODO: This should be replaced with import.meta.dirname once we switch to Node 22
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-const fixture = `${url.pathToFileURL(__dirname).href}/fixture`;
+const fixture = `${url.pathToFileURL(import.meta.dirname).href}/fixture`;
 
 test("#crawl() crawls a frontier", async (t) =>
   await Crawler.with(async (crawler) => {
