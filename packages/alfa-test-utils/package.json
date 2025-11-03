@@ -44,9 +44,7 @@
     "Finally we need to stage the changed files that will be commited later in the release process."
   ],
   "scripts": {
-    "alfa-postversion": "./get-version.sh > src/version.ts && yarn self-extract && git add src/version.ts ../../docs/review/api/alfa-test-utils.api.md",
-    "self-extract": "CI=false yarn run --top-level extract packages/alfa-test-utils",
-    "packages/alfa-test-utils": "echo workaround https://github.com/webpro-nl/knip/issues/739"
+    "alfa-postversion": "./get-version.sh > src/version.ts && yarn extract:self && git add src/version.ts ../../docs/review/api/alfa-test-utils.api.md"
   },
   "dependencies": {
     "@siteimprove/alfa-act": "^0.107.0",
