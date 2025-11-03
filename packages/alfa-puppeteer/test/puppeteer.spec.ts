@@ -7,11 +7,7 @@ import * as url from "node:url";
 import puppeteer from "puppeteer";
 import { Puppeteer } from "../dist/puppeteer.js";
 
-// TODO: This should be replaced with import.meta.dirname once we switch to Node 22
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const fixture = path.join(__dirname, "fixture");
+const fixture = path.join(import.meta.dirname, "fixture");
 
 test("Puppeteer.toPage() scrapes a page", async (t) => {
   const browser = await puppeteer.launch({
