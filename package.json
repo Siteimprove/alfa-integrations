@@ -17,6 +17,7 @@
     "test:other": "yarn workspaces foreach --all --exclude @siteimprove/alfa-integrations run test",
     "watch": "node scripts/watch.mjs --pretty",
     "extract": "node scripts/api-extractor.mjs --pretty",
+    "extract:self": "CI=false yarn extract ${INIT_CWD}",
     "document": "api-documenter generate -i docs/data/api -o docs/api",
     "knip": "knip --config config/knip.ts --no-config-hints"
   },
