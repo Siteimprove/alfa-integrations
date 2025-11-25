@@ -1,5 +1,7 @@
 # @siteimprove/alfa-vue
 
+## 0.80.4
+
 ## 0.80.3
 
 ### Patch Changes

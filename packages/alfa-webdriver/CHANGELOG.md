@@ -1,5 +1,7 @@
 # @siteimprove/alfa-webdriver
 
+## 0.80.4
+
 ## 0.80.3
 
 ### Patch Changes

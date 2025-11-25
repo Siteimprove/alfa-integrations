@@ -1,5 +1,11 @@
 # @siteimprove/alfa-formatter
 
+## 0.80.4
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#188](https://github.com/Siteimprove/alfa-integrations/pull/188))
+
 ## 0.80.3
 
 ### Patch Changes
