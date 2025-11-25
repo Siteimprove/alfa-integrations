@@ -12,7 +12,7 @@ import { URL } from "@siteimprove/alfa-url";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-import { type Audit, SIP } from "../../dist/index.js";
+import { type Audit, type CommitInformation, SIP } from "../../dist/index.js";
 
 import {
   makeAudit,
@@ -100,7 +100,7 @@ test("S3.payload serialises outcomes as string with minimal rule serialization",
           { failed: 1, passed: 0, cantTell: 0 },
         ],
       ]),
-    })
+    }),
   );
 
   const expected: Outcome.Failed.JSON<Element> = {
@@ -192,13 +192,13 @@ test("Metadata.axiosConfig() creates an axios config", async (t) => {
   const actual = Metadata.axiosConfig(
     makeAudit(),
     { userName: "foo@foo.com", apiKey: "bar" },
-    { url: "https://foo.com", timestamp }
+    { url: "https://foo.com", timestamp },
   );
 
   t.deepEqual(actual.getUnsafe(), {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      Metadata.payload(makeAudit(), {}, timestamp).getUnsafe()
+      Metadata.payload(makeAudit(), {}, timestamp).getUnsafe(),
     ),
   });
 });
@@ -207,13 +207,13 @@ test("Metadata.axiosConfig() deserializes audits", async (t) => {
   const actual = Metadata.axiosConfig(
     makeAudit().toJSON(),
     { userName: "foo@foo.com", apiKey: "bar" },
-    { url: "https://foo.com", timestamp }
+    { url: "https://foo.com", timestamp },
   );
 
   t.deepEqual(actual.getUnsafe(), {
     ...Metadata.params("https://foo.com", "foo@foo.com:bar"),
     data: JSON.stringify(
-      Metadata.payload(makeAudit(), {}, timestamp).getUnsafe()
+      Metadata.payload(makeAudit(), {}, timestamp).getUnsafe(),
     ),
   });
 });
@@ -223,9 +223,9 @@ test("Custom payload serialization works as JSON.stringify", (t) => {
   const payload = S3.payload("some id", makeAudit({ page }));
   const expected = JSON.stringify(payload);
   const actual = `{"Id":${JSON.stringify(
-    payload.Id
+    payload.Id,
   )},"CheckResult":${JSON.stringify(
-    payload.CheckResult
+    payload.CheckResult,
   )},"Aspects":${JSON.stringify(payload.Aspects)}}`;
 
   t.deepEqual(actual, expected);
@@ -237,14 +237,14 @@ test("S3.axiosConfig() creates an axios config", (t) => {
   const actual = S3.axiosConfig(
     "some id",
     "a pre-signed S3 URL",
-    makeAudit({ page })
+    makeAudit({ page }),
   );
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
       [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
-      { type: "application/json" }
+      { type: "application/json" },
     ),
   });
 });
@@ -255,14 +255,14 @@ test("S3.axiosConfig() accepts serialized audits", (t) => {
   const actual = S3.axiosConfig(
     "some id",
     "a pre-signed S3 URL",
-    makeAudit({ page }).toJSON()
+    makeAudit({ page }).toJSON(),
   );
 
   t.deepEqual(actual, {
     ...S3.params("a pre-signed S3 URL"),
     data: new Blob(
       [JSON.stringify(S3.payload("some id", makeAudit({ page })))],
-      { type: "application/json" }
+      { type: "application/json" },
     ),
   });
 });
@@ -277,22 +277,23 @@ test("Metadata.payload() uses test name if provided", async (t) => {
   const actual = Metadata.payload(
     makeAudit(),
     { testName: "test name" },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ TestName: "test name" })));
 });
 
 test("Metadata.payload() includes commit information if provided", async (t) => {
-  for (const commitInformation of [
-    { BranchName: "hello", Origin: "somewhere" },
-    Option.of({ BranchName: "hello", Origin: "somewhere" }),
-    Ok.of({ BranchName: "hello", Origin: "somewhere" }),
-  ]) {
+  const commit: CommitInformation = {
+    BranchName: "hello",
+    Origin: "somewhere",
+  };
+
+  for (const commitInformation of [commit, Option.of(commit), Ok.of(commit)]) {
     const actual = Metadata.payload(
       makeAudit(),
       { commitInformation },
-      timestamp
+      timestamp,
     );
 
     t.deepEqual(
@@ -300,8 +301,8 @@ test("Metadata.payload() includes commit information if provided", async (t) => 
       Ok.of(
         makePayload({
           CommitInformation: { BranchName: "hello", Origin: "somewhere" },
-        })
-      )
+        }),
+      ),
     );
   }
 
@@ -309,7 +310,7 @@ test("Metadata.payload() includes commit information if provided", async (t) => 
     const actual = Metadata.payload(
       makeAudit(),
       { commitInformation },
-      timestamp
+      timestamp,
     );
 
     t.deepEqual(actual, Ok.of(makePayload()));
@@ -323,7 +324,7 @@ test("Metadata.payload() builds test name from commit information", async (t) =>
       commitInformation: { BranchName: "hello", Origin: "somewhere" },
       testName: (commit) => `On branch ${commit.BranchName}`,
     },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(
@@ -332,8 +333,8 @@ test("Metadata.payload() builds test name from commit information", async (t) =>
       makePayload({
         CommitInformation: { BranchName: "hello", Origin: "somewhere" },
         TestName: "On branch hello",
-      })
-    )
+      }),
+    ),
   );
 });
 
@@ -341,7 +342,7 @@ test("Metadata.payload() uses explicit title if provided", async (t) => {
   const actual = Metadata.payload(
     makeAudit(),
     { pageTitle: "page title" },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ PageTitle: "page title" })));
@@ -361,7 +362,7 @@ test("Metadata.payload() uses explicit title over page's title", async (t) => {
   const actual = Metadata.payload(
     makeAudit({ page }),
     { pageTitle: "page title" },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ PageTitle: "page title" })));
@@ -373,14 +374,14 @@ test("Metadata.payload() builds page title from the page if specified", async (t
   const actual = Metadata.payload(
     makeAudit({ page }),
     { pageTitle: (page) => page.document.toString() },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(
     actual,
     Ok.of(
-      makePayload({ PageTitle: "#document\n  <span>\n    Hello\n  </span>" })
-    )
+      makePayload({ PageTitle: "#document\n  <span>\n    Hello\n  </span>" }),
+    ),
   );
 });
 
@@ -388,7 +389,7 @@ test("Metadata.payload() uses explicit URL if provided", async (t) => {
   const actual = Metadata.payload(
     makeAudit(),
     { pageURL: "page URL" },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ PageUrl: "page URL" })));
@@ -397,27 +398,27 @@ test("Metadata.payload() uses explicit URL if provided", async (t) => {
 test("Metadata.payload() uses page's response's URL if it exists", async (t) => {
   const page = makePage(
     h.document([<span></span>]),
-    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200)
+    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200),
   );
 
   const actual = Metadata.payload(makeAudit({ page }), {}, timestamp);
 
   t.deepEqual(
     actual,
-    Ok.of(makePayload({ PageUrl: "https://siteimprove.com/" }))
+    Ok.of(makePayload({ PageUrl: "https://siteimprove.com/" })),
   );
 });
 
 test("Metadata.payload() uses explicit URL over page's URL", async (t) => {
   const page = makePage(
     h.document([<span></span>]),
-    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200)
+    Response.of(URL.parse("https://siteimprove.com/").getUnsafe(), 200),
   );
 
   const actual = Metadata.payload(
     makeAudit({ page }),
     { pageURL: "page URL" },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ PageUrl: "page URL" })));
@@ -429,7 +430,7 @@ test("Metadata.payload() builds page URL from the page if specified", async (t) 
   const actual = Metadata.payload(
     makeAudit({ page }),
     { pageURL: (page) => page.response.status.toString() },
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(actual, Ok.of(makePayload({ PageUrl: "200" })));
@@ -441,12 +442,12 @@ test("Metadata.payload() includes global durations", async (t) => {
       durations: { cascade: 1, "aria-tree": 2, total: 3 },
     }),
     {},
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(
     actual,
-    Ok.of(makePayload({ Durations: { Cascade: 1, AriaTree: 2, Total: 3 } }))
+    Ok.of(makePayload({ Durations: { Cascade: 1, AriaTree: 2, Total: 3 } })),
   );
 });
 
@@ -460,7 +461,7 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
       durations: { cascade: 1, "aria-tree": 1, total: 1 },
     }),
     {},
-    timestamp
+    timestamp,
   );
 
   t.deepEqual(
@@ -482,8 +483,8 @@ test("Metadata.payload() includes rule durations in aggregates", async (t) => {
             CantTell: 0,
           },
         ],
-      })
-    )
+      }),
+    ),
   );
 });
 
@@ -593,7 +594,7 @@ test(".upload returns standard error message in case of 401 Unauthorized", async
       apiKey: "bar",
       siteID: 12345,
     },
-    { url: "https://401.com" }
+    { url: "https://401.com" },
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -612,7 +613,7 @@ test(".upload returns custom error message in case of 4XX", async (t) => {
       apiKey: "bar",
       siteID: 12345,
     },
-    { url: "https://4XX.com" }
+    { url: "https://4XX.com" },
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -631,7 +632,7 @@ test(".upload returns all error messages in case of 4XX", async (t) => {
       apiKey: "bar",
       siteID: 12345,
     },
-    { url: "https://4XXbis.com" }
+    { url: "https://4XXbis.com" },
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -650,7 +651,7 @@ test(".upload returns Axios error message in case of 5XX", async (t) => {
       apiKey: "bar",
       siteID: 12345,
     },
-    { url: "https://5XX.com" }
+    { url: "https://5XX.com" },
   );
 
   t.deepEqual(actual.toJSON(), {
