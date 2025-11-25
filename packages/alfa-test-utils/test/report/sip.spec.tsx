@@ -12,8 +12,7 @@ import { URL } from "@siteimprove/alfa-url";
 import axios from "axios";
 import MockAdapter from "axios-mock-adapter";
 
-import { type Audit, SIP } from "../../dist/index.js";
-import type { CommitInformation } from "../../src/index.js";
+import { type Audit, type CommitInformation, SIP } from "../../dist/index.js";
 
 import {
   makeAudit,
