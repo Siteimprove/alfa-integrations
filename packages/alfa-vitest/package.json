@@ -25,28 +25,28 @@
     "test": "vitest run"
   },
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.108.0",
+    "@siteimprove/alfa-act": "^0.108.1",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-future": "^0.108.0",
-    "@siteimprove/alfa-hash": "^0.108.0",
-    "@siteimprove/alfa-mapper": "^0.108.0",
+    "@siteimprove/alfa-future": "^0.108.1",
+    "@siteimprove/alfa-hash": "^0.108.1",
+    "@siteimprove/alfa-mapper": "^0.108.1",
     "vitest": "^4.0.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.108.0",
-    "@siteimprove/alfa-future": "^0.108.0",
-    "@siteimprove/alfa-hash": "^0.108.0",
-    "@siteimprove/alfa-mapper": "^0.108.0"
+    "@siteimprove/alfa-act": "^0.108.1",
+    "@siteimprove/alfa-future": "^0.108.1",
+    "@siteimprove/alfa-hash": "^0.108.1",
+    "@siteimprove/alfa-mapper": "^0.108.1"
   },
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-device": "^0.108.0",
-    "@siteimprove/alfa-dom": "^0.108.0",
-    "@siteimprove/alfa-http": "^0.108.0",
-    "@siteimprove/alfa-rules": "^0.108.0",
-    "@siteimprove/alfa-web": "^0.108.0"
+    "@siteimprove/alfa-device": "^0.108.1",
+    "@siteimprove/alfa-dom": "^0.108.1",
+    "@siteimprove/alfa-http": "^0.108.1",
+    "@siteimprove/alfa-rules": "^0.108.1",
+    "@siteimprove/alfa-web": "^0.108.1"
   }
 }
