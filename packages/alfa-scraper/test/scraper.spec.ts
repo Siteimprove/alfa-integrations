@@ -84,14 +84,18 @@ test("#scrape() scrapes a page with an immediate location change", async (t) =>
     const url = getTestPageFileUrl("location-change-immediate.html");
     const result = await scraper.scrape(url, {
       // Giving a bit of time for the location change to actually happen
-      awaiter: Awaiter.duration(100, Awaiter.loaded()),
+      awaiter: Awaiter.duration(200, Awaiter.loaded()),
     });
 
     t.equal(result.isOk(), true);
 
     const { response } = result.getUnsafe();
 
-    t.equal(response.url.toString(), "https://example.com/");
+    t.equal(
+      response.url.toString(),
+      "https://example.com/",
+      `Received URL: ${response.url.toString()}`,
+    );
   }, browser()));
 
 test("#scrape() scrapes a page with a delayed location change", async (t) =>
