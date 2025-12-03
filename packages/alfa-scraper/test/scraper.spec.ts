@@ -1,9 +1,12 @@
 import { Node, Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test-deprecated";
+import type { Thunk } from "@siteimprove/alfa-thunk";
+
 import * as path from "node:path";
 import * as url from "node:url";
-import { Awaiter } from "../dist/index.js";
+import * as puppeteer from "puppeteer";
 
+import { Awaiter } from "../dist/index.js";
 import { Scraper } from "../dist/scraper.js";
 
 const { getElementDescendants } = Query;
@@ -13,6 +16,20 @@ const fixture = path.join(import.meta.dirname, "fixture");
 function getTestPageFileUrl(fileName: string): string {
   return url.pathToFileURL(path.join(fixture, fileName)).href;
 }
+
+// We're seeing flaky tests due to timeout, especially when running all tests
+// together (resource race condition?) Increasing the timeout.
+const browser: Thunk<Promise<puppeteer.Browser>> = () =>
+  puppeteer.launch({
+    headless: true,
+    args: [
+      "--no-sandbox",
+      // In order to be able to access external style sheets through CSSOM, we
+      // have to disable CORS restrictions in Chromium.
+      "--disable-web-security",
+    ],
+    timeout: 60_000,
+  });
 
 test("#scrape() scrapes a page", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -24,7 +41,7 @@ test("#scrape() scrapes a page", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
-  }));
+  }, browser()));
 
 test("#scrape() scrapes a page with a hash fragment", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -36,7 +53,7 @@ test("#scrape() scrapes a page with a hash fragment", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
-  }));
+  }, browser()));
 
 test("#scrape() scrapes a page with an immediate meta refresh", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -48,7 +65,7 @@ test("#scrape() scrapes a page with an immediate meta refresh", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), "https://example.com/");
-  }));
+  }, browser()));
 
 test("#scrape() scrapes a page with a delayed meta refresh", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -60,22 +77,26 @@ test("#scrape() scrapes a page with a delayed meta refresh", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
-  }));
+  }, browser()));
 
 test("#scrape() scrapes a page with an immediate location change", async (t) =>
   await Scraper.with(async (scraper) => {
     const url = getTestPageFileUrl("location-change-immediate.html");
     const result = await scraper.scrape(url, {
       // Giving a bit of time for the location change to actually happen
-      awaiter: Awaiter.duration(100, Awaiter.loaded()),
+      awaiter: Awaiter.duration(200, Awaiter.loaded()),
     });
 
     t.equal(result.isOk(), true);
 
     const { response } = result.getUnsafe();
 
-    t.equal(response.url.toString(), "https://example.com/");
-  }));
+    t.equal(
+      response.url.toString(),
+      "https://example.com/",
+      `Received URL: ${response.url.toString()}`,
+    );
+  }, browser()));
 
 test("#scrape() scrapes a page with a delayed location change", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -87,7 +108,7 @@ test("#scrape() scrapes a page with a delayed location change", async (t) =>
     const { response } = result.getUnsafe();
 
     t.equal(response.url.toString(), url);
-  }));
+  }, browser()));
 
 test("#scrape() scrapes layout", async (t) =>
   await Scraper.with(async (scraper) => {
@@ -108,7 +129,7 @@ test("#scrape() scrapes layout", async (t) =>
       width: 271,
       height: 288,
     });
-  }));
+  }, browser()));
 
 test("#scrape() leaves crossorigin untouched by default", async (t) => {
   await Scraper.with(async (scraper) => {
@@ -125,10 +146,10 @@ test("#scrape() leaves crossorigin untouched by default", async (t) => {
       t(
         link
           .attribute("crossorigin")
-          .some((crossorigin) => crossorigin.value === id)
+          .some((crossorigin) => crossorigin.value === id),
       );
     }
-  });
+  }, browser());
 });
 
 test("#scrape() enforce anonymous crossorigin on `<link>` missing one, when asked to", async (t) => {
@@ -144,7 +165,7 @@ test("#scrape() enforce anonymous crossorigin on `<link>` missing one, when aske
     t(
       empty
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === "anonymous")
+        .some((crossorigin) => crossorigin.value === "anonymous"),
     );
 
     for (const id of ["anonymous", "use-credentials"]) {
@@ -152,8 +173,8 @@ test("#scrape() enforce anonymous crossorigin on `<link>` missing one, when aske
       t(
         link
           .attribute("crossorigin")
-          .some((crossorigin) => crossorigin.value === id)
+          .some((crossorigin) => crossorigin.value === id),
       );
     }
-  });
+  }, browser());
 });

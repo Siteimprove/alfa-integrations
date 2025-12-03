@@ -38,14 +38,14 @@ export class Scraper {
         // have to disable CORS restrictions in Chromium.
         "--disable-web-security",
       ],
-    })
+    }),
   ): Promise<Scraper> {
     return new Scraper(await browser);
   }
 
   public static async with<T>(
     mapper: Mapper<Scraper, Promise<T>>,
-    browser?: Promise<puppeteer.Browser>
+    browser?: Promise<puppeteer.Browser>,
   ): Promise<T> {
     const scraper = await this.of(browser);
 
@@ -67,7 +67,7 @@ export class Scraper {
    */
   public async scrape(
     url: string | URL,
-    options: Scraper.scrape.Options & Native.Options = {}
+    options: Scraper.scrape.Options & Native.Options = {},
   ): Promise<Result<Page, string>> {
     if (typeof url === "string") {
       const result = URL.parse(url);
@@ -107,7 +107,7 @@ export class Scraper {
       const client = await page.target().createCDPSession();
 
       await page.emulateMediaType(
-        device.type === Device.Type.Print ? "print" : "screen"
+        device.type === Device.Type.Print ? "print" : "screen",
       );
 
       // Puppeteer doesn't yet support all available media features and so might
@@ -116,7 +116,7 @@ export class Scraper {
       try {
         await page.emulateMediaFeatures([
           ...Iterable.map(device.preferences, (preference) =>
-            preference.toJSON()
+            preference.toJSON(),
           ),
         ]);
       } catch (err) {
@@ -147,8 +147,8 @@ export class Scraper {
             headers[header.name] = header.value;
             return headers;
           },
-          {} as Record<string, string>
-        )
+          {} as Record<string, string>,
+        ),
       );
 
       if (scheme === "http" || scheme === "https") {
@@ -159,7 +159,7 @@ export class Scraper {
               value: cookie.value,
               url: url.toString(),
             };
-          })
+          }),
         );
       }
 
@@ -234,8 +234,8 @@ export class Scraper {
               parseRequest(req),
               await parseResponse(res),
               alfaPage.document,
-              alfaPage.device
-            )
+              alfaPage.device,
+            ),
           );
         } catch (err) {
           // If the timeout was exceeded while navigating to the page, bail out
@@ -290,37 +290,51 @@ function parseRequest(request: puppeteer.HTTPRequest): Request {
     request.method(),
     URL.parse(request.url()).getUnsafe(),
     Headers.of(
-      entries(request.headers()).map(([name, value]) => Header.of(name, value))
-    )
+      entries(request.headers()).map(([name, value]) => Header.of(name, value)),
+    ),
   );
 }
 
+// This is suboptimal as it recreates the buffer. There seems to be something
+// going on with Puppeteer's response.buffer() returning a Buffer<ArrayBufferLike>
+// even though it might actually always be a Buffer<ArrayBuffer>, and Ndoe/TS
+// started picking this up.
+// See https://stackoverflow.com/questions/79345535/how-to-convert-bufferarraybufferlike-to-arraybuffer-in-typescript-5-7
+// for related discussion.
+function bufferToArrayBuffer(buffer: Buffer): ArrayBuffer {
+  return new Uint8Array(buffer).buffer;
+}
+
 async function parseResponse(
-  response: puppeteer.HTTPResponse
+  response: puppeteer.HTTPResponse,
 ): Promise<Response> {
   return Response.of(
     URL.parse(response.url()).getUnsafe(),
     response.status(),
     Headers.of(
-      entries(response.headers()).map(([name, value]) => Header.of(name, value))
+      entries(response.headers()).map(([name, value]) =>
+        Header.of(name, value),
+      ),
     ),
-    response.ok() ? await response.buffer() : new ArrayBuffer(0)
+    response.ok()
+      ? bufferToArrayBuffer(await response.buffer())
+      : new ArrayBuffer(0),
   );
 }
 
 async function parsePage(
   page: puppeteer.Page,
-  options?: Native.Options
+  options?: Native.Options,
 ): Promise<Page> {
   return Puppeteer.toPage(
     await page.evaluateHandle(() => window.document),
-    options
+    options,
   );
 }
 
 async function captureScreenshot(
   page: puppeteer.Page,
-  screenshot: Screenshot
+  screenshot: Screenshot,
 ): Promise<void> {
   switch (screenshot.type.type) {
     case "png":
@@ -346,7 +360,7 @@ async function captureScreenshot(
 
 async function captureArchive(
   client: puppeteer.CDPSession,
-  archive: Archive
+  archive: Archive,
 ): Promise<void> {
   switch (archive.format) {
     case Archive.Format.MHTML: {
@@ -356,8 +370,8 @@ async function captureArchive(
 
       await new Promise<void>((resolve, reject) =>
         fs.writeFile(archive.path, data, "utf-8", (err) =>
-          err ? reject(err) : resolve()
-        )
+          err ? reject(err) : resolve(),
+        ),
       );
     }
   }
