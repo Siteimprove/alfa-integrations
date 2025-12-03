@@ -21,13 +21,17 @@ updates:
       - dependency-name: "chai" # @siteimprove/alfa-chai
       - dependency-name: "cheerio" # @siteimprove/alfa-cheerio
       - dependency-name: "domhandler" # @siteimprove/alfa-cheerio
-      - dependency-name: "enzyme" # @siteimprove/alfa-enzyme
       - dependency-name: "jasmine" # @siteimprove/alfa-jasmine
       - dependency-name: "jquery" # @siteimprove/alfa-jquery
       - dependency-name: "unexpected" # @siteimprove/alfa-unexpected
       - dependency-name: "webdriverio" # @siteimprove/alfa-webdriver
 
     groups:
+      alfa:
+        patterns:
+          - "@siteimprove/alfa-*"
+        applies-to: version-updates
+
       production-patch: # Patch updates to production packages. Low risk.
         # This group could be auto-merge, this need a separate action. Maybe acting on a label that would be set here?
         # We might want to run that for some time before actually enabling auto merging.
@@ -52,11 +56,6 @@ updates:
           - "minor"
           - "patch"
         # TODO: consider adding custom commit-message.
-
-      alfa:
-        patterns:
-          - "@siteimprove/alfa-*"
-        applies-to: version-updates
 
       # Other dependencies will be in separate PRs (one for each) as we may need to look into them in more detail.
 
