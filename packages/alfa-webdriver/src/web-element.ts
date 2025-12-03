@@ -8,37 +8,24 @@ import { Page } from "@siteimprove/alfa-web";
 import * as dom from "@siteimprove/alfa-dom/native";
 
 /**
- * {@link https://w3c.github.io/webdriver/#dfn-web-elements}
- *
- * @public
- */
-export interface WebElement {
-  /**
-   * {@link https://w3c.github.io/webdriver/#dfn-web-element-reference}
-   */
-  ["element-6066-11e4-a52e-4f735466cecf"]?: string;
-}
-
-/**
  * @public
  */
 export namespace WebElement {
   export async function toPage(
-    webElement: WebElement,
+    webElement: WebdriverIO.Element,
     browser: WebdriverIO.Browser,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
-    const nodeJSON = await browser.execute(
-      dom.Native.fromNode,
-      webElement as any,
-      options
-    );
+    const nodeJSON = await browser.execute<
+      Node.JSON,
+      [WebdriverIO.Element]
+    >(dom.Native.fromNode, webElement);
 
     return Page.of(
       Request.empty(),
       Response.empty(),
       Document.of([Node.from(nodeJSON)]),
-      Device.standard()
+      Device.standard(),
     );
   }
 }
