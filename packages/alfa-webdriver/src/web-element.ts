@@ -16,10 +16,11 @@ export namespace WebElement {
     browser: WebdriverIO.Browser,
     options?: dom.Native.Options,
   ): Promise<Page> {
-    const nodeJSON = await browser.execute<
-      Node.JSON,
-      [WebdriverIO.Element]
-    >(dom.Native.fromNode, webElement);
+    const nodeJSON = await browser.execute(
+      dom.Native.fromNode,
+      webElement,
+      options,
+    );
 
     return Page.of(
       Request.empty(),
