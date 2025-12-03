@@ -9,7 +9,6 @@ import * as dom from "@siteimprove/alfa-dom/native";
 import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
-import fs from "node:fs";
 
 import type { JSHandle } from "playwright";
 
