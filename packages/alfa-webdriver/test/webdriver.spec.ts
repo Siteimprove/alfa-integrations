@@ -11,26 +11,27 @@ import { WebElement } from "../dist/index.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
 
-test("WebElement.toPage() scrapes a page", async (t) => {
-  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
-  const browser = await remote({
-    capabilities: {
-      browserName: "chrome",
-      "goog:chromeOptions": {
-        args: [
-          "headless",
-          "disable-gpu",
-          "--no-sandbox",
-          "--disable-dev-shm-usage",
-        ],
-      },
+const browser = await remote({
+  capabilities: {
+    browserName: "chrome",
+    "goog:chromeOptions": {
+      args: [
+        "headless",
+        "disable-gpu",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+      ],
     },
-  });
+  },
+});
+
+
+await test("WebElement.toPage() scrapes a page", async (t) => {
+  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
 
   await browser.url(pageUrl);
   const document = await browser.execute("return window.document");
   const alfaPage = await WebElement.toPage(document, browser);
-  await browser.deleteSession();
 
   // Test the presence of layout information
   for (const element of Query.getElementDescendants(alfaPage.document)) {
@@ -121,21 +122,8 @@ test("WebElement.toPage() scrapes a page", async (t) => {
   });
 });
 
-test("WebElement.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+await test("WebElement.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
-  const browser = await remote({
-    capabilities: {
-      browserName: "chrome",
-      "goog:chromeOptions": {
-        args: [
-          "headless",
-          "disable-gpu",
-          "--no-sandbox",
-          "--disable-dev-shm-usage",
-        ],
-      },
-    },
-  });
 
   await browser.url(pageUrl);
   const document = await browser.execute("return window.document");
@@ -157,8 +145,6 @@ test("WebElement.toPage() doesn't change crossorigin attribute when no option is
   ).getAttribute("crossOrigin");
   t.equal(useCredentialsAttr, "use-credentials");
 
-  await browser.deleteSession();
-
   const idMap = Query.getElementIdMap(alfaPage.document);
 
   const empty = idMap.get("empty").getUnsafe();
@@ -174,21 +160,8 @@ test("WebElement.toPage() doesn't change crossorigin attribute when no option is
   }
 });
 
-test("WebElement.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+await test("WebElement.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
-  const browser = await remote({
-    capabilities: {
-      browserName: "chrome",
-      "goog:chromeOptions": {
-        args: [
-          "headless",
-          "disable-gpu",
-          "--no-sandbox",
-          "--disable-dev-shm-usage",
-        ],
-      },
-    },
-  });
 
   await browser.url(pageUrl);
   const document = await browser.execute("return window.document");
@@ -213,8 +186,6 @@ test("WebElement.toPage() enforces anonymous crossorigin on links without one, w
   ).getAttribute("crossOrigin");
   t.equal(useCredentialsAttr, "use-credentials");
 
-  await browser.deleteSession();
-
   const idMap = Query.getElementIdMap(alfaPage.document);
 
   const empty = idMap.get("empty").getUnsafe();
@@ -233,3 +204,5 @@ test("WebElement.toPage() enforces anonymous crossorigin on links without one, w
     );
   }
 });
+
+await browser.deleteSession();
