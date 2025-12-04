@@ -1,8 +1,6 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test-deprecated";
-import type { Page } from "@siteimprove/alfa-web";
-import puppeteer from "puppeteer";
 
 import { remote } from "webdriverio";
 

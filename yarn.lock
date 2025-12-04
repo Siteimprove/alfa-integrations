@@ -3871,8 +3871,9 @@ __metadata:
     "@siteimprove/alfa-device": "npm:^0.108.1"
     "@siteimprove/alfa-dom": "npm:^0.108.1"
     "@siteimprove/alfa-http": "npm:^0.108.1"
+    "@siteimprove/alfa-test-deprecated": "npm:^0.108.1"
+    "@siteimprove/alfa-url": "npm:^0.108.1"
     "@siteimprove/alfa-web": "npm:^0.108.1"
-    "@wdio/types": "npm:^9.20.0"
     webdriverio: "npm:^9.21.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.108.1
@@ -4703,7 +4704,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/types@npm:9.20.0, @wdio/types@npm:^9.20.0":
+"@wdio/types@npm:9.20.0":
   version: 9.20.0
   resolution: "@wdio/types@npm:9.20.0"
   dependencies:
