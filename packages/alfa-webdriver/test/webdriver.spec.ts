@@ -174,7 +174,7 @@ test("WebElement.toPage() doesn't change crossorigin attribute when no option is
   }
 });
 
-test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+test("WebElement.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
   const browser = await remote({
     capabilities: {
