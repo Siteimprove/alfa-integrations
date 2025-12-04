@@ -11,6 +11,9 @@ import { WebElement } from "../dist/index.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
 
+// We keep a single browser session as it seems to stabilize the tests.
+// This means we must sequentialize them (`await` each of them) in order to
+// avoid interference.
 const browser = await remote({
   capabilities: {
     browserName: "chrome",
@@ -205,4 +208,5 @@ await test("WebElement.toPage() enforces anonymous crossorigin on links without 
   }
 });
 
+// Close the browser session after all tests have run
 await browser.deleteSession();
