@@ -1,7 +1,8 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
 import { test } from "@siteimprove/alfa-test-deprecated";
-import { Page } from "@siteimprove/alfa-web";
+import type { Page } from "@siteimprove/alfa-web";
+import puppeteer from "puppeteer";
 
 import { remote } from "webdriverio";
 
@@ -12,7 +13,8 @@ import { WebElement } from "../dist/index.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
 
-async function getPage(pageUrl: string): Promise<Page> {
+test("WebElement.toPage() scrapes a page", async (t) => {
+  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
   const browser = await remote({
     capabilities: {
       browserName: "chrome",
@@ -31,13 +33,6 @@ async function getPage(pageUrl: string): Promise<Page> {
   const document = await browser.execute("return window.document");
   const alfaPage = await WebElement.toPage(document, browser);
   await browser.deleteSession();
-
-  return alfaPage;
-}
-
-test("WebElement.toPage() scrapes a page", async (t) => {
-  const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
-  const alfaPage = await getPage(pageUrl);
 
   // Test the presence of layout information
   for (const element of Query.getElementDescendants(alfaPage.document)) {
@@ -126,4 +121,117 @@ test("WebElement.toPage() scrapes a page", async (t) => {
     },
     device: null,
   });
+});
+
+test("WebElement.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  const browser = await remote({
+    capabilities: {
+      browserName: "chrome",
+      "goog:chromeOptions": {
+        args: [
+          "headless",
+          "disable-gpu",
+          "--no-sandbox",
+          "--disable-dev-shm-usage",
+        ],
+      },
+    },
+  });
+
+  await browser.url(pageUrl);
+  const document = await browser.execute("return window.document");
+  const alfaPage = await WebElement.toPage(document, browser);
+
+  // We check that the scraping did not change the page
+  const emptyAttr = await (
+    await browser.$("#empty").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(emptyAttr, null);
+
+  const anonymousAttr = await (
+    await browser.$("#anonymous").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await (
+    await browser.$("#use-credentials").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.deleteSession();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(empty.attribute("crossorigin").isNone());
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id),
+    );
+  }
+});
+
+test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
+  const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
+  const browser = await remote({
+    capabilities: {
+      browserName: "chrome",
+      "goog:chromeOptions": {
+        args: [
+          "headless",
+          "disable-gpu",
+          "--no-sandbox",
+          "--disable-dev-shm-usage",
+        ],
+      },
+    },
+  });
+
+  await browser.url(pageUrl);
+  const document = await browser.execute("return window.document");
+  const alfaPage = await WebElement.toPage(document, browser, {
+    enforceAnonymousCrossOrigin: true,
+  });
+
+  // We check that the scraping **did** change the page
+
+  const emptyAttr = await (
+    await browser.$("#empty").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(emptyAttr, "anonymous");
+
+  const anonymousAttr = await (
+    await browser.$("#anonymous").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(anonymousAttr, "anonymous");
+
+  const useCredentialsAttr = await (
+    await browser.$("#use-credentials").getElement()
+  ).getAttribute("crossOrigin");
+  t.equal(useCredentialsAttr, "use-credentials");
+
+  await browser.deleteSession();
+
+  const idMap = Query.getElementIdMap(alfaPage.document);
+
+  const empty = idMap.get("empty").getUnsafe();
+  t(
+    empty
+      .attribute("crossorigin")
+      .some((crossorigin) => crossorigin.value === "anonymous"),
+  );
+
+  for (const id of ["anonymous", "use-credentials"]) {
+    const link = idMap.get(id).getUnsafe();
+    t(
+      link
+        .attribute("crossorigin")
+        .some((crossorigin) => crossorigin.value === id),
+    );
+  }
 });
