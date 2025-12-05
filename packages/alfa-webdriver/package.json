@@ -25,8 +25,9 @@
     "@siteimprove/alfa-device": "^0.108.1",
     "@siteimprove/alfa-dom": "^0.108.1",
     "@siteimprove/alfa-http": "^0.108.1",
+    "@siteimprove/alfa-url": "^0.108.1",
     "@siteimprove/alfa-web": "^0.108.1",
-    "webdriverio": "^8.38.2"
+    "webdriverio": "^9.21.0"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.108.1",
@@ -39,6 +40,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.12"
+    "@siteimprove/alfa-test-deprecated": "^0.108.1"
   }
 }
