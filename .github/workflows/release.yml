@@ -24,7 +24,7 @@ jobs:
           setup-playwright: 'true'
           documentation: true
           dependency-graphs: true
-          coverage: false # Coverage ot set up in alfa-integrations
+          coverage: false # Coverage not set up in alfa-integrations
           publish: true
           npm-publish: true
           token: ${{ secrets.BUILDUSER_GITHUB_WRITE }}
