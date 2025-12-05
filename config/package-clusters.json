@@ -27,7 +27,6 @@
           "children": [
             "@siteimprove/alfa-assert",
             "@siteimprove/alfa-chai",
-            "@siteimprove/alfa-cypress",
             "@siteimprove/alfa-jasmine",
             "@siteimprove/alfa-jest",
             "@siteimprove/alfa-unexpected",
@@ -48,6 +47,7 @@
         {
           "name": "Browser automations",
           "children": [
+            "@siteimprove/alfa-cypress",
             "@siteimprove/alfa-playwright",
             "@siteimprove/alfa-puppeteer",
             "@siteimprove/alfa-selenium",
