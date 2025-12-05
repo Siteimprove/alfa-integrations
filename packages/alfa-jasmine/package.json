@@ -40,5 +40,12 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@siteimprove/alfa-device": "^0.108.1",
+    "@siteimprove/alfa-dom": "^0.108.1",
+    "@siteimprove/alfa-http": "^0.108.1",
+    "@siteimprove/alfa-rules": "^0.108.1",
+    "@siteimprove/alfa-web": "^0.108.1"
   }
 }
