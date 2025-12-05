@@ -23,16 +23,13 @@ function test(root = "packages") {
     system.readDirectory(root, [".spec.ts", ".spec.tsx"], ["node_modules"]),
     os.cpus().length,
     (fileName, done) => {
-      // These tests run with their own test framework and must therefore **not**
+      // These tests run with their own test launcher and must therefore **not**
       // be run through this script!
-      const testFrameworks = ["cypress", "jest", "vitest"];
+      const testFrameworks = ["cypress", "jasmine", "jest", "vitest"];
 
       if (testFrameworks.some((framework) => fileName.includes(framework))) {
-        // Cypress is a special kid including its own test framework, so we
-        // cannot easily rely on alfa-test and skip it here. It needs to be
-        // tested separately
         system.write(
-          `Skipping tests having their own framework (${fileName}), use \`yarn test:other\` instead`
+          `Skipping tests having their own framework (${fileName}), use \`yarn test:other\` instead`,
         );
 
         return;
@@ -53,13 +50,13 @@ function test(root = "packages") {
         stdio: "inherit",
       }).then(
         () => done(),
-        (err) => done(err)
+        (err) => done(err),
       );
     },
     (err) => {
       if (err) {
         system.exit(1);
       }
-    }
+    },
   );
 }
