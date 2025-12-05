@@ -10,7 +10,7 @@ import { addAsyncMatcher } from "./jasmine/add-async-matcher.js";
 
 declare global {
   namespace jasmine {
-    interface Matchers<T> {
+    interface AsyncMatchers<T, U> {
       toBeAccessible(): Promise<void>;
     }
   }
@@ -25,12 +25,12 @@ export namespace Jasmine {
     J,
     T extends Hashable,
     Q extends Question.Metadata = {},
-    S = T
+    S = T,
   >(
     transform: Mapper<I, Promise<J>>,
     rules: Iterable<Rule<J, T, Q, S>>,
     handlers: Iterable<Handler<J, T, Q, S>> = [],
-    options: Asserter.Options<J, T, Q, S> = {}
+    options: Asserter.Options<J, T, Q, S> = {},
   ): void {
     const asserter = Asserter.of(rules, handlers, options);
 
