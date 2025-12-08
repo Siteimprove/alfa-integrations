@@ -12,11 +12,7 @@ import chrome from "selenium-webdriver/chrome.js";
 
 import { Selenium } from "../dist/selenium.js";
 
-// TODO: This should be replaced with import.meta.dirname once we switch to Node 22
-const __filename = url.fileURLToPath(import.meta.url);
-const __dirname = path.dirname(__filename);
-
-const fixture = path.join(__dirname, "fixture");
+const fixture = path.join(import.meta.dirname, "fixture");
 
 const options = new chrome.Options();
 options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
@@ -139,17 +135,17 @@ test("Selenium.toPage() doesn't change crossorigin attribute when no option is p
   // We check that the scraping did not change the page
 
   const emptyAttr = await driver.executeScript(
-    "return window.document.getElementById('empty').crossOrigin"
+    "return window.document.getElementById('empty').crossOrigin",
   );
   t.equal(emptyAttr, null);
 
   const anonymousAttr = await driver.executeScript(
-    "return window.document.getElementById('anonymous').crossOrigin"
+    "return window.document.getElementById('anonymous').crossOrigin",
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await driver.executeScript(
-    "return window.document.getElementById('use-credentials').crossOrigin"
+    "return window.document.getElementById('use-credentials').crossOrigin",
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -165,7 +161,7 @@ test("Selenium.toPage() doesn't change crossorigin attribute when no option is p
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });
@@ -180,22 +176,24 @@ test("Selenium.toPage() enforces anonymous crossorigin on links without one, whe
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
   await driver.get(pageUrl);
 
-  const alfaPage = await Selenium.toPage(driver, { enforceAnonymousCrossOrigin: true });
+  const alfaPage = await Selenium.toPage(driver, {
+    enforceAnonymousCrossOrigin: true,
+  });
 
   // We check that the scraping **did** change the page
 
   const emptyAttr = await driver.executeScript(
-    "return window.document.getElementById('empty').crossOrigin"
+    "return window.document.getElementById('empty').crossOrigin",
   );
   t.equal(emptyAttr, "anonymous");
 
   const anonymousAttr = await driver.executeScript(
-    "return window.document.getElementById('anonymous').crossOrigin"
+    "return window.document.getElementById('anonymous').crossOrigin",
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await driver.executeScript(
-    "return window.document.getElementById('use-credentials').crossOrigin"
+    "return window.document.getElementById('use-credentials').crossOrigin",
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -207,7 +205,7 @@ test("Selenium.toPage() enforces anonymous crossorigin on links without one, whe
   t(
     empty
       .attribute("crossorigin")
-      .some((crossorigin) => crossorigin.value === "anonymous")
+      .some((crossorigin) => crossorigin.value === "anonymous"),
   );
 
   for (const id of ["anonymous", "use-credentials"]) {
@@ -215,7 +213,7 @@ test("Selenium.toPage() enforces anonymous crossorigin on links without one, whe
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });
