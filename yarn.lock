@@ -2850,7 +2850,7 @@ __metadata:
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.7.4"
     typescript: "npm:^5.9.3"
-    vitest: "npm:^4.0.6"
+    vitest: "npm:^4.0.15"
   languageName: unknown
   linkType: soft
 
@@ -3846,7 +3846,7 @@ __metadata:
     "@siteimprove/alfa-mapper": "npm:^0.108.1"
     "@siteimprove/alfa-rules": "npm:^0.108.1"
     "@siteimprove/alfa-web": "npm:^0.108.1"
-    vitest: "npm:^4.0.2"
+    vitest: "npm:^4.0.15"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.108.1
     "@siteimprove/alfa-future": ^0.108.1
@@ -13020,7 +13020,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vitest@npm:^4.0.14, vitest@npm:^4.0.2, vitest@npm:^4.0.6":
+"vitest@npm:^4.0.14, vitest@npm:^4.0.15":
   version: 4.0.15
   resolution: "vitest@npm:4.0.15"
   dependencies:
