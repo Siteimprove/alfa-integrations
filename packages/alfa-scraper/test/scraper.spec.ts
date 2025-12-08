@@ -1,5 +1,5 @@
 import { Node, Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import type { Thunk } from "@siteimprove/alfa-thunk";
 
 import * as path from "node:path";
@@ -17,8 +17,6 @@ function getTestPageFileUrl(fileName: string): string {
   return url.pathToFileURL(path.join(fixture, fileName)).href;
 }
 
-// We're seeing flaky tests due to timeout, especially when running all tests
-// together (resource race condition?) Increasing the timeout.
 const browser: Thunk<Promise<puppeteer.Browser>> = () =>
   puppeteer.launch({
     headless: true,
@@ -28,7 +26,6 @@ const browser: Thunk<Promise<puppeteer.Browser>> = () =>
       // have to disable CORS restrictions in Chromium.
       "--disable-web-security",
     ],
-    timeout: 60_000,
   });
 
 test("#scrape() scrapes a page", async (t) =>
