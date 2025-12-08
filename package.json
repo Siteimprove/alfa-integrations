@@ -13,9 +13,9 @@
   "scripts": {
     "build": "node --max-old-space-size=8192 scripts/build.mjs --pretty",
     "clean": "node scripts/clean.mjs --pretty",
-    "test": "node scripts/test.mjs --pretty",
-    "vitest": "yarn build && vitest run --config ./config/vitest.config.ts",
-    "test:other": "yarn workspaces foreach --all --exclude @siteimprove/alfa-integrations run test",
+    "test": "yarn build && yarn test-main && yarn test-other",
+    "test-main": "vitest run --config ./config/vitest.config.ts",
+    "test-other": "yarn workspaces foreach --all --exclude @siteimprove/alfa-integrations run test",
     "watch": "node scripts/watch.mjs --pretty",
     "extract": "node scripts/api-extractor.mjs --pretty",
     "extract:self": "CI=false yarn extract ${INIT_CWD}",
