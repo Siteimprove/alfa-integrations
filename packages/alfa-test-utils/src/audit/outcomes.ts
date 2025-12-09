@@ -8,7 +8,7 @@ import { Selector } from "@siteimprove/alfa-selector";
 
 import type { alfaOutcome } from "../common.js";
 
-const { and, test } = Refinement;
+const { and } = Refinement;
 
 /**
  * Collection of outcomes filters
