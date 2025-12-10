@@ -4,7 +4,7 @@ import { Request, Response } from "@siteimprove/alfa-http";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import type { Predicate } from "@siteimprove/alfa-predicate";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import { Criterion } from "@siteimprove/alfa-wcag";
 import { Page } from "@siteimprove/alfa-web";
 
@@ -24,21 +24,21 @@ test(".filter() keeps everything when no filter is provided", (t) => {
 test(".filter() only includes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven }).toJSON(),
-    [2, 4, 6, 8]
+    [2, 4, 6, 8],
   );
 });
 
 test(".filter() excludes specified items", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { exclude: isEven }).toJSON(),
-    [1, 3, 5, 7, 9]
+    [1, 3, 5, 7, 9],
   );
 });
 
 test(".filter() prioritizes exclusion over inclusion", (t) => {
   t.deepEqual(
     Audit.filter(numbers, { include: isEven, exclude: isTriple }).toJSON(),
-    [2, 4, 8]
+    [2, 4, 8],
   );
 });
 
@@ -58,7 +58,7 @@ const page = Page.of(
   Request.empty(),
   Response.empty(),
   h.document([<div class="hello">{foo}</div>, <div class="world">{bar}</div>]),
-  Device.standard()
+  Device.standard(),
 );
 
 const ruleFoo = makeRule(1001, foo, [Criterion.of("1.1.1")]);
@@ -85,8 +85,8 @@ test(".run() does not run excluded rules", async (t) => {
   t(
     Iterable.none(
       actual,
-      (uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2"
-    )
+      (uri) => uri === "https://alfa.siteimprove.com/rules/sia-r2",
+    ),
   );
 });
 
@@ -170,7 +170,7 @@ test(".run() excludes occurrences in `<iframe>` by default", async (t) => {
         {h.document([<img src="foo.jpg" />, <img src="bar.jpg" alt="bar" />])}
       </iframe>,
     ]),
-    Device.standard()
+    Device.standard(),
   );
 
   const actual = await Audit.run(page);
@@ -178,7 +178,7 @@ test(".run() excludes occurrences in `<iframe>` by default", async (t) => {
   t(
     actual.resultAggregates
       .get("https://alfa.siteimprove.com/rules/sia-r2")
-      .isNone()
+      .isNone(),
   );
 });
 
@@ -191,7 +191,7 @@ test(".run() includes occurrences in `<iframe>` if asked for", async (t) => {
         {h.document([<img src="foo.jpg" />, <img src="bar.jpg" alt="bar" />])}
       </iframe>,
     ]),
-    Device.standard()
+    Device.standard(),
   );
 
   const actual = await Audit.run(page, {
@@ -202,13 +202,13 @@ test(".run() includes occurrences in `<iframe>` if asked for", async (t) => {
     actual.resultAggregates
       .get("https://alfa.siteimprove.com/rules/sia-r2")
       .getUnsafe().failed,
-    1
+    1,
   );
 
   t.equal(
     actual.resultAggregates
       .get("https://alfa.siteimprove.com/rules/sia-r2")
       .getUnsafe().passed,
-    1
+    1,
   );
 });

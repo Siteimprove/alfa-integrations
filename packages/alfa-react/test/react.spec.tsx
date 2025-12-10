@@ -1,8 +1,7 @@
-import { test } from "@siteimprove/alfa-test-deprecated";
-
 import { Device } from "@siteimprove/alfa-device";
 import { h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
+import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
 import { React } from "../dist/index.js";
@@ -20,7 +19,7 @@ test(`.toPage() creates an Alfa page`, (t) => {
     Request.empty(),
     Response.empty(),
     h.document([h.element("button", { class: "btn" })]),
-    Device.standard()
+    Device.standard(),
   );
 
   t.deepEqual(actual.toJSON(), expected.toJSON());

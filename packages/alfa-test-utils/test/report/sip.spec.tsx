@@ -6,7 +6,7 @@ import { Map } from "@siteimprove/alfa-map";
 import { None, Option } from "@siteimprove/alfa-option";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import { URL } from "@siteimprove/alfa-url";
 
 import axios from "axios";

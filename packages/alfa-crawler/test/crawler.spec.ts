@@ -1,6 +1,6 @@
 import { Frontier } from "@siteimprove/alfa-frontier";
 
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 
 import * as url from "node:url";
 

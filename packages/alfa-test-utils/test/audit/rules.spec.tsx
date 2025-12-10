@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 
 import { Rules } from "../../dist/audit/rules.js";
 
@@ -89,13 +89,13 @@ test(".cherryPickFilter selects individual rules", (t) => {
   // Array syntax
   t.deepEqual(
     rules.filter(Rules.cherryPickFilter([1010, 1012, 1014, 1016, 1018])),
-    [rule10, rule12, rule14, rule16, rule18]
+    [rule10, rule12, rule14, rule16, rule18],
   );
 
   // List of parameters syntax
   t.deepEqual(
     rules.filter(Rules.cherryPickFilter(1010, 1012, 1014, 1016, 1018)),
-    [rule10, rule12, rule14, rule16, rule18]
+    [rule10, rule12, rule14, rule16, rule18],
   );
 });
 

@@ -1,10 +1,11 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
+
 import * as path from "node:path";
 import * as url from "node:url";
-
 import puppeteer from "puppeteer";
+
 import { Puppeteer } from "../dist/puppeteer.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
@@ -136,21 +137,21 @@ test("Puppeteer.toPage() doesn't change crossorigin attribute when no option is 
 
   const emptyAttr = await page.evaluate(
     () =>
-      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin,
   );
   t.equal(emptyAttr, null);
 
   const anonymousAttr = await page.evaluate(
     () =>
       (window.document.getElementById("anonymous") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await page.evaluate(
     () =>
       (window.document.getElementById("use-credentials") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -166,7 +167,7 @@ test("Puppeteer.toPage() doesn't change crossorigin attribute when no option is 
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });
@@ -185,27 +186,29 @@ test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, wh
 
   const document = await page.evaluateHandle(() => window.document);
 
-  const alfaPage = await Puppeteer.toPage(document, { enforceAnonymousCrossOrigin: true });
+  const alfaPage = await Puppeteer.toPage(document, {
+    enforceAnonymousCrossOrigin: true,
+  });
 
   // We check that the scraping **did** change the page
 
   const emptyAttr = await page.evaluate(
     () =>
-      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin
+      (window.document.getElementById("empty") as HTMLLinkElement).crossOrigin,
   );
   t.equal(emptyAttr, "anonymous");
 
   const anonymousAttr = await page.evaluate(
     () =>
       (window.document.getElementById("anonymous") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(anonymousAttr, "anonymous");
 
   const useCredentialsAttr = await page.evaluate(
     () =>
       (window.document.getElementById("use-credentials") as HTMLLinkElement)
-        .crossOrigin
+        .crossOrigin,
   );
   t.equal(useCredentialsAttr, "use-credentials");
 
@@ -217,7 +220,7 @@ test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, wh
   t(
     empty
       .attribute("crossorigin")
-      .some((crossorigin) => crossorigin.value === "anonymous")
+      .some((crossorigin) => crossorigin.value === "anonymous"),
   );
 
   for (const id of ["anonymous", "use-credentials"]) {
@@ -225,7 +228,7 @@ test("Puppeteer.toPage() enforces anonymous crossorigin on links without one, wh
     t(
       link
         .attribute("crossorigin")
-        .some((crossorigin) => crossorigin.value === id)
+        .some((crossorigin) => crossorigin.value === id),
     );
   }
 });

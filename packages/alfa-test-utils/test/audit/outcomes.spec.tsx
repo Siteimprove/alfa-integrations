@@ -1,5 +1,5 @@
 import { h } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import { Outcomes } from "../../dist/index.js";
 import { makeFailed, makeRule } from "../fixtures.js";
 import { rule1, rule2 } from "./fixtures.js";

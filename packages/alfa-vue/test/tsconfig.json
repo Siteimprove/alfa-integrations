@@ -3,7 +3,7 @@
   "extends": "../tsconfig.json",
   "compilerOptions": {
     "esModuleInterop": true,
-    "outDir": "."
+    "noEmit": true
   },
   "files": ["./vue.spec.ts"],
   "references": [{ "path": "../src" }]

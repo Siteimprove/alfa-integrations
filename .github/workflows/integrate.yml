@@ -44,10 +44,11 @@ jobs:
       - name: Install Playwright browsers
         # https://playwright.dev/docs/ci-intro
         run: yarn workspace @siteimprove/alfa-playwright playwright install
+
       - run: yarn dedupe --check
       - run: yarn build --quiet
-      - run: yarn test
-      - run: yarn test:other
+      - run: yarn test-main
+      - run: yarn test-other
       - run: yarn validate-structure
       - run: yarn extract --quiet
       - run: yarn knip
