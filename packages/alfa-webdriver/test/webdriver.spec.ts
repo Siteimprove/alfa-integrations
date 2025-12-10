@@ -28,12 +28,13 @@ const browser = await remote({
   },
 });
 
-
 await test("WebElement.toPage() scrapes a page", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
 
   await browser.url(pageUrl);
-  const document = await browser.execute("return window.document");
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
   const alfaPage = await WebElement.toPage(document, browser);
 
   // Test the presence of layout information
@@ -129,7 +130,9 @@ await test("WebElement.toPage() doesn't change crossorigin attribute when no opt
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
 
   await browser.url(pageUrl);
-  const document = await browser.execute("return window.document");
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
   const alfaPage = await WebElement.toPage(document, browser);
 
   // We check that the scraping did not change the page
@@ -167,7 +170,9 @@ await test("WebElement.toPage() enforces anonymous crossorigin on links without 
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
 
   await browser.url(pageUrl);
-  const document = await browser.execute("return window.document");
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
   const alfaPage = await WebElement.toPage(document, browser, {
     enforceAnonymousCrossOrigin: true,
   });
