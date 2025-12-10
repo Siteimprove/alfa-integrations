@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-crawler",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.80.5",
+  "version": "0.80.6",
   "license": "MIT",
   "description": "An implementation of a simple web crawler capable of producing streams of page objects",
   "repository": {
@@ -22,23 +22,23 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-dom": "^0.108.1",
+    "@siteimprove/alfa-dom": "^0.108.2",
     "@siteimprove/alfa-frontier": "workspace:^",
-    "@siteimprove/alfa-mapper": "^0.108.1",
-    "@siteimprove/alfa-result": "^0.108.1",
+    "@siteimprove/alfa-mapper": "^0.108.2",
+    "@siteimprove/alfa-result": "^0.108.2",
     "@siteimprove/alfa-scraper": "workspace:^",
-    "@siteimprove/alfa-url": "^0.108.1",
-    "@siteimprove/alfa-web": "^0.108.1"
+    "@siteimprove/alfa-url": "^0.108.2",
+    "@siteimprove/alfa-web": "^0.108.2"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.108.1"
+    "@siteimprove/alfa-test": "^0.108.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-dom": "^0.108.1",
-    "@siteimprove/alfa-mapper": "^0.108.1",
-    "@siteimprove/alfa-result": "^0.108.1",
-    "@siteimprove/alfa-url": "^0.108.1",
-    "@siteimprove/alfa-web": "^0.108.1"
+    "@siteimprove/alfa-dom": "^0.108.2",
+    "@siteimprove/alfa-mapper": "^0.108.2",
+    "@siteimprove/alfa-result": "^0.108.2",
+    "@siteimprove/alfa-url": "^0.108.2",
+    "@siteimprove/alfa-web": "^0.108.2"
   },
   "publishConfig": {
     "access": "public",
