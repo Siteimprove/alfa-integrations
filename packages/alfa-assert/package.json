@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-assert",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.80.5",
+  "version": "0.80.6",
   "license": "MIT",
   "description": "Core assertion functions for supported input objects",
   "repository": {
@@ -22,27 +22,27 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.108.1",
-    "@siteimprove/alfa-future": "^0.108.1",
-    "@siteimprove/alfa-hash": "^0.108.1",
-    "@siteimprove/alfa-option": "^0.108.1",
-    "@siteimprove/alfa-performance": "^0.108.1",
-    "@siteimprove/alfa-predicate": "^0.108.1",
-    "@siteimprove/alfa-result": "^0.108.1",
-    "@siteimprove/alfa-sequence": "^0.108.1"
+    "@siteimprove/alfa-act": "^0.108.2",
+    "@siteimprove/alfa-future": "^0.108.2",
+    "@siteimprove/alfa-hash": "^0.108.2",
+    "@siteimprove/alfa-option": "^0.108.2",
+    "@siteimprove/alfa-performance": "^0.108.2",
+    "@siteimprove/alfa-predicate": "^0.108.2",
+    "@siteimprove/alfa-result": "^0.108.2",
+    "@siteimprove/alfa-sequence": "^0.108.2"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test-deprecated": "^0.108.1"
+    "@siteimprove/alfa-test-deprecated": "^0.108.2"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.108.1",
-    "@siteimprove/alfa-future": "^0.108.1",
-    "@siteimprove/alfa-hash": "^0.108.1",
-    "@siteimprove/alfa-option": "^0.108.1",
-    "@siteimprove/alfa-performance": "^0.108.1",
-    "@siteimprove/alfa-predicate": "^0.108.1",
-    "@siteimprove/alfa-result": "^0.108.1",
-    "@siteimprove/alfa-sequence": "^0.108.1"
+    "@siteimprove/alfa-act": "^0.108.2",
+    "@siteimprove/alfa-future": "^0.108.2",
+    "@siteimprove/alfa-hash": "^0.108.2",
+    "@siteimprove/alfa-option": "^0.108.2",
+    "@siteimprove/alfa-performance": "^0.108.2",
+    "@siteimprove/alfa-predicate": "^0.108.2",
+    "@siteimprove/alfa-result": "^0.108.2",
+    "@siteimprove/alfa-sequence": "^0.108.2"
   },
   "publishConfig": {
     "access": "public",

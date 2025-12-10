@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-angular",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.80.5",
+  "version": "0.80.6",
   "license": "MIT",
   "description": "Integrations and utilities for the Angular application framework",
   "repository": {
@@ -23,18 +23,18 @@
   ],
   "dependencies": {
     "@angular/core": "^11.0.0",
-    "@siteimprove/alfa-device": "^0.108.1",
-    "@siteimprove/alfa-dom": "^0.108.1",
-    "@siteimprove/alfa-http": "^0.108.1",
-    "@siteimprove/alfa-web": "^0.108.1",
+    "@siteimprove/alfa-device": "^0.108.2",
+    "@siteimprove/alfa-dom": "^0.108.2",
+    "@siteimprove/alfa-http": "^0.108.2",
+    "@siteimprove/alfa-web": "^0.108.2",
     "rxjs": "^7.3.0",
     "zone.js": "^0.11.4"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-device": "^0.108.1",
-    "@siteimprove/alfa-dom": "^0.108.1",
-    "@siteimprove/alfa-http": "^0.108.1",
-    "@siteimprove/alfa-web": "^0.108.1"
+    "@siteimprove/alfa-device": "^0.108.2",
+    "@siteimprove/alfa-dom": "^0.108.2",
+    "@siteimprove/alfa-http": "^0.108.2",
+    "@siteimprove/alfa-web": "^0.108.2"
   },
   "publishConfig": {
     "access": "public",
