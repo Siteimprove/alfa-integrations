@@ -28,7 +28,7 @@
     "@siteimprove/alfa-future": "^0.108.2",
     "@siteimprove/alfa-hash": "^0.108.2",
     "@siteimprove/alfa-mapper": "^0.108.2",
-    "unexpected": "^13.0.0"
+    "unexpected": "^13.2.1"
   },
   "peerDependencies": {
     "@siteimprove/alfa-act": "^0.108.2",
@@ -39,5 +39,13 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@siteimprove/alfa-device": "^0.108.2",
+    "@siteimprove/alfa-dom": "^0.108.2",
+    "@siteimprove/alfa-http": "^0.108.2",
+    "@siteimprove/alfa-rules": "^0.108.2",
+    "@siteimprove/alfa-test": "^0.108.2",
+    "@siteimprove/alfa-web": "^0.108.2"
   }
 }
