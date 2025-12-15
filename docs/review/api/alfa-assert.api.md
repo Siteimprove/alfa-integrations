@@ -8,7 +8,7 @@ import { Future } from '@siteimprove/alfa-future';
 import type { Hashable } from '@siteimprove/alfa-hash';
 import type { Oracle } from '@siteimprove/alfa-act';
 import { Outcome } from '@siteimprove/alfa-act';
-import type { Performance } from '@siteimprove/alfa-performance';
+import type { Performance as Performance_2 } from '@siteimprove/alfa-performance';
 import { Predicate } from '@siteimprove/alfa-predicate';
 import type { Question } from '@siteimprove/alfa-act';
 import { Result } from '@siteimprove/alfa-result';
@@ -50,7 +50,7 @@ export namespace Assertion {
         readonly filter?: Predicate<Outcome.Failed<I, T, Q, S>>;
         readonly filterCantTell?: Predicate<Outcome.CantTell<I, T, Q, S>>;
         readonly oracle?: Oracle<I, T, Q, S>;
-        readonly performance?: Performance<Rule.Event<I, T, Q, S>>;
+        readonly performance?: Performance_2<Rule.Event<I, T, Q, S>>;
     }
 }
 
