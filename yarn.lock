@@ -395,10 +395,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@bazel/runfiles@npm:^5.8.1":
-  version: 5.8.1
-  resolution: "@bazel/runfiles@npm:5.8.1"
-  checksum: 10/fe463dbc7e82e6aa216bdb1ab18bfa6cdeb0e5b74018d9a25d5869604f784ef31f5c95ed24741891cb436251af4b8ad5f4c83c0b0b8248b13590cfcc40a94d27
+"@bazel/runfiles@npm:^6.5.0":
+  version: 6.5.0
+  resolution: "@bazel/runfiles@npm:6.5.0"
+  checksum: 10/71fc28860ad452badff991062afae373ca4d2f0d19fbc028b27495c65bcd7d2c1be6e50156bf2a1fc5ed91964e3198f7aef5b9c6a1d24e3012c0fc0e88034e1c
   languageName: node
   linkType: hard
 
@@ -2792,7 +2792,7 @@ __metadata:
     "@siteimprove/alfa-cli": "workspace:^0.80.6"
     "@siteimprove/alfa-toolchain": "npm:^0.108.2"
     "@types/node": "npm:^24.10.1"
-    knip: "npm:^5.73.3"
+    knip: "npm:^5.73.4"
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.7.4"
     typescript: "npm:^5.9.3"
@@ -3396,15 +3396,15 @@ __metadata:
     "@siteimprove/alfa-http": "npm:^0.108.2"
     "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
-    "@types/selenium-webdriver": "npm:^4.1.26"
-    selenium-webdriver: "npm:^4.24.0"
+    "@types/selenium-webdriver": "npm:^4.35.4"
+    selenium-webdriver: "npm:^4.39.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.108.2
     "@siteimprove/alfa-dom": ^0.108.2
     "@siteimprove/alfa-http": ^0.108.2
     "@siteimprove/alfa-url": ^0.108.2
     "@siteimprove/alfa-web": ^0.108.2
-    selenium-webdriver: ^4.24.0
+    selenium-webdriver: ^4.39.0
   languageName: unknown
   linkType: soft
 
@@ -4177,13 +4177,13 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/selenium-webdriver@npm:^4.1.26":
-  version: 4.1.26
-  resolution: "@types/selenium-webdriver@npm:4.1.26"
+"@types/selenium-webdriver@npm:^4.35.4":
+  version: 4.35.4
+  resolution: "@types/selenium-webdriver@npm:4.35.4"
   dependencies:
     "@types/node": "npm:*"
     "@types/ws": "npm:*"
-  checksum: 10/540b9dfee2400ce8450ed9090bf90a214132e812f71c3f18f0f0d3e82377c8d6811a2d17ebd2ca15357f5ffe8ea80bdb51719aa7293ca2b278ba23c57728ca18
+  checksum: 10/956ca790ab023ccbb83010d4f9620af368470ac22935dc4afef5fddf913c25a28ad3a60529835e7081bc3404719ff21d455e5520f6404ca3f13f2435984a8f63
   languageName: node
   linkType: hard
 
@@ -8818,9 +8818,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^5.73.3":
-  version: 5.73.3
-  resolution: "knip@npm:5.73.3"
+"knip@npm:^5.73.4":
+  version: 5.73.4
+  resolution: "knip@npm:5.73.4"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -8840,7 +8840,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/30149d76abdb08cac660524f073f76ffbff89ed0b2ff2a46e8a14b09d4213500cb05d190f83f5564e1128c781ff1187b4dadfa766bde75a95f99cf9c86dc58aa
+  checksum: 10/43cd5854faf0b31dcd650c36ee6345f9d9149591bfc2c71093480f9e5be9aae5c6b864c654e2a0d99fbd60f3173e62d87eb884630a0c955d94e03e3b08767dc6
   languageName: node
   linkType: hard
 
@@ -10746,15 +10746,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selenium-webdriver@npm:^4.24.0":
-  version: 4.24.0
-  resolution: "selenium-webdriver@npm:4.24.0"
+"selenium-webdriver@npm:^4.39.0":
+  version: 4.39.0
+  resolution: "selenium-webdriver@npm:4.39.0"
   dependencies:
-    "@bazel/runfiles": "npm:^5.8.1"
+    "@bazel/runfiles": "npm:^6.5.0"
     jszip: "npm:^3.10.1"
-    tmp: "npm:^0.2.3"
-    ws: "npm:^8.18.0"
-  checksum: 10/7c7ad7c773df266f913775dd9a4088fe0ab3dcada10bfe7ee98259686fb902089f473adc3d53ff15392cb9f62ffc7dc0eb7e60b1670ba4550272b70067a7a3f7
+    tmp: "npm:^0.2.5"
+    ws: "npm:^8.18.3"
+  checksum: 10/1b93004ccfbc287a3f84beaddec594971770eeafc22b7dd13b1475095ff1e3738bdb2d55b123695acb6598542711863eabe6dc91f6a718c5509fb6f31d121ae7
   languageName: node
   linkType: hard
 
@@ -11413,7 +11413,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tmp@npm:^0.2.3, tmp@npm:~0.2.3":
+"tmp@npm:^0.2.5, tmp@npm:~0.2.3":
   version: 0.2.5
   resolution: "tmp@npm:0.2.5"
   checksum: 10/dd4b78b32385eab4899d3ae296007b34482b035b6d73e1201c4a9aede40860e90997a1452c65a2d21aee73d53e93cd167d741c3db4015d90e63b6d568a93d7ec
@@ -12212,7 +12212,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.18.0, ws@npm:^8.8.0":
+"ws@npm:^8.18.0, ws@npm:^8.18.3, ws@npm:^8.8.0":
   version: 8.18.3
   resolution: "ws@npm:8.18.3"
   peerDependencies:
