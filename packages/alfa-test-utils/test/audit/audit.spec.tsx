@@ -47,7 +47,6 @@ const foo = (
     foo
   </img>
 );
-const id = foo.attribute("id").getUnsafe();
 const bar = (
   <img id="bar" src="bar.jpg" alt="bar">
     bar
