@@ -21,6 +21,9 @@
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "test": "node test/webdriver.spec.js"
+  },
   "dependencies": {
     "@siteimprove/alfa-device": "^0.108.2",
     "@siteimprove/alfa-dom": "^0.108.2",
@@ -40,6 +43,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test-deprecated": "^0.108.2"
+    "@siteimprove/alfa-test": "^0.108.2"
   }
 }

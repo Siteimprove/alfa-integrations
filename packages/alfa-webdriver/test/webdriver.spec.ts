@@ -1,15 +1,34 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import type { Assertions } from "@siteimprove/alfa-test";
 
 import { remote } from "webdriverio";
 
+import * as assert from "assert";
 import path from "node:path";
 import url from "node:url";
 
 import { WebElement } from "../dist/index.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
+
+/*
+ * While vitest can run w%ebdriver, this gets a bit clunky as it spawn its own
+ * browser instance that doesn't seem to have easy access to node packages
+ * needed to load the local page. As long as this stays as a simple test, we
+ * just get a trivial wrapper around it.
+ */
+async function test(
+  name: string,
+  assertion: (assert: Assertions) => void | Promise<void>,
+): Promise<void> {
+  try {
+    await assertion("strict" in assert ? assert.strict : assert);
+  } catch (error) {
+    console.error(`\n\n Error running ${name}\n`);
+    throw error;
+  }
+}
 
 // We keep a single browser session as it seems to stabilize the tests.
 // This means we must sequentialize them (`await` each of them) in order to
