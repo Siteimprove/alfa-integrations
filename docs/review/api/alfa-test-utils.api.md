@@ -17,7 +17,7 @@ import { Node } from '@siteimprove/alfa-dom';
 import { Option } from '@siteimprove/alfa-option';
 import type { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
-import { Performance as Performance_2 } from '@siteimprove/alfa-performance';
+import { Performance as Performance_3 } from '@siteimprove/alfa-performance';
 import type { Predicate } from '@siteimprove/alfa-predicate';
 import { Result } from '@siteimprove/alfa-result';
 import { Sequence } from '@siteimprove/alfa-sequence';
@@ -27,11 +27,11 @@ export type alfaOutcome = Outcome<Flattened.Input, Flattened.Target, Flattened.Q
 
 // @public
 export class Audit implements json.Serializable<Audit.JSON> {
-    protected constructor(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance.Durations);
+    protected constructor(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance_2.Durations);
     get alfaVersion(): typeof alfaVersion;
-    get durations(): Performance.Durations;
+    get durations(): Performance_2.Durations;
     // (undocumented)
-    static of(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance.Durations): Audit;
+    static of(page: Page, outcomes: Map_2<string, Sequence<alfaOutcome>>, resultAggregates: Audit.ResultAggregates, durations: Performance_2.Durations): Audit;
     get outcomes(): Map_2<string, Sequence<alfaOutcome>>;
     get page(): Page;
     get resultAggregates(): Audit.ResultAggregates;
@@ -58,7 +58,7 @@ export namespace Audit {
         // (undocumented)
         alfaVersion: typeof alfaVersion;
         // (undocumented)
-        durations: Performance.Durations;
+        durations: Performance_2.Durations;
         // (undocumented)
         outcomes: Sequence.JSON<alfaOutcome>;
         // (undocumented)
@@ -173,21 +173,22 @@ export namespace Outcomes {
 }
 
 // @public
-export namespace Performance {
+namespace Performance_2 {
     const // (undocumented)
     commonKeys: readonly ["cascade", "aria-tree", "total"];
     // @internal (undocumented)
-    export type CommonKeys = (typeof commonKeys)[number];
-    // Warning: (ae-incompatible-release-tags) The symbol "Durations" is marked as @public, but its signature references "Performance" which is marked as @internal
-    export type Durations = {
+    type CommonKeys = (typeof commonKeys)[number];
+    // Warning: (ae-incompatible-release-tags) The symbol "Durations" is marked as @public, but its signature references "Performance_2" which is marked as @internal
+    type Durations = {
         [K in CommonKeys]: number;
     };
     // @internal (undocumented)
-    export function empty(): Durations;
+    function empty(): Durations;
     // @internal (undocumented)
-    export function recordCommon(durations: Durations): Performance_2<string>;
+    function recordCommon(durations: Durations): Performance_3<string>;
         {};
 }
+export { Performance_2 as Performance }
 
 // @public
 export namespace Rules {
@@ -229,7 +230,7 @@ export namespace SIP {
         //
         // (undocumented)
         export type CommonDurations = {
-            [K in CamelCase<Performance.CommonKeys>]: number;
+            [K in CamelCase<Performance_2.CommonKeys>]: number;
         };
         export function params(url: string, apiKey: string, httpsAgent?: Agent): AxiosRequestConfig;
         // (undocumented)
