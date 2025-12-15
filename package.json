@@ -13,8 +13,9 @@
   "scripts": {
     "build": "node --max-old-space-size=8192 scripts/build.mjs --pretty",
     "clean": "node scripts/clean.mjs --pretty",
-    "test": "node scripts/test.mjs --pretty",
-    "test:other": "yarn workspaces foreach --all --exclude @siteimprove/alfa-integrations run test",
+    "test": "yarn build && yarn test-main && yarn test-other",
+    "test-main": "vitest run --config ./config/vitest.config.ts",
+    "test-other": "yarn workspaces foreach --all --exclude @siteimprove/alfa-integrations run test",
     "watch": "node scripts/watch.mjs --pretty",
     "extract": "node scripts/api-extractor.mjs --pretty",
     "extract:self": "CI=false yarn extract ${INIT_CWD}",
@@ -34,14 +35,12 @@
     "@microsoft/api-extractor": "^7.55.2",
     "@siteimprove/alfa-cli": "workspace:^0.80.6",
     "@siteimprove/alfa-toolchain": "^0.108.2",
-    "@types/async": "^3.2.25",
     "@types/node": "^24.10.1",
-    "async": "^3.2.6",
-    "execa": "^9.6.1",
     "knip": "^5.73.3",
     "minimist": "^1.2.6",
     "prettier": "^3.7.4",
-    "typescript": "^5.9.3"
+    "typescript": "^5.9.3",
+    "vitest": "^4.0.15"
   },
   "packageManager": "yarn@4.12.0"
 }
