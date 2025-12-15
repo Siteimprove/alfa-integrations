@@ -3539,6 +3539,16 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@siteimprove/alfa-test-deprecated@npm:^0.108.2":
+  version: 0.108.2
+  resolution: "@siteimprove/alfa-test-deprecated@npm:0.108.2"
+  dependencies:
+    "@types/node": "npm:^24.10.1"
+    chalk: "npm:^5.6.2"
+  checksum: 10/0182379df94caa5f1e9dbd4968d41427aa356a77138fbde7a25519a56d317766c4202ea7dce2238111e7903274926fc1a8228098a8cc1e39f31d7c3737171734
+  languageName: node
+  linkType: hard
+
 "@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils":
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils"
