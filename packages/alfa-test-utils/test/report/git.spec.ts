@@ -1,5 +1,6 @@
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import { getCommitInformation } from "../../dist/report/git.js";
+
 
 /**
  * This test will fail if the origin URL is changed, e.g. on forks.
@@ -31,3 +32,4 @@ test("getCommitInformation reads info from git", async (t) => {
     t.notEqual(values[property], "");
   }
 });
+

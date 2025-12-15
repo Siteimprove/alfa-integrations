@@ -1,4 +1,4 @@
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import jsonld from "jsonld";
 
 import earl, { ACTContext, assertor } from "../dist/earl.js";
