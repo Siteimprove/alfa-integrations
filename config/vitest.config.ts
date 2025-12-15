@@ -7,6 +7,7 @@ export default defineConfig({
       // Packages with integration to a tests launcher use that launcher, and are
       // therefore skipped here. Use `yarn test-other` to run those.
       "packages/alfa-cypress",
+      "packages/alfa-jasmine",
       "packages/alfa-jest",
       // tests disabled due to unstability
       "packages/alfa-vue",
