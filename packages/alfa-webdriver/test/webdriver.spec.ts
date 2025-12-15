@@ -1,35 +1,60 @@
-/// <reference lib="dom" />
-
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test";
+import type { Assertions } from "@siteimprove/alfa-test";
 
-import * as path from "node:path";
-import * as url from "node:url";
+import { remote } from "webdriverio";
 
-import { Browser, Builder } from "selenium-webdriver";
-import chrome from "selenium-webdriver/chrome.js";
+import * as assert from "assert";
+import path from "node:path";
+import url from "node:url";
 
-import { Selenium } from "../dist/selenium.js";
+import { WebElement } from "../dist/index.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");
 
-const options = new chrome.Options();
-options.addArguments("--headless", "--no-sandbox", "--disable-dev-shm-usage");
+/*
+ * While vitest can run w%ebdriver, this gets a bit clunky as it spawn its own
+ * browser instance that doesn't seem to have easy access to node packages
+ * needed to load the local page. As long as this stays as a simple test, we
+ * just get a trivial wrapper around it.
+ */
+async function test(
+  name: string,
+  assertion: (assert: Assertions) => void | Promise<void>,
+): Promise<void> {
+  try {
+    await assertion("strict" in assert ? assert.strict : assert);
+  } catch (error) {
+    console.error(`\n\n Error running ${name}\n`);
+    throw error;
+  }
+}
 
-test("Selenium.toPage() scrapes a page", async (t) => {
-  const driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(options)
-    .build();
+// We keep a single browser session as it seems to stabilize the tests.
+// This means we must sequentialize them (`await` each of them) in order to
+// avoid interference.
+const browser = await remote({
+  capabilities: {
+    browserName: "chrome",
+    "goog:chromeOptions": {
+      args: [
+        "headless",
+        "disable-gpu",
+        "--no-sandbox",
+        "--disable-dev-shm-usage",
+      ],
+    },
+  },
+});
 
-  // Navigate to the page to scrape
+await test("WebElement.toPage() scrapes a page", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "page.html")).href;
-  await driver.get(pageUrl);
 
-  const alfaPage = await Selenium.toPage(driver);
-
-  await driver.close();
+  await browser.url(pageUrl);
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
+  const alfaPage = await WebElement.toPage(document, browser);
 
   // Test the presence of layout information
   for (const element of Query.getElementDescendants(alfaPage.document)) {
@@ -120,36 +145,30 @@ test("Selenium.toPage() scrapes a page", async (t) => {
   });
 });
 
-test("Selenium.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
-  const driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(options)
-    .build();
-
-  // Navigate to the page to scrape
+await test("WebElement.toPage() doesn't change crossorigin attribute when no option is provided", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
-  await driver.get(pageUrl);
 
-  const alfaPage = await Selenium.toPage(driver);
+  await browser.url(pageUrl);
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
+  const alfaPage = await WebElement.toPage(document, browser);
 
   // We check that the scraping did not change the page
-
-  const emptyAttr = await driver.executeScript(
-    "return window.document.getElementById('empty').crossOrigin",
-  );
+  const emptyAttr = await (
+    await browser.$("#empty").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(emptyAttr, null);
 
-  const anonymousAttr = await driver.executeScript(
-    "return window.document.getElementById('anonymous').crossOrigin",
-  );
+  const anonymousAttr = await (
+    await browser.$("#anonymous").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(anonymousAttr, "anonymous");
 
-  const useCredentialsAttr = await driver.executeScript(
-    "return window.document.getElementById('use-credentials').crossOrigin",
-  );
+  const useCredentialsAttr = await (
+    await browser.$("#use-credentials").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(useCredentialsAttr, "use-credentials");
-
-  await driver.close();
 
   const idMap = Query.getElementIdMap(alfaPage.document);
 
@@ -166,38 +185,33 @@ test("Selenium.toPage() doesn't change crossorigin attribute when no option is p
   }
 });
 
-test("Selenium.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
-  const driver = await new Builder()
-    .forBrowser(Browser.CHROME)
-    .setChromeOptions(options)
-    .build();
-
-  // Navigate to the page to scrape
+await test("WebElement.toPage() enforces anonymous crossorigin on links without one, when asked to", async (t) => {
   const pageUrl = url.pathToFileURL(path.join(fixture, "links.html")).href;
-  await driver.get(pageUrl);
 
-  const alfaPage = await Selenium.toPage(driver, {
+  await browser.url(pageUrl);
+  const document: WebdriverIO.Element = await browser.execute(
+    "return window.document",
+  );
+  const alfaPage = await WebElement.toPage(document, browser, {
     enforceAnonymousCrossOrigin: true,
   });
 
   // We check that the scraping **did** change the page
 
-  const emptyAttr = await driver.executeScript(
-    "return window.document.getElementById('empty').crossOrigin",
-  );
+  const emptyAttr = await (
+    await browser.$("#empty").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(emptyAttr, "anonymous");
 
-  const anonymousAttr = await driver.executeScript(
-    "return window.document.getElementById('anonymous').crossOrigin",
-  );
+  const anonymousAttr = await (
+    await browser.$("#anonymous").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(anonymousAttr, "anonymous");
 
-  const useCredentialsAttr = await driver.executeScript(
-    "return window.document.getElementById('use-credentials').crossOrigin",
-  );
+  const useCredentialsAttr = await (
+    await browser.$("#use-credentials").getElement()
+  ).getAttribute("crossOrigin");
   t.equal(useCredentialsAttr, "use-credentials");
-
-  await driver.close();
 
   const idMap = Query.getElementIdMap(alfaPage.document);
 
@@ -217,3 +231,6 @@ test("Selenium.toPage() enforces anonymous crossorigin on links without one, whe
     );
   }
 });
+
+// Close the browser session after all tests have run
+await browser.deleteSession();

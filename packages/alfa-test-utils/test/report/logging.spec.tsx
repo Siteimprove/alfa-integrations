@@ -2,7 +2,7 @@ import { h, Text } from "@siteimprove/alfa-dom";
 import { Map } from "@siteimprove/alfa-map";
 import { Err, Ok } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 
 import chalk from "chalk";
 import { getRuleTitle } from "../../dist/report/get-rule-title.js";
@@ -16,7 +16,6 @@ import {
   makePage,
   makePassed,
   makeRule,
-  timestamp,
 } from "../fixtures.js";
 
 const target = <span>Hello World</span>;
@@ -96,7 +95,7 @@ test(".fromAggregate() creates a Logging from errored page report URL", (t) => {
   const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
-    Err.of(["foo"])
+    Err.of(["foo"]),
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -137,7 +136,7 @@ test(".fromAggregate() shows all errors from errored page report URL", (t) => {
   const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
-    Err.of(["foo", "bar", "baz"])
+    Err.of(["foo", "bar", "baz"]),
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -183,7 +182,7 @@ test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
   const actual = Logging.fromAggregate(
     filteredAggregates,
     undefined,
-    Ok.of(url)
+    Ok.of(url),
   );
 
   t.deepEqual(actual.toJSON(), {
@@ -206,7 +205,7 @@ test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r1"
+                  "sia-r1",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -220,7 +219,7 @@ test(".fromAggregate() creates a Logging from correct page report URL", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r2"
+                  "sia-r2",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -395,7 +394,7 @@ test(".fromAudit() creates a Logging from correct page report URL", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r1"
+                  "sia-r1",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -409,7 +408,7 @@ test(".fromAudit() creates a Logging from correct page report URL", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r2"
+                  "sia-r2",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -554,7 +553,7 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r1"
+                  "sia-r1",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -568,7 +567,7 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
               {
                 title: `Learn how to fix this issue: ${Logging.issueUrl(
                   url,
-                  "sia-r2"
+                  "sia-r2",
                 )}`,
                 severity: "log",
                 logs: [],
@@ -594,7 +593,8 @@ test(".fromAudit() returns an error on invalid page", async (t) => {
   const actual = Logging.fromAudit(badAudit);
 
   t.deepEqual(actual.toJSON(), {
-    title: "Error, could not process the page: Invalid URL. Check the file format and try again. If the issue persists, contact support.",
+    title:
+      "Error, could not process the page: Invalid URL. Check the file format and try again. If the issue persists, contact support.",
     severity: "error",
     logs: [],
   });

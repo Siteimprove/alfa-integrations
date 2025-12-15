@@ -15,12 +15,11 @@ const config: KnipConfig = {
       ],
     },
     "packages/alfa-cli": { entry: ["src/alfa.ts!"], project },
-    "packages/alfa-test-utils": { entry: [...entry, "src/report/git.ts!"], project },
-    "packages/alfa-webdriver": {
-      entry,
+    "packages/alfa-test-utils": {
+      entry: [...entry, "src/report/git.ts!"],
       project,
-      ignoreDependencies: ["@types/debug"],
     },
+    "packages/alfa-webdriver": { entry, project },
     "packages/*": { entry, project },
   },
   // {@link https://github.com/webpro-nl/knip/issues/779}
@@ -28,7 +27,7 @@ const config: KnipConfig = {
   // "assertor" and "ACTContext" from alfa-formatter-earl are incorrectly
   // reported.
   // See also {@link https://github.com/webpro-nl/knip/issues/763}
-  ignoreExportsUsedInFile: true
+  ignoreExportsUsedInFile: true,
 };
 
 export default config;

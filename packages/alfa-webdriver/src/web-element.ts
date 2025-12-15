@@ -2,43 +2,68 @@
 
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";
-import { Request, Response } from "@siteimprove/alfa-http";
+import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
+import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
 
+import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
-
-/**
- * {@link https://w3c.github.io/webdriver/#dfn-web-elements}
- *
- * @public
- */
-export interface WebElement {
-  /**
-   * {@link https://w3c.github.io/webdriver/#dfn-web-element-reference}
-   */
-  ["element-6066-11e4-a52e-4f735466cecf"]?: string;
-}
 
 /**
  * @public
  */
 export namespace WebElement {
   export async function toPage(
-    webElement: WebElement,
+    webElement: WebdriverIO.Element,
     browser: WebdriverIO.Browser,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
     const nodeJSON = await browser.execute(
       dom.Native.fromNode,
-      webElement as any,
-      options
+      webElement,
+      options,
     );
 
+    const deviceJSON = await browser.execute(
+      device.Native.fromWindow,
+      undefined,
+    );
+
+    /*
+     * We cannot really grab the request and response as they may have been
+     * long-lost when .toPage is called. We can at least grab the current URL
+     * and fill the rest with reasonable defaults values. Given that we do not
+     * really use these in the audit, this is mostly OK.
+     *
+     * Known caveats:
+     * * We assume that the request was a GET and the response a 200 OK. This is
+     *   probably not too wrong in most cases, but can easily be completely off.
+     * * We assume that the response was HTML. This is probably mostly correct.
+     * * We always return an empty Headers list; this is most likely wrong since
+     *   at least a Content-Type header should be present on the response.
+     */
+    // WARNING: This will throw an exception in the unlikely case that
+    // window.location.href is not a valid URL (which should never happen)
+    const url = URL.parse(
+      await browser.execute(() => window.location.href),
+    ).getUnsafe();
+    const request = Request.of("GET", url);
+    const response = Response.of(
+      url,
+      200,
+      Headers.of([Header.of("Content-Type", "text/html")]),
+    );
+
+    const pageDevice = Device.from(deviceJSON);
+
     return Page.of(
-      Request.empty(),
-      Response.empty(),
-      Document.of([Node.from(nodeJSON)]),
-      Device.standard()
+      request,
+      response,
+      nodeJSON.type === "document"
+        ? // The type is ensured by the previous test.
+          Document.from(nodeJSON as unknown as Document.JSON, pageDevice)
+        : Document.of([Node.from(nodeJSON, pageDevice)]),
+      pageDevice,
     );
   }
 }

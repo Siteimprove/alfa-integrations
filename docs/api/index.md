@@ -93,15 +93,6 @@ This package provides integrations and utilities for the [Angular](https://angul
 </td></tr>
 <tr><td>
 
-[@siteimprove/alfa-enzyme](./alfa-enzyme.md)
-
-
-</td><td>
-
-
-</td></tr>
-<tr><td>
-
 [@siteimprove/alfa-formatter](./alfa-formatter.md)
 
 

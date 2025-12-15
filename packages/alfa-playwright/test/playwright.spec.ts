@@ -2,11 +2,12 @@
 
 import { Device } from "@siteimprove/alfa-device";
 import { Query } from "@siteimprove/alfa-dom";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
+
 import * as path from "node:path";
 import * as url from "node:url";
-
 import { chromium } from "playwright";
+
 import { Playwright } from "../dist/playwright.js";
 
 const fixture = path.join(import.meta.dirname, "fixture");

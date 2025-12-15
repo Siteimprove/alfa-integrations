@@ -21,12 +21,16 @@
     "dist/**/*.js",
     "dist/**/*.d.ts"
   ],
+  "scripts": {
+    "test": "node test/webdriver.spec.js"
+  },
   "dependencies": {
     "@siteimprove/alfa-device": "^0.108.2",
     "@siteimprove/alfa-dom": "^0.108.2",
     "@siteimprove/alfa-http": "^0.108.2",
+    "@siteimprove/alfa-url": "^0.108.2",
     "@siteimprove/alfa-web": "^0.108.2",
-    "webdriverio": "^8.38.2"
+    "webdriverio": "^9.21.0"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.108.2",
@@ -39,6 +43,6 @@
     "registry": "https://npm.pkg.github.com/"
   },
   "devDependencies": {
-    "@types/debug": "^4.1.12"
+    "@siteimprove/alfa-test": "^0.108.2"
   }
 }
