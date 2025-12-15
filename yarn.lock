@@ -2792,7 +2792,7 @@ __metadata:
     "@siteimprove/alfa-cli": "workspace:^0.80.6"
     "@siteimprove/alfa-toolchain": "npm:^0.108.2"
     "@types/node": "npm:^24.10.1"
-    knip: "npm:^5.73.3"
+    knip: "npm:^5.73.4"
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.7.4"
     typescript: "npm:^5.9.3"
@@ -8807,9 +8807,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^5.73.3":
-  version: 5.73.3
-  resolution: "knip@npm:5.73.3"
+"knip@npm:^5.73.4":
+  version: 5.73.4
+  resolution: "knip@npm:5.73.4"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -8829,7 +8829,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/30149d76abdb08cac660524f073f76ffbff89ed0b2ff2a46e8a14b09d4213500cb05d190f83f5564e1128c781ff1187b4dadfa766bde75a95f99cf9c86dc58aa
+  checksum: 10/43cd5854faf0b31dcd650c36ee6345f9d9149591bfc2c71093480f9e5be9aae5c6b864c654e2a0d99fbd60f3173e62d87eb884630a0c955d94e03e3b08767dc6
   languageName: node
   linkType: hard
 
