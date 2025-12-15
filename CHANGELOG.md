@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## 0.81.0
+
+### Breaking
+
+- The `@siteimprove/alfa-enzyme` package has been removed. Enzyme seems to be long deprecated and does not support React 18.
+
 ## [0.80.6](../../compare/v0.80.5...v0.80.6) (2025-12-10)
 
 ### Changed
