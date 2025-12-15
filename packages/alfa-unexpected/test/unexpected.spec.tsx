@@ -4,7 +4,7 @@ import { Device } from "@siteimprove/alfa-device";
 import { h } from "@siteimprove/alfa-dom";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Rules } from "@siteimprove/alfa-rules";
-import { test } from "@siteimprove/alfa-test-deprecated";
+import { test } from "@siteimprove/alfa-test";
 import { Page } from "@siteimprove/alfa-web";
 
 import unexpected from "unexpected";

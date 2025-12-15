@@ -5,7 +5,7 @@
     "jsx": "react-jsx",
     "jsxImportSource": "@siteimprove/alfa-dom",
     "lib": ["DOM"],
-    "outDir": "."
+    "noEmit": true
   },
   "files": ["./unexpected.spec.tsx"],
   "references": [{ "path": "../src" }]
