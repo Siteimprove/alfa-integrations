@@ -1994,13 +1994,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@sec-ant/readable-stream@npm:^0.4.1":
-  version: 0.4.1
-  resolution: "@sec-ant/readable-stream@npm:0.4.1"
-  checksum: 10/aac89581652ac85debe7c5303451c2ebf8bf25ca25db680e4b9b73168f6940616d9a4bbe3348981827b1159b14e2f2e6af4b7bd5735cac898c12d5c51909c102
-  languageName: node
-  linkType: hard
-
 "@sinclair/typebox@npm:^0.34.0":
   version: 0.34.41
   resolution: "@sinclair/typebox@npm:0.34.41"
@@ -2012,13 +2005,6 @@ __metadata:
   version: 5.6.0
   resolution: "@sindresorhus/is@npm:5.6.0"
   checksum: 10/b077c325acec98e30f7d86df158aaba2e7af2acb9bb6a00fda4b91578539fbff4ecebe9b934e24fec0e6950de3089d89d79ec02d9062476b20ce185be0e01bd6
-  languageName: node
-  linkType: hard
-
-"@sindresorhus/merge-streams@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "@sindresorhus/merge-streams@npm:4.0.0"
-  checksum: 10/16551c787f5328c8ef05fd9831ade64369ccc992df78deb635ec6c44af217d2f1b43f8728c348cdc4e00585ff2fad6e00d8155199cbf6b154acc45fe65cbf0aa
   languageName: node
   linkType: hard
 
@@ -2178,7 +2164,7 @@ __metadata:
     "@siteimprove/alfa-predicate": "npm:^0.108.2"
     "@siteimprove/alfa-result": "npm:^0.108.2"
     "@siteimprove/alfa-sequence": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.108.2
     "@siteimprove/alfa-future": ^0.108.2
@@ -2376,7 +2362,7 @@ __metadata:
     "@siteimprove/alfa-predicate": "npm:^0.108.2"
     "@siteimprove/alfa-refinement": "npm:^0.108.2"
     "@siteimprove/alfa-result": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-thunk": "npm:^0.108.2"
     chalk: "npm:^5.3.0"
   peerDependencies:
@@ -2420,7 +2406,7 @@ __metadata:
     "@siteimprove/alfa-mapper": "npm:^0.108.2"
     "@siteimprove/alfa-result": "npm:^0.108.2"
     "@siteimprove/alfa-scraper": "workspace:^"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
   peerDependencies:
@@ -2663,7 +2649,7 @@ __metadata:
     "@siteimprove/alfa-future": "npm:^0.108.2"
     "@siteimprove/alfa-hash": "npm:^0.108.2"
     "@siteimprove/alfa-rules": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@types/jsonld": "npm:^1.5.15"
     jsonld: "npm:^8.3.3"
   peerDependencies:
@@ -2731,7 +2717,7 @@ __metadata:
     "@siteimprove/alfa-json": "npm:^0.108.2"
     "@siteimprove/alfa-option": "npm:^0.108.2"
     "@siteimprove/alfa-predicate": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
   peerDependencies:
     "@siteimprove/alfa-equatable": ^0.108.2
@@ -2836,14 +2822,12 @@ __metadata:
     "@microsoft/api-extractor": "npm:^7.55.2"
     "@siteimprove/alfa-cli": "workspace:^0.80.6"
     "@siteimprove/alfa-toolchain": "npm:^0.108.2"
-    "@types/async": "npm:^3.2.25"
     "@types/node": "npm:^24.10.1"
-    async: "npm:^3.2.6"
-    execa: "npm:^9.6.1"
     knip: "npm:^5.73.3"
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.7.4"
     typescript: "npm:^5.9.3"
+    vitest: "npm:^4.0.15"
   languageName: unknown
   linkType: soft
 
@@ -3125,7 +3109,7 @@ __metadata:
     "@siteimprove/alfa-device": "npm:^0.108.2"
     "@siteimprove/alfa-dom": "npm:^0.108.2"
     "@siteimprove/alfa-http": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
     playwright: "npm:^1.47.0"
@@ -3168,7 +3152,7 @@ __metadata:
     "@siteimprove/alfa-device": "npm:^0.108.2"
     "@siteimprove/alfa-dom": "npm:^0.108.2"
     "@siteimprove/alfa-http": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
     puppeteer: "npm:^24.1.1"
@@ -3191,7 +3175,7 @@ __metadata:
     "@siteimprove/alfa-http": "npm:^0.108.2"
     "@siteimprove/alfa-option": "npm:^0.108.2"
     "@siteimprove/alfa-refinement": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
     "@types/react": "npm:^18.3.3"
     "@types/react-test-renderer": "npm:^18.3.0"
@@ -3360,7 +3344,7 @@ __metadata:
     "@siteimprove/alfa-promise": "npm:^0.108.2"
     "@siteimprove/alfa-puppeteer": "workspace:^"
     "@siteimprove/alfa-result": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-thunk": "npm:^0.108.2"
     "@siteimprove/alfa-time": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
@@ -3436,7 +3420,7 @@ __metadata:
     "@siteimprove/alfa-device": "npm:^0.108.2"
     "@siteimprove/alfa-dom": "npm:^0.108.2"
     "@siteimprove/alfa-http": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
     "@types/selenium-webdriver": "npm:^4.1.26"
     selenium-webdriver: "npm:^4.24.0"
@@ -3581,16 +3565,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@siteimprove/alfa-test-deprecated@npm:^0.108.2":
-  version: 0.108.2
-  resolution: "@siteimprove/alfa-test-deprecated@npm:0.108.2"
-  dependencies:
-    "@types/node": "npm:^24.10.1"
-    chalk: "npm:^5.6.2"
-  checksum: 10/0182379df94caa5f1e9dbd4968d41427aa356a77138fbde7a25519a56d317766c4202ea7dce2238111e7903274926fc1a8228098a8cc1e39f31d7c3737171734
-  languageName: node
-  linkType: hard
-
 "@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils":
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-test-utils@workspace:packages/alfa-test-utils"
@@ -3617,7 +3591,7 @@ __metadata:
     "@siteimprove/alfa-selective": "npm:^0.108.2"
     "@siteimprove/alfa-selector": "npm:^0.108.2"
     "@siteimprove/alfa-sequence": "npm:^0.108.2"
-    "@siteimprove/alfa-test-deprecated": "npm:^0.108.2"
+    "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-wcag": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
@@ -3646,12 +3620,22 @@ __metadata:
     "@siteimprove/alfa-rules": ^0.108.2
     "@siteimprove/alfa-selector": ^0.108.2
     "@siteimprove/alfa-sequence": ^0.108.2
-    "@siteimprove/alfa-test-deprecated": ^0.108.2
+    "@siteimprove/alfa-test": ^0.108.2
     "@siteimprove/alfa-url": ^0.108.2
     "@siteimprove/alfa-wcag": ^0.108.2
     "@siteimprove/alfa-web": ^0.108.2
   languageName: unknown
   linkType: soft
+
+"@siteimprove/alfa-test@npm:^0.108.2":
+  version: 0.108.2
+  resolution: "@siteimprove/alfa-test@npm:0.108.2"
+  dependencies:
+    "@siteimprove/alfa-rng": "npm:^0.108.2"
+    vitest: "npm:^4.0.15"
+  checksum: 10/beeb27931b95520fcc090ddbaf2ebab6258f6dae6be84aea4c6745bcd6fbe95f62affe92b7366b55044f6e55d36a9ad5579e135fddfe79026738d7d09f5754c6
+  languageName: node
+  linkType: hard
 
 "@siteimprove/alfa-thenable@npm:^0.108.2":
   version: 0.108.2
@@ -4030,13 +4014,6 @@ __metadata:
   version: 1.0.38
   resolution: "@types/argparse@npm:1.0.38"
   checksum: 10/26ed7e3f1e3595efdb883a852f5205f971b798e4c28b7e30a32c5298eee596e8b45834ce831f014d250b9730819ab05acff5b31229666d3af4ba465b4697d0eb
-  languageName: node
-  linkType: hard
-
-"@types/async@npm:^3.2.25":
-  version: 3.2.25
-  resolution: "@types/async@npm:3.2.25"
-  checksum: 10/359e71a43341a9dd370aaf22f7ce9ae3923229ecabba9cf90383f04aa295e067b2fcfbf810cbe40326f2857e92627145d716b8fd52ca1c2f88c57ed170700144
   languageName: node
   linkType: hard
 
@@ -5148,7 +5125,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"async@npm:^3.2.0, async@npm:^3.2.4, async@npm:^3.2.6":
+"async@npm:^3.2.0, async@npm:^3.2.4":
   version: 3.2.6
   resolution: "async@npm:3.2.6"
   checksum: 10/cb6e0561a3c01c4b56a799cc8bab6ea5fef45f069ab32500b6e19508db270ef2dffa55e5aed5865c5526e9907b1f8be61b27530823b411ffafb5e1538c86c368
@@ -6056,7 +6033,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.5, cross-spawn@npm:^7.0.6":
+"cross-spawn@npm:^7.0.0, cross-spawn@npm:^7.0.3, cross-spawn@npm:^7.0.5":
   version: 7.0.6
   resolution: "cross-spawn@npm:7.0.6"
   dependencies:
@@ -7076,26 +7053,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"execa@npm:^9.6.1":
-  version: 9.6.1
-  resolution: "execa@npm:9.6.1"
-  dependencies:
-    "@sindresorhus/merge-streams": "npm:^4.0.0"
-    cross-spawn: "npm:^7.0.6"
-    figures: "npm:^6.1.0"
-    get-stream: "npm:^9.0.0"
-    human-signals: "npm:^8.0.1"
-    is-plain-obj: "npm:^4.1.0"
-    is-stream: "npm:^4.0.1"
-    npm-run-path: "npm:^6.0.0"
-    pretty-ms: "npm:^9.2.0"
-    signal-exit: "npm:^4.1.0"
-    strip-final-newline: "npm:^4.0.0"
-    yoctocolors: "npm:^2.1.1"
-  checksum: 10/d0f7a2185152379f8772f6d780b188f2728a95b9a68d1a897f58805d7ba6bd55eaa5e128cb66a274251a6b5e4d9388332b1417bd7d46c25e020e4e55725cf79e
-  languageName: node
-  linkType: hard
-
 "executable@npm:^4.1.1":
   version: 4.1.1
   resolution: "executable@npm:4.1.1"
@@ -7283,15 +7240,6 @@ __metadata:
   dependencies:
     escape-string-regexp: "npm:^1.0.5"
   checksum: 10/a3bf94e001be51d3770500789157f067218d4bc681a65e1f69d482de15120bcac822dceb1a7b3803f32e4e3a61a46df44f7f2c8ba95d6375e7491502e0dd3d97
-  languageName: node
-  linkType: hard
-
-"figures@npm:^6.1.0":
-  version: 6.1.0
-  resolution: "figures@npm:6.1.0"
-  dependencies:
-    is-unicode-supported: "npm:^2.0.0"
-  checksum: 10/9822d13630bee8e6a9f2da866713adf13854b07e0bfde042defa8bba32d47a1c0b2afa627ce73837c674cf9a5e3edce7e879ea72cb9ea7960b2390432d8e1167
   languageName: node
   linkType: hard
 
@@ -7661,16 +7609,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"get-stream@npm:^9.0.0":
-  version: 9.0.1
-  resolution: "get-stream@npm:9.0.1"
-  dependencies:
-    "@sec-ant/readable-stream": "npm:^0.4.1"
-    is-stream: "npm:^4.0.1"
-  checksum: 10/ce56e6db6bcd29ca9027b0546af035c3e93dcd154ca456b54c298901eb0e5b2ce799c5d727341a100c99e14c523f267f1205f46f153f7b75b1f4da6d98a21c5e
-  languageName: node
-  linkType: hard
-
 "get-uri@npm:^6.0.1":
   version: 6.0.3
   resolution: "get-uri@npm:6.0.3"
@@ -8006,13 +7944,6 @@ __metadata:
   version: 2.1.0
   resolution: "human-signals@npm:2.1.0"
   checksum: 10/df59be9e0af479036798a881d1f136c4a29e0b518d4abb863afbd11bf30efa3eeb1d0425fc65942dcc05ab3bf40205ea436b0ff389f2cd20b75b8643d539bf86
-  languageName: node
-  linkType: hard
-
-"human-signals@npm:^8.0.1":
-  version: 8.0.1
-  resolution: "human-signals@npm:8.0.1"
-  checksum: 10/903389a018b16f330c5e0f6e8b76d592c79552152ea892f249e5290e71c790f5722dc9b740fedd4bdef30566754a69012aaed97a6a528da0d417fad990a6f515
   languageName: node
   linkType: hard
 
@@ -8397,13 +8328,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"is-stream@npm:^4.0.1":
-  version: 4.0.1
-  resolution: "is-stream@npm:4.0.1"
-  checksum: 10/cbea3f1fc271b21ceb228819d0c12a0965a02b57f39423925f99530b4eb86935235f258f06310b67cd02b2d10b49e9a0998f5ececf110ab7d3760bae4055ad23
-  languageName: node
-  linkType: hard
-
 "is-string@npm:^1.0.5, is-string@npm:^1.0.7":
   version: 1.0.7
   resolution: "is-string@npm:1.0.7"
@@ -8455,13 +8379,6 @@ __metadata:
   version: 0.1.0
   resolution: "is-unicode-supported@npm:0.1.0"
   checksum: 10/a2aab86ee7712f5c2f999180daaba5f361bdad1efadc9610ff5b8ab5495b86e4f627839d085c6530363c6d6d4ecbde340fb8e54bdb83da4ba8e0865ed5513c52
-  languageName: node
-  linkType: hard
-
-"is-unicode-supported@npm:^2.0.0":
-  version: 2.0.0
-  resolution: "is-unicode-supported@npm:2.0.0"
-  checksum: 10/000b80639dedaf59a385f1c0a57f97a4d1435e0723716f24cc19ad94253a7a0a9f838bdc9ac49b10a29ac93b01f52ae9b2ed358a8876caf1eb74d73b4ede92b2
   languageName: node
   linkType: hard
 
@@ -10075,16 +9992,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"npm-run-path@npm:^6.0.0":
-  version: 6.0.0
-  resolution: "npm-run-path@npm:6.0.0"
-  dependencies:
-    path-key: "npm:^4.0.0"
-    unicorn-magic: "npm:^0.3.0"
-  checksum: 10/1a1b50aba6e6af7fd34a860ba2e252e245c4a59b316571a990356417c0cdf0414cabf735f7f52d9c330899cb56f0ab804a8e21fb12a66d53d7843e39ada4a3b6
-  languageName: node
-  linkType: hard
-
 "npmlog@npm:^6.0.0":
   version: 6.0.2
   resolution: "npmlog@npm:6.0.2"
@@ -10415,13 +10322,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"parse-ms@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "parse-ms@npm:4.0.0"
-  checksum: 10/673c801d9f957ff79962d71ed5a24850163f4181a90dd30c4e3666b3a804f53b77f1f0556792e8b2adbb5d58757907d1aa51d7d7dc75997c2a56d72937cbc8b7
-  languageName: node
-  linkType: hard
-
 "parse5-htmlparser2-tree-adapter@npm:^7.0.0":
   version: 7.0.0
   resolution: "parse5-htmlparser2-tree-adapter@npm:7.0.0"
@@ -10459,13 +10359,6 @@ __metadata:
   version: 3.1.1
   resolution: "path-key@npm:3.1.1"
   checksum: 10/55cd7a9dd4b343412a8386a743f9c746ef196e57c823d90ca3ab917f90ab9f13dd0ded27252ba49dbdfcab2b091d998bc446f6220cd3cea65db407502a740020
-  languageName: node
-  linkType: hard
-
-"path-key@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "path-key@npm:4.0.0"
-  checksum: 10/8e6c314ae6d16b83e93032c61020129f6f4484590a777eed709c4a01b50e498822b00f76ceaf94bc64dbd90b327df56ceadce27da3d83393790f1219e07721d7
   languageName: node
   linkType: hard
 
@@ -10703,15 +10596,6 @@ __metadata:
   dependencies:
     parse-ms: "npm:^2.1.0"
   checksum: 10/a39aac23cc7dae7a94c70518ab8b6c6db0894a7b84c81ee7abc8778c5ec8bae2d1e71ba991ff641732b38433724bfbdbb37bd3a00418637f797c072e06fe8b4c
-  languageName: node
-  linkType: hard
-
-"pretty-ms@npm:^9.2.0":
-  version: 9.3.0
-  resolution: "pretty-ms@npm:9.3.0"
-  dependencies:
-    parse-ms: "npm:^4.0.0"
-  checksum: 10/beb4e04dc17071885b827e3f33d36be279791f2f36a8c29a45c77e59979dad79a5d7e5211922c72a3f6f109bb64a707d70fcdba6746e077122afcd88ce202e98
   languageName: node
   linkType: hard
 
@@ -11532,7 +11416,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"signal-exit@npm:^4.0.1, signal-exit@npm:^4.1.0":
+"signal-exit@npm:^4.0.1":
   version: 4.1.0
   resolution: "signal-exit@npm:4.1.0"
   checksum: 10/c9fa63bbbd7431066174a48ba2dd9986dfd930c3a8b59de9c29d7b6854ec1c12a80d15310869ea5166d413b99f041bfa3dd80a7947bcd44ea8e6eb3ffeabfa1f
@@ -11877,13 +11761,6 @@ __metadata:
   version: 2.0.0
   resolution: "strip-final-newline@npm:2.0.0"
   checksum: 10/69412b5e25731e1938184b5d489c32e340605bb611d6140344abc3421b7f3c6f9984b21dff296dfcf056681b82caa3bb4cc996a965ce37bcfad663e92eae9c64
-  languageName: node
-  linkType: hard
-
-"strip-final-newline@npm:^4.0.0":
-  version: 4.0.0
-  resolution: "strip-final-newline@npm:4.0.0"
-  checksum: 10/b5fe48f695d74863153a3b3155220e6e9bf51f4447832998c8edec38e6559b3af87a9fe5ac0df95570a78a26f5fa91701358842eab3c15480e27980b154a145f
   languageName: node
   linkType: hard
 
@@ -12353,13 +12230,6 @@ __metadata:
     ukkonen: "npm:^2.1.0"
     unexpected-bluebird: "npm:2.9.34-longstack2"
   checksum: 10/e3da051302b3cac1b8d982f1cb105b68e6cff268d17a059e83e0cf7e320fcafff3ff0afcd6a84851087871021f92183e40a98e26238d41d2cca3d8cbea6aa8ac
-  languageName: node
-  linkType: hard
-
-"unicorn-magic@npm:^0.3.0":
-  version: 0.3.0
-  resolution: "unicorn-magic@npm:0.3.0"
-  checksum: 10/bdd7d7c522f9456f32a0b77af23f8854f9a7db846088c3868ec213f9550683ab6a2bdf3803577eacbafddb4e06900974385841ccb75338d17346ccef45f9cb01
   languageName: node
   linkType: hard
 
@@ -13036,13 +12906,6 @@ __metadata:
   version: 0.1.0
   resolution: "yocto-queue@npm:0.1.0"
   checksum: 10/f77b3d8d00310def622123df93d4ee654fc6a0096182af8bd60679ddcdfb3474c56c6c7190817c84a2785648cdee9d721c0154eb45698c62176c322fb46fc700
-  languageName: node
-  linkType: hard
-
-"yoctocolors@npm:^2.1.1":
-  version: 2.1.2
-  resolution: "yoctocolors@npm:2.1.2"
-  checksum: 10/6ee42d665a4cc161c7de3f015b2a65d6c65d2808bfe3b99e228bd2b1b784ef1e54d1907415c025fc12b400f26f372bfc1b71966c6c738d998325ca422eb39363
   languageName: node
   linkType: hard
 

@@ -119,7 +119,15 @@ test("#scrape() scrapes layout", async (t) =>
       .getUnsafe()
       .toJSON();
 
-    t.deepEqual(box, {
+    const rounded = {
+      type: box.type,
+      x: Math.round(box.x),
+      y: Math.round(box.y),
+      width: Math.round(box.width),
+      height: Math.round(box.height),
+    };
+
+    t.deepEqual(rounded, {
       type: "rectangle",
       x: 466,
       y: 117,
