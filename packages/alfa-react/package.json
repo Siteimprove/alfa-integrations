@@ -25,23 +25,21 @@
     "@siteimprove/alfa-device": "^0.108.2",
     "@siteimprove/alfa-dom": "^0.108.2",
     "@siteimprove/alfa-http": "^0.108.2",
-    "@siteimprove/alfa-option": "^0.108.2",
-    "@siteimprove/alfa-refinement": "^0.108.2",
     "@siteimprove/alfa-web": "^0.108.2",
-    "@types/react": "^18.3.3",
-    "@types/react-test-renderer": "^18.3.0",
-    "react": "^18.3.1",
-    "react-test-renderer": "^18.3.1"
+    "jsdom": "^27.3.0",
+    "react": "^19.2.3",
+    "react-dom": "^19.2.3"
   },
   "devDependencies": {
-    "@siteimprove/alfa-test": "^0.108.2"
+    "@siteimprove/alfa-test": "^0.108.2",
+    "@types/jsdom": "^27",
+    "@types/react": "^19.2.7",
+    "@types/react-dom": "^19"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.108.2",
     "@siteimprove/alfa-dom": "^0.108.2",
     "@siteimprove/alfa-http": "^0.108.2",
-    "@siteimprove/alfa-option": "^0.108.2",
-    "@siteimprove/alfa-refinement": "^0.108.2",
     "@siteimprove/alfa-web": "^0.108.2"
   },
   "publishConfig": {

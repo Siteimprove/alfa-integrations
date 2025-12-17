@@ -12,8 +12,8 @@ const Button: FunctionComponent<PropsWithChildren> = ({ children }) => (
   <button className="btn">{children}</button>
 );
 
-test(`.toPage() creates an Alfa page`, (t) => {
-  const actual = React.toPage(<Button />);
+test(`.toPage() creates an Alfa page`, async (t) => {
+  const actual = await React.toPage(<Button />);
 
   const expected = Page.of(
     Request.empty(),
