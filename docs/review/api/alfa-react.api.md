@@ -4,15 +4,17 @@
 
 ```ts
 
+import type { Node } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 import type { ReactElement } from 'react';
 
 // @public (undocumented)
 namespace React_2 {
+    function toNode(value: Type): Promise<Node.JSON>;
     // (undocumented)
-    function toPage(value: Type): Page;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
-    type Type = ReactElement<unknown>;
+    type Type = ReactElement;
 }
 export { React_2 as React }
 
