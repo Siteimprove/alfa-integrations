@@ -2849,8 +2849,8 @@ __metadata:
     "@microsoft/api-extractor": "npm:^7.55.2"
     "@siteimprove/alfa-cli": "workspace:^0.80.6"
     "@siteimprove/alfa-toolchain": "npm:^0.108.2"
-    "@types/node": "npm:^25.0.3"
-    knip: "npm:^5.76.2"
+    "@types/node": "npm:^25.0.6"
+    knip: "npm:^5.80.2"
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.7.4"
     typescript: "npm:^5.9.3"
@@ -3208,7 +3208,7 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
     "@types/jsdom": "npm:^27"
-    "@types/react": "npm:^19.2.7"
+    "@types/react": "npm:^19.2.8"
     "@types/react-dom": "npm:^19"
     jsdom: "npm:^27.3.0"
     react: "npm:^19.2.3"
@@ -4186,12 +4186,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^25.0.3":
-  version: 25.0.3
-  resolution: "@types/node@npm:25.0.3"
+"@types/node@npm:*, @types/node@npm:^25.0.6":
+  version: 25.0.6
+  resolution: "@types/node@npm:25.0.6"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/5889b00f398eff4d4af28c3e5e97976f65c39a63fa3d7011f35cbf8640675fa6835e5dd47dce94d6ba48667711ddcd1f5c9bc5d93233e6a8e9ea1e502e8aa5a4
+  checksum: 10/19d6dcaccc49b8d9efd987d6e7573f84cf3665fbe88adc0eb08e87d3682a36a4a6997a5ead2a11c79eb891c0e0c5260caef23bd262e5772708d95330d5b7ddf1
   languageName: node
   linkType: hard
 
@@ -4220,12 +4220,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "@types/react@npm:19.2.7"
+"@types/react@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "@types/react@npm:19.2.8"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10/dc0b756eee2c9782d282ae47eaa8d537b2a569eb889a6808c4b172d70fb690b2b1d8fe6239db451aa1c90d2a947cc21c9b537ce177ba9e6121468e403e4079c5
+  checksum: 10/688e7605876e2729c25fdfd2c131d7080cb8e98db528aedccab89005bcbca097a6149fa6e137ae4f1807bdc44220e0c5c7b4a968b5b681dadb7761968bac6de5
   languageName: node
   linkType: hard
 
@@ -8971,9 +8971,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^5.76.2":
-  version: 5.76.2
-  resolution: "knip@npm:5.76.2"
+"knip@npm:^5.80.2":
+  version: 5.80.2
+  resolution: "knip@npm:5.80.2"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -8993,7 +8993,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/f92cf2626a07e9c43709b3addb855a3807341c96771d24576b8d8a5f879bffd9fc528375708245a56127579b3b3083b0eb7d274518ddd1b3506e11d37609839d
+  checksum: 10/5cc2c6dbd32ae102776e7fbc4e9be0ab082e392e2f8a72efa12f1dbf3235d72cf2140cfe4c7475255e416c63e68ae60ff8b62efccb96d34bf412f4740b8fc796
   languageName: node
   linkType: hard
 
