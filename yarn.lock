@@ -2861,10 +2861,10 @@ __metadata:
     "@microsoft/api-extractor": "npm:^7.55.2"
     "@siteimprove/alfa-cli": "workspace:^0.80.6"
     "@siteimprove/alfa-toolchain": "npm:^0.108.2"
-    "@types/node": "npm:^25.0.6"
-    knip: "npm:^5.80.2"
+    "@types/node": "npm:^25.0.9"
+    knip: "npm:^5.82.0"
     minimist: "npm:^1.2.6"
-    prettier: "npm:^3.7.4"
+    prettier: "npm:^3.8.0"
     typescript: "npm:^5.9.3"
     vitest: "npm:^4.0.17"
   languageName: unknown
@@ -4198,12 +4198,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^25.0.6":
-  version: 25.0.6
-  resolution: "@types/node@npm:25.0.6"
+"@types/node@npm:*, @types/node@npm:^25.0.9":
+  version: 25.0.9
+  resolution: "@types/node@npm:25.0.9"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/19d6dcaccc49b8d9efd987d6e7573f84cf3665fbe88adc0eb08e87d3682a36a4a6997a5ead2a11c79eb891c0e0c5260caef23bd262e5772708d95330d5b7ddf1
+  checksum: 10/2c16f137ed3a952903b7641df5ce16663ad00911dc6a9010156602251420da127bf7dbd32d22aac9eda0cc430381164d55a36240039b7d06ab693b9aad5c3f23
   languageName: node
   linkType: hard
 
@@ -8983,9 +8983,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"knip@npm:^5.80.2":
-  version: 5.80.2
-  resolution: "knip@npm:5.80.2"
+"knip@npm:^5.82.0":
+  version: 5.82.0
+  resolution: "knip@npm:5.82.0"
   dependencies:
     "@nodelib/fs.walk": "npm:^1.2.3"
     fast-glob: "npm:^3.3.3"
@@ -9005,7 +9005,7 @@ __metadata:
   bin:
     knip: bin/knip.js
     knip-bun: bin/knip-bun.js
-  checksum: 10/5cc2c6dbd32ae102776e7fbc4e9be0ab082e392e2f8a72efa12f1dbf3235d72cf2140cfe4c7475255e416c63e68ae60ff8b62efccb96d34bf412f4740b8fc796
+  checksum: 10/13cb6b1e3d57eb58c97761d55b7ca72257700a03f068f5c32ab339fc74884bb4212251a9739cd9695fe60c3b2b873b6a794c03ade3bfbd5f58be705a3a30491f
   languageName: node
   linkType: hard
 
@@ -10218,12 +10218,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"prettier@npm:^3.7.4":
-  version: 3.7.4
-  resolution: "prettier@npm:3.7.4"
+"prettier@npm:^3.8.0":
+  version: 3.8.0
+  resolution: "prettier@npm:3.8.0"
   bin:
     prettier: bin/prettier.cjs
-  checksum: 10/b4d00ea13baed813cb777c444506632fb10faaef52dea526cacd03085f01f6db11fc969ccebedf05bf7d93c3960900994c6adf1b150e28a31afd5cfe7089b313
+  checksum: 10/a643c62f095c2987a34cea4fceddce8dea12cc3ee024494aff690cfac22ef20be835e212b39b718c833014fd22890ae156be67b75a26e2bc9b7acde9a34d31fa
   languageName: node
   linkType: hard
 
