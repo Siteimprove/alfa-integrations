@@ -1798,9 +1798,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@puppeteer/browsers@npm:2.11.0, @puppeteer/browsers@npm:^2.2.0":
-  version: 2.11.0
-  resolution: "@puppeteer/browsers@npm:2.11.0"
+"@puppeteer/browsers@npm:2.11.1, @puppeteer/browsers@npm:^2.2.0":
+  version: 2.11.1
+  resolution: "@puppeteer/browsers@npm:2.11.1"
   dependencies:
     debug: "npm:^4.4.3"
     extract-zip: "npm:^2.0.1"
@@ -1811,7 +1811,7 @@ __metadata:
     yargs: "npm:^17.7.2"
   bin:
     browsers: lib/cjs/main-cli.js
-  checksum: 10/2bd0f6fce5923a04e040217b2bcf8b54de202d24bad3fa3b8f5577617cdbb1eb165a782b2dcbe30782aa7b47655dbf86abd10eb0da16fe84f8879a635c33c0f3
+  checksum: 10/b56343ca285f3df4bab71032970183c9d8547fad12cf0067b4bac5b3067619d15602051e3fb2af87c624a008a928040ab1d7507fbdc46b99cb59b89c60890f4e
   languageName: node
   linkType: hard
 
@@ -3199,7 +3199,7 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
-    puppeteer: "npm:^24.34.0"
+    puppeteer: "npm:^24.35.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.108.2
     "@siteimprove/alfa-dom": ^0.108.2
@@ -3391,7 +3391,7 @@ __metadata:
     "@siteimprove/alfa-time": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
-    puppeteer: "npm:^24.34.0"
+    puppeteer: "npm:^24.35.0"
   peerDependencies:
     "@siteimprove/alfa-array": ^0.108.2
     "@siteimprove/alfa-device": ^0.108.2
@@ -10346,34 +10346,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:24.34.0":
-  version: 24.34.0
-  resolution: "puppeteer-core@npm:24.34.0"
+"puppeteer-core@npm:24.35.0":
+  version: 24.35.0
+  resolution: "puppeteer-core@npm:24.35.0"
   dependencies:
-    "@puppeteer/browsers": "npm:2.11.0"
+    "@puppeteer/browsers": "npm:2.11.1"
     chromium-bidi: "npm:12.0.1"
     debug: "npm:^4.4.3"
     devtools-protocol: "npm:0.0.1534754"
     typed-query-selector: "npm:^2.12.0"
     webdriver-bidi-protocol: "npm:0.3.10"
-    ws: "npm:^8.18.3"
-  checksum: 10/5f39b401dffd381a9ec5b3ca0163b4510868f1e135293c87c65e87292edfb5bba68804cc59b83b5a137bd35ffd42496da530043e741da7bb3dcaf9bd0f6cb860
+    ws: "npm:^8.19.0"
+  checksum: 10/0f225020b72af1a307e15c2fcc6dae564b6225d041b5255d5cf43f867f8b4e6bf1b5c27293541be590c64de2c35eec9321a8aa72d208287aaab0fc63b0da551a
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^24.34.0":
-  version: 24.34.0
-  resolution: "puppeteer@npm:24.34.0"
+"puppeteer@npm:^24.35.0":
+  version: 24.35.0
+  resolution: "puppeteer@npm:24.35.0"
   dependencies:
-    "@puppeteer/browsers": "npm:2.11.0"
+    "@puppeteer/browsers": "npm:2.11.1"
     chromium-bidi: "npm:12.0.1"
     cosmiconfig: "npm:^9.0.0"
     devtools-protocol: "npm:0.0.1534754"
-    puppeteer-core: "npm:24.34.0"
+    puppeteer-core: "npm:24.35.0"
     typed-query-selector: "npm:^2.12.0"
   bin:
     puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: 10/f096ef61d097811744480186d7bcf98f8ce43674c8ae6c367bf40050916ff86478f77cb8c935d74f8555abc434f5f15eb4b14088a679d2a1a9ca8786cb29a19b
+  checksum: 10/c975d0949fc21c278e0e2ce7b919c9093ede5616288c8bbc769eb367b318b6ff20ee1744862b7f24ee721e8bb382d4b423de301e47eefd1b692c7ca42651932a
   languageName: node
   linkType: hard
 
@@ -12422,9 +12422,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.18.3, ws@npm:^8.8.0":
-  version: 8.18.3
-  resolution: "ws@npm:8.18.3"
+"ws@npm:^8.18.3, ws@npm:^8.19.0, ws@npm:^8.8.0":
+  version: 8.19.0
+  resolution: "ws@npm:8.19.0"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ">=5.0.2"
@@ -12433,7 +12433,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 10/725964438d752f0ab0de582cd48d6eeada58d1511c3f613485b5598a83680bedac6187c765b0fe082e2d8cc4341fc57707c813ae780feee82d0c5efe6a4c61b6
+  checksum: 10/26e4901e93abaf73af9f26a93707c95b4845e91a7a347ec8c569e6e9be7f9df066f6c2b817b2d685544e208207898a750b78461e6e8d810c11a370771450c31b
   languageName: node
   linkType: hard
 
