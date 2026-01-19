@@ -26,7 +26,7 @@
     "@siteimprove/alfa-dom": "^0.108.2",
     "@siteimprove/alfa-http": "^0.108.2",
     "@siteimprove/alfa-web": "^0.108.2",
-    "selenium-webdriver": "^4.39.0"
+    "selenium-webdriver": "^4.40.0"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.108.2",
@@ -34,7 +34,7 @@
     "@siteimprove/alfa-http": "^0.108.2",
     "@siteimprove/alfa-url": "^0.108.2",
     "@siteimprove/alfa-web": "^0.108.2",
-    "selenium-webdriver": "^4.39.0"
+    "selenium-webdriver": "^4.40.0"
   },
   "publishConfig": {
     "access": "public",
@@ -42,6 +42,6 @@
   },
   "devDependencies": {
     "@siteimprove/alfa-test": "^0.108.2",
-    "@types/selenium-webdriver": "^4.35.4"
+    "@types/selenium-webdriver": "^4.35.5"
   }
 }
