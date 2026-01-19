@@ -2521,7 +2521,7 @@ __metadata:
     "@siteimprove/alfa-mapper": "npm:^0.108.2"
     "@siteimprove/alfa-url": "npm:^0.108.2"
     "@siteimprove/alfa-web": "npm:^0.108.2"
-    cypress: "npm:^15.8.2"
+    cypress: "npm:^15.9.0"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.108.2
     "@siteimprove/alfa-device": ^0.108.2
@@ -2531,7 +2531,7 @@ __metadata:
     "@siteimprove/alfa-mapper": ^0.108.2
     "@siteimprove/alfa-url": ^0.108.2
     "@siteimprove/alfa-web": ^0.108.2
-    cypress: ^15.8.2
+    cypress: ^15.9.0
   languageName: unknown
   linkType: soft
 
@@ -6148,9 +6148,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cypress@npm:^15.8.2":
-  version: 15.8.2
-  resolution: "cypress@npm:15.8.2"
+"cypress@npm:^15.9.0":
+  version: 15.9.0
+  resolution: "cypress@npm:15.9.0"
   dependencies:
     "@cypress/request": "npm:^3.0.10"
     "@cypress/xvfb": "npm:^1.2.4"
@@ -6196,7 +6196,7 @@ __metadata:
     yauzl: "npm:^2.10.0"
   bin:
     cypress: bin/cypress
-  checksum: 10/7d8859ed3d16da7b99840b053bb24e71f22da1ec0ef81799e7bc5786d02ce89a7b227f17c9270225dbf8e9dec9a21accfbea0d37fc7aae5aabbea54990c78150
+  checksum: 10/f561e7f9f8956e26a1eeb1dc98614b83abb63c1f83d008ffd26a03d96c15c25037980868f57e07f9821be4c41ace6886f8edf4de6d86a3b5de5f3c059b586ecd
   languageName: node
   linkType: hard
 
