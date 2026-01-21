@@ -13,8 +13,8 @@ import { Flattened } from '@siteimprove/alfa-rules';
 import { Iterable as Iterable_2 } from '@siteimprove/alfa-iterable';
 import * as json from '@siteimprove/alfa-json';
 import { Map as Map_2 } from '@siteimprove/alfa-map';
-import { Node } from '@siteimprove/alfa-dom';
-import { Option } from '@siteimprove/alfa-option';
+import { Node as Node_2 } from '@siteimprove/alfa-dom';
+import { Option as Option_2 } from '@siteimprove/alfa-option';
 import type { Outcome } from '@siteimprove/alfa-act';
 import { Page } from '@siteimprove/alfa-web';
 import { Performance as Performance_3 } from '@siteimprove/alfa-performance';
@@ -168,7 +168,7 @@ export namespace Outcomes {
     const failedFilter: Predicate<alfaOutcome>;
     const passedFilter: Predicate<alfaOutcome>;
     const cantTellFilter: Predicate<alfaOutcome>;
-    export function insideSelectorFilter(selector: string, traversal?: Node.Traversal): Predicate<alfaOutcome>;
+    export function insideSelectorFilter(selector: string, traversal?: Node_2.Traversal): Predicate<alfaOutcome>;
     export function ruleAndSelectorFilter(ruleId: number, selector: string): Predicate<alfaOutcome>;
 }
 
@@ -256,7 +256,7 @@ export namespace SIP {
     // (undocumented)
     export interface Options {
         apiKey?: string;
-        commitInformation?: CommitInformation | Option<CommitInformation> | Result<CommitInformation, unknown>;
+        commitInformation?: CommitInformation | Option_2<CommitInformation> | Result<CommitInformation, unknown>;
         pageTitle?: string | ((page: Page) => string);
         pageURL?: string | ((page: Page) => string);
         siteID?: number;
