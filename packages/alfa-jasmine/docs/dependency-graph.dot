@@ -1,40 +1,77 @@
 digraph "dependency-graph-@siteimprove/alfa-jasmine" {
   compound = true;
   "src/jasmine/add-async-matcher.ts";
+  "name_src/jasmine";
   "src/jasmine.ts";
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "src/jasmine.ts" [
-      label = "src/jasmine.ts";
-    ];
     "exit_src" [
       style = "invis";
     ];
-    "src/index.ts" [
-      label = "src/index.ts";
-      color = "#ff0000";
-      penwidth = 5;
-    ];
-    "src/jasmine/add-async-matcher.ts" [
-      label = "src/jasmine/add-async-matcher.ts";
-    ];
-    "src/jasmine.ts" -> "exit_src" [
+    subgraph "cluster_src" {
+      color = "#000000";
+      label = "";
+      "name_src" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#ff0000";
+        label = "src";
+      ];
+      "exit_src" [
+        style = "invis";
+      ];
+      "src/jasmine.ts" [
+        label = "jasmine.ts";
+      ];
+      "src/index.ts" [
+        label = "index.ts";
+        color = "#ff0000";
+        penwidth = 5;
+      ];
+      subgraph "cluster_src/jasmine" {
+        color = "#000000";
+        label = "";
+        "name_src/jasmine" [
+          penwidth = 5;
+          shape = "rectangle";
+          color = "#00ffff";
+          label = "jasmine";
+        ];
+        "exit_src/jasmine" [
+          style = "invis";
+        ];
+        "src/jasmine/add-async-matcher.ts" [
+          label = "add-async-matcher.ts";
+        ];
+        "src/jasmine/add-async-matcher.ts" -> "exit_src/jasmine" [
+          style = "invis";
+        ];
+      }
+      "src/jasmine.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/index.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "exit_src/jasmine" -> "exit_src" [
+        style = "invis";
+      ];
+    }
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/index.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/jasmine/add-async-matcher.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
   }
-  "src/jasmine.ts" -> "src/jasmine/add-async-matcher.ts" [
-    style = "invis";
-  ];
-  "src/jasmine.ts" -> "src/jasmine/add-async-matcher.ts" [
+  "src/jasmine.ts" -> "name_src/jasmine" [
     style = "solid";
-    color = "black";
+    color = "#ff0000";
+    lhead = "cluster_src/jasmine";
   ];
   "src/index.ts" -> "src/jasmine.ts" [
     style = "invis";

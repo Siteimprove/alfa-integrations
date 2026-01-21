@@ -1,66 +1,27 @@
 digraph "dependency-graph-Alfa integrations" {
   compound = true;
-  "@siteimprove/alfa-act";
-  "exit_Formatters";
-  "@siteimprove/alfa-earl";
   "@siteimprove/alfa-formatter";
-  "@siteimprove/alfa-future";
-  "@siteimprove/alfa-hash";
-  "@siteimprove/alfa-rules";
-  "@siteimprove/alfa-test-deprecated";
-  "@siteimprove/alfa-functor";
-  "exit_Command line";
-  "@siteimprove/alfa-json";
-  "@siteimprove/alfa-mapper";
-  "@siteimprove/alfa-option";
-  "@siteimprove/alfa-parser";
-  "@siteimprove/alfa-predicate";
-  "@siteimprove/alfa-refinement";
-  "@siteimprove/alfa-result";
-  "@siteimprove/alfa-thunk";
-  "@siteimprove/alfa-device";
-  "exit_Integrations with frameworks";
-  "@siteimprove/alfa-dom";
-  "@siteimprove/alfa-http";
-  "@siteimprove/alfa-url";
-  "@siteimprove/alfa-web";
-  "@siteimprove/alfa-react";
   "@siteimprove/alfa-assert";
-  "@siteimprove/alfa-array";
-  "exit_Web crawler";
-  "@siteimprove/alfa-equatable";
-  "@siteimprove/alfa-iterable";
-  "@siteimprove/alfa-promise";
   "@siteimprove/alfa-puppeteer";
+  "exit_Web crawler";
   "name_Integrations with frameworks";
-  "@siteimprove/alfa-time";
   "@siteimprove/alfa-cheerio";
-  "@siteimprove/alfa-performance";
-  "@siteimprove/alfa-sequence";
   "@siteimprove/alfa-command";
+  "exit_Command line";
   "name_Formatters";
   "@siteimprove/alfa-interviewer";
   "@siteimprove/alfa-scraper";
   "name_Web crawler";
-  "@siteimprove/alfa-aria";
-  "@siteimprove/alfa-cascade";
-  "@siteimprove/alfa-css";
-  "@siteimprove/alfa-map";
-  "@siteimprove/alfa-selective";
-  "@siteimprove/alfa-selector";
-  "@siteimprove/alfa-wcag";
-  "@siteimprove/alfa-record";
-  "@siteimprove/alfa-sarif";
   "@siteimprove/alfa-frontier";
+  "exit_Browser automations";
+  "name_Test frameworks";
+  "exit_Integrations with frameworks";
   "@siteimprove/alfa-formatter-earl";
   subgraph "cluster_Alfa integrations" {
     color = "#000000";
     label = "";
     "exit_Alfa integrations" [
       style = "invis";
-    ];
-    "@siteimprove/alfa-test-utils" [
-      label = "alfa-test-utils";
     ];
     subgraph "cluster_Formatters" {
       color = "#000000";
@@ -99,44 +60,13 @@ digraph "dependency-graph-Alfa integrations" {
         style = "invis";
       ];
     }
-    subgraph "cluster_Command line" {
-      color = "#000000";
-      label = "";
-      "name_Command line" [
-        penwidth = 5;
-        shape = "rectangle";
-        color = "#ff00bf";
-        label = "Command line";
-      ];
-      "exit_Command line" [
-        style = "invis";
-      ];
-      "@siteimprove/alfa-command" [
-        label = "alfa-command";
-      ];
-      "@siteimprove/alfa-interviewer" [
-        label = "alfa-interviewer";
-      ];
-      "@siteimprove/alfa-cli" [
-        label = "alfa-cli";
-      ];
-      "@siteimprove/alfa-command" -> "exit_Command line" [
-        style = "invis";
-      ];
-      "@siteimprove/alfa-interviewer" -> "exit_Command line" [
-        style = "invis";
-      ];
-      "@siteimprove/alfa-cli" -> "exit_Command line" [
-        style = "invis";
-      ];
-    }
     subgraph "cluster_Integrations with frameworks" {
       color = "#000000";
       label = "";
       "name_Integrations with frameworks" [
         penwidth = 5;
         shape = "rectangle";
-        color = "#00ffff";
+        color = "#00ffaa";
         label = "Integrations with frameworks";
       ];
       "exit_Integrations with frameworks" [
@@ -145,13 +75,62 @@ digraph "dependency-graph-Alfa integrations" {
       "@siteimprove/alfa-jquery" [
         label = "alfa-jquery";
       ];
+      subgraph "cluster_Test frameworks" {
+        color = "#000000";
+        label = "";
+        "name_Test frameworks" [
+          penwidth = 5;
+          shape = "rectangle";
+          color = "#aaff00";
+          label = "Test frameworks";
+        ];
+        "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-vitest" [
+          label = "alfa-vitest";
+        ];
+        "@siteimprove/alfa-chai" [
+          label = "alfa-chai";
+        ];
+        "@siteimprove/alfa-jasmine" [
+          label = "alfa-jasmine";
+        ];
+        "@siteimprove/alfa-assert" [
+          label = "alfa-assert";
+        ];
+        "@siteimprove/alfa-unexpected" [
+          label = "alfa-unexpected";
+        ];
+        "@siteimprove/alfa-jest" [
+          label = "alfa-jest";
+        ];
+        "@siteimprove/alfa-vitest" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-chai" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-jasmine" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-assert" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-unexpected" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-jest" -> "exit_Test frameworks" [
+          style = "invis";
+        ];
+      }
       subgraph "cluster_Browser automations" {
         color = "#000000";
         label = "";
         "name_Browser automations" [
           penwidth = 5;
           shape = "rectangle";
-          color = "#0040ff";
+          color = "#00aaff";
           label = "Browser automations";
         ];
         "exit_Browser automations" [
@@ -169,6 +148,9 @@ digraph "dependency-graph-Alfa integrations" {
         "@siteimprove/alfa-selenium" [
           label = "alfa-selenium";
         ];
+        "@siteimprove/alfa-cypress" [
+          label = "alfa-cypress";
+        ];
         "@siteimprove/alfa-playwright" -> "exit_Browser automations" [
           style = "invis";
         ];
@@ -181,6 +163,9 @@ digraph "dependency-graph-Alfa integrations" {
         "@siteimprove/alfa-selenium" -> "exit_Browser automations" [
           style = "invis";
         ];
+        "@siteimprove/alfa-cypress" -> "exit_Browser automations" [
+          style = "invis";
+        ];
       }
       subgraph "cluster_Components libraries" {
         color = "#000000";
@@ -188,14 +173,11 @@ digraph "dependency-graph-Alfa integrations" {
         "name_Components libraries" [
           penwidth = 5;
           shape = "rectangle";
-          color = "#ffbf00";
+          color = "#ffaa00";
           label = "Components libraries";
         ];
         "exit_Components libraries" [
           style = "invis";
-        ];
-        "@siteimprove/alfa-enzyme" [
-          label = "alfa-enzyme";
         ];
         "@siteimprove/alfa-angular" [
           label = "alfa-angular";
@@ -208,9 +190,6 @@ digraph "dependency-graph-Alfa integrations" {
         ];
         "@siteimprove/alfa-cheerio" [
           label = "alfa-cheerio";
-        ];
-        "@siteimprove/alfa-enzyme" -> "exit_Components libraries" [
-          style = "invis";
         ];
         "@siteimprove/alfa-angular" -> "exit_Components libraries" [
           style = "invis";
@@ -225,59 +204,10 @@ digraph "dependency-graph-Alfa integrations" {
           style = "invis";
         ];
       }
-      subgraph "cluster_Test frameworks" {
-        color = "#000000";
-        label = "";
-        "name_Test frameworks" [
-          penwidth = 5;
-          shape = "rectangle";
-          color = "#80ff00";
-          label = "Test frameworks";
-        ];
-        "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-chai" [
-          label = "alfa-chai";
-        ];
-        "@siteimprove/alfa-jasmine" [
-          label = "alfa-jasmine";
-        ];
-        "@siteimprove/alfa-assert" [
-          label = "alfa-assert";
-        ];
-        "@siteimprove/alfa-unexpected" [
-          label = "alfa-unexpected";
-        ];
-        "@siteimprove/alfa-jest" [
-          label = "alfa-jest";
-        ];
-        "@siteimprove/alfa-cypress" [
-          label = "alfa-cypress";
-        ];
-        "@siteimprove/alfa-chai" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-jasmine" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-assert" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-unexpected" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-jest" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-        "@siteimprove/alfa-cypress" -> "exit_Test frameworks" [
-          style = "invis";
-        ];
-      }
-      "exit_Browser automations" -> "exit_Integrations with frameworks" [
+      "exit_Test frameworks" -> "exit_Integrations with frameworks" [
         style = "invis";
       ];
-      "exit_Components libraries" -> "exit_Integrations with frameworks" [
+      "exit_Browser automations" -> "exit_Integrations with frameworks" [
         style = "invis";
       ];
       "exit_Test frameworks" -> "exit_Integrations with frameworks" [
@@ -319,7 +249,38 @@ digraph "dependency-graph-Alfa integrations" {
       "exit_Test frameworks" -> "exit_Integrations with frameworks" [
         style = "invis";
       ];
-      "exit_Test frameworks" -> "exit_Integrations with frameworks" [
+      "exit_Browser automations" -> "exit_Integrations with frameworks" [
+        style = "invis";
+      ];
+    }
+    subgraph "cluster_Command line" {
+      color = "#000000";
+      label = "";
+      "name_Command line" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#ff00aa";
+        label = "Command line";
+      ];
+      "exit_Command line" [
+        style = "invis";
+      ];
+      "@siteimprove/alfa-command" [
+        label = "alfa-command";
+      ];
+      "@siteimprove/alfa-interviewer" [
+        label = "alfa-interviewer";
+      ];
+      "@siteimprove/alfa-cli" [
+        label = "alfa-cli";
+      ];
+      "@siteimprove/alfa-command" -> "exit_Command line" [
+        style = "invis";
+      ];
+      "@siteimprove/alfa-interviewer" -> "exit_Command line" [
+        style = "invis";
+      ];
+      "@siteimprove/alfa-cli" -> "exit_Command line" [
         style = "invis";
       ];
     }
@@ -329,7 +290,7 @@ digraph "dependency-graph-Alfa integrations" {
       "name_Web crawler" [
         penwidth = 5;
         shape = "rectangle";
-        color = "#00ff40";
+        color = "#00ff00";
         label = "Web crawler";
       ];
       "exit_Web crawler" [
@@ -354,13 +315,32 @@ digraph "dependency-graph-Alfa integrations" {
         style = "invis";
       ];
     }
+    subgraph "cluster_Accessibility Code Checker" {
+      color = "#000000";
+      label = "";
+      "name_Accessibility Code Checker" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#aa00ff";
+        label = "Accessibility Code Checker";
+      ];
+      "exit_Accessibility Code Checker" [
+        style = "invis";
+      ];
+      "@siteimprove/alfa-test-utils" [
+        label = "alfa-test-utils";
+      ];
+      "@siteimprove/alfa-test-utils" -> "exit_Accessibility Code Checker" [
+        style = "invis";
+      ];
+    }
     "exit_Formatters" -> "exit_Alfa integrations" [
       style = "invis";
     ];
-    "exit_Command line" -> "exit_Alfa integrations" [
+    "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
       style = "invis";
     ];
-    "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
+    "exit_Command line" -> "exit_Alfa integrations" [
       style = "invis";
     ];
     "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
@@ -399,7 +379,7 @@ digraph "dependency-graph-Alfa integrations" {
     "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
       style = "invis";
     ];
-    "@siteimprove/alfa-test-utils" -> "exit_Alfa integrations" [
+    "exit_Accessibility Code Checker" -> "exit_Alfa integrations" [
       style = "invis";
     ];
     "exit_Formatters" -> "exit_Alfa integrations" [
@@ -436,22 +416,6 @@ digraph "dependency-graph-Alfa integrations" {
       style = "invis";
     ];
   }
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-act" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-earl" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-earl" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
   "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-formatter" [
     style = "invis";
   ];
@@ -459,188 +423,12 @@ digraph "dependency-graph-Alfa integrations" {
     style = "solid";
     color = "black";
   ];
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-future" [
+  "@siteimprove/alfa-vitest" -> "@siteimprove/alfa-assert" [
     style = "invis";
   ];
-  "exit_Formatters" -> "@siteimprove/alfa-future" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-hash" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-rules" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-earl" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-test-deprecated" [
-    style = "dotted";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-functor" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-functor" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-json" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-json" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-mapper" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-option" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-parser" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-parser" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-predicate" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-predicate" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-refinement" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-refinement" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-result" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-thunk" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-thunk" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-command" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-test-deprecated" [
-    style = "dotted";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-url" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-playwright" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-test-deprecated" [
-    style = "dotted";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-enzyme" -> "@siteimprove/alfa-react" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-enzyme" -> "@siteimprove/alfa-react" [
+  "@siteimprove/alfa-vitest" -> "@siteimprove/alfa-assert" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-enzyme" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-chai" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
   ];
   "@siteimprove/alfa-chai" -> "@siteimprove/alfa-assert" [
     style = "invis";
@@ -648,315 +436,19 @@ digraph "dependency-graph-Alfa integrations" {
   "@siteimprove/alfa-chai" -> "@siteimprove/alfa-assert" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-chai" -> "@siteimprove/alfa-future" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-future" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-chai" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-chai" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-mapper" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-angular" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-angular" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-angular" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-angular" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-array" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-array" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-device" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-dom" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-equatable" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-equatable" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-http" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-iterable" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-iterable" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-json" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-json" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-mapper" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-option" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-promise" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-promise" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
   ];
   "exit_Web crawler" -> "name_Integrations with frameworks" [
     style = "solid";
-    color = "#00ff40";
+    color = "#00ff00";
     lhead = "cluster_Integrations with frameworks";
     ltail = "cluster_Web crawler";
   ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-result" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-time" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-time" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-url" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-web" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-scraper" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-test-deprecated" [
-    style = "dotted";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-option" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-refinement" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-refinement" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-react" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-interviewer" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-act" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-interviewer" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-hash" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-interviewer" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-result" [
-    style = "invis";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
   "@siteimprove/alfa-vue" -> "@siteimprove/alfa-cheerio" [
     style = "invis";
   ];
   "@siteimprove/alfa-vue" -> "@siteimprove/alfa-cheerio" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-vue" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-vue" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-vue" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-vue" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jasmine" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
   ];
   "@siteimprove/alfa-jasmine" -> "@siteimprove/alfa-assert" [
     style = "invis";
@@ -965,177 +457,17 @@ digraph "dependency-graph-Alfa integrations" {
     style = "solid";
     color = "black";
   ];
-  "@siteimprove/alfa-jasmine" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jasmine" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-url" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-puppeteer" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-future" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-future" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-option" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-performance" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-performance" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-predicate" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-predicate" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-result" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-sequence" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-sequence" [
-    style = "solid";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-assert" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
   "@siteimprove/alfa-cli" -> "@siteimprove/alfa-command" [
     style = "invis";
   ];
   "@siteimprove/alfa-cli" -> "@siteimprove/alfa-command" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-device" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
   ];
   "exit_Command line" -> "name_Formatters" [
     style = "solid";
-    color = "#ff00bf";
+    color = "#ff00aa";
     lhead = "cluster_Formatters";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-http" [
-    style = "solid";
-    color = "#ff00bf";
     ltail = "cluster_Command line";
   ];
   "@siteimprove/alfa-cli" -> "@siteimprove/alfa-interviewer" [
@@ -1144,361 +476,19 @@ digraph "dependency-graph-Alfa integrations" {
   "@siteimprove/alfa-cli" -> "@siteimprove/alfa-interviewer" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-iterable" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-iterable" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-option" [
-    style = "invis";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-result" [
-    style = "invis";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-rules" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
   ];
   "exit_Command line" -> "name_Web crawler" [
     style = "solid";
-    color = "#ff00bf";
+    color = "#ff00aa";
     lhead = "cluster_Web crawler";
     ltail = "cluster_Command line";
   ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-time" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-time" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-url" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-cli" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Command line" -> "@siteimprove/alfa-web" [
-    style = "solid";
-    color = "#ff00bf";
-    ltail = "cluster_Command line";
-  ];
-  "@siteimprove/alfa-jquery" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jquery" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jquery" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jquery" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-act" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-aria" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-aria" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-array" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-array" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-cascade" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-cascade" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-css" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-css" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-dom" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-equatable" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-equatable" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-iterable" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-iterable" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-json" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-json" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-map" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-map" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-performance" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-performance" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-predicate" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-predicate" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-refinement" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-refinement" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-rules" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-selective" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-selective" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-selector" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-selector" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-sequence" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-sequence" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-wcag" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-wcag" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-web" [
-    style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-device" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-http" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-option" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-record" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-record" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-result" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-test-deprecated" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-test-utils" -> "@siteimprove/alfa-url" [
-    style = "dotted";
-    color = "black";
-  ];
-  "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
   "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-formatter" [
     style = "invis";
   ];
   "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-formatter" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-sarif" -> "@siteimprove/alfa-sarif" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-sarif" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-webdriver" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-webdriver" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-webdriver" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-webdriver" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
   ];
   "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-frontier" [
     style = "invis";
@@ -1507,60 +497,12 @@ digraph "dependency-graph-Alfa integrations" {
     style = "solid";
     color = "black";
   ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-result" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
   "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-scraper" [
     style = "invis";
   ];
   "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-scraper" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-url" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-crawler" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-unexpected" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
   ];
   "@siteimprove/alfa-unexpected" -> "@siteimprove/alfa-assert" [
     style = "invis";
@@ -1569,220 +511,12 @@ digraph "dependency-graph-Alfa integrations" {
     style = "solid";
     color = "black";
   ];
-  "@siteimprove/alfa-unexpected" -> "@siteimprove/alfa-future" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-future" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-unexpected" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-unexpected" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-selenium" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-selenium" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-selenium" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-selenium" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-selenium" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-equatable" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-equatable" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-json" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-json" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-option" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-option" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-predicate" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-predicate" [
-    style = "solid";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-url" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-frontier" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-  ];
-  "exit_Web crawler" -> "@siteimprove/alfa-test-deprecated" [
-    style = "invis";
-    color = "#00ff40";
-    ltail = "cluster_Web crawler";
-  ];
-  "@siteimprove/alfa-formatter-json" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
   "@siteimprove/alfa-formatter-json" -> "@siteimprove/alfa-formatter" [
     style = "invis";
   ];
   "@siteimprove/alfa-formatter-json" -> "@siteimprove/alfa-formatter" [
     style = "solid";
     color = "black";
-  ];
-  "@siteimprove/alfa-formatter-json" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter-json" -> "@siteimprove/alfa-json" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-json" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-cheerio" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cheerio" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cheerio" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cheerio" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-formatter" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter" -> "@siteimprove/alfa-future" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-future" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-formatter" -> "@siteimprove/alfa-result" [
-    style = "invis";
-  ];
-  "exit_Formatters" -> "@siteimprove/alfa-result" [
-    style = "solid";
-    color = "#ff0000";
-    ltail = "cluster_Formatters";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
   ];
   "@siteimprove/alfa-jest" -> "@siteimprove/alfa-assert" [
     style = "invis";
@@ -1791,151 +525,22 @@ digraph "dependency-graph-Alfa integrations" {
     style = "solid";
     color = "black";
   ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-future" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-future" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-rules" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-rules" [
-    style = "dotted";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-jest" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-act" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-act" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-assert" [
-    style = "invis";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-assert" [
+  "exit_Browser automations" -> "name_Test frameworks" [
     style = "solid";
-    color = "black";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-device" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-device" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-dom" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
+    color = "#00aaff";
+    lhead = "cluster_Test frameworks";
+    ltail = "cluster_Browser automations";
   ];
   "exit_Integrations with frameworks" -> "name_Formatters" [
     style = "solid";
-    color = "#00ffff";
+    color = "#00ffaa";
     lhead = "cluster_Formatters";
     ltail = "cluster_Integrations with frameworks";
   ];
   "exit_Integrations with frameworks" -> "name_Formatters" [
     style = "invis";
-    color = "#00ffff";
+    color = "#00ffaa";
     lhead = "cluster_Formatters";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-hash" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-http" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-http" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-mapper" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-url" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-url" [
-    style = "invis";
-    color = "#00ffff";
-    ltail = "cluster_Integrations with frameworks";
-  ];
-  "@siteimprove/alfa-cypress" -> "@siteimprove/alfa-web" [
-    style = "invis";
-  ];
-  "exit_Integrations with frameworks" -> "@siteimprove/alfa-web" [
-    style = "invis";
-    color = "#00ffff";
     ltail = "cluster_Integrations with frameworks";
   ];
 }

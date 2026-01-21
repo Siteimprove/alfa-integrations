@@ -8,45 +8,76 @@ digraph "dependency-graph-@siteimprove/alfa-scraper" {
   subgraph "cluster_src" {
     color = "#000000";
     label = "";
-    "src/credentials.ts" [
-      label = "src/credentials.ts";
-    ];
     "exit_src" [
       style = "invis";
     ];
-    "src/awaiter.ts" [
-      label = "src/awaiter.ts";
-    ];
-    "src/archive.ts" [
-      label = "src/archive.ts";
-    ];
-    "src/index.ts" [
-      label = "src/index.ts";
-      color = "#ff0000";
-      penwidth = 5;
-    ];
-    "src/screenshot.ts" [
-      label = "src/screenshot.ts";
-    ];
-    "src/scraper.ts" [
-      label = "src/scraper.ts";
-    ];
-    "src/credentials.ts" -> "exit_src" [
+    subgraph "cluster_src" {
+      color = "#000000";
+      label = "";
+      "name_src" [
+        penwidth = 5;
+        shape = "rectangle";
+        color = "#ff0000";
+        label = "src";
+      ];
+      "exit_src" [
+        style = "invis";
+      ];
+      "src/credentials.ts" [
+        label = "credentials.ts";
+      ];
+      "src/awaiter.ts" [
+        label = "awaiter.ts";
+      ];
+      "src/archive.ts" [
+        label = "archive.ts";
+      ];
+      "src/index.ts" [
+        label = "index.ts";
+        color = "#ff0000";
+        penwidth = 5;
+      ];
+      "src/screenshot.ts" [
+        label = "screenshot.ts";
+      ];
+      "src/scraper.ts" [
+        label = "scraper.ts";
+      ];
+      "src/credentials.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/awaiter.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/archive.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/index.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/screenshot.ts" -> "exit_src" [
+        style = "invis";
+      ];
+      "src/scraper.ts" -> "exit_src" [
+        style = "invis";
+      ];
+    }
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/awaiter.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/archive.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/index.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/screenshot.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
-    "src/scraper.ts" -> "exit_src" [
+    "exit_src" -> "exit_src" [
       style = "invis";
     ];
   }
