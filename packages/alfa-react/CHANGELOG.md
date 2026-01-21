@@ -1,5 +1,17 @@
 # @siteimprove/alfa-react
 
+## 0.81.0
+
+### Minor Changes
+
+- **Breaking:** `React.toPage` is now `async`. A new `React.toNode` function is available to return the (Alfa) JSON representation of the React root of a React node. ([#212](https://github.com/Siteimprove/alfa-integrations/pull/212))
+
+  This adapts to React 19, mostly getting rid of `react-test-renderer` to render the React node before serializing them. We now use React renderer directly.
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#230](https://github.com/Siteimprove/alfa-integrations/pull/230))
+
 ## 0.80.6
 
 ### Patch Changes

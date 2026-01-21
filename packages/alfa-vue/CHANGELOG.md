@@ -1,5 +1,11 @@
 # @siteimprove/alfa-vue
 
+## 0.81.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#230](https://github.com/Siteimprove/alfa-integrations/pull/230))
+
 ## 0.80.6
 
 ### Patch Changes

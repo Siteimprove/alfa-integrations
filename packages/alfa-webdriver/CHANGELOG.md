@@ -1,5 +1,13 @@
 # @siteimprove/alfa-webdriver
 
+## 0.81.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa. ([#230](https://github.com/Siteimprove/alfa-integrations/pull/230))
+
+- **Changed:** Updated Webdriver to 9.21.0 ([#198](https://github.com/Siteimprove/alfa-integrations/pull/198))
+
 ## 0.80.6
 
 ### Patch Changes
