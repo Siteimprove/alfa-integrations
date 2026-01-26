@@ -1104,6 +1104,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@jasminejs/reporters@npm:^1.0.0":
+  version: 1.0.0
+  resolution: "@jasminejs/reporters@npm:1.0.0"
+  checksum: 10/1a9c502dee39c5cbec18d60ee9b350c2d602a4d15cad5a19fff6902ac2217c2bddfb777e47526d13bd57f018bcd670c1c0aeda55210224250cf0a1c2c754e1be
+  languageName: node
+  linkType: hard
+
 "@jest/console@npm:30.2.0":
   version: 30.2.0
   resolution: "@jest/console@npm:30.2.0"
@@ -2916,8 +2923,8 @@ __metadata:
     "@siteimprove/alfa-mapper": "npm:^0.109.0"
     "@siteimprove/alfa-rules": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    "@types/jasmine": "npm:^5.1.14"
-    jasmine: "npm:^5.13.0"
+    "@types/jasmine": "npm:^6.0.0"
+    jasmine: "npm:^6.0.0"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.109.0
     "@siteimprove/alfa-hash": ^0.109.0
@@ -4155,10 +4162,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jasmine@npm:^5.1.14":
-  version: 5.1.14
-  resolution: "@types/jasmine@npm:5.1.14"
-  checksum: 10/272575ca1da65ac9994556a3f156c38cc892684a609a1ad490e7bd43cdb8c25fb09e14ffd6476ca98cddc0a17f987c4c88300ca86b5abbea05e8cdf3941d1566
+"@types/jasmine@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "@types/jasmine@npm:6.0.0"
+  checksum: 10/22a838ab8d3221da78629819744b7a0065ce6381d198d745258c3ec29974470240160d47fb06b629c1653f285ed23c15c101f0f6939d2817abc02f253ff491b7
   languageName: node
   linkType: hard
 
@@ -7625,6 +7632,17 @@ __metadata:
   languageName: node
   linkType: hard
 
+"glob@npm:^10.2.2 || ^11.0.3 || ^12.0.0 || ^13.0.0":
+  version: 13.0.0
+  resolution: "glob@npm:13.0.0"
+  dependencies:
+    minimatch: "npm:^10.1.1"
+    minipass: "npm:^7.1.2"
+    path-scurry: "npm:^2.0.0"
+  checksum: 10/de390721d29ee1c9ea41e40ec2aa0de2cabafa68022e237dc4297665a5e4d650776f2573191984ea1640aba1bf0ea34eddef2d8cbfbfc2ad24b5fb0af41d8846
+  languageName: node
+  linkType: hard
+
 "glob@npm:^7.1.3, glob@npm:^7.1.4, glob@npm:^7.2.3":
   version: 7.2.3
   resolution: "glob@npm:7.2.3"
@@ -8296,22 +8314,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-core@npm:~5.13.0":
-  version: 5.13.0
-  resolution: "jasmine-core@npm:5.13.0"
-  checksum: 10/7c88618b1aa442da9db60d1ca960073c8582d9cf4ac89543609015a25ab90437d65c8eb63c84edd72a4059056c96a8ca579e1eadbb7addf9cbe0c18110f8fa2f
+"jasmine-core@npm:~6.0.0":
+  version: 6.0.1
+  resolution: "jasmine-core@npm:6.0.1"
+  checksum: 10/aef48f734429c6fff84336c684fc67f8c37f69db68fa88733d585934f9731703e4a067a62b101b2e83ff70a10df36d6a98d2de33154eceb703b6936680c7e7d7
   languageName: node
   linkType: hard
 
-"jasmine@npm:^5.13.0":
-  version: 5.13.0
-  resolution: "jasmine@npm:5.13.0"
+"jasmine@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "jasmine@npm:6.0.0"
   dependencies:
-    glob: "npm:^10.2.2"
-    jasmine-core: "npm:~5.13.0"
+    "@jasminejs/reporters": "npm:^1.0.0"
+    glob: "npm:^10.2.2 || ^11.0.3 || ^12.0.0 || ^13.0.0"
+    jasmine-core: "npm:~6.0.0"
   bin:
     jasmine: bin/jasmine.js
-  checksum: 10/8f829a368d80f43f4509099f4e981f09c9300b27fde4b464b5ecbb4bbcc9dca2f4a3dae5d5b1d9698c75ea82616689bc3fba66a0d97f75debf79bb2506aa8cbc
+  checksum: 10/aa08ce16ce857bf780d1ad8d900dede2457c3ec054432602cbf0fb96c1c94ed384f47aca54ddfc9a5419b7c1e0f41c91ff615a54b234335bd721fdc527ef5e22
   languageName: node
   linkType: hard
 
@@ -9184,10 +9203,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"lru-cache@npm:^11.2.4":
-  version: 11.2.4
-  resolution: "lru-cache@npm:11.2.4"
-  checksum: 10/3b2da74c0b6653767f8164c38c4c4f4d7f0cc10c62bfa512663d94a830191ae6a5af742a8d88a8b30d5f9974652d3adae53931f32069139ad24fa2a18a199aca
+"lru-cache@npm:^11.0.0, lru-cache@npm:^11.2.4":
+  version: 11.2.5
+  resolution: "lru-cache@npm:11.2.5"
+  checksum: 10/be50f66c6e23afeaab9c7eefafa06344dd13cde7b3528809c2660c4ad70d93b9ba537366634623cbb2eb411671f526b5a4af2c602507b9258aead0fa8d713f6c
   languageName: node
   linkType: hard
 
@@ -9380,6 +9399,15 @@ __metadata:
   dependencies:
     brace-expansion: "npm:^2.0.1"
   checksum: 10/b4e98f4dc740dcf33999a99af23ae6e5e1c47632f296dc95cb649a282150f92378d41434bf64af4ea2e5975255a757d031c3bf014bad9214544ac57d97f3ba63
+  languageName: node
+  linkType: hard
+
+"minimatch@npm:^10.1.1":
+  version: 10.1.1
+  resolution: "minimatch@npm:10.1.1"
+  dependencies:
+    "@isaacs/brace-expansion": "npm:^5.0.0"
+  checksum: 10/110f38921ea527022e90f7a5f43721838ac740d0a0c26881c03b57c261354fb9a0430e40b2c56dfcea2ef3c773768f27210d1106f1f2be19cde3eea93f26f45e
   languageName: node
   linkType: hard
 
@@ -10048,6 +10076,16 @@ __metadata:
     lru-cache: "npm:^10.2.0"
     minipass: "npm:^5.0.0 || ^6.0.2 || ^7.0.0"
   checksum: 10/5e8845c159261adda6f09814d7725683257fcc85a18f329880ab4d7cc1d12830967eae5d5894e453f341710d5484b8fdbbd4d75181b4d6e1eb2f4dc7aeadc434
+  languageName: node
+  linkType: hard
+
+"path-scurry@npm:^2.0.0":
+  version: 2.0.1
+  resolution: "path-scurry@npm:2.0.1"
+  dependencies:
+    lru-cache: "npm:^11.0.0"
+    minipass: "npm:^7.1.2"
+  checksum: 10/1e9c74e9ccf94d7c16056a5cb2dba9fa23eec1bc221ab15c44765486b9b9975b4cd9a4d55da15b96eadf67d5202e9a2f1cec9023fbb35fe7d9ccd0ff1891f88b
   languageName: node
   linkType: hard
 
