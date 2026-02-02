@@ -186,7 +186,7 @@ namespace Performance_2 {
     function empty(): Durations;
     // @internal (undocumented)
     function recordCommon(durations: Durations): Performance_3<string>;
-        {};
+    export {};
 }
 export { Performance_2 as Performance }
 
@@ -251,7 +251,7 @@ export namespace SIP {
             Version: `${number}.${number}.${number}`;
         }
         export function payload(audit: Audit | Audit.JSON, options: Partial<Options>, timestamp: string): Result<Payload, string>;
-            {};
+        export {};
     }
     // (undocumented)
     export interface Options {
@@ -277,7 +277,7 @@ export namespace SIP {
             Id: string;
         }
         export function payload(Id: string, audit: Audit | Audit.JSON): Payload;
-            {};
+        export {};
     }
     export function upload(audit: Audit | Audit.JSON, options: Options): Promise<Result<string, Array_2<string>>>;
     // @internal
