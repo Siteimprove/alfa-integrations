@@ -1805,9 +1805,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@puppeteer/browsers@npm:2.11.1, @puppeteer/browsers@npm:^2.2.0":
-  version: 2.11.1
-  resolution: "@puppeteer/browsers@npm:2.11.1"
+"@puppeteer/browsers@npm:2.11.2, @puppeteer/browsers@npm:^2.2.0":
+  version: 2.11.2
+  resolution: "@puppeteer/browsers@npm:2.11.2"
   dependencies:
     debug: "npm:^4.4.3"
     extract-zip: "npm:^2.0.1"
@@ -1818,7 +1818,7 @@ __metadata:
     yargs: "npm:^17.7.2"
   bin:
     browsers: lib/cjs/main-cli.js
-  checksum: 10/b56343ca285f3df4bab71032970183c9d8547fad12cf0067b4bac5b3067619d15602051e3fb2af87c624a008a928040ab1d7507fbdc46b99cb59b89c60890f4e
+  checksum: 10/7de1cbf31fe75a455ea2ad9bd1acb62111e16510096d4e0bdb7930f57d72fd764d43a6106f43429605e8490702850d9b2c0da04860e7fd8371b52f4a7271bd0a
   languageName: node
   linkType: hard
 
@@ -3164,14 +3164,14 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.109.0"
     "@siteimprove/alfa-url": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    playwright: "npm:^1.58.0"
+    playwright: "npm:^1.58.1"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.109.0
     "@siteimprove/alfa-dom": ^0.109.0
     "@siteimprove/alfa-http": ^0.109.0
     "@siteimprove/alfa-url": ^0.109.0
     "@siteimprove/alfa-web": ^0.109.0
-    playwright: ^1.58.0
+    playwright: ^1.58.1
   languageName: unknown
   linkType: soft
 
@@ -3207,7 +3207,7 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.109.0"
     "@siteimprove/alfa-url": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    puppeteer: "npm:^24.36.0"
+    puppeteer: "npm:^24.36.1"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.109.0
     "@siteimprove/alfa-dom": ^0.109.0
@@ -3228,11 +3228,11 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
     "@types/jsdom": "npm:^27"
-    "@types/react": "npm:^19.2.9"
+    "@types/react": "npm:^19.2.10"
     "@types/react-dom": "npm:^19"
     jsdom: "npm:^27.4.0"
-    react: "npm:^19.2.3"
-    react-dom: "npm:^19.2.3"
+    react: "npm:^19.2.4"
+    react-dom: "npm:^19.2.4"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.109.0
     "@siteimprove/alfa-dom": ^0.109.0
@@ -3399,7 +3399,7 @@ __metadata:
     "@siteimprove/alfa-time": "npm:^0.109.0"
     "@siteimprove/alfa-url": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    puppeteer: "npm:^24.36.0"
+    puppeteer: "npm:^24.36.1"
   peerDependencies:
     "@siteimprove/alfa-array": ^0.109.0
     "@siteimprove/alfa-device": ^0.109.0
@@ -3645,7 +3645,7 @@ __metadata:
     "@siteimprove/alfa-url": "npm:^0.109.0"
     "@siteimprove/alfa-wcag": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    axios: "npm:^1.13.3"
+    axios: "npm:^1.13.4"
     axios-mock-adapter: "npm:^2.1.0"
     chalk: "npm:^5.3.0"
     simple-git: "npm:^3.25.0"
@@ -3939,7 +3939,7 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.109.0"
     "@siteimprove/alfa-url": "npm:^0.109.0"
     "@siteimprove/alfa-web": "npm:^0.109.0"
-    webdriverio: "npm:^9.23.2"
+    webdriverio: "npm:^9.23.3"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.109.0
     "@siteimprove/alfa-dom": ^0.109.0
@@ -4240,12 +4240,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.9":
-  version: 19.2.9
-  resolution: "@types/react@npm:19.2.9"
+"@types/react@npm:^19.2.10":
+  version: 19.2.10
+  resolution: "@types/react@npm:19.2.10"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10/580a4acf91cb596edfcf280e3d94380bd5bc675fdce257787432cc77ab67440374fd17a1abde869f3bd47ec1705bf2d66e442a9e9e371603f628e34f9d5790a6
+  checksum: 10/0e34a0e42db02f4b3f4bed446128c555446c2854b833d71d597e6c8b08800dd90519a03a226ad250cccc4a0c9e51bd3f9c54cdcb79ee1219f4d5b318fb3a3813
   languageName: node
   linkType: hard
 
@@ -4717,17 +4717,18 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/config@npm:9.23.2":
-  version: 9.23.2
-  resolution: "@wdio/config@npm:9.23.2"
+"@wdio/config@npm:9.23.3":
+  version: 9.23.3
+  resolution: "@wdio/config@npm:9.23.3"
   dependencies:
     "@wdio/logger": "npm:9.18.0"
-    "@wdio/types": "npm:9.23.2"
-    "@wdio/utils": "npm:9.23.2"
+    "@wdio/types": "npm:9.23.3"
+    "@wdio/utils": "npm:9.23.3"
     deepmerge-ts: "npm:^7.0.3"
     glob: "npm:^10.2.2"
     import-meta-resolve: "npm:^4.0.0"
-  checksum: 10/bbd1212f4373f828b21b13cb178a7b9a440a181bdee96edc56b8c2715a81f4168584d3370bbd5f0af4a1c31f7fd36b33782dc9c28813eb0b93ab7877c39c3084
+    jiti: "npm:^2.6.1"
+  checksum: 10/ad83f216b4736ca5799cdd15e72abe28868264b67a04c27a55241d6485f2facd58a3f5b083738979e1381fb50d4d78365dca03e0774e89bd6899ef86cdedac86
   languageName: node
   linkType: hard
 
@@ -4744,10 +4745,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/protocols@npm:9.23.2":
-  version: 9.23.2
-  resolution: "@wdio/protocols@npm:9.23.2"
-  checksum: 10/f5f193b6cb1f034741a16fc74208a34d70b1a83eabcf65358016d827a64399b3b298ab9e76d56387e2469f9878f31a08ad33fae065f6eb0dae186ff72e21f3eb
+"@wdio/protocols@npm:9.23.3":
+  version: 9.23.3
+  resolution: "@wdio/protocols@npm:9.23.3"
+  checksum: 10/da5649822b54b6ad65366b72192adbacb03d54765e483e0ed7521cd7f94302c69621a4adfb4a7e997fb00bbf181497a3283237e024d660dd32b8306996f71c4c
   languageName: node
   linkType: hard
 
@@ -4760,22 +4761,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@wdio/types@npm:9.23.2":
-  version: 9.23.2
-  resolution: "@wdio/types@npm:9.23.2"
+"@wdio/types@npm:9.23.3":
+  version: 9.23.3
+  resolution: "@wdio/types@npm:9.23.3"
   dependencies:
     "@types/node": "npm:^20.1.0"
-  checksum: 10/e66d42d0370f0ed84f9ce9e378397293683764204dd13ffbdba9e5e61ba439949181a3b3d46e8667ce459fc9a0bafad6e6f3afbf709e9cde4028114370c2e6d3
+  checksum: 10/aff42ebb7d39d8e74021d08a8667ec104d03edca8fa89850e401f87a0062b58a59cf97bdc1376888630da97134e6158db6f0e767db138570195134db07c82d13
   languageName: node
   linkType: hard
 
-"@wdio/utils@npm:9.23.2":
-  version: 9.23.2
-  resolution: "@wdio/utils@npm:9.23.2"
+"@wdio/utils@npm:9.23.3":
+  version: 9.23.3
+  resolution: "@wdio/utils@npm:9.23.3"
   dependencies:
     "@puppeteer/browsers": "npm:^2.2.0"
     "@wdio/logger": "npm:9.18.0"
-    "@wdio/types": "npm:9.23.2"
+    "@wdio/types": "npm:9.23.3"
     decamelize: "npm:^6.0.0"
     deepmerge-ts: "npm:^7.0.3"
     edgedriver: "npm:^6.1.2"
@@ -4787,7 +4788,7 @@ __metadata:
     safaridriver: "npm:^1.0.0"
     split2: "npm:^4.2.0"
     wait-port: "npm:^1.1.0"
-  checksum: 10/c7f5ac341d9139552c5f9c6e61e560b5c63426d920a03c4787e03419c62a77d853a66ade82fcf78d3d0af3824cbfe5702d43cc9c1d6c4b863b0b3c1e610a5412
+  checksum: 10/ff5b5748550b0f8e7da6d6a031de0935dde792a7e193baa0ee764d596d772f5ac7d2fa893b3812ca2793c61c38ddf008b6b815b49b3b499c627eb93c458a35d2
   languageName: node
   linkType: hard
 
@@ -5234,14 +5235,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.13.2, axios@npm:^1.13.3":
-  version: 1.13.3
-  resolution: "axios@npm:1.13.3"
+"axios@npm:^1.13.2, axios@npm:^1.13.4":
+  version: 1.13.4
+  resolution: "axios@npm:1.13.4"
   dependencies:
     follow-redirects: "npm:^1.15.6"
     form-data: "npm:^4.0.4"
     proxy-from-env: "npm:^1.1.0"
-  checksum: 10/2ceca9215671f9c2bcd5d8a0a1a667e9a35f9f7cfae88f25bba773ed9612de6cac50b2bf8be5e6918cbd2db601b4431ca87a00bffd9682939a8b85da9c89345a
+  checksum: 10/54b7ef71c64837f9d52475832337f520cf6fa85c94612e03a3a2aad7082804a2544741267122696662147e90e6d2746601346984cf531ae715ecdb56d586a04c
   languageName: node
   linkType: hard
 
@@ -8772,7 +8773,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jiti@npm:^2.6.0":
+"jiti@npm:^2.6.0, jiti@npm:^2.6.1":
   version: 2.6.1
   resolution: "jiti@npm:2.6.1"
   bin:
@@ -10175,27 +10176,27 @@ __metadata:
   languageName: node
   linkType: hard
 
-"playwright-core@npm:1.58.0":
-  version: 1.58.0
-  resolution: "playwright-core@npm:1.58.0"
+"playwright-core@npm:1.58.1":
+  version: 1.58.1
+  resolution: "playwright-core@npm:1.58.1"
   bin:
     playwright-core: cli.js
-  checksum: 10/718549cdcd22e55f42887e7b832276c9a50e112b278d22a2242bb00c401021623fedf9554c7090f132e389b5bbe11a987ce71e3c877e767eed4dd9bfe573019c
+  checksum: 10/1b627b93798644e2802321866037e222b08ec5975e6bfc0b2a8ca40d7196366834dd3f1e16dc63856d3e7e0b673c3d0f71fd5f1ac5f3c8e6610bedef4fbc31cf
   languageName: node
   linkType: hard
 
-"playwright@npm:^1.58.0":
-  version: 1.58.0
-  resolution: "playwright@npm:1.58.0"
+"playwright@npm:^1.58.1":
+  version: 1.58.1
+  resolution: "playwright@npm:1.58.1"
   dependencies:
     fsevents: "npm:2.3.2"
-    playwright-core: "npm:1.58.0"
+    playwright-core: "npm:1.58.1"
   dependenciesMeta:
     fsevents:
       optional: true
   bin:
     playwright: cli.js
-  checksum: 10/5ef5d0977906046400cee9a359f18c87eafb3e3193a33a22351cc84740c0dffb3cff7b9f2320d1e200817dbf24e63b747a0546b6c671a9fd95937e2402682ad9
+  checksum: 10/63cf0a858e30d19beef17ec952be427083f3863d1302d53b56f4870972c0083797039a81f909840a903becdbf44285d0940fa74e6c011cfaa4b2bb3448c10536
   languageName: node
   linkType: hard
 
@@ -10392,34 +10393,34 @@ __metadata:
   languageName: node
   linkType: hard
 
-"puppeteer-core@npm:24.36.0":
-  version: 24.36.0
-  resolution: "puppeteer-core@npm:24.36.0"
+"puppeteer-core@npm:24.36.1":
+  version: 24.36.1
+  resolution: "puppeteer-core@npm:24.36.1"
   dependencies:
-    "@puppeteer/browsers": "npm:2.11.1"
+    "@puppeteer/browsers": "npm:2.11.2"
     chromium-bidi: "npm:13.0.1"
     debug: "npm:^4.4.3"
     devtools-protocol: "npm:0.0.1551306"
     typed-query-selector: "npm:^2.12.0"
     webdriver-bidi-protocol: "npm:0.4.0"
     ws: "npm:^8.19.0"
-  checksum: 10/a276707deaaac0e904988193851906ffb82fa72591a83b357dfe5be0d2e5feaa9f3396e5cde45589239374b13d0a12e2c95454233a069ff631c27a5cc02f0c19
+  checksum: 10/806abbad570ecc77dfec95843fbc6626bc357995ac047012bcc0906ebc99292221c43ef70391f63edcbdc22136da6d42bc3655f1fb24a280cec0eab75467eec1
   languageName: node
   linkType: hard
 
-"puppeteer@npm:^24.36.0":
-  version: 24.36.0
-  resolution: "puppeteer@npm:24.36.0"
+"puppeteer@npm:^24.36.1":
+  version: 24.36.1
+  resolution: "puppeteer@npm:24.36.1"
   dependencies:
-    "@puppeteer/browsers": "npm:2.11.1"
+    "@puppeteer/browsers": "npm:2.11.2"
     chromium-bidi: "npm:13.0.1"
     cosmiconfig: "npm:^9.0.0"
     devtools-protocol: "npm:0.0.1551306"
-    puppeteer-core: "npm:24.36.0"
+    puppeteer-core: "npm:24.36.1"
     typed-query-selector: "npm:^2.12.0"
   bin:
     puppeteer: lib/cjs/puppeteer/node/cli.js
-  checksum: 10/c21415c8a52f3f121585474872efe350d7af2150e09f3cf09422ce39f9d729f6c15fe3c60d2acf7ab8061f68ef82cfa764731d498ad3d5c3ed9503802d53cc65
+  checksum: 10/3efb73a448099e12bf57217d031f072cb41eeaa4517d0276b2f2e504e40675a61295d09f5209d8a59b2d3e6dc9e4baf84cf350cf60bd7284c8b0f4432aecc0fd
   languageName: node
   linkType: hard
 
@@ -10483,14 +10484,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.2.3":
-  version: 19.2.3
-  resolution: "react-dom@npm:19.2.3"
+"react-dom@npm:^19.2.4":
+  version: 19.2.4
+  resolution: "react-dom@npm:19.2.4"
   dependencies:
     scheduler: "npm:^0.27.0"
   peerDependencies:
-    react: ^19.2.3
-  checksum: 10/5780f6d4c8e8ece09f82c5500ba2d55e01c30b5273f9281734d7d3b65013cd1fa52ec4e4436e5248c0a9e5bc340836044051168bbad8d7eac4d33ee6c2a867a1
+    react: ^19.2.4
+  checksum: 10/ec17721a8cb131bc33480a9f738bc5bbfe4bd11b11cf69f3f473605346578a329ad26ceef6ef0761ea67a4b455803407dd7ed4ba3d8a5abd2cee8c32d221e498
   languageName: node
   linkType: hard
 
@@ -10501,10 +10502,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.3":
-  version: 19.2.3
-  resolution: "react@npm:19.2.3"
-  checksum: 10/d16b7f35c0d35a56f63d9d1693819762e4abc479c57dd6310298920bed3820fcec7e17a99d44983416d8f5049143ea45b8005d3ab8324bae8973224400502b08
+"react@npm:^19.2.4":
+  version: 19.2.4
+  resolution: "react@npm:19.2.4"
+  checksum: 10/18179fe217f67eb2d0bc61cd04e7ad3c282ea09a1dface7eacd71816f62609f4bbf566c447c704335284deb8397b00bca084e0cd60e6f437279a7498e2d0bfe0
   languageName: node
   linkType: hard
 
@@ -12277,37 +12278,37 @@ __metadata:
   languageName: node
   linkType: hard
 
-"webdriver@npm:9.23.2":
-  version: 9.23.2
-  resolution: "webdriver@npm:9.23.2"
+"webdriver@npm:9.23.3":
+  version: 9.23.3
+  resolution: "webdriver@npm:9.23.3"
   dependencies:
     "@types/node": "npm:^20.1.0"
     "@types/ws": "npm:^8.5.3"
-    "@wdio/config": "npm:9.23.2"
+    "@wdio/config": "npm:9.23.3"
     "@wdio/logger": "npm:9.18.0"
-    "@wdio/protocols": "npm:9.23.2"
-    "@wdio/types": "npm:9.23.2"
-    "@wdio/utils": "npm:9.23.2"
+    "@wdio/protocols": "npm:9.23.3"
+    "@wdio/types": "npm:9.23.3"
+    "@wdio/utils": "npm:9.23.3"
     deepmerge-ts: "npm:^7.0.3"
     https-proxy-agent: "npm:^7.0.6"
     undici: "npm:^6.21.3"
     ws: "npm:^8.8.0"
-  checksum: 10/5b52323afa9c276860eacce1551302d95538220b7103a73f1c0365d23d15664ca71762cea627686e1e1b33d9c69e64e5a11c9d639b5de53fc0449eb0633f81c4
+  checksum: 10/c50ca3681aa9d8ed121432972352dc105c0c85671bd664a640efc5716aff03b1bbf60736b00c79b1feea32ba38033098065efc9fbbc4d260b771dccad0628b2a
   languageName: node
   linkType: hard
 
-"webdriverio@npm:^9.23.2":
-  version: 9.23.2
-  resolution: "webdriverio@npm:9.23.2"
+"webdriverio@npm:^9.23.3":
+  version: 9.23.3
+  resolution: "webdriverio@npm:9.23.3"
   dependencies:
     "@types/node": "npm:^20.11.30"
     "@types/sinonjs__fake-timers": "npm:^8.1.5"
-    "@wdio/config": "npm:9.23.2"
+    "@wdio/config": "npm:9.23.3"
     "@wdio/logger": "npm:9.18.0"
-    "@wdio/protocols": "npm:9.23.2"
+    "@wdio/protocols": "npm:9.23.3"
     "@wdio/repl": "npm:9.16.2"
-    "@wdio/types": "npm:9.23.2"
-    "@wdio/utils": "npm:9.23.2"
+    "@wdio/types": "npm:9.23.3"
+    "@wdio/utils": "npm:9.23.3"
     archiver: "npm:^7.0.1"
     aria-query: "npm:^5.3.0"
     cheerio: "npm:^1.0.0-rc.12"
@@ -12324,13 +12325,13 @@ __metadata:
     rgb2hex: "npm:0.2.5"
     serialize-error: "npm:^12.0.0"
     urlpattern-polyfill: "npm:^10.0.0"
-    webdriver: "npm:9.23.2"
+    webdriver: "npm:9.23.3"
   peerDependencies:
     puppeteer-core: ">=22.x || <=24.x"
   peerDependenciesMeta:
     puppeteer-core:
       optional: true
-  checksum: 10/582320092543704c84adf7c7448640a9dfe6cabda4586067b5368daf4474f07d4d30d4567addef5315b718275bba21f0992dc3d37638ef9fc1014f36abf88e05
+  checksum: 10/00ed8e3d28c12c82dfd5d74a5d42565b1b9dac4c67a9a36c33b49bbe66736b95b939eb7d4a9cfeac625f0ab017028180e2ea795b08289471e0754c07266ea983
   languageName: node
   linkType: hard
 
