@@ -2873,7 +2873,7 @@ __metadata:
     "@microsoft/api-extractor": "npm:^7.56.3"
     "@siteimprove/alfa-cli": "workspace:^0.81.1"
     "@siteimprove/alfa-toolchain": "npm:^0.110.0"
-    "@types/node": "npm:^25.2.2"
+    "@types/node": "npm:^25.2.3"
     knip: "npm:^5.83.1"
     minimist: "npm:^1.2.6"
     prettier: "npm:^3.8.1"
@@ -3232,7 +3232,7 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.110.0"
     "@siteimprove/alfa-web": "npm:^0.110.0"
     "@types/jsdom": "npm:^27"
-    "@types/react": "npm:^19.2.13"
+    "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19"
     jsdom: "npm:^28.0.0"
     react: "npm:^19.2.4"
@@ -4202,12 +4202,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/node@npm:*, @types/node@npm:^25.2.2":
-  version: 25.2.2
-  resolution: "@types/node@npm:25.2.2"
+"@types/node@npm:*, @types/node@npm:^25.2.3":
+  version: 25.2.3
+  resolution: "@types/node@npm:25.2.3"
   dependencies:
     undici-types: "npm:~7.16.0"
-  checksum: 10/a5d689d69168065da0ef2972c711b0382664fa52ad99e9988d174028444c71ecb6c5b641178c404acb6b526f27cd791341aa3998a66e71b9a9ee193d853db61e
+  checksum: 10/46962e3c1c0205da5b637c2e924f4eb03ce16f384af686b69afeb5fd4f8274d9a570375f8a24de2750633b69cb7ac33f0e458d9c3f20a66e12eb3a569499062d
   languageName: node
   linkType: hard
 
@@ -4236,12 +4236,12 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/react@npm:^19.2.13":
-  version: 19.2.13
-  resolution: "@types/react@npm:19.2.13"
+"@types/react@npm:^19.2.14":
+  version: 19.2.14
+  resolution: "@types/react@npm:19.2.14"
   dependencies:
     csstype: "npm:^3.2.2"
-  checksum: 10/a3bb8d09c79f5f29dfbc7e47c5b39c687f4329b76041713993c025781f32c26e4881fbeead65ff44d728945f222b781c6053263bc1819ef90596b4fbfd83f718
+  checksum: 10/fbff239089ee64b6bd9b00543594db498278b06de527ef1b0f71bb0eb09cc4445a71b5dd3c0d3d0257255c4eed94406be40a74ad4a987ade8a8d5dd65c82bc5f
   languageName: node
   linkType: hard
 
