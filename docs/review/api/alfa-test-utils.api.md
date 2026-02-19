@@ -91,7 +91,7 @@ export namespace Audit {
 }
 
 // @public (undocumented)
-export const codeCheckerVersion = "0.81.1";
+export const codeCheckerVersion = "0.81.2";
 
 // @public
 export interface CommitInformation {

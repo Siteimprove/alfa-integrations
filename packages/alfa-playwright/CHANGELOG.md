@@ -1,5 +1,11 @@
 # @siteimprove/alfa-playwright
 
+## 0.81.2
+
+### Patch Changes
+
+- **Changed:** Update Alfa to v0.111.0 ([#254](https://github.com/Siteimprove/alfa-integrations/pull/254))
+
 ## 0.81.1
 
 ### Patch Changes
