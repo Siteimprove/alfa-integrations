@@ -1,5 +1,11 @@
 # @siteimprove/alfa-chai
 
+## 0.81.3
+
+### Patch Changes
+
+- **Changed:** Fixed peer dependencies. ([`522e62850ba862e2b81595446c75b5b4d6c9e86b`](https://github.com/Siteimprove/alfa-integrations/commit/522e62850ba862e2b81595446c75b5b4d6c9e86b))
+
 ## 0.81.2
 
 ### Patch Changes
