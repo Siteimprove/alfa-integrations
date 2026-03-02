@@ -19,7 +19,13 @@ export namespace JQuery {
     value: Type,
     options?: dom.Native.Options
   ): Promise<Page> {
-    const nodeJSON = await dom.Native.fromNode(value.get(0), options);
+    const node = value.get(0);
+
+    if (node === undefined) {
+      throw new Error("Unable to convert empty jQuery collection to page");
+    }
+
+    const nodeJSON = await dom.Native.fromNode(node, options);
 
     const deviceJSON = device.Native.fromWindow(window);
 
