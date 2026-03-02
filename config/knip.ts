@@ -11,16 +11,16 @@ const config: KnipConfig = {
       ignoreDependencies: [
         "@changesets/cli",
         "@siteimprove/alfa-cli",
+        "@yarnpkg/shell",
         "prettier",
       ],
     },
+    "packages/*": { entry, project },
     "packages/alfa-cli": { entry: ["src/alfa.ts!"], project },
     "packages/alfa-test-utils": {
       entry: [...entry, "src/report/git.ts!"],
       project,
     },
-    "packages/alfa-webdriver": { entry, project },
-    "packages/*": { entry, project },
   },
   // {@link https://github.com/webpro-nl/knip/issues/779}
   // Sadly it seems that this cannot be set up at the package level only.
