@@ -393,21 +393,6 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/forms@npm:^21.2.0":
-  version: 21.2.0
-  resolution: "@angular/forms@npm:21.2.0"
-  dependencies:
-    "@standard-schema/spec": "npm:^1.0.0"
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": 21.2.0
-    "@angular/core": 21.2.0
-    "@angular/platform-browser": 21.2.0
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/e149a4f495840da3e21c28a864e54b2c2b4f7e224ae8059a4d8f2d9fea6c5416d0724555fe09c7650ea1828c018666ece17b790825e60b5ec89b40009f739523
-  languageName: node
-  linkType: hard
-
 "@angular/platform-browser@npm:^21.2.0":
   version: 21.2.0
   resolution: "@angular/platform-browser@npm:21.2.0"
@@ -421,20 +406,6 @@ __metadata:
     "@angular/animations":
       optional: true
   checksum: 10/8ceebf6aa99e64c731f9504f78f7dca7ad09c0f240596da0861a3c942ca7a3ec47784f2872fcdd3a907d7cec2a2b6838e21324b8e74759948ce94a3387939e5c
-  languageName: node
-  linkType: hard
-
-"@angular/router@npm:^21.2.0":
-  version: 21.2.0
-  resolution: "@angular/router@npm:21.2.0"
-  dependencies:
-    tslib: "npm:^2.3.0"
-  peerDependencies:
-    "@angular/common": 21.2.0
-    "@angular/core": 21.2.0
-    "@angular/platform-browser": 21.2.0
-    rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/8cb264d88871b1e2629323cd2c8ec891dece5a241993199a979daa18de9ef06e83c635f70d497c80175f1fecded71a01d68ef5d0e4e1cf4ff48dace460e25423
   languageName: node
   linkType: hard
 
@@ -3595,17 +3566,18 @@ __metadata:
     "@angular/compiler": "npm:^21.2.0"
     "@angular/compiler-cli": "npm:^21.2.0"
     "@angular/core": "npm:^21.2.0"
-    "@angular/forms": "npm:^21.2.0"
     "@angular/platform-browser": "npm:^21.2.0"
-    "@angular/router": "npm:^21.2.0"
-    jsdom: "npm:^28.0.0"
+    "@siteimprove/alfa-angular": "workspace:^"
+    "@siteimprove/alfa-dom": "npm:^0.112.0"
+    "@siteimprove/alfa-test": "npm:^0.112.0"
+    "@siteimprove/alfa-web": "npm:^0.112.0"
     ng-packagr: "npm:^21.2.0"
     rxjs: "npm:~7.8.0"
     tslib: "npm:^2.3.0"
   languageName: unknown
   linkType: soft
 
-"@siteimprove/alfa-angular@workspace:packages/alfa-angular":
+"@siteimprove/alfa-angular@workspace:^, @siteimprove/alfa-angular@workspace:packages/alfa-angular":
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
@@ -10836,7 +10808,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdom@npm:^28.0.0, jsdom@npm:^28.1.0":
+"jsdom@npm:^28.1.0":
   version: 28.1.0
   resolution: "jsdom@npm:28.1.0"
   dependencies:

@@ -24,9 +24,8 @@
     "@angular/common": "^21.2.0",
     "@angular/compiler": "^21.2.0",
     "@angular/core": "^21.2.0",
-    "@angular/forms": "^21.2.0",
     "@angular/platform-browser": "^21.2.0",
-    "@angular/router": "^21.2.0",
+    "@siteimprove/alfa-angular": "workspace:^",
     "rxjs": "~7.8.0",
     "tslib": "^2.3.0"
   },
@@ -34,7 +33,9 @@
     "@angular/build": "^21.2.0",
     "@angular/cli": "^21.2.0",
     "@angular/compiler-cli": "^21.2.0",
-    "jsdom": "^28.0.0",
+    "@siteimprove/alfa-dom": "^0.112.0",
+    "@siteimprove/alfa-test": "^0.112.0",
+    "@siteimprove/alfa-web": "^0.112.0",
     "ng-packagr": "^21.2.0"
   }
 }
