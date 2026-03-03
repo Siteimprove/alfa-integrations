@@ -6,7 +6,8 @@ export default defineConfig({
     exclude: [
       // Packages with integration to a tests launcher use that launcher, and are
       // therefore skipped here. Use `yarn test-other` to run those.
-      "packages/alfa-angular",
+      "packages/alfa-angular", // no actual test
+      "packages/alfa-angular-test",
       "packages/alfa-cypress",
       "packages/alfa-jasmine",
       "packages/alfa-jest",
