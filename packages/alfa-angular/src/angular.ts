@@ -16,17 +16,19 @@ import type { ComponentFixture } from "@angular/core/testing";
 export namespace Angular {
   export type Type = ComponentFixture<unknown>;
 
-  export async function toPage(value: Type, options?: dom.Native.Options): Promise<Page> {
+  export async function toPage(
+    value: Type,
+    options?: dom.Native.Options,
+  ): Promise<Page> {
     const nodeJSON = await dom.Native.fromNode(value.nativeElement, options);
 
-    const deviceJSON = device.Native.fromWindow(window);
-
-    const pageDevice = Device.from(deviceJSON);
+    // We do not have a device in this context, so we drop the meaningless
+    // layout information.
     return Page.of(
       Request.empty(),
       Response.empty(),
-      Document.of([Node.from(nodeJSON, pageDevice)]),
-      pageDevice
+      Document.of([Node.from(nodeJSON)]),
+      Device.standard(),
     );
   }
 }
