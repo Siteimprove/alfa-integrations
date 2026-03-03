@@ -16,6 +16,13 @@
     "noExternalDeps": true,
     "allowedExternalDeps": {
       "@siteimprove/alfa-angular": ["@angular/core", "rxjs", "zone.js"],
+      "@siteimprove/alfa-angular-test": [
+        "@angular/common",
+        "@angular/compiler",
+        "@angular/core",
+        "@angular/platform-browser",
+        "tslib"
+      ],
       "@siteimprove/alfa-chai": ["chai"],
       "@siteimprove/alfa-cheerio": ["cheerio", "domhandler"],
       "@siteimprove/alfa-command": ["chalk"],
@@ -26,7 +33,7 @@
       "@siteimprove/alfa-jquery": ["jquery"],
       "@siteimprove/alfa-playwright": ["playwright"],
       "@siteimprove/alfa-puppeteer": ["puppeteer"],
-      "@siteimprove/alfa-react": ["jsdom","react", "react-dom"],
+      "@siteimprove/alfa-react": ["jsdom", "react", "react-dom"],
       "@siteimprove/alfa-selenium": ["selenium-webdriver"],
       "@siteimprove/alfa-scraper": ["puppeteer"],
       "@siteimprove/alfa-test-utils": ["axios", "chalk", "simple-git"],
