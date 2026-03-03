@@ -6,5 +6,6 @@
     "outDir": "../../out-tsc/spec",
     "types": ["vitest/globals"]
   },
-  "include": ["*.d.ts", "*.spec.ts"]
+  "include": ["*.d.ts", "*.spec.ts"],
+  "references": [{ "path": "../../alfa-angular" }]
 }

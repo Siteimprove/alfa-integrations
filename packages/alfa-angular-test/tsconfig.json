@@ -25,12 +25,5 @@
     "strictTemplates": true
   },
   "files": [],
-  "references": [
-    {
-      "path": "./test/tsconfig.lib.json"
-    },
-    {
-      "path": "./test/tsconfig.spec.json"
-    }
-  ]
+  "references": [{ "path": "./test/tsconfig.json" }]
 }
