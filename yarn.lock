@@ -4686,7 +4686,7 @@ __metadata:
     "@siteimprove/alfa-http": "npm:^0.112.0"
     "@siteimprove/alfa-test": "npm:^0.112.0"
     "@siteimprove/alfa-web": "npm:^0.112.0"
-    "@types/jsdom": "npm:^27"
+    "@types/jsdom": "npm:^28"
     "@types/react": "npm:^19.2.14"
     "@types/react-dom": "npm:^19"
     jsdom: "npm:^28.1.0"
@@ -5656,14 +5656,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jsdom@npm:^27":
-  version: 27.0.0
-  resolution: "@types/jsdom@npm:27.0.0"
+"@types/jsdom@npm:^28":
+  version: 28.0.0
+  resolution: "@types/jsdom@npm:28.0.0"
   dependencies:
     "@types/node": "npm:*"
     "@types/tough-cookie": "npm:*"
     parse5: "npm:^7.0.0"
-  checksum: 10/67dc284f74960e1ba0787599dfb0a46ca94ea4443242d3fc1e513b0c5313d2d4136176764acce2b03b8c66dec942ff4ab15322208ccc17b7c1dccc8cd01d4cc2
+    undici-types: "npm:^7.21.0"
+  checksum: 10/2df6a4fd9912a472557186ac840ee9fde617849593e425d04726499964cdd09730e736b2cddff8448315ed242048d57f73cff367b5961afa63b899a5be6e671d
   languageName: node
   linkType: hard
 
@@ -14711,6 +14712,13 @@ __metadata:
   version: 2.2.0
   resolution: "ukkonen@npm:2.2.0"
   checksum: 10/5a1fa2a5b0f2b358d31b9a0665ae9ae06ecc3f29ba0e63e2706ec2c212bc761cda3f36ce443302d2c94615fb90593c87784b8dba688564590ca0b8c787ee3578
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:^7.21.0":
+  version: 7.22.0
+  resolution: "undici-types@npm:7.22.0"
+  checksum: 10/692a9ee08327f34e2945647acbec330090a43a381bfc2d723f0ef5bfe3709390d9fa7a3b929384471a72a4494686079851daf1750c26c990ed5f5accbaf2ce0b
   languageName: node
   linkType: hard
 
