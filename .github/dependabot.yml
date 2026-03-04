@@ -15,9 +15,6 @@ updates:
       # Packages that has no tests should not update their dependencies
       # as we have witnessed breaking change in the dependency creating
       # hard-to-fix problems downstream.
-      - dependency-name: "@angular/core" # @siteimprove/alfa-angular
-      - dependency-name: "rxjs" # @siteimprove/alfa-angular
-      - dependency-name: "zone.js" # @siteimprove/alfa-angular
       - dependency-name: "chai" # @siteimprove/alfa-chai
       - dependency-name: "cheerio" # @siteimprove/alfa-cheerio
       - dependency-name: "domhandler" # @siteimprove/alfa-cheerio
@@ -29,6 +26,11 @@ updates:
       alfa:
         patterns:
           - "@siteimprove/alfa-*"
+        applies-to: version-updates
+
+      angular:
+        patterns:
+          - "@angular/*"
         applies-to: version-updates
 
       production-patch: # Patch updates to production packages. Low risk.

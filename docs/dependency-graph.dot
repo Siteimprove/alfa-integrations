@@ -6,6 +6,7 @@ digraph "dependency-graph-Alfa integrations" {
   "exit_Web crawler";
   "name_Integrations with frameworks";
   "@siteimprove/alfa-cheerio";
+  "@siteimprove/alfa-angular";
   "@siteimprove/alfa-command";
   "exit_Command line";
   "name_Formatters";
@@ -188,6 +189,9 @@ digraph "dependency-graph-Alfa integrations" {
         "@siteimprove/alfa-vue" [
           label = "alfa-vue";
         ];
+        "@siteimprove/alfa-angular-test" [
+          label = "alfa-angular-test";
+        ];
         "@siteimprove/alfa-cheerio" [
           label = "alfa-cheerio";
         ];
@@ -198,6 +202,9 @@ digraph "dependency-graph-Alfa integrations" {
           style = "invis";
         ];
         "@siteimprove/alfa-vue" -> "exit_Components libraries" [
+          style = "invis";
+        ];
+        "@siteimprove/alfa-angular-test" -> "exit_Components libraries" [
           style = "invis";
         ];
         "@siteimprove/alfa-cheerio" -> "exit_Components libraries" [
@@ -223,6 +230,9 @@ digraph "dependency-graph-Alfa integrations" {
         style = "invis";
       ];
       "exit_Test frameworks" -> "exit_Integrations with frameworks" [
+        style = "invis";
+      ];
+      "exit_Components libraries" -> "exit_Integrations with frameworks" [
         style = "invis";
       ];
       "exit_Browser automations" -> "exit_Integrations with frameworks" [
@@ -373,6 +383,9 @@ digraph "dependency-graph-Alfa integrations" {
     "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
       style = "invis";
     ];
+    "exit_Integrations with frameworks" -> "exit_Alfa integrations" [
+      style = "invis";
+    ];
     "exit_Command line" -> "exit_Alfa integrations" [
       style = "invis";
     ];
@@ -455,6 +468,13 @@ digraph "dependency-graph-Alfa integrations" {
   ];
   "@siteimprove/alfa-jasmine" -> "@siteimprove/alfa-assert" [
     style = "solid";
+    color = "black";
+  ];
+  "@siteimprove/alfa-angular-test" -> "@siteimprove/alfa-angular" [
+    style = "invis";
+  ];
+  "@siteimprove/alfa-angular-test" -> "@siteimprove/alfa-angular" [
+    style = "dotted";
     color = "black";
   ];
   "@siteimprove/alfa-cli" -> "@siteimprove/alfa-command" [

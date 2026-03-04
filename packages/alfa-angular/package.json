@@ -14,6 +14,9 @@
   "engines": {
     "node": ">=20.0.0"
   },
+  "scripts": {
+    "test": "echo 'This package is tested by @siteimprove/alfa-angular-test'"
+  },
   "type": "module",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
@@ -22,13 +25,13 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@angular/core": "^11.0.0",
+    "@angular/core": "^21.2.0",
     "@siteimprove/alfa-device": "^0.112.0",
     "@siteimprove/alfa-dom": "^0.112.0",
     "@siteimprove/alfa-http": "^0.112.0",
     "@siteimprove/alfa-web": "^0.112.0",
-    "rxjs": "^7.3.0",
-    "zone.js": "^0.11.4"
+    "rxjs": "^7.8.2",
+    "zone.js": "^0.16.1"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.112.0",

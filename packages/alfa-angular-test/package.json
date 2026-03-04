@@ -1,0 +1,41 @@
+{
+  "$schema": "http://json.schemastore.org/package",
+  "name": "@siteimprove/alfa-angular-test",
+  "homepage": "https://alfa.siteimprove.com",
+  "version": "0.81.4",
+  "license": "MIT",
+  "description": "A fake Angular project to test @siteimprove/alfa-angular",
+  "repository": {
+    "type": "git",
+    "url": "github:Siteimprove/alfa-integrations",
+    "directory": "packages/alfa-angular-test"
+  },
+  "bugs": "https://github.com/siteimprove/alfa/issues",
+  "engines": {
+    "node": ">=20.0.0"
+  },
+  "scripts": {
+    "ng": "ng",
+    "test": "ng test --no-watch"
+  },
+  "//": "This is only for test purposes and should never be published",
+  "private": true,
+  "packageManager": "yarn@4.12.0",
+  "dependencies": {
+    "@angular/common": "^21.2.0",
+    "@angular/compiler": "^21.2.0",
+    "@angular/core": "^21.2.0",
+    "@angular/platform-browser": "^21.2.0",
+    "tslib": "^2.3.0"
+  },
+  "devDependencies": {
+    "@angular/build": "^21.2.0",
+    "@angular/cli": "^21.2.0",
+    "@angular/compiler-cli": "^21.2.0",
+    "@siteimprove/alfa-angular": "workspace:^",
+    "@siteimprove/alfa-dom": "^0.112.0",
+    "@siteimprove/alfa-test": "^0.112.0",
+    "@siteimprove/alfa-web": "^0.112.0",
+    "ng-packagr": "^21.2.0"
+  }
+}
