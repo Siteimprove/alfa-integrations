@@ -28,7 +28,7 @@
     "@siteimprove/alfa-http": "^0.112.0",
     "@siteimprove/alfa-web": "^0.112.0",
     "@vue/test-utils": "^2.4.6",
-    "vue": "^3.5.25"
+    "vue": "^3.5.30"
   },
   "peerDependencies": {
     "@siteimprove/alfa-device": "^0.112.0",
@@ -39,5 +39,9 @@
   "publishConfig": {
     "access": "public",
     "registry": "https://npm.pkg.github.com/"
+  },
+  "devDependencies": {
+    "@types/jsdom-global": "^3",
+    "jsdom-global": "^3.0.2"
   }
 }

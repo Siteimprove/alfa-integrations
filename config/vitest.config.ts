@@ -11,13 +11,14 @@ export default defineConfig({
       "packages/alfa-cypress",
       "packages/alfa-jasmine",
       "packages/alfa-jest",
-      // tests disabled due to unstability
-      "packages/alfa-vue",
       // avoiding webdriver shenanigans by calling the node script directly
       "packages/alfa-webdriver",
     ],
     // Several tests, notably the ones that spawn a new browser instance, tend
     // to take a lot of time… Especially when launching all tests simultaneously.
     testTimeout: 60_000 /* ms */,
+    // Some packages have vitest use jsdom to build the dom, it is just simpler
+    // to define it at top-level and share it.
+    environment: "jsdom",
   },
 });
