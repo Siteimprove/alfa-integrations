@@ -5,16 +5,9 @@ import { Native } from "@siteimprove/alfa-dom/native";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
-import { JSDOM } from "jsdom";
 import type { ReactElement } from "react";
 import { flushSync } from "react-dom";
 import { createRoot } from "react-dom/client";
-
-// Setup JSDOM environment, so we can have DOM bindings for React to use.
-const { window } = new JSDOM(`<!DOCTYPE html><body></body>`);
-const { document } = window;
-(global as any).window = window;
-(global as any).document = document;
 
 /**
  * @public
