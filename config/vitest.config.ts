@@ -4,9 +4,10 @@ export default defineConfig({
   test: {
     include: ["packages/alfa-*/test/**/*.spec.ts?(x)"],
     exclude: [
+      // alfa-angular is tested through alfa-angular-test.
+      "packages/alfa-angular",
       // Packages with integration to a tests launcher use that launcher, and are
       // therefore skipped here. Use `yarn test-other` to run those.
-      "packages/alfa-angular", // no actual test
       "packages/alfa-angular-test",
       "packages/alfa-cypress",
       "packages/alfa-jasmine",
@@ -18,7 +19,8 @@ export default defineConfig({
     // to take a lot of time… Especially when launching all tests simultaneously.
     testTimeout: 60_000 /* ms */,
     // Some packages have vitest use jsdom to build the dom, it is just simpler
-    // to define it at top-level and share it.
+    // to define it at top-level and share it than to setup projects with separate
+    // configurations.
     environment: "jsdom",
   },
 });
