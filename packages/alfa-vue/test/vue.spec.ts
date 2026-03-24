@@ -15,7 +15,8 @@ const Button = {
   template: '<button class="btn"></button>',
 };
 
-// window.matchMedia is not currently implemented by Angular, so we need a mock.
+// window.matchMedia is not currently implemented by JSDOM which vitest uses,
+// so we need a mock.
 // For the purpose of this test, we actually don't care about the result (they
 // are not actually used), so we are OK with a mock that always answer `false`.
 window.matchMedia =
@@ -30,7 +31,7 @@ test(`.toPage() creates an Alfa Page (vue)`, async (t) => {
   const button = mount(Button);
 
   const actual = await Vue.toPage(button);
-  let pageDevice = Device.from(device.Native.fromWindow(window));
+  const pageDevice = Device.from(device.Native.fromWindow(window));
   const expected = Page.of(
     Request.empty(),
     Response.empty(),
