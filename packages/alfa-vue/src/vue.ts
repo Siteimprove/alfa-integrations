@@ -23,7 +23,7 @@ export namespace Vue {
 
   export async function toPage(
     value: Type,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
     if ("cheerio" in value) {
       return Cheerio.toPage(value);
@@ -32,13 +32,13 @@ export namespace Vue {
     const nodeJSON = await dom.Native.fromNode(value.element, options);
 
     const deviceJSON = device.Native.fromWindow(window);
-
     const pageDevice = Device.from(deviceJSON);
+
     return Page.of(
       Request.empty(),
       Response.empty(),
       Document.of([Node.from(nodeJSON, pageDevice)]),
-      pageDevice
+      pageDevice,
     );
   }
 }
