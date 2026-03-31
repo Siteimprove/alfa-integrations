@@ -1,26 +1,27 @@
 import * as inspector from "node:inspector";
 
+/** @internal */
 export namespace Profiler {
   const session = new inspector.Session();
 
   session.connect();
 
   const cpu = new Promise<void>((resolve) =>
-    session.post("Profiler.enable", () => resolve())
+    session.post("Profiler.enable", () => resolve()),
   );
 
   const heap = new Promise<void>((resolve) =>
-    session.post("HeapProfiler.enable", () => resolve())
+    session.post("HeapProfiler.enable", () => resolve()),
   );
 
   export namespace CPU {
-    export type Profile = inspector.Profiler.Profile;
+    type Profile = inspector.Profiler.Profile;
 
     export async function start(): Promise<void> {
       await cpu;
 
       return new Promise<void>((resolve) =>
-        session.post("Profiler.start", () => resolve())
+        session.post("Profiler.start", () => resolve()),
       );
     }
 
@@ -29,20 +30,20 @@ export namespace Profiler {
 
       return new Promise<Profile>((resolve, reject) =>
         session.post("Profiler.stop", (err, { profile }) =>
-          err ? reject(err) : resolve(profile)
-        )
+          err ? reject(err) : resolve(profile),
+        ),
       );
     }
   }
 
   export namespace Heap {
-    export type Profile = inspector.HeapProfiler.SamplingHeapProfile;
+    type Profile = inspector.HeapProfiler.SamplingHeapProfile;
 
     export async function start(): Promise<void> {
       await heap;
 
       return new Promise<void>((resolve) =>
-        session.post("HeapProfiler.startSampling", () => resolve())
+        session.post("HeapProfiler.startSampling", () => resolve()),
       );
     }
 
@@ -51,8 +52,8 @@ export namespace Profiler {
 
       return new Promise<Profile>((resolve, reject) =>
         session.post("HeapProfiler.stopSampling", (err, { profile }) =>
-          err ? reject(err) : resolve(profile)
-        )
+          err ? reject(err) : resolve(profile),
+        ),
       );
     }
   }
