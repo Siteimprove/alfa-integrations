@@ -4,7 +4,7 @@
 
 ```ts
 
-import type { Node as Node_2 } from '@siteimprove/alfa-dom';
+import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 import type { ReactElement } from 'react';
 
