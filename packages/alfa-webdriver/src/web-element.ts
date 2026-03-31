@@ -61,7 +61,7 @@ export namespace WebElement {
       response,
       nodeJSON.type === "document"
         ? // The type is ensured by the previous test.
-          Document.from(nodeJSON as unknown as Document.JSON, pageDevice)
+          Node.from(nodeJSON as unknown as Document.JSON, pageDevice)
         : Document.of([Node.from(nodeJSON, pageDevice)]),
       pageDevice,
     );
