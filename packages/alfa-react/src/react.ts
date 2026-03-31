@@ -1,6 +1,5 @@
 import { Device } from "@siteimprove/alfa-device";
-import type { Node } from "@siteimprove/alfa-dom";
-import { Document, Element } from "@siteimprove/alfa-dom";
+import { Document, Node } from "@siteimprove/alfa-dom";
 import { Native } from "@siteimprove/alfa-dom/native";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
@@ -40,9 +39,7 @@ export namespace React {
     //    orphaned in order for the document to adopt them.
     // 2. We do not have a device in this context, so we drop the meaningless
     //    layout information.
-    const elements = (reactRoot.children ?? []).map((json) =>
-      Element.from(json),
-    );
+    const elements = (reactRoot.children ?? []).map((json) => Node.from(json));
 
     return Page.of(
       Request.empty(),

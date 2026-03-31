@@ -4,7 +4,7 @@
 import * as device from "@siteimprove/alfa-device/native";
 import * as dom from "@siteimprove/alfa-dom/native";
 import { Device } from "@siteimprove/alfa-device";
-import { Document } from "@siteimprove/alfa-dom";
+import { Document, Node } from "@siteimprove/alfa-dom";
 import { Header, Headers, Request, Response } from "@siteimprove/alfa-http";
 import { URL } from "@siteimprove/alfa-url";
 import { Page } from "@siteimprove/alfa-web";
@@ -17,7 +17,7 @@ import { WebDriver } from "selenium-webdriver";
 export namespace Selenium {
   export async function toPage(
     driver: WebDriver,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
     const deviceJSON = await driver.executeScript(device.Native.fromWindow);
     const alfaDevice = Device.from(deviceJSON as Device.JSON);
@@ -27,7 +27,7 @@ export namespace Selenium {
     const documentJSON = await driver.executeScript(
       dom.Native.fromNode,
       document,
-      options
+      options,
     );
 
     /*
@@ -46,20 +46,20 @@ export namespace Selenium {
     // WARNING: This will throw an exception in the unlikely case that
     // window.location.href is not a valid URL (which should never happen)
     const url = URL.parse(
-      await driver.executeScript(() => window.location.href)
+      await driver.executeScript(() => window.location.href),
     ).getUnsafe();
     const request = Request.of("GET", url);
     const response = Response.of(
       url,
       200,
-      Headers.of([Header.of("Content-Type", "text/html")])
+      Headers.of([Header.of("Content-Type", "text/html")]),
     );
 
     return Page.of(
       request,
       response,
-      Document.from(documentJSON as Document.JSON, alfaDevice),
-      alfaDevice
+      Node.from(documentJSON as Document.JSON, alfaDevice),
+      alfaDevice,
     );
   }
 }

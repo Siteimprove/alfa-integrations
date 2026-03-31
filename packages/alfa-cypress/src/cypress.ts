@@ -45,11 +45,11 @@ export namespace Cypress {
   export function createPlugin<
     T extends Hashable,
     Q extends Question.Metadata = {},
-    S = T
+    S = T,
   >(
     rules: Iterable<act.Rule<Page, T, Q, S>>,
     handlers: Iterable<Handler<Page, T, Q, S>> = [],
-    options: Asserter.Options<Page, T, Q, S> = {}
+    options: Asserter.Options<Page, T, Q, S> = {},
   ): globalThis.Chai.ChaiPlugin {
     const asserter = Asserter.of(rules, handlers, options);
 
@@ -81,7 +81,7 @@ export namespace Cypress {
           }`,
           /* Expected */ true,
           /* Actual */ result.isOk(),
-          /* Show diff */ false
+          /* Show diff */ false,
         );
       });
     };
@@ -89,7 +89,10 @@ export namespace Cypress {
 
   export type Type = globalThis.Node | globalThis.JQuery;
 
-  export async function toPage(value: Type, options?: dom.Native.Options): Promise<Page> {
+  export async function toPage(
+    value: Type,
+    options?: dom.Native.Options,
+  ): Promise<Page> {
     if ("jquery" in value) {
       value = value.get(0);
     }
@@ -128,17 +131,17 @@ export namespace Cypress {
     const response = Response.of(
       url,
       200,
-      Headers.of([Header.of("Content-Type", "text/html")])
+      Headers.of([Header.of("Content-Type", "text/html")]),
     );
 
     return Page.of(
       request,
       response,
       nodeJSON.type === "document"
-        // The type is ensured by the previous test.
-        ? Document.from(nodeJSON as unknown as Document.JSON, pageDevice)
+        ? // The type is ensured by the previous test.
+          Node.from(nodeJSON as unknown as Document.JSON, pageDevice)
         : Document.of([Node.from(nodeJSON, pageDevice)]),
-      pageDevice
+      pageDevice,
     );
   }
 
@@ -157,10 +160,10 @@ export namespace Cypress {
       I,
       T extends Hashable,
       Q extends Question.Metadata,
-      S
+      S,
     >(
       output: Mapper<I, string>,
-      format: Formatter<I, T, Q, S> = earl()
+      format: Formatter<I, T, Q, S> = earl(),
     ): Handler<I, T, Q, S> {
       const files = new Map<string, string>();
 

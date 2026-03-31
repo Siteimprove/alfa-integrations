@@ -21,30 +21,30 @@ export namespace Playwright {
   export async function toNode(
     value: Type,
     device?: Device,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Node> {
     return Node.from(
       await value.evaluate(
         dom.Native.fromNode as (
           node: globalThis.Node,
-          options?: dom.Native.Options
+          options?: dom.Native.Options,
         ) => Promise<Node.JSON>,
-        options
+        options,
       ),
-      device
+      device,
     );
   }
 
   export async function toPage(
     value: Type,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
     const nodeJSON = await value.evaluate(
       dom.Native.fromNode as (
         node: globalThis.Node,
-        options?: dom.Native.Options
+        options?: dom.Native.Options,
       ) => Promise<Node.JSON>,
-      options
+      options,
     );
 
     const deviceJSON = await value
@@ -67,13 +67,13 @@ export namespace Playwright {
     // WARNING: This will throw an exception in the unlikely case that
     // window.location.href is not a valid URL (which should never happen)
     const url = URL.parse(
-      await value.evaluate(() => window.location.href)
+      await value.evaluate(() => window.location.href),
     ).getUnsafe();
     const request = Request.of("GET", url);
     const response = Response.of(
       url,
       200,
-      Headers.of([Header.of("Content-Type", "text/html")])
+      Headers.of([Header.of("Content-Type", "text/html")]),
     );
 
     const pageDevice = Device.from(deviceJSON);
@@ -81,9 +81,9 @@ export namespace Playwright {
       request,
       response,
       nodeJSON.type === "document"
-        ? Document.from(nodeJSON as Document.JSON, pageDevice)
+        ? Node.from(nodeJSON as Document.JSON, pageDevice)
         : Document.of([Node.from(nodeJSON, pageDevice)]),
-      pageDevice
+      pageDevice,
     );
   }
 }
