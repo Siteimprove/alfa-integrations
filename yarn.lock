@@ -4688,7 +4688,7 @@ __metadata:
     "@siteimprove/alfa-dom": "npm:^0.114.0"
     "@siteimprove/alfa-http": "npm:^0.114.0"
     "@siteimprove/alfa-web": "npm:^0.114.0"
-    "@types/jquery": "npm:^3.3.29"
+    "@types/jquery": "npm:^4.0.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.114.0
     "@siteimprove/alfa-dom": ^0.114.0
@@ -5912,12 +5912,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/jquery@npm:^3.3.29":
-  version: 3.5.34
-  resolution: "@types/jquery@npm:3.5.34"
-  dependencies:
-    "@types/sizzle": "npm:*"
-  checksum: 10/398bf81a845e4ca8a2d2a60a21b9ad2fcd7c99123a2c82ba76cfb969b976d66fa24f3b8502055a081b39db7dc67204bee2bda817225900c59615ad083e261cef
+"@types/jquery@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "@types/jquery@npm:4.0.0"
+  checksum: 10/3a0491a1a2b7d0a9d471c318dcf245607c8af0954658a5d2758b9f746cd85a1ce362c37c2a3ab2a41ab24d67574e167d2f4e6a873fdceeef359536d73e03a804
   languageName: node
   linkType: hard
 
@@ -6002,7 +6000,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/sizzle@npm:*, @types/sizzle@npm:^2.3.2":
+"@types/sizzle@npm:^2.3.2":
   version: 2.3.10
   resolution: "@types/sizzle@npm:2.3.10"
   checksum: 10/7898ae8c147d6804e1eb7811664bf6e58c382840b03a56976c668f17fbc76f752c4086bddb0d6c6d54e279a9259cf4fbb61a6ee968dac98615c42350f6f57d6a
