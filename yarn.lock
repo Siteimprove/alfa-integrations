@@ -4027,7 +4027,7 @@ __metadata:
     "@siteimprove/alfa-future": "npm:^0.114.0"
     "@siteimprove/alfa-hash": "npm:^0.114.0"
     "@siteimprove/alfa-mapper": "npm:^0.114.0"
-    "@types/chai": "npm:^4.1.7"
+    "@types/chai": "npm:^5.2.3"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.114.0
     "@siteimprove/alfa-future": ^0.114.0
@@ -5839,14 +5839,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@types/chai@npm:^4.1.7":
-  version: 4.3.20
-  resolution: "@types/chai@npm:4.3.20"
-  checksum: 10/94fd87036fb63f62c79caf58ccaec88e23cc109e4d41607d83adc609acd6b24eabc345feb7850095a53f76f99c470888251da9bd1b90849c8b2b5a813296bb19
-  languageName: node
-  linkType: hard
-
-"@types/chai@npm:^5.2.2":
+"@types/chai@npm:^5.2.2, @types/chai@npm:^5.2.3":
   version: 5.2.3
   resolution: "@types/chai@npm:5.2.3"
   dependencies:
