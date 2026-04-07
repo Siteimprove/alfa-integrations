@@ -13,7 +13,7 @@ import { WebElement } from "../dist/index.js";
 const fixture = path.join(import.meta.dirname, "fixture");
 
 /*
- * While vitest can run w%ebdriver, this gets a bit clunky as it spawn its own
+ * While vitest can run webdriver, this gets a bit clunky as it spawn its own
  * browser instance that doesn't seem to have easy access to node packages
  * needed to load the local page. As long as this stays as a simple test, we
  * just get a trivial wrapper around it.
