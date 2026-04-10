@@ -22,20 +22,20 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@siteimprove/alfa-act": "^0.114.2",
+    "@siteimprove/alfa-act": "^0.114.3",
     "@siteimprove/alfa-assert": "workspace:^",
-    "@siteimprove/alfa-future": "^0.114.2",
-    "@siteimprove/alfa-hash": "^0.114.2",
-    "@siteimprove/alfa-mapper": "^0.114.2"
+    "@siteimprove/alfa-future": "^0.114.3",
+    "@siteimprove/alfa-hash": "^0.114.3",
+    "@siteimprove/alfa-mapper": "^0.114.3"
   },
   "devDependencies": {
     "@types/chai": "^5.2.3"
   },
   "peerDependencies": {
-    "@siteimprove/alfa-act": "^0.114.2",
-    "@siteimprove/alfa-future": "^0.114.2",
-    "@siteimprove/alfa-hash": "^0.114.2",
-    "@siteimprove/alfa-mapper": "^0.114.2",
+    "@siteimprove/alfa-act": "^0.114.3",
+    "@siteimprove/alfa-future": "^0.114.3",
+    "@siteimprove/alfa-hash": "^0.114.3",
+    "@siteimprove/alfa-mapper": "^0.114.3",
     "chai": "^4.3.10"
   },
   "publishConfig": {
