@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.81.10](../../compare/v0.81.9...v0.81.10) (2026-04-10)
+
+### Changed
+
+- [@siteimprove/alfa-formatter-sarif](packages/alfa-formatter-sarif/CHANGELOG.md#08110), [@siteimprove/alfa-formatter-earl](packages/alfa-formatter-earl/CHANGELOG.md#08110), [@siteimprove/alfa-formatter-json](packages/alfa-formatter-json/CHANGELOG.md#08110), [@siteimprove/alfa-angular-test](packages/alfa-angular-test/CHANGELOG.md#08110), [@siteimprove/alfa-interviewer](packages/alfa-interviewer/CHANGELOG.md#08110), [@siteimprove/alfa-playwright](packages/alfa-playwright/CHANGELOG.md#08110), [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#08110), [@siteimprove/alfa-unexpected](packages/alfa-unexpected/CHANGELOG.md#08110), [@siteimprove/alfa-formatter](packages/alfa-formatter/CHANGELOG.md#08110), [@siteimprove/alfa-puppeteer](packages/alfa-puppeteer/CHANGELOG.md#08110), [@siteimprove/alfa-webdriver](packages/alfa-webdriver/CHANGELOG.md#08110), [@siteimprove/alfa-frontier](packages/alfa-frontier/CHANGELOG.md#08110), [@siteimprove/alfa-selenium](packages/alfa-selenium/CHANGELOG.md#08110), [@siteimprove/alfa-angular](packages/alfa-angular/CHANGELOG.md#08110), [@siteimprove/alfa-cheerio](packages/alfa-cheerio/CHANGELOG.md#08110), [@siteimprove/alfa-command](packages/alfa-command/CHANGELOG.md#08110), [@siteimprove/alfa-crawler](packages/alfa-crawler/CHANGELOG.md#08110), [@siteimprove/alfa-cypress](packages/alfa-cypress/CHANGELOG.md#08110), [@siteimprove/alfa-jasmine](packages/alfa-jasmine/CHANGELOG.md#08110), [@siteimprove/alfa-scraper](packages/alfa-scraper/CHANGELOG.md#08110), [@siteimprove/alfa-assert](packages/alfa-assert/CHANGELOG.md#08110), [@siteimprove/alfa-jquery](packages/alfa-jquery/CHANGELOG.md#08110), [@siteimprove/alfa-vitest](packages/alfa-vitest/CHANGELOG.md#08110), [@siteimprove/alfa-react](packages/alfa-react/CHANGELOG.md#08110), [@siteimprove/alfa-chai](packages/alfa-chai/CHANGELOG.md#08110), [@siteimprove/alfa-jest](packages/alfa-jest/CHANGELOG.md#08110), [@siteimprove/alfa-cli](packages/alfa-cli/CHANGELOG.md#08110), [@siteimprove/alfa-vue](packages/alfa-vue/CHANGELOG.md#08110): Update Alfa. ([#324](https://github.com/Siteimprove/alfa-integrations/pull/324))
+
 ## [0.81.9](../../compare/v0.81.8...v0.81.9) (2026-04-09)
 
 ### Changed
