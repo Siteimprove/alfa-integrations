@@ -5194,14 +5194,14 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.114.3"
     "@siteimprove/alfa-web": "npm:^0.114.3"
     "@types/selenium-webdriver": "npm:^4.35.5"
-    selenium-webdriver: "npm:^4.41.0"
+    selenium-webdriver: "npm:^4.43.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.114.3
     "@siteimprove/alfa-dom": ^0.114.3
     "@siteimprove/alfa-http": ^0.114.3
     "@siteimprove/alfa-url": ^0.114.3
     "@siteimprove/alfa-web": ^0.114.3
-    selenium-webdriver: ^4.41.0
+    selenium-webdriver: ^4.43.0
   languageName: unknown
   linkType: soft
 
@@ -14017,15 +14017,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selenium-webdriver@npm:^4.41.0":
-  version: 4.41.0
-  resolution: "selenium-webdriver@npm:4.41.0"
+"selenium-webdriver@npm:^4.43.0":
+  version: 4.43.0
+  resolution: "selenium-webdriver@npm:4.43.0"
   dependencies:
     "@bazel/runfiles": "npm:^6.5.0"
     jszip: "npm:^3.10.1"
     tmp: "npm:^0.2.5"
-    ws: "npm:^8.19.0"
-  checksum: 10/29eaea5f8f67d173568ffbd82534ed724dbf61aa12d5f1a1e4141f2f8e3a17ec2f1a71aa386c66442936f45e74203a8e5a6f34e9086f93ca971debb8b66f9665
+    ws: "npm:^8.20.0"
+  checksum: 10/00861e3768143e1dcfe313a0996be2a1571c6b5718c1179b3509625eaec1f040057ab53b8f66ddb26183fb3ce9c9aa15b399e73802054835fadddfcee81d9034
   languageName: node
   linkType: hard
 
@@ -15891,9 +15891,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.19.0, ws@npm:^8.8.0":
-  version: 8.19.0
-  resolution: "ws@npm:8.19.0"
+"ws@npm:^8.19.0, ws@npm:^8.20.0, ws@npm:^8.8.0":
+  version: 8.20.0
+  resolution: "ws@npm:8.20.0"
   peerDependencies:
     bufferutil: ^4.0.1
     utf-8-validate: ">=5.0.2"
@@ -15902,7 +15902,7 @@ __metadata:
       optional: true
     utf-8-validate:
       optional: true
-  checksum: 10/26e4901e93abaf73af9f26a93707c95b4845e91a7a347ec8c569e6e9be7f9df066f6c2b817b2d685544e208207898a750b78461e6e8d810c11a370771450c31b
+  checksum: 10/b7ab934b21ffdea9f25a5af5097e8c1ec7625db553bca026c5a23e35b7c236f3fb89782f2b57fab9da553864512f9aa7d245827ef998d26ffa1b2187a19a6d10
   languageName: node
   linkType: hard
 
