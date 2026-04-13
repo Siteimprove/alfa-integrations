@@ -13,8 +13,10 @@ import * as dom from "@siteimprove/alfa-dom/native";
  * @public
  */
 export namespace WebElement {
+  export type Type = WebdriverIO.Element;
+
   export async function toPage(
-    webElement: WebdriverIO.Element,
+    webElement: Type,
     browser: WebdriverIO.Browser,
     options?: dom.Native.Options,
   ): Promise<Page> {
