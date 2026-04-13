@@ -1,5 +1,6 @@
 import { Device } from "@siteimprove/alfa-device";
 import { Document, Node } from "@siteimprove/alfa-dom";
+import { Future } from "@siteimprove/alfa-future";
 import { Native } from "@siteimprove/alfa-dom/native";
 import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
@@ -21,7 +22,7 @@ export namespace React {
    * @remarks
    * There may be several children in the root in case of React fragments.
    */
-  export async function toNode(value: Type): Promise<Node.JSON> {
+  export function toNode(value: Type): Future<Node.JSON> {
     // Create a new React root for each render to avoid conflicts.
     const div = document.createElement("div");
     const root = createRoot(div);
@@ -29,23 +30,27 @@ export namespace React {
     // flushSync is needed to wait for the render to complete before proceeding.
     flushSync(() => root.render(value));
 
-    return Native.fromNode(div);
+    return Future.from(Native.fromNode(div));
   }
 
-  export async function toPage(value: Type): Promise<Page> {
-    const reactRoot = await toNode(value);
+  export function toPage(value: Type): Future<Page> {
+    const reactRoot = toNode(value);
 
     // 1. We do not convert the React root since we need the children to be
     //    orphaned in order for the document to adopt them.
     // 2. We do not have a device in this context, so we drop the meaningless
     //    layout information.
-    const elements = (reactRoot.children ?? []).map((json) => Node.from(json));
+    const elements = reactRoot.map((root) =>
+      (root.children ?? []).map((json) => Node.from(json)),
+    );
 
-    return Page.of(
-      Request.empty(),
-      Response.empty(),
-      Document.of(elements),
-      Device.standard(),
+    return elements.map((elements) =>
+      Page.of(
+        Request.empty(),
+        Response.empty(),
+        Document.of(elements),
+        Device.standard(),
+      ),
     );
   }
 }
