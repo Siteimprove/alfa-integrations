@@ -12,8 +12,6 @@ export default defineConfig({
       "packages/alfa-cypress",
       "packages/alfa-jasmine",
       "packages/alfa-jest",
-      // avoiding webdriver shenanigans by calling the node script directly
-      "packages/alfa-webdriver",
     ],
     // Several tests, notably the ones that spawn a new browser instance, tend
     // to take a lot of time… Especially when launching all tests simultaneously.

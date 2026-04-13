@@ -1,7 +1,7 @@
 {
   "$schema": "http://json.schemastore.org/tsconfig",
   "extends": "../tsconfig.json",
-  "compilerOptions": { "outDir": ".", "skipLibCheck": true },
+  "compilerOptions": { "noEmit": true, "skipLibCheck": true },
   "files": ["./webdriver.spec.ts"],
   "references": [{ "path": "../src" }]
 }

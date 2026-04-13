@@ -13,7 +13,6 @@ on:
 
 concurrency:
   group: integrate-${{ github.ref }}
-  cancel-in-progress: true
 
 jobs:
   build:
