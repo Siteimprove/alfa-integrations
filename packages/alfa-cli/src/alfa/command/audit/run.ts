@@ -69,7 +69,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 
   const oracle = interviewer
     // The early .some ensured it is an Ok.
-    .map((interviewer) => interviewer.getUnsafe()(page, rules))
+    .map((interviewer) => interviewer.getUnsafe()(page.getUnsafe(), rules))
     .getOr(undefined);
 
   const audit = Audit.of(page.getUnsafe(), rules, oracle);
