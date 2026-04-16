@@ -101,6 +101,20 @@ function resolveAnswer(
   raw: AnswerValue,
   nodeMap: Map<string, Node>,
 ): Option<unknown> {
+  // For node-typed questions the answer type is Option<Node>, so null means
+  // Option.none (no node) — a valid answer distinct from "no answer" (None).
+  // Handle this before the generic null-guard below.
+  if (answerType === "node") {
+    if (raw === null) {
+      // Answered: there is no node.
+      return Option.of(None);
+    }
+    if (typeof raw !== "string") return None;
+    const node = nodeMap.get(raw);
+    // Wrap in Option twice: outer = "oracle has an answer", inner = Option<Node>.
+    return node !== undefined ? Option.of(Option.of(node)) : None;
+  }
+
   if (raw === null || raw === undefined) {
     return None;
   }
@@ -111,12 +125,6 @@ function resolveAnswer(
 
     case "string":
       return typeof raw === "string" ? Option.of(raw) : None;
-
-    case "node": {
-      if (typeof raw !== "string") return None;
-      const node = nodeMap.get(raw);
-      return node !== undefined ? Option.of(node) : None;
-    }
 
     case "node[]": {
       if (!Array.isArray(raw)) return None;
@@ -138,24 +146,26 @@ function resolveAnswer(
  * Creates a recording interviewer.
  *
  * **Environment variables:**
- *  - `ALFA_INTERVIEWER_QUESTIONS` — path to write recorded questions (default:
- *    `./questions.json`). Existing content is merged so that questions from
- *    previous passes are preserved.
- *  - `ALFA_INTERVIEWER_ANSWERS` — path to an answers JSON file. When absent,
- *    all questions return `None` (pure recording pass).
+ *  - `ALFA_INTERVIEWER_DIR` — path to a directory where `questions.json` and
+ *    `answers.json` are read and written (default: `./`). The caller typically
+ *    sets this to a temporary directory with a randomly generated name that is
+ *    deleted after the session.
  *
  * **Two-pass workflow:**
  * ```
+ * DIR=$(mktemp -d)
+ *
  * # Pass 1 — record questions
- * ALFA_INTERVIEWER_QUESTIONS=./questions.json \
+ * ALFA_INTERVIEWER_DIR="$DIR" \
  *   alfa audit --url https://example.com --interviewer recording
  *
- * # External system reads questions.json, writes answers.json
+ * # External system reads $DIR/questions.json, writes $DIR/answers.json
  *
- * # Pass 2 — replay answers (new questions may arise and are appended)
- * ALFA_INTERVIEWER_QUESTIONS=./questions.json \
- * ALFA_INTERVIEWER_ANSWERS=./answers.json \
+ * # Pass 2 — replay answers (new questions may arise and are merged)
+ * ALFA_INTERVIEWER_DIR="$DIR" \
  *   alfa audit --url https://example.com --interviewer recording
+ *
+ * rm -rf "$DIR"
  * ```
  *
  * @public
@@ -166,9 +176,9 @@ export default function (): Interviewer<
   Question.Metadata,
   Hashable
 > {
-  const questionsFile =
-    process.env["ALFA_INTERVIEWER_QUESTIONS"] ?? "./questions.json";
-  const answersFile = process.env["ALFA_INTERVIEWER_ANSWERS"];
+  const dir = process.env["ALFA_INTERVIEWER_DIR"] ?? "./";
+  const questionsFile = `${dir.replace(/\/$/, "")}/questions.json`;
+  const answersFile = `${dir.replace(/\/$/, "")}/answers.json`;
 
   // Load existing questions so that successive passes merge rather than reset.
   const existingQuestions: Map<string, RecordedQuestion> = new Map();
@@ -185,9 +195,9 @@ export default function (): Interviewer<
     }
   }
 
-  // Load answers if provided.
+  // Load answers if present in the directory.
   const answers: AnswerMap = {};
-  if (answersFile !== undefined && fs.existsSync(answersFile)) {
+  if (fs.existsSync(answersFile)) {
     try {
       Object.assign(
         answers,
