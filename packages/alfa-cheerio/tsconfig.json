@@ -3,5 +3,5 @@
   "extends": "../tsconfig.json",
   "//": "Cheerio needs a release to fix a bug, see https://github.com/cheeriojs/cheerio/issues/3098",
   "compilerOptions": { "skipLibCheck": true },
-  "references": [{ "path": "./src" }]
+  "references": [{ "path": "./src" }, { "path": "./test" }]
 }

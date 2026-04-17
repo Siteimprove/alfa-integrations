@@ -7,7 +7,7 @@ import { Request, Response } from "@siteimprove/alfa-http";
 import { Page } from "@siteimprove/alfa-web";
 
 import type * as cheerio from "cheerio";
-import type dom from "domhandler";
+import type * as dom from "domhandler";
 
 const { keys } = Object;
 
@@ -22,7 +22,7 @@ export namespace Cheerio {
       Request.empty(),
       Response.empty(),
       Document.of([Node.from(toNode(value[0]))]),
-      Device.standard()
+      Device.standard(),
     );
   }
 }
