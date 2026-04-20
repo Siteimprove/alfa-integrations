@@ -4059,7 +4059,7 @@ __metadata:
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-http": "npm:^0.114.3"
     "@siteimprove/alfa-web": "npm:^0.114.3"
-    cheerio: "npm:^1.0.0-rc.12"
+    cheerio: "npm:^1.2.0"
     domhandler: "npm:^4.2.2"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.114.3
@@ -7522,7 +7522,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"cheerio@npm:^1.0.0-rc.12":
+"cheerio@npm:^1.0.0-rc.12, cheerio@npm:^1.2.0":
   version: 1.2.0
   resolution: "cheerio@npm:1.2.0"
   dependencies:
