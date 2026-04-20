@@ -4040,16 +4040,23 @@ __metadata:
   dependencies:
     "@siteimprove/alfa-act": "npm:^0.114.3"
     "@siteimprove/alfa-assert": "workspace:^"
+    "@siteimprove/alfa-device": "npm:^0.114.3"
+    "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-future": "npm:^0.114.3"
     "@siteimprove/alfa-hash": "npm:^0.114.3"
+    "@siteimprove/alfa-http": "npm:^0.114.3"
     "@siteimprove/alfa-mapper": "npm:^0.114.3"
+    "@siteimprove/alfa-rules": "npm:^0.114.3"
+    "@siteimprove/alfa-test": "npm:^0.114.3"
+    "@siteimprove/alfa-web": "npm:^0.114.3"
     "@types/chai": "npm:^5.2.3"
+    chai: "npm:^6.2.2"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.114.3
     "@siteimprove/alfa-future": ^0.114.3
     "@siteimprove/alfa-hash": ^0.114.3
     "@siteimprove/alfa-mapper": ^0.114.3
-    chai: ^4.3.10
+    chai: ^6.2.2
   languageName: unknown
   linkType: soft
 
