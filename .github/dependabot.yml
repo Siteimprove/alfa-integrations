@@ -15,7 +15,6 @@ updates:
       # Packages that has no tests should not update their dependencies
       # as we have witnessed breaking change in the dependency creating
       # hard-to-fix problems downstream.
-      - dependency-name: "chai" # @siteimprove/alfa-chai
       - dependency-name: "domhandler" # needs to be locked to the same version used in Cheerio
       - dependency-name: "jquery" # @siteimprove/alfa-jquery
 
