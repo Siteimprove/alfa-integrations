@@ -322,15 +322,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:^21.2.8":
-  version: 21.2.8
-  resolution: "@angular/common@npm:21.2.8"
+"@angular/common@npm:^21.2.9":
+  version: 21.2.9
+  resolution: "@angular/common@npm:21.2.9"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/core": 21.2.8
+    "@angular/core": 21.2.9
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/6397dd741518d44a1dc32f246b9bcb9147e4a6e250fb2a6292039106bc26d4cf6bd759acb618784c12a2bb9783d93c65f8da1b6cb1c117eeda9be28e7463791a
+  checksum: 10/58079a67436805f6c3b438c757689d3dbfcdbd46173a1a2656eefe26bd400d1bbf18ff5548f5b074570b1822b6a516b8c99960c2dcdb752a0795bab51fc9859a
   languageName: node
   linkType: hard
 
@@ -359,22 +359,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:^21.2.8":
-  version: 21.2.8
-  resolution: "@angular/compiler@npm:21.2.8"
+"@angular/compiler@npm:^21.2.9":
+  version: 21.2.9
+  resolution: "@angular/compiler@npm:21.2.9"
   dependencies:
     tslib: "npm:^2.3.0"
-  checksum: 10/5bcf866cf01fbc19b016df4c77aa662440ba5ea3b1615ea21b6c69cd52c5b6cf55fbf8003ee8bcfd9199deac7d33a37ccbf4b9feb4bcc21e65cae388d2fa6a88
+  checksum: 10/a53618c8e8fd92b7b0c3b6be948e7f7e1d245050d877f15b15f0b41be3e24acbc91c152562149260bb5cf2bb69e937b603ef89671181b5f4af6697010ad82880
   languageName: node
   linkType: hard
 
-"@angular/core@npm:^21.2.8":
-  version: 21.2.8
-  resolution: "@angular/core@npm:21.2.8"
+"@angular/core@npm:^21.2.9":
+  version: 21.2.9
+  resolution: "@angular/core@npm:21.2.9"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 21.2.8
+    "@angular/compiler": 21.2.9
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -382,23 +382,23 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10/92700022b21b5a4d3a4e1d71c0f7a2daaa20d4cedbeaf31bcbb0275c4e02bef2112854668380bab78145d589683a6c5a1075192548569a5130ee488e6a2abc34
+  checksum: 10/88b6e177e89688e99409486fef3354ee2cf6c01a3b5fd36013ed0e0fe8bfbbc5439be0a7ed7b6652da2fa4c551c941267bb2f3bbd585080d338035051d3c1243
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^21.2.8":
-  version: 21.2.8
-  resolution: "@angular/platform-browser@npm:21.2.8"
+"@angular/platform-browser@npm:^21.2.9":
+  version: 21.2.9
+  resolution: "@angular/platform-browser@npm:21.2.9"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 21.2.8
-    "@angular/common": 21.2.8
-    "@angular/core": 21.2.8
+    "@angular/animations": 21.2.9
+    "@angular/common": 21.2.9
+    "@angular/core": 21.2.9
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10/4fc6108336727502702451def725c57fdc2e3dacadcfda8e6ec4d5e998fea9cf84dd7ac778029a918dc0cb14273cb0d730ae8affc8a90c163bd4c83b6939bb1e
+  checksum: 10/c1be41a7f7abd104fb151888af317a3229d321c9f75926fc6a32c8afb45817dd8dafa0d34134968159126a74cefd07654e41edcea957e23a038fe2ea0801b4a7
   languageName: node
   linkType: hard
 
@@ -3841,11 +3841,11 @@ __metadata:
   dependencies:
     "@angular/build": "npm:^21.2.7"
     "@angular/cli": "npm:^21.2.7"
-    "@angular/common": "npm:^21.2.8"
-    "@angular/compiler": "npm:^21.2.8"
+    "@angular/common": "npm:^21.2.9"
+    "@angular/compiler": "npm:^21.2.9"
     "@angular/compiler-cli": "npm:^21.2.8"
-    "@angular/core": "npm:^21.2.8"
-    "@angular/platform-browser": "npm:^21.2.8"
+    "@angular/core": "npm:^21.2.9"
+    "@angular/platform-browser": "npm:^21.2.9"
     "@siteimprove/alfa-angular": "workspace:^"
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-test": "npm:^0.114.3"
@@ -3859,7 +3859,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
-    "@angular/core": "npm:^21.2.8"
+    "@angular/core": "npm:^21.2.9"
     "@siteimprove/alfa-device": "npm:^0.114.3"
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-http": "npm:^0.114.3"
@@ -5382,7 +5382,7 @@ __metadata:
     "@siteimprove/alfa-url": "npm:^0.114.3"
     "@siteimprove/alfa-wcag": "npm:^0.114.3"
     "@siteimprove/alfa-web": "npm:^0.114.3"
-    axios: "npm:^1.13.6"
+    axios: "npm:^1.15.1"
     axios-mock-adapter: "npm:^2.1.0"
     chalk: "npm:^5.3.0"
     simple-git: "npm:^3.36.0"
@@ -6969,14 +6969,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"axios@npm:^1.13.6, axios@npm:^1.15.0":
-  version: 1.15.0
-  resolution: "axios@npm:1.15.0"
+"axios@npm:^1.15.0, axios@npm:^1.15.1":
+  version: 1.15.1
+  resolution: "axios@npm:1.15.1"
   dependencies:
     follow-redirects: "npm:^1.15.11"
     form-data: "npm:^4.0.5"
     proxy-from-env: "npm:^2.1.0"
-  checksum: 10/d39a2c0ebc7ff4739401b282e726cc2673377949d6c46d60eb619458f8d7a2f7eadbcada7097f4dbc7d5c59abb4d3bf6fac33d474412bc3415d3f5aa7ed45530
+  checksum: 10/bfa286e29d1866695426b45c9a25ef21975669e500a8511a01e2fe5b9c4f734906701266d214b562dc525e463bae2bbba24c8e9e10c214f0d4f4c669e9372a7f
   languageName: node
   linkType: hard
 
