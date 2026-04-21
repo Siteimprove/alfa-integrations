@@ -2,12 +2,13 @@
 /// <reference types="jquery" preserve="true" />
 
 import { Device } from "@siteimprove/alfa-device";
-import { Document, Node } from "@siteimprove/alfa-dom";
-import { Request, Response } from "@siteimprove/alfa-http";
-import { Page } from "@siteimprove/alfa-web";
 
 import * as device from "@siteimprove/alfa-device/native";
+import { Document, Node } from "@siteimprove/alfa-dom";
 import * as dom from "@siteimprove/alfa-dom/native";
+import { Option } from "@siteimprove/alfa-option";
+import { Request, Response } from "@siteimprove/alfa-http";
+import { Page } from "@siteimprove/alfa-web";
 
 /**
  * @public
@@ -17,24 +18,30 @@ export namespace JQuery {
 
   export async function toPage(
     value: Type,
-    options?: dom.Native.Options
+    options?: dom.Native.Options,
   ): Promise<Page> {
-    const node = value.get(0);
+    const firstNode = value.get(0);
 
-    if (node === undefined) {
+    if (firstNode === undefined) {
       throw new Error("Unable to convert empty jQuery collection to page");
     }
 
-    const nodeJSON = await dom.Native.fromNode(node, options);
+    const pageDevice = Option.from(firstNode.ownerDocument.defaultView)
+      .map(device.Native.fromWindow)
+      .map(Device.from)
+      .getOrElse(Device.standard);
 
-    const deviceJSON = device.Native.fromWindow(window);
+    const nodes = (
+      await Promise.all(
+        value.toArray().map((node) => dom.Native.fromNode(node, options)),
+      )
+    ).map((nodeJSON) => Node.from(nodeJSON, pageDevice));
 
-    const pageDevice = Device.from(deviceJSON);
     return Page.of(
       Request.empty(),
       Response.empty(),
-      Document.of([Node.from(nodeJSON, pageDevice)]),
-      pageDevice
+      Document.of(nodes),
+      pageDevice,
     );
   }
 }
