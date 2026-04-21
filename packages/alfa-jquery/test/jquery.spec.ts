@@ -22,7 +22,7 @@ function mkTarget(text: string, device: Device): Element {
   );
 }
 
-test("foo", async (t) => {
+test(".toPage() creates an Alfa page", async (t) => {
   const { window } = new JSDOM(
     "<html><head></head><body><div class='target'>Hello</div><div id='ignored'>Lorem ipsum</div><div class='target'>World</div></body></html>",
   );
