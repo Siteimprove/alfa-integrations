@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.82.1](../../compare/v0.82.0...v0.82.1) (2026-04-23)
+
+### Fixed
+
+- [@siteimprove/alfa-vitest](packages/alfa-vitest/CHANGELOG.md#0821): The ambient type declaration for `.toBeAccessible` now correctly matches Vitest 4.x syntax. ([#353](https://github.com/Siteimprove/alfa-integrations/pull/353))
+
 ## [0.82.0](../../compare/v0.81.10...v0.82.0) (2026-04-13)
 
 ### Breaking

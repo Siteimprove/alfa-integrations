@@ -1,5 +1,7 @@
 # @siteimprove/alfa-unexpected
 
+## 0.82.1
+
 ## 0.82.0
 
 ## 0.81.10
