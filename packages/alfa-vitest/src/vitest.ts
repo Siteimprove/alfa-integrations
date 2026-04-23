@@ -7,13 +7,10 @@ import type { Mapper } from "@siteimprove/alfa-mapper";
 
 import { expect } from "vitest";
 
-interface CustomMatchers<R = unknown> {
-  toBeAccessible: () => R;
-}
-
 declare module "vitest" {
-  interface Assertion<T = any> extends CustomMatchers<T> {}
-  interface AsymmetricMatchersContaining extends CustomMatchers {}
+  interface Matchers<T = any> {
+    toBeAccessible: () => T;
+  }
 }
 
 /**
@@ -25,12 +22,12 @@ export namespace Vitest {
     J,
     T extends Hashable,
     Q extends Question.Metadata = {},
-    S = T
+    S = T,
   >(
     transform: Mapper<I, Future.Maybe<J>>,
     rules: Iterable<Rule<J, T, Q, S>>,
     handlers: Iterable<Handler<J, T, Q, S>> = [],
-    options: Asserter.Options<J, T, Q, S> = {}
+    options: Asserter.Options<J, T, Q, S> = {},
   ): void {
     const asserter = Asserter.of(rules, handlers, options);
 
