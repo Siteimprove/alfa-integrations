@@ -322,15 +322,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:^21.2.9":
-  version: 21.2.9
-  resolution: "@angular/common@npm:21.2.9"
+"@angular/common@npm:^21.2.10":
+  version: 21.2.10
+  resolution: "@angular/common@npm:21.2.10"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/core": 21.2.9
+    "@angular/core": 21.2.10
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/58079a67436805f6c3b438c757689d3dbfcdbd46173a1a2656eefe26bd400d1bbf18ff5548f5b074570b1822b6a516b8c99960c2dcdb752a0795bab51fc9859a
+  checksum: 10/46ecbc86bc4f940488be358ea153e43534d28c551a669ed4c76caaf6898781c0a736122cd06178207953173d8d98a8e9061229acf89f772d994a36d375d63128
   languageName: node
   linkType: hard
 
@@ -359,22 +359,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:^21.2.9":
-  version: 21.2.9
-  resolution: "@angular/compiler@npm:21.2.9"
+"@angular/compiler@npm:^21.2.10":
+  version: 21.2.10
+  resolution: "@angular/compiler@npm:21.2.10"
   dependencies:
     tslib: "npm:^2.3.0"
-  checksum: 10/a53618c8e8fd92b7b0c3b6be948e7f7e1d245050d877f15b15f0b41be3e24acbc91c152562149260bb5cf2bb69e937b603ef89671181b5f4af6697010ad82880
+  checksum: 10/fab6945e9285725a1196cbf9b35aad0518a52da7bca547276a320f074409f82289b9762d785b2e9c734bba943b721028aff5d2aa9a31b05028b2bcdb624a0730
   languageName: node
   linkType: hard
 
-"@angular/core@npm:^21.2.9":
-  version: 21.2.9
-  resolution: "@angular/core@npm:21.2.9"
+"@angular/core@npm:^21.2.10":
+  version: 21.2.10
+  resolution: "@angular/core@npm:21.2.10"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 21.2.9
+    "@angular/compiler": 21.2.10
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -382,23 +382,23 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10/88b6e177e89688e99409486fef3354ee2cf6c01a3b5fd36013ed0e0fe8bfbbc5439be0a7ed7b6652da2fa4c551c941267bb2f3bbd585080d338035051d3c1243
+  checksum: 10/6562af9752af95bc06f107539b4f34915a16b2c793142b5f2a85da1cb258229bb27e4a16a1d0b6e79f7e049e68f940ff70f9d91e51a7865476fa6cdd0c57250f
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^21.2.9":
-  version: 21.2.9
-  resolution: "@angular/platform-browser@npm:21.2.9"
+"@angular/platform-browser@npm:^21.2.10":
+  version: 21.2.10
+  resolution: "@angular/platform-browser@npm:21.2.10"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 21.2.9
-    "@angular/common": 21.2.9
-    "@angular/core": 21.2.9
+    "@angular/animations": 21.2.10
+    "@angular/common": 21.2.10
+    "@angular/core": 21.2.10
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10/c1be41a7f7abd104fb151888af317a3229d321c9f75926fc6a32c8afb45817dd8dafa0d34134968159126a74cefd07654e41edcea957e23a038fe2ea0801b4a7
+  checksum: 10/730ad3d7c314b3cdd84e3b6488fe40df2c02320319995ac45230e17498f072a9bfef261b29727224506f7d854a53a593820c50454adb892af4bfa3326ca99809
   languageName: node
   linkType: hard
 
@@ -3850,11 +3850,11 @@ __metadata:
   dependencies:
     "@angular/build": "npm:^21.2.7"
     "@angular/cli": "npm:^21.2.7"
-    "@angular/common": "npm:^21.2.9"
-    "@angular/compiler": "npm:^21.2.9"
+    "@angular/common": "npm:^21.2.10"
+    "@angular/compiler": "npm:^21.2.10"
     "@angular/compiler-cli": "npm:^21.2.9"
-    "@angular/core": "npm:^21.2.9"
-    "@angular/platform-browser": "npm:^21.2.9"
+    "@angular/core": "npm:^21.2.10"
+    "@angular/platform-browser": "npm:^21.2.10"
     "@siteimprove/alfa-angular": "workspace:^"
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-test": "npm:^0.114.3"
@@ -3868,7 +3868,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
-    "@angular/core": "npm:^21.2.9"
+    "@angular/core": "npm:^21.2.10"
     "@siteimprove/alfa-device": "npm:^0.114.3"
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-http": "npm:^0.114.3"
@@ -5642,7 +5642,7 @@ __metadata:
     "@siteimprove/alfa-rectangle": "npm:^0.114.3"
     "@siteimprove/alfa-test": "npm:^0.114.3"
     "@siteimprove/alfa-web": "npm:^0.114.3"
-    "@vue/test-utils": "npm:^2.4.6"
+    "@vue/test-utils": "npm:^2.4.8"
     vue: "npm:^3.5.33"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.114.3
@@ -6478,13 +6478,20 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@vue/test-utils@npm:^2.4.6":
-  version: 2.4.6
-  resolution: "@vue/test-utils@npm:2.4.6"
+"@vue/test-utils@npm:^2.4.8":
+  version: 2.4.8
+  resolution: "@vue/test-utils@npm:2.4.8"
   dependencies:
     js-beautify: "npm:^1.14.9"
-    vue-component-type-helpers: "npm:^2.0.0"
-  checksum: 10/a3b445f1dae9b663e8cdb048054bb16d0b24b7901bcf45c81e84a8340030651bb7ad9fd309d36f5963addd25883968e0f81da44a06bab99bb9aa89b4235f2880
+    vue-component-type-helpers: "npm:^3.0.0"
+  peerDependencies:
+    "@vue/compiler-dom": 3.x
+    "@vue/server-renderer": 3.x
+    vue: 3.x
+  peerDependenciesMeta:
+    "@vue/server-renderer":
+      optional: true
+  checksum: 10/e4df7d2f91b0f0337c02875a751c5c632b6b2154cab23992071010bfb6d5ed8d56fc7b055a5cd23d20d76cef39fb6ba8991e60c69aaaa67ee768ccd904f58926
   languageName: node
   linkType: hard
 
@@ -15603,10 +15610,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"vue-component-type-helpers@npm:^2.0.0":
-  version: 2.2.12
-  resolution: "vue-component-type-helpers@npm:2.2.12"
-  checksum: 10/985ca9564966919f5a009514a46fd0b90c7a167795d9f2f58072f5f4a4eaffb8f94bcf70376504f171441827c624b723224acac41ce6a2cd39d2fff13df08d7a
+"vue-component-type-helpers@npm:^3.0.0":
+  version: 3.2.7
+  resolution: "vue-component-type-helpers@npm:3.2.7"
+  checksum: 10/f089e3da977b53b00e792f8fb7d7d215b17c48b5620a346a4c784ad5449bd99b87d498e8369ce9d23ae2b5ce929fff8caace6d846df943bd97d8b103261576e0
   languageName: node
   linkType: hard
 
