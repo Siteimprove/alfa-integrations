@@ -45,6 +45,32 @@ export class Command<
     );
   }
 
+  public static withSubcommandsAndArguments<
+    F extends Command.Flags,
+    A extends Command.Arguments,
+    S extends Command.Subcommands
+  >(
+    name: string,
+    version: string,
+    description: string,
+    flags: F,
+    args: A,
+    subcommands: Mapper<Command, S>,
+    parent: Option<Command> = None,
+    run?: (command: Command<F, A, S>) => Command.Runner<F, A>
+  ): Command<F, A, S> {
+    return new Command(
+      name,
+      version,
+      description,
+      flags,
+      args,
+      subcommands,
+      parent,
+      run
+    );
+  }
+
   public static withSubcommands<
     F extends Command.Flags,
     S extends Command.Subcommands
