@@ -2,7 +2,7 @@
   "$schema": "http://json.schemastore.org/package",
   "name": "@siteimprove/alfa-angular-test",
   "homepage": "https://alfa.siteimprove.com",
-  "version": "0.82.0",
+  "version": "0.82.1",
   "license": "MIT",
   "description": "A fake Angular project to test @siteimprove/alfa-angular",
   "repository": {
@@ -22,16 +22,16 @@
   "private": true,
   "packageManager": "yarn@4.12.0",
   "dependencies": {
-    "@angular/common": "^21.2.9",
-    "@angular/compiler": "^21.2.9",
-    "@angular/core": "^21.2.9",
-    "@angular/platform-browser": "^21.2.9",
+    "@angular/common": "^21.2.10",
+    "@angular/compiler": "^21.2.10",
+    "@angular/core": "^21.2.10",
+    "@angular/platform-browser": "^21.2.10",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.7",
-    "@angular/cli": "^21.2.7",
-    "@angular/compiler-cli": "^21.2.9",
+    "@angular/build": "^21.2.8",
+    "@angular/cli": "^21.2.8",
+    "@angular/compiler-cli": "^21.2.10",
     "@siteimprove/alfa-angular": "workspace:^",
     "@siteimprove/alfa-dom": "^0.114.3",
     "@siteimprove/alfa-test": "^0.114.3",
