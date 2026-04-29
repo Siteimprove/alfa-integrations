@@ -4727,14 +4727,20 @@ __metadata:
     "@siteimprove/alfa-device": "npm:^0.114.3"
     "@siteimprove/alfa-dom": "npm:^0.114.3"
     "@siteimprove/alfa-http": "npm:^0.114.3"
+    "@siteimprove/alfa-option": "npm:^0.114.3"
+    "@siteimprove/alfa-rectangle": "npm:^0.114.3"
+    "@siteimprove/alfa-test": "npm:^0.114.3"
     "@siteimprove/alfa-web": "npm:^0.114.3"
     "@types/jquery": "npm:^4.0.0"
+    "@types/jsdom": "npm:^28.0.1"
+    jquery: "npm:^4.0.0"
+    jsdom: "npm:^29.0.2"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.114.3
     "@siteimprove/alfa-dom": ^0.114.3
     "@siteimprove/alfa-http": ^0.114.3
     "@siteimprove/alfa-web": ^0.114.3
-    jquery: ^3.6.0
+    jquery: ^4.0.0
   languageName: unknown
   linkType: soft
 
@@ -5953,6 +5959,18 @@ __metadata:
   languageName: node
   linkType: hard
 
+"@types/jsdom@npm:^28.0.1":
+  version: 28.0.1
+  resolution: "@types/jsdom@npm:28.0.1"
+  dependencies:
+    "@types/node": "npm:*"
+    "@types/tough-cookie": "npm:*"
+    parse5: "npm:^7.0.0"
+    undici-types: "npm:^7.21.0"
+  checksum: 10/5761f89fb00567bce87ec81f9c926cff9a400e2989615368093a0eed81da122329710f39e13d8388cdde8f6a24d49cde4a94bd194e6d94c61727aeaae694f6bb
+  languageName: node
+  linkType: hard
+
 "@types/jsonld@npm:^1.5.15":
   version: 1.5.15
   resolution: "@types/jsonld@npm:1.5.15"
@@ -6052,6 +6070,13 @@ __metadata:
   version: 0.2.6
   resolution: "@types/tmp@npm:0.2.6"
   checksum: 10/e14a094c10569d3b56805552b21417860ef21060d969000d5d5b53604a78c2bdac216f064b03797d4b07a081e0141dd3ab22bc36923e75300eb1c023f7252cc7
+  languageName: node
+  linkType: hard
+
+"@types/tough-cookie@npm:*":
+  version: 4.0.5
+  resolution: "@types/tough-cookie@npm:4.0.5"
+  checksum: 10/01fd82efc8202670865928629697b62fe9bf0c0dcbc5b1c115831caeb073a2c0abb871ff393d7df1ae94ea41e256cb87d2a5a91fd03cdb1b0b4384e08d4ee482
   languageName: node
   linkType: hard
 
@@ -10963,6 +10988,13 @@ __metadata:
   languageName: node
   linkType: hard
 
+"jquery@npm:^4.0.0":
+  version: 4.0.0
+  resolution: "jquery@npm:4.0.0"
+  checksum: 10/722be14779518f27f50463d9aaa8d6b42782673a23f65335c4ff9e2ad124cb4d5267696dfc7bc4f40ecf04e852cbb05b1630b50daacf2821737d5d3b480fbf19
+  languageName: node
+  linkType: hard
+
 "js-beautify@npm:^1.14.9":
   version: 1.15.4
   resolution: "js-beautify@npm:1.15.4"
@@ -11024,7 +11056,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jsdom@npm:^29.1.0":
+"jsdom@npm:^29.0.2, jsdom@npm:^29.1.0":
   version: 29.1.0
   resolution: "jsdom@npm:29.1.0"
   dependencies:
@@ -15192,6 +15224,13 @@ __metadata:
   version: 3.0.0
   resolution: "unbash@npm:3.0.0"
   checksum: 10/935a86ce4c406af4ccae2cb4ae6fe8518761cb8a3669e1dab50031c46d3e036197ed674b0160ed7c6bcf89ec27b04be0c2b397ab2918a31bf12d55ba5991a635
+  languageName: node
+  linkType: hard
+
+"undici-types@npm:^7.21.0":
+  version: 7.25.0
+  resolution: "undici-types@npm:7.25.0"
+  checksum: 10/66f3a460cbc9e83e73c11c3a1869c32eef6c92b32450cc9dc677c671d958b9d1bb8635ff36a421019e4b1114dfc79d187aecf4dc75cf167a85535e03559b9250
   languageName: node
   linkType: hard
 
