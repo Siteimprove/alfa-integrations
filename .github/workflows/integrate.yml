@@ -46,7 +46,18 @@ jobs:
 
       - run: yarn dedupe --check
       - run: yarn build --quiet
-      - run: yarn test-main
+
+      - name: Run Vitest based tests
+        # We've seen quite a lot of flakyness on tests, most notably hitting a timeout, and incorrect scraping of the
+        # immediate redirect pages (alfa-scrape).
+        # The timeout is not just something we can increase, since "good" runs finish in a few seconds, and the timeout
+        # is at 1 minute. So it feels like this is not just running close to the limit, but something else going on.
+        # The alfa-scrape redirect should be investigated at some point.
+        # In the meantime, we simply allow the test to run a second time to give it a better chance. This does increase
+        # the time-to-error in case of real problems, but these should hopefully be detected locally by devs before
+        # creating a PR and running this workflow…
+        run: yarn test-main || test-main
+
       - run: yarn test-other
       - run: yarn validate-structure
       - run: yarn extract --quiet
