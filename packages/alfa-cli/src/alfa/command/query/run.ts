@@ -71,7 +71,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
         output = JSON.stringify(node.toJSON({ device: page.device }), null, 2);
         break;
       default:
-        output = node.path();
+        output = node.path(Node.flatTree);
     }
   } else {
     const filter = flags.outcome.isSome()
@@ -113,7 +113,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
             resolvedTarget = node.toJSON();
             break;
           default:
-            resolvedTarget = node.path();
+            resolvedTarget = node.path(Node.flatTree);
         }
       }
 
