@@ -22,14 +22,14 @@ description: "Run accessibility audits using the Alfa CLI against local or remot
 Some checks cannot be automated and require human judgment. Run the review first to pre-answer these questions so the subsequent audit can resolve them automatically.
 
 ```bash
-alfa review <url>
+alfa review --start <url>
 ```
 
 Alfa prints a list of questions. Each question has a **hash**, a **subject** (XPath to the node the question is about),
 a **context** (XPath to a context node), a **type**, and a description. Answer them with:
 
 ```bash
-alfa review answer "hash1=value1" "hash2=value2" ...
+alfa review --answer "hash1=value1" --answer "hash2=value2" ...
 ```
 
 **ALWAYS** ask the user for confirmation before answering questions, unless explicitly told to autonomously find answers.
@@ -41,12 +41,12 @@ alfa review answer "hash1=value1" "hash2=value2" ...
 - `node`: XPath string, or `null` if no such element exists.
 - Only basic XPath syntax supported: "/html[1]/body[1]/div[2]"
 
-Answering may unlock follow-up questions — keep running `alfa review answer` until no new questions appear.
+Answering may unlock follow-up questions — keep running `alfa review --answer` until no new questions appear.
 
 When all questions are processed, **always reset the session**:
 
 ```bash
-alfa review reset
+alfa review --reset
 ```
 
 ### 2. Run the Audit
