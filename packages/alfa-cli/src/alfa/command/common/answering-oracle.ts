@@ -1,7 +1,7 @@
 import type { Oracle } from "@siteimprove/alfa-act";
 import { Array } from "@siteimprove/alfa-array";
 import { CSS4Color } from "@siteimprove/alfa-css";
-import { Document, Node, Query } from "@siteimprove/alfa-dom";
+import { Document, Node } from "@siteimprove/alfa-dom";
 import { Future } from "@siteimprove/alfa-future";
 import { None, Option } from "@siteimprove/alfa-option";
 import type { Flattened } from "@siteimprove/alfa-rules";
@@ -142,7 +142,7 @@ function findNodeByPath(document: Document, targetPath: string): Option<Node> {
     return None;
   }
 
-  for (const node of Query.getElementDescendants(document, Node.flatTree)) {
+  for (const node of document.descendants(Node.flatTree)) {
     if (node.path(Node.flatTree) === targetPath) {
       return Option.of(node);
     }
