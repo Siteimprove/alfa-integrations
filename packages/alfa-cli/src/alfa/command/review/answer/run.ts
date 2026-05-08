@@ -137,7 +137,19 @@ function applyPairs(
       const key = pair.slice(0, eqIdx);
       const rawValue = pair.slice(eqIdx + 1);
       const index = /^\d+$/.test(key) ? parseInt(key, 10) : NaN;
-      const hash = isNaN(index) ? key : (unanswered[index - 1]?.hash ?? key);
+      let hash: string;
+      if (!isNaN(index)) {
+        const question = unanswered[index - 1];
+        if (question === undefined) {
+          process.stderr.write(
+            `Warning: index ${index} is out of range (${unanswered.length} unanswered ${plural(unanswered.length, "question")}), ignoring "${pair}"\n`,
+          );
+          continue;
+        }
+        hash = question.hash;
+      } else {
+        hash = key;
+      }
       const type = questionByHash.get(hash)?.type ?? "string";
       const value = parseAnswerValue(rawValue, type);
       if (value !== undefined) {
