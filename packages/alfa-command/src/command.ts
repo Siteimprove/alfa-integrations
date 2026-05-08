@@ -18,12 +18,11 @@ const { values, entries } = Object;
 export class Command<
   F extends Command.Flags = {},
   A extends Command.Arguments = {},
-  S extends Command.Subcommands = {}
-> implements Serializable<Command.JSON>
-{
+  S extends Command.Subcommands = {},
+> implements Serializable<Command.JSON> {
   public static withArguments<
     F extends Command.Flags,
-    A extends Command.Arguments
+    A extends Command.Arguments,
   >(
     name: string,
     version: string,
@@ -31,7 +30,7 @@ export class Command<
     flags: F,
     args: A,
     parent: Option<Command> = None,
-    run?: (command: Command<F, A, {}>) => Command.Runner<F, A>
+    run?: (command: Command<F, A, {}>) => Command.Runner<F, A>,
   ): Command<F, A, {}> {
     return new Command(
       name,
@@ -41,39 +40,13 @@ export class Command<
       args,
       () => ({}),
       parent,
-      run
-    );
-  }
-
-  public static withSubcommandsAndArguments<
-    F extends Command.Flags,
-    A extends Command.Arguments,
-    S extends Command.Subcommands
-  >(
-    name: string,
-    version: string,
-    description: string,
-    flags: F,
-    args: A,
-    subcommands: Mapper<Command, S>,
-    parent: Option<Command> = None,
-    run?: (command: Command<F, A, S>) => Command.Runner<F, A>
-  ): Command<F, A, S> {
-    return new Command(
-      name,
-      version,
-      description,
-      flags,
-      args,
-      subcommands,
-      parent,
-      run
+      run,
     );
   }
 
   public static withSubcommands<
     F extends Command.Flags,
-    S extends Command.Subcommands
+    S extends Command.Subcommands,
   >(
     name: string,
     version: string,
@@ -81,7 +54,7 @@ export class Command<
     flags: F,
     subcommands: Mapper<Command, S>,
     parent: Option<Command> = None,
-    run?: (command: Command<F, {}, S>) => Command.Runner<F, {}>
+    run?: (command: Command<F, {}, S>) => Command.Runner<F, {}>,
   ): Command<F, {}, S> {
     return new Command(
       name,
@@ -91,7 +64,7 @@ export class Command<
       {},
       subcommands,
       parent,
-      run
+      run,
     );
   }
 
@@ -112,7 +85,7 @@ export class Command<
     args: A,
     subcommands: Mapper<Command, S>,
     parent: Option<Command>,
-    run?: (command: Command<F, A, S>) => Command.Runner<F, A>
+    run?: (command: Command<F, A, S>) => Command.Runner<F, A>,
   ) {
     this._name = name;
     this._version = version;
@@ -197,7 +170,7 @@ export class Command<
         const [argument] = argv;
 
         return Err.of(
-          `Unknown ${argument[0] === "-" ? "flag" : "argument"}: ${argument}`
+          `Unknown ${argument[0] === "-" ? "flag" : "argument"}: ${argument}`,
         );
       }
     }
@@ -216,7 +189,7 @@ export class Command<
   }
 
   private _parseFlags(
-    argv: Array<string>
+    argv: Array<string>,
   ): Result<[Array<string>, Command.Flags.Values<F>], string> {
     const flags = entries(this._flags);
 
@@ -270,7 +243,7 @@ export class Command<
   }
 
   private _parseArguments(
-    argv: Array<string>
+    argv: Array<string>,
   ): Result<[Array<string>, Command.Arguments.Values<A>], string> {
     const values: Record<string, unknown> = {};
 
@@ -313,14 +286,12 @@ export class Command<
 ${chalk.bold("Usage:")}
 
   ${chalk.bold("$")} ${this._invocation()} [flags] ${[
-      ...values(this._arguments),
-    ]
-      .map((argument) =>
-        argument.options.optional
-          ? `[<${argument.name}>]`
-          : `<${argument.name}>`
-      )
-      .join(" ")}
+    ...values(this._arguments),
+  ]
+    .map((argument) =>
+      argument.options.optional ? `[<${argument.name}>]` : `<${argument.name}>`,
+    )
+    .join(" ")}
     `.trim();
   }
 
@@ -365,7 +336,7 @@ ${args
     return help;
   })
   .join("\n\n")}
-      `.trim()
+      `.trim(),
     );
   }
 
@@ -385,11 +356,11 @@ ${[...values(this._subcommands)]
     (command) =>
       `  ${chalk.bold(command.name)}\n${Text.indent(
         Text.wrap(command.description, 76),
-        4
-      )}`
+        4,
+      )}`,
   )
   .join("\n\n")}
-      `.trim()
+      `.trim(),
     );
   }
 
@@ -414,7 +385,7 @@ ${[...values(this._flags)]
       help +=
         options.aliases
           .map((alias) =>
-            chalk.bold(alias.length === 1 ? `-${alias}` : `--${alias}`)
+            chalk.bold(alias.length === 1 ? `-${alias}` : `--${alias}`),
           )
           .join(", ") + ", ";
     }
@@ -439,7 +410,7 @@ ${[...values(this._flags)]
     return help;
   })
   .join("\n\n")}
-      `.trim()
+      `.trim(),
     );
   }
 }
@@ -489,6 +460,6 @@ export namespace Command {
   export type Output = Promise<Result<string>>;
 
   export type Runner<F extends Flags, A extends Arguments> = (
-    input: Input<F, A>
+    input: Input<F, A>,
   ) => Output;
 }
