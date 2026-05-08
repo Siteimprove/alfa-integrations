@@ -14,12 +14,12 @@ import rules from "@siteimprove/alfa-rules";
 import { Page } from "@siteimprove/alfa-web";
 
 import {
-  answersPath,
-  ensureAlfaDir,
-  questionsPath,
-  scrapePath,
-  sessionPath,
-} from "../common/alfa-dir.js";
+  ALFA_DIR,
+  ANSWERS_PATH,
+  QUESTIONS_PATH,
+  SCRAPE_PATH,
+  SESSION_PATH,
+} from "../common/paths.js";
 import {
   readAnswers,
   readSession,
@@ -39,9 +39,9 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
   args: { url: target },
 }) => {
-  await ensureAlfaDir(flags.alfaDir);
+  await fs.mkdir(ALFA_DIR, { recursive: true });
 
-  const sessionFilePath = sessionPath(flags.alfaDir);
+  const sessionFilePath = SESSION_PATH;
 
   const existing = readSession(sessionFilePath);
   if (existing !== null) {
@@ -68,10 +68,10 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 
   const page = pageResult.getUnsafe();
 
-  const answersFilePath = answersPath(flags.alfaDir);
-  const questionsFilePath = questionsPath(flags.alfaDir);
+  const answersFilePath = ANSWERS_PATH;
+  const questionsFilePath = QUESTIONS_PATH;
 
-  await fs.writeFile(scrapePath(flags.alfaDir), pageJson + "\n");
+  await fs.writeFile(SCRAPE_PATH, pageJson + "\n");
 
   const answers = readAnswers(answersFilePath);
   const { oracle, getQuestions } = createRecordingOracle(

@@ -13,11 +13,11 @@ import rules from "@siteimprove/alfa-rules";
 import { Page } from "@siteimprove/alfa-web";
 
 import {
-  answersPath,
-  questionsPath,
-  scrapePath,
-  sessionPath,
-} from "../../common/alfa-dir.js";
+  ANSWERS_PATH,
+  QUESTIONS_PATH,
+  SCRAPE_PATH,
+  SESSION_PATH,
+} from "../../common/paths.js";
 import type {
   AnswerValue,
   StoredAnswers,
@@ -42,21 +42,21 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
   args: { pairs },
 }) => {
-  const sPath = sessionPath(flags.alfaDir);
+  const sPath = SESSION_PATH;
   const session = readSession(sPath);
   if (session === null) {
     return Err.of("No active session. Run 'alfa review <url>' first.");
   }
 
-  const scrapeFile = scrapePath(flags.alfaDir);
+  const scrapeFile = SCRAPE_PATH;
   if (!fs.existsSync(scrapeFile)) {
     return Err.of(
       "Scrape file missing. Run 'alfa review reset' and 'alfa review <url>' to restart.",
     );
   }
 
-  const aPath = answersPath(flags.alfaDir);
-  const qPath = questionsPath(flags.alfaDir);
+  const aPath = ANSWERS_PATH;
+  const qPath = QUESTIONS_PATH;
 
   let answers: StoredAnswers = readAnswers(aPath);
 

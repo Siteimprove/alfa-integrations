@@ -25,7 +25,7 @@ import type { Flags } from "./flags.js";
 
 import * as scrape from "../scrape/run.js";
 
-import { answersPath } from "../common/alfa-dir.js";
+import { ANSWERS_PATH } from "../common/paths.js";
 import { createAnsweringOracle } from "../common/answering-oracle.js";
 import { readAnswers } from "../common/question-store.js";
 
@@ -86,7 +86,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
     .getOr(undefined);
 
   if (oracle === undefined) {
-    const answersFilePath = answersPath(flags.alfaDir);
+    const answersFilePath = ANSWERS_PATH;
     if (fs.existsSync(answersFilePath)) {
       process.stderr.write(`Using answers from ${answersFilePath}\n`);
       const answers = readAnswers(answersFilePath);

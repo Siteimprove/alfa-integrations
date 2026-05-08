@@ -6,10 +6,10 @@ import type { Command } from "@siteimprove/alfa-command";
 import { Result } from "@siteimprove/alfa-result";
 
 import {
-  questionsPath,
-  scrapePath,
-  sessionPath,
-} from "../../common/alfa-dir.js";
+  QUESTIONS_PATH,
+  SCRAPE_PATH,
+  SESSION_PATH,
+} from "../../common/paths.js";
 
 import type { Arguments } from "./arguments.js";
 import type { Flags } from "./flags.js";
@@ -19,11 +19,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 }) => {
   const deleted: string[] = [];
 
-  for (const filePath of [
-    sessionPath(flags.alfaDir),
-    questionsPath(flags.alfaDir),
-    scrapePath(flags.alfaDir),
-  ]) {
+  for (const filePath of [SESSION_PATH, QUESTIONS_PATH, SCRAPE_PATH]) {
     if (fs.existsSync(filePath)) {
       fs.unlinkSync(filePath);
       deleted.push(filePath);

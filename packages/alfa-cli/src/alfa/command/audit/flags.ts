@@ -1,21 +1,11 @@
 import { Flag } from "@siteimprove/alfa-command";
 
-import { DEFAULT_ALFA_DIR } from "../common/alfa-dir.js";
 import * as scrape from "../scrape/flags.js";
 
 export const Flags = {
   ...scrape.Flags,
 
   help: Flag.help("Display the help information."),
-
-  alfaDir: Flag.string(
-    "alfa-dir",
-    `The directory to look for a pre-recorded answers file. If an answers file
-    is found it will be used to answer questions during the audit. Defaults to
-    "${DEFAULT_ALFA_DIR}".`,
-  )
-    .type("path")
-    .default(DEFAULT_ALFA_DIR),
 
   output: Flag.string(
     "output",
