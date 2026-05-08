@@ -6,7 +6,11 @@ import { Audit } from "@siteimprove/alfa-act";
 import type { Command } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";
 import { Err, Result } from "@siteimprove/alfa-result";
-import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
+// TODO: replace with experimental rules once published
+// import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
+// const { R98, R101 } = experimentalRules;
+// const rules = [R98, R101] as Array<Flattened.Rule>;
+import rules from "@siteimprove/alfa-rules";
 import { Page } from "@siteimprove/alfa-web";
 
 import {
@@ -30,8 +34,6 @@ import type { Flags } from "./flags.js";
 
 import * as scrape from "../scrape/run.js";
 
-const { R98, R101 } = experimentalRules;
-const rules = [R98, R101] as Array<Flattened.Rule>;
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,

@@ -5,7 +5,11 @@ import * as fs from "node:fs";
 import { Audit } from "@siteimprove/alfa-act";
 import type { Command } from "@siteimprove/alfa-command";
 import { Err, Result } from "@siteimprove/alfa-result";
-import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
+// TODO: replace with experimental rules once published
+// import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
+// const { R98, R101 } = experimentalRules;
+// const rules = [R98, R101] as Array<Flattened.Rule>;
+import rules from "@siteimprove/alfa-rules";
 import { Page } from "@siteimprove/alfa-web";
 
 import {
@@ -33,8 +37,6 @@ import { formatUnanswered, plural } from "../utils.js";
 import type { Arguments } from "./arguments.js";
 import type { Flags } from "./flags.js";
 
-const { R98, R101 } = experimentalRules;
-const rules = [R98, R101] as Array<Flattened.Rule>;
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
