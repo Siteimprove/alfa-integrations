@@ -37,7 +37,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
   args: { url: target },
 }) => {
-  ensureAlfaDir(flags.alfaDir);
+  await ensureAlfaDir(flags.alfaDir);
 
   const sessionFilePath = sessionPath(flags.alfaDir);
 
