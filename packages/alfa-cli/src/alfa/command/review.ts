@@ -5,8 +5,6 @@ import { Arguments } from "./review/arguments.js";
 import { Flags } from "./review/flags.js";
 
 import answer from "./review/answer.js";
-import list from "./review/list.js";
-import status from "./review/status.js";
 import reset from "./review/reset.js";
 
 /**
@@ -21,8 +19,6 @@ export default (parent: Command) =>
     Arguments,
     (self) => ({
       answer: answer(self),
-      list: list(self),
-      status: status(self),
       reset: reset(self),
     }),
     Option.of(parent),

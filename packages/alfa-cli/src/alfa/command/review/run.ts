@@ -85,7 +85,6 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 
   writeSession(sessionFilePath, {
     url: target,
-    round: 1,
     startedAt: new Date().toISOString(),
   });
 

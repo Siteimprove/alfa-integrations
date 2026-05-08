@@ -18,18 +18,15 @@ import {
   SCRAPE_PATH,
   SESSION_PATH,
 } from "../../common/paths.js";
-import type {
-  AnswerValue,
-  StoredAnswers,
-  StoredQuestion,
-} from "../../common/question-store.js";
 import {
   readAnswers,
   readQuestions,
   readSession,
   writeAnswers,
   writeQuestions,
-  writeSession,
+  type AnswerValue,
+  type StoredAnswers,
+  type StoredQuestion,
 } from "../../common/question-store.js";
 import { createRecordingOracle } from "../../common/recording-oracle.js";
 import { formatUnanswered, plural } from "../utils.js";
@@ -42,9 +39,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
   args: { pairs },
 }) => {
-  const sPath = SESSION_PATH;
-  const session = readSession(sPath);
-  if (session === null) {
+  if (readSession(SESSION_PATH) === null) {
     return Err.of("No active session. Run 'alfa review <url>' first.");
   }
 
@@ -86,8 +81,6 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   if (toAdd.length > 0) {
     writeQuestions(qPath, [...existing, ...toAdd]);
   }
-
-  writeSession(sPath, { ...session, round: session.round + 1 });
 
   const allQuestions = toAdd.length > 0 ? [...existing, ...toAdd] : existing;
   const unansweredCount = allQuestions.filter(

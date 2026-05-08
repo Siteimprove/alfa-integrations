@@ -90,15 +90,13 @@ export function writeAnswers(filePath: string, answers: StoredAnswers): void {
 
 /**
  * The session file format, written when a non-interactive answer session is
- * started with `alfa answer start <url>`.
+ * started with `alfa review <url>`.
  *
  * @public
  */
 export interface StoredSession {
   /** The URL being audited in this session. */
   url: string;
-  /** The current round number (incremented by each `alfa answer supply` call). */
-  round: number;
   /** ISO-8601 timestamp of when the session was started. */
   startedAt: string;
 }
