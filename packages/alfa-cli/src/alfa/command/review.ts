@@ -1,22 +1,22 @@
 import { Command } from "@siteimprove/alfa-command";
 import { Option } from "@siteimprove/alfa-option";
 
-import { Arguments } from "./interview/arguments.js";
-import { Flags } from "./interview/flags.js";
+import { Arguments } from "./review/arguments.js";
+import { Flags } from "./review/flags.js";
 
-import answer from "./interview/answer.js";
-import list from "./interview/list.js";
-import status from "./interview/status.js";
-import reset from "./interview/reset.js";
+import answer from "./review/answer.js";
+import list from "./review/list.js";
+import status from "./review/status.js";
+import reset from "./review/reset.js";
 
 /**
  * @internal
  */
 export default (parent: Command) =>
   Command.withSubcommandsAndArguments(
-    "interview",
+    "review",
     parent.version,
-    "Conduct an interview recording answers to questions asked during an accessibility audit.",
+    "Review potential accessibility issues by answering questions discovered during an audit.",
     Flags,
     Arguments,
     (self) => ({
@@ -28,7 +28,7 @@ export default (parent: Command) =>
     Option.of(parent),
     () =>
       async (...args) => {
-        const { run } = await import("./interview/run.js");
+        const { run } = await import("./review/run.js");
         return run(...args);
       },
   );

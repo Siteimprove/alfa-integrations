@@ -43,13 +43,13 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   const sPath = sessionPath(flags.alfaDir);
   const session = readSession(sPath);
   if (session === null) {
-    return Err.of("No active session. Run 'alfa interview <url>' first.");
+    return Err.of("No active session. Run 'alfa review <url>' first.");
   }
 
   const scrapeFile = scrapePath(flags.alfaDir);
   if (!fs.existsSync(scrapeFile)) {
     return Err.of(
-      "Scrape file missing. Run 'alfa interview reset' and 'alfa interview <url>' to restart.",
+      "Scrape file missing. Run 'alfa review reset' and 'alfa review <url>' to restart.",
     );
   }
 
@@ -94,7 +94,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 
   if (toAdd.length === 0 && unansweredCount === 0) {
     return Result.of(
-      "No new questions found. All questions have been answered. You can now run 'alfa interview reset' to end the session.",
+      "No new questions found. All questions have been answered. You can now run 'alfa review reset' to end the session.",
     );
   }
 

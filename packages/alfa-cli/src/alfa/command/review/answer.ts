@@ -13,7 +13,7 @@ export default (parent: Command) =>
     parent.version,
     `Provide answers for recorded questions as hash=value pairs, then re-run the
     audit using the cached scrape to discover any newly unlocked questions. Run
-    'alfa interview list' to see the hashes of unanswered questions.`,
+    'alfa review list' to see the hashes of unanswered questions.`,
     Flags,
     Arguments,
     Option.of(parent),

@@ -12,7 +12,7 @@ import { Err } from "@siteimprove/alfa-result";
 import * as pkg from "./pkg.js";
 
 import audit from "./alfa/command/audit.js";
-import interview from "./alfa/command/interview.js";
+import review from "./alfa/command/review.js";
 import query from "./alfa/command/query.js";
 import scrape from "./alfa/command/scrape.js";
 
@@ -33,7 +33,7 @@ const application = Command.withSubcommands(
   },
   (self) => ({
     audit: audit(self),
-    interview: interview(self),
+    review: review(self),
     query: query(self),
     scrape: scrape(self),
   }),

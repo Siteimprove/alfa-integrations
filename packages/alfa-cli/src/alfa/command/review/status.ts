@@ -11,7 +11,7 @@ export default (parent: Command) =>
   Command.withArguments(
     "status",
     parent.version,
-    "Print information about the current interview session.",
+    "Print information about the current review session.",
     Flags,
     Arguments,
     Option.of(parent),

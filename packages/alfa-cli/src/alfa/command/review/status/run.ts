@@ -20,7 +20,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
 }) => {
   const session = readSession(sessionPath(flags.alfaDir));
   if (session === null) {
-    return Err.of("No active session. Run 'alfa interview <url>' first.");
+    return Err.of("No active session. Run 'alfa review <url>' first.");
   }
 
   const questions = readQuestions(questionsPath(flags.alfaDir));

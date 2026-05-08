@@ -44,7 +44,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   const existing = readSession(sessionFilePath);
   if (existing !== null) {
     return Err.of(
-      `A session is already active for ${existing.url}. Run 'alfa interview reset' first.`,
+      `A session is already active for ${existing.url}. Run 'alfa review reset' first.`,
     );
   }
 
@@ -92,6 +92,6 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
     `Session started for ${target}.\n` +
       `Recorded ${discovered.length} ${plural(discovered.length, "question")}.\n\n` +
       listing +
-      `\n\nRun 'alfa interview answer hash=value ...' to provide answers.`,
+      `\n\nRun 'alfa review answer hash=value ...' to provide answers.`,
   );
 };

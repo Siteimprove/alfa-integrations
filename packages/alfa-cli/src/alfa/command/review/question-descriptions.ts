@@ -1,5 +1,5 @@
 /**
- * Human-friendly elaborations for question URIs shown during `alfa interview`.
+ * Human-friendly elaborations for question URIs shown during `alfa review`.
  *
  * The default messages from alfa-rules are often terse or use placeholder
  * syntax (e.g. "[audio/video]"). Entries here replace or supplement them with
