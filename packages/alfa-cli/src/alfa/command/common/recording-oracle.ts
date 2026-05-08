@@ -56,6 +56,7 @@ export function createRecordingOracle(
       // If we have stored answers, delegate to the answering oracle first so
       // dependent questions further down the tree are reached and recorded.
       if (answeringOracle !== undefined) {
+        // The oracle returned by createAnsweringOracle always returns Future.now(...), so .get() is safe.
         const resolved = answeringOracle(rule, question).get();
         if (resolved.isSome()) {
           return Future.now(resolved);
