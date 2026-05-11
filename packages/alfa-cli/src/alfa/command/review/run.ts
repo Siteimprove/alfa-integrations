@@ -6,7 +6,7 @@ import * as fsPromises from "node:fs/promises";
 import { Audit } from "@siteimprove/alfa-act";
 import type { Command } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";
-import { Err, Result } from "@siteimprove/alfa-result";
+import { Err, Ok, Result } from "@siteimprove/alfa-result";
 // TODO: replace with experimental rules once published
 // import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
 // const { R98, R101 } = experimentalRules;
@@ -28,10 +28,10 @@ import {
   writeAnswers,
   writeQuestions,
   writeSession,
-  type AnswerValue,
   type StoredAnswers,
   type StoredQuestion,
 } from "../common/question-store.js";
+import { parseAnswerValue } from "./parse-answer-value.js";
 import { createRecordingOracle } from "../common/recording-oracle.js";
 import { formatUnanswered, plural } from "./utils.js";
 
@@ -110,12 +110,18 @@ async function runStart(
   await fsPromises.writeFile(SCRAPE_PATH, pageJson + "\n");
 
   const answers = readAnswers(ANSWERS_PATH);
-  const { oracle, getQuestions } = createRecordingOracle(answers, page.document);
+  const { oracle, getQuestions } = createRecordingOracle(
+    answers,
+    page.document,
+  );
   await Audit.of(page, rules, oracle).evaluate();
 
   const discovered = [...getQuestions()];
   writeQuestions(QUESTIONS_PATH, discovered);
-  writeSession(SESSION_PATH, { url: target, startedAt: new Date().toISOString() });
+  writeSession(SESSION_PATH, {
+    url: target,
+    startedAt: new Date().toISOString(),
+  });
 
   const listing = formatUnanswered(discovered, answers);
   return Result.of(
@@ -126,9 +132,7 @@ async function runStart(
   );
 }
 
-async function runAnswer(
-  pairs: Array<string>,
-): Promise<Result<string>> {
+async function runAnswer(pairs: Array<string>): Promise<Result<string>> {
   if (readSession(SESSION_PATH) === null) {
     return Err.of("No active session. Run 'alfa review --start <url>' first.");
   }
@@ -144,13 +148,20 @@ async function runAnswer(
   if (pairs.length > 0) {
     const questions = readQuestions(QUESTIONS_PATH);
     const unanswered = questions.filter((q) => !(q.hash in answers));
-    answers = applyPairs(answers, pairs, questions, unanswered);
+    const applyResult = applyPairs(answers, pairs, questions, unanswered);
+    if (applyResult.isErr()) {
+      return applyResult;
+    }
+    answers = applyResult.getUnsafe();
     writeAnswers(ANSWERS_PATH, answers);
   }
 
   const pageJson = fs.readFileSync(SCRAPE_PATH, "utf-8");
   const page = Page.from(JSON.parse(pageJson)).getUnsafe();
-  const { oracle, getQuestions } = createRecordingOracle(answers, page.document);
+  const { oracle, getQuestions } = createRecordingOracle(
+    answers,
+    page.document,
+  );
   await Audit.of(page, rules, oracle).evaluate();
 
   const discovered = getQuestions();
@@ -163,7 +174,9 @@ async function runAnswer(
   }
 
   const allQuestions = toAdd.length > 0 ? [...existing, ...toAdd] : existing;
-  const unansweredCount = allQuestions.filter((q) => !(q.hash in answers)).length;
+  const unansweredCount = allQuestions.filter(
+    (q) => !(q.hash in answers),
+  ).length;
 
   if (toAdd.length === 0 && unansweredCount === 0) {
     return Result.of(
@@ -203,7 +216,7 @@ function applyPairs(
   pairs: ReadonlyArray<string>,
   questions: StoredQuestion[],
   unanswered: StoredQuestion[],
-): StoredAnswers {
+): Result<StoredAnswers, string> {
   const updated = { ...existing };
   const questionByHash = new Map(questions.map((q) => [q.hash, q]));
   let positionalIndex = 0;
@@ -219,10 +232,11 @@ function applyPairs(
         );
         continue;
       }
-      const value = parseAnswerValue(pair, question.type);
-      if (value !== undefined) {
-        updated[question.hash] = value;
+      const result = parseAnswerValue(pair, question.type);
+      if (result.isErr()) {
+        return result;
       }
+      updated[question.hash] = result.getUnsafe();
     } else {
       const key = pair.slice(0, eqIdx);
       const rawValue = pair.slice(eqIdx + 1);
@@ -241,39 +255,13 @@ function applyPairs(
         hash = key;
       }
       const type = questionByHash.get(hash)?.type ?? "string";
-      const value = parseAnswerValue(rawValue, type);
-      if (value !== undefined) {
-        updated[hash] = value;
+      const result = parseAnswerValue(rawValue, type);
+      if (result.isErr()) {
+        return result;
       }
+      updated[hash] = result.getUnsafe();
     }
   }
 
-  return updated;
-}
-
-function parseAnswerValue(raw: string, type: string): AnswerValue | undefined {
-  if (raw === "") return undefined;
-  switch (type) {
-    case "boolean":
-      if (raw === "true" || raw === "y" || raw === "yes") return true;
-      if (raw === "false" || raw === "n" || raw === "no") return false;
-      return undefined;
-    case "node":
-      if (raw === "null" || raw === "none" || raw === "-") return null;
-      return raw;
-    case "node[]":
-      return raw
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean);
-    case "color[]":
-      return raw
-        .split(",")
-        .map((s) => s.trim())
-        .filter(Boolean);
-    case "string":
-      return raw;
-    default:
-      return raw;
-  }
+  return Ok.of(updated);
 }
