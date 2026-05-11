@@ -56,7 +56,7 @@ jobs:
         # In the meantime, we simply allow the test to run a second time to give it a better chance. This does increase
         # the time-to-error in case of real problems, but these should hopefully be detected locally by devs before
         # creating a PR and running this workflow…
-        run: yarn test-main || test-main
+        run: yarn test-main || yarn test-main
 
       - run: yarn test-other
       - run: yarn validate-structure
