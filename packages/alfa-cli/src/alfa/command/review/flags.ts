@@ -12,11 +12,9 @@ export const Flags = {
 
   answer: Flag.string(
     "answer",
-    `Provide an answer for a recorded question as a hash=value pair.
-    This flag can be repeated to provide multiple answers in one invocation.`,
-  )
-    .repeatable()
-    .optional(),
+    `Provide answers as a space-separated list of hash=value pairs.
+    Example: --answer "abc123=true def456=#ff0000,#000000"`,
+  ).optional(),
 
   reset: Flag.empty(
     "reset",

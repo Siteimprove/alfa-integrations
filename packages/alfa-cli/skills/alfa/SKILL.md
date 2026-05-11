@@ -29,7 +29,7 @@ Alfa prints a list of questions. Each question has a **hash**, a **subject** (XP
 a **context** (XPath to a context node), a **type**, and a description. Answer them with:
 
 ```bash
-alfa review --answer "hash1=value1" --answer "hash2=value2" ...
+alfa review --answer "hash1=value1 hash2=value2 ..."
 ```
 
 **ALWAYS** ask the user for confirmation before answering questions, unless explicitly told to autonomously find answers.

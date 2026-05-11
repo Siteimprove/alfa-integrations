@@ -6,7 +6,7 @@ import * as fsPromises from "node:fs/promises";
 import { Audit } from "@siteimprove/alfa-act";
 import type { Command } from "@siteimprove/alfa-command";
 import { None } from "@siteimprove/alfa-option";
-import { Err, Ok, Result } from "@siteimprove/alfa-result";
+import { Err, Result } from "@siteimprove/alfa-result";
 // TODO: replace with experimental rules once published
 // import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
 // const { R98, R101 } = experimentalRules;
@@ -31,9 +31,9 @@ import {
   type StoredAnswers,
   type StoredQuestion,
 } from "../common/question-store.js";
-import { parseAnswerValue } from "./parse-answer-value.js";
+import { applyPairs } from "./apply-pairs.js";
 import { createRecordingOracle } from "../common/recording-oracle.js";
-import { formatUnanswered, plural } from "./utils.js";
+import { formatUnanswered } from "./utils.js";
 
 import type { Arguments } from "./arguments.js";
 import type { Flags } from "./flags.js";
@@ -132,7 +132,7 @@ async function runStart(
   );
 }
 
-async function runAnswer(pairs: Array<string>): Promise<Result<string>> {
+async function runAnswer(value: string): Promise<Result<string>> {
   if (readSession(SESSION_PATH) === null) {
     return Err.of("No active session. Run 'alfa review --start <url>' first.");
   }
@@ -145,16 +145,13 @@ async function runAnswer(pairs: Array<string>): Promise<Result<string>> {
 
   let answers: StoredAnswers = readAnswers(ANSWERS_PATH);
 
-  if (pairs.length > 0) {
-    const questions = readQuestions(QUESTIONS_PATH);
-    const unanswered = questions.filter((q) => !(q.hash in answers));
-    const applyResult = applyPairs(answers, pairs, questions, unanswered);
-    if (applyResult.isErr()) {
-      return applyResult;
-    }
-    answers = applyResult.getUnsafe();
-    writeAnswers(ANSWERS_PATH, answers);
+  const questions = readQuestions(QUESTIONS_PATH);
+  const applyResult = applyPairs(answers, value, questions);
+  if (applyResult.isErr()) {
+    return applyResult;
   }
+  answers = applyResult.getUnsafe();
+  writeAnswers(ANSWERS_PATH, answers);
 
   const pageJson = fs.readFileSync(SCRAPE_PATH, "utf-8");
   const page = Page.from(JSON.parse(pageJson)).getUnsafe();
@@ -211,57 +208,3 @@ function runReset(): Result<string> {
   );
 }
 
-function applyPairs(
-  existing: StoredAnswers,
-  pairs: ReadonlyArray<string>,
-  questions: StoredQuestion[],
-  unanswered: StoredQuestion[],
-): Result<StoredAnswers, string> {
-  const updated = { ...existing };
-  const questionByHash = new Map(questions.map((q) => [q.hash, q]));
-  let positionalIndex = 0;
-
-  for (const pair of pairs) {
-    const eqIdx = pair.indexOf("=");
-
-    if (eqIdx === -1) {
-      const question = unanswered[positionalIndex++];
-      if (question === undefined) {
-        process.stderr.write(
-          `Warning: more values than unanswered questions, ignoring "${pair}"\n`,
-        );
-        continue;
-      }
-      const result = parseAnswerValue(pair, question.type);
-      if (result.isErr()) {
-        return result;
-      }
-      updated[question.hash] = result.getUnsafe();
-    } else {
-      const key = pair.slice(0, eqIdx);
-      const rawValue = pair.slice(eqIdx + 1);
-      const index = /^\d+$/.test(key) ? parseInt(key, 10) : NaN;
-      let hash: string;
-      if (!isNaN(index)) {
-        const question = unanswered[index - 1];
-        if (question === undefined) {
-          process.stderr.write(
-            `Warning: index ${index} is out of range (${unanswered.length} unanswered ${plural(unanswered.length, "question")}), ignoring "${pair}"\n`,
-          );
-          continue;
-        }
-        hash = question.hash;
-      } else {
-        hash = key;
-      }
-      const type = questionByHash.get(hash)?.type ?? "string";
-      const result = parseAnswerValue(rawValue, type);
-      if (result.isErr()) {
-        return result;
-      }
-      updated[hash] = result.getUnsafe();
-    }
-  }
-
-  return Ok.of(updated);
-}
