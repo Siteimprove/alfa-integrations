@@ -12,6 +12,8 @@ import { Err } from "@siteimprove/alfa-result";
 import * as pkg from "./pkg.js";
 
 import audit from "./alfa/command/audit.js";
+import review from "./alfa/command/review.js";
+import query from "./alfa/command/query.js";
 import scrape from "./alfa/command/scrape.js";
 
 const {
@@ -31,9 +33,11 @@ const application = Command.withSubcommands(
   },
   (self) => ({
     audit: audit(self),
+    review: review(self),
+    query: query(self),
     scrape: scrape(self),
   }),
-  None
+  None,
 );
 
 application
@@ -54,7 +58,7 @@ application
       output = result.getErrUnsafe();
     }
 
-    output = output.trimRight();
+    output = output.trimEnd();
 
     if (output.length > 0) {
       stream.write(output + "\n");

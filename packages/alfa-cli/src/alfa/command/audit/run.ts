@@ -7,11 +7,15 @@ import type { Command } from "@siteimprove/alfa-command";
 import { Formatter } from "@siteimprove/alfa-formatter";
 import { Interviewer } from "@siteimprove/alfa-interviewer";
 import { Iterable } from "@siteimprove/alfa-iterable";
-import { Option, None } from "@siteimprove/alfa-option";
+import { None, Option } from "@siteimprove/alfa-option";
 import type { Err } from "@siteimprove/alfa-result";
 import { Result } from "@siteimprove/alfa-result";
 import { Page } from "@siteimprove/alfa-web";
 
+// TODO: replace with experimental rules once published
+// import { experimentalRules, type Flattened } from "@siteimprove/alfa-rules";
+// const { R98, R101 } = experimentalRules;
+// const rules = [R98, R101] as Array<Flattened.Rule>;
 import rules from "@siteimprove/alfa-rules";
 
 import { Profiler } from "../../profiler.js";
@@ -20,6 +24,10 @@ import type { Arguments } from "./arguments.js";
 import type { Flags } from "./flags.js";
 
 import * as scrape from "../scrape/run.js";
+
+import { ANSWERS_PATH } from "../common/paths.js";
+import { createAnsweringOracle } from "../common/answering-oracle.js";
+import { readAnswers } from "../common/question-store.js";
 
 export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   flags,
@@ -34,7 +42,7 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
   const interviewer = Option.from(
     await flags.interviewer
       .map((interviewer) => Interviewer.load<any, any, any, any>(interviewer))
-      .getOr(undefined)
+      .getOr(undefined),
   );
 
   if (interviewer.some((interviewer) => interviewer.isErr())) {
@@ -65,14 +73,28 @@ export const run: Command.Runner<typeof Flags, typeof Arguments> = async ({
     json = result.get();
   }
 
-  const page = Page.from(JSON.parse(json));
+  const pageResult = Page.from(JSON.parse(json));
 
-  const oracle = interviewer
-    // The early .some ensured it is an Ok.
+  if (pageResult.isErr()) {
+    return pageResult;
+  }
+  const page = pageResult.getUnsafe();
+
+  // If oracle is provided by --interviewer, use that, otherwise check if there are any pre-recorded answers.
+  let oracle = interviewer
     .map((interviewer) => interviewer.getUnsafe()(page, rules))
     .getOr(undefined);
 
-  const audit = Audit.of(page.getUnsafe(), rules, oracle);
+  if (oracle === undefined) {
+    const answersFilePath = ANSWERS_PATH;
+    if (fs.existsSync(answersFilePath)) {
+      process.stderr.write(`Using answers from ${answersFilePath}\n`);
+      const answers = readAnswers(answersFilePath);
+      oracle = createAnsweringOracle(answers, page.document);
+    }
+  }
+
+  const audit = Audit.of(page, rules, oracle);
 
   for (const _ of flags.cpuProfile) {
     await Profiler.CPU.start();
