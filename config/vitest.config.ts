@@ -11,6 +11,8 @@ const exclude = [
   "packages/alfa-jest",
 ];
 
+console.log(`Running on Node ${process.version}.`);
+
 if (process.version.includes("v26")) {
   // Node26 is breaking the utterly outdated yauzl 2 and extract-zip, which are
   // used by webdriver to extract the puppeteer browser; plus some direct problem
