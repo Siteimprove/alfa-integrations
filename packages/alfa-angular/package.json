@@ -12,7 +12,7 @@
   },
   "bugs": "https://github.com/siteimprove/alfa/issues",
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "scripts": {
     "test": "echo 'This package is tested by @siteimprove/alfa-angular-test'"
@@ -25,7 +25,7 @@
     "dist/**/*.d.ts"
   ],
   "dependencies": {
-    "@angular/core": "^21.2.13",
+    "@angular/core": "^21.2.14",
     "@siteimprove/alfa-device": "^0.114.3",
     "@siteimprove/alfa-dom": "^0.114.3",
     "@siteimprove/alfa-http": "^0.114.3",
