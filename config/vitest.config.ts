@@ -13,10 +13,11 @@ const exclude = [
 
 console.log(`Running on Node ${process.version}.`);
 
-if (process.version.includes("v26")) {
+if (process.version.startsWith("v26") || process.version.startsWith("v24.16")) {
   // Node26 is breaking the utterly outdated yauzl 2 and extract-zip, which are
   // used by webdriver to extract the puppeteer browser; plus some direct problem
-  // in webdriver HTTP headings.
+  // in webdriver HTTP headings. Node 24.16 had the same root cause backported
+  // and also causes the problem.
   // Until webdriver updates and fixes these problems, we simply skip the tests
   // in Node26. Given that the CI/CD also runs Node 22 and 24, this should be OK.
   // Another possibility is to forces yauzl resolution to 3.*, out of the semver
@@ -25,6 +26,10 @@ if (process.version.includes("v26")) {
   //
   // Monitor https://github.com/webdriverio/webdriverio/issues/15265 for updates
   // on Webdriver side.
+  // See also https://github.com/max-mapper/extract-zip/issues/154
+  //
+  // Also update the integrate workflow to unfix the minor Node 24 version once
+  // this is fixed upstream.
   console.log(
     "Skipping Webdriver tests due to Node26/yauzl/extract-zip incompatibility.",
   );

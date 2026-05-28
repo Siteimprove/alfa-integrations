@@ -25,7 +25,10 @@ jobs:
         # 26 is Current from May 2026 to October 2026, then Active until October 2027, Maintenance until April 2029.
         # 28 will be Current in April/May 2027.
         # https://nodejs.org/en/about/previous-releases
-        node: [ 22, 24, 26 ]
+        #
+        # There is a problem in v26 + webdriver (see Vitest config file) which has been backported in Node 24.16,
+        # so we stay on a working minor for now, rather than disable too many webdriver tests.
+        node: [ 22, 24.14, 26 ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
