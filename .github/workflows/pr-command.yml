@@ -31,8 +31,8 @@ jobs:
         if: env.PR_COMMAND_WILL_RUN == 'true'
         uses: actions/setup-node@v6
         with:
-          # We use versions 20 in the integrate workflow
-          node-version: 20
+          # 24 is Active from October 2025 to October 2026.
+          node-version: 24
 
       - name: Set up token for Github packages
         if: env.PR_COMMAND_WILL_RUN == 'true'

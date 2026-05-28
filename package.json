@@ -23,7 +23,7 @@
     "knip": "knip --config config/knip.ts --no-config-hints"
   },
   "engines": {
-    "node": ">=20.0.0"
+    "node": ">=22.0.0"
   },
   "type": "module",
   "workspaces": [
@@ -43,5 +43,5 @@
     "typescript": "^6.0.3",
     "vitest": "^4.1.7"
   },
-  "packageManager": "yarn@4.14.1"
+  "packageManager": "yarn@4.15.0"
 }
