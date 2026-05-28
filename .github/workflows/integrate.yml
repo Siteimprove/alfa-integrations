@@ -61,10 +61,7 @@ jobs:
         # creating a PR and running this workflow…
         run: yarn test-main || yarn test-main
 
-      - name: Run other tests
-        run: |
-          yarn workspace @siteimprove/alfa-cypress run cypress install
-          yarn test-other
+      - run: yarn test-other
       - run: yarn validate-structure
       - run: yarn extract --quiet
       - run: yarn knip
