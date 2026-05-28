@@ -18,15 +18,17 @@ if (process.version.startsWith("v26") || process.version.startsWith("v24.16")) {
   // used by webdriver to extract the puppeteer browser; plus some direct problem
   // in webdriver HTTP headings. Node 24.16 had the same root cause backported
   // and also causes the problem.
-  // Until webdriver updates and fixes these problems, we simply skip the tests
-  // in Node26. Given that the CI/CD also runs Node 22 and 24, this should be OK.
+  // Until webdriver updates and fixes these problems, we simply skip its tests
+  // in Node26/24.16. Given that the CI/CD also runs Node 22 and 24.14, this
+  // should be OK.
   // Another possibility is to forces yauzl resolution to 3.*, out of the semver
   // range for extract-zip. However, (i) this does not fix the HTTP heading
   // problem; and (ii) overrides out of semver is often a wonky fix at best.
   //
   // Monitor https://github.com/webdriverio/webdriverio/issues/15265 for updates
   // on Webdriver side.
-  // See also https://github.com/max-mapper/extract-zip/issues/154
+  // See also https://github.com/max-mapper/extract-zip/issues/154 (unlikley to
+  // be acted upon as the last commits to that repo are from 2020).
   //
   // Also update the integrate workflow to unfix the minor Node 24 version once
   // this is fixed upstream.
