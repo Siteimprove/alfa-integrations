@@ -1,5 +1,17 @@
 # @siteimprove/alfa-jquery
 
+## 0.83.0
+
+### Minor Changes
+
+- **Added:** `JQuery.toPage` now includes all nodes in the collection passed as argument in the page it builds, instead of just the first. ([#348](https://github.com/Siteimprove/alfa-integrations/pull/348))
+
+### Patch Changes
+
+- **Fixed:** `JQuery.toPage` now correctly uses the `window` in which the (first element of the) collection lives, rather than the global `window` object of whichever context it may be called from. ([#348](https://github.com/Siteimprove/alfa-integrations/pull/348))
+
+- **Changed:** Update Alfa to v0.115.1 ([#380](https://github.com/Siteimprove/alfa-integrations/pull/380))
+
 ## 0.82.1
 
 ## 0.82.0

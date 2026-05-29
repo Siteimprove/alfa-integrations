@@ -1,5 +1,11 @@
 # @siteimprove/alfa-angular-test
 
+## 0.83.0
+
+### Patch Changes
+
+- **Changed:** Update Alfa to v0.115.1 ([#380](https://github.com/Siteimprove/alfa-integrations/pull/380))
+
 ## 0.82.1
 
 ## 0.82.0
