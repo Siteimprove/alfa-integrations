@@ -4801,7 +4801,7 @@ __metadata:
     "@siteimprove/alfa-rules": "npm:^0.115.1"
     "@siteimprove/alfa-web": "npm:^0.115.1"
     "@types/jasmine": "npm:^6.0.0"
-    jasmine: "npm:^6.2.0"
+    jasmine: "npm:^6.3.0"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.115.1
     "@siteimprove/alfa-hash": ^0.115.1
@@ -10697,23 +10697,23 @@ __metadata:
   languageName: node
   linkType: hard
 
-"jasmine-core@npm:~6.2.0":
-  version: 6.2.0
-  resolution: "jasmine-core@npm:6.2.0"
-  checksum: 10/00a02cdc961f5e3502e2b458e86b7806bdb4951455e9bb40e8b73b91824a55caac73d3031fad8a41f8499757e30a7ef1864cc9b24910ba63da0f51c61990d010
+"jasmine-core@npm:~6.3.0":
+  version: 6.3.0
+  resolution: "jasmine-core@npm:6.3.0"
+  checksum: 10/541e3db8f2b9c722f6e62b608cc8741776e456771b33cf0e9fa5f8b18982d2f94c3810d670a1cdc49d217c15f8732e3c23f6ec4cd9b92209f79b0e7d2f601ff1
   languageName: node
   linkType: hard
 
-"jasmine@npm:^6.2.0":
-  version: 6.2.0
-  resolution: "jasmine@npm:6.2.0"
+"jasmine@npm:^6.3.0":
+  version: 6.3.0
+  resolution: "jasmine@npm:6.3.0"
   dependencies:
     "@jasminejs/reporters": "npm:^1.0.0"
     glob: "npm:^10.2.2 || ^11.0.3 || ^12.0.0 || ^13.0.0"
-    jasmine-core: "npm:~6.2.0"
+    jasmine-core: "npm:~6.3.0"
   bin:
     jasmine: bin/jasmine.js
-  checksum: 10/d85cf576bfb8670349f76620725d85c84e4a9d1d0305962d6136df86fbef468b11d593179923a3156e7a7cdf78e908c5b0039146c5e14cc2fbd6aff70fa9b8e0
+  checksum: 10/9b4f6e86bab87f5602efd12dc41134b45148011fb9fe78d4477b916ab9f0d4cf48f836fbd5d90600cb893b7d7917d598b71204a93d8664810fa1b3e7ec1abc12
   languageName: node
   linkType: hard
 
