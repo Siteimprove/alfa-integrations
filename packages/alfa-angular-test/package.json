@@ -22,16 +22,16 @@
   "private": true,
   "packageManager": "yarn@4.12.0",
   "dependencies": {
-    "@angular/common": "^21.2.15",
-    "@angular/compiler": "^21.2.15",
-    "@angular/core": "^21.2.15",
-    "@angular/platform-browser": "^21.2.15",
+    "@angular/common": "^22.0.0",
+    "@angular/compiler": "^22.0.0",
+    "@angular/core": "^22.0.0",
+    "@angular/platform-browser": "^22.0.0",
     "tslib": "^2.3.0"
   },
   "devDependencies": {
-    "@angular/build": "^21.2.13",
-    "@angular/cli": "^21.2.13",
-    "@angular/compiler-cli": "^21.2.15",
+    "@angular/build": "^22.0.0",
+    "@angular/cli": "^22.0.0",
+    "@angular/compiler-cli": "^22.0.0",
     "@siteimprove/alfa-angular": "workspace:^",
     "@siteimprove/alfa-dom": "^0.115.1",
     "@siteimprove/alfa-test": "^0.115.1",
