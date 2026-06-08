@@ -26,6 +26,7 @@ updates:
       angular:
         patterns:
           - "@angular/*"
+          - "ng-packagr"
         applies-to: version-updates
 
       production-patch: # Patch updates to production packages. Low risk.
