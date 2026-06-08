@@ -386,19 +386,19 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^21.2.15":
-  version: 21.2.15
-  resolution: "@angular/platform-browser@npm:21.2.15"
+"@angular/platform-browser@npm:^22.0.0":
+  version: 22.0.0
+  resolution: "@angular/platform-browser@npm:22.0.0"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 21.2.15
-    "@angular/common": 21.2.15
-    "@angular/core": 21.2.15
+    "@angular/animations": 22.0.0
+    "@angular/common": 22.0.0
+    "@angular/core": 22.0.0
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10/a1cd8928c1b1dc289b0e762beb4063d8fcc2b11330bddf3ded721b1bcf34f89c09a2b53d69068c856cdcce71635c45e2b7ba20d40a661e46e6d24dd3ba729039
+  checksum: 10/c58906f696b58440da1b4b4dcca74b4785c780239001bdd9b77bdca6e071bfbf4ce663f184add5ae473d147dd7f5fdf2b14983650042ea7cd71a0c3ba55b7a14
   languageName: node
   linkType: hard
 
@@ -4057,7 +4057,7 @@ __metadata:
     "@angular/compiler": "npm:^21.2.15"
     "@angular/compiler-cli": "npm:^21.2.15"
     "@angular/core": "npm:^21.2.15"
-    "@angular/platform-browser": "npm:^21.2.15"
+    "@angular/platform-browser": "npm:^22.0.0"
     "@siteimprove/alfa-angular": "workspace:^"
     "@siteimprove/alfa-dom": "npm:^0.115.1"
     "@siteimprove/alfa-test": "npm:^0.115.1"
