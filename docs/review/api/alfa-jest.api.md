@@ -5,7 +5,6 @@
 ```ts
 
 import { Asserter } from '@siteimprove/alfa-assert';
-import type { Future } from '@siteimprove/alfa-future';
 import type { Handler } from '@siteimprove/alfa-assert';
 import type { Hashable } from '@siteimprove/alfa-hash';
 import type { Mapper } from '@siteimprove/alfa-mapper';
@@ -15,7 +14,7 @@ import type { Rule } from '@siteimprove/alfa-act';
 // @public (undocumented)
 export namespace Jest {
     // (undocumented)
-    export function createPlugin<I, J, T extends Hashable, Q extends Question.Metadata = {}, S = T>(transform: Mapper<I, Future.Maybe<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): void;
+    export function createPlugin<I, J, T extends Hashable, Q extends Question.Metadata = {}, S = T>(transform: Mapper<I, J | Promise<J>>, rules: Iterable<Rule<J, T, Q, S>>, handlers?: Iterable<Handler<J, T, Q, S>>, options?: Asserter.Options<J, T, Q, S>): void;
 }
 
 // (No @packageDocumentation comment for this package)

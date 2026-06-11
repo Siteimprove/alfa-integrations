@@ -4,16 +4,15 @@
 
 ```ts
 
-import { Future } from '@siteimprove/alfa-future';
 import { Node as Node_2 } from '@siteimprove/alfa-dom';
 import { Page } from '@siteimprove/alfa-web';
 import type { ReactElement } from 'react';
 
 // @public (undocumented)
 namespace React_2 {
-    function toNode(value: Type): Future<Node_2.JSON>;
+    function toNode(value: Type): Promise<Node_2.JSON>;
     // (undocumented)
-    function toPage(value: Type): Future<Page>;
+    function toPage(value: Type): Promise<Page>;
     // (undocumented)
     type Type = ReactElement;
 }
