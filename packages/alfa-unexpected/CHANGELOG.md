@@ -1,5 +1,15 @@
 # @siteimprove/alfa-unexpected
 
+## 0.84.0
+
+### Minor Changes
+
+- **Breaking:** All usages of `Future` from `@siteimprove/alfa-future` have been replaced by native `Promise`. ([#393](https://github.com/Siteimprove/alfa-integrations/pull/393))
+
+### Patch Changes
+
+- **Changed:** Update Alfa ([#393](https://github.com/Siteimprove/alfa-integrations/pull/393))
+
 ## 0.83.0
 
 ### Patch Changes
