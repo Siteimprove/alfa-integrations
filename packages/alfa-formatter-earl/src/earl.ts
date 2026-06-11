@@ -2,7 +2,6 @@ import type { Question } from "@siteimprove/alfa-act";
 import type { EARL } from "@siteimprove/alfa-earl";
 import { Serializable } from "@siteimprove/alfa-earl";
 import type { Formatter } from "@siteimprove/alfa-formatter";
-import { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
 import { alfaVersion as version } from "@siteimprove/alfa-rules";
 
@@ -17,7 +16,7 @@ export default function <
   I,
   T extends Hashable,
   Q extends Question.Metadata,
-  S
+  S,
 >(): Formatter<I, T, Q, S> {
   return function EARL(input, rules, outcomes) {
     const subject = Serializable.toEARL(input);
@@ -46,9 +45,9 @@ export default function <
       ],
     } as jsonld.JsonLdDocument;
 
-    return Future.from(jsonld.compact(earl, ACTContext)).map((compact) =>
-      stringify(compact, null, 2)
-    );
+    return jsonld
+      .compact(earl, ACTContext)
+      .then((compact) => stringify(compact, null, 2));
   };
 }
 
