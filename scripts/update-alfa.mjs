@@ -1,12 +1,12 @@
-import * as fs from "fs";
-import * as path from "path";
-import { execSync } from "child_process";
+import * as fs from "node:fs";
+import * as path from "node:path";
+import { execSync } from "node:child_process";
 
 const root = new URL("..", import.meta.url).pathname;
 
 /**
  * Collect all package.json paths (root + workspace packages), excluding
- * node_modules and test sub-packages.
+ * node_modules.
  */
 function findPackageJsonPaths() {
   const results = [];
@@ -111,7 +111,7 @@ if (externalPackages.size === 0) {
 }
 
 console.log(
-  `Fetching latest versions for ${externalPackages.size} packages...`
+  `Fetching latest versions for ${externalPackages.size} packages...`,
 );
 
 const latestVersions = new Map();
