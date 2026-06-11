@@ -1,5 +1,4 @@
 import type { Outcome, Question, Rule } from "@siteimprove/alfa-act";
-import type { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
 import { Result, Err } from "@siteimprove/alfa-result";
 
@@ -10,12 +9,12 @@ export type Formatter<
   I,
   T extends Hashable,
   Q extends Question.Metadata = {},
-  S = T
+  S = T,
 > = (
   input: I,
   rules: Iterable<Rule<I, T, Q, S>>,
-  outcomes: Iterable<Outcome<I, T, Q, S>>
-) => Future.Maybe<string>;
+  outcomes: Iterable<Outcome<I, T, Q, S>>,
+) => string | Promise<string>;
 
 /**
  * @public
@@ -25,10 +24,10 @@ export namespace Formatter {
     I,
     T extends Hashable,
     Q extends Question.Metadata = {},
-    S = T
+    S = T,
   >(
     name: string,
-    defaultScope: string = "@siteimprove"
+    defaultScope: string = "@siteimprove",
   ): Promise<Result<Formatter<I, T, Q, S>, string>> {
     let scope: string | undefined;
 
@@ -60,7 +59,7 @@ export namespace Formatter {
     return Err.of(
       `No formatter named "${name}" was found at:\n\n${patterns
         .map((pattern) => "  " + pattern)
-        .join("\n")}`
+        .join("\n")}`,
     );
   }
 }

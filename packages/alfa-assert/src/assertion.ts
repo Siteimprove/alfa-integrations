@@ -1,11 +1,10 @@
 import type { Oracle, Question, Rule } from "@siteimprove/alfa-act";
 import { Audit, Outcome } from "@siteimprove/alfa-act";
-import { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
 import { None } from "@siteimprove/alfa-option";
 import type { Performance } from "@siteimprove/alfa-performance";
 import { Predicate } from "@siteimprove/alfa-predicate";
-import { Result, Err } from "@siteimprove/alfa-result";
+import { Err, Result } from "@siteimprove/alfa-result";
 import { Sequence } from "@siteimprove/alfa-sequence";
 
 import type { Handler } from "./handler.js";
@@ -20,13 +19,13 @@ export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
     input: I,
     rules: Iterable<Rule<I, T, Q, S>>,
     handlers: Iterable<Handler<I, T, Q, S>> = [],
-    options: Assertion.Options<I, T, Q, S> = {}
+    options: Assertion.Options<I, T, Q, S> = {},
   ): Assertion<I, T, Q, S> {
     return new Assertion(
       input,
       Array.from(rules),
       Array.from(handlers),
-      options
+      options,
     );
   }
 
@@ -39,7 +38,7 @@ export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
     input: I,
     rules: Array<Rule<I, T, Q, S>>,
     handlers: Array<Handler<I, T, Q, S>>,
-    options: Assertion.Options<I, T, Q, S>
+    options: Assertion.Options<I, T, Q, S>,
   ) {
     this._input = input;
     this._rules = rules;
@@ -55,78 +54,68 @@ export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
     return this;
   }
 
-  public accessible(): Future<Result<string>> {
+  public async accessible(): Promise<Result<string>> {
     const {
       // default: report all Failed outcome
       filter = () => true,
       // default: report no CantTell outcome
       filterCantTell = () => false,
       // default: answer no question
-      oracle = () => Future.now(None),
+      oracle = () => Promise.resolve(None),
       // default: no performance listener
       performance,
     } = {
       ...this._options,
     };
 
-    return Audit.of<I, T, Q, S>(this._input, this._rules, oracle)
-      .evaluate(performance)
-      .flatMap((outcomes) => {
-        // Since we need to go through `outcomes` twice, we can't keep it as
-        // an Iterable which self-destruct on reading.
-        // We also assume there will be few suspicious outcomes and therefore
-        // filtering them once likely saves time
-        const suspicious = Sequence.from(outcomes).filter(
-          or(Outcome.isFailed, Outcome.isCantTell)
-        );
-        // handling failures
-        const failures = suspicious.filter(
-          (outcome) => Outcome.isFailed(outcome) && filter(outcome)
-        );
+    const outcomes = await Audit.of<I, T, Q, S>(
+      this._input,
+      this._rules,
+      oracle,
+    ).evaluate(performance);
 
-        const failuresCount = failures.size;
-        const failuresOutcome =
-          failuresCount === 1 ? "outcome was" : "outcomes were";
-        const failuresMessage = `${failuresCount} failed ${failuresOutcome} found.`;
+    // Since we need to go through `outcomes` twice, we can't keep it as
+    // an Iterable which self-destruct on reading.
+    // We also assume there will be few suspicious outcomes and therefore
+    // filtering them once likely saves time
+    const suspicious = Sequence.from(outcomes).filter(
+      or(Outcome.isFailed, Outcome.isCantTell),
+    );
 
-        // handling cantTell
-        const cantTell = suspicious.filter(
-          (outcome) => Outcome.isCantTell(outcome) && filterCantTell(outcome)
-        );
+    // handling failures
+    const failures = suspicious.filter(
+      (outcome) => Outcome.isFailed(outcome) && filter(outcome),
+    );
 
-        const cantTellCount = cantTell.size;
-        const cantTellOutcome =
-          cantTellCount === 1 ? "outcome was" : "outcomes were";
-        const cantTellMessage = `${cantTellCount} "can't Tell" ${cantTellOutcome} found.`;
+    const failuresCount = failures.size;
+    const failuresOutcome =
+      failuresCount === 1 ? "outcome was" : "outcomes were";
+    const failuresMessage = `${failuresCount} failed ${failuresOutcome} found.`;
 
-        // Building final message
-        const message = failuresMessage + " " + cantTellMessage;
+    // handling cantTell
+    const cantTell = suspicious.filter(
+      (outcome) => Outcome.isCantTell(outcome) && filterCantTell(outcome),
+    );
 
-        if (failuresCount + cantTellCount === 0) {
-          return Future.now(Result.of(message));
-        }
+    const cantTellCount = cantTell.size;
+    const cantTellOutcome =
+      cantTellCount === 1 ? "outcome was" : "outcomes were";
+    const cantTellMessage = `${cantTellCount} "can't Tell" ${cantTellOutcome} found.`;
 
-        return this._handlers
-          .reduce(
-            (message, handler) =>
-              message.flatMap((message) => {
-                const future = handler(
-                  this._input,
-                  this._rules,
-                  failures,
-                  message
-                );
+    // Building final message
+    const message = failuresMessage + " " + cantTellMessage;
 
-                if (Future.isFuture(future)) {
-                  return future;
-                }
+    if (failuresCount + cantTellCount === 0) {
+      return Result.of(message);
+    }
 
-                return Future.now(future);
-              }),
-            Future.now(message)
-          )
-          .map((message) => Err.of(message));
-      });
+    const handledMessage = await this._handlers.reduce(
+      async (message, handler) =>
+        handler(this._input, this._rules, failures, await message),
+      Promise.resolve(message),
+    );
+
+    return Err.of(handledMessage);
   }
 }
 
@@ -138,7 +127,7 @@ export namespace Assertion {
     I,
     T extends Hashable,
     Q extends Question.Metadata,
-    S
+    S,
   > {
     /**
      * Predicate for filtering outcomes that should count towards an assertion

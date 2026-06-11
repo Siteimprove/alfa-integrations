@@ -6,14 +6,13 @@ import type unexpected from "unexpected";
 import type { Question, Rule } from "@siteimprove/alfa-act";
 import type { Handler } from "@siteimprove/alfa-assert";
 import { Asserter } from "@siteimprove/alfa-assert";
-import type { Future } from "@siteimprove/alfa-future";
 import type { Mapper } from "@siteimprove/alfa-mapper";
 
 declare module "unexpected" {
   interface Expect {
     (
       subject: unknown,
-      assertionName: "to be accessible" | "not to be accessible"
+      assertionName: "to be accessible" | "not to be accessible",
     ): Promise<void>;
   }
 }
@@ -27,12 +26,12 @@ export namespace Unexpected {
     J,
     T extends Hashable,
     Q extends Question.Metadata = {},
-    S = T
+    S = T,
   >(
-    transform: Mapper<I, Future.Maybe<J>>,
+    transform: Mapper<I, J | Promise<J>>,
     rules: Iterable<Rule<J, T, Q, S>>,
     handlers: Iterable<Handler<J, T, Q, S>> = [],
-    options: Asserter.Options<J, T, Q, S> = {}
+    options: Asserter.Options<J, T, Q, S> = {},
   ): unexpected.PluginDefinition {
     const asserter = Asserter.of(rules, handlers, options);
 
@@ -58,7 +57,7 @@ export namespace Unexpected {
             const result = await asserter.expect(input).to.be.accessible();
 
             expect(result.isOk(), "[not] to be", true);
-          }
+          },
         );
       },
     };

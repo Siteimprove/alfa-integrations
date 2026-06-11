@@ -1,4 +1,3 @@
-import { Future } from "@siteimprove/alfa-future";
 import type { Hashable } from "@siteimprove/alfa-hash";
 import { Option } from "@siteimprove/alfa-option";
 import { test } from "@siteimprove/alfa-test";
@@ -44,7 +43,7 @@ test("#expect() allows to reject cantTell outcomes", async (t) => {
     [],
     {
       filterCantTell: () => true,
-    }
+    },
   );
 
   const result = await expect(foo).to.be.accessible();
@@ -60,8 +59,8 @@ test("#expect() accepts an oracle", async (t) => {
     ],
     [],
     {
-      oracle: (_, question) => Future.now(Option.of(true)),
-    }
+      oracle: (_, question) => Promise.resolve(Option.of(true)),
+    },
   );
 
   const result = await expect(foo).to.be.accessible();

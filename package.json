@@ -20,7 +20,8 @@
     "extract": "node scripts/api-extractor.mjs --pretty",
     "extract:self": "CI=false yarn extract ${INIT_CWD}",
     "document": "api-documenter generate -i docs/data/api -o docs/api",
-    "knip": "knip --config config/knip.ts --no-config-hints"
+    "knip": "knip --config config/knip.ts --no-config-hints",
+    "update-alfa": "node scripts/update-alfa.mjs --pretty"
   },
   "engines": {
     "node": ">=22.0.0"
@@ -34,7 +35,7 @@
     "@microsoft/api-documenter": "^7.30.5",
     "@microsoft/api-extractor": "^7.58.7",
     "@siteimprove/alfa-cli": "workspace:^0.83.0",
-    "@siteimprove/alfa-toolchain": "^0.115.1",
+    "@siteimprove/alfa-toolchain": "^0.117.0",
     "@types/node": "^25.9.2",
     "jsdom": "^29.1.1",
     "knip": "^6.16.1",

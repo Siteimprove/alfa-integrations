@@ -57,17 +57,7 @@ export namespace Cypress {
       chai.Assertion.addMethod("accessible", async function () {
         const input = await toPage(this._obj);
 
-        const result = asserter
-          .expect(input)
-          .to.be.accessible()
-
-          // Cypress has aversions towards promises and asynchronous functions.
-          // We therefore have to synchronously unwrap the future, which it is
-          // fortunately designed for. This _will_ panic if the value isn't
-          // available, but this shouldn't happen in practice as the assertion
-          // handlers can't be asynchronous either.
-          // https://github.com/cypress-io/cypress/issues/4742
-          .get();
+        const result = await asserter.expect(input).to.be.accessible();
 
         const message = result.isOk() ? result.get() : result.getErrUnsafe();
 

@@ -4,7 +4,6 @@
 
 ```ts
 
-import { Future } from '@siteimprove/alfa-future';
 import type { Hashable } from '@siteimprove/alfa-hash';
 import type { Oracle } from '@siteimprove/alfa-act';
 import { Outcome } from '@siteimprove/alfa-act';
@@ -34,7 +33,7 @@ export namespace Asserter {
 export class Assertion<I, T extends Hashable, Q extends Question.Metadata, S> {
     protected constructor(input: I, rules: Array<Rule<I, T, Q, S>>, handlers: Array<Handler<I, T, Q, S>>, options: Assertion.Options<I, T, Q, S>);
     // (undocumented)
-    accessible(): Future<Result<string>>;
+    accessible(): Promise<Result<string>>;
     // (undocumented)
     get be(): this;
     // (undocumented)
@@ -57,7 +56,7 @@ export namespace Assertion {
 // @public (undocumented)
 export interface Handler<I, T extends Hashable, Q extends Question.Metadata, S> {
     // (undocumented)
-    (input: I, rules: Iterable<Rule<I, T, Q, S>>, outcomes: Iterable<Outcome<I, T, Q, S>>, message: string): Future.Maybe<string>;
+    (input: I, rules: Iterable<Rule<I, T, Q, S>>, outcomes: Iterable<Outcome<I, T, Q, S>>, message: string): string | Promise<string>;
 }
 
 // (No @packageDocumentation comment for this package)
