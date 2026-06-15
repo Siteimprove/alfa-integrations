@@ -13,7 +13,7 @@ const exclude = [
 
 console.log(`Running on Node ${process.version}.`);
 
-if (process.version.startsWith("v26") || process.version.startsWith("v24.16")) {
+if (process.version.startsWith("v26")) {
   // Node26 is breaking the utterly outdated yauzl 2 and extract-zip, which are
   // used by webdriver to extract the puppeteer browser; plus some direct problem
   // in webdriver HTTP headings. Node 24.16 had the same root cause backported
