@@ -108,6 +108,8 @@ export class Command<F extends Command.Flags = {}, A extends Command.Arguments =
     static withArguments<F extends Command.Flags, A extends Command.Arguments>(name: string, version: string, description: string, flags: F, args: A, parent?: Option<Command>, run?: (command: Command<F, A, {}>) => Command.Runner<F, A>): Command<F, A, {}>;
     // (undocumented)
     static withSubcommands<F extends Command.Flags, S extends Command.Subcommands>(name: string, version: string, description: string, flags: F, subcommands: Mapper<Command, S>, parent?: Option<Command>, run?: (command: Command<F, {}, S>) => Command.Runner<F, {}>): Command<F, {}, S>;
+    // (undocumented)
+    static withSubcommandsAndArguments<F extends Command.Flags, A extends Command.Arguments, S extends Command.Subcommands>(name: string, version: string, description: string, flags: F, args: A, subcommands: Mapper<Command, S>, parent?: Option<Command>, run?: (command: Command<F, A, S>) => Command.Runner<F, A>): Command<F, A, S>;
 }
 
 // @public (undocumented)

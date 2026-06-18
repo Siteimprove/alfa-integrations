@@ -10,7 +10,7 @@ export const Flags = {
   output: Flag.string(
     "output",
     `The path to write results to. If no path is provided, results are written
-    to stdout.`
+    to stdout.`,
   )
     .type("path")
     .alias("o")
@@ -19,7 +19,7 @@ export const Flags = {
   interviewer: Flag.string(
     "interviewer",
     `The interviewer to use for answering questions during the audit. If not
-    provided, questions will be left unanswered.`
+    provided, questions will be left unanswered.`,
   )
     .type("name or package")
     .alias("i")
@@ -28,13 +28,13 @@ export const Flags = {
   format: Flag.string("format", "The reporting format to use.")
     .type("name or package")
     .alias("f")
-    .default("earl"),
+    .default("json"),
 
   outcomes: Flag.string(
     "outcome",
     `The type of outcome to include in the results. If not provided, all types
     of outcomes are included. This flag can be repeated to include multiple
-    types of outcomes.`
+    types of outcomes.`,
   )
     .choices("passed", "failed", "inapplicable", "cantTell")
     .repeatable()
@@ -43,7 +43,7 @@ export const Flags = {
   cpuProfile: Flag.string(
     "cpu-profile",
     `The path to write a CPU profile of the audit to. If no path is provided,
-    no CPU profile is made.`
+    no CPU profile is made.`,
   )
     .type("path")
     .optional(),
@@ -51,7 +51,7 @@ export const Flags = {
   heapProfile: Flag.string(
     "heap-profile",
     `The path to write a heap profile of the audit to. If no path is provided,
-    no heap profile is made.`
+    no heap profile is made.`,
   )
     .type("path")
     .optional(),
