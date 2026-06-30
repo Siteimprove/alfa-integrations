@@ -51,27 +51,33 @@ The [@siteimprove/alfa-scraper](packages/alfa-scraper) package uses browser auto
 
 The [@siteimprove/alfa-crawler](packages/alfa-crawler) package contains a minimal crawler that can scrape all pages belonging to a (sub-)domain or a website.
 
+## Accessibility Code Checker
+
+This repository hosts the [@siteimprove/alfa-test-utils package](packages/alfa-test-utils) which is used to power Siteimprove's Accessibility Code Checker. See [the Accessibility Code Checker documentation](https://alfa.siteimprove.com/code-checker) for detailed usage.
+
 ## Integrations
 
 This repository contains several ready-made integrations of Alfa to various tools, making it easy and simple to integrate accessibility conformance testing as part of your development workflow. If you have suggestions for additional integerations, feel free to [open an issue][alfa issues]! We are always looking for new places where Alfa can be put to good use.
 
-> :warning: The integrations are still experimental and subject to change.
+> :warning: Most integrations are still experimental and subject to change. The Cypress, Playwright, Puppeteer, and WebdriverIO integrations are actively maintained as part of the Accessibility Code Checker.
 
-| Package                                                      | Integrates with                              |
-| :----------------------------------------------------------- | :------------------------------------------- |
-| [**@siteimprove/alfa-angular**](packages/alfa-angular)       | [Angular](https://angular.io/)               |
-| [**@siteimprove/alfa-chai**](packages/alfa-chai)             | [Chai](https://www.chaijs.com/)              |
-| [**@siteimprove/alfa-cheerio**](packages/alfa-cheerio)       | [Cheerio](https://cheerio.js.org/)           |
-| [**@siteimprove/alfa-cypress**](packages/alfa-cypress)       | [Cypress](https://www.cypress.io/)           |
-| [**@siteimprove/alfa-jasmine**](packages/alfa-jasmine)       | [Jasmine](https://jasmine.github.io/)        |
-| [**@siteimprove/alfa-jest**](packages/alfa-jest)             | [Jest](https://jestjs.io/)                   |
-| [**@siteimprove/alfa-jquery**](packages/alfa-jquery)         | [jQuery](https://jquery.com/)                |
-| [**@siteimprove/alfa-playwright**](packages/alfa-playwright) | [Playwright](https://playwright.dev/)        |
-| [**@siteimprove/alfa-puppeteer**](packages/alfa-puppeteer)   | [Puppeteer](https://pptr.dev/)               |
-| [**@siteimprove/alfa-react**](packages/alfa-react)           | [React](https://reactjs.org/)                |
-| [**@siteimprove/alfa-unexpected**](packages/alfa-unexpected) | [Unexpected](http://unexpected.js.org/)      |
-| [**@siteimprove/alfa-vue**](packages/alfa-vue)               | [Vue](https://vuejs.org/)                    |
-| [**@siteimprove/alfa-webdriver**](packages/alfa-webdriver)   | [WebdriverIO](https://webdriver.io/)         |
+| Package                                                      | Integrates with                         |
+|:-------------------------------------------------------------|:----------------------------------------|
+| [**@siteimprove/alfa-angular**](packages/alfa-angular)       | [Angular](https://angular.io/)          |
+| [**@siteimprove/alfa-chai**](packages/alfa-chai)             | [Chai](https://www.chaijs.com/)         |
+| [**@siteimprove/alfa-cheerio**](packages/alfa-cheerio)       | [Cheerio](https://cheerio.js.org/)      |
+| [**@siteimprove/alfa-cypress**](packages/alfa-cypress)       | [Cypress](https://www.cypress.io/)      |
+| [**@siteimprove/alfa-jasmine**](packages/alfa-jasmine)       | [Jasmine](https://jasmine.github.io/)   |
+| [**@siteimprove/alfa-jest**](packages/alfa-jest)             | [Jest](https://jestjs.io/)              |
+| [**@siteimprove/alfa-jquery**](packages/alfa-jquery)         | [jQuery](https://jquery.com/)           |
+| [**@siteimprove/alfa-playwright**](packages/alfa-playwright) | [Playwright](https://playwright.dev/)   |
+| [**@siteimprove/alfa-puppeteer**](packages/alfa-puppeteer)   | [Puppeteer](https://pptr.dev/)          |
+| [**@siteimprove/alfa-react**](packages/alfa-react)           | [React](https://reactjs.org/)           |
+| [**@siteimprove/alfa-selenium**](packages/alfa-selenium)     | [Selenium](https://www.selenium.dev/)   |
+| [**@siteimprove/alfa-unexpected**](packages/alfa-unexpected) | [Unexpected](http://unexpected.js.org/) |
+| [**@siteimprove/alfa-vitest**](packages/alfa-vitest)         | [Vitest](https://vitest.dev/)     |
+| [**@siteimprove/alfa-vue**](packages/alfa-vue)               | [Vue](https://vuejs.org/)               |
+| [**@siteimprove/alfa-webdriver**](packages/alfa-webdriver)   | [WebdriverIO](https://webdriver.io/)    |
 
 
 ## Funding
