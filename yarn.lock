@@ -4020,7 +4020,7 @@ __metadata:
     "@siteimprove/alfa-dom": "npm:^0.117.0"
     "@siteimprove/alfa-test": "npm:^0.117.0"
     "@siteimprove/alfa-web": "npm:^0.117.0"
-    ng-packagr: "npm:^22.0.0"
+    ng-packagr: "npm:^22.0.1"
     tslib: "npm:^2.3.0"
   languageName: unknown
   linkType: soft
@@ -12330,9 +12330,9 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ng-packagr@npm:^22.0.0":
-  version: 22.0.0
-  resolution: "ng-packagr@npm:22.0.0"
+"ng-packagr@npm:^22.0.1":
+  version: 22.0.1
+  resolution: "ng-packagr@npm:22.0.1"
   dependencies:
     "@ampproject/remapping": "npm:^2.3.0"
     "@rollup/plugin-json": "npm:^6.1.0"
@@ -12368,7 +12368,7 @@ __metadata:
       optional: true
   bin:
     ng-packagr: src/cli/main.js
-  checksum: 10/08d5da9f5f9b11489204895c16a3b5ec138b2e2316dbf7a697741fcf720f4aee9ea4e86651047a4e22944aa4e2722199b923c0621dc9c3e79d465efbdcc2577d
+  checksum: 10/7e352d92572420d3eb17c33540f06d0ac46d1c99a00073931d42f34354ab80c081c9af618c2e567c99c60ad234c34cfc4f213f2d715d2ec87856179363b82dc2
   languageName: node
   linkType: hard
 
