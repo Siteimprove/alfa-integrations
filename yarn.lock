@@ -323,15 +323,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:^22.0.4":
-  version: 22.0.4
-  resolution: "@angular/common@npm:22.0.4"
+"@angular/common@npm:^22.0.5":
+  version: 22.0.5
+  resolution: "@angular/common@npm:22.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/core": 22.0.4
+    "@angular/core": 22.0.5
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/db5cd7f032de58846376aa3545e3a7bbead324aec801750cf37076598d2794d4f3e5cfec36ca6da49635d79bfb7a3282ab99c22466e24842bdaa8ea86826a0e5
+  checksum: 10/db2522fcccc6e1197fadaf816a2cbc0ba37c83eee9945e35e40c8e12f7db056c3560deb0599430843c9086afbb4686785c247700679bf83b76d87da42b567cab
   languageName: node
   linkType: hard
 
@@ -360,22 +360,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:^22.0.4":
-  version: 22.0.4
-  resolution: "@angular/compiler@npm:22.0.4"
+"@angular/compiler@npm:^22.0.5":
+  version: 22.0.5
+  resolution: "@angular/compiler@npm:22.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
-  checksum: 10/d8dfe38b5d44b597b4a7e54a81c9f305e2cb883dde94d9c55888d51d1634664754413baacff8b4429e5a3769d638d11b6f2b18f77e962e552be7c874c8e5c4d1
+  checksum: 10/dc3110364b334e92c534d5da1519023746cadaa15ad821776e502de5e60271bf35e7181516d39acdb907ac46fbd408e4d2d2613ab1d0b05633d4b0cf7c5ff0b9
   languageName: node
   linkType: hard
 
-"@angular/core@npm:^22.0.4":
-  version: 22.0.4
-  resolution: "@angular/core@npm:22.0.4"
+"@angular/core@npm:^22.0.5":
+  version: 22.0.5
+  resolution: "@angular/core@npm:22.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 22.0.4
+    "@angular/compiler": 22.0.5
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -383,23 +383,23 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10/0252d759f5354c7096214c1919b60b974083fea165824deb341ec58e052695afd1ea6f7091f0fb6e97cc2645e3bb312387c8725144c7c0b24538c582bb34654f
+  checksum: 10/40726309b0c8658f6b3885b0009cefc00dd855b507c1bf7fd6794510211d13e7e51a3bd2eca692105f7a97d2f07311478859779950ad69a0a0c2c474251e7c9f
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^22.0.4":
-  version: 22.0.4
-  resolution: "@angular/platform-browser@npm:22.0.4"
+"@angular/platform-browser@npm:^22.0.5":
+  version: 22.0.5
+  resolution: "@angular/platform-browser@npm:22.0.5"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 22.0.4
-    "@angular/common": 22.0.4
-    "@angular/core": 22.0.4
+    "@angular/animations": 22.0.5
+    "@angular/common": 22.0.5
+    "@angular/core": 22.0.5
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10/d6a12ad28b402009b4c9b905b6b53f6383a97f08e47459dc2bc0c417cd0116beb274cb29e734ecf382b540fea2c2bed75e8adcc6c7c492e190ceadd91d2d1c2b
+  checksum: 10/69ac2789b8678789bbd6d1863b928c4ada5e8f6c2dba3410b3a47b42d54976226fcfb737234079f100d7e22b161ab1b02621038356204bb65ff67cd8955db357
   languageName: node
   linkType: hard
 
@@ -4011,11 +4011,11 @@ __metadata:
   dependencies:
     "@angular/build": "npm:^22.0.4"
     "@angular/cli": "npm:^22.0.4"
-    "@angular/common": "npm:^22.0.4"
-    "@angular/compiler": "npm:^22.0.4"
+    "@angular/common": "npm:^22.0.5"
+    "@angular/compiler": "npm:^22.0.5"
     "@angular/compiler-cli": "npm:^22.0.4"
-    "@angular/core": "npm:^22.0.4"
-    "@angular/platform-browser": "npm:^22.0.4"
+    "@angular/core": "npm:^22.0.5"
+    "@angular/platform-browser": "npm:^22.0.5"
     "@siteimprove/alfa-angular": "workspace:^"
     "@siteimprove/alfa-dom": "npm:^0.117.0"
     "@siteimprove/alfa-test": "npm:^0.117.0"
@@ -4029,7 +4029,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
-    "@angular/core": "npm:^22.0.4"
+    "@angular/core": "npm:^22.0.5"
     "@siteimprove/alfa-device": "npm:^0.117.0"
     "@siteimprove/alfa-dom": "npm:^0.117.0"
     "@siteimprove/alfa-http": "npm:^0.117.0"
