@@ -17,7 +17,6 @@ import type { Native } from '@siteimprove/alfa-dom/native';
 import { Option as Option_2 } from '@siteimprove/alfa-option';
 import type { Page } from 'puppeteer';
 import { Page as Page_2 } from '@siteimprove/alfa-web';
-import { Promise as Promise_2 } from '@siteimprove/alfa-promise';
 import * as puppeteer from 'puppeteer';
 import { Result } from '@siteimprove/alfa-result';
 import type { Serializable } from '@siteimprove/alfa-json';
@@ -60,7 +59,7 @@ export namespace Archive {
 }
 
 // @public (undocumented)
-export type Awaiter = (page: Page, timeout: Timeout) => Promise_2<Option_2<string>>;
+export type Awaiter = (page: Page, timeout: Timeout) => Promise<Option_2<string>>;
 
 // @public (undocumented)
 export namespace Awaiter {
