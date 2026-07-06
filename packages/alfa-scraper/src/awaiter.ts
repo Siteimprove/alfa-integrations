@@ -3,7 +3,6 @@
 import { Array } from "@siteimprove/alfa-array";
 import { Iterable } from "@siteimprove/alfa-iterable";
 import { Option, None } from "@siteimprove/alfa-option";
-import { Promise } from "@siteimprove/alfa-promise";
 import type { Timeout } from "@siteimprove/alfa-time";
 
 import type { Page } from "puppeteer";
@@ -22,9 +21,9 @@ export namespace Awaiter {
    */
   export function any(awaiters: Iterable<Awaiter>): Awaiter {
     return async (page, timeout) =>
-      Promise.any(
-        ...Iterable.map(awaiters, (awaiter) => awaiter(page, timeout))
-      );
+      Promise.any([
+        ...Iterable.map(awaiters, (awaiter) => awaiter(page, timeout)),
+      ]);
   }
 
   /**
@@ -32,9 +31,9 @@ export namespace Awaiter {
    */
   export function all(awaiters: Iterable<Awaiter>): Awaiter {
     return async (page, timeout) =>
-      Promise.all(
-        ...Iterable.map(awaiters, (awaiter) => awaiter(page, timeout))
-      ).then((errors) => Array.collectFirst(errors, (error) => error));
+      Promise.all([
+        ...Iterable.map(awaiters, (awaiter) => awaiter(page, timeout)),
+      ]).then((errors) => Array.collectFirst(errors, (error) => error));
   }
 
   /**
@@ -53,7 +52,7 @@ export namespace Awaiter {
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for the document to be ready`
+          `Timeout exceeded while waiting for the document to be ready`,
         );
       }
     };
@@ -75,7 +74,7 @@ export namespace Awaiter {
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for the document to load`
+          `Timeout exceeded while waiting for the document to load`,
         );
       }
     };
@@ -95,7 +94,7 @@ export namespace Awaiter {
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for the network to be idle`
+          `Timeout exceeded while waiting for the network to be idle`,
         );
       }
     };
@@ -106,7 +105,7 @@ export namespace Awaiter {
    */
   export function duration(
     duration: number,
-    after: Awaiter = loaded()
+    after: Awaiter = loaded(),
   ): Awaiter {
     return async (page, timeout) => {
       const error = await after(page, timeout);
@@ -134,7 +133,7 @@ export namespace Awaiter {
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for the selector "${selector}"`
+          `Timeout exceeded while waiting for the selector "${selector}"`,
         );
       }
     };
@@ -153,7 +152,7 @@ export namespace Awaiter {
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for the expression "${selector}"`
+          `Timeout exceeded while waiting for the expression "${selector}"`,
         );
       }
     };
@@ -181,13 +180,13 @@ export namespace Awaiter {
               .every((animation) => animation.playState !== "running"),
           {
             timeout: timeout.remaining(),
-          }
+          },
         );
 
         return None;
       } catch {
         return Option.of(
-          `Timeout exceeded while waiting for animations to end`
+          `Timeout exceeded while waiting for animations to end`,
         );
       }
     };
