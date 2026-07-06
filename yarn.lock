@@ -5368,14 +5368,14 @@ __metadata:
     "@siteimprove/alfa-test": "npm:^0.117.0"
     "@siteimprove/alfa-web": "npm:^0.117.0"
     "@types/selenium-webdriver": "npm:^4.35.6"
-    selenium-webdriver: "npm:^4.44.0"
+    selenium-webdriver: "npm:^4.45.0"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.117.0
     "@siteimprove/alfa-dom": ^0.117.0
     "@siteimprove/alfa-http": ^0.117.0
     "@siteimprove/alfa-url": ^0.117.0
     "@siteimprove/alfa-web": ^0.117.0
-    selenium-webdriver: ^4.44.0
+    selenium-webdriver: ^4.45.0
   languageName: unknown
   linkType: soft
 
@@ -14164,15 +14164,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"selenium-webdriver@npm:^4.44.0":
-  version: 4.44.0
-  resolution: "selenium-webdriver@npm:4.44.0"
+"selenium-webdriver@npm:^4.45.0":
+  version: 4.45.0
+  resolution: "selenium-webdriver@npm:4.45.0"
   dependencies:
     "@bazel/runfiles": "npm:^6.5.0"
     jszip: "npm:^3.10.1"
-    tmp: "npm:^0.2.5"
-    ws: "npm:^8.20.1"
-  checksum: 10/19222ad2b1b1a62a77ddbd0bc8f91178263d367c16e508059385d865bb46d711de2c6a98e722ee76b7bfbc9dec85a5b6200e3744d97291ca173e3a97a8bfa1ce
+    tmp: "npm:^0.2.7"
+    ws: "npm:^8.21.0"
+  checksum: 10/103d6693f82bcd1df75b55f963f9aed9eabd8bd97902daa4e3897689d23a67945a16588520c15e1ac97997f2bf083edc291ced911516dba6c04e58b6ed366465
   languageName: node
   linkType: hard
 
@@ -15001,7 +15001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"tmp@npm:^0.2.5, tmp@npm:~0.2.4":
+"tmp@npm:^0.2.7, tmp@npm:~0.2.4":
   version: 0.2.7
   resolution: "tmp@npm:0.2.7"
   checksum: 10/0a3bc90beb0c6275273c3475fb57e466eaab1c9c4a101d029ff62b18146ce136e7f75d09de34863d9f2c2a492751402508f9e028bc98eb34a1416195d4b15619
@@ -16001,7 +16001,7 @@ __metadata:
   languageName: node
   linkType: hard
 
-"ws@npm:^8.20.1, ws@npm:^8.21.0, ws@npm:^8.8.0":
+"ws@npm:^8.21.0, ws@npm:^8.8.0":
   version: 8.21.0
   resolution: "ws@npm:8.21.0"
   peerDependencies:
