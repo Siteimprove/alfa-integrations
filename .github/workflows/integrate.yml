@@ -28,7 +28,7 @@ jobs:
         #
         # There is a problem in v26 + webdriver (see Vitest config file) which has been backported in Node 24.16,
         # so we stay on a working minor for now, rather than disable too many webdriver tests.
-        node: [ 22, 24.15, 26 ]
+        node: [ 22, 24, 26 ]
     runs-on: ${{ matrix.os }}
     steps:
       - uses: actions/checkout@v6
