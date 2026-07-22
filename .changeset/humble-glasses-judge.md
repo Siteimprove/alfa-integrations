@@ -29,4 +29,4 @@
 "@siteimprove/alfa-vue": patch
 ---
 
-Update Alfa
+**Changed:** Update Alfa
