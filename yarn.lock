@@ -323,15 +323,15 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/common@npm:^22.0.7":
-  version: 22.0.7
-  resolution: "@angular/common@npm:22.0.7"
+"@angular/common@npm:^22.0.8":
+  version: 22.0.8
+  resolution: "@angular/common@npm:22.0.8"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/core": 22.0.7
+    "@angular/core": 22.0.8
     rxjs: ^6.5.3 || ^7.4.0
-  checksum: 10/c56520c597c71a679a31eaee743906bcb27caa16b69562044a712ce835871095ae5b719cb62bc1726edbe38473d1b371b895b96055c800e7020b950403594bab
+  checksum: 10/14e85063f51e0c35c3a1a9141fc1b44fb50ead2c2393581d7c025c4cdb8e4f5fc2aaa8683ea1c2dcf77085598d80a8bab8664a01035564285b7b2fa661095d2c
   languageName: node
   linkType: hard
 
@@ -360,22 +360,22 @@ __metadata:
   languageName: node
   linkType: hard
 
-"@angular/compiler@npm:^22.0.7":
-  version: 22.0.7
-  resolution: "@angular/compiler@npm:22.0.7"
+"@angular/compiler@npm:^22.0.8":
+  version: 22.0.8
+  resolution: "@angular/compiler@npm:22.0.8"
   dependencies:
     tslib: "npm:^2.3.0"
-  checksum: 10/0773880b9230751b4df4b25a09e65b17b225d086817343b1dc80f05bee705a5b91ead3f21e6ef9bf6ec9f7e99d989cfe488d41983fe26f8792cd3ec8bdf9b26b
+  checksum: 10/644e73c85a6b556d53e2bf318280bb757b5e399c0c8cafdf1fb2ed287009f51de1e2eadf54a05f6c5cb10bb702d5495d77a52f5eb108f8c8b45a5213db2cf148
   languageName: node
   linkType: hard
 
-"@angular/core@npm:^22.0.7":
-  version: 22.0.7
-  resolution: "@angular/core@npm:22.0.7"
+"@angular/core@npm:^22.0.8":
+  version: 22.0.8
+  resolution: "@angular/core@npm:22.0.8"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/compiler": 22.0.7
+    "@angular/compiler": 22.0.8
     rxjs: ^6.5.3 || ^7.4.0
     zone.js: ~0.15.0 || ~0.16.0
   peerDependenciesMeta:
@@ -383,23 +383,23 @@ __metadata:
       optional: true
     zone.js:
       optional: true
-  checksum: 10/4267d6c8e87c3b37055dc7963c8b9b5864085b93f45f06104e2bdf5b6118c04fd5db33333c3319786c0bb983a6f31315e221116e1e2d29b3ea79bbee47aed7ec
+  checksum: 10/4423f5ac652facf695a067ed8b4dc81a50bdc9ac1a4c8f879c36ddf24d768ae77cbb5766837f03f35823e22f0beafc31f2e9e98d91ed7148048779c7ad4d3554
   languageName: node
   linkType: hard
 
-"@angular/platform-browser@npm:^22.0.7":
-  version: 22.0.7
-  resolution: "@angular/platform-browser@npm:22.0.7"
+"@angular/platform-browser@npm:^22.0.8":
+  version: 22.0.8
+  resolution: "@angular/platform-browser@npm:22.0.8"
   dependencies:
     tslib: "npm:^2.3.0"
   peerDependencies:
-    "@angular/animations": 22.0.7
-    "@angular/common": 22.0.7
-    "@angular/core": 22.0.7
+    "@angular/animations": 22.0.8
+    "@angular/common": 22.0.8
+    "@angular/core": 22.0.8
   peerDependenciesMeta:
     "@angular/animations":
       optional: true
-  checksum: 10/a768be532acf72f2ef7daf1b4a22400b0655f3e5942a75cf2be3b68cdced8fe5a0e2e5a090382e0a81f3310b6392a7dadb84ab10a3edb5057aaad6931ae9ae2e
+  checksum: 10/51f8f35ca1f474b4a0aa3db1781823d04b5563afef47c31b760e7d48152fb517e232db33ee515d71ae4b931a50ef9927b2aaf6fd7946beca5c373a684141dd09
   languageName: node
   linkType: hard
 
@@ -3878,11 +3878,11 @@ __metadata:
   dependencies:
     "@angular/build": "npm:^22.0.8"
     "@angular/cli": "npm:^22.0.8"
-    "@angular/common": "npm:^22.0.7"
-    "@angular/compiler": "npm:^22.0.7"
+    "@angular/common": "npm:^22.0.8"
+    "@angular/compiler": "npm:^22.0.8"
     "@angular/compiler-cli": "npm:^22.0.8"
-    "@angular/core": "npm:^22.0.7"
-    "@angular/platform-browser": "npm:^22.0.7"
+    "@angular/core": "npm:^22.0.8"
+    "@angular/platform-browser": "npm:^22.0.8"
     "@siteimprove/alfa-angular": "workspace:^"
     "@siteimprove/alfa-dom": "npm:^0.119.0"
     "@siteimprove/alfa-test": "npm:^0.119.0"
@@ -3896,7 +3896,7 @@ __metadata:
   version: 0.0.0-use.local
   resolution: "@siteimprove/alfa-angular@workspace:packages/alfa-angular"
   dependencies:
-    "@angular/core": "npm:^22.0.7"
+    "@angular/core": "npm:^22.0.8"
     "@siteimprove/alfa-device": "npm:^0.119.0"
     "@siteimprove/alfa-dom": "npm:^0.119.0"
     "@siteimprove/alfa-http": "npm:^0.119.0"
@@ -4979,8 +4979,8 @@ __metadata:
     "@siteimprove/alfa-web": "npm:^0.119.0"
     "@types/react": "npm:^19.2.17"
     "@types/react-dom": "npm:^19"
-    react: "npm:^19.2.7"
-    react-dom: "npm:^19.2.7"
+    react: "npm:^19.2.8"
+    react-dom: "npm:^19.2.8"
   peerDependencies:
     "@siteimprove/alfa-device": ^0.119.0
     "@siteimprove/alfa-dom": ^0.119.0
@@ -13437,14 +13437,14 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react-dom@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react-dom@npm:19.2.7"
+"react-dom@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react-dom@npm:19.2.8"
   dependencies:
     scheduler: "npm:^0.27.0"
   peerDependencies:
-    react: ^19.2.7
-  checksum: 10/9564f4b83843ca5518ed5f807c93cb1663706559cde52f3ef814b41e60b63b16e684d849926458f0ba436745d7eabf822cba1c528be370e7b2f35a4c91e35941
+    react: ^19.2.8
+  checksum: 10/fb45d500a8615a36d71a821213a3d4bfe32a70aa1d04ce17d8791dd10c4ef0281e7fdd46694e1112f0f2dcf58df89d12043a13228be9788458aa82f4885a9cdc
   languageName: node
   linkType: hard
 
@@ -13462,10 +13462,10 @@ __metadata:
   languageName: node
   linkType: hard
 
-"react@npm:^19.2.7":
-  version: 19.2.7
-  resolution: "react@npm:19.2.7"
-  checksum: 10/2939997e87d7f0ee0d9d2bb556866b616b999dfb7916283647034eda867a045a39c4f7a736c8ea6beffffcd78397fc30f63a7a3aaf8425b683c3060670859560
+"react@npm:^19.2.8":
+  version: 19.2.8
+  resolution: "react@npm:19.2.8"
+  checksum: 10/a3c697798035e295ca9e51591d3a8700824535cb8c070fac1f8abbe69717ceb99108cbc4ba7b31a606806f336b1eba705705f63b9d39ace198fe51e8990ac843
   languageName: node
   linkType: hard
 
