@@ -4189,7 +4189,7 @@ __metadata:
     "@siteimprove/alfa-result": "npm:^0.119.0"
     "@siteimprove/alfa-test": "npm:^0.119.0"
     "@siteimprove/alfa-thunk": "npm:^0.119.0"
-    chalk: "npm:^5.3.0"
+    chalk: "npm:^6.0.0"
   peerDependencies:
     "@siteimprove/alfa-functor": ^0.119.0
     "@siteimprove/alfa-json": ^0.119.0
@@ -5393,7 +5393,7 @@ __metadata:
     "@siteimprove/alfa-web": "npm:^0.119.0"
     axios: "npm:^1.18.1"
     axios-mock-adapter: "npm:^2.1.0"
-    chalk: "npm:^5.3.0"
+    chalk: "npm:^6.0.0"
     simple-git: "npm:^3.36.0"
   peerDependencies:
     "@siteimprove/alfa-act": ^0.119.0
@@ -7534,10 +7534,17 @@ __metadata:
   languageName: node
   linkType: hard
 
-"chalk@npm:^5.1.2, chalk@npm:^5.3.0, chalk@npm:^5.6.2":
+"chalk@npm:^5.1.2, chalk@npm:^5.6.2":
   version: 5.6.2
   resolution: "chalk@npm:5.6.2"
   checksum: 10/1b2f48f6fba1370670d5610f9cd54c391d6ede28f4b7062dd38244ea5768777af72e5be6b74fb6c6d54cb84c4a2dff3f3afa9b7cb5948f7f022cfd3d087989e0
+  languageName: node
+  linkType: hard
+
+"chalk@npm:^6.0.0":
+  version: 6.0.0
+  resolution: "chalk@npm:6.0.0"
+  checksum: 10/bdcb895b9c848ddbce38f38df5a10a3e272d6c04d759161789c4a2fa5a1fa78bf9eecf4eef73433a2a3be7324d6da96c3c9baf5c80862f37683cc0b890597831
   languageName: node
   linkType: hard
 
