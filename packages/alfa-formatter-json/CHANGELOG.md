@@ -1,5 +1,7 @@
 # @siteimprove/alfa-formatter-json
 
+## 0.84.4
+
 ## 0.84.3
 
 ### Patch Changes

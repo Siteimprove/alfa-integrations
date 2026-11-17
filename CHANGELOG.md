@@ -1,5 +1,11 @@
 # Alfa integrations changelog
 
+## [0.84.4](../../compare/v0.84.3...v0.84.4) (2026-11-17)
+
+### Changed
+
+- [@siteimprove/alfa-test-utils](packages/alfa-test-utils/CHANGELOG.md#0844): Update `simple-git` to v4, fixing GHSA-858h-whjf-mvg5, GHSA-g4wm-2vf7-vfgr, GHSA-x6jw-m9v5-85vh and GHSA-v5rq-49vh-5v5c. ([#496](https://github.com/Siteimprove/alfa-integrations/pull/496))
+
 ## [0.84.3](../../compare/v0.84.2...v0.84.3) (2026-10-29)
 
 ### Changed
