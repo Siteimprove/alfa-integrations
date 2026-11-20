@@ -118,6 +118,37 @@ export namespace Logging {
   }
 
   /**
+   * Characters that must not reach a terminal verbatim: C0 controls, DEL,
+   * C1 controls (including the 8-bit CSI, U+009B), and bidirectional marks,
+   * embeddings, overrides and isolates.
+   */
+  const unsafe =
+    /[\u0000-\u001F\u007F-\u009F؜‎‏‪-‮⁦-⁩]/g;
+
+  /**
+   * Make untrusted text (e.g., content of the tested page) safe to print in a
+   * terminal or CI log.
+   *
+   * @remarks
+   * ASCII whitespace is collapsed and trimmed, as browsers do for
+   * `document.title`, so the text always fits on a single line and cannot
+   * forge extra log lines. Any remaining control or bidi character is escaped
+   * as a visible `\uXXXX` sequence, so it cannot start a terminal escape
+   * sequence (ECMA-48), and cannot visually reorder the output.
+   *
+   * @internal
+   */
+  export function sanitize(text: string): string {
+    return text
+      .replace(/[\t\n\f\r ]+/g, " ")
+      .trim()
+      .replace(
+        unsafe,
+        (char) => `\\u${char.charCodeAt(0).toString(16).padStart(4, "0")}`,
+      );
+  }
+
+  /**
    * @internal
    */
   export function issueUrl(baseUrl: string, ruleId: string): string {
@@ -152,15 +183,20 @@ export namespace Logging {
     pageReportUrl?: Result<string, Array<string>> | string
   ): Logging {
     return Logging.of("Siteimprove found accessibility issues:", [
-      // Show the page title
-      Logging.of(chalk.bold(`Page - ${pageTitle ?? Defaults.Title}`)),
+      // Show the page title.
+      // The title comes from the tested page and must be sanitized before it
+      // reaches the terminal. Styling is applied afterwards, so that our own
+      // escape sequences are kept.
+      Logging.of(chalk.bold(`Page - ${sanitize(pageTitle ?? Defaults.Title)}`)),
 
       // Show any error during upload: missing or invalid credentials, etc.
       ...(Err.isErr<Array<string>>(pageReportUrl)
         ? [
             Logging.of(
               errorTitle(pageReportUrl.getErr().length),
-              pageReportUrl.getErr().map((error) => Logging.of(error, "warn"))
+              pageReportUrl
+                .getErr()
+                .map((error) => Logging.of(sanitize(error), "warn"))
             ),
           ]
         : []),
@@ -170,7 +206,7 @@ export namespace Logging {
       Logging.of(
         `This page contains ${aggregate.length} issues${
           Result.isOk(pageReportUrl)
-            ? ": " + chalk.underline(pageReportUrl.get())
+            ? ": " + chalk.underline(sanitize(String(pageReportUrl.get())))
             : "."
         }`,
         aggregate.map(([ruleId, { failed }], index) =>
@@ -229,7 +265,7 @@ export namespace Logging {
 
     return logs.getOrElse((error) =>
       Logging.of(
-        `Error, could not process the page: ${error}. Check the file format and try again. If the issue persists, contact support.`,
+        `Error, could not process the page: ${sanitize(String(error))}. Check the file format and try again. If the issue persists, contact support.`,
         "error"
       )
     );
