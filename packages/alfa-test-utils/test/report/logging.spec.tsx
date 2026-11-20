@@ -580,6 +580,71 @@ test(".fromAudit() creates a Logging from a serialised audit", (t) => {
   });
 });
 
+test(".sanitize() escapes terminal control sequences", (t) => {
+  // ESC-based sequences: OSC 52 (clipboard write) and SGR.
+  t.equal(
+    Logging.sanitize("a\u001b]52;c;Zm9v\u0007b\u001b[31mc"),
+    "a\\u001b]52;c;Zm9v\\u0007b\\u001b[31mc",
+  );
+
+  // 8-bit CSI, DEL, and other C0 controls.
+  t.equal(
+    Logging.sanitize("\u009b31m\u007f\u0001\u000bx"),
+    "\\u009b31m\\u007f\\u0001\\u000bx",
+  );
+
+  // Bidi overrides and isolates.
+  t.equal(Logging.sanitize("a‮b⁦c"), "a\\u202eb\\u2066c");
+});
+
+test(".sanitize() keeps the text on a single line", (t) => {
+  t.equal(
+    Logging.sanitize("\n  Home\r\n::error::Fake annotation\t\f end  "),
+    "Home ::error::Fake annotation end",
+  );
+});
+
+test(".sanitize() leaves regular text untouched", (t) => {
+  const text = "Café – Ünïcødé 日本語 🎉 (100% safe!)";
+
+  t.equal(Logging.sanitize(text), text);
+});
+
+test(".fromAudit() sanitizes the page title", (t) => {
+  const audit = makeAudit({
+    page: makePage(
+      h.document([<title>{"\n  Evil\u001b]52;c;Zm9v\u0007\n::error::x\n"}</title>]),
+    ),
+  });
+
+  const actual = Logging.fromAudit(audit).toJSON();
+
+  t.deepEqual(actual.logs[0], {
+    title: chalk.bold(`Page - Evil\\u001b]52;c;Zm9v\\u0007 ::error::x`),
+    severity: "log",
+    logs: [],
+  });
+});
+
+test(".fromAggregate() sanitizes page title and upload errors", (t) => {
+  const actual = Logging.fromAggregate(
+    [],
+    "foo\u001b[2Jbar",
+    Err.of(["bad\nline\u009b"]),
+  ).toJSON();
+
+  t.deepEqual(actual.logs[0], {
+    title: chalk.bold(`Page - foo\\u001b[2Jbar`),
+    severity: "log",
+    logs: [],
+  });
+  t.deepEqual(actual.logs[1], {
+    title: Logging.errorTitle(1),
+    severity: "log",
+    logs: [{ title: "bad line\\u009b", severity: "warn", logs: [] }],
+  });
+});
+
 test(".fromAudit() returns an error on invalid page", async (t) => {
   const goodAudit = makeAudit().toJSON();
   const badAudit: Audit.JSON = {

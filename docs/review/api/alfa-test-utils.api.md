@@ -159,6 +159,8 @@ export namespace Logging {
     export interface Options {
         pageTitle?: string | ((page: Page) => string);
     }
+    // @internal
+    export function sanitize(text: string): string;
     // (undocumented)
     export type Severity = "info" | "log" | "warn" | "error";
 }
